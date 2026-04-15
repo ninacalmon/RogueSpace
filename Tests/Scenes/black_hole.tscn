@@ -19,8 +19,8 @@ modulate = Color(0, 0, 0, 1)
 scale = Vector2(10, 10)
 texture = ExtResource("1_ahaky")
 
-[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body") instance=ExtResource("2_0htpi")]
+[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("2_0htpi")]
 owner_body = NodePath("..")
+owner_collision_shape = NodePath("../CollisionShape2D")
 mass_to_radius_multiply = 0.2
-attraction_received_multiply = 0.01
-attraction_executed_multuply = 3.0
+increase_with_proximity = 0.8500000000000001

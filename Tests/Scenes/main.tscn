@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cuevyr7kt05dg"]
+[gd_scene load_steps=9 format=3 uid="uid://cuevyr7kt05dg"]
 
 [ext_resource type="Texture2D" uid="uid://bhshref68qilg" path="res://Tests/Sprites/panorama6.jpg" id="1_rpg71"]
 [ext_resource type="PackedScene" uid="uid://b512vj2a4a3y" path="res://Tests/Scenes/player.tscn" id="2_asek7"]
 [ext_resource type="PackedScene" uid="uid://b80a8rde527d1" path="res://Tests/Scenes/massive_body.tscn" id="3_1v8tv"]
+[ext_resource type="Script" uid="uid://dw2m8ymjsljfq" path="res://Tests/Scenes/camera.gd" id="3_arxjg"]
 [ext_resource type="PackedScene" uid="uid://fcoqx52my7v5" path="res://Tests/Scenes/asteroid_s.tscn" id="3_ikcoo"]
 [ext_resource type="PackedScene" uid="uid://0tgtuwrs6ryf" path="res://Tests/Scenes/asteroid_m.tscn" id="4_1v8tv"]
 [ext_resource type="PackedScene" uid="uid://cj6ahhvs1rbt8" path="res://Tests/Scenes/asteroid_l.tscn" id="5_x8jog"]
@@ -18,7 +19,7 @@ texture = ExtResource("1_rpg71")
 position = Vector2(15, 65)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(12, 40)
+script = ExtResource("3_arxjg")
 
 [node name="Asteroid_S" parent="." instance=ExtResource("3_ikcoo")]
 position = Vector2(81, -18)

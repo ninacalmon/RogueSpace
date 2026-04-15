@@ -19,5 +19,6 @@ texture = ExtResource("1_f1ibl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ktxno")
 
-[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body") instance=ExtResource("3_ikhnj")]
+[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("3_ikhnj")]
 owner_body = NodePath("..")
+owner_collision_shape = NodePath("../CollisionShape2D")

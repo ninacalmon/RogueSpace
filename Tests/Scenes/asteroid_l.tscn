@@ -15,5 +15,6 @@ shape = SubResource("CircleShape2D_ekiyu")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_cenm0")
 
-[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body") instance=ExtResource("2_eodwj")]
+[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("2_eodwj")]
 owner_body = NodePath("..")
+owner_collision_shape = NodePath("../CollisionShape2D")

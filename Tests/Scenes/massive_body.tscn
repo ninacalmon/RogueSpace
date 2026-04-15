@@ -16,6 +16,7 @@ shape = SubResource("CircleShape2D_863ur")
 scale = Vector2(10, 10)
 texture = ExtResource("1_863ur")
 
-[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body") instance=ExtResource("2_fa1y2")]
+[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("2_fa1y2")]
 owner_body = NodePath("..")
+owner_collision_shape = NodePath("../CollisionShape2D")
 mass_to_radius_multiply = 0.4

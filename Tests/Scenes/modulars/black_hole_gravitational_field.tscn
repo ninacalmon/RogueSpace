@@ -8,13 +8,6 @@
 
 [node name="BlackHoleGravitationalField" type="Area2D"]
 script = ExtResource("1_8qc0c")
-event_horizon_radius = null
-spin_strength = null
-radial_boost_power = null
-horizon_stickiness = null
-mass_to_radius_multiply = null
-attraction_received_multiply = null
-attraction_executed_multuply = null
 
 [node name="Range" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_n6f51")

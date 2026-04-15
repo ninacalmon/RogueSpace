@@ -1,17 +1,22 @@
 extends GravitationalField
 class_name BlackHoleGravitationalField
 
-@export var spin_strength: float = 0.6
-@export var radial_boost_power: float = 2.5 # >2 = stronger near center
-@export var horizon_stickiness: float = 0.9 # slows escape
+@onready var event_horizon: Area2D = $EventHorizon
+@onready var eh_range: CollisionShape2D = $EventHorizon/EHRange
 
-func _ready() -> void: ##needs to be changed later to initialize() and called from the parent of the scene tree.
+func _ready() -> void:
 	var range_circle: CircleShape2D = _range.shape.duplicate()
 	range_circle.radius = owner_body.mass * mass_to_radius_multiply
 	_range.shape = range_circle
 
+	# Event horizon = point of no return
+	var eh_circle: CircleShape2D = eh_range.shape.duplicate()
+	eh_circle.radius = range_circle.radius * 0.3
+	eh_range.shape = eh_circle
+
 	area_entered.connect(_on_grav_field_entered_by_area)
 	area_exited.connect(_on_grav_field_exited_by_area)
+	event_horizon.area_entered.connect(_on_event_horizon_entered)
 
 func _on_grav_field_entered_by_area(area: GravitationalField):
 	var body = area.owner_body
@@ -20,13 +25,20 @@ func _on_grav_field_entered_by_area(area: GravitationalField):
 
 func _on_grav_field_exited_by_area(area: GravitationalField):
 	var body = area.owner_body
-	grav_field_entered.emit(body)
 	body_near.erase(body)
+
+func _on_event_horizon_entered(area: GravitationalField):
+	var body = area.owner_body
+	if body == owner_body:
+		return
+	
+	# "Consumed" by the black hole
+	if is_instance_valid(body):
+		return
 
 func _physics_process(_delta: float) -> void:
 	for b in body_near:
 		apply_gravity(b)
-
 
 func apply_gravity(near_body: RigidBody2D):
 	if near_body == owner_body:
@@ -36,32 +48,30 @@ func apply_gravity(near_body: RigidBody2D):
 		return
 
 	var direction = owner_body.global_position - near_body.global_position
-	var distance = max(direction.length(), 5.0)
+	var distance = max(direction.length(), 10.0)
 
 	var dir_normalized = direction.normalized()
 	
 	var G = 1000.0
 	
-	# 🔹 stronger-than-normal gravity near center
-	var base_force = G * (owner_body.mass * near_body.mass) / pow(distance, radial_boost_power)
+	# your original inverse-square
+	var base_force = G * (owner_body.mass * near_body.mass) / (distance * distance)
 
-	# 🔹 tangent direction (perpendicular = causes orbit/spin)
+	# 🔥 extra pull when close (this is the magic)
+	var close_boost = 1.0
+	if distance < 150.0:
+		close_boost += (150.0 - distance) / 150.0 * 2.5
+		# ramps up smoothly as you approach center
+
+	var final_force = base_force * close_boost
+
+	# 🌀 FIXED swirl (actually noticeable now)
 	var tangent = Vector2(-dir_normalized.y, dir_normalized.x)
+	var swirl = tangent * final_force * 0.4
 
-	var radial_force = dir_normalized * base_force
-	var tangential_force = tangent * base_force * spin_strength * spin_factor
+	# combine forces
+	var force_on_other = (dir_normalized * final_force) + swirl
+	var force_on_self = -dir_normalized * final_force * attraction_received_multiply
 
-	var total_force = (radial_force + tangential_force)
-
-	# Apply asymmetrically (your system)
-	near_body.apply_central_force(total_force * attraction_executed_multuply)
-	owner_body.apply_central_force(-total_force * attraction_received_multiply)
-
-	# 🌑 EVENT HORIZON EFFECT
-	if distance < event_horizon_radius:
-		# Pull MUCH harder inside
-		var extra_pull = dir_normalized * base_force * 2.0
-		near_body.apply_central_force(extra_pull)
-
-		# Add damping so things spiral instead of escaping
-		near_body.linear_velocity *= horizon_stickiness
+	near_body.apply_central_force(force_on_other)
+	owner_body.apply_central_force(force_on_self)
