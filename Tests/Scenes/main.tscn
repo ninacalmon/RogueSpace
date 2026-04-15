@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://cuevyr7kt05dg"]
+
+[ext_resource type="Texture2D" uid="uid://bhshref68qilg" path="res://Tests/Sprites/panorama6.jpg" id="1_rpg71"]
+[ext_resource type="PackedScene" uid="uid://b512vj2a4a3y" path="res://Tests/Scenes/player.tscn" id="2_asek7"]
+[ext_resource type="PackedScene" uid="uid://b80a8rde527d1" path="res://Tests/Scenes/massive_body.tscn" id="3_1v8tv"]
+[ext_resource type="PackedScene" uid="uid://fcoqx52my7v5" path="res://Tests/Scenes/asteroid_s.tscn" id="3_ikcoo"]
+[ext_resource type="PackedScene" uid="uid://0tgtuwrs6ryf" path="res://Tests/Scenes/asteroid_m.tscn" id="4_1v8tv"]
+[ext_resource type="PackedScene" uid="uid://cj6ahhvs1rbt8" path="res://Tests/Scenes/asteroid_l.tscn" id="5_x8jog"]
+[ext_resource type="PackedScene" uid="uid://3vg8bv7t077f" path="res://Tests/Scenes/black_hole.tscn" id="7_x8jog"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Panorama6" type="Sprite2D" parent="."]
+position = Vector2(-41, -103)
+texture = ExtResource("1_rpg71")
+
+[node name="Player" parent="." instance=ExtResource("2_asek7")]
+position = Vector2(15, 65)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(12, 40)
+
+[node name="Asteroid_S" parent="." instance=ExtResource("3_ikcoo")]
+position = Vector2(81, -18)
+
+[node name="Asteroid_S2" parent="." instance=ExtResource("3_ikcoo")]
+position = Vector2(44, -59)
+
+[node name="Asteroid_S3" parent="." instance=ExtResource("3_ikcoo")]
+position = Vector2(77, -55)
+
+[node name="Asteroid_S4" parent="." instance=ExtResource("3_ikcoo")]
+position = Vector2(52, -45)
+
+[node name="Asteroid_M" parent="." instance=ExtResource("4_1v8tv")]
+position = Vector2(-136, -39)
+
+[node name="Asteroid_M2" parent="." instance=ExtResource("4_1v8tv")]
+position = Vector2(-39, -136)
+
+[node name="Asteroid_M3" parent="." instance=ExtResource("4_1v8tv")]
+position = Vector2(-153, 155)
+
+[node name="Asteroid_L" parent="." instance=ExtResource("5_x8jog")]
+position = Vector2(74, 279)
+
+[node name="Asteroid_L2" parent="." instance=ExtResource("5_x8jog")]
+position = Vector2(-281, -161)
+
+[node name="massive_body" parent="." instance=ExtResource("3_1v8tv")]
+position = Vector2(496, -70)
+
+[node name="BlackHole" parent="." instance=ExtResource("7_x8jog")]
+position = Vector2(-422, 328)

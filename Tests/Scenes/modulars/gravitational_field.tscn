@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxmw37lsf71x1"]
+
+[ext_resource type="Script" uid="uid://vyn7n655rotw" path="res://gravitational_field.gd" id="1_omyco"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n6f51"]
+
+[node name="GravitationalField" type="Area2D"]
+script = ExtResource("1_omyco")
+
+[node name="Range" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n6f51")

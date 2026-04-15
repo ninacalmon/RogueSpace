@@ -1,0 +1,63 @@
+Asset Pack made by Loris C.
+
+My Page: https://lorisc.itch.io/
+Asset Page: https://lorisc.itch.io/alienshootergb
+
+==========================================================================
+
+Hello! Thanks a lot for downloading my pack!
+
+In this pack, you will find a full sprite sheet with all the assets.
+
+Or, if you prefer, all sprites in a folder already separated for you.
+
+==========================================================================
+
+Info for the pack:
+
+
+In the sprite sheet and on the itch page, VFX are associated with aliens as examples, but you can do whatever you want with them—feel free to experiment!
+
+
+Info for the full page sprite sheet:
+
+Each asset is inside a frame (inside the frame there is a 1px border, so be sure to select with that 1px border in mind).
+
+Above each frame, you can find the dimensions of each asset.
+
+For animated assets, there is NO space between frames; you can select the whole strip and cut it in your engine (the dimension shown above the frame corresponds to one frame).
+
+In the Aseprite file, you can find a layer called "guidelines" that helps you clearly see what to select and how animations are divided.
+
+
+I'm still a beginner with this and very open to criticism. If you have any questions or suggestions, be sure to comment under the itch.io asset page! (linked above)
+
+Making sure the pack pleases everyone as best as I can is very important to me.
+
+
+Info for the separated assets:
+
+If you are not using GameMaker Studio 2, don't worry about the "_stripX" suffix after the name of an animated sprite. It is a feature in GMS that lets GameMaker split the animation automatically for you, with X being the number of frames in the animation.
+
+===========================================================================
+
+Licensing:
+
+
+- You can:
+
+	- Use the assets in commercial and non-commercial projects
+
+	- Modify them to fit your needs
+
+- You can't:
+
+	- Resell, repackage or redistribute the assets (even if modified)
+	- Include these assets in game-making tools or code templates.
+	- Claim the assets or the pack as your own
+	- Use them in projects that promote hate, discrimination, NSFW, or harassment
+	- Use the assets to train AI image generators
+	- Use the assets in a crypto, NFT, p2e, or meta-related project
+
+
+Note: Credit is appreciated but not required. License is non-exclusive.
