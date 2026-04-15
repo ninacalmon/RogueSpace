@@ -1,7 +1,8 @@
 extends RigidBody2D
 class_name Player
 
-var speed: float = 1000
+@export var speed: float = 1000
+@export var max_velocity: float = 1000.0
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	## Movement here vvv
@@ -16,3 +17,6 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 
 	if Input.is_action_pressed("move_right"):
 		state.apply_central_force(Vector2(speed, 0))
+	
+	if state.linear_velocity.length() > max_velocity:
+		state.linear_velocity = state.linear_velocity.normalized() * max_velocity

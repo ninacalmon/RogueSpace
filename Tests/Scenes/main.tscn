@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://cuevyr7kt05dg"]
+[gd_scene load_steps=18 format=3 uid="uid://cuevyr7kt05dg"]
 
+[ext_resource type="Texture2D" uid="uid://b4go5brbh3ndq" path="res://Tests/Sprites/Starfields/Starfield 1 - 1024x1024.png" id="1_n7yfy"]
 [ext_resource type="Texture2D" uid="uid://bhshref68qilg" path="res://Tests/Sprites/panorama6.jpg" id="1_rpg71"]
 [ext_resource type="PackedScene" uid="uid://b512vj2a4a3y" path="res://Tests/Scenes/player.tscn" id="2_asek7"]
 [ext_resource type="PackedScene" uid="uid://b80a8rde527d1" path="res://Tests/Scenes/massive_body.tscn" id="3_1v8tv"]
@@ -12,6 +13,13 @@
 [ext_resource type="Script" uid="uid://cwrgvd4dp6ts7" path="res://Tests/Scenes/velocity_control.gd" id="10_72wnm"]
 [ext_resource type="FontFile" uid="uid://k0magfpt7s5x" path="res://Tests/Fonts/GeosansLight.ttf" id="10_q2sf1"]
 [ext_resource type="Texture2D" uid="uid://ud6qpc5xuvm3" path="res://Tests/Sprites/vecteezy_arrow_1186949.png" id="11_rxr2j"]
+
+[sub_resource type="Environment" id="Environment_n7yfy"]
+background_mode = 3
+tonemap_mode = 2
+glow_enabled = true
+glow_bloom = 0.05
+glow_blend_mode = 1
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_72wnm"]
 blend_mode = 1
@@ -30,7 +38,19 @@ fill_from = Vector2(0.5, 0.5)
 
 [node name="Main" type="Node2D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_n7yfy")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(1024, 1024)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("1_n7yfy")
+
 [node name="Panorama6" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-41, -103)
 texture = ExtResource("1_rpg71")
 
@@ -40,42 +60,45 @@ position = Vector2(15, 65)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 script = ExtResource("3_arxjg")
 
-[node name="Asteroid_S" parent="." instance=ExtResource("3_ikcoo")]
-position = Vector2(81, -18)
-
-[node name="Asteroid_S2" parent="." instance=ExtResource("3_ikcoo")]
-position = Vector2(44, -59)
-
-[node name="Asteroid_S3" parent="." instance=ExtResource("3_ikcoo")]
-position = Vector2(77, -55)
-
-[node name="Asteroid_S4" parent="." instance=ExtResource("3_ikcoo")]
-position = Vector2(52, -45)
-
-[node name="Asteroid_M" parent="." instance=ExtResource("4_1v8tv")]
-position = Vector2(-136, -39)
-
-[node name="Asteroid_M2" parent="." instance=ExtResource("4_1v8tv")]
-position = Vector2(-39, -136)
-
-[node name="Asteroid_M3" parent="." instance=ExtResource("4_1v8tv")]
-position = Vector2(-153, 155)
-
-[node name="Asteroid_L" parent="." instance=ExtResource("5_x8jog")]
-position = Vector2(74, 279)
-
-[node name="Asteroid_L2" parent="." instance=ExtResource("5_x8jog")]
-position = Vector2(-281, -161)
-
-[node name="massive_body" parent="." instance=ExtResource("3_1v8tv")]
-position = Vector2(496, -70)
-
-[node name="BlackHole" parent="." instance=ExtResource("7_x8jog")]
-position = Vector2(-422, 328)
-
-[node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+[node name="MapControl" type="Node2D" parent="." node_paths=PackedStringArray("player", "camera")]
 script = ExtResource("9_e8oew")
 player = NodePath("../Player")
+camera = NodePath("../Player/Camera2D")
+
+[node name="SpaceStuff" type="Node2D" parent="."]
+
+[node name="Asteroid_S" parent="SpaceStuff" instance=ExtResource("3_ikcoo")]
+position = Vector2(81, -18)
+
+[node name="Asteroid_S2" parent="SpaceStuff" instance=ExtResource("3_ikcoo")]
+position = Vector2(44, -59)
+
+[node name="Asteroid_S3" parent="SpaceStuff" instance=ExtResource("3_ikcoo")]
+position = Vector2(77, -55)
+
+[node name="Asteroid_S4" parent="SpaceStuff" instance=ExtResource("3_ikcoo")]
+position = Vector2(52, -45)
+
+[node name="Asteroid_M" parent="SpaceStuff" instance=ExtResource("4_1v8tv")]
+position = Vector2(-136, -39)
+
+[node name="Asteroid_M2" parent="SpaceStuff" instance=ExtResource("4_1v8tv")]
+position = Vector2(-39, -136)
+
+[node name="Asteroid_M3" parent="SpaceStuff" instance=ExtResource("4_1v8tv")]
+position = Vector2(-153, 155)
+
+[node name="Asteroid_L" parent="SpaceStuff" instance=ExtResource("5_x8jog")]
+position = Vector2(74, 279)
+
+[node name="Asteroid_L2" parent="SpaceStuff" instance=ExtResource("5_x8jog")]
+position = Vector2(-281, -161)
+
+[node name="massive_body" parent="SpaceStuff" instance=ExtResource("3_1v8tv")]
+position = Vector2(496, -70)
+
+[node name="BlackHole" parent="SpaceStuff" instance=ExtResource("7_x8jog")]
+position = Vector2(-422, 328)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
