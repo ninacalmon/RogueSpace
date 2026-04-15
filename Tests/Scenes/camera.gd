@@ -6,7 +6,7 @@ extends Camera2D
 
 const default_zoom: Vector2 = Vector2(1, 1)
 
-var min_zoom = 0.4
+var min_zoom = 0.6
 var max_zoom = 4.5
 var target_zoom: Vector2 = default_zoom
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cuevyr7kt05dg"]
+[gd_scene load_steps=10 format=3 uid="uid://cuevyr7kt05dg"]
 
 [ext_resource type="Texture2D" uid="uid://bhshref68qilg" path="res://Tests/Sprites/panorama6.jpg" id="1_rpg71"]
 [ext_resource type="PackedScene" uid="uid://b512vj2a4a3y" path="res://Tests/Scenes/player.tscn" id="2_asek7"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://0tgtuwrs6ryf" path="res://Tests/Scenes/asteroid_m.tscn" id="4_1v8tv"]
 [ext_resource type="PackedScene" uid="uid://cj6ahhvs1rbt8" path="res://Tests/Scenes/asteroid_l.tscn" id="5_x8jog"]
 [ext_resource type="PackedScene" uid="uid://3vg8bv7t077f" path="res://Tests/Scenes/black_hole.tscn" id="7_x8jog"]
+[ext_resource type="Script" uid="uid://b2tm472psivbn" path="res://Tests/Scenes/map_control.gd" id="9_e8oew"]
 
 [node name="Main" type="Node2D"]
 
@@ -53,3 +54,7 @@ position = Vector2(496, -70)
 
 [node name="BlackHole" parent="." instance=ExtResource("7_x8jog")]
 position = Vector2(-422, 328)
+
+[node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("9_e8oew")
+player = NodePath("../Player")
