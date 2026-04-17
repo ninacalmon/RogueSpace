@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b512vj2a4a3y"]
+[gd_scene load_steps=7 format=3 uid="uid://b512vj2a4a3y"]
 
 [ext_resource type="Texture2D" uid="uid://bqcqdhl2djey1" path="res://Tests/Sprites/Aliens/Alien_Air6.png" id="1_f1ibl"]
 [ext_resource type="Script" uid="uid://i7mc57eu0q83" path="res://Tests/Scenes/player.gd" id="1_ktxno"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Tests/Scenes/modulars/gravitational_field.tscn" id="3_ikhnj"]
+[ext_resource type="Script" uid="uid://dw2m8ymjsljfq" path="res://Tests/Scenes/camera.gd" id="4_7tm7k"]
+[ext_resource type="PackedScene" uid="uid://dp3f278n4cqbm" path="res://Tests/Scenes/motor_gpu_particles.tscn" id="5_d77i8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ktxno"]
 radius = 9.0
@@ -22,3 +24,10 @@ shape = SubResource("CircleShape2D_ktxno")
 [node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("3_ikhnj")]
 owner_body = NodePath("..")
 owner_collision_shape = NodePath("../CollisionShape2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("4_7tm7k")
+
+[node name="MotorGPUParticles" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_d77i8")]
+show_behind_parent = true
+player = NodePath("..")

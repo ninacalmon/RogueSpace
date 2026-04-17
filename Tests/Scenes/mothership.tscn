@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b60wc4xruimxc"]
+
+[ext_resource type="Texture2D" uid="uid://cukh1gwwirlos" path="res://Tests/Sprites/Player/Ship_Mid.png" id="1_y16vs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y16vs"]
+radius = 82.02438
+
+[node name="Mothership" type="RigidBody2D"]
+mass = 1000000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_y16vs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(8, -8)
+texture = ExtResource("1_y16vs")

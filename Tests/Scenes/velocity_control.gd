@@ -1,6 +1,5 @@
 extends Control
 
-@export var player: Player
 @onready var arrow: Node2D = $Arrow
 
 var arrow_colors: Array[Color] = [
@@ -13,10 +12,10 @@ var arrow_colors: Array[Color] = [
 @export var max_speed: float = 1000.0
 
 func _process(_delta: float) -> void:
-	var speed = player.linear_velocity.length()
+	var speed = Globals.player_linear_velocity.length()
 	var t = clamp(speed / max_speed, 0.0, 1.0)
 
-	arrow.look_at(player.linear_velocity)
+	arrow.look_at(arrow.global_position + Globals.player_linear_velocity)
 
 	arrow.modulate = get_gradient_color(t)
 

@@ -1,0 +1,6 @@
+extends Node
+
+signal player_out_of_bounds
+
+signal player_almost_out_of_bounds
+signal player_back_in_bounds
