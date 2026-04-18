@@ -1,0 +1,54 @@
+[gd_scene load_steps=11 format=3 uid="uid://dp3f278n4cqbm"]
+
+[ext_resource type="Texture2D" uid="uid://cbcuca4hv1ck1" path="res://Sprites/Explosion_Sheet.png" id="1_c2g25"]
+[ext_resource type="Script" uid="uid://din5gfl2ln18x" path="res://Scenes/motor_gpu_particles.gd" id="2_gs4q6"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gs4q6"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_c2g25"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.69761276, 1), 0.0, 0.0, 0, 0, Vector2(0.9761274, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_gs4q6"]
+curve = SubResource("Curve_c2g25")
+
+[sub_resource type="Gradient" id="Gradient_sfvy2"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.22038567, 0.4986226, 0.7768595)
+colors = PackedColorArray(0.87688, 0.97, 0.8148001, 0.47058824, 0.5295, 0.75, 0.43500003, 0.47058824, 0.205, 0.41, 0.33825, 0.47058824, 0.1394, 0.34, 0.26979002, 0.47058824)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4vo05"]
+gradient = SubResource("Gradient_sfvy2")
+
+[sub_resource type="Curve" id="Curve_gs4q6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.16976129, 0.33659798), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_sfvy2"]
+curve = SubResource("Curve_gs4q6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fxmdp"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.39999998
+scale_max = 1.1999999
+scale_curve = SubResource("CurveTexture_sfvy2")
+color_ramp = SubResource("GradientTexture1D_4vo05")
+alpha_curve = SubResource("CurveTexture_gs4q6")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="MotorGPUParticles" type="GPUParticles2D"]
+material = SubResource("CanvasItemMaterial_gs4q6")
+amount = 64
+texture = ExtResource("1_c2g25")
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_fxmdp")
+script = ExtResource("2_gs4q6")

@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://0tgtuwrs6ryf"]
+
+[ext_resource type="Texture2D" uid="uid://cee0rnhbinl83" path="res://Sprites/Other/Other_Asteroid2.png" id="1_hbu52"]
+[ext_resource type="Script" uid="uid://b8uwpl8kmnf0e" path="res://Scenes/SpaceBodies/body_setup.gd" id="1_nh7p1"]
+[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="2_ekiyu"]
+[ext_resource type="PackedScene" uid="uid://b7rex1sowfwcb" path="res://Scenes/modulars/body_randomizer.tscn" id="3_nh7p1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m0iey"]
+friction = 0.0
+bounce = 0.2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ekiyu"]
+radius = 8.062258
+
+[node name="Asteroid_M" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite")]
+mass = 20.0
+physics_material_override = SubResource("PhysicsMaterial_m0iey")
+script = ExtResource("1_nh7p1")
+collision = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ekiyu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hbu52")
+
+[node name="BodyRandomizer" parent="." node_paths=PackedStringArray("owner_body") instance=ExtResource("3_nh7p1")]
+owner_body = NodePath("..")
+scale_max = 2.0
+
+[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("2_ekiyu")]
+owner_body = NodePath("..")
+owner_collision_shape = NodePath("../CollisionShape2D")
+mass_to_radius_multiply = 2.0

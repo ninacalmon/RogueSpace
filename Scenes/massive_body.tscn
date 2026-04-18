@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b80a8rde527d1"]
+
+[ext_resource type="Texture2D" uid="uid://b48g3d1gdl1v1" path="res://Sprites/Other/Other_Asteroid3.png" id="1_863ur"]
+[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="2_fa1y2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_863ur"]
+radius = 151.0298
+
+[node name="massive_body" type="RigidBody2D"]
+mass = 1000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_863ur")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(10, 10)
+texture = ExtResource("1_863ur")
+
+[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("2_fa1y2")]
+owner_body = NodePath("..")
+owner_collision_shape = NodePath("../CollisionShape2D")
+mass_to_radius_multiply = 0.4

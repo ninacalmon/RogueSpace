@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://fcoqx52my7v5"]
+
+[ext_resource type="Texture2D" uid="uid://8161usbt4hnv" path="res://Sprites/Other/Other_Asteroid1.png" id="1_oaqab"]
+[ext_resource type="Script" uid="uid://b8uwpl8kmnf0e" path="res://Scenes/SpaceBodies/body_setup.gd" id="1_ycgep"]
+[ext_resource type="PackedScene" uid="uid://b7rex1sowfwcb" path="res://Scenes/modulars/body_randomizer.tscn" id="3_ycgep"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ekiyu"]
+radius = 4.0
+
+[node name="Asteroid_S" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite")]
+mass = 2.0
+script = ExtResource("1_ycgep")
+collision = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ekiyu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_oaqab")
+
+[node name="BodyRandomizer" parent="." node_paths=PackedStringArray("owner_body") instance=ExtResource("3_ycgep")]
+owner_body = NodePath("..")
+scale_max = 2.0

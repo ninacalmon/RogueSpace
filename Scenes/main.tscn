@@ -1,0 +1,165 @@
+[gd_scene load_steps=21 format=4 uid="uid://cuevyr7kt05dg"]
+
+[ext_resource type="Texture2D" uid="uid://b4go5brbh3ndq" path="res://Sprites/Starfields/Starfield 1 - 1024x1024.png" id="1_n7yfy"]
+[ext_resource type="PackedScene" uid="uid://b512vj2a4a3y" path="res://Scenes/player.tscn" id="2_asek7"]
+[ext_resource type="PackedScene" uid="uid://fcoqx52my7v5" path="res://Scenes/asteroid_s.tscn" id="3_ikcoo"]
+[ext_resource type="PackedScene" uid="uid://0tgtuwrs6ryf" path="res://Scenes/asteroid_m.tscn" id="4_1v8tv"]
+[ext_resource type="TileSet" uid="uid://cnjkn5qa3p474" path="res://Sprites/asteroids.tres" id="5_2kos3"]
+[ext_resource type="Script" uid="uid://bm2kpm32ooqhk" path="res://Scenes/tile_map_generator.gd" id="5_hptm8"]
+[ext_resource type="PackedScene" uid="uid://c2v243rukexl6" path="res://Scenes/map_control.tscn" id="5_n7yfy"]
+[ext_resource type="PackedScene" uid="uid://cj6ahhvs1rbt8" path="res://Scenes/asteroid_l.tscn" id="5_x8jog"]
+[ext_resource type="PackedScene" uid="uid://3vg8bv7t077f" path="res://Scenes/black_hole.tscn" id="7_x8jog"]
+[ext_resource type="Script" uid="uid://cwrgvd4dp6ts7" path="res://Scenes/velocity_control.gd" id="10_72wnm"]
+[ext_resource type="PackedScene" uid="uid://vbsslu1hl1sg" path="res://Scenes/planet.tscn" id="10_wsu2k"]
+[ext_resource type="Texture2D" uid="uid://ud6qpc5xuvm3" path="res://Sprites/vecteezy_arrow_1186949.png" id="11_rxr2j"]
+[ext_resource type="FontFile" uid="uid://ynyhx0lmxagx" path="res://Fonts/MonospaceTypewriter.ttf" id="12_s3det"]
+[ext_resource type="PackedScene" uid="uid://b60wc4xruimxc" path="res://Scenes/mothership.tscn" id="13_n7yfy"]
+[ext_resource type="Script" uid="uid://dfs6psttgftjh" path="res://Scenes/warnings_control.gd" id="14_aom75"]
+[ext_resource type="Script" uid="uid://by0xgugeabppx" path="res://Scenes/fuel_progress_bar.gd" id="15_k12tt"]
+
+[sub_resource type="Environment" id="Environment_n7yfy"]
+background_mode = 3
+tonemap_mode = 2
+glow_enabled = true
+glow_bloom = 0.05
+glow_blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_72wnm"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_n7yfy"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.35189873, 0.36962026, 0.4126582)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s3det"]
+gradient = SubResource("Gradient_n7yfy")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Main" type="Node2D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_n7yfy")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(1024, 1024)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("1_n7yfy")
+
+[node name="Player" parent="." instance=ExtResource("2_asek7")]
+
+[node name="MapControl" parent="." node_paths=PackedStringArray("player", "camera") instance=ExtResource("5_n7yfy")]
+player = NodePath("../Player")
+camera = NodePath("../Player/Camera2D")
+
+[node name="TileMapGenerator" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAfAA4AAAAAAAEAAADw/+7/AAAIAAAAAAAPAPj/AAAEAAAAAAAeAAEAAAAEAAAAAADr/wsAAAAEAAAAAADw/wYAAAAAAAAAAADr/wMAAAAAAAAAAADr/wIAAAAAAAAAAADw////AAAAAAAAAAD1/wcAAAAAAAAAAAD7//D/AAAAAAAAAAD1/+//AAAAAAAAAAAhAPD/AAAAAAAAAAAfAPn/AAAAAAAAAAAYAPn/AAAAAAAAAAAYAAcAAAAAAAAAAAARAAQAAAAAAAAAAAASAAYAAAAAAAAAAAAdAA8AAAAAAAAAAADt/+//AAABAAAAAADs//D/AAABAAAAAAD6/wkAAAABAAAAAAD4//v/AAABAAAAAAD5//z/AAABAAAAAAD+//3/AAABAAAAAAD8//v/AAABAAAAAAD7//z/AAABAAAAAAD7//3/AAABAAAAAAD8//z/AAABAAAAAAD6//v/AAABAAAAAAD7//v/AAABAAAAAAA=")
+tile_set = ExtResource("5_2kos3")
+script = ExtResource("5_hptm8")
+small_asteroid_scene = ExtResource("3_ikcoo")
+medium_asteroid_scene = ExtResource("4_1v8tv")
+large_asteroid_scene = ExtResource("5_x8jog")
+black_hole_scene = ExtResource("7_x8jog")
+planet_scene = ExtResource("10_wsu2k")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VelocityControl" type="Control" parent="CanvasLayer/UI"]
+anchors_preset = 0
+offset_right = 114.0
+offset_bottom = 68.0
+size_flags_horizontal = 0
+script = ExtResource("10_72wnm")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/UI/VelocityControl"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -38.0
+offset_right = 170.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("12_s3det")
+text = "velocidade"
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI/VelocityControl"]
+material = SubResource("CanvasItemMaterial_72wnm")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05263158
+anchor_top = 0.38235295
+anchor_right = 0.61403507
+anchor_bottom = 1.3235294
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+texture = SubResource("GradientTexture2D_s3det")
+metadata/_edit_use_anchors_ = true
+
+[node name="Arrow" type="Node2D" parent="CanvasLayer/UI/VelocityControl"]
+position = Vector2(69, 88)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/UI/VelocityControl/Arrow"]
+position = Vector2(0, -5)
+scale = Vector2(0.07, 0.04)
+texture = ExtResource("11_rxr2j")
+centered = false
+
+[node name="WarningsControl" type="Control" parent="CanvasLayer/UI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("14_aom75")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/UI/WarningsControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 386.5
+offset_top = 61.0
+offset_right = 725.5
+offset_bottom = 189.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("12_s3det")
+bbcode_enabled = true
+text = "CUIDADO!
+VOCÊ ESTÁ QUASE FORA DO ALCANÇE DE SUA NAVE MÃE
+(você será teleportado de volta e perderá todos os recursos)"
+horizontal_alignment = 1
+
+[node name="FuelProgressBar" type="ProgressBar" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 11.0
+grow_horizontal = 2
+script = ExtResource("15_k12tt")
+
+[node name="Mothership" parent="." instance=ExtResource("13_n7yfy")]
+position = Vector2(0, 190)

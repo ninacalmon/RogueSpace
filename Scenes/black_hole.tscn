@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://3vg8bv7t077f"]
+
+[ext_resource type="Script" uid="uid://b8uwpl8kmnf0e" path="res://Scenes/SpaceBodies/body_setup.gd" id="1_hjqa0"]
+[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="2_0htpi"]
+[ext_resource type="Texture2D" uid="uid://506majaor5n" path="res://Sprites/Black_hole.png" id="2_hjqa0"]
+
+[sub_resource type="Gradient" id="Gradient_0htpi"]
+offsets = PackedFloat32Array(0, 0.6708861)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_retql"]
+gradient = SubResource("Gradient_0htpi")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0htpi"]
+radius = 29.017237
+
+[node name="BlackHole" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite")]
+collision_layer = 0
+collision_mask = 0
+mass = 1000.0
+script = ExtResource("1_hjqa0")
+collision = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 16.0
+texture = SubResource("GradientTexture2D_retql")
+texture_scale = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0htpi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("2_hjqa0")
+
+[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("2_0htpi")]
+owner_body = NodePath("..")
+owner_collision_shape = NodePath("../CollisionShape2D")
+mass_to_radius_multiply = 0.2
+attraction_received_multiply = 0.01
+increase_with_proximity = 0.8500000000000001

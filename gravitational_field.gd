@@ -14,13 +14,17 @@ signal grav_field_exited(body: RigidBody2D)
 
 var body_near: Array[RigidBody2D] = []
 
-func _ready() -> void: ## needs to be changed later to initialize() and called from the parent of the scene tree.
+var activated: bool = false
+
+func initialize() -> void:
 	var range_circle: CircleShape2D = _range.shape.duplicate()
 	range_circle.radius = owner_body.mass * mass_to_radius_multiply
 	_range.shape = range_circle
 
 	area_entered.connect(_on_grav_field_entered_by_area)
 	area_exited.connect(_on_grav_field_exited_by_area)
+
+	activated = true
 
 
 func _on_grav_field_entered_by_area(area: GravitationalField):
@@ -36,6 +40,8 @@ func _on_grav_field_exited_by_area(area: GravitationalField):
 
 
 func _physics_process(_delta: float) -> void:
+	if !activated:
+		return
 	for b in body_near:
 		apply_gravity(b)
 
@@ -59,3 +65,4 @@ func apply_gravity(near_body: RigidBody2D):
 
 	near_body.apply_central_force(force_on_other)
 	owner_body.apply_central_force(force_on_self)
+	

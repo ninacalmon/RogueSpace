@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw7e5oxilyf1x"]
+
+[ext_resource type="Script" uid="uid://chjw8k7f47j05" path="res://Scenes/modulars/black_hole_gravitational_field.gd" id="1_8qc0c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n6f51"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8qc0c"]
+
+[node name="BlackHoleGravitationalField" type="Area2D"]
+script = ExtResource("1_8qc0c")
+
+[node name="Range" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n6f51")
+
+[node name="EventHorizon" type="Area2D" parent="."]
+
+[node name="EHRange" type="CollisionShape2D" parent="EventHorizon"]
+shape = SubResource("CircleShape2D_8qc0c")
+debug_color = Color(0.6064333, 0.36523426, 1, 0.41960785)

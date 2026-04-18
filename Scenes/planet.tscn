@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://vbsslu1hl1sg"]
+
+[ext_resource type="Script" uid="uid://b8uwpl8kmnf0e" path="res://Scenes/SpaceBodies/body_setup.gd" id="1_m0iey"]
+[ext_resource type="Texture2D" uid="uid://bdfhcr1kchi0a" path="res://Sprites/Baren.png" id="1_xehyc"]
+[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="2_vpe2g"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m0iey"]
+friction = 0.0
+bounce = 0.2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vpe2g"]
+radius = 192.1666
+
+[node name="Planet" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite")]
+mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_m0iey")
+freeze = true
+linear_damp_mode = 1
+script = ExtResource("1_m0iey")
+collision = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vpe2g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(8, 8)
+texture = ExtResource("1_xehyc")
+
+[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("2_vpe2g")]
+linear_damp = 0.0
+owner_body = NodePath("..")
+owner_collision_shape = NodePath("../CollisionShape2D")
+mass_to_radius_multiply = 0.5
+attraction_received_multiply = 0.01
+attraction_executed_multiply = 3.0
