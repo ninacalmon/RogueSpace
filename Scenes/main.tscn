@@ -183,4 +183,7 @@ script = ExtResource("16_h1bgf")
 position = Vector2(0, 190)
 
 [node name="SupermassiveBlackHole" parent="." instance=ExtResource("18_b3802")]
-position = Vector2(544, -815)
+position = Vector2(283, -608)
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+copy_mode = 2

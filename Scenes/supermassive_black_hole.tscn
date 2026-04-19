@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7nj6rbljyvk3"]
+[gd_scene load_steps=12 format=3 uid="uid://c7nj6rbljyvk3"]
 
 [ext_resource type="Script" uid="uid://dr85npip0vvdg" path="res://Scenes/black_hole.gd" id="1_8py6e"]
 [ext_resource type="Script" uid="uid://b8uwpl8kmnf0e" path="res://Scenes/SpaceBodies/body_setup.gd" id="1_or4vv"]
 [ext_resource type="Texture2D" uid="uid://506majaor5n" path="res://Sprites/Black_hole.png" id="2_8py6e"]
+[ext_resource type="Shader" uid="uid://s03egy3ha6nk" path="res://Scenes/BlackHoleShader.gdshader" id="2_lfh63"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="3_dv4l3"]
 
 [sub_resource type="Gradient" id="Gradient_0htpi"]
@@ -17,14 +18,28 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_0htpi"]
 radius = 29.0
 
+[sub_resource type="Curve" id="Curve_81w2e"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.14857143, -0.07865167), 0.0, 0.0, 0, 0, Vector2(0.29714286, 0.19101119), 0.0, 0.0, 0, 0, Vector2(0.583, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_dv4l3"]
+width = 2048
+curve = SubResource("Curve_81w2e")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gmyqq"]
+shader = ExtResource("2_lfh63")
+shader_parameter/curve = SubResource("CurveTexture_dv4l3")
+shader_parameter/strenght = 0.30000006175000005
+
 [node name="SupermassiveBlackHole" type="RigidBody2D"]
-z_index = -1
 mass = 10000.0
 contact_monitor = true
 max_contacts_reported = 3
 script = ExtResource("1_8py6e")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 energy = 16.0
 texture = SubResource("GradientTexture2D_retql")
 texture_scale = 3.0
@@ -32,9 +47,13 @@ texture_scale = 3.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0htpi")
 
+[node name="Shader" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_gmyqq")
+scale = Vector2(4, 4)
+texture = ExtResource("2_8py6e")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
-scale = Vector2(3, 3)
 texture = ExtResource("2_8py6e")
 
 [node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("3_dv4l3")]
@@ -47,5 +66,5 @@ increase_with_proximity = 0.95
 [node name="BodySetup" type="Node2D" parent="." node_paths=PackedStringArray("collision", "sprite")]
 script = ExtResource("1_or4vv")
 collision = NodePath("../CollisionShape2D")
-sprite = NodePath("../Sprite2D")
+sprite = NodePath("../Shader")
 metadata/_custom_type_script = "uid://b8uwpl8kmnf0e"
