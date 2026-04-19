@@ -1,7 +1,7 @@
 extends ProgressBar
 
 @export var max_fuel: float = 100
-@export var use_step: float = 0.1
+@export var use_step: float = 0.02
 
 var emitted: bool = false
 

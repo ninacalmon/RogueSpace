@@ -51,8 +51,10 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if state.linear_velocity.length() > max_velocity:
 		state.linear_velocity = state.linear_velocity.normalized() * max_velocity
 	
+	# Break vvvvvv
 	if Input.is_action_pressed("break_stop"):
 		state.linear_velocity = state.linear_velocity.move_toward(Vector2.ZERO, break_speed)
+
 
 func _on_player_almost_out_of_bounds():
 	var tween = get_tree().create_tween()

@@ -8,3 +8,5 @@ signal player_back_in_bounds
 signal fuel_used
 signal almost_out_of_fuel
 signal out_of_fuel
+
+signal damage_taken(damaged: RigidBody2D, amount: float)

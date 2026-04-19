@@ -6,7 +6,7 @@
 radius = 82.02438
 
 [node name="Mothership" type="RigidBody2D"]
-mass = 1000000.0
+freeze = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_y16vs")

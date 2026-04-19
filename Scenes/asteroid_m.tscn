@@ -30,6 +30,7 @@ owner_body = NodePath("..")
 scale_max = 2.0
 
 [node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("2_ekiyu")]
+visible = false
 owner_body = NodePath("..")
 owner_collision_shape = NodePath("../CollisionShape2D")
 mass_to_radius_multiply = 2.0
