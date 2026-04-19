@@ -12,12 +12,9 @@ bounce = 0.2
 [sub_resource type="CircleShape2D" id="CircleShape2D_ekiyu"]
 radius = 8.062258
 
-[node name="Asteroid_M" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite")]
+[node name="Asteroid_M" type="RigidBody2D"]
 mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_m0iey")
-script = ExtResource("1_nh7p1")
-collision = NodePath("CollisionShape2D")
-sprite = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ekiyu")
@@ -34,3 +31,9 @@ visible = false
 owner_body = NodePath("..")
 owner_collision_shape = NodePath("../CollisionShape2D")
 mass_to_radius_multiply = 2.0
+
+[node name="BodySetup" type="Node2D" parent="." node_paths=PackedStringArray("collision", "sprite")]
+script = ExtResource("1_nh7p1")
+collision = NodePath("../CollisionShape2D")
+sprite = NodePath("../Sprite2D")
+metadata/_custom_type_script = "uid://b8uwpl8kmnf0e"

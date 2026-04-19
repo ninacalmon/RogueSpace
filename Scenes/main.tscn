@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://cuevyr7kt05dg"]
+[gd_scene load_steps=24 format=4 uid="uid://cuevyr7kt05dg"]
 
 [ext_resource type="Texture2D" uid="uid://b4go5brbh3ndq" path="res://Sprites/Starfields/Starfield 1 - 1024x1024.png" id="1_n7yfy"]
 [ext_resource type="PackedScene" uid="uid://b512vj2a4a3y" path="res://Scenes/player.tscn" id="2_asek7"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://dfs6psttgftjh" path="res://Scenes/warnings_control.gd" id="14_aom75"]
 [ext_resource type="Script" uid="uid://by0xgugeabppx" path="res://Scenes/fuel_progress_bar.gd" id="15_k12tt"]
 [ext_resource type="Script" uid="uid://cuyq3e1aepgqa" path="res://Scenes/life_progress_bar.gd" id="16_h1bgf"]
+[ext_resource type="PackedScene" uid="uid://c7nj6rbljyvk3" path="res://Scenes/supermassive_black_hole.tscn" id="18_b3802"]
 
 [sub_resource type="Environment" id="Environment_n7yfy"]
 background_mode = 3
@@ -49,6 +50,7 @@ bg_color = Color(0.29448, 0.36, 0.079200014, 1)
 environment = SubResource("Environment_n7yfy")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
+z_index = -4096
 scroll_scale = Vector2(0.2, 0.2)
 repeat_size = Vector2(1024, 1024)
 repeat_times = 4
@@ -179,3 +181,6 @@ script = ExtResource("16_h1bgf")
 
 [node name="Mothership" parent="." instance=ExtResource("13_n7yfy")]
 position = Vector2(0, 190)
+
+[node name="SupermassiveBlackHole" parent="." instance=ExtResource("18_b3802")]
+position = Vector2(544, -815)

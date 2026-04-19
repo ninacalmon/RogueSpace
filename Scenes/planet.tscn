@@ -11,14 +11,11 @@ bounce = 0.1
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpe2g"]
 radius = 192.1666
 
-[node name="Planet" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite")]
+[node name="Planet" type="RigidBody2D"]
 mass = 1000.0
 physics_material_override = SubResource("PhysicsMaterial_m0iey")
 freeze = true
 linear_damp_mode = 1
-script = ExtResource("1_m0iey")
-collision = NodePath("CollisionShape2D")
-sprite = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vpe2g")
@@ -35,3 +32,10 @@ owner_collision_shape = NodePath("../CollisionShape2D")
 mass_to_radius_multiply = 0.5
 attraction_received_multiply = 0.01
 attraction_executed_multiply = 3.0
+increase_with_proximity = 0.9299999999999999
+
+[node name="BodySetup" type="Node2D" parent="." node_paths=PackedStringArray("collision", "sprite")]
+script = ExtResource("1_m0iey")
+collision = NodePath("../CollisionShape2D")
+sprite = NodePath("../Sprite2D")
+metadata/_custom_type_script = "uid://b8uwpl8kmnf0e"

@@ -7,11 +7,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ekiyu"]
 radius = 4.0
 
-[node name="Asteroid_S" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite")]
+[node name="Asteroid_S" type="RigidBody2D"]
 mass = 2.0
-script = ExtResource("1_ycgep")
-collision = NodePath("CollisionShape2D")
-sprite = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ekiyu")
@@ -22,3 +19,9 @@ texture = ExtResource("1_oaqab")
 [node name="BodyRandomizer" parent="." node_paths=PackedStringArray("owner_body") instance=ExtResource("3_ycgep")]
 owner_body = NodePath("..")
 scale_max = 2.0
+
+[node name="BodySetup" type="Node2D" parent="." node_paths=PackedStringArray("collision", "sprite")]
+script = ExtResource("1_ycgep")
+collision = NodePath("../CollisionShape2D")
+sprite = NodePath("../Sprite2D")
+metadata/_custom_type_script = "uid://b8uwpl8kmnf0e"
