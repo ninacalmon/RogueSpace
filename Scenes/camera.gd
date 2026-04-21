@@ -4,16 +4,28 @@ extends Camera2D
 @export var zoom_speed: float = 0.2
 @export var zoom_smoothness: float = 3.0
 
+@export_subgroup("Start Cutscene")
+@export var full_view_zoom: Vector2 = Vector2(0.45, 0.45)
+@export var full_view_pos: Vector2 = Vector2(0.0, -500)
+@export var full_view_duration: float = 1.0
+@export var zoom_in_speed: float = 4.0
+
 const default_zoom: Vector2 = Vector2(1, 1)
 
 var min_zoom = 0.6
 var max_zoom = 4.5
 var target_zoom: Vector2 = default_zoom
 
+var is_on_cutscene: bool = true
+
 func _ready():
-	target_zoom = zoom
+	target_zoom = Vector2(1, 1)
+	start_cutscene()
 
 func _input(event: InputEvent) -> void:
+	if is_on_cutscene:
+		return
+	
 	if event.is_action_pressed("scroll_up"):
 		target_zoom += Vector2.ONE * zoom_speed
 
@@ -29,6 +41,9 @@ func _input(event: InputEvent) -> void:
 	)
 
 func _process(delta):
+	if is_on_cutscene:
+		return
+
 	zoom = zoom.lerp(target_zoom, zoom_smoothness * delta)
 	
 	## Controller logic vvvvvv
@@ -56,3 +71,15 @@ func simulate_camera_reset_input():
 	reset_camera_event.action = "middle_mouse"
 	reset_camera_event.pressed = true
 	Input.parse_input_event(reset_camera_event)
+
+func start_cutscene():
+	zoom = full_view_zoom
+	position += full_view_pos
+	await get_tree().create_timer(full_view_duration).timeout
+	var tween = get_tree().create_tween()
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_EXPO)
+	tween.parallel().tween_property(self, "zoom", Vector2(1, 1), zoom_in_speed)
+	tween.parallel().tween_property(self, "position", Vector2(0, 0), zoom_in_speed)
+	await tween.finished
+	is_on_cutscene = false

@@ -4,9 +4,7 @@ class_name BlackHole
 func _ready() -> void:
 	self.body_entered.connect(_on_body_entered)
 
-
 func _on_body_entered(body: Node2D):
-	print("dffdf")
 	spin_death(body)
 
 func _integrate_forces(state):
