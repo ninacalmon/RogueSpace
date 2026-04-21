@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://c7nj6rbljyvk3" path="res://Scenes/supermassive_black_hole.tscn" id="9_h1bgf"]
 [ext_resource type="PackedScene" uid="uid://vbsslu1hl1sg" path="res://Scenes/planet.tscn" id="9_hibaj"]
 [ext_resource type="Script" uid="uid://cwrgvd4dp6ts7" path="res://Scenes/velocity_control.gd" id="10_72wnm"]
-[ext_resource type="Script" uid="uid://dr85npip0vvdg" path="res://Scenes/black_hole.gd" id="10_b3802"]
 [ext_resource type="Texture2D" uid="uid://ud6qpc5xuvm3" path="res://Sprites/vecteezy_arrow_1186949.png" id="11_rxr2j"]
 [ext_resource type="FontFile" uid="uid://ynyhx0lmxagx" path="res://Fonts/MonospaceTypewriter.ttf" id="12_s3det"]
 [ext_resource type="PackedScene" uid="uid://b60wc4xruimxc" path="res://Scenes/mothership.tscn" id="13_n7yfy"]
@@ -25,6 +24,10 @@ tonemap_mode = 2
 glow_enabled = true
 glow_bloom = 0.05
 glow_blend_mode = 1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wsu2k"]
+friction = 0.0
+bounce = 0.2
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_72wnm"]
 blend_mode = 1
@@ -67,7 +70,7 @@ camera = NodePath("../Player/Camera2D")
 
 [node name="TileMapGenerator" type="TileMapLayer" parent="."]
 self_modulate = Color(1, 1, 1, 0)
-tile_map_data = PackedByteArray("AADj/+H/AAAFAAAAAAD+/+v/AAADAAAAAAD6//r/AAABAAAAAAAGAPv/AAABAAAAAAAGAPr/AAABAAAAAAAIAPr/AAABAAAAAAAIAPz/AAABAAAAAAAHAPz/AAABAAAAAAAEAPj/AAABAAAAAAAIAP7/AAABAAAAAAAJAAIAAAABAAAAAAALAP//AAABAAAAAADV/9z/AAADAAAAAAD1//b/AAACAAAAAADc//z/AAACAAAAAAAUAAkAAAACAAAAAAAZAOH/AAACAAAAAAAJAM//AAAEAAAAAADz/wMAAAAAAAAAAADx/wgAAAAAAAAAAAD1/wUAAAAAAAAAAAD1/wkAAAAAAAAAAADc//D/AAAAAAAAAAAdAPn/AAAAAAAAAAAkAPH/AAAAAAAAAAAIAO7/AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AADj/+H/AAAFAAAAAAD+/+v/AAADAAAAAAD6//r/AAABAAAAAAAGAPv/AAABAAAAAAAGAPr/AAABAAAAAAAIAPr/AAABAAAAAAAIAPz/AAABAAAAAAAHAPz/AAABAAAAAAAEAPj/AAABAAAAAAAIAP7/AAABAAAAAAAJAAIAAAABAAAAAAALAP//AAABAAAAAADV/9z/AAADAAAAAADc//z/AAACAAAAAAAUAAkAAAACAAAAAAAZAOH/AAACAAAAAAAJAM//AAAEAAAAAADz/wMAAAAAAAAAAADx/wgAAAAAAAAAAAD1/wUAAAAAAAAAAAD1/wkAAAAAAAAAAADc//D/AAAAAAAAAAAdAPn/AAAAAAAAAAAkAPH/AAAAAAAAAAAIAO7/AAAAAAAAAAD1//b/AAABAAAAAADz//r/AAACAAAAAAA=")
 tile_set = ExtResource("5_2kos3")
 
 [node name="@RigidBody2D@27882" parent="TileMapGenerator" instance=ExtResource("9_hibaj")]
@@ -109,9 +112,6 @@ position = Vector2(368, -16)
 [node name="@RigidBody2D@35970" parent="TileMapGenerator" instance=ExtResource("8_fevyy")]
 position = Vector2(-1360, -1136)
 
-[node name="Asteroid_L" parent="TileMapGenerator" instance=ExtResource("7_b3802")]
-position = Vector2(-336, -304)
-
 [node name="@RigidBody2D@35977" parent="TileMapGenerator" instance=ExtResource("7_b3802")]
 position = Vector2(-1136, -112)
 
@@ -121,44 +121,37 @@ position = Vector2(656, 304)
 [node name="@RigidBody2D@35979" parent="TileMapGenerator" instance=ExtResource("7_b3802")]
 position = Vector2(816, -976)
 
-[node name="SupermassiveBlackHole" type="RigidBody2D" parent="TileMapGenerator" instance=ExtResource("9_h1bgf")]
+[node name="SupermassiveBlackHole" parent="TileMapGenerator" instance=ExtResource("9_h1bgf")]
 position = Vector2(304, -1552)
-mass = 10000.0
-contact_monitor = true
-max_contacts_reported = 3
-script = ExtResource("10_b3802")
 
-[node name="Asteroid_S" type="RigidBody2D" parent="TileMapGenerator" instance=ExtResource("5_k12tt")]
+[node name="Asteroid_S" parent="TileMapGenerator" instance=ExtResource("5_k12tt")]
 position = Vector2(-400, 112)
-mass = 2.0
 
-[node name="@RigidBody2D@53922" type="RigidBody2D" parent="TileMapGenerator" instance=ExtResource("5_k12tt")]
+[node name="@RigidBody2D@53922" parent="TileMapGenerator" instance=ExtResource("5_k12tt")]
 position = Vector2(-464, 272)
-mass = 2.0
 
-[node name="@RigidBody2D@53923" type="RigidBody2D" parent="TileMapGenerator" instance=ExtResource("5_k12tt")]
+[node name="@RigidBody2D@53923" parent="TileMapGenerator" instance=ExtResource("5_k12tt")]
 position = Vector2(-336, 176)
-mass = 2.0
 
-[node name="@RigidBody2D@53924" type="RigidBody2D" parent="TileMapGenerator" instance=ExtResource("5_k12tt")]
+[node name="@RigidBody2D@53924" parent="TileMapGenerator" instance=ExtResource("5_k12tt")]
 position = Vector2(-336, 304)
-mass = 2.0
 
-[node name="@RigidBody2D@53925" type="RigidBody2D" parent="TileMapGenerator" instance=ExtResource("5_k12tt")]
+[node name="@RigidBody2D@53925" parent="TileMapGenerator" instance=ExtResource("5_k12tt")]
 position = Vector2(-1136, -496)
-mass = 2.0
 
-[node name="@RigidBody2D@53926" type="RigidBody2D" parent="TileMapGenerator" instance=ExtResource("5_k12tt")]
+[node name="@RigidBody2D@53926" parent="TileMapGenerator" instance=ExtResource("5_k12tt")]
 position = Vector2(944, -208)
-mass = 2.0
 
-[node name="@RigidBody2D@53927" type="RigidBody2D" parent="TileMapGenerator" instance=ExtResource("5_k12tt")]
+[node name="@RigidBody2D@53927" parent="TileMapGenerator" instance=ExtResource("5_k12tt")]
 position = Vector2(1168, -464)
-mass = 2.0
 
-[node name="@RigidBody2D@53928" type="RigidBody2D" parent="TileMapGenerator" instance=ExtResource("5_k12tt")]
+[node name="@RigidBody2D@53928" parent="TileMapGenerator" instance=ExtResource("5_k12tt")]
 position = Vector2(272, -560)
-mass = 2.0
+
+[node name="Asteroid_L" type="RigidBody2D" parent="TileMapGenerator" instance=ExtResource("7_b3802")]
+position = Vector2(-400, -176)
+mass = 70.0
+physics_material_override = SubResource("PhysicsMaterial_wsu2k")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

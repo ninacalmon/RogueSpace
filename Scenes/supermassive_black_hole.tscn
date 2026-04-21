@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://c7nj6rbljyvk3"]
 
-[ext_resource type="Script" uid="uid://dr85npip0vvdg" path="res://Scenes/black_hole.gd" id="1_8py6e"]
+[ext_resource type="Script" uid="uid://dr85npip0vvdg" path="res://Scenes/superm_black_hole.gd" id="1_8py6e"]
 [ext_resource type="Script" uid="uid://b8uwpl8kmnf0e" path="res://Scenes/SpaceBodies/body_setup.gd" id="1_or4vv"]
 [ext_resource type="Texture2D" uid="uid://506majaor5n" path="res://Sprites/Black_hole.png" id="2_8py6e"]
 [ext_resource type="Shader" uid="uid://s03egy3ha6nk" path="res://Scenes/BlackHoleShader.gdshader" id="2_lfh63"]

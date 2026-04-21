@@ -6,6 +6,9 @@ class_name Player
 @export var max_velocity: float = 1000.0
 
 @onready var camera: Camera2D = $Camera2D
+@onready var propulsor_sfx: AudioStreamPlayer = $SFX/PropulsorSFX
+@onready var teleport_sfx: AudioStreamPlayer = $SFX/TeleportSFX
+@onready var space_winds_sfx: AudioStreamPlayer = $SFX/SpaceWindsSFX
 
 var player_init_pos: Vector2
 var original_speed: float = speed
@@ -14,15 +17,17 @@ var impulse_burst: float = 100
 var start_of_game: bool = true
 
 func _ready() -> void:
-	player_init_pos = global_position
+	player_init_pos = global_position + Vector2(0.0, -50)
 	EventBus.player_almost_out_of_bounds.connect(_on_player_almost_out_of_bounds)
 	EventBus.player_out_of_bounds.connect(_on_player_out_of_bounds)
 	EventBus.cutscene_off.connect(start_game)
 
 func start_game():
 	if start_of_game:
-		print("hello")
 		self.apply_force(Vector2(0.0, -speed * 30))
+		propulsor_sfx.volume_db = -22
+		SFXManager.play_sound(propulsor_sfx)
+		propulsor_sfx.volume_db = -45
 		start_of_game = false
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
@@ -36,6 +41,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		if Input.is_action_just_pressed("impulse_burst"):
 			speed *= impulse_burst
 		state.apply_central_force(Vector2(0, speed))
+		SFXManager.play_sound(propulsor_sfx)
 		if speed!= original_speed: speed = original_speed
 		EventBus.fuel_used.emit()
 
@@ -43,6 +49,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		if Input.is_action_just_pressed("impulse_burst"):
 			speed *= impulse_burst
 		state.apply_central_force(Vector2(-speed, 0))
+		SFXManager.play_sound(propulsor_sfx)
 		if speed!= original_speed: speed = original_speed
 		EventBus.fuel_used.emit()
 
@@ -50,6 +57,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		if Input.is_action_just_pressed("impulse_burst"):
 			speed *= impulse_burst
 		state.apply_central_force(Vector2(0.0, -speed))
+		SFXManager.play_sound(propulsor_sfx)
 		if speed!= original_speed: speed = original_speed
 		EventBus.fuel_used.emit()
 
@@ -57,6 +65,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		if Input.is_action_just_pressed("impulse_burst"):
 			speed *= impulse_burst
 		state.apply_central_force(Vector2(speed, 0))
+		SFXManager.play_sound(propulsor_sfx)
 		if speed!= original_speed: speed = original_speed
 		EventBus.fuel_used.emit()
 	
@@ -76,6 +85,7 @@ func _on_player_out_of_bounds():
 	execute_teletransport()
 
 func execute_teletransport():
+	SFXManager.play_sound(teleport_sfx)
 	var tween = get_tree().create_tween()
 	tween.set_parallel()
 	tween.set_ease(Tween.EASE_IN_OUT)

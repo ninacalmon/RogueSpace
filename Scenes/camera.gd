@@ -10,6 +10,8 @@ extends Camera2D
 @export var full_view_duration: float = 1.0
 @export var zoom_in_speed: float = 4.0
 
+@onready var zoom_in_cutscene_sfx: AudioStreamPlayer = $"../SFX/ZoomInCutsceneSFX"
+
 const default_zoom: Vector2 = Vector2(1, 1)
 
 var min_zoom = 0.6
@@ -78,6 +80,7 @@ func start_cutscene():
 	zoom = full_view_zoom
 	position += full_view_pos
 	await get_tree().create_timer(full_view_duration).timeout
+	SFXManager.play_sound(zoom_in_cutscene_sfx)
 	var tween = get_tree().create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_EXPO)
