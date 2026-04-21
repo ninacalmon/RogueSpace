@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="3_dv4l3"]
 
 [sub_resource type="Gradient" id="Gradient_0htpi"]
-offsets = PackedFloat32Array(0, 0.6708861)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.63010204)
+colors = PackedColorArray(0.37, 0.37, 0.37, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_retql"]
 gradient = SubResource("Gradient_0htpi")
@@ -39,21 +39,21 @@ max_contacts_reported = 3
 script = ExtResource("1_8py6e")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
 energy = 16.0
 texture = SubResource("GradientTexture2D_retql")
-texture_scale = 3.0
+texture_scale = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0htpi")
 
 [node name="Shader" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_gmyqq")
-scale = Vector2(4, 4)
+scale = Vector2(6, 6)
 texture = ExtResource("2_8py6e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_8py6e")
 
 [node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("3_dv4l3")]
