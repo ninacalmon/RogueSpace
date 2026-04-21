@@ -62,8 +62,7 @@ mass_to_radius_multiply = 0.2
 attraction_received_multiply = 0.01
 increase_with_proximity = 0.8500000000000001
 
-[node name="BodySetup" type="Node2D" parent="." node_paths=PackedStringArray("collision", "sprite")]
+[node name="BodySetup" type="Node2D" parent="." node_paths=PackedStringArray("collision")]
 script = ExtResource("1_hjqa0")
 collision = NodePath("../CollisionShape2D")
-sprite = NodePath("")
 metadata/_custom_type_script = "uid://b8uwpl8kmnf0e"

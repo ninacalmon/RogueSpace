@@ -16,14 +16,12 @@ var min_zoom = 0.6
 var max_zoom = 4.5
 var target_zoom: Vector2 = default_zoom
 
-var is_on_cutscene: bool = true
-
 func _ready():
 	target_zoom = Vector2(1, 1)
 	start_cutscene()
 
 func _input(event: InputEvent) -> void:
-	if is_on_cutscene:
+	if Globals.is_cutscene:
 		return
 	
 	if event.is_action_pressed("scroll_up"):
@@ -41,7 +39,7 @@ func _input(event: InputEvent) -> void:
 	)
 
 func _process(delta):
-	if is_on_cutscene:
+	if Globals.is_cutscene:
 		return
 
 	zoom = zoom.lerp(target_zoom, zoom_smoothness * delta)
@@ -73,6 +71,7 @@ func simulate_camera_reset_input():
 	Input.parse_input_event(reset_camera_event)
 
 func start_cutscene():
+	EventBus.cutscene_on.emit()
 	zoom = full_view_zoom
 	position += full_view_pos
 	await get_tree().create_timer(full_view_duration).timeout
@@ -82,4 +81,4 @@ func start_cutscene():
 	tween.parallel().tween_property(self, "zoom", Vector2(1, 1), zoom_in_speed)
 	tween.parallel().tween_property(self, "position", Vector2(0, 0), zoom_in_speed)
 	await tween.finished
-	is_on_cutscene = false
+	EventBus.cutscene_off.emit()

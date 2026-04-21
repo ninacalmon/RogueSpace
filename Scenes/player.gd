@@ -11,12 +11,24 @@ var player_init_pos: Vector2
 var original_speed: float = speed
 var impulse_burst: float = 100
 
+var start_of_game: bool = true
+
 func _ready() -> void:
 	player_init_pos = global_position
 	EventBus.player_almost_out_of_bounds.connect(_on_player_almost_out_of_bounds)
 	EventBus.player_out_of_bounds.connect(_on_player_out_of_bounds)
+	EventBus.cutscene_off.connect(start_game)
+
+func start_game():
+	if start_of_game:
+		print("hello")
+		self.apply_force(Vector2(0.0, -speed * 30))
+		start_of_game = false
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	if Globals.is_cutscene:
+		return
+
 	Globals.player_linear_velocity = state.linear_velocity
 
 	## Movement here vvv

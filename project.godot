@@ -24,6 +24,10 @@ EventBus="*res://event_bus.gd"
 
 window/stretch/mode="canvas_items"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/tile_to_scene/plugin.cfg")
+
 [input]
 
 move_up={

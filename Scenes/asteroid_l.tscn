@@ -5,30 +5,33 @@
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="2_eodwj"]
 [ext_resource type="PackedScene" uid="uid://b7rex1sowfwcb" path="res://Scenes/modulars/body_randomizer.tscn" id="3_0ks2e"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m0iey"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jkdf5"]
 friction = 0.0
 bounce = 0.2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ekiyu"]
-radius = 15.033297
+radius = 48.010414
 
 [node name="Asteroid_L" type="RigidBody2D"]
 mass = 70.0
-physics_material_override = SubResource("PhysicsMaterial_m0iey")
+physics_material_override = SubResource("PhysicsMaterial_jkdf5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ekiyu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
 texture = ExtResource("1_cenm0")
 
 [node name="BodyRandomizer" parent="." node_paths=PackedStringArray("owner_body") instance=ExtResource("3_0ks2e")]
 owner_body = NodePath("..")
+scale_min = 0.8
+scale_max = 1.5
 
 [node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("2_eodwj")]
 owner_body = NodePath("..")
 owner_collision_shape = NodePath("../CollisionShape2D")
-mass_to_radius_multiply = 1.5
+attraction_executed_multiply = 1.5
 
 [node name="BodySetup" type="Node2D" parent="." node_paths=PackedStringArray("collision", "sprite")]
 script = ExtResource("1_a52il")

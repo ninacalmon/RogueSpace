@@ -3,12 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://cukh1gwwirlos" path="res://Sprites/Player/Ship_Mid.png" id="1_y16vs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y16vs"]
-radius = 82.02438
+radius = 69.0
 
 [node name="Mothership" type="RigidBody2D"]
 freeze = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_y16vs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
