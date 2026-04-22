@@ -23,6 +23,7 @@ SFXManager="*res://sfx_manager.gd"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [editor_plugins]

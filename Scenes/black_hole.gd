@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name BlackHole
 
 @onready var gravitational_field: GravitationalField = $GravitationalField
 @onready var gulp_sfx: AudioStreamPlayer = $GulpSFX

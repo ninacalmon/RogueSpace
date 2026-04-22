@@ -1,8 +1,31 @@
 extends RigidBody2D
-class_name BlackHole
+class_name SuperMBlackHole
+
+@onready var gravitational_field: GravitationalField = $GravitationalField
+@onready var gulp_sfx: AudioStreamPlayer = $GulpSFX
+
+var player: Player
+var check_distance: bool = false
 
 func _ready() -> void:
 	self.body_entered.connect(_on_body_entered)
+	gravitational_field.body_entered.connect(_on_gravitational_field_body_entered)
+	gravitational_field.body_exited.connect(_on_gravitational_field_body_exited)
+
+func _on_gravitational_field_body_entered(_body: RigidBody2D):
+	if _body is Player:
+		player = _body
+		check_distance = true
+
+func _on_gravitational_field_body_exited(_body: RigidBody2D):
+	if _body is Player:
+		check_distance = false
+
+func _process(_delta: float) -> void:
+	if !check_distance:
+		return
+	if player and player.global_position.distance_to(global_position) < 70:
+		SFXManager.play_sound(gulp_sfx)
 
 func _on_body_entered(body: Node2D):
 	spin_death(body)

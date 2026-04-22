@@ -78,5 +78,5 @@ metadata/_custom_type_script = "uid://b8uwpl8kmnf0e"
 
 [node name="GulpSFX" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_ratl1")
-volume_db = -8.0
+volume_db = -14.0
 bus = &"Sound Effects"
