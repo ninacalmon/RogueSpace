@@ -1,7 +1,6 @@
 @tool ### AI vvvvvvvvvvvvvvvvvv
 extends EditorPlugin
 
-var scene_map: Dictionary
 var last_cells: Dictionary = {}
 var last_tilemap = null
 
@@ -9,15 +8,6 @@ var cell_instances: Dictionary = {}
 
 func _enter_tree():
 	set_process(true)
-
-	# ✅ initialize here (NOT at top level)
-	scene_map = {
-		Vector2i(1, 0): preload("res://Scenes/asteroid_s.tscn"),
-		Vector2i(0, 0): preload("res://Scenes/asteroid_m.tscn"),
-		Vector2i(4, 0): preload("res://Scenes/asteroid_l.tscn"),
-		Vector2i(0, 1): preload("res://Scenes/black_hole.tscn"),
-		Vector2i(8, 0): preload("res://Scenes/planet.tscn"),
-	}
 
 func _process(_delta):
 	var selection = get_editor_interface().get_selection()
@@ -91,5 +81,7 @@ func _get_scene_from_atlas(atlas: Vector2i) -> PackedScene:
 			return preload("res://Scenes/supermassive_black_hole.tscn")
 		Vector2i(5, 0):
 			return preload("res://Scenes/planet.tscn")
+		Vector2i(6, 0):
+			return preload("res://Scenes/resource.tscn")
 	
 	return null

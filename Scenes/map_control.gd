@@ -12,7 +12,6 @@ var rect: Rect2
 
 @onready var almost_out_area: Area2D = $AlmostOutArea
 @onready var almost_out_area_shape: CollisionShape2D = $AlmostOutArea/AlmostOutAreaShape
-@onready var map_generator: MapGenerator = $MapGenerator
 
 
 func _ready() -> void:

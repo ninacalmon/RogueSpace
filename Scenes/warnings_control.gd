@@ -5,7 +5,7 @@ extends Control
 var cautious_text: String = "CUIDADO!
 DÊ MEIA VOLTA
 VOCÊ ESTÁ QUASE FORA DO ALCANÇE DE SUA NAVE MÃE
-(você será teletransportado e perderá seus recursos)"
+(você será teletransportado e perderá recursos)"
 
 var fuel_text: String = "Seu combustível está acabando!
 Volte para a nave mãe."

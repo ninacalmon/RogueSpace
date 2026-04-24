@@ -27,13 +27,17 @@ func initialize() -> void:
 	activated = true
 
 
-func _on_grav_field_entered_by_area(area: GravitationalField):
+func _on_grav_field_entered_by_area(area: Area2D):
+	if !(area is GravitationalField):
+		return
 	var body = area.owner_body
 	grav_field_entered.emit(body)
 	body_near.append(body)
 
 
-func _on_grav_field_exited_by_area(area: GravitationalField):
+func _on_grav_field_exited_by_area(area: Area2D):
+	if !(area is GravitationalField):
+		return
 	var body = area.owner_body
 	grav_field_exited.emit(body)
 	body_near.erase(body)

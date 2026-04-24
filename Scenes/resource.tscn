@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://duod8nt2wlend"]
+
+[ext_resource type="Texture2D" uid="uid://bh7ursa1gvsqs" path="res://VFX/VFX_Explosion1_strip8.png" id="1_2f3j8"]
+[ext_resource type="Script" uid="uid://v3ps2v2vlrq2" path="res://Scenes/resource.gd" id="1_xpqyo"]
+[ext_resource type="Script" uid="uid://b8uwpl8kmnf0e" path="res://Scenes/SpaceBodies/body_setup.gd" id="3_td3b6"]
+[ext_resource type="Script" uid="uid://dakt7r353r7ae" path="res://Scenes/SpaceBodies/body_randomizer.gd" id="4_8dxig"]
+[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="5_07tds"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xpqyo"]
+radius = 15.033297
+
+[node name="Resource" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_xpqyo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xpqyo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(2.1907146, 0, 2.2639842, 1)
+texture = ExtResource("1_2f3j8")
+hframes = 8
+
+[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("5_07tds")]
+collision_layer = 2
+collision_mask = 2
+owner_body = NodePath("..")
+owner_collision_shape = NodePath("../CollisionShape2D")
+
+[node name="BodyRandomizer" type="Node2D" parent="." node_paths=PackedStringArray("owner_body")]
+script = ExtResource("4_8dxig")
+owner_body = NodePath("..")
+rand_scale = false
+metadata/_custom_type_script = "uid://dakt7r353r7ae"
+
+[node name="BodySetup" type="Node2D" parent="." node_paths=PackedStringArray("collision", "sprite")]
+script = ExtResource("3_td3b6")
+collision = NodePath("../CollisionShape2D")
+sprite = NodePath("../Sprite2D")
+metadata/_custom_type_script = "uid://b8uwpl8kmnf0e"

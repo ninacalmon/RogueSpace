@@ -31,8 +31,8 @@ owner_body = NodePath("..")
 owner_collision_shape = NodePath("../CollisionShape2D")
 mass_to_radius_multiply = 0.5
 attraction_received_multiply = 0.01
-attraction_executed_multiply = 3.0
-increase_with_proximity = 0.9299999999999999
+attraction_executed_multiply = 2.8
+increase_with_proximity = 0.94
 
 [node name="BodySetup" type="Node2D" parent="." node_paths=PackedStringArray("collision", "sprite")]
 script = ExtResource("1_m0iey")

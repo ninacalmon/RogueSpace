@@ -1,15 +1,27 @@
 extends Node
 
+@warning_ignore("unused_signal")
 signal player_out_of_bounds
 
+@warning_ignore("unused_signal")
 signal player_almost_out_of_bounds
+@warning_ignore("unused_signal")
 signal player_back_in_bounds
 
+@warning_ignore("unused_signal")
 signal fuel_used
+@warning_ignore("unused_signal")
 signal almost_out_of_fuel
+@warning_ignore("unused_signal")
 signal out_of_fuel
 
+@warning_ignore("unused_signal")
 signal damage_taken(damaged: RigidBody2D, amount: float)
 
+@warning_ignore("unused_signal")
 signal cutscene_on
+@warning_ignore("unused_signal")
 signal cutscene_off
+
+@warning_ignore("unused_signal")
+signal space_resource_collected

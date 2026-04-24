@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b512vj2a4a3y"]
+[gd_scene load_steps=17 format=3 uid="uid://b512vj2a4a3y"]
 
 [ext_resource type="Texture2D" uid="uid://bqcqdhl2djey1" path="res://Sprites/Aliens/Alien_Air6.png" id="1_f1ibl"]
 [ext_resource type="Script" uid="uid://i7mc57eu0q83" path="res://Scenes/player.gd" id="1_ktxno"]
@@ -10,6 +10,8 @@
 [ext_resource type="AudioStream" uid="uid://cx2tfq2v41dbw" path="res://Sound Effects/tech1.mp3" id="8_8erm5"]
 [ext_resource type="AudioStream" uid="uid://b4ni1pu1osv1e" path="res://Sound Effects/tech2.mp3" id="9_f1ek2"]
 [ext_resource type="AudioStream" uid="uid://cwxkne077kuw6" path="res://Sound Effects/spacewinds.mp3" id="10_tx1dd"]
+[ext_resource type="Script" uid="uid://dsbdvxfei8u0x" path="res://Scenes/resource_collector.gd" id="11_gymyn"]
+[ext_resource type="Script" uid="uid://b8uwpl8kmnf0e" path="res://Scenes/SpaceBodies/body_setup.gd" id="12_pu2lt"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m0iey"]
 friction = 0.0
@@ -24,6 +26,9 @@ random_volume_offset_db = 1.0
 streams_count = 1
 stream_0/stream = ExtResource("7_3smsa")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_tx1dd"]
+radius = 11.18034
+
 [node name="Player" type="RigidBody2D"]
 mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_m0iey")
@@ -33,6 +38,7 @@ contact_monitor = true
 max_contacts_reported = 3
 linear_damp_mode = 1
 script = ExtResource("1_ktxno")
+break_speed = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_f1ibl")
@@ -43,6 +49,14 @@ shape = SubResource("CircleShape2D_ktxno")
 [node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("3_ikhnj")]
 owner_body = NodePath("..")
 owner_collision_shape = NodePath("../CollisionShape2D")
+
+[node name="GravitationalFieldResources" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("3_ikhnj")]
+collision_layer = 2
+collision_mask = 2
+owner_body = NodePath("..")
+owner_collision_shape = NodePath("../CollisionShape2D")
+mass_to_radius_multiply = 8.0
+attraction_executed_multiply = 400.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("4_7tm7k")
@@ -78,3 +92,17 @@ volume_db = -25.0
 autoplay = true
 bus = &"Sound Effects"
 parameters/looping = true
+
+[node name="ResourceCollector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("11_gymyn")
+
+[node name="CollisionShapeResources" type="CollisionShape2D" parent="ResourceCollector"]
+shape = SubResource("CircleShape2D_tx1dd")
+
+[node name="BodySetup" type="Node2D" parent="." node_paths=PackedStringArray("collision", "sprite")]
+script = ExtResource("12_pu2lt")
+collision = NodePath("../CollisionShape2D")
+sprite = NodePath("../Sprite2D")
+metadata/_custom_type_script = "uid://b8uwpl8kmnf0e"
