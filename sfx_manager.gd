@@ -1,6 +1,8 @@
 extends Node
 
 func play_sound(audio_player: AudioStreamPlayer):
+	if !get_tree() or !get_tree().current_scene :
+		return
 	var new_audio_player = audio_player.duplicate()
 	get_tree().current_scene.add_child(new_audio_player)
 	

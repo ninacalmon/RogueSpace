@@ -21,7 +21,7 @@ radius = 29.017237
 
 [sub_resource type="Curve" id="Curve_wn18u"]
 _limits = [-1.0, 1.0, 0.0, 1.0]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.14857143, -0.07865167), 0.0, 0.0, 0, 0, Vector2(0.29714286, 0.19101119), 0.0, 0.0, 0, 0, Vector2(0.583, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.10958904, -0.21092081), 0.0, 0.0, 0, 0, Vector2(0.25479454, 0.2066381), 0.0, 0.0, 0, 0, Vector2(0.30684933, -0.0021413565), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_rkt65"]
@@ -56,7 +56,7 @@ shape = SubResource("CircleShape2D_0htpi")
 
 [node name="Shader" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_ratl1")
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 texture = ExtResource("2_hjqa0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

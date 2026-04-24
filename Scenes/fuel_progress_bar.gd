@@ -15,6 +15,6 @@ func _on_fuel_used():
 	if value <= max_fuel/5 and !emitted:
 		emitted = true
 		EventBus.almost_out_of_fuel.emit()
-	if value == 0:
+	if value == 0 and get_tree():
 		EventBus.out_of_fuel.emit()
 		get_tree().reload_current_scene()

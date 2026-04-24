@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="5_07tds"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xpqyo"]
-radius = 15.033297
+radius = 8.0
 
 [node name="Resource" type="RigidBody2D"]
 collision_layer = 2
@@ -19,6 +19,7 @@ shape = SubResource("CircleShape2D_xpqyo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(2.1907146, 0, 2.2639842, 1)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_2f3j8")
 hframes = 8
 

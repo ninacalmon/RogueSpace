@@ -10,6 +10,7 @@ func _ready() -> void:
 	value = max_hp
 
 func _on_damage_taken(damaged: RigidBody2D, amount: float):
-	if damaged is Player:
-		value -= amount
-		if value <= 0: get_tree().reload_current_scene()
+	pass
+	#if damaged is Player:
+		#value -= amount
+		#if value <= 0: get_tree().reload_current_scene()

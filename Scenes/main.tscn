@@ -76,7 +76,7 @@ camera = NodePath("../Player/Camera2D")
 
 [node name="TileMapGenerator" type="TileMapLayer" parent="."]
 self_modulate = Color(1, 1, 1, 0)
-tile_map_data = PackedByteArray("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")
+tile_map_data = PackedByteArray("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")
 tile_set = ExtResource("5_2kos3")
 
 [node name="@RigidBody2D@27882" parent="TileMapGenerator" instance=ExtResource("9_hibaj")]
@@ -537,6 +537,381 @@ position = Vector2(-848, -464)
 
 [node name="@RigidBody2D@72766" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
 position = Vector2(-848, -432)
+
+[node name="@RigidBody2D@34227" parent="TileMapGenerator" instance=ExtResource("9_hibaj")]
+position = Vector2(-912, -976)
+
+[node name="@RigidBody2D@34228" parent="TileMapGenerator" instance=ExtResource("8_fevyy")]
+position = Vector2(-48, -656)
+
+[node name="@RigidBody2D@34229" parent="TileMapGenerator" instance=ExtResource("6_h1bgf")]
+position = Vector2(-176, -176)
+
+[node name="@RigidBody2D@34230" parent="TileMapGenerator" instance=ExtResource("6_h1bgf")]
+position = Vector2(208, -144)
+
+[node name="@RigidBody2D@34231" parent="TileMapGenerator" instance=ExtResource("6_h1bgf")]
+position = Vector2(208, -176)
+
+[node name="@RigidBody2D@34232" parent="TileMapGenerator" instance=ExtResource("6_h1bgf")]
+position = Vector2(272, -176)
+
+[node name="@RigidBody2D@34233" parent="TileMapGenerator" instance=ExtResource("6_h1bgf")]
+position = Vector2(272, -112)
+
+[node name="@RigidBody2D@34234" parent="TileMapGenerator" instance=ExtResource("6_h1bgf")]
+position = Vector2(240, -112)
+
+[node name="@RigidBody2D@34235" parent="TileMapGenerator" instance=ExtResource("6_h1bgf")]
+position = Vector2(144, -240)
+
+[node name="@RigidBody2D@34236" parent="TileMapGenerator" instance=ExtResource("6_h1bgf")]
+position = Vector2(272, -48)
+
+[node name="@RigidBody2D@34237" parent="TileMapGenerator" instance=ExtResource("6_h1bgf")]
+position = Vector2(304, 80)
+
+[node name="@RigidBody2D@34238" parent="TileMapGenerator" instance=ExtResource("6_h1bgf")]
+position = Vector2(368, -16)
+
+[node name="@RigidBody2D@34239" parent="TileMapGenerator" instance=ExtResource("8_fevyy")]
+position = Vector2(-1360, -1136)
+
+[node name="@RigidBody2D@34240" parent="TileMapGenerator" instance=ExtResource("7_b3802")]
+position = Vector2(-1136, -112)
+
+[node name="@RigidBody2D@34241" parent="TileMapGenerator" instance=ExtResource("7_b3802")]
+position = Vector2(656, 304)
+
+[node name="@RigidBody2D@34242" parent="TileMapGenerator" instance=ExtResource("7_b3802")]
+position = Vector2(816, -976)
+
+[node name="@RigidBody2D@34243" parent="TileMapGenerator" instance=ExtResource("9_h1bgf")]
+position = Vector2(304, -1552)
+
+[node name="@RigidBody2D@34244" parent="TileMapGenerator" instance=ExtResource("5_k12tt")]
+position = Vector2(-400, 112)
+
+[node name="@RigidBody2D@34245" parent="TileMapGenerator" instance=ExtResource("5_k12tt")]
+position = Vector2(-464, 272)
+
+[node name="@RigidBody2D@34246" parent="TileMapGenerator" instance=ExtResource("5_k12tt")]
+position = Vector2(-336, 176)
+
+[node name="@RigidBody2D@34247" parent="TileMapGenerator" instance=ExtResource("5_k12tt")]
+position = Vector2(-336, 304)
+
+[node name="@RigidBody2D@34248" parent="TileMapGenerator" instance=ExtResource("5_k12tt")]
+position = Vector2(-1136, -496)
+
+[node name="@RigidBody2D@34249" parent="TileMapGenerator" instance=ExtResource("5_k12tt")]
+position = Vector2(944, -208)
+
+[node name="@RigidBody2D@34250" parent="TileMapGenerator" instance=ExtResource("5_k12tt")]
+position = Vector2(1168, -464)
+
+[node name="@RigidBody2D@34251" parent="TileMapGenerator" instance=ExtResource("5_k12tt")]
+position = Vector2(272, -560)
+
+[node name="@RigidBody2D@34252" parent="TileMapGenerator" instance=ExtResource("6_h1bgf")]
+position = Vector2(-336, -304)
+
+[node name="@RigidBody2D@34253" parent="TileMapGenerator" instance=ExtResource("7_b3802")]
+position = Vector2(-400, -176)
+
+[node name="@RigidBody2D@34254" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(176, 16)
+
+[node name="@RigidBody2D@34255" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(176, -80)
+
+[node name="@RigidBody2D@34256" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(176, -48)
+
+[node name="@RigidBody2D@34257" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(208, -48)
+
+[node name="@RigidBody2D@34258" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(240, -16)
+
+[node name="@RigidBody2D@34259" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(240, 48)
+
+[node name="@RigidBody2D@34260" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(80, -144)
+
+[node name="@RigidBody2D@34261" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(80, -240)
+
+[node name="@RigidBody2D@34262" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(80, -272)
+
+[node name="@RigidBody2D@34263" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(176, -336)
+
+[node name="@RigidBody2D@34264" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(240, -336)
+
+[node name="@RigidBody2D@34265" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(272, -304)
+
+[node name="@RigidBody2D@34266" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(304, -240)
+
+[node name="@RigidBody2D@34267" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(304, -272)
+
+[node name="@RigidBody2D@34268" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(304, -304)
+
+[node name="@RigidBody2D@34269" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(304, -336)
+
+[node name="@RigidBody2D@34270" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(272, -368)
+
+[node name="@RigidBody2D@34271" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(240, -368)
+
+[node name="@RigidBody2D@34272" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(240, -400)
+
+[node name="@RigidBody2D@34273" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(208, -368)
+
+[node name="@RigidBody2D@34274" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(112, -368)
+
+[node name="@RigidBody2D@34275" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(80, -368)
+
+[node name="@RigidBody2D@34276" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(48, -368)
+
+[node name="@RigidBody2D@34277" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(16, -368)
+
+[node name="@RigidBody2D@34278" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-208, -368)
+
+[node name="@RigidBody2D@34279" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-176, -432)
+
+[node name="@RigidBody2D@34280" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-464, -592)
+
+[node name="@RigidBody2D@34281" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-464, -560)
+
+[node name="@RigidBody2D@34282" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-496, -560)
+
+[node name="@RigidBody2D@34283" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-496, -528)
+
+[node name="@RigidBody2D@34284" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-496, -496)
+
+[node name="@RigidBody2D@34285" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-528, -464)
+
+[node name="@RigidBody2D@34286" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-528, -432)
+
+[node name="@RigidBody2D@34287" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-528, -400)
+
+[node name="@RigidBody2D@34288" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-496, -400)
+
+[node name="@RigidBody2D@34289" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-464, -400)
+
+[node name="@RigidBody2D@34290" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-624, -272)
+
+[node name="@RigidBody2D@34291" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-624, -240)
+
+[node name="@RigidBody2D@34292" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-624, -208)
+
+[node name="@RigidBody2D@34293" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-624, -176)
+
+[node name="@RigidBody2D@34294" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-656, -80)
+
+[node name="@RigidBody2D@34295" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-656, -48)
+
+[node name="@RigidBody2D@34296" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-688, -48)
+
+[node name="@RigidBody2D@34297" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-720, -48)
+
+[node name="@RigidBody2D@34298" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-752, -16)
+
+[node name="@RigidBody2D@34299" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-784, -16)
+
+[node name="@RigidBody2D@34300" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-848, 16)
+
+[node name="@RigidBody2D@34301" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-848, 48)
+
+[node name="@RigidBody2D@34302" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-816, 48)
+
+[node name="@RigidBody2D@34303" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-816, 80)
+
+[node name="@RigidBody2D@34304" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-816, 112)
+
+[node name="@RigidBody2D@34305" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-784, 144)
+
+[node name="@RigidBody2D@34306" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-784, 176)
+
+[node name="@RigidBody2D@34307" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-784, 208)
+
+[node name="@RigidBody2D@34308" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-752, 208)
+
+[node name="@RigidBody2D@34309" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-720, 240)
+
+[node name="@RigidBody2D@34310" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-688, 272)
+
+[node name="@RigidBody2D@34311" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(720, -336)
+
+[node name="@RigidBody2D@34312" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(752, -336)
+
+[node name="@RigidBody2D@34313" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(752, -304)
+
+[node name="@RigidBody2D@34314" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(752, -272)
+
+[node name="@RigidBody2D@34315" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(752, -240)
+
+[node name="@RigidBody2D@34316" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(720, -240)
+
+[node name="@RigidBody2D@34317" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(720, -208)
+
+[node name="@RigidBody2D@34318" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(720, -176)
+
+[node name="@RigidBody2D@34319" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(752, -176)
+
+[node name="@RigidBody2D@34320" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(304, -720)
+
+[node name="@RigidBody2D@34321" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(336, -720)
+
+[node name="@RigidBody2D@34322" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(368, -720)
+
+[node name="@RigidBody2D@34323" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(400, -688)
+
+[node name="@RigidBody2D@34324" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(432, -688)
+
+[node name="@RigidBody2D@34325" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(432, -656)
+
+[node name="@RigidBody2D@34326" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(432, -624)
+
+[node name="@RigidBody2D@34327" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(432, -592)
+
+[node name="@RigidBody2D@34328" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(432, -560)
+
+[node name="@RigidBody2D@34329" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(464, -592)
+
+[node name="@RigidBody2D@34330" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(496, -592)
+
+[node name="@RigidBody2D@34331" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(496, -624)
+
+[node name="@RigidBody2D@34332" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(528, -624)
+
+[node name="@RigidBody2D@34333" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(464, -624)
+
+[node name="@RigidBody2D@34334" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-560, -1104)
+
+[node name="@RigidBody2D@34335" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-560, -1072)
+
+[node name="@RigidBody2D@34336" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-592, -1040)
+
+[node name="@RigidBody2D@34337" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-624, -1040)
+
+[node name="@RigidBody2D@34338" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-624, -1072)
+
+[node name="@RigidBody2D@34339" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-592, -1104)
+
+[node name="@RigidBody2D@34340" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-560, -1136)
+
+[node name="@RigidBody2D@34341" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-528, -1136)
+
+[node name="@RigidBody2D@34342" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-496, -1136)
+
+[node name="@RigidBody2D@34343" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-464, -1136)
+
+[node name="@RigidBody2D@34344" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-464, -1168)
+
+[node name="@RigidBody2D@34345" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-496, -1168)
+
+[node name="@RigidBody2D@34346" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-528, -1168)
+
+[node name="@RigidBody2D@34347" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-784, -560)
+
+[node name="@RigidBody2D@34348" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-816, -560)
+
+[node name="@RigidBody2D@34349" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-848, -528)
+
+[node name="@RigidBody2D@34350" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-848, -496)
+
+[node name="@RigidBody2D@34351" parent="TileMapGenerator" instance=ExtResource("11_hibaj")]
+position = Vector2(-848, -464)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
