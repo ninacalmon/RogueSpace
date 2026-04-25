@@ -1,17 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://b512vj2a4a3y"]
+[gd_scene load_steps=15 format=3 uid="uid://b512vj2a4a3y"]
 
 [ext_resource type="Texture2D" uid="uid://bqcqdhl2djey1" path="res://Sprites/Aliens/Alien_Air6.png" id="1_f1ibl"]
 [ext_resource type="Script" uid="uid://i7mc57eu0q83" path="res://Scenes/player.gd" id="1_ktxno"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="3_ikhnj"]
-[ext_resource type="Script" uid="uid://dw2m8ymjsljfq" path="res://Scenes/camera.gd" id="4_7tm7k"]
 [ext_resource type="PackedScene" uid="uid://dp3f278n4cqbm" path="res://Scenes/motor_gpu_particles.tscn" id="5_d77i8"]
-[ext_resource type="PackedScene" uid="uid://c33euabcxvnsg" path="res://Scenes/modulars/hurt_module.tscn" id="6_x3wgy"]
+[ext_resource type="PackedScene" uid="uid://c33euabcxvnsg" path="res://Scenes/modulars/asteroids_states_module.tscn" id="6_x3wgy"]
 [ext_resource type="AudioStream" uid="uid://cfoo2b2apjwmw" path="res://Sound Effects/fly1.mp3" id="7_3smsa"]
 [ext_resource type="AudioStream" uid="uid://cx2tfq2v41dbw" path="res://Sound Effects/tech1.mp3" id="8_8erm5"]
 [ext_resource type="AudioStream" uid="uid://b4ni1pu1osv1e" path="res://Sound Effects/tech2.mp3" id="9_f1ek2"]
 [ext_resource type="AudioStream" uid="uid://cwxkne077kuw6" path="res://Sound Effects/spacewinds.mp3" id="10_tx1dd"]
 [ext_resource type="Script" uid="uid://dsbdvxfei8u0x" path="res://Scenes/resource_collector.gd" id="11_gymyn"]
-[ext_resource type="Script" uid="uid://b8uwpl8kmnf0e" path="res://Scenes/SpaceBodies/body_setup.gd" id="12_pu2lt"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m0iey"]
 friction = 0.0
@@ -27,9 +25,9 @@ streams_count = 1
 stream_0/stream = ExtResource("7_3smsa")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tx1dd"]
-radius = 11.18034
+radius = 13.0
 
-[node name="Player" type="RigidBody2D"]
+[node name="Player" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "gravitational_field", "gravitational_field_resources")]
 mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_m0iey")
 can_sleep = false
@@ -39,6 +37,10 @@ max_contacts_reported = 3
 linear_damp_mode = 1
 script = ExtResource("1_ktxno")
 break_speed = 5.0
+collision = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
+gravitational_field = NodePath("GravitationalField")
+gravitational_field_resources = NodePath("GravitationalFieldResources")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_f1ibl")
@@ -55,11 +57,11 @@ collision_layer = 2
 collision_mask = 2
 owner_body = NodePath("..")
 owner_collision_shape = NodePath("../CollisionShape2D")
-mass_to_radius_multiply = 8.0
-attraction_executed_multiply = 400.0
+mass_to_radius_multiply = 14.0
+attraction_executed_multiply = 100.0
 
-[node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("4_7tm7k")
+[node name="Range" parent="GravitationalFieldResources" index="0"]
+debug_color = Color(1.0463983, 0.82971275, 0.11774563, 0.41960785)
 
 [node name="MotorGPUParticles" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_d77i8")]
 show_behind_parent = true
@@ -101,8 +103,4 @@ script = ExtResource("11_gymyn")
 [node name="CollisionShapeResources" type="CollisionShape2D" parent="ResourceCollector"]
 shape = SubResource("CircleShape2D_tx1dd")
 
-[node name="BodySetup" type="Node2D" parent="." node_paths=PackedStringArray("collision", "sprite")]
-script = ExtResource("12_pu2lt")
-collision = NodePath("../CollisionShape2D")
-sprite = NodePath("../Sprite2D")
-metadata/_custom_type_script = "uid://b8uwpl8kmnf0e"
+[editable path="GravitationalFieldResources"]

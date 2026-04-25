@@ -1,11 +1,11 @@
-extends Node2D
+extends RigidBody2D
 class_name BodySetup
 
 @export var collision: CollisionShape2D
 @export var sprite: Sprite2D
-@onready var gravitational_field: GravitationalField = $"../GravitationalField"
-@onready var gravitational_field_resources: GravitationalField = $"../GravitationalFieldResources"
-@onready var body_randomizer: BodyRandomizer = $"../BodyRandomizer"
+@export var gravitational_field: GravitationalField
+@export var gravitational_field_resources: GravitationalField
+@export var body_randomizer: BodyRandomizer
 
 func _ready() -> void:
 	if body_randomizer: body_randomizer.initialize(sprite, collision)

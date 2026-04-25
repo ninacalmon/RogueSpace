@@ -34,7 +34,6 @@ func randomize_scale(sprite: Node2D, collision: CollisionShape2D):
 	var rand_scale_chosen = randf_range(scale_min, scale_max)
 	sprite.scale *= rand_scale_chosen
 	collision.scale *= rand_scale_chosen
-	owner_body.scale = owner_body.scale * randf_range(scale_min, scale_max)
 
 func randomize_rotation():
 	owner_body.rotation = deg_to_rad(randf_range(rotation_min, rotation_max))

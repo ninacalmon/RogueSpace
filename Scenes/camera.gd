@@ -18,7 +18,7 @@ var min_zoom = 0.6
 var max_zoom = 4.5
 var target_zoom: Vector2 = default_zoom
 
-var deactivate_cutscene: bool = false
+@export var deactivate_cutscene: bool = false
 
 func _ready():
 	target_zoom = Vector2(1, 1)

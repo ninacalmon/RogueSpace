@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://cudsfcaoyfdbs"]
+
+[ext_resource type="Texture2D" uid="uid://6bcu0xt25j0b" path="res://Sprites/asteroid_tileset.png" id="1_0c1vm"]
+[ext_resource type="Script" uid="uid://dp0jfjqkl4sdl" path="res://Scenes/modulars/asteroid.gd" id="1_kqist"]
+[ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/asteroid_pieces.tscn" id="2_5b16v"]
+[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="4_73j5n"]
+[ext_resource type="Script" uid="uid://dny3ctsdweann" path="res://Scenes/SpaceBodies/damage_module.gd" id="4_ygxgg"]
+[ext_resource type="PackedScene" uid="uid://b7rex1sowfwcb" path="res://Scenes/modulars/body_randomizer.tscn" id="5_5b16v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ygxgg"]
+radius = 16.0
+
+[node name="Asteroid" type="RigidBody2D" node_paths=PackedStringArray("damage_module", "collision", "sprite", "gravitational_field", "body_randomizer")]
+mass = 100.0
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_kqist")
+damage_module = NodePath("DamageModule")
+broken_piece_scene = ExtResource("2_5b16v")
+collision = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
+gravitational_field = NodePath("GravitationalField")
+body_randomizer = NodePath("BodyRandomizer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ygxgg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0c1vm")
+hframes = 3
+
+[node name="DamageModule" type="Node2D" parent="." node_paths=PackedStringArray("owner_body")]
+script = ExtResource("4_ygxgg")
+owner_body = NodePath("..")
+
+[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("4_73j5n")]
+owner_body = NodePath("..")
+owner_collision_shape = NodePath("../CollisionShape2D")
+mass_to_radius_multiply = 0.8
+attraction_executed_multiply = 0.2
+
+[node name="BodyRandomizer" parent="." node_paths=PackedStringArray("owner_body") instance=ExtResource("5_5b16v")]
+owner_body = NodePath("..")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cudsfcaoyfdbs"]
+
+[ext_resource type="Texture2D" uid="uid://6bcu0xt25j0b" path="res://Sprites/asteroid_tileset.png" id="1_0c1vm"]
+[ext_resource type="Script" uid="uid://dp0jfjqkl4sdl" path="res://Scenes/modulars/damage_module.gd" id="1_kqist"]
+[ext_resource type="PackedScene" uid="uid://c33euabcxvnsg" path="res://Scenes/modulars/asteroids_states_module.tscn" id="2_kqist"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ygxgg"]
+radius = 16.0
+
+[node name="Asteroids" type="RigidBody2D"]
+script = ExtResource("1_kqist")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ygxgg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0c1vm")
+hframes = 3
+
+[node name="HurtModule" parent="." instance=ExtResource("2_kqist")]
+script = null

@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends BodySetup
 class_name Player
 
 @export var speed: float = 1000
@@ -10,6 +10,9 @@ class_name Player
 @onready var teleport_sfx: AudioStreamPlayer = $SFX/TeleportSFX
 @onready var space_winds_sfx: AudioStreamPlayer = $SFX/SpaceWindsSFX
 
+@export var base_burst_cooldown: float = 3.0
+var burst_cooldown_timer: float
+
 var player_init_pos: Vector2
 var original_speed: float = speed
 var impulse_burst: float = 100
@@ -17,6 +20,10 @@ var impulse_burst: float = 100
 var start_of_game: bool = true
 
 func _ready() -> void:
+	if body_randomizer: body_randomizer.initialize(sprite, collision)
+	if gravitational_field: gravitational_field.initialize()
+	if gravitational_field_resources: gravitational_field_resources.initialize()
+
 	player_init_pos = global_position + Vector2(0.0, -50)
 	EventBus.player_almost_out_of_bounds.connect(_on_player_almost_out_of_bounds)
 	EventBus.player_out_of_bounds.connect(_on_player_out_of_bounds)
@@ -30,6 +37,11 @@ func start_game():
 		propulsor_sfx.volume_db = -45
 		start_of_game = false
 
+func _process(delta: float) -> void:
+	burst_cooldown_timer -= delta
+	if burst_cooldown_timer <= 0:
+		burst_cooldown_timer = 0
+
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if Globals.is_cutscene:
 		return
@@ -38,7 +50,9 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 
 	## Movement here vvv
 	if Input.is_action_pressed("move_down"):
-		if Input.is_action_just_pressed("impulse_burst"):
+		if Input.is_action_just_pressed("impulse_burst")\
+		and burst_cooldown_timer <= 0:
+			burst_cooldown_timer = base_burst_cooldown
 			speed *= impulse_burst
 		state.apply_central_force(Vector2(0, speed))
 		SFXManager.play_sound(propulsor_sfx)
@@ -46,7 +60,9 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		EventBus.fuel_used.emit()
 
 	if Input.is_action_pressed("move_left"):
-		if Input.is_action_just_pressed("impulse_burst"):
+		if Input.is_action_just_pressed("impulse_burst")\
+		and burst_cooldown_timer <= 0:
+			burst_cooldown_timer = base_burst_cooldown
 			speed *= impulse_burst
 		state.apply_central_force(Vector2(-speed, 0))
 		SFXManager.play_sound(propulsor_sfx)
@@ -54,7 +70,9 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		EventBus.fuel_used.emit()
 
 	if Input.is_action_pressed("move_up"):
-		if Input.is_action_just_pressed("impulse_burst"):
+		if Input.is_action_just_pressed("impulse_burst")\
+		and burst_cooldown_timer <= 0:
+			burst_cooldown_timer = base_burst_cooldown
 			speed *= impulse_burst
 		state.apply_central_force(Vector2(0.0, -speed))
 		SFXManager.play_sound(propulsor_sfx)
@@ -62,11 +80,13 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		EventBus.fuel_used.emit()
 
 	if Input.is_action_pressed("move_right"):
-		if Input.is_action_just_pressed("impulse_burst"):
+		if Input.is_action_just_pressed("impulse_burst")\
+		and burst_cooldown_timer <= 0:
+			burst_cooldown_timer = base_burst_cooldown
 			speed *= impulse_burst
 		state.apply_central_force(Vector2(speed, 0))
 		SFXManager.play_sound(propulsor_sfx)
-		if speed!= original_speed: speed = original_speed
+		if speed != original_speed: speed = original_speed
 		EventBus.fuel_used.emit()
 	
 	if state.linear_velocity.length() > max_velocity:
@@ -76,6 +96,8 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if Input.is_action_pressed("break_stop"):
 		state.linear_velocity = state.linear_velocity.move_toward(Vector2.ZERO, break_speed)
 
+	if Input.is_action_just_pressed("restart"):
+		get_tree().reload_current_scene()
 
 func _on_player_almost_out_of_bounds():
 	var tween = get_tree().create_tween()

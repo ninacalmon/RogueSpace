@@ -1,0 +1,263 @@
+[gd_scene load_steps=22 format=3 uid="uid://dfbrgn6xd46xq"]
+
+[ext_resource type="Texture2D" uid="uid://b4go5brbh3ndq" path="res://Sprites/Starfields/Starfield 1 - 1024x1024.png" id="1_ndixb"]
+[ext_resource type="PackedScene" uid="uid://b512vj2a4a3y" path="res://Scenes/player.tscn" id="2_li4mn"]
+[ext_resource type="Script" uid="uid://dw2m8ymjsljfq" path="res://Scenes/camera.gd" id="3_cv18c"]
+[ext_resource type="PackedScene" uid="uid://c2v243rukexl6" path="res://Scenes/map_control.tscn" id="3_qml48"]
+[ext_resource type="Script" uid="uid://cwrgvd4dp6ts7" path="res://Scenes/velocity_control.gd" id="12_j353g"]
+[ext_resource type="FontFile" uid="uid://ynyhx0lmxagx" path="res://Fonts/MonospaceTypewriter.ttf" id="13_27a6l"]
+[ext_resource type="PackedScene" uid="uid://cudsfcaoyfdbs" path="res://Scenes/SpaceBodies/asteroid.tscn" id="13_s1et7"]
+[ext_resource type="Texture2D" uid="uid://ud6qpc5xuvm3" path="res://Sprites/vecteezy_arrow_1186949.png" id="14_k7806"]
+[ext_resource type="Script" uid="uid://dfs6psttgftjh" path="res://Scenes/warnings_control.gd" id="15_42rnc"]
+[ext_resource type="PackedScene" uid="uid://vbsslu1hl1sg" path="res://Scenes/planet.tscn" id="15_s6ceg"]
+[ext_resource type="Script" uid="uid://by0xgugeabppx" path="res://Scenes/fuel_progress_bar.gd" id="16_3tqxe"]
+[ext_resource type="PackedScene" uid="uid://3vg8bv7t077f" path="res://Scenes/black_hole.tscn" id="16_ndixb"]
+[ext_resource type="Script" uid="uid://cuyq3e1aepgqa" path="res://Scenes/life_progress_bar.gd" id="17_2evqo"]
+[ext_resource type="PackedScene" uid="uid://c7nj6rbljyvk3" path="res://Scenes/supermassive_black_hole.tscn" id="17_li4mn"]
+[ext_resource type="Script" uid="uid://cic7dy2kdafc6" path="res://Scenes/resources_label.gd" id="18_8333e"]
+[ext_resource type="PackedScene" uid="uid://b60wc4xruimxc" path="res://Scenes/mothership.tscn" id="19_vg88r"]
+
+[sub_resource type="Environment" id="Environment_n7yfy"]
+background_mode = 3
+tonemap_mode = 2
+glow_enabled = true
+glow_bloom = 0.05
+glow_blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_72wnm"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_n7yfy"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.35189873, 0.36962026, 0.4126582)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s3det"]
+gradient = SubResource("Gradient_n7yfy")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3802"]
+bg_color = Color(0.29448, 0.36, 0.079200014, 1)
+
+[node name="Main" type="Node2D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_n7yfy")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+z_index = -999
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(1024, 1024)
+repeat_times = 6
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("1_ndixb")
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("2_li4mn")]
+position = Vector2(0, 106)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+script = ExtResource("3_cv18c")
+full_view_zoom = Vector2(0.3, 0.3)
+full_view_pos = Vector2(0, -800)
+deactivate_cutscene = true
+
+[node name="MapControl" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_qml48")]
+player = NodePath("../Player")
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VelocityControl" type="Control" parent="CanvasLayer/UI"]
+anchors_preset = 0
+offset_top = 20.0
+offset_right = 114.0
+offset_bottom = 88.0
+size_flags_horizontal = 0
+script = ExtResource("12_j353g")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/UI/VelocityControl"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -38.0
+offset_right = 170.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("13_27a6l")
+text = "velocidade"
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI/VelocityControl"]
+material = SubResource("CanvasItemMaterial_72wnm")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05263158
+anchor_top = 0.38235295
+anchor_right = 0.61403507
+anchor_bottom = 1.3235294
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+texture = SubResource("GradientTexture2D_s3det")
+metadata/_edit_use_anchors_ = true
+
+[node name="Arrow" type="Node2D" parent="CanvasLayer/UI/VelocityControl"]
+position = Vector2(69, 88)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/UI/VelocityControl/Arrow"]
+position = Vector2(0, -5)
+scale = Vector2(0.07, 0.04)
+texture = ExtResource("14_k7806")
+centered = false
+
+[node name="WarningsControl" type="Control" parent="CanvasLayer/UI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("15_42rnc")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/UI/WarningsControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 386.5
+offset_top = 61.0
+offset_right = 725.5
+offset_bottom = 189.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("13_27a6l")
+bbcode_enabled = true
+text = "CUIDADO!
+VOCÊ ESTÁ QUASE FORA DO ALCANÇE DE SUA NAVE MÃE
+(você será teleportado de volta e perderá todos os recursos)"
+horizontal_alignment = 1
+
+[node name="FuelProgressBar" type="ProgressBar" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 12.0
+offset_bottom = 39.0
+grow_horizontal = 2
+script = ExtResource("16_3tqxe")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/UI/FuelProgressBar"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 131.0
+offset_bottom = 46.0
+theme_override_fonts/normal_font = ExtResource("13_27a6l")
+text = "combustível"
+
+[node name="LifeProgressBar" type="ProgressBar" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 12.0
+grow_horizontal = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_b3802")
+value = 22.79
+show_percentage = false
+script = ExtResource("17_2evqo")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/UI/LifeProgressBar"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -6.0
+offset_right = 133.0
+offset_bottom = 34.0
+theme_override_fonts/normal_font = ExtResource("13_27a6l")
+text = "vida"
+
+[node name="ResourcesLabel" type="RichTextLabel" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -145.0
+offset_top = 39.0
+offset_bottom = 80.0
+grow_horizontal = 0
+theme_override_fonts/normal_font = ExtResource("13_27a6l")
+theme_override_font_sizes/normal_font_size = 32
+text = "0/200 "
+fit_content = true
+horizontal_alignment = 2
+script = ExtResource("18_8333e")
+
+[node name="Mothership" parent="." instance=ExtResource("19_vg88r")]
+position = Vector2(0, 190)
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
+[node name="Asteroids" parent="." instance=ExtResource("13_s1et7")]
+position = Vector2(161, -442)
+
+[node name="Asteroids2" parent="." instance=ExtResource("13_s1et7")]
+position = Vector2(-803, -240)
+
+[node name="Asteroids3" parent="." instance=ExtResource("13_s1et7")]
+position = Vector2(-758, -14)
+
+[node name="Asteroids4" parent="." instance=ExtResource("13_s1et7")]
+position = Vector2(394, -669)
+
+[node name="Asteroids5" parent="." instance=ExtResource("13_s1et7")]
+position = Vector2(477, -417)
+
+[node name="Asteroids6" parent="." instance=ExtResource("13_s1et7")]
+position = Vector2(152, -823)
+
+[node name="Asteroids8" parent="." instance=ExtResource("13_s1et7")]
+position = Vector2(-1583, -1142)
+
+[node name="Asteroids9" parent="." instance=ExtResource("13_s1et7")]
+position = Vector2(696, -1378)
+
+[node name="Asteroids10" parent="." instance=ExtResource("13_s1et7")]
+position = Vector2(444, -2143)
+
+[node name="Asteroids11" parent="." instance=ExtResource("13_s1et7")]
+position = Vector2(1820, -1524)
+
+[node name="Asteroids12" parent="." instance=ExtResource("13_s1et7")]
+position = Vector2(1820, -1524)
+
+[node name="Asteroids7" parent="." instance=ExtResource("13_s1et7")]
+position = Vector2(-1074, -734)
+
+[node name="Planet" parent="." instance=ExtResource("15_s6ceg")]
+position = Vector2(1450, -816)
+
+[node name="BlackHole" parent="." instance=ExtResource("16_ndixb")]
+position = Vector2(-1627, -140)
+
+[node name="SupermassiveBlackHole" parent="." instance=ExtResource("17_li4mn")]
+position = Vector2(897, -2281)

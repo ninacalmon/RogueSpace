@@ -16,6 +16,8 @@ var body_near: Array[RigidBody2D] = []
 
 var activated: bool = false
 
+var collision_exception_array: Array[RigidBody2D]
+
 func initialize() -> void:
 	var range_circle: CircleShape2D = _range.shape.duplicate()
 	range_circle.radius = owner_body.mass * mass_to_radius_multiply
@@ -28,7 +30,8 @@ func initialize() -> void:
 
 
 func _on_grav_field_entered_by_area(area: Area2D):
-	if !(area is GravitationalField):
+	if !(area is GravitationalField) or \
+	collision_exception_array.find(area.owner_body):
 		return
 	var body = area.owner_body
 	grav_field_entered.emit(body)
@@ -69,4 +72,6 @@ func apply_gravity(near_body: RigidBody2D):
 
 	near_body.apply_central_force(force_on_other)
 	owner_body.apply_central_force(force_on_self)
-	
+
+func _add_collision_exception_with(body: RigidBody2D):
+	collision_exception_array.append(body)

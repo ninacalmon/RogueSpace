@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://3vg8bv7t077f"]
+[gd_scene load_steps=13 format=3 uid="uid://3vg8bv7t077f"]
 
 [ext_resource type="Shader" uid="uid://s03egy3ha6nk" path="res://Scenes/BlackHoleShader.gdshader" id="1_cv587"]
-[ext_resource type="Script" uid="uid://b8uwpl8kmnf0e" path="res://Scenes/SpaceBodies/body_setup.gd" id="1_hjqa0"]
 [ext_resource type="Script" uid="uid://ctkk6v6iuor2q" path="res://Scenes/black_hole.gd" id="1_ratl1"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="2_0htpi"]
 [ext_resource type="Texture2D" uid="uid://506majaor5n" path="res://Sprites/Black_hole.png" id="2_hjqa0"]
@@ -39,12 +38,15 @@ random_volume_offset_db = 1.2
 streams_count = 1
 stream_0/stream = ExtResource("5_wn18u")
 
-[node name="BlackHole" type="RigidBody2D"]
+[node name="BlackHole" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "gravitational_field")]
 collision_layer = 0
 collision_mask = 0
 mass = 1000.0
 freeze = true
 script = ExtResource("1_ratl1")
+collision = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
+gravitational_field = NodePath("GravitationalField")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 16.0
@@ -70,11 +72,6 @@ owner_collision_shape = NodePath("../CollisionShape2D")
 mass_to_radius_multiply = 0.2
 attraction_received_multiply = 0.01
 increase_with_proximity = 0.8500000000000001
-
-[node name="BodySetup" type="Node2D" parent="." node_paths=PackedStringArray("collision")]
-script = ExtResource("1_hjqa0")
-collision = NodePath("../CollisionShape2D")
-metadata/_custom_type_script = "uid://b8uwpl8kmnf0e"
 
 [node name="GulpSFX" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_ratl1")

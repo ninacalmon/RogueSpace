@@ -11,11 +11,15 @@ bounce = 0.1
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpe2g"]
 radius = 581.79895
 
-[node name="PlanetBig" type="RigidBody2D"]
+[node name="PlanetBig" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "gravitational_field")]
 mass = 3000.0
 physics_material_override = SubResource("PhysicsMaterial_syvxh")
 freeze = true
 linear_damp_mode = 1
+script = ExtResource("3_ynui8")
+collision = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
+gravitational_field = NodePath("GravitationalField")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vpe2g")
@@ -33,9 +37,3 @@ mass_to_radius_multiply = 0.3
 attraction_received_multiply = 0.01
 attraction_executed_multiply = 3.0
 increase_with_proximity = 0.8500000000000001
-
-[node name="BodySetup" type="Node2D" parent="." node_paths=PackedStringArray("collision", "sprite")]
-script = ExtResource("3_ynui8")
-collision = NodePath("../CollisionShape2D")
-sprite = NodePath("../Sprite2D")
-metadata/_custom_type_script = "uid://b8uwpl8kmnf0e"

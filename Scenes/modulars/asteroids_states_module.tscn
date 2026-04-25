@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c33euabcxvnsg"]
 
-[ext_resource type="Script" uid="uid://barcrxqn5og5s" path="res://Scenes/modulars/hurt_module.gd" id="1_gifgs"]
+[ext_resource type="Script" uid="uid://barcrxqn5og5s" path="res://Scenes/modulars/hurt_module.gd" id="1_7ldfj"]
 
 [sub_resource type="Curve" id="Curve_gifgs"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -21,8 +21,8 @@ scale_max = 1.3
 color = Color(0.63495, 0.9, 0.621, 1)
 alpha_curve = SubResource("CurveTexture_3q334")
 
-[node name="HurtModule" type="Node2D"]
-script = ExtResource("1_gifgs")
+[node name="DamageModule" type="Node2D"]
+script = ExtResource("1_7ldfj")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false

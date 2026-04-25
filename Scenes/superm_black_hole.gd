@@ -1,13 +1,16 @@
-extends RigidBody2D
+extends BodySetup
 class_name SuperMBlackHole
 
-@onready var gravitational_field: GravitationalField = $GravitationalField
 @onready var gulp_sfx: AudioStreamPlayer = $GulpSFX
 
 var player: Player
 var check_distance: bool = false
 
 func _ready() -> void:
+	if body_randomizer: body_randomizer.initialize(sprite, collision)
+	if gravitational_field: gravitational_field.initialize()
+	if gravitational_field_resources: gravitational_field_resources.initialize()
+
 	self.body_entered.connect(_on_body_entered)
 	gravitational_field.body_entered.connect(_on_gravitational_field_body_entered)
 	gravitational_field.body_exited.connect(_on_gravitational_field_body_exited)

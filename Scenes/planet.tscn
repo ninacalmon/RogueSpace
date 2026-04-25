@@ -9,20 +9,24 @@ friction = 0.0
 bounce = 0.1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpe2g"]
-radius = 192.1666
+radius = 243.00206
 
-[node name="Planet" type="RigidBody2D"]
+[node name="Planet" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "gravitational_field")]
 mass = 1000.0
 physics_material_override = SubResource("PhysicsMaterial_m0iey")
 freeze = true
 linear_damp_mode = 1
+script = ExtResource("1_m0iey")
+collision = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
+gravitational_field = NodePath("GravitationalField")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vpe2g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.66083336, 1, 0.45, 1)
-scale = Vector2(8, 8)
+scale = Vector2(10, 10)
 texture = ExtResource("1_xehyc")
 
 [node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("2_vpe2g")]
@@ -33,9 +37,3 @@ mass_to_radius_multiply = 0.5
 attraction_received_multiply = 0.01
 attraction_executed_multiply = 2.8
 increase_with_proximity = 0.94
-
-[node name="BodySetup" type="Node2D" parent="." node_paths=PackedStringArray("collision", "sprite")]
-script = ExtResource("1_m0iey")
-collision = NodePath("../CollisionShape2D")
-sprite = NodePath("../Sprite2D")
-metadata/_custom_type_script = "uid://b8uwpl8kmnf0e"
