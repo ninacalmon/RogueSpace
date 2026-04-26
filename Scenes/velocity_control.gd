@@ -1,7 +1,7 @@
 extends Control
 
-@onready var arrow: Node2D = $Arrow
-@onready var km_label: RichTextLabel = $KmLabel
+@export var arrow: Node2D
+@export var km_label: RichTextLabel
 
 var arrow_colors: Array[Color] = [
 	Color(1.0, 1.0, 1.0),
@@ -13,6 +13,9 @@ var arrow_colors: Array[Color] = [
 @export var max_speed: float = 1000.0
 
 func _process(_delta: float) -> void:
+	if !arrow or !km_label:
+		return
+	
 	var speed = Globals.player_linear_velocity.length()
 	var t = clamp(speed / max_speed, 0.0, 1.0)
 

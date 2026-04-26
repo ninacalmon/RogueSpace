@@ -6,7 +6,7 @@ class_name Player
 @export var break_speed: float = 2
 @export var max_velocity: float = 1000.0
 
-@onready var camera: Camera2D = $Camera2D
+@export var camera: Camera2D
 @onready var propulsor_sfx: AudioStreamPlayer = $SFX/PropulsorSFX
 @onready var teleport_sfx: AudioStreamPlayer = $SFX/TeleportSFX
 @onready var space_winds_sfx: AudioStreamPlayer = $SFX/SpaceWindsSFX

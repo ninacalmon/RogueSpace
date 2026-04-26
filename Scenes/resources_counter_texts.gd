@@ -52,6 +52,6 @@ func show_button():
 
 func _on_button_pressed():
 	if can_progress:
-		LevelTransition.change_scene_to("res://Scenes/main2.tscn")
+		LevelTransition.change_scene_to("res://Scenes/LevelTest.tscn")
 	else:
-		LevelTransition.change_scene_to("res://Scenes/main2.tscn")
+		LevelTransition.change_scene_to("res://Scenes/LevelTest.tscn")

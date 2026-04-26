@@ -9,9 +9,7 @@ var speed := 100.0
 func _process(delta):
 	position.x -= speed * delta
 
-	# largura de UM bloco de texto
 	var width = get_combined_minimum_size().x / 3
 
-	# quando sair completamente, reseta
 	if position.x <= -width:
 		position.x = 0

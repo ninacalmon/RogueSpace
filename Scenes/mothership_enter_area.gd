@@ -26,4 +26,4 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("confirm"):
 		check_input = false
 		Globals.changing_scene = true
-		LevelTransition.change_scene_to("res://Scenes/resoures_counting.tscn")
+		LevelTransition.change_scene_to("res://Scenes/resources_counting.tscn")
