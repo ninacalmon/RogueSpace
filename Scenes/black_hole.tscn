@@ -49,9 +49,10 @@ sprite = NodePath("Sprite2D")
 gravitational_field = NodePath("GravitationalField")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+show_behind_parent = true
 energy = 16.0
 texture = SubResource("GradientTexture2D_retql")
-texture_scale = 5.0
+texture_scale = 2.4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0htpi")

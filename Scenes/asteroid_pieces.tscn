@@ -29,7 +29,9 @@ collision_layer = 3
 collision_mask = 3
 owner_body = NodePath("..")
 owner_collision_shape = NodePath("../CollisionShape2D")
+attraction_executed_multiply = 0.0
 
 [node name="BodyRandomizer" parent="." node_paths=PackedStringArray("owner_body") instance=ExtResource("2_m5km2")]
 owner_body = NodePath("..")
-scale_max = 2.0
+scale_min = 0.8
+scale_max = 1.8

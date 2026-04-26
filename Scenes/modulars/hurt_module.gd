@@ -35,4 +35,3 @@ func _on_owner_body_shape_entered(_body: RigidBody2D):
 func emit_particles(damage: float):
 	gpu_particles_2d.amount = int(damage * 2)
 	gpu_particles_2d.emitting = true
-	

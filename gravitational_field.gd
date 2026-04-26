@@ -30,8 +30,7 @@ func initialize() -> void:
 
 
 func _on_grav_field_entered_by_area(area: Area2D):
-	if !(area is GravitationalField) or \
-	collision_exception_array.find(area.owner_body):
+	if !(area is GravitationalField):
 		return
 	var body = area.owner_body
 	grav_field_entered.emit(body)

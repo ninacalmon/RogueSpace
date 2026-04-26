@@ -11,6 +11,8 @@ var pieces_amount: int
 var pieces_amount_bonus: float = 1.5
 var initial_pieces_amount: int
 
+var parent
+
 var states: Array[String] = [
 	"initial_state",
 	"shedding_state",
@@ -26,6 +28,8 @@ func _ready() -> void:
 	if gravitational_field: gravitational_field.initialize()
 	if gravitational_field_resources: gravitational_field_resources.initialize()
 
+	sprite.frame = randi_range(0, 1)
+
 	original_sprite_scale = sprite.scale
 	original_collision_radius = collision.shape.radius
 
@@ -36,21 +40,21 @@ func _ready() -> void:
 
 	damage_module.damage_taken.connect(_on_damage_taken)
 
+	parent = get_parent()
+
 
 func _on_damage_taken(amount: float):
 	var damage = amount * 0.2
-	## damage / endurance -> quanto % do endurance esse damage representa
 	var damage_proportion = damage / endurance
-	print("damage_proportiion: ", damage_proportion, " endurance: ", endurance, " damage: ", damage)
+	if damage_proportion * 100 < 10:
+		return
 	endurance -= damage
 	if endurance <= 0: total_break()
-	else: shed_pieces(damage_proportion)
+	else: call_deferred("shed_pieces", damage_proportion)
 
 
 func shed_pieces(damage_proportion: float):
-	print("SHEDDING.  damage proportion: ", damage_proportion)
 	var pieces_to_shed: int = int((pieces_amount * damage_proportion))
-	print("total: ", pieces_amount, "  shedding: ", pieces_to_shed)
 	pieces_amount -= pieces_to_shed
 	for p in pieces_to_shed:
 		var new_piece: RigidBody2D = broken_piece_scene.instantiate()
@@ -58,11 +62,10 @@ func shed_pieces(damage_proportion: float):
 		+ Vector2(randi_range(-50, 50), randi_range(-50, 50))
 		#add_collision_exception_with(new_piece)
 		#gravitational_field._add_collision_exception_with(new_piece)
-		get_parent().add_child(new_piece)
-
+		parent.call_deferred("add_child", new_piece)
+	scale_down(0.8, 0.2)
 
 func total_break():
-	print("BREAKING")
 	if pieces_amount == initial_pieces_amount:
 		pieces_amount = ceil(pieces_amount * pieces_amount_bonus)
 	var pieces_to_break: int = pieces_amount
@@ -70,5 +73,14 @@ func total_break():
 		var new_piece: RigidBody2D = broken_piece_scene.instantiate()
 		new_piece.global_position = global_position \
 		+ Vector2(randi_range(-20, 20), randi_range(-20, 20))
-		get_parent().add_child(new_piece)
+		parent.call_deferred("add_child", new_piece)
+	await scale_down(0)
 	queue_free()
+
+func scale_down(amount: float, duration: float = 0.5):
+	var sprite_new_scale = sprite.scale * amount
+	var collision_new_scale = collision.scale * amount
+	var tween = get_tree().create_tween()
+	tween.parallel().tween_property(sprite, "scale", sprite_new_scale, duration)
+	tween.parallel().tween_property(collision, "scale", collision_new_scale, duration)
+	await tween.finished

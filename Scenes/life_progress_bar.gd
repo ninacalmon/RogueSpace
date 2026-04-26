@@ -11,6 +11,6 @@ func _ready() -> void:
 
 func _on_damage_taken(damaged: RigidBody2D, amount: float):
 	pass
-	#if damaged is Player:
-		#value -= amount
-		#if value <= 0: get_tree().reload_current_scene()
+	if damaged is Player:
+		value -= amount
+		if value <= 0: get_tree().reload_current_scene()

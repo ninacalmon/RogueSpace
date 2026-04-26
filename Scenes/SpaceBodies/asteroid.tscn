@@ -11,7 +11,7 @@
 radius = 16.0
 
 [node name="Asteroid" type="RigidBody2D" node_paths=PackedStringArray("damage_module", "collision", "sprite", "gravitational_field", "body_randomizer")]
-mass = 100.0
+mass = 50.0
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_kqist")
@@ -28,6 +28,7 @@ shape = SubResource("CircleShape2D_ygxgg")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_0c1vm")
 hframes = 3
+frame = 1
 
 [node name="DamageModule" type="Node2D" parent="." node_paths=PackedStringArray("owner_body")]
 script = ExtResource("4_ygxgg")

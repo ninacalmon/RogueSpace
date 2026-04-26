@@ -28,8 +28,9 @@ func _ready() -> void:
 	almost_out_area.body_entered.connect(_on_almost_out_area_body_entered)
 
 func _on_safe_area_exited(body: RigidBody2D):
-	if body is Player:
+	if body is Player and !Globals.changing_scene:
 		EventBus.player_out_of_bounds.emit()
+		print(body.global_position)
 
 func _on_almost_out_area_body_exited(body: RigidBody2D):
 	if body is Player:

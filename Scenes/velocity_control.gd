@@ -1,6 +1,7 @@
 extends Control
 
 @onready var arrow: Node2D = $Arrow
+@onready var km_label: RichTextLabel = $KmLabel
 
 var arrow_colors: Array[Color] = [
 	Color(1.0, 1.0, 1.0),
@@ -18,6 +19,8 @@ func _process(_delta: float) -> void:
 	arrow.look_at(arrow.global_position + Globals.player_linear_velocity)
 
 	arrow.modulate = get_gradient_color(t)
+
+	km_label.text = "%d m/s" %speed
 
 func get_gradient_color(t: float) -> Color:
 	var count = arrow_colors.size() - 1

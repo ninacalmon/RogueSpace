@@ -1,10 +1,14 @@
 extends Area2D
 class_name ResourceCollector
 
+@export var owner_body: RigidBody2D
+
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 
-func _on_body_entered(body: RigidBody2D):
-	if body is CollectableResource:
-		EventBus.space_resource_collected.emit()
-		body.queue_free()
+func _on_body_entered(body: CollectableResource):
+	if !(body is CollectableResource):
+		return
+	body.add_collision_exception_with(owner_body)
+	body.target = owner_body
+	body.following = true

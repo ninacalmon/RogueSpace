@@ -2,6 +2,7 @@ extends BodySetup
 class_name Player
 
 @export var speed: float = 1000
+@export var burst_speed: float = 1000
 @export var break_speed: float = 2
 @export var max_velocity: float = 1000.0
 
@@ -15,7 +16,6 @@ var burst_cooldown_timer: float
 
 var player_init_pos: Vector2
 var original_speed: float = speed
-var impulse_burst: float = 100
 
 var start_of_game: bool = true
 
@@ -47,47 +47,35 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		return
 
 	Globals.player_linear_velocity = state.linear_velocity
-
+	
+	if Input.is_action_pressed("move_down") or \
+	Input.is_action_pressed("move_left") or \
+	Input.is_action_pressed("move_up") or \
+	Input.is_action_pressed("move_right"):
+		EventBus.fuel_used.emit()
+	
 	## Movement here vvv
 	if Input.is_action_pressed("move_down"):
-		if Input.is_action_just_pressed("impulse_burst")\
-		and burst_cooldown_timer <= 0:
-			burst_cooldown_timer = base_burst_cooldown
-			speed *= impulse_burst
 		state.apply_central_force(Vector2(0, speed))
 		SFXManager.play_sound(propulsor_sfx)
-		if speed!= original_speed: speed = original_speed
-		EventBus.fuel_used.emit()
 
 	if Input.is_action_pressed("move_left"):
-		if Input.is_action_just_pressed("impulse_burst")\
-		and burst_cooldown_timer <= 0:
-			burst_cooldown_timer = base_burst_cooldown
-			speed *= impulse_burst
 		state.apply_central_force(Vector2(-speed, 0))
 		SFXManager.play_sound(propulsor_sfx)
-		if speed!= original_speed: speed = original_speed
-		EventBus.fuel_used.emit()
 
 	if Input.is_action_pressed("move_up"):
-		if Input.is_action_just_pressed("impulse_burst")\
-		and burst_cooldown_timer <= 0:
-			burst_cooldown_timer = base_burst_cooldown
-			speed *= impulse_burst
 		state.apply_central_force(Vector2(0.0, -speed))
 		SFXManager.play_sound(propulsor_sfx)
-		if speed!= original_speed: speed = original_speed
-		EventBus.fuel_used.emit()
 
 	if Input.is_action_pressed("move_right"):
-		if Input.is_action_just_pressed("impulse_burst")\
-		and burst_cooldown_timer <= 0:
-			burst_cooldown_timer = base_burst_cooldown
-			speed *= impulse_burst
 		state.apply_central_force(Vector2(speed, 0))
 		SFXManager.play_sound(propulsor_sfx)
-		if speed != original_speed: speed = original_speed
-		EventBus.fuel_used.emit()
+	
+	if Input.is_action_just_pressed("impulse_burst")\
+		and burst_cooldown_timer <= 0:
+			burst_cooldown_timer = base_burst_cooldown
+			EventBus.burst_fuel_used.emit()
+			state.apply_impulse(linear_velocity.normalized() * burst_speed)
 	
 	if state.linear_velocity.length() > max_velocity:
 		state.linear_velocity = state.linear_velocity.normalized() * max_velocity
