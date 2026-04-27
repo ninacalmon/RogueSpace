@@ -36,3 +36,9 @@ signal mothership_entrance_exited
 
 @warning_ignore("unused_signal")
 signal player_wants_to_enter_mothership
+
+@warning_ignore("unused_signal")
+signal not_enough_resources
+
+@warning_ignore("unused_signal")
+signal resources_used

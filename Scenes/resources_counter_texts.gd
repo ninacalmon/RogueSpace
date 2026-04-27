@@ -1,8 +1,14 @@
 extends Control
+class_name TextsControl
 
 @onready var counter: RichTextLabel = $Counter
-@onready var button: Button = $Button
+@export var button: Button
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+
+signal count_finished(enough: bool)
+
+var min_tween_duration: float = 1
+var max_tween_duration: float = 6
 
 var value: int = 0
 var last_int: int = -1
@@ -10,6 +16,7 @@ var last_int: int = -1
 var can_progress: bool
 
 func _ready() -> void:
+	EventBus.resources_used.connect(_on_resources_used)
 	can_progress = Globals.resources_gathered >= Globals.resources_needed
 	button.pressed.connect(_on_button_pressed)
 	
@@ -18,13 +25,16 @@ func _ready() -> void:
 	
 	counter.text = "[b]%d[/b]/%d" %[0, Globals.resources_needed]
 	await animate_number()
+	count_finished.emit(can_progress)
+	await get_tree().create_timer(2).timeout
 	show_button()
+	if !can_progress: button.grab_focus()
 
 func animate_number():
 	var tween_time: float
 	if can_progress:
-		tween_time = min(Globals.resources_gathered/10.0, 15.0)
-	else: tween_time = max(Globals.resources_gathered/10.0, 5.0)
+		tween_time = min(Globals.resources_gathered/10.0, max_tween_duration)
+	else: tween_time = max(Globals.resources_gathered/10.0, min_tween_duration)
 
 	var tween = get_tree().create_tween()
 	tween.set_trans(Tween.TRANS_EXPO)
@@ -48,10 +58,20 @@ func show_button():
 
 	button.disabled = false
 	button.show()
-	button.grab_focus()
+	flash(button)
 
 func _on_button_pressed():
 	if can_progress:
 		LevelTransition.change_scene_to("res://Scenes/LevelTest.tscn")
 	else:
 		LevelTransition.change_scene_to("res://Scenes/LevelTest.tscn")
+
+func flash(what: Control):
+	var tween = get_tree().create_tween()
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(what, "self_modulate", Color(0, 0, 0, 1), 0.02)
+	tween.tween_property(what, "self_modulate", Color(10, 10, 10, 10), 0.05)
+	tween.tween_property(what, "self_modulate", Color(1, 1, 1, 1), 0.2)
+
+func _on_resources_used():
+	_update_text(Globals.resources_gathered)

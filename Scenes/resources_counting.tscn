@@ -1,32 +1,33 @@
-[gd_scene load_steps=10 format=3 uid="uid://cbk3swogwrgtr"]
+[gd_scene load_steps=13 format=3 uid="uid://cbk3swogwrgtr"]
 
-[ext_resource type="Script" uid="uid://dfwncptjtothi" path="res://Scenes/looping_text.gd" id="1_43lh2"]
+[ext_resource type="Texture2D" uid="uid://dlv776axrbuj0" path="res://Sprites/background.png" id="1_mlhmh"]
+[ext_resource type="PackedScene" uid="uid://fjxp66w0rpvl" path="res://Scenes/impulse_power_up.tscn" id="2_h1t7e"]
 [ext_resource type="Script" uid="uid://mltr71hmkppb" path="res://Scenes/resources_counter_texts.gd" id="2_m21qu"]
+[ext_resource type="Script" uid="uid://ce4k3gvavwn0b" path="res://Scenes/power_ups_container.gd" id="2_ws088"]
 [ext_resource type="FontFile" uid="uid://ynyhx0lmxagx" path="res://Fonts/MonospaceTypewriter.ttf" id="3_h1t7e"]
+[ext_resource type="PackedScene" uid="uid://lu5o7h7bdg8y" path="res://Scenes/fuel_power_up.tscn" id="3_mlhmh"]
 [ext_resource type="FontFile" uid="uid://dq0nn8i2xfigj" path="res://Fonts/F25_Bank_Printer_Bold.ttf" id="4_mlhmh"]
+[ext_resource type="PackedScene" uid="uid://dtf5df5lkbpnc" path="res://Scenes/teleport_power_up.tscn" id="4_ws088"]
 [ext_resource type="AudioStream" uid="uid://3ywm8o38t0d4" path="res://Sound Effects/value_up3.wav" id="5_ws088"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jflhr"]
-bg_color = Color(0, 0, 0, 0.3019608)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ue4wm"]
-bg_color = Color(0.0379, 0.05, 0.028, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85p4m"]
-bg_color = Color(0.021585, 0.03, 0.0147, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ue4wm"]
 random_pitch = 1.3
 streams_count = 1
 stream_0/stream = ExtResource("5_ws088")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ws088"]
+bg_color = Color(0.31836, 0.42, 0.23519999, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ue4wm"]
+bg_color = Color(0.13644001, 0.18, 0.10080001, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="ResourcesCounting" type="Node2D"]
 
@@ -41,6 +42,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 1156.3475
+offset_bottom = 649.0
+texture = ExtResource("1_mlhmh")
+
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 15
@@ -48,61 +55,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0758, 0.1, 0.056, 1)
+color = Color(0.0758, 0.1, 0.056, 0.68235296)
 metadata/_edit_lock_ = true
 
-[node name="LoopingText" type="HBoxContainer" parent="CanvasLayer/Control"]
-layout_mode = 1
-offset_top = 100.0
-offset_right = 1590.0
-offset_bottom = 123.0
-theme_override_constants/separation = 0
-script = ExtResource("1_43lh2")
-
-[node name="LoopingText" type="RichTextLabel" parent="CanvasLayer/Control/LoopingText"]
-custom_minimum_size = Vector2(530, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_jflhr")
-text = "/!\\ No futuro, estes RECURSOS poderão ser usados para PROGREDIR."
-fit_content = true
-vertical_alignment = 1
-
-[node name="LoopingText2" type="RichTextLabel" parent="CanvasLayer/Control/LoopingText"]
-custom_minimum_size = Vector2(530, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_jflhr")
-text = "/!\\ No futuro, estes RECURSOS poderão ser usados para PROGREDIR."
-fit_content = true
-vertical_alignment = 1
-
-[node name="LoopingText3" type="RichTextLabel" parent="CanvasLayer/Control/LoopingText"]
-custom_minimum_size = Vector2(530, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_jflhr")
-text = "/!\\ No futuro, estes RECURSOS poderão ser usados para PROGREDIR."
-fit_content = true
-vertical_alignment = 1
-
-[node name="Texts" type="Control" parent="CanvasLayer"]
+[node name="Texts" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("button")]
 layout_mode = 3
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -75.5
+offset_top = 156.0
+offset_right = 75.5
+offset_bottom = 156.0
 grow_horizontal = 2
-grow_vertical = 2
 script = ExtResource("2_m21qu")
+button = NodePath("../Pressable/Button")
 
 [node name="Counter" type="RichTextLabel" parent="CanvasLayer/Texts"]
 layout_mode = 1
@@ -135,8 +102,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -85.5
+offset_top = 18.0
 offset_right = 85.5
-offset_bottom = 41.0
+offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/normal_font = ExtResource("3_h1t7e")
@@ -145,31 +113,59 @@ text = "Recursos"
 fit_content = true
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/Texts"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -79.5
-offset_top = 120.0
-offset_right = 79.5
-offset_bottom = 149.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("3_h1t7e")
-theme_override_styles/normal = SubResource("StyleBoxFlat_ue4wm")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_85p4m")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_85p4m")
-theme_override_styles/hover = SubResource("StyleBoxFlat_85p4m")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_85p4m")
-theme_override_styles/focus = SubResource("StyleBoxFlat_85p4m")
-disabled = true
-text = "Continuar... -->"
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/Texts"]
 stream = SubResource("AudioStreamRandomizer_ue4wm")
 volume_db = -20.0
 pitch_scale = 2.0
 bus = &"Sound Effects"
+
+[node name="Pressable" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -223.0
+offset_top = -60.0
+offset_right = 223.0
+offset_bottom = 307.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 173
+
+[node name="PowerUpsContainer" type="HBoxContainer" parent="CanvasLayer/Pressable" node_paths=PackedStringArray("texts")]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+script = ExtResource("2_ws088")
+texts = NodePath("../../Texts")
+
+[node name="ImpulsePowerUp" parent="CanvasLayer/Pressable/PowerUpsContainer" instance=ExtResource("2_h1t7e")]
+visible = false
+custom_minimum_size = Vector2(106, 106)
+layout_mode = 2
+disabled = true
+
+[node name="FuelPowerUp" parent="CanvasLayer/Pressable/PowerUpsContainer" instance=ExtResource("3_mlhmh")]
+visible = false
+custom_minimum_size = Vector2(106, 106)
+layout_mode = 2
+disabled = true
+
+[node name="TeleportPowerUp" parent="CanvasLayer/Pressable/PowerUpsContainer" instance=ExtResource("4_ws088")]
+visible = false
+custom_minimum_size = Vector2(106, 106)
+layout_mode = 2
+disabled = true
+
+[node name="Button" type="Button" parent="CanvasLayer/Pressable"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_h1t7e")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ws088")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ue4wm")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_ue4wm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ue4wm")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ue4wm")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ue4wm")
+disabled = true
+text = "Continuar... -->"

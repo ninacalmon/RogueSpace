@@ -7,10 +7,12 @@ extends ProgressBar
 var emitted: bool = false
 
 func _ready() -> void:
+	max_fuel = Globals.max_fuel
 	EventBus.fuel_used.connect(_on_fuel_used)
 	EventBus.burst_fuel_used.connect(_on_burst_fuel_used)
 	max_value = max_fuel
 	value = max_fuel
+	print(value)
 
 func _on_fuel_used():
 	value -= use_step

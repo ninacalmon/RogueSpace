@@ -13,7 +13,7 @@ Volte para a nave mãe."
 var mothership_text: String = "Deseja voltar para a nave mãe
 e contar seus resursos?
 
-Aperte [SPACE] ou [SELECT] para confirmar."
+Aperte [SPACE] ou [A] para confirmar."
 
 func _ready() -> void:
 	rich_text_label.self_modulate = Color(1, 1, 1, 0)

@@ -3,8 +3,9 @@ class_name Asteroid
 
 @export var damage_module: DamageModule
 @export var broken_piece_scene: PackedScene
-@export var base_endurance: float = 80
+@export var base_endurance: float = 200
 @export var base_pieces_amount: int = 10
+@export var minimum_damage_amount: float = 100
 
 var endurance: float
 var pieces_amount: int
@@ -36,7 +37,8 @@ func _ready() -> void:
 	mass *= sprite.scale.x
 	pieces_amount = int(base_pieces_amount * sprite.scale.x)
 	initial_pieces_amount = pieces_amount
-	endurance = base_endurance * (sprite.scale.x * 0.3)
+	endurance = base_endurance * (sprite.scale.x * 0.5)
+	minimum_damage_amount *= (sprite.scale.x * 0.5)
 
 	damage_module.damage_taken.connect(_on_damage_taken)
 
@@ -44,10 +46,15 @@ func _ready() -> void:
 
 
 func _on_damage_taken(amount: float):
-	var damage = amount * 0.2
-	var damage_proportion = damage / endurance
-	if damage_proportion * 100 < 10:
+	if amount < minimum_damage_amount:
 		return
+	
+	print("amount: ", amount," minimum amount: ", minimum_damage_amount,"endurance: ", endurance)
+	
+	var damage = amount
+	var damage_proportion = damage / endurance
+	#if damage_proportion * 100 < 10:
+		#return
 	endurance -= damage
 	if endurance <= 0: total_break()
 	else: call_deferred("shed_pieces", damage_proportion)

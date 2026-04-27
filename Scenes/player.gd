@@ -24,6 +24,7 @@ func _ready() -> void:
 	if gravitational_field: gravitational_field.initialize()
 	if gravitational_field_resources: gravitational_field_resources.initialize()
 
+	burst_speed = Globals.player_burst_speed
 	player_init_pos = global_position + Vector2(0.0, -50)
 	EventBus.player_almost_out_of_bounds.connect(_on_player_almost_out_of_bounds)
 	EventBus.player_out_of_bounds.connect(_on_player_out_of_bounds)
@@ -73,6 +74,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	
 	if Input.is_action_just_pressed("impulse_burst")\
 		and burst_cooldown_timer <= 0:
+			print(burst_speed)
 			burst_cooldown_timer = base_burst_cooldown
 			EventBus.burst_fuel_used.emit()
 			state.apply_impulse(linear_velocity.normalized() * burst_speed)
@@ -86,6 +88,9 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 
 	if Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
+	
+	if Input.is_action_just_pressed("teleport") and Globals.can_teleport:
+		execute_teletransport()
 
 func _on_player_almost_out_of_bounds():
 	var tween = get_tree().create_tween()

@@ -1,5 +1,10 @@
 extends Node
 
+##Gets changed by power ups:
+var player_burst_speed: float = 1000
+var max_fuel: float = 100
+var can_teleport: bool = false
+
 var player_linear_velocity: Vector2
 var is_cutscene: bool
 

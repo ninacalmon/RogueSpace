@@ -12,7 +12,6 @@ func _on_body_entered(body: RigidBody2D):
 	Globals.resources_gathered <= 0:
 		return
 	check_input = true
-	print(body.global_position)
 	EventBus.mothership_entrance_entered.emit()
 
 func _on_body_exited(body: RigidBody2D):

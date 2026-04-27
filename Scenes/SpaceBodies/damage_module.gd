@@ -2,7 +2,7 @@ extends Node2D
 class_name DamageModule
 
 @export var owner_body: RigidBody2D
-@export var minimum_impact: float = 100
+@export var minimum_impact: float = 50
 
 signal damage_taken(amount: float)
 
