@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dfbrgn6xd46xq"]
+[gd_scene load_steps=25 format=3 uid="uid://dfbrgn6xd46xq"]
 
 [ext_resource type="Texture2D" uid="uid://b4go5brbh3ndq" path="res://Sprites/Starfields/Starfield 1 - 1024x1024.png" id="1_gaqb7"]
 [ext_resource type="PackedScene" uid="uid://b512vj2a4a3y" path="res://Scenes/player.tscn" id="2_cebcg"]
@@ -16,6 +16,9 @@
 [ext_resource type="Script" uid="uid://cic7dy2kdafc6" path="res://Scenes/resources_label.gd" id="14_yxbpd"]
 [ext_resource type="PackedScene" uid="uid://c2v243rukexl6" path="res://Scenes/map_control.tscn" id="15_auc5q"]
 [ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/asteroid_pieces.tscn" id="16_cebcg"]
+[ext_resource type="Script" uid="uid://cqjmk831cxb3e" path="res://Scenes/mothership_indicator.gd" id="16_ptmrl"]
+[ext_resource type="Script" uid="uid://ft2eqf3dfuwg" path="res://Scenes/path_2d.gd" id="17_0vlsi"]
+[ext_resource type="Texture2D" uid="uid://ccpre0cpl40mu" path="res://Sprites/Other/arrow2.png" id="18_0vlsi"]
 
 [sub_resource type="Environment" id="Environment_n7yfy"]
 background_mode = 3
@@ -38,6 +41,12 @@ width = 128
 height = 128
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve2D" id="Curve2D_cebcg"]
+_data = {
+"points": PackedVector2Array(-0.22204018, 87.93223, 0.22204018, -87.93223, -544, -96, 0, 0, 0, 0, -456, -184, 0, 0, 0, 0, 456, -184, 0, -90.66667, 0, 90.66667, 544, -96, 0, 0, 0, 0, 544, 312, 88.25107, 0.19310956, -88.25107, -0.19310956, 456, 400, 0, 0, 0, 0, -456, 400, -0.21242051, 87.09241, 0.21242051, -87.09241, -544, 312, 0, 0, 0, 0, -544, -96)
+}
+point_count = 9
 
 [node name="Main" type="Node2D"]
 
@@ -252,6 +261,21 @@ text = "recursos: [b]0/200[/b]"
 fit_content = true
 horizontal_alignment = 2
 script = ExtResource("14_yxbpd")
+
+[node name="MothershipIndicator" type="Node2D" parent="CanvasLayer/UI"]
+script = ExtResource("16_ptmrl")
+
+[node name="IndicatorPath2D" type="Path2D" parent="CanvasLayer/UI/MothershipIndicator"]
+position = Vector2(576, 216)
+curve = SubResource("Curve2D_cebcg")
+script = ExtResource("17_0vlsi")
+
+[node name="IndicatorPathFollow2D" type="PathFollow2D" parent="CanvasLayer/UI/MothershipIndicator/IndicatorPath2D"]
+position = Vector2(-544, -96)
+rotation = -1.5682712
+
+[node name="IndicatorSprite" type="Sprite2D" parent="CanvasLayer/UI/MothershipIndicator/IndicatorPath2D/IndicatorPathFollow2D"]
+texture = ExtResource("18_0vlsi")
 
 [node name="MapControl" parent="." node_paths=PackedStringArray("player") instance=ExtResource("15_auc5q")]
 player = NodePath("../Player")
