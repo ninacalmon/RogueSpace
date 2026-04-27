@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dt18x6t7tdw8q"]
+[gd_scene load_steps=14 format=3 uid="uid://dt18x6t7tdw8q"]
 
 [ext_resource type="Texture2D" uid="uid://b4go5brbh3ndq" path="res://Sprites/Starfields/Starfield 1 - 1024x1024.png" id="1_458el"]
 [ext_resource type="PackedScene" uid="uid://b512vj2a4a3y" path="res://Scenes/player.tscn" id="2_ok1eh"]
@@ -9,13 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://b386x6u8nnjan" path="res://Scenes/SpaceBodies/asteroid_medium.tscn" id="8_nwpaj"]
 [ext_resource type="PackedScene" uid="uid://cudsfcaoyfdbs" path="res://Scenes/SpaceBodies/asteroid_bigger.tscn" id="9_yanqf"]
 [ext_resource type="PackedScene" uid="uid://dbryy6fgrl2er" path="res://Scenes/planet_big.tscn" id="10_ya3ly"]
+[ext_resource type="PackedScene" uid="uid://bskx6fe236s8a" path="res://Scenes/Levels/ui.tscn" id="11_ngp1c"]
 [ext_resource type="PackedScene" uid="uid://c7nj6rbljyvk3" path="res://Scenes/supermassive_black_hole.tscn" id="11_uk4s3"]
-[ext_resource type="Script" uid="uid://cwrgvd4dp6ts7" path="res://Scenes/velocity_control.gd" id="12_ihite"]
-[ext_resource type="FontFile" uid="uid://ynyhx0lmxagx" path="res://Fonts/MonospaceTypewriter.ttf" id="13_8cywt"]
-[ext_resource type="Texture2D" uid="uid://ud6qpc5xuvm3" path="res://Sprites/vecteezy_arrow_1186949.png" id="14_vv18r"]
-[ext_resource type="Script" uid="uid://dfs6psttgftjh" path="res://Scenes/warnings_control.gd" id="15_1h2yl"]
-[ext_resource type="Script" uid="uid://by0xgugeabppx" path="res://Scenes/fuel_progress_bar.gd" id="16_xt2d6"]
-[ext_resource type="Script" uid="uid://cic7dy2kdafc6" path="res://Scenes/resources_label.gd" id="16_ya3ly"]
 [ext_resource type="PackedScene" uid="uid://c2v243rukexl6" path="res://Scenes/map_control.tscn" id="18_pc3ex"]
 
 [sub_resource type="Environment" id="Environment_n7yfy"]
@@ -24,21 +19,6 @@ tonemap_mode = 2
 glow_enabled = true
 glow_bloom = 0.05
 glow_blend_mode = 1
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_72wnm"]
-blend_mode = 1
-
-[sub_resource type="Gradient" id="Gradient_n7yfy"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0.35189873, 0.36962026, 0.4126582)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_s3det"]
-gradient = SubResource("Gradient_n7yfy")
-width = 128
-height = 128
-fill = 1
-fill_from = Vector2(0.5, 0.5)
 
 [node name="Main" type="Node2D"]
 
@@ -246,138 +226,11 @@ position = Vector2(161, -278)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="UI" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_lock_ = true
+[node name="UI" parent="CanvasLayer" instance=ExtResource("11_ngp1c")]
 
-[node name="VelocityControl" type="Control" parent="CanvasLayer/UI" node_paths=PackedStringArray("arrow", "km_label")]
-anchors_preset = 0
-offset_top = 20.0
-offset_right = 114.0
-offset_bottom = 88.0
-size_flags_horizontal = 0
-script = ExtResource("12_ihite")
-arrow = NodePath("Arrow")
-km_label = NodePath("KmLabel")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/UI/VelocityControl"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -38.0
-offset_right = 170.0
-offset_bottom = 26.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/normal_font = ExtResource("13_8cywt")
-text = "velocidade"
-fit_content = true
-metadata/_edit_lock_ = true
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI/VelocityControl"]
-material = SubResource("CanvasItemMaterial_72wnm")
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.05263158
-anchor_top = 0.38235295
-anchor_right = 0.61403507
-anchor_bottom = 1.3235294
-offset_right = 64.0
-offset_bottom = 64.0
-size_flags_horizontal = 0
-size_flags_vertical = 8
-texture = SubResource("GradientTexture2D_s3det")
-metadata/_edit_use_anchors_ = true
-
-[node name="Arrow" type="Node2D" parent="CanvasLayer/UI/VelocityControl"]
-position = Vector2(69, 88)
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/UI/VelocityControl/Arrow"]
-position = Vector2(0, -5)
-scale = Vector2(0.07, 0.04)
-texture = ExtResource("14_vv18r")
-centered = false
-
-[node name="KmLabel" type="RichTextLabel" parent="CanvasLayer/UI/VelocityControl"]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 126.0
-offset_right = 133.0
-offset_bottom = 166.0
-theme_override_fonts/normal_font = ExtResource("13_8cywt")
-text = "0.0 m/s"
-horizontal_alignment = 1
-
-[node name="WarningsControl" type="Control" parent="CanvasLayer/UI"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("15_1h2yl")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/UI/WarningsControl"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 386.5
-offset_top = 61.0
-offset_right = 725.5
-offset_bottom = 189.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("13_8cywt")
-bbcode_enabled = true
-text = "CUIDADO!
-VOCÊ ESTÁ QUASE FORA DO ALCANÇE DE SUA NAVE MÃE
-(você será teleportado de volta e perderá todos os recursos)"
-horizontal_alignment = 1
-
-[node name="FuelProgressBar" type="ProgressBar" parent="CanvasLayer/UI"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 27.0
-grow_horizontal = 2
-script = ExtResource("16_xt2d6")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/UI/FuelProgressBar"]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 4.0
-offset_right = 131.0
-offset_bottom = 44.0
-theme_override_fonts/normal_font = ExtResource("13_8cywt")
-text = "combustível"
-
-[node name="ResourcesLabel" type="RichTextLabel" parent="CanvasLayer/UI"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -309.0
-offset_top = 39.0
-offset_bottom = 80.0
-grow_horizontal = 0
-theme_override_fonts/normal_font = ExtResource("13_8cywt")
-theme_override_fonts/bold_font = ExtResource("13_8cywt")
-theme_override_font_sizes/bold_font_size = 32
-bbcode_enabled = true
-text = "recursos: [b]0/200[/b]"
-fit_content = true
-horizontal_alignment = 2
-script = ExtResource("16_ya3ly")
+[node name="MothershipControl" parent="CanvasLayer/UI" index="1" node_paths=PackedStringArray("mothership", "player")]
+mothership = NodePath("../../../Mothership")
+player = NodePath("../../../Player")
 
 [node name="MapControl" parent="." node_paths=PackedStringArray("player") instance=ExtResource("18_pc3ex")]
 player = NodePath("../Player")
@@ -386,3 +239,5 @@ metadata/_edit_lock_ = true
 [node name="BackBufferCopy" type="BackBufferCopy" parent="."]
 copy_mode = 2
 metadata/_edit_lock_ = true
+
+[editable path="CanvasLayer/UI"]

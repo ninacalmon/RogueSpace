@@ -62,6 +62,7 @@ func show_button():
 func _on_button_pressed():
 	if can_progress:
 		Globals.level += 1
+		EventBus.level_pass.emit()
 		LevelTransition.change_scene_to("res://Scenes/Levels/Level%d.tscn" %Globals.level)
 		
 	else:

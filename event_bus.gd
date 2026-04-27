@@ -42,3 +42,6 @@ signal not_enough_resources
 
 @warning_ignore("unused_signal")
 signal resources_used
+
+@warning_ignore("unused_signal")
+signal level_pass
