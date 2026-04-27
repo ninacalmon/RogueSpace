@@ -42,3 +42,4 @@ attraction_executed_multiply = 0.2
 
 [node name="BodyRandomizer" parent="." node_paths=PackedStringArray("owner_body") instance=ExtResource("5_5b16v")]
 owner_body = NodePath("..")
+scale_min = 2.5

@@ -9,10 +9,10 @@ friction = 0.0
 bounce = 0.1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpe2g"]
-radius = 581.79895
+radius = 482.02594
 
 [node name="PlanetBig" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "gravitational_field")]
-mass = 3000.0
+mass = 2000.0
 physics_material_override = SubResource("PhysicsMaterial_syvxh")
 freeze = true
 linear_damp_mode = 1
@@ -26,7 +26,7 @@ shape = SubResource("CircleShape2D_vpe2g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.66083336, 1, 0.45, 1)
-scale = Vector2(24, 24)
+scale = Vector2(20, 20)
 texture = ExtResource("1_nokjm")
 
 [node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("2_v5wqc")]

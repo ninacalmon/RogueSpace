@@ -28,7 +28,6 @@ func _ready() -> void:
 	count_finished.emit(can_progress)
 	await get_tree().create_timer(2).timeout
 	show_button()
-	if !can_progress: button.grab_focus()
 
 func animate_number():
 	var tween_time: float
@@ -62,9 +61,11 @@ func show_button():
 
 func _on_button_pressed():
 	if can_progress:
-		LevelTransition.change_scene_to("res://Scenes/LevelTest.tscn")
+		Globals.level += 1
+		LevelTransition.change_scene_to("res://Scenes/Levels/Level%d.tscn" %Globals.level)
+		
 	else:
-		LevelTransition.change_scene_to("res://Scenes/LevelTest.tscn")
+		LevelTransition.change_scene_to("res://Scenes/Levels/Level%d.tscn" %Globals.level)
 
 func flash(what: Control):
 	var tween = get_tree().create_tween()

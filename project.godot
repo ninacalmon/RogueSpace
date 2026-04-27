@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="rogue-space"
-run/main_scene="uid://dfbrgn6xd46xq"
+run/main_scene="uid://cpilia3kpsel4"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -25,6 +25,7 @@ PowerUps="*res://power_ups.gd"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [editor_plugins]

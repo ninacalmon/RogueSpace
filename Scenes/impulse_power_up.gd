@@ -9,7 +9,6 @@ var self_modulate_color = Color(0.49, 0.678, 0.286)
 func _ready() -> void:
 	focus_entered.connect(_on_focus_entered)
 	focus_exited.connect(_on_focus_exited)
-	grab_focus()
 	pressed.connect(_on_button_pressed)
 	price_label.text = "%d recursos" %price
 

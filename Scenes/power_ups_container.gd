@@ -14,11 +14,12 @@ func _ready() -> void:
 
 func _on_count_finished(enough: bool):
 	if !enough:
-		return
+		modulate = Color(1.0, 1.0, 1.0, 0.2)
 	for p in power_up_options_array:
 		p.show()
 		p.disabled = false
 		await flash(p)
+	impulse_power_up.grab_focus()
 
 func flash(what: Control):
 	var tween = get_tree().create_tween()

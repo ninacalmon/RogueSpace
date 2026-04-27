@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://b512vj2a4a3y"]
+[gd_scene load_steps=14 format=3 uid="uid://b512vj2a4a3y"]
 
 [ext_resource type="Texture2D" uid="uid://bqcqdhl2djey1" path="res://Sprites/Aliens/Alien_Air6.png" id="1_f1ibl"]
 [ext_resource type="Script" uid="uid://i7mc57eu0q83" path="res://Scenes/player.gd" id="1_ktxno"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="3_ikhnj"]
 [ext_resource type="PackedScene" uid="uid://dp3f278n4cqbm" path="res://Scenes/motor_gpu_particles.tscn" id="5_d77i8"]
-[ext_resource type="PackedScene" uid="uid://c33euabcxvnsg" path="res://Scenes/modulars/asteroids_states_module.tscn" id="6_x3wgy"]
 [ext_resource type="AudioStream" uid="uid://cfoo2b2apjwmw" path="res://Sound Effects/fly1.mp3" id="7_3smsa"]
 [ext_resource type="AudioStream" uid="uid://cx2tfq2v41dbw" path="res://Sound Effects/tech1.mp3" id="8_8erm5"]
 [ext_resource type="AudioStream" uid="uid://b4ni1pu1osv1e" path="res://Sound Effects/tech2.mp3" id="9_f1ek2"]
@@ -66,9 +65,6 @@ debug_color = Color(1.0463983, 0.82971275, 0.11774563, 0.41960785)
 [node name="MotorGPUParticles" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_d77i8")]
 show_behind_parent = true
 player = NodePath("..")
-
-[node name="HurtModule" parent="." node_paths=PackedStringArray("owner_body") instance=ExtResource("6_x3wgy")]
-owner_body = NodePath("..")
 
 [node name="SFX" type="Node2D" parent="."]
 
