@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b386x6u8nnjan"]
+[gd_scene load_steps=11 format=3 uid="uid://b386x6u8nnjan"]
 
 [ext_resource type="Script" uid="uid://dp0jfjqkl4sdl" path="res://Scenes/modulars/asteroid.gd" id="1_odcst"]
 [ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/asteroid_pieces.tscn" id="2_ui03x"]
@@ -6,9 +6,16 @@
 [ext_resource type="Script" uid="uid://dny3ctsdweann" path="res://Scenes/SpaceBodies/damage_module.gd" id="4_pesxe"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="5_x18cb"]
 [ext_resource type="PackedScene" uid="uid://b7rex1sowfwcb" path="res://Scenes/modulars/body_randomizer.tscn" id="6_1iud6"]
+[ext_resource type="AudioStream" uid="uid://b7snqnvr1tlj" path="res://Sound Effects/break.wav" id="7_ui03x"]
+[ext_resource type="AudioStream" uid="uid://b5s0ptmpaw0he" path="res://Sound Effects/break2.wav" id="8_p6ea5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ygxgg"]
 radius = 16.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_p6ea5"]
+streams_count = 2
+stream_0/stream = ExtResource("7_ui03x")
+stream_1/stream = ExtResource("8_p6ea5")
 
 [node name="Asteroid" type="RigidBody2D" node_paths=PackedStringArray("damage_module", "collision", "sprite", "gravitational_field", "body_randomizer")]
 mass = 50.0
@@ -44,3 +51,7 @@ attraction_executed_multiply = 0.2
 owner_body = NodePath("..")
 scale_min = 0.8
 scale_max = 2.5
+
+[node name="BreakSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_p6ea5")
+volume_db = -20.0

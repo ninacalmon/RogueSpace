@@ -15,15 +15,15 @@ random_pitch = 1.3
 streams_count = 1
 stream_0/stream = ExtResource("5_ws088")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ws088"]
-bg_color = Color(0.31836, 0.42, 0.23519999, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ue4wm"]
+bg_color = Color(0.13644001, 0.18, 0.10080001, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ue4wm"]
-bg_color = Color(0.13644001, 0.18, 0.10080001, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ws088"]
+bg_color = Color(0.31836, 0.42, 0.23519999, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -161,11 +161,12 @@ disabled = true
 [node name="Button" type="Button" parent="CanvasLayer/Pressable"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_h1t7e")
-theme_override_styles/normal = SubResource("StyleBoxFlat_ws088")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ue4wm")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_ws088")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ue4wm")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_ue4wm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ue4wm")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_ue4wm")
-theme_override_styles/focus = SubResource("StyleBoxFlat_ue4wm")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ws088")
 disabled = true
 text = "Continuar... -->"

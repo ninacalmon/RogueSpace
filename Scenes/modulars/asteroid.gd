@@ -1,6 +1,8 @@
 extends BodySetup
 class_name Asteroid
 
+@onready var break_sound: AudioStreamPlayer = $BreakSound
+
 @export var damage_module: DamageModule
 @export var broken_piece_scene: PackedScene
 @export var base_endurance: float = 200
@@ -49,7 +51,7 @@ func _on_damage_taken(amount: float):
 	if amount < minimum_damage_amount:
 		return
 	
-	print("amount: ", amount," minimum amount: ", minimum_damage_amount,"endurance: ", endurance)
+	SFXManager.play_sound(break_sound)
 	
 	var damage = amount
 	var damage_proportion = damage / endurance
