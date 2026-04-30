@@ -37,7 +37,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VelocityControl" type="Control" parent="." node_paths=PackedStringArray("arrow", "km_label")]
+[node name="DirectionControl" type="Control" parent="." node_paths=PackedStringArray("arrow", "km_label")]
 anchors_preset = 0
 offset_top = 20.0
 offset_right = 114.0
@@ -47,7 +47,7 @@ script = ExtResource("1_gm34j")
 arrow = NodePath("Arrow")
 km_label = NodePath("KmLabel")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VelocityControl"]
+[node name="RichTextLabel" type="RichTextLabel" parent="DirectionControl"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
 anchors_preset = 7
@@ -55,17 +55,18 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -38.0
-offset_right = 170.0
-offset_bottom = 26.0
+offset_left = -37.0
+offset_top = -43.0
+offset_right = 63.0
+offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/normal_font = ExtResource("2_u7ps2")
-text = "velocidade"
+text = "direção"
 fit_content = true
+horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="VelocityControl"]
+[node name="TextureRect" type="TextureRect" parent="DirectionControl"]
 material = SubResource("CanvasItemMaterial_72wnm")
 layout_mode = 1
 anchors_preset = -1
@@ -80,16 +81,16 @@ size_flags_vertical = 8
 texture = SubResource("GradientTexture2D_s3det")
 metadata/_edit_use_anchors_ = true
 
-[node name="Arrow" type="Node2D" parent="VelocityControl"]
+[node name="Arrow" type="Node2D" parent="DirectionControl"]
 position = Vector2(69, 88)
 
-[node name="Sprite2D" type="Sprite2D" parent="VelocityControl/Arrow"]
+[node name="Sprite2D" type="Sprite2D" parent="DirectionControl/Arrow"]
 position = Vector2(0, -5)
 scale = Vector2(0.07, 0.04)
 texture = ExtResource("3_teh6u")
 centered = false
 
-[node name="KmLabel" type="RichTextLabel" parent="VelocityControl"]
+[node name="KmLabel" type="RichTextLabel" parent="DirectionControl"]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 126.0

@@ -7,9 +7,8 @@ extends Control
 
 @onready var control_button: Button = $Controlers/ControlButton
 
-
-
 func _ready() -> void:
+	Globals.level = 1
 	start.pressed.connect(_on_start_button_pressed)
 	controls.pressed.connect(_on_controls_button_pressed)
 	exit.pressed.connect(_on_exit_button_pressed)

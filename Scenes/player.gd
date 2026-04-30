@@ -1,10 +1,10 @@
 extends BodySetup
 class_name Player
 
-@export var speed: float = 1000
-@export var burst_speed: float = 1000
+@export var speed: float = 500
+@export var burst_speed: float = 2000
 @export var break_speed: float = 2
-@export var max_velocity: float = 1000.0
+@export var max_velocity: float = 800.0
 
 @export var camera: Camera2D
 @onready var propulsor_sfx: AudioStreamPlayer = $SFX/PropulsorSFX
@@ -18,6 +18,7 @@ var player_init_pos: Vector2
 var original_speed: float = speed
 
 var start_of_game: bool = true
+
 
 func _ready() -> void:
 	if body_randomizer: body_randomizer.initialize(sprite, collision)
@@ -54,23 +55,11 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	Input.is_action_pressed("move_up") or \
 	Input.is_action_pressed("move_right"):
 		EventBus.fuel_used.emit()
+		SFXManager.play_sound(propulsor_sfx)
 	
 	## Movement here vvv
-	if Input.is_action_pressed("move_down"):
-		state.apply_central_force(Vector2(0, speed))
-		SFXManager.play_sound(propulsor_sfx)
-
-	if Input.is_action_pressed("move_left"):
-		state.apply_central_force(Vector2(-speed, 0))
-		SFXManager.play_sound(propulsor_sfx)
-
-	if Input.is_action_pressed("move_up"):
-		state.apply_central_force(Vector2(0.0, -speed))
-		SFXManager.play_sound(propulsor_sfx)
-
-	if Input.is_action_pressed("move_right"):
-		state.apply_central_force(Vector2(speed, 0))
-		SFXManager.play_sound(propulsor_sfx)
+	movement(state)
+	steer_velocity(state)
 	
 	if Input.is_action_just_pressed("impulse_burst")\
 		and burst_cooldown_timer <= 0:
@@ -111,3 +100,43 @@ func execute_teletransport():
 	await tween.finished
 	linear_velocity = Vector2.ZERO
 	global_position = player_init_pos
+
+func movement(state):
+	if Input.is_action_pressed("move_down"):
+		var speed_altered = speed * Input.get_action_strength("move_down")
+		state.apply_central_force(Vector2(0, speed_altered))
+
+	if Input.is_action_pressed("move_left"):
+		var speed_altered = speed * Input.get_action_strength("move_left")
+		state.apply_central_force(Vector2(-speed_altered, 0))
+
+	if Input.is_action_pressed("move_up"):
+		var speed_altered = speed * Input.get_action_strength("move_up")
+		state.apply_central_force(Vector2(0.0, -speed_altered))
+
+	if Input.is_action_pressed("move_right"):
+		var speed_altered = speed * Input.get_action_strength("move_right")
+		state.apply_central_force(Vector2(speed_altered, 0))
+
+func steer_velocity(state: PhysicsDirectBodyState2D):
+	var input_dir = Vector2(
+		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	).normalized()
+
+	if input_dir == Vector2.ZERO:
+		return
+
+	var vel = state.linear_velocity
+	var magnitude = vel.length()
+
+	if magnitude < 50:
+		return
+
+	var target_vel = input_dir * magnitude
+	var angle = vel.angle_to(target_vel)
+
+	var max_turn = 0.01
+	angle = clamp(angle, -max_turn, max_turn)
+
+	state.linear_velocity = vel.rotated(angle)
