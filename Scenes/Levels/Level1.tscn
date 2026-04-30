@@ -113,9 +113,6 @@ position = Vector2(-1968, -2448)
 [node name="@RigidBody2D@301348" parent="Bodies" instance=ExtResource("9_384de")]
 position = Vector2(-1936, -2288)
 
-[node name="BlackHole" parent="Bodies" instance=ExtResource("7_fh0sh")]
-position = Vector2(400, -720)
-
 [node name="Asteroid" parent="Bodies" instance=ExtResource("10_htexa")]
 position = Vector2(-144, -560)
 
@@ -130,9 +127,6 @@ position = Vector2(816, -528)
 
 [node name="Planet" parent="Bodies" instance=ExtResource("6_ulvkb")]
 position = Vector2(-624, -1296)
-
-[node name="SupermassiveBlackHole" parent="Bodies" instance=ExtResource("8_03od6")]
-position = Vector2(-1072, -1872)
 
 [node name="@RigidBody2D@302131" parent="Bodies" instance=ExtResource("12_p6c81")]
 position = Vector2(400, -1616)
@@ -160,6 +154,9 @@ position = Vector2(624, -2160)
 
 [node name="@RigidBody2D@302139" parent="Bodies" instance=ExtResource("10_htexa")]
 position = Vector2(-912, -80)
+
+[node name="_RigidBody2D_302139" parent="Bodies" instance=ExtResource("10_htexa")]
+position = Vector2(-314, 132)
 
 [node name="@RigidBody2D@302140" parent="Bodies" instance=ExtResource("10_htexa")]
 position = Vector2(-688, 368)
@@ -194,14 +191,8 @@ position = Vector2(2320, -880)
 [node name="@RigidBody2D@302150" parent="Bodies" instance=ExtResource("10_htexa")]
 position = Vector2(304, 1360)
 
-[node name="@RigidBody2D@302900" parent="Bodies" instance=ExtResource("7_fh0sh")]
-position = Vector2(-368, 144)
-
 [node name="@RigidBody2D@302904" parent="Bodies" instance=ExtResource("12_p6c81")]
 position = Vector2(336, 400)
-
-[node name="@RigidBody2D@302908" parent="Bodies" instance=ExtResource("8_03od6")]
-position = Vector2(-400, 1232)
 
 [node name="@RigidBody2D@303664" parent="Bodies" instance=ExtResource("10_htexa")]
 position = Vector2(304, 80)
@@ -287,6 +278,23 @@ position = Vector2(176, -1200)
 [node name="@RigidBody2D@303691" parent="Bodies" instance=ExtResource("10_htexa")]
 position = Vector2(208, -1136)
 
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
+[node name="BlackHoles" type="Node2D" parent="."]
+
+[node name="BlackHole" parent="BlackHoles" instance=ExtResource("7_fh0sh")]
+position = Vector2(400, -720)
+
+[node name="SupermassiveBlackHole" parent="BlackHoles" instance=ExtResource("8_03od6")]
+position = Vector2(-1072, -1872)
+
+[node name="@RigidBody2D@302900" parent="BlackHoles" instance=ExtResource("7_fh0sh")]
+position = Vector2(-969, 214)
+
+[node name="@RigidBody2D@302908" parent="BlackHoles" instance=ExtResource("8_03od6")]
+position = Vector2(-400, 1232)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("11_n5ptj")]
@@ -298,8 +306,5 @@ player = NodePath("../../../Player")
 [node name="MapControl" parent="." node_paths=PackedStringArray("player") instance=ExtResource("16_qvja8")]
 player = NodePath("../Player")
 metadata/_edit_lock_ = true
-
-[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
-copy_mode = 2
 
 [editable path="CanvasLayer/UI"]

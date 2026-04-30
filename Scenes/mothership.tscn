@@ -7,7 +7,7 @@
 radius = 69.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q0gh8"]
-radius = 29.017237
+radius = 101.0
 
 [node name="Mothership" type="RigidBody2D"]
 freeze = true
@@ -24,5 +24,5 @@ texture = ExtResource("1_y16vs")
 script = ExtResource("2_ffvao")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnterArea"]
-position = Vector2(0, -86)
+position = Vector2(0, -54)
 shape = SubResource("CircleShape2D_q0gh8")
