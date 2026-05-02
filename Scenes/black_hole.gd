@@ -1,7 +1,6 @@
 extends BodySetup
 class_name BlackHole
 
-
 @onready var gulp_sfx: AudioStreamPlayer = $GulpSFX
 
 var is_body_close: bool
