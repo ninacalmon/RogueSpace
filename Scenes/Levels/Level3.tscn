@@ -44,7 +44,7 @@ full_view_zoom = Vector2(0.3, 0.3)
 full_view_pos = Vector2(0, -800)
 
 [node name="Mothership" parent="." instance=ExtResource("4_gn138")]
-position = Vector2(0, 190)
+position = Vector2(0, 290)
 
 [node name="Bodies" type="Node2D" parent="."]
 
@@ -216,10 +216,6 @@ position = Vector2(1221, -1110)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("9_t0ble")]
-
-[node name="MothershipControl" parent="CanvasLayer/UI" index="1" node_paths=PackedStringArray("mothership", "player")]
-mothership = NodePath("../../../Mothership")
-player = NodePath("../../../Player")
 
 [node name="MapControl" parent="." node_paths=PackedStringArray("player") instance=ExtResource("17_8o6sl")]
 player = NodePath("../Player")

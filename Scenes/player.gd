@@ -47,23 +47,15 @@ func _process(delta: float) -> void:
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if Globals.is_cutscene:
 		return
-
-	Globals.player_linear_velocity = state.linear_velocity
-	
-	if Input.is_action_pressed("move_down") or \
-	Input.is_action_pressed("move_left") or \
-	Input.is_action_pressed("move_up") or \
-	Input.is_action_pressed("move_right"):
-		EventBus.fuel_used.emit()
-		SFXManager.play_sound(propulsor_sfx)
 	
 	## Movement here vvv
 	movement(state)
 	steer_velocity(state)
 	
+	Globals.player_linear_velocity = state.linear_velocity
+	
 	if Input.is_action_just_pressed("impulse_burst")\
 		and burst_cooldown_timer <= 0:
-			print(burst_speed)
 			burst_cooldown_timer = base_burst_cooldown
 			EventBus.burst_fuel_used.emit()
 			state.apply_impulse(linear_velocity.normalized() * burst_speed)
@@ -102,21 +94,18 @@ func execute_teletransport():
 	global_position = player_init_pos
 
 func movement(state):
-	if Input.is_action_pressed("move_down"):
-		var speed_altered = speed * Input.get_action_strength("move_down")
-		state.apply_central_force(Vector2(0, speed_altered))
+	var input_dir: Vector2 = Vector2(
+		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	).normalized()
+	
+	if input_dir == Vector2.ZERO:
+		return
+	
+	state.apply_central_force(input_dir * speed)
+	EventBus.fuel_used.emit()
+	SFXManager.play_sound(propulsor_sfx)
 
-	if Input.is_action_pressed("move_left"):
-		var speed_altered = speed * Input.get_action_strength("move_left")
-		state.apply_central_force(Vector2(-speed_altered, 0))
-
-	if Input.is_action_pressed("move_up"):
-		var speed_altered = speed * Input.get_action_strength("move_up")
-		state.apply_central_force(Vector2(0.0, -speed_altered))
-
-	if Input.is_action_pressed("move_right"):
-		var speed_altered = speed * Input.get_action_strength("move_right")
-		state.apply_central_force(Vector2(speed_altered, 0))
 
 func steer_velocity(state: PhysicsDirectBodyState2D):
 	var input_dir = Vector2(

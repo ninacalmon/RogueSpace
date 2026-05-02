@@ -1,28 +1,27 @@
 [gd_scene load_steps=5 format=3 uid="uid://b60wc4xruimxc"]
 
-[ext_resource type="Texture2D" uid="uid://cukh1gwwirlos" path="res://Sprites/Player/Ship_Mid.png" id="1_y16vs"]
+[ext_resource type="Texture2D" uid="uid://c7b8qo7xludb5" path="res://Proper Sprites/Nave.png" id="1_ffvao"]
 [ext_resource type="Script" uid="uid://cpkq2vhfiv77u" path="res://Scenes/mothership_enter_area.gd" id="2_ffvao"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_y16vs"]
-radius = 69.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ffvao"]
+size = Vector2(408, 372)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q0gh8"]
-radius = 101.0
+radius = 123.00407
 
 [node name="Mothership" type="RigidBody2D"]
 freeze = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
-shape = SubResource("CircleShape2D_y16vs")
+shape = SubResource("RectangleShape2D_ffvao")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(8, -8)
-texture = ExtResource("1_y16vs")
+texture = ExtResource("1_ffvao")
 
 [node name="EnterArea" type="Area2D" parent="."]
+position = Vector2(0, -153)
 script = ExtResource("2_ffvao")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnterArea"]
-position = Vector2(0, -54)
 shape = SubResource("CircleShape2D_q0gh8")
