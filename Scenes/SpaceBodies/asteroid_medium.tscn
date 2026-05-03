@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dp0jfjqkl4sdl" path="res://Scenes/modulars/asteroid.gd" id="1_odcst"]
 [ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/asteroid_pieces.tscn" id="2_ui03x"]
-[ext_resource type="Texture2D" uid="uid://ds64ufrvroobs" path="res://Proper Sprites/small_debris.png" id="3_p6ea5"]
+[ext_resource type="Texture2D" uid="uid://6bcu0xt25j0b" path="res://Sprites/asteroid_tileset.png" id="3_p6ea5"]
 [ext_resource type="Script" uid="uid://dny3ctsdweann" path="res://Scenes/SpaceBodies/damage_module.gd" id="4_pesxe"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="5_x18cb"]
 [ext_resource type="PackedScene" uid="uid://b7rex1sowfwcb" path="res://Scenes/modulars/body_randomizer.tscn" id="6_1iud6"]
@@ -34,7 +34,7 @@ shape = SubResource("CircleShape2D_ygxgg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_p6ea5")
-hframes = 2
+hframes = 3
 
 [node name="DamageModule" type="Node2D" parent="." node_paths=PackedStringArray("owner_body")]
 script = ExtResource("4_pesxe")

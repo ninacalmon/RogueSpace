@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dp0jfjqkl4sdl" path="res://Scenes/modulars/asteroid.gd" id="1_kqist"]
 [ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/asteroid_pieces.tscn" id="2_5b16v"]
-[ext_resource type="Texture2D" uid="uid://5lyyycqywqff" path="res://Proper Sprites/big_debris.png" id="3_ljnax"]
+[ext_resource type="Texture2D" uid="uid://6bcu0xt25j0b" path="res://Sprites/asteroid_tileset.png" id="3_ljnax"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="4_73j5n"]
 [ext_resource type="Script" uid="uid://dny3ctsdweann" path="res://Scenes/SpaceBodies/damage_module.gd" id="4_ygxgg"]
 [ext_resource type="PackedScene" uid="uid://b7rex1sowfwcb" path="res://Scenes/modulars/body_randomizer.tscn" id="5_5b16v"]
@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://b5s0ptmpaw0he" path="res://Sound Effects/break2.wav" id="8_pr0jb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ygxgg"]
-radius = 25.019993
+radius = 17.029387
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_x522s"]
 streams_count = 2
@@ -31,7 +31,7 @@ body_randomizer = NodePath("BodyRandomizer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_ljnax")
-hframes = 2
+hframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ygxgg")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://b512vj2a4a3y"]
 
 [ext_resource type="Script" uid="uid://i7mc57eu0q83" path="res://Scenes/player.gd" id="1_ktxno"]
-[ext_resource type="Texture2D" uid="uid://c6jqud7hfg8yh" path="res://Proper Sprites/Corpo-Seco.png" id="2_f1ek2"]
+[ext_resource type="Texture2D" uid="uid://bqcqdhl2djey1" path="res://Sprites/Aliens/Alien_Air6.png" id="2_f1ek2"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="3_ikhnj"]
 [ext_resource type="PackedScene" uid="uid://dp3f278n4cqbm" path="res://Scenes/motor_gpu_particles.tscn" id="5_d77i8"]
 [ext_resource type="AudioStream" uid="uid://cfoo2b2apjwmw" path="res://Sound Effects/fly1.mp3" id="7_3smsa"]
@@ -42,7 +42,6 @@ gravitational_field = NodePath("GravitationalField")
 gravitational_field_resources = NodePath("GravitationalFieldResources")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_f1ek2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

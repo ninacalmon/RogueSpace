@@ -46,7 +46,7 @@ full_view_zoom = Vector2(0.3, 0.3)
 full_view_pos = Vector2(0, -800)
 
 [node name="Mothership" parent="." instance=ExtResource("4_rsd5h")]
-position = Vector2(0, 290)
+position = Vector2(0, 190)
 
 [node name="Bodies" type="Node2D" parent="."]
 
