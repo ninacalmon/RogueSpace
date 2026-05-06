@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dfbrgn6xd46xq"]
+[gd_scene load_steps=21 format=3 uid="uid://i2vxan5rltvg"]
 
 [ext_resource type="Texture2D" uid="uid://b4go5brbh3ndq" path="res://Sprites/Starfields/Starfield 1 - 1024x1024.png" id="1_gaqb7"]
 [ext_resource type="PackedScene" uid="uid://b512vj2a4a3y" path="res://Scenes/player.tscn" id="2_cebcg"]

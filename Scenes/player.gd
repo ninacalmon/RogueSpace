@@ -10,15 +10,22 @@ class_name Player
 @onready var propulsor_sfx: AudioStreamPlayer = $SFX/PropulsorSFX
 @onready var teleport_sfx: AudioStreamPlayer = $SFX/TeleportSFX
 @onready var space_winds_sfx: AudioStreamPlayer = $SFX/SpaceWindsSFX
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 @export var base_burst_cooldown: float = 3.0
 var burst_cooldown_timer: float
+
+@export var base_destroy_tolerance_timer: float = 0.5
+var destroy_tolerance_timer: float
+
+@export var damage_module: DamageModule
 
 var player_init_pos: Vector2
 var original_speed: float = speed
 
 var start_of_game: bool = true
 
+var can_destroy: bool
 
 func _ready() -> void:
 	if body_randomizer: body_randomizer.initialize(sprite, collision)
@@ -30,6 +37,8 @@ func _ready() -> void:
 	EventBus.player_almost_out_of_bounds.connect(_on_player_almost_out_of_bounds)
 	EventBus.player_out_of_bounds.connect(_on_player_out_of_bounds)
 	EventBus.cutscene_off.connect(start_game)
+	damage_module.damage_taken.connect(_on_damage_taken)
+	damage_module.enemy_damage_taken.connect(_on_enemy_damage_taken)
 
 func start_game():
 	if start_of_game:
@@ -41,8 +50,11 @@ func start_game():
 
 func _process(delta: float) -> void:
 	burst_cooldown_timer -= delta
+	destroy_tolerance_timer -= delta
 	if burst_cooldown_timer <= 0:
 		burst_cooldown_timer = 0
+	if destroy_tolerance_timer <= 0:
+		destroy_tolerance_timer = 0
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if Globals.is_cutscene:
@@ -51,21 +63,15 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	## Movement here vvv
 	movement(state)
 	steer_velocity(state)
+	impulse_burst(state)
+	break_stop(state)
 	
 	Globals.player_linear_velocity = state.linear_velocity
 	
-	if Input.is_action_just_pressed("impulse_burst")\
-		and burst_cooldown_timer <= 0:
-			burst_cooldown_timer = base_burst_cooldown
-			EventBus.burst_fuel_used.emit()
-			state.apply_impulse(linear_velocity.normalized() * burst_speed)
-	
 	if state.linear_velocity.length() > max_velocity:
 		state.linear_velocity = state.linear_velocity.normalized() * max_velocity
-	
-	# Break vvvvvv
-	if Input.is_action_pressed("break_stop"):
-		state.linear_velocity = state.linear_velocity.move_toward(Vector2.ZERO, break_speed)
+
+	able_destroy()
 
 	if Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
@@ -106,6 +112,16 @@ func movement(state):
 	EventBus.fuel_used.emit()
 	SFXManager.play_sound(propulsor_sfx)
 
+func impulse_burst(state):
+	if Input.is_action_just_pressed("impulse_burst")\
+		and burst_cooldown_timer <= 0:
+			burst_cooldown_timer = base_burst_cooldown
+			EventBus.burst_fuel_used.emit()
+			state.apply_impulse(linear_velocity.normalized() * burst_speed)
+
+func break_stop(state):
+	if Input.is_action_pressed("break_stop"):
+		state.linear_velocity = state.linear_velocity.move_toward(Vector2.ZERO, break_speed)
 
 func steer_velocity(state: PhysicsDirectBodyState2D):
 	var input_dir = Vector2(
@@ -129,3 +145,28 @@ func steer_velocity(state: PhysicsDirectBodyState2D):
 	angle = clamp(angle, -max_turn, max_turn)
 
 	state.linear_velocity = vel.rotated(angle)
+
+func able_destroy():
+	if Input.is_action_just_pressed("destroy"):
+		destroy_tolerance_timer = base_destroy_tolerance_timer
+	can_destroy = !(destroy_tolerance_timer <= 0)
+	if can_destroy:
+		modulate = Color(0, 0, 1)
+	else:
+		modulate = Color(1, 1, 1)
+
+func _on_damage_taken(amount: float, _causer: RigidBody2D):
+	if can_destroy:
+		return
+	else:
+		var damage = amount / 20
+		EventBus.damage_taken.emit(self, damage)
+
+func _on_enemy_damage_taken(amount: float):
+	flash()
+	EventBus.damage_taken.emit(self, amount)
+
+func flash():
+	sprite_2d.modulate = Color(18.892, 18.892, 18.892)
+	await get_tree().create_timer(0.1).timeout
+	sprite_2d.modulate = Color(1, 1, 1)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://c7nj6rbljyvk3"]
+[gd_scene load_steps=20 format=3 uid="uid://c7nj6rbljyvk3"]
 
 [ext_resource type="Script" uid="uid://dr85npip0vvdg" path="res://Scenes/superm_black_hole.gd" id="1_8py6e"]
 [ext_resource type="Texture2D" uid="uid://506majaor5n" path="res://Sprites/Black_hole.png" id="2_8py6e"]
 [ext_resource type="Shader" uid="uid://s03egy3ha6nk" path="res://Scenes/BlackHoleShader.gdshader" id="2_lfh63"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="3_dv4l3"]
+[ext_resource type="Script" uid="uid://bh0d8bq6rk6f" path="res://Scenes/black_hole_shader.gd" id="4_lfh63"]
 [ext_resource type="AudioStream" uid="uid://cyu78nkci5acj" path="res://Sound Effects/gulp.mp3" id="6_lfh63"]
 
 [sub_resource type="Gradient" id="Gradient_0htpi"]
@@ -32,6 +33,32 @@ shader = ExtResource("2_lfh63")
 shader_parameter/curve = SubResource("CurveTexture_dv4l3")
 shader_parameter/strenght = 0.30000006175000005
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dv4l3"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_lfh63"]
+offsets = PackedFloat32Array(0.44715446, 0.5230352, 0.66395664)
+colors = PackedColorArray(0, 0, 0, 1, 0.17, 0.17, 0.17, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v4hwt"]
+gradient = SubResource("Gradient_lfh63")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lfh63"]
+blend_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_v4hwt"]
+offsets = PackedFloat32Array(0.09214092, 0.20596206)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_81w2e"]
+gradient = SubResource("Gradient_v4hwt")
+width = 640
+height = 640
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v4hwt"]
 random_pitch = 2.0
 random_volume_offset_db = 1.2
@@ -48,7 +75,7 @@ sprite = NodePath("Sprite2D")
 gravitational_field = NodePath("GravitationalField")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-energy = 16.0
+energy = 6.0
 texture = SubResource("GradientTexture2D_retql")
 texture_scale = 5.0
 
@@ -59,11 +86,17 @@ shape = SubResource("CircleShape2D_0htpi")
 material = SubResource("ShaderMaterial_gmyqq")
 scale = Vector2(6, 6)
 texture = ExtResource("2_8py6e")
+script = ExtResource("4_lfh63")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_dv4l3")
+scale = Vector2(1.59375, 1.59375)
+texture = SubResource("GradientTexture2D_v4hwt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_8py6e")
+material = SubResource("CanvasItemMaterial_lfh63")
+scale = Vector2(0.2, 0.2)
+texture = SubResource("GradientTexture2D_81w2e")
 
 [node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("3_dv4l3")]
 owner_body = NodePath("..")

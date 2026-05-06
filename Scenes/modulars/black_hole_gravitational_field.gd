@@ -18,14 +18,10 @@ func _ready() -> void:
 	area_exited.connect(_on_grav_field_exited_by_area)
 	event_horizon.area_entered.connect(_on_event_horizon_entered)
 
-func _on_grav_field_entered_by_area(area: GravitationalField):
-	var body = area.owner_body
-	grav_field_entered.emit(body)
-	body_near.append(body)
-
-func _on_grav_field_exited_by_area(area: GravitationalField):
-	var body = area.owner_body
-	body_near.erase(body)
+#func _on_grav_field_entered_by_area(area: GravitationalField):
+	#var body = area.owner_body
+	#grav_field_entered.emit(body)
+	#body_near.append(body)
 
 func _on_event_horizon_entered(area: GravitationalField):
 	var body = area.owner_body

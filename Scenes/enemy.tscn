@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://br070cnq6sve"]
+
+[ext_resource type="Script" uid="uid://7afwh36bc151" path="res://enemy.gd" id="1_287tu"]
+[ext_resource type="Texture2D" uid="uid://d1sc3tvg23xsr" path="res://Sprites/Aliens/Alien_Ground1.png" id="2_0830c"]
+[ext_resource type="Script" uid="uid://dakt7r353r7ae" path="res://Scenes/SpaceBodies/body_randomizer.gd" id="4_1dp5w"]
+[ext_resource type="Script" uid="uid://iatwgk3de1nj" path="res://Scenes/hurt_box.gd" id="5_0830c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_auwsv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ghaa6"]
+radius = 12.0
+
+[node name="Enemy" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "gravitational_field", "body_randomizer")]
+lock_rotation = true
+script = ExtResource("1_287tu")
+collision = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
+gravitational_field = NodePath("")
+body_randomizer = NodePath("BodyRandomizer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_auwsv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0.07999998, 0.07999998, 1)
+rotation = -1.5707964
+texture = ExtResource("2_0830c")
+
+[node name="BodyRandomizer" type="Node2D" parent="." node_paths=PackedStringArray("owner_body")]
+script = ExtResource("4_1dp5w")
+owner_body = NodePath("..")
+rand_rotation = false
+rand_linear_velocity = false
+rand_angular_velocity = false
+scale_min = 0.5
+scale_max = 1.0
+metadata/_custom_type_script = "uid://dakt7r353r7ae"
+
+[node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("5_0830c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_ghaa6")

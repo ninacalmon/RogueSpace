@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://3vg8bv7t077f"]
+[gd_scene load_steps=14 format=3 uid="uid://3vg8bv7t077f"]
 
 [ext_resource type="Shader" uid="uid://s03egy3ha6nk" path="res://Scenes/BlackHoleShader.gdshader" id="1_cv587"]
 [ext_resource type="Script" uid="uid://ctkk6v6iuor2q" path="res://Scenes/black_hole.gd" id="1_ratl1"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="2_0htpi"]
 [ext_resource type="Texture2D" uid="uid://506majaor5n" path="res://Sprites/Black_hole.png" id="2_hjqa0"]
+[ext_resource type="Script" uid="uid://bh0d8bq6rk6f" path="res://Scenes/black_hole_shader.gd" id="4_ratl1"]
 [ext_resource type="AudioStream" uid="uid://cyu78nkci5acj" path="res://Sound Effects/gulp.mp3" id="5_wn18u"]
 
 [sub_resource type="Gradient" id="Gradient_0htpi"]
@@ -61,6 +62,7 @@ shape = SubResource("CircleShape2D_0htpi")
 material = SubResource("ShaderMaterial_ratl1")
 scale = Vector2(4, 4)
 texture = ExtResource("2_hjqa0")
+script = ExtResource("4_ratl1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)

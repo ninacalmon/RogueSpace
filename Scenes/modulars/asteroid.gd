@@ -9,6 +9,8 @@ class_name Asteroid
 @export var base_pieces_amount: int = 10
 @export var minimum_damage_amount: float = 100
 
+@export var enemy_scene: PackedScene
+
 var endurance: float
 var pieces_amount: int
 var pieces_amount_bonus: float = 1.5
@@ -47,19 +49,31 @@ func _ready() -> void:
 	parent = get_parent()
 
 
-func _on_damage_taken(amount: float):
+func _on_damage_taken(amount: float, causer: RigidBody2D):
 	if amount < minimum_damage_amount:
 		return
 	
 	SFXManager.play_sound(break_sound)
 	
+	if causer is Player:
+		handle_player_damage(amount, causer)
+	else:
+		var damage = amount * 0.5
+		var damage_proportion = damage / endurance
+		endurance -= damage
+		if endurance <= 0: total_break()
+		else: call_deferred("shed_pieces", damage_proportion)
+
+func handle_player_damage(amount: float, player: Player):
+	if !player.can_destroy:
+		return
+
 	var damage = amount
 	var damage_proportion = damage / endurance
-	#if damage_proportion * 100 < 10:
-		#return
 	endurance -= damage
 	if endurance <= 0: total_break()
 	else: call_deferred("shed_pieces", damage_proportion)
+	spawn_critters()
 
 
 func shed_pieces(damage_proportion: float):
@@ -93,3 +107,16 @@ func scale_down(amount: float, duration: float = 0.5):
 	tween.parallel().tween_property(sprite, "scale", sprite_new_scale, duration)
 	tween.parallel().tween_property(collision, "scale", collision_new_scale, duration)
 	await tween.finished
+
+func spawn_critters():
+	print("oi")
+	var chance = randi_range(1, 20)
+	if chance != 1:
+		return
+	var enemy_amount = randi_range(2, 5)
+	for e in enemy_amount:
+		var new_enemy: Enemy = enemy_scene.instantiate()
+		new_enemy.player = get_tree().get_first_node_in_group("Player_Group")
+		new_enemy.global_position = global_position \
+		+ Vector2(randi_range(-20, 20), randi_range(-20, 20))
+		parent.call_deferred("add_child", new_enemy)
