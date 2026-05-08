@@ -1,16 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://dttvt4tg8e3gv"]
+[gd_scene load_steps=11 format=3 uid="uid://dttvt4tg8e3gv"]
 
 [ext_resource type="Texture2D" uid="uid://b4go5brbh3ndq" path="res://Sprites/Starfields/Starfield 1 - 1024x1024.png" id="1_sytno"]
-[ext_resource type="PackedScene" uid="uid://b512vj2a4a3y" path="res://Scenes/player.tscn" id="2_as08y"]
-[ext_resource type="Script" uid="uid://dw2m8ymjsljfq" path="res://Scenes/camera.gd" id="3_pk3hp"]
-[ext_resource type="PackedScene" uid="uid://b60wc4xruimxc" path="res://Scenes/mothership.tscn" id="4_bose6"]
-[ext_resource type="PackedScene" uid="uid://3vg8bv7t077f" path="res://Scenes/black_hole.tscn" id="6_n2eit"]
-[ext_resource type="PackedScene" uid="uid://b386x6u8nnjan" path="res://Scenes/SpaceBodies/asteroid_medium(old).tscn" id="7_cbr4v"]
-[ext_resource type="PackedScene" uid="uid://cudsfcaoyfdbs" path="res://Scenes/SpaceBodies/asteroid_bigger.tscn" id="8_atq0n"]
-[ext_resource type="PackedScene" uid="uid://vbsslu1hl1sg" path="res://Scenes/planet.tscn" id="9_wj3oa"]
-[ext_resource type="PackedScene" uid="uid://bskx6fe236s8a" path="res://Scenes/Levels/ui.tscn" id="10_7f72b"]
-[ext_resource type="PackedScene" uid="uid://c7nj6rbljyvk3" path="res://Scenes/supermassive_black_hole.tscn" id="10_xawp5"]
-[ext_resource type="PackedScene" uid="uid://c2v243rukexl6" path="res://Scenes/map_control.tscn" id="17_hsmnh"]
+[ext_resource type="PackedScene" uid="uid://b512vj2a4a3y" path="res://Scenes/Player/player.tscn" id="2_as08y"]
+[ext_resource type="Script" uid="uid://dw2m8ymjsljfq" path="res://Scenes/UI/camera.gd" id="3_pk3hp"]
+[ext_resource type="PackedScene" uid="uid://b60wc4xruimxc" path="res://Scenes/Player/mothership.tscn" id="4_bose6"]
+[ext_resource type="PackedScene" uid="uid://3vg8bv7t077f" path="res://Scenes/BackHoles/black_hole.tscn" id="6_n2eit"]
+[ext_resource type="PackedScene" uid="uid://vbsslu1hl1sg" path="res://Scenes/SpaceBodies/planet.tscn" id="9_wj3oa"]
+[ext_resource type="PackedScene" uid="uid://bskx6fe236s8a" path="res://Scenes/UI/ui.tscn" id="10_7f72b"]
+[ext_resource type="PackedScene" uid="uid://c7nj6rbljyvk3" path="res://Scenes/BackHoles/supermassive_black_hole.tscn" id="10_xawp5"]
+[ext_resource type="PackedScene" uid="uid://c2v243rukexl6" path="res://Scenes/Modulars/map_control.tscn" id="17_hsmnh"]
 
 [sub_resource type="Environment" id="Environment_n7yfy"]
 background_mode = 3
@@ -51,39 +49,6 @@ position = Vector2(0, 190)
 
 [node name="SupermassiveBlackHole" parent="Bodies" instance=ExtResource("10_xawp5")]
 position = Vector2(0, -467)
-
-[node name="Asteroid" parent="Bodies" instance=ExtResource("8_atq0n")]
-position = Vector2(-613, -472)
-
-[node name="Asteroid2" parent="Bodies" instance=ExtResource("8_atq0n")]
-position = Vector2(-37, -505)
-
-[node name="Asteroid3" parent="Bodies" instance=ExtResource("8_atq0n")]
-position = Vector2(523, -890)
-
-[node name="Asteroid4" parent="Bodies" instance=ExtResource("8_atq0n")]
-position = Vector2(701, -111)
-
-[node name="Asteroid5" parent="Bodies" instance=ExtResource("8_atq0n")]
-position = Vector2(-512, 39)
-
-[node name="Asteroid6" parent="Bodies" instance=ExtResource("7_cbr4v")]
-position = Vector2(-555, -182)
-
-[node name="Asteroid7" parent="Bodies" instance=ExtResource("7_cbr4v")]
-position = Vector2(-606, -802)
-
-[node name="Asteroid8" parent="Bodies" instance=ExtResource("7_cbr4v")]
-position = Vector2(819, -457)
-
-[node name="Asteroid9" parent="Bodies" instance=ExtResource("7_cbr4v")]
-position = Vector2(422, -1115)
-
-[node name="Asteroid10" parent="Bodies" instance=ExtResource("7_cbr4v")]
-position = Vector2(-1017, -1084)
-
-[node name="Asteroid11" parent="Bodies" instance=ExtResource("7_cbr4v")]
-position = Vector2(1038, -697)
 
 [node name="BlackHole" parent="Bodies" instance=ExtResource("6_n2eit")]
 position = Vector2(-257, -148)

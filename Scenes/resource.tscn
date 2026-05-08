@@ -1,10 +1,19 @@
 [gd_scene load_steps=7 format=3 uid="uid://duod8nt2wlend"]
 
-[ext_resource type="Texture2D" uid="uid://bh7ursa1gvsqs" path="res://VFX/VFX_Explosion1_strip8.png" id="1_2f3j8"]
-[ext_resource type="Script" uid="uid://v3ps2v2vlrq2" path="res://Scenes/resource.gd" id="1_xpqyo"]
+[ext_resource type="Texture2D" uid="uid://bh7ursa1gvsqs" path="res://Sprites/VFX/VFX_Explosion1_strip8.png" id="1_h2yrh"]
 [ext_resource type="Script" uid="uid://b8uwpl8kmnf0e" path="res://Scenes/SpaceBodies/body_setup.gd" id="3_td3b6"]
 [ext_resource type="Script" uid="uid://dakt7r353r7ae" path="res://Scenes/SpaceBodies/body_randomizer.gd" id="4_8dxig"]
-[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="5_07tds"]
+[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="5_07tds"]
+
+[sub_resource type="GDScript" id="GDScript_td3b6"]
+script/source = "extends RigidBody2D
+class_name SpaceResource
+
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
+func _ready() -> void:
+	sprite_2d.frame = randi_range(0, sprite_2d.hframes - 1)
+"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xpqyo"]
 radius = 8.0
@@ -12,7 +21,7 @@ radius = 8.0
 [node name="Resource" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_xpqyo")
+script = SubResource("GDScript_td3b6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xpqyo")
@@ -20,7 +29,7 @@ shape = SubResource("CircleShape2D_xpqyo")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(2.1907146, 0, 2.2639842, 1)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("1_2f3j8")
+texture = ExtResource("1_h2yrh")
 hframes = 8
 
 [node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("5_07tds")]

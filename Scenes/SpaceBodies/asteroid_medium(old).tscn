@@ -1,50 +1,50 @@
-[gd_scene load_steps=12 format=3 uid="uid://b386x6u8nnjan"]
+[gd_scene load_steps=12 format=3 uid="uid://dxlq3u84vus7"]
 
-[ext_resource type="Script" uid="uid://b2hk33hmukp8b" path="res://Scenes/modulars/asteroid-old.gd" id="1_pesxe"]
-[ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/asteroid_pieces.tscn" id="2_ui03x"]
-[ext_resource type="Texture2D" uid="uid://6bcu0xt25j0b" path="res://Sprites/asteroid_tileset.png" id="3_p6ea5"]
-[ext_resource type="PackedScene" uid="uid://br070cnq6sve" path="res://Scenes/enemy.tscn" id="3_pesxe"]
-[ext_resource type="Script" uid="uid://dny3ctsdweann" path="res://Scenes/SpaceBodies/damage_module.gd" id="4_pesxe"]
-[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="5_x18cb"]
-[ext_resource type="PackedScene" uid="uid://b7rex1sowfwcb" path="res://Scenes/modulars/body_randomizer.tscn" id="6_1iud6"]
-[ext_resource type="AudioStream" uid="uid://b7snqnvr1tlj" path="res://Sound Effects/break.wav" id="7_ui03x"]
-[ext_resource type="AudioStream" uid="uid://b5s0ptmpaw0he" path="res://Sound Effects/break2.wav" id="8_p6ea5"]
+[ext_resource type="Script" uid="uid://b2hk33hmukp8b" path="res://Scenes/Modulars/asteroid-old.gd" id="1_o361k"]
+[ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/Asteroids/asteroid_pieces.tscn" id="2_sddo5"]
+[ext_resource type="PackedScene" uid="uid://br070cnq6sve" path="res://Scenes/Modulars/enemy.tscn" id="3_w6u5s"]
+[ext_resource type="Texture2D" uid="uid://6bcu0xt25j0b" path="res://Sprites/asteroid_tileset.png" id="4_tx63h"]
+[ext_resource type="Script" uid="uid://dny3ctsdweann" path="res://Scenes/SpaceBodies/damage_module.gd" id="5_xol0n"]
+[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="6_1summ"]
+[ext_resource type="PackedScene" uid="uid://b7rex1sowfwcb" path="res://Scenes/Modulars/body_randomizer.tscn" id="7_ostlk"]
+[ext_resource type="AudioStream" uid="uid://b7snqnvr1tlj" path="res://Sound Effects/break.wav" id="8_8hnlj"]
+[ext_resource type="AudioStream" uid="uid://b5s0ptmpaw0he" path="res://Sound Effects/break2.wav" id="9_f0md8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ygxgg"]
 radius = 16.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_p6ea5"]
 streams_count = 2
-stream_0/stream = ExtResource("7_ui03x")
-stream_1/stream = ExtResource("8_p6ea5")
+stream_0/stream = ExtResource("8_8hnlj")
+stream_1/stream = ExtResource("9_f0md8")
 
 [node name="Asteroid" type="RigidBody2D" node_paths=PackedStringArray("damage_module")]
 mass = 50.0
 contact_monitor = true
 max_contacts_reported = 1
-script = ExtResource("1_pesxe")
+script = ExtResource("1_o361k")
 damage_module = NodePath("DamageModule")
-broken_piece_scene = ExtResource("2_ui03x")
-enemy_scene = ExtResource("3_pesxe")
+broken_piece_scene = ExtResource("2_sddo5")
+enemy_scene = ExtResource("3_w6u5s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ygxgg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_p6ea5")
+texture = ExtResource("4_tx63h")
 hframes = 3
 
 [node name="DamageModule" type="Node2D" parent="." node_paths=PackedStringArray("owner_body")]
-script = ExtResource("4_pesxe")
+script = ExtResource("5_xol0n")
 owner_body = NodePath("..")
 
-[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("5_x18cb")]
+[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("6_1summ")]
 owner_body = NodePath("..")
 owner_collision_shape = NodePath("../CollisionShape2D")
 mass_to_radius_multiply = 0.8
 attraction_executed_multiply = 0.1
 
-[node name="BodyRandomizer" parent="." node_paths=PackedStringArray("owner_body") instance=ExtResource("6_1iud6")]
+[node name="BodyRandomizer" parent="." node_paths=PackedStringArray("owner_body") instance=ExtResource("7_ostlk")]
 owner_body = NodePath("..")
 scale_min = 0.8
 scale_max = 2.5
