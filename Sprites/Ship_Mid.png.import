@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dspya803qhk3d"
-path="res://.godot/imported/Debris10.png-d148db3ba3a32af110984fba6a7d6944.ctex"
+uid="uid://c6c66sysu2jlq"
+path="res://.godot/imported/Ship_Mid.png-f93c016f691daa15abadff984faf3adb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Proper Sprites/Debris10.png"
-dest_files=["res://.godot/imported/Debris10.png-d148db3ba3a32af110984fba6a7d6944.ctex"]
+source_file="res://Sprites/Ship_Mid.png"
+dest_files=["res://.godot/imported/Ship_Mid.png-f93c016f691daa15abadff984faf3adb.ctex"]
 
 [params]
 

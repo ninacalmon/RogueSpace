@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds64ufrvroobs"
-path="res://.godot/imported/small_debris.png-1056218b3900ddccd13e06e9adfea83e.ctex"
+uid="uid://bvfcnrinovvxl"
+path="res://.godot/imported/Deimos.png-f47c27c607d349546ab45eb9230f150c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Proper Sprites/small_debris.png"
-dest_files=["res://.godot/imported/small_debris.png-1056218b3900ddccd13e06e9adfea83e.ctex"]
+source_file="res://Sprites(main)/Deimos.png"
+dest_files=["res://.godot/imported/Deimos.png-f47c27c607d349546ab45eb9230f150c.ctex"]
 
 [params]
 

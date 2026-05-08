@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccosgyq0ddk8l"
-path="res://.godot/imported/Ship_Left.png-d77a66f1baabe5ee8ebf5d76219e85f0.ctex"
+uid="uid://bkdqhgb761bil"
+path="res://.godot/imported/Nave.png-cd3a3f9720be269df18153f87767cb77.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Player/Ship_Left.png"
-dest_files=["res://.godot/imported/Ship_Left.png-d77a66f1baabe5ee8ebf5d76219e85f0.ctex"]
+source_file="res://Sprites(main)/Nave.png"
+dest_files=["res://.godot/imported/Nave.png-cd3a3f9720be269df18153f87767cb77.ctex"]
 
 [params]
 

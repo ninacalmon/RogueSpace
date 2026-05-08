@@ -125,9 +125,6 @@ func impulse_burst(state):
 
 func break_stop(state):
 	if Input.is_action_pressed("break_stop"):
-		var enemies_array := ObjectPool.activate_instances("Resource", 1)
-		for x in enemies_array:
-			x.global_position += global_position + Vector2(200, 0)
 		state.linear_velocity = state.linear_velocity.move_toward(Vector2.ZERO, break_speed)
 
 func steer_velocity(state: PhysicsDirectBodyState2D):

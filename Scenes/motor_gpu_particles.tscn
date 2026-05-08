@@ -19,7 +19,7 @@ curve = SubResource("Curve_c2g25")
 [sub_resource type="Gradient" id="Gradient_sfvy2"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.22038567, 0.4986226, 0.7768595)
-colors = PackedColorArray(0.87688, 0.97, 0.8148001, 0.47058824, 0.5295, 0.75, 0.43500003, 0.47058824, 0.205, 0.41, 0.33825, 0.47058824, 0.1394, 0.34, 0.26979002, 0.47058824)
+colors = PackedColorArray(0.7570933, 0.89, 0.6052, 0.20784314, 0.55358, 0.89, 0.1691, 0.4392157, 0.0893, 0.47, 0.11467998, 0.4392157, 0.1394, 0.34, 0.26979002, 0.47058824)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_4vo05"]
 gradient = SubResource("Gradient_sfvy2")

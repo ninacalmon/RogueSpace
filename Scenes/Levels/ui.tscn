@@ -11,7 +11,7 @@
 [ext_resource type="FontFile" uid="uid://dq0nn8i2xfigj" path="res://Fonts/F25_Bank_Printer_Bold.ttf" id="9_huoym"]
 [ext_resource type="Texture2D" uid="uid://dvfptl0u1lq0d" path="res://Sprites/controller.jpg" id="10_74pwq"]
 [ext_resource type="Script" uid="uid://d01jqjgknurin" path="res://Scenes/Levels/indicator.gd" id="11_74pwq"]
-[ext_resource type="Texture2D" uid="uid://cukh1gwwirlos" path="res://Sprites/Player/Ship_Mid.png" id="12_wvggw"]
+[ext_resource type="Texture2D" uid="uid://c6c66sysu2jlq" path="res://Sprites/Ship_Mid.png" id="12_wvggw"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_72wnm"]
 blend_mode = 1

@@ -3,7 +3,7 @@ extends Node2D
 var mothership: RigidBody2D
 var player: Player
 
-var margin: float = 20.0
+var margin: float = 30.0
 var corner_radius: float = 20.0
 var last_viewport_size: Vector2 = Vector2.ZERO
 var arc_points: int = 8

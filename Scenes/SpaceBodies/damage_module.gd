@@ -23,6 +23,7 @@ func _on_body_collided(body: RigidBody2D):
 	else:
 		var relative_velocity = owner_body.linear_velocity - body.linear_velocity
 		var impact_hardness = relative_velocity.length()
+		
 		if impact_hardness <= minimum_impact:
 			return
 		damage_taken.emit(impact_hardness, body)
