@@ -104,10 +104,6 @@ position = Vector2(1145, 0)
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("10_7f72b")]
 
-[node name="MothershipControl" parent="CanvasLayer/UI" index="1" node_paths=PackedStringArray("mothership", "player")]
-mothership = NodePath("../../../Mothership")
-player = NodePath("../../../Player")
-
 [node name="MapControl" parent="." node_paths=PackedStringArray("player") instance=ExtResource("17_hsmnh")]
 player = NodePath("../Player")
 metadata/_edit_lock_ = true

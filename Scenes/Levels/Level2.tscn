@@ -1,43 +1,95 @@
-[gd_scene load_steps=14 format=3 uid="uid://dt18x6t7tdw8q"]
+[gd_scene load_steps=23 format=4 uid="uid://yq5xwxg7dtht"]
 
 [ext_resource type="Texture2D" uid="uid://b4go5brbh3ndq" path="res://Sprites/Starfields/Starfield 1 - 1024x1024.png" id="1_458el"]
 [ext_resource type="PackedScene" uid="uid://b512vj2a4a3y" path="res://Scenes/player.tscn" id="2_ok1eh"]
+[ext_resource type="Texture2D" uid="uid://xuvojlr8s030" path="res://Sprites(main)/TemporaryPlanets/66888997 (3).png" id="2_rl2o4"]
 [ext_resource type="Script" uid="uid://dw2m8ymjsljfq" path="res://Scenes/camera.gd" id="3_rl2o4"]
+[ext_resource type="Texture2D" uid="uid://dxfs6gmq8441e" path="res://Sprites(main)/TemporaryPlanets/2524948669.png" id="3_rsd5h"]
 [ext_resource type="PackedScene" uid="uid://b60wc4xruimxc" path="res://Scenes/mothership.tscn" id="4_rsd5h"]
+[ext_resource type="Texture2D" uid="uid://dhtobhw3p6586" path="res://Sprites(main)/TemporaryPlanets/2121290283.png" id="4_tbesk"]
+[ext_resource type="Texture2D" uid="uid://c44gjd053ibld" path="res://Sprites(main)/TemporaryPlanets/2733907768.png" id="5_gyiht"]
 [ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/asteroid_pieces.tscn" id="6_gyiht"]
 [ext_resource type="PackedScene" uid="uid://3vg8bv7t077f" path="res://Scenes/black_hole.tscn" id="7_4ljym"]
-[ext_resource type="PackedScene" uid="uid://b386x6u8nnjan" path="res://Scenes/SpaceBodies/asteroid_medium(old).tscn" id="8_nwpaj"]
-[ext_resource type="PackedScene" uid="uid://cudsfcaoyfdbs" path="res://Scenes/SpaceBodies/asteroid_bigger.tscn" id="9_yanqf"]
+[ext_resource type="Texture2D" uid="uid://curwcau163khw" path="res://Sprites/tileset.png" id="9_4ljym"]
+[ext_resource type="Script" uid="uid://bm2kpm32ooqhk" path="res://Scenes/tile_map_generator.gd" id="10_nwpaj"]
 [ext_resource type="PackedScene" uid="uid://dbryy6fgrl2er" path="res://Scenes/planet_big.tscn" id="10_ya3ly"]
 [ext_resource type="PackedScene" uid="uid://bskx6fe236s8a" path="res://Scenes/Levels/ui.tscn" id="11_ngp1c"]
 [ext_resource type="PackedScene" uid="uid://c7nj6rbljyvk3" path="res://Scenes/supermassive_black_hole.tscn" id="11_uk4s3"]
+[ext_resource type="PackedScene" uid="uid://dxg5doh1x8ch2" path="res://Scenes/Asteroids/asteroid_small.tscn" id="11_yanqf"]
+[ext_resource type="PackedScene" uid="uid://dsw810ysjgsn2" path="res://Scenes/Asteroids/asteroid_medium.tscn" id="12_m2631"]
+[ext_resource type="PackedScene" uid="uid://bcffh04lffmyi" path="res://Scenes/Asteroids/asteroid_big.tscn" id="13_uk4s3"]
 [ext_resource type="PackedScene" uid="uid://c2v243rukexl6" path="res://Scenes/map_control.tscn" id="18_pc3ex"]
 
 [sub_resource type="Environment" id="Environment_n7yfy"]
 background_mode = 3
 tonemap_mode = 2
+tonemap_exposure = 1.4
 glow_enabled = true
-glow_bloom = 0.05
+glow_bloom = 0.1
 glow_blend_mode = 1
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kpfdn"]
+texture = ExtResource("9_4ljym")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+7:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_dt2g4"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_kpfdn")
 
 [node name="Main" type="Node2D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_n7yfy")
 
-[node name="Parallax2D" type="Parallax2D" parent="."]
+[node name="ParallaxLayers" type="Node" parent="."]
+
+[node name="Main" type="Parallax2D" parent="ParallaxLayers"]
 z_index = -999
 scroll_scale = Vector2(0.2, 0.2)
 repeat_size = Vector2(1024, 1024)
 repeat_times = 6
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayers/Main"]
 texture = ExtResource("1_458el")
 metadata/_edit_lock_ = true
 
+[node name="BackgroundLayer" type="Parallax2D" parent="ParallaxLayers"]
+modulate = Color(1, 1, 1, 0.12941177)
+z_index = -3
+scroll_scale = Vector2(0.5, 0.5)
+scroll_offset = Vector2(-87, -476)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayers/BackgroundLayer"]
+modulate = Color(1.4258597, 1.3047923, 0.5178538, 1)
+position = Vector2(1860, 1234)
+texture = ExtResource("2_rl2o4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayers/BackgroundLayer"]
+modulate = Color(0.8196479, 0.42309698, 0.9495476, 1)
+position = Vector2(1608, -611)
+texture = ExtResource("3_rsd5h")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxLayers/BackgroundLayer"]
+modulate = Color(0.7038586, 0.53750485, 0.021705043, 1)
+position = Vector2(-537, -1552.0001)
+rotation = -2.2060962
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("4_tbesk")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxLayers/BackgroundLayer"]
+modulate = Color(0.35507345, 0.6600794, 0.6055188, 1)
+position = Vector2(-1172, -452)
+rotation = -0.92327917
+texture = ExtResource("5_gyiht")
+flip_h = true
+
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_ok1eh")]
-position = Vector2(0, 106)
+position = Vector2(0, 80)
 camera = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -48,181 +100,134 @@ full_view_pos = Vector2(0, -800)
 [node name="Mothership" parent="." instance=ExtResource("4_rsd5h")]
 position = Vector2(0, 190)
 
-[node name="Bodies" type="Node2D" parent="."]
+[node name="MapGenerator" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AADw/wIAAAACAAAAAAAVAAsAAAACAAAAAADU/w0AAAACAAAAAADV/w0AAAACAAAAAADn/yAAAAACAAAAAAAXAB4AAAACAAAAAABDAOb/AAACAAAAAABBAL//AAACAAAAAAAIAAEAAAACAAAAAAAmANn/AAABAAAAAAAlAOr/AAABAAAAAAAYAOX/AAABAAAAAAAVAO7/AAABAAAAAADd/9z/AAABAAAAAAA=")
+tile_set = SubResource("TileSet_dt2g4")
+script = ExtResource("10_nwpaj")
+small_asteroid_scene = ExtResource("11_yanqf")
+medium_asteroid_scene = ExtResource("12_m2631")
+large_asteroid_scene = ExtResource("13_uk4s3")
+resource_scene = ExtResource("6_gyiht")
 
-[node name="@RigidBody2D@301295" parent="Bodies" instance=ExtResource("6_gyiht")]
-position = Vector2(848, 176)
+[node name="PlanetBig" parent="MapGenerator" instance=ExtResource("10_ya3ly")]
+position = Vector2(0, -956)
 
-[node name="@RigidBody2D@301297" parent="Bodies" instance=ExtResource("6_gyiht")]
-position = Vector2(1136, 48)
+[node name="AsteroidBig" parent="MapGenerator" instance=ExtResource("13_uk4s3")]
+position = Vector2(-574, -172)
 
-[node name="@RigidBody2D@301298" parent="Bodies" instance=ExtResource("6_gyiht")]
-position = Vector2(1232, 176)
+[node name="AsteroidBig2" parent="MapGenerator" instance=ExtResource("13_uk4s3")]
+position = Vector2(432, -66)
+critters_chance_percentage = 80
 
-[node name="@RigidBody2D@301299" parent="Bodies" instance=ExtResource("6_gyiht")]
-position = Vector2(1296, 16)
+[node name="AsteroidBig3" parent="MapGenerator" instance=ExtResource("13_uk4s3")]
+position = Vector2(-859, 450)
 
-[node name="@RigidBody2D@301347" parent="Bodies" instance=ExtResource("6_gyiht")]
-position = Vector2(-1968, -2448)
+[node name="AsteroidBig4" parent="MapGenerator" instance=ExtResource("13_uk4s3")]
+position = Vector2(1165, 420)
+critters_chance_percentage = 80
 
-[node name="@RigidBody2D@302134" parent="Bodies" instance=ExtResource("9_yanqf")]
-position = Vector2(-1456, 80)
+[node name="AsteroidBig5" parent="MapGenerator" instance=ExtResource("13_uk4s3")]
+position = Vector2(1427, -370)
+critters_chance_percentage = 80
 
-[node name="@RigidBody2D@302136" parent="Bodies" instance=ExtResource("9_yanqf")]
-position = Vector2(1232, 592)
+[node name="AsteroidBig6" parent="MapGenerator" instance=ExtResource("13_uk4s3")]
+position = Vector2(-454, -2422)
 
-[node name="@RigidBody2D@302137" parent="Bodies" instance=ExtResource("9_yanqf")]
-position = Vector2(-784, 560)
+[node name="AsteroidBig7" parent="MapGenerator" instance=ExtResource("13_uk4s3")]
+position = Vector2(1137, -979)
 
-[node name="SupermassiveBlackHole" parent="Bodies" instance=ExtResource("11_uk4s3")]
-position = Vector2(-412, -2310)
+[node name="AsteroidBig8" parent="MapGenerator" instance=ExtResource("13_uk4s3")]
+position = Vector2(-1520, -2150)
+critters_chance_percentage = 80
 
-[node name="@RigidBody2D@302140" parent="Bodies" instance=ExtResource("8_nwpaj")]
-position = Vector2(-688, 368)
+[node name="AsteroidMedium" parent="MapGenerator" instance=ExtResource("12_m2631")]
+position = Vector2(-1621, -161)
+critters_chance_percentage = 20
+critters_amount_min = 1
+critters_amount_max = 2
 
-[node name="@RigidBody2D@302141" parent="Bodies" instance=ExtResource("8_nwpaj")]
-position = Vector2(-464, 464)
+[node name="AsteroidMedium2" parent="MapGenerator" instance=ExtResource("12_m2631")]
+position = Vector2(226, -2182)
+critters_chance_percentage = 20
+critters_amount_min = 1
+critters_amount_max = 2
 
-[node name="@RigidBody2D@302142" parent="Bodies" instance=ExtResource("8_nwpaj")]
-position = Vector2(944, 592)
+[node name="AsteroidMedium3" parent="MapGenerator" instance=ExtResource("12_m2631")]
+position = Vector2(-783, -1765)
+critters_chance_percentage = 20
+critters_amount_min = 1
+critters_amount_max = 2
 
-[node name="@RigidBody2D@302147" parent="Bodies" instance=ExtResource("8_nwpaj")]
-position = Vector2(-1776, 656)
+[node name="AsteroidMedium4" parent="MapGenerator" instance=ExtResource("12_m2631")]
+position = Vector2(-167, -141)
+critters_chance_percentage = 20
+critters_amount_min = 1
+critters_amount_max = 2
 
-[node name="@RigidBody2D@302148" parent="Bodies" instance=ExtResource("8_nwpaj")]
-position = Vector2(2064, 656)
+[node name="AsteroidMedium5" parent="MapGenerator" instance=ExtResource("12_m2631")]
+position = Vector2(-268, 660)
+critters_chance_percentage = 20
+critters_amount_min = 1
+critters_amount_max = 2
 
-[node name="Asteroid7" parent="Bodies" instance=ExtResource("8_nwpaj")]
-position = Vector2(-411, -304)
+[node name="AsteroidMedium6" parent="MapGenerator" instance=ExtResource("12_m2631")]
+position = Vector2(855, 1259)
+critters_chance_percentage = 20
+critters_amount_min = 1
+critters_amount_max = 2
 
-[node name="Asteroid8" parent="Bodies" instance=ExtResource("8_nwpaj")]
-position = Vector2(504, -114)
+[node name="AsteroidMedium7" parent="MapGenerator" instance=ExtResource("12_m2631")]
+position = Vector2(250, 1003)
+critters_chance_percentage = 20
+critters_amount_min = 1
+critters_amount_max = 2
 
-[node name="Asteroid9" parent="Bodies" instance=ExtResource("8_nwpaj")]
-position = Vector2(390, 7)
+[node name="AsteroidMedium8" parent="MapGenerator" instance=ExtResource("12_m2631")]
+position = Vector2(-551, 1299)
+critters_chance_percentage = 20
+critters_amount_min = 1
+critters_amount_max = 2
 
-[node name="Asteroid12" parent="Bodies" instance=ExtResource("8_nwpaj")]
-position = Vector2(-697, 121)
+[node name="AsteroidMedium9" parent="MapGenerator" instance=ExtResource("12_m2631")]
+position = Vector2(-1177, 909)
+critters_chance_percentage = 20
+critters_amount_min = 1
+critters_amount_max = 2
 
-[node name="Asteroid13" parent="Bodies" instance=ExtResource("8_nwpaj")]
-position = Vector2(-120, 452)
+[node name="AsteroidMedium10" parent="MapGenerator" instance=ExtResource("12_m2631")]
+position = Vector2(-1904, -1499)
+critters_chance_percentage = 20
+critters_amount_min = 1
+critters_amount_max = 2
 
-[node name="@RigidBody2D@302150" parent="Bodies" instance=ExtResource("8_nwpaj")]
-position = Vector2(304, 1360)
+[node name="AsteroidMedium11" parent="MapGenerator" instance=ExtResource("12_m2631")]
+position = Vector2(-2180, -846)
+critters_chance_percentage = 20
+critters_amount_min = 1
+critters_amount_max = 2
 
-[node name="@RigidBody2D@302904" parent="Bodies" instance=ExtResource("9_yanqf")]
-position = Vector2(336, 400)
+[node name="AsteroidMedium12" parent="MapGenerator" instance=ExtResource("12_m2631")]
+position = Vector2(773, -2313)
+critters_chance_percentage = 20
+critters_amount_min = 1
+critters_amount_max = 2
 
-[node name="@RigidBody2D@302908" parent="Bodies" instance=ExtResource("11_uk4s3")]
-position = Vector2(-400, 1232)
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+copy_mode = 2
 
-[node name="@RigidBody2D@303681" parent="Bodies" instance=ExtResource("8_nwpaj")]
-position = Vector2(-368, 848)
+[node name="BlackHoles" type="Node2D" parent="."]
 
-[node name="@RigidBody2D@303682" parent="Bodies" instance=ExtResource("8_nwpaj")]
-position = Vector2(1296, 1008)
+[node name="SupermassiveBlackHole" parent="BlackHoles" instance=ExtResource("11_uk4s3")]
+position = Vector2(-1098, -331)
 
-[node name="@RigidBody2D@303683" parent="Bodies" instance=ExtResource("8_nwpaj")]
-position = Vector2(-1584, 656)
+[node name="SupermassiveBlackHole2" parent="BlackHoles" instance=ExtResource("11_uk4s3")]
+position = Vector2(972, -1703)
 
-[node name="Asteroid10" parent="Bodies" instance=ExtResource("9_yanqf")]
-position = Vector2(-1341, 481)
+[node name="BlackHole" parent="BlackHoles" instance=ExtResource("7_4ljym")]
+position = Vector2(-1265, -1384)
 
-[node name="Asteroid11" parent="Bodies" instance=ExtResource("9_yanqf")]
-position = Vector2(899, 912)
-
-[node name="PlanetBig" parent="Bodies" instance=ExtResource("10_ya3ly")]
-position = Vector2(0, -1162)
-
-[node name="Asteroid" parent="Bodies" instance=ExtResource("9_yanqf")]
-position = Vector2(-1557, -566)
-
-[node name="Asteroid2" parent="Bodies" instance=ExtResource("9_yanqf")]
-position = Vector2(-1342, -1157)
-
-[node name="Asteroid3" parent="Bodies" instance=ExtResource("9_yanqf")]
-position = Vector2(-1270, -1945)
-
-[node name="Asteroid4" parent="Bodies" instance=ExtResource("9_yanqf")]
-position = Vector2(1282, -1954)
-
-[node name="Asteroid5" parent="Bodies" instance=ExtResource("9_yanqf")]
-position = Vector2(1963, -656)
-
-[node name="Asteroid6" parent="Bodies" instance=ExtResource("9_yanqf")]
-position = Vector2(1963, -656)
-
-[node name="AsteroidPieces" parent="Bodies" instance=ExtResource("6_gyiht")]
-position = Vector2(-420, -121)
-
-[node name="AsteroidPieces2" parent="Bodies" instance=ExtResource("6_gyiht")]
-position = Vector2(-993, -58)
-
-[node name="AsteroidPieces3" parent="Bodies" instance=ExtResource("6_gyiht")]
-position = Vector2(-482, 176)
-
-[node name="AsteroidPieces4" parent="Bodies" instance=ExtResource("6_gyiht")]
-position = Vector2(-251, -100)
-
-[node name="AsteroidPieces5" parent="Bodies" instance=ExtResource("6_gyiht")]
-position = Vector2(323, 59)
-
-[node name="AsteroidPieces6" parent="Bodies" instance=ExtResource("6_gyiht")]
-position = Vector2(179, 274)
-
-[node name="AsteroidPieces7" parent="Bodies" instance=ExtResource("6_gyiht")]
-position = Vector2(792, -128)
-
-[node name="AsteroidPieces8" parent="Bodies" instance=ExtResource("6_gyiht")]
-position = Vector2(-752, -629)
-
-[node name="AsteroidPieces9" parent="Bodies" instance=ExtResource("6_gyiht")]
-position = Vector2(-853, -900)
-
-[node name="AsteroidPieces10" parent="Bodies" instance=ExtResource("6_gyiht")]
-position = Vector2(-1046, -928)
-
-[node name="AsteroidPieces11" parent="Bodies" instance=ExtResource("6_gyiht")]
-position = Vector2(-844, -1204)
-
-[node name="AsteroidPieces12" parent="Bodies" instance=ExtResource("6_gyiht")]
-position = Vector2(-918, -1457)
-
-[node name="AsteroidPieces13" parent="Bodies" instance=ExtResource("6_gyiht")]
-position = Vector2(-523, -1655)
-
-[node name="AsteroidPieces14" parent="Bodies" instance=ExtResource("6_gyiht")]
-position = Vector2(-670, -1797)
-
-[node name="AsteroidPieces15" parent="Bodies" instance=ExtResource("6_gyiht")]
-position = Vector2(1177, -814)
-
-[node name="AsteroidPieces16" parent="Bodies" instance=ExtResource("6_gyiht")]
-position = Vector2(1545, -1136)
-
-[node name="AsteroidPieces17" parent="Bodies" instance=ExtResource("6_gyiht")]
-position = Vector2(1375, -1219)
-
-[node name="AsteroidPieces18" parent="Bodies" instance=ExtResource("6_gyiht")]
-position = Vector2(1642, -1270)
-
-[node name="AsteroidPieces19" parent="Bodies" instance=ExtResource("6_gyiht")]
-position = Vector2(1509, -1371)
-
-[node name="AsteroidPieces20" parent="Bodies" instance=ExtResource("6_gyiht")]
-position = Vector2(1647, -879)
-
-[node name="Asteroid14" parent="Bodies" instance=ExtResource("9_yanqf")]
-position = Vector2(505, -399)
-
-[node name="Asteroid15" parent="Bodies" instance=ExtResource("9_yanqf")]
-position = Vector2(-991, -394)
-
-[node name="BlackHole" parent="Bodies" instance=ExtResource("7_4ljym")]
-position = Vector2(-111, -153)
-
-[node name="Asteroid16" parent="Bodies" instance=ExtResource("9_yanqf")]
-position = Vector2(161, -278)
+[node name="BlackHole2" parent="BlackHoles" instance=ExtResource("7_4ljym")]
+position = Vector2(1184, -156)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -230,10 +235,6 @@ position = Vector2(161, -278)
 
 [node name="MapControl" parent="." node_paths=PackedStringArray("player") instance=ExtResource("18_pc3ex")]
 player = NodePath("../Player")
-metadata/_edit_lock_ = true
-
-[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
-copy_mode = 2
 metadata/_edit_lock_ = true
 
 [editable path="CanvasLayer/UI"]

@@ -46,7 +46,7 @@ func _ready() -> void:
 	if damage_module:
 		damage_module.damage_taken.connect(_on_damage_taken)
 	
-	if palette_options:
+	if palette_options.size() > 0:
 		var new_palette = palette_options.pick_random()
 		sprite.material.set_shader_parameter("new_palette", new_palette)
 

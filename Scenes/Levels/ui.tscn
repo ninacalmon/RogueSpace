@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bskx6fe236s8a"]
+[gd_scene load_steps=22 format=3 uid="uid://bskx6fe236s8a"]
 
 [ext_resource type="Script" uid="uid://cwrgvd4dp6ts7" path="res://Scenes/velocity_control.gd" id="1_gm34j"]
 [ext_resource type="FontFile" uid="uid://ynyhx0lmxagx" path="res://Fonts/MonospaceTypewriter.ttf" id="2_u7ps2"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dvfptl0u1lq0d" path="res://Sprites/controller.jpg" id="10_74pwq"]
 [ext_resource type="Script" uid="uid://d01jqjgknurin" path="res://Scenes/Levels/indicator.gd" id="11_74pwq"]
 [ext_resource type="Texture2D" uid="uid://c6c66sysu2jlq" path="res://Sprites/Ship_Mid.png" id="12_wvggw"]
+[ext_resource type="Texture2D" uid="uid://cveyscwq0qoda" path="res://Sprites(main)/TemporaryPlanets/2733907768 (2).png" id="13_jsq1y"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_72wnm"]
 blend_mode = 1
@@ -30,6 +31,20 @@ fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsq1y"]
 bg_color = Color(0.4836, 0.62, 0.27899998, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jsq1y"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_he3en"]
+offsets = PackedFloat32Array(0.5748792, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.56, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cu30x"]
+gradient = SubResource("Gradient_he3en")
+width = 1152
+height = 648
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvggw"]
 bg_color = Color(1, 1, 1, 1)
@@ -150,6 +165,12 @@ offset_bottom = 36.0
 theme_override_fonts/normal_font = ExtResource("2_u7ps2")
 text = "vida"
 
+[node name="LowHPOverlay" type="Sprite2D" parent="LifeProgressBar"]
+modulate = Color(1, 1, 1, 0.3137255)
+material = SubResource("CanvasItemMaterial_jsq1y")
+position = Vector2(576.5, 324.99997)
+texture = SubResource("GradientTexture2D_cu30x")
+
 [node name="FuelProgressBar" type="ProgressBar" parent="."]
 layout_mode = 1
 anchors_preset = 10
@@ -158,7 +179,7 @@ offset_top = 13.0
 offset_bottom = 40.0
 grow_horizontal = 2
 script = ExtResource("5_huoym")
-use_step = 0.05
+use_step = 0.03
 
 [node name="RichTextLabel" type="RichTextLabel" parent="FuelProgressBar"]
 layout_mode = 0
@@ -430,3 +451,8 @@ self_modulate = Color(18.892157, 18.892157, 18.892157, 1)
 rotation = 3.1415927
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("12_wvggw")
+
+[node name="2733907768(2)" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(563, 366)
+texture = ExtResource("13_jsq1y")

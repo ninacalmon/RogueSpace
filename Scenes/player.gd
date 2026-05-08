@@ -2,7 +2,7 @@ extends BodySetup
 class_name Player
 
 @export var speed: float = 700
-@export var burst_speed: float = 3000
+@export var burst_speed: float = 300000
 @export var break_speed: float = 2
 @export var max_velocity: float = 1000.0
 

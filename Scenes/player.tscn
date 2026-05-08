@@ -35,7 +35,7 @@ physics_material_override = SubResource("PhysicsMaterial_m0iey")
 can_sleep = false
 lock_rotation = true
 contact_monitor = true
-max_contacts_reported = 3
+max_contacts_reported = 1
 linear_damp_mode = 1
 script = ExtResource("1_ktxno")
 break_speed = 5.0
@@ -107,7 +107,7 @@ shape = SubResource("CircleShape2D_tx1dd")
 [node name="DamageModule" type="Node2D" parent="." node_paths=PackedStringArray("owner_body")]
 script = ExtResource("10_gymyn")
 owner_body = NodePath("..")
-minimum_impact = 200.0
+minimum_impact = 140.0
 metadata/_custom_type_script = "uid://dny3ctsdweann"
 
 [node name="BulletShooter" type="Node2D" parent="."]

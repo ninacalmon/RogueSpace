@@ -5,4 +5,5 @@ extends Sprite2D
 
 
 func _ready() -> void:
-	texture = texture_options.pick_random()
+	if texture_options:
+		texture = texture_options.pick_random()
