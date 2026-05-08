@@ -7,6 +7,7 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body: CollectableResource):
+	print("hey")
 	if !(body is CollectableResource):
 		return
 	body.add_collision_exception_with(owner_body)

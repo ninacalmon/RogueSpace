@@ -1,4 +1,4 @@
-extends BodySetup
+extends BodySetupPoolable
 class_name CollectableResource
 
 @export var speed: float = 300
@@ -23,4 +23,8 @@ func _process(delta: float) -> void:
 func collect():
 	if target is Player:
 		EventBus.space_resource_collected.emit()
-		queue_free()
+		ObjectPool.deactivate_instances([self], "Resource")
+
+func reset_variables():
+	following = false
+	target = null

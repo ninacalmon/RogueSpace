@@ -1,7 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://yqe643bv151l"]
+[gd_scene load_steps=16 format=3 uid="uid://yqe643bv151l"]
 
+[ext_resource type="Script" uid="uid://cjrhu3vcigv33" path="res://Scenes/Levels/level_start.gd" id="1_clkpu"]
 [ext_resource type="Texture2D" uid="uid://b4go5brbh3ndq" path="res://Sprites/Starfields/Starfield 1 - 1024x1024.png" id="1_fto1n"]
 [ext_resource type="PackedScene" uid="uid://b512vj2a4a3y" path="res://Scenes/player.tscn" id="2_clkpu"]
+[ext_resource type="PackedScene" uid="uid://br070cnq6sve" path="res://Scenes/enemy.tscn" id="2_cujr7"]
 [ext_resource type="Script" uid="uid://dw2m8ymjsljfq" path="res://Scenes/camera.gd" id="3_648w2"]
 [ext_resource type="PackedScene" uid="uid://b60wc4xruimxc" path="res://Scenes/mothership.tscn" id="4_cujr7"]
 [ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/asteroid_pieces.tscn" id="5_w83tj"]
@@ -20,7 +22,13 @@ glow_enabled = true
 glow_bloom = 0.05
 glow_blend_mode = 1
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("pool_layer")]
+script = ExtResource("1_clkpu")
+pool_layer = NodePath("PooledInstances")
+enemy_scene = ExtResource("2_cujr7")
+resources_scene = ExtResource("5_w83tj")
+
+[node name="PooledInstances" type="Node2D" parent="." groups=["Pool_Group"]]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_n7yfy")
@@ -44,6 +52,8 @@ camera = NodePath("Camera2D")
 script = ExtResource("3_648w2")
 full_view_zoom = Vector2(0.3, 0.3)
 full_view_pos = Vector2(0, -800)
+min_zoom = 0.1
+deactivate_cutscene = true
 
 [node name="Mothership" parent="." instance=ExtResource("4_cujr7")]
 position = Vector2(0, 190)

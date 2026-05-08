@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://b512vj2a4a3y"]
+[gd_scene load_steps=18 format=3 uid="uid://b512vj2a4a3y"]
 
 [ext_resource type="Script" uid="uid://i7mc57eu0q83" path="res://Scenes/player.gd" id="1_ktxno"]
 [ext_resource type="Texture2D" uid="uid://dkarkglku1tqc" path="res://Proper Sprites/cocônauta.png" id="2_tx1dd"]
+[ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/asteroid_pieces.tscn" id="2_ukyrk"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="3_ikhnj"]
 [ext_resource type="PackedScene" uid="uid://dp3f278n4cqbm" path="res://Scenes/motor_gpu_particles.tscn" id="5_d77i8"]
 [ext_resource type="AudioStream" uid="uid://cfoo2b2apjwmw" path="res://Sound Effects/fly1.mp3" id="7_3smsa"]
@@ -40,6 +41,7 @@ linear_damp_mode = 1
 script = ExtResource("1_ktxno")
 break_speed = 5.0
 damage_module = NodePath("DamageModule")
+enemi = ExtResource("2_ukyrk")
 collision = NodePath("CollisionShape2D")
 sprite = NodePath("Sprite2D")
 gravitational_field = NodePath("GravitationalField")

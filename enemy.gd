@@ -1,4 +1,4 @@
-extends BodySetup
+extends BodySetupPoolable
 class_name Enemy
 
 @export var speed: float = 100
@@ -11,17 +11,20 @@ class_name Enemy
 @onready var hurt_box: Area2D = $HurtBox
 
 func _ready() -> void:
+	
+	player = get_tree().get_first_node_in_group("Player_Group")
 	if body_randomizer: body_randomizer.initialize(sprite, collision)
 	if gravitational_field: gravitational_field.initialize()
 	if gravitational_field_resources: gravitational_field_resources.initialize()
 
 	hurt_box.damage_taken.connect(_on_damage_taken)
-	
+
 
 func _process(_delta: float) -> void:
 	sprite_2d.flip_v = global_position > player.global_position
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	
 	if not is_instance_valid(player):
 		return
 		
@@ -54,12 +57,19 @@ func steer_enemy_velocity(state: PhysicsDirectBodyState2D, target_dir: Vector2):
 
 
 func _on_damage_taken(amount: float, _causer: Node2D):
+		
+	if freeze:
+		return
 	life -= amount
 	flash()
 	if life <= 0:
-		queue_free()
+		ObjectPool.deactivate_instances([self], "Enemy")
+
 
 func flash():
 	sprite_2d.modulate = Color(18.892, 18.892, 18.892)
 	await get_tree().create_timer(0.1).timeout
 	sprite_2d.modulate = Color(1, 1, 1)
+
+func reset_variables():
+	life = 3

@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends BodySetup
 class_name SpaceResource
 
 @onready var sprite_2d: Sprite2D = $Sprite2D

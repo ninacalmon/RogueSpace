@@ -43,7 +43,7 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	await start_suck_animation(body, center, radius, angle, duration)
 	
-	if body is Player: get_tree().reload_current_scene()
+	if body is Player: Globals.reload_current_scene()
 	else:
 		body.queue_free()
 

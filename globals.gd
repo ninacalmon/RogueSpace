@@ -19,3 +19,8 @@ func _ready() -> void:
 	EventBus.cutscene_on.connect(func(): is_cutscene = true)
 	EventBus.cutscene_off.connect(func(): is_cutscene = false)
 	EventBus.level_pass.connect(func(): resources_needed *= level)
+
+
+func reload_current_scene():
+	ObjectPool.clean_variables()
+	get_tree().reload_current_scene()

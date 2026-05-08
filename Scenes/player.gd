@@ -1,10 +1,10 @@
 extends BodySetup
 class_name Player
 
-@export var speed: float = 500
+@export var speed: float = 700
 @export var burst_speed: float = 2000
 @export var break_speed: float = 2
-@export var max_velocity: float = 800.0
+@export var max_velocity: float = 1000.0
 
 @export var camera: Camera2D
 @onready var propulsor_sfx: AudioStreamPlayer = $SFX/PropulsorSFX
@@ -26,6 +26,8 @@ var original_speed: float = speed
 var start_of_game: bool = true
 
 var can_destroy: bool
+
+@export var enemi: PackedScene
 
 func _ready() -> void:
 	if body_randomizer: body_randomizer.initialize(sprite, collision)
@@ -74,7 +76,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	able_destroy()
 
 	if Input.is_action_just_pressed("restart"):
-		get_tree().reload_current_scene()
+		Globals.reload_current_scene()
 	
 	if Input.is_action_just_pressed("teleport") and Globals.can_teleport:
 		execute_teletransport()
@@ -119,8 +121,13 @@ func impulse_burst(state):
 			EventBus.burst_fuel_used.emit()
 			state.apply_impulse(linear_velocity.normalized() * burst_speed)
 
+
+
 func break_stop(state):
 	if Input.is_action_pressed("break_stop"):
+		var enemies_array := ObjectPool.activate_instances("Resource", 1)
+		for x in enemies_array:
+			x.global_position += global_position + Vector2(200, 0)
 		state.linear_velocity = state.linear_velocity.move_toward(Vector2.ZERO, break_speed)
 
 func steer_velocity(state: PhysicsDirectBodyState2D):
@@ -148,6 +155,7 @@ func steer_velocity(state: PhysicsDirectBodyState2D):
 
 func able_destroy():
 	if Input.is_action_just_pressed("destroy"):
+		
 		destroy_tolerance_timer = base_destroy_tolerance_timer
 	can_destroy = !(destroy_tolerance_timer <= 0)
 	if can_destroy:
