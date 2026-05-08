@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://vbsslu1hl1sg" path="res://Scenes/planet.tscn" id="5_3i7ro"]
 [ext_resource type="PackedScene" uid="uid://cudsfcaoyfdbs" path="res://Scenes/SpaceBodies/asteroid_bigger.tscn" id="6_dmnor"]
 [ext_resource type="PackedScene" uid="uid://c7nj6rbljyvk3" path="res://Scenes/supermassive_black_hole.tscn" id="7_xx1y0"]
-[ext_resource type="PackedScene" uid="uid://b386x6u8nnjan" path="res://Scenes/SpaceBodies/asteroid_medium.tscn" id="8_4cqrs"]
+[ext_resource type="PackedScene" uid="uid://b386x6u8nnjan" path="res://Scenes/SpaceBodies/asteroid_medium(old).tscn" id="8_4cqrs"]
 [ext_resource type="PackedScene" uid="uid://bskx6fe236s8a" path="res://Scenes/Levels/ui.tscn" id="9_t0ble"]
 [ext_resource type="PackedScene" uid="uid://c2v243rukexl6" path="res://Scenes/map_control.tscn" id="17_8o6sl"]
 

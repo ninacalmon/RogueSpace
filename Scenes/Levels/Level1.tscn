@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://3vg8bv7t077f" path="res://Scenes/black_hole.tscn" id="7_fh0sh"]
 [ext_resource type="PackedScene" uid="uid://c7nj6rbljyvk3" path="res://Scenes/supermassive_black_hole.tscn" id="8_03od6"]
 [ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/asteroid_pieces.tscn" id="9_384de"]
-[ext_resource type="PackedScene" uid="uid://b386x6u8nnjan" path="res://Scenes/SpaceBodies/asteroid_medium.tscn" id="10_htexa"]
+[ext_resource type="PackedScene" uid="uid://b386x6u8nnjan" path="res://Scenes/SpaceBodies/asteroid_medium(old).tscn" id="10_htexa"]
 [ext_resource type="PackedScene" uid="uid://bskx6fe236s8a" path="res://Scenes/Levels/ui.tscn" id="11_n5ptj"]
 [ext_resource type="PackedScene" uid="uid://cudsfcaoyfdbs" path="res://Scenes/SpaceBodies/asteroid_bigger.tscn" id="12_p6c81"]
 [ext_resource type="PackedScene" uid="uid://c2v243rukexl6" path="res://Scenes/map_control.tscn" id="16_qvja8"]

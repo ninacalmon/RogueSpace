@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b60wc4xruimxc" path="res://Scenes/mothership.tscn" id="4_rsd5h"]
 [ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/asteroid_pieces.tscn" id="6_gyiht"]
 [ext_resource type="PackedScene" uid="uid://3vg8bv7t077f" path="res://Scenes/black_hole.tscn" id="7_4ljym"]
-[ext_resource type="PackedScene" uid="uid://b386x6u8nnjan" path="res://Scenes/SpaceBodies/asteroid_medium.tscn" id="8_nwpaj"]
+[ext_resource type="PackedScene" uid="uid://b386x6u8nnjan" path="res://Scenes/SpaceBodies/asteroid_medium(old).tscn" id="8_nwpaj"]
 [ext_resource type="PackedScene" uid="uid://cudsfcaoyfdbs" path="res://Scenes/SpaceBodies/asteroid_bigger.tscn" id="9_yanqf"]
 [ext_resource type="PackedScene" uid="uid://dbryy6fgrl2er" path="res://Scenes/planet_big.tscn" id="10_ya3ly"]
 [ext_resource type="PackedScene" uid="uid://bskx6fe236s8a" path="res://Scenes/Levels/ui.tscn" id="11_ngp1c"]

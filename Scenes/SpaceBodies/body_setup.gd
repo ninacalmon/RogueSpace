@@ -7,6 +7,7 @@ class_name BodySetup
 @export var gravitational_field_resources: GravitationalField
 @export var body_randomizer: BodyRandomizer
 
+
 func _ready() -> void:
 	if body_randomizer: body_randomizer.initialize(sprite, collision)
 	if gravitational_field: gravitational_field.initialize()

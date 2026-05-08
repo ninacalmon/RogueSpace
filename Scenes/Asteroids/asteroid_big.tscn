@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bcffh04lffmyi"]
+[gd_scene load_steps=19 format=3 uid="uid://bcffh04lffmyi"]
 
 [ext_resource type="Script" uid="uid://dp0jfjqkl4sdl" path="res://Scenes/modulars/asteroid.gd" id="1_jr0l1"]
 [ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/asteroid_pieces.tscn" id="2_exshx"]
@@ -6,12 +6,26 @@
 [ext_resource type="PackedScene" uid="uid://br070cnq6sve" path="res://Scenes/enemy.tscn" id="3_1kal1"]
 [ext_resource type="Script" uid="uid://dny3ctsdweann" path="res://Scenes/SpaceBodies/damage_module.gd" id="3_exshx"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="4_1kal1"]
+[ext_resource type="Texture2D" uid="uid://bflk5f2qeiyqi" path="res://Sprites(main)/pink_asteroid_pallete.png" id="4_cvdgt"]
+[ext_resource type="Texture2D" uid="uid://dacyxx5dau8bv" path="res://Sprites(main)/red_asteroid_pallete.png" id="5_6w43o"]
 [ext_resource type="AudioStream" uid="uid://b7snqnvr1tlj" path="res://Sound Effects/break.wav" id="5_72u5j"]
 [ext_resource type="AudioStream" uid="uid://b5s0ptmpaw0he" path="res://Sound Effects/break2.wav" id="6_empbd"]
+[ext_resource type="Texture2D" uid="uid://6gc530t8v2ol" path="res://Sprites(main)/yellow_asteroid_pallete.png" id="6_nnd5f"]
 [ext_resource type="Script" uid="uid://dakt7r353r7ae" path="res://Scenes/SpaceBodies/body_randomizer.gd" id="7_1kal1"]
+[ext_resource type="Shader" uid="uid://bjetsh4wdtn8e" path="res://Scenes/Asteroids/palette_swap.tres" id="7_egnjl"]
+[ext_resource type="Texture2D" uid="uid://dx0xv4geqjvp8" path="res://Sprites(main)/asteroid_default_pallete.png" id="8_akcm3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1kal1"]
+bounce = 0.2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5h4od"]
 radius = 45.17743
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ahukt"]
+resource_local_to_scene = true
+shader = ExtResource("7_egnjl")
+shader_parameter/original_palette = ExtResource("8_akcm3")
+shader_parameter/colors_count = 6
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6lt0e"]
 streams_count = 2
@@ -19,13 +33,21 @@ stream_0/stream = ExtResource("5_72u5j")
 stream_1/stream = ExtResource("6_empbd")
 
 [node name="AsteroidBig" type="RigidBody2D" node_paths=PackedStringArray("damage_module", "collision", "sprite", "gravitational_field", "body_randomizer")]
-mass = 50.0
+mass = 80.0
+physics_material_override = SubResource("PhysicsMaterial_1kal1")
 contact_monitor = true
 max_contacts_reported = 2
 script = ExtResource("1_jr0l1")
+base_endurance = 600.0
+minimum_damage = 140.0
+minimum_external_damage = 200.0
+will_spawn_critters = true
+critters_chance_percentage = 30
+critters_amount_min = 3
 damage_module = NodePath("DamageModule")
 broken_piece_scene = ExtResource("2_exshx")
 enemy_scene = ExtResource("3_1kal1")
+palette_options = Array[Texture]([ExtResource("4_cvdgt"), ExtResource("5_6w43o"), ExtResource("6_nnd5f"), ExtResource("8_akcm3")])
 collision = NodePath("CollisionShape2D")
 sprite = NodePath("Sprite2D")
 gravitational_field = NodePath("GravitationalField")
@@ -35,6 +57,7 @@ body_randomizer = NodePath("BodyRandomizer")
 shape = SubResource("CircleShape2D_5h4od")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ahukt")
 position = Vector2(0, 2)
 texture = ExtResource("2_ne8lo")
 

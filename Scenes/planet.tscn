@@ -1,33 +1,67 @@
-[gd_scene load_steps=6 format=3 uid="uid://vbsslu1hl1sg"]
+[gd_scene load_steps=16 format=3 uid="uid://vbsslu1hl1sg"]
 
-[ext_resource type="Script" uid="uid://b8uwpl8kmnf0e" path="res://Scenes/SpaceBodies/body_setup.gd" id="1_m0iey"]
-[ext_resource type="Texture2D" uid="uid://bdfhcr1kchi0a" path="res://Sprites/Baren.png" id="1_xehyc"]
+[ext_resource type="Script" uid="uid://dp0jfjqkl4sdl" path="res://Scenes/modulars/asteroid.gd" id="1_qm2km"]
+[ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/asteroid_pieces.tscn" id="2_qm2km"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="2_vpe2g"]
+[ext_resource type="PackedScene" uid="uid://br070cnq6sve" path="res://Scenes/enemy.tscn" id="3_kmany"]
+[ext_resource type="Texture2D" uid="uid://bci2cc1cglgr" path="res://Sprites(main)/TemporaryPlanets/66.png" id="4_qm2km"]
+[ext_resource type="Texture2D" uid="uid://ch2myk1haewwx" path="res://Sprites(main)/TemporaryPlanets/22951 (1).png" id="4_skk7a"]
+[ext_resource type="Script" uid="uid://dny3ctsdweann" path="res://Scenes/SpaceBodies/damage_module.gd" id="4_w18ph"]
+[ext_resource type="Script" uid="uid://dbom7e2dansya" path="res://Scenes/random_planet.gd" id="5_kmany"]
+[ext_resource type="Texture2D" uid="uid://2galbdfu7ycj" path="res://Sprites(main)/TemporaryPlanets/2295125163 (1).png" id="7_w18ph"]
+[ext_resource type="Script" uid="uid://dakt7r353r7ae" path="res://Scenes/SpaceBodies/body_randomizer.gd" id="9_hjx7e"]
+[ext_resource type="AudioStream" uid="uid://b7snqnvr1tlj" path="res://Sound Effects/break.wav" id="11_s6pwb"]
+[ext_resource type="AudioStream" uid="uid://b5s0ptmpaw0he" path="res://Sound Effects/break2.wav" id="12_enl6s"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m0iey"]
 friction = 0.0
 bounce = 0.1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpe2g"]
-radius = 243.00206
+radius = 278.04495
 
-[node name="Planet" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "gravitational_field")]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jgwd8"]
+streams_count = 2
+stream_0/stream = ExtResource("11_s6pwb")
+stream_1/stream = ExtResource("12_enl6s")
+
+[node name="Planet" type="RigidBody2D" node_paths=PackedStringArray("damage_module", "collision", "sprite", "gravitational_field", "body_randomizer")]
 mass = 1000.0
 physics_material_override = SubResource("PhysicsMaterial_m0iey")
-freeze = true
+contact_monitor = true
+max_contacts_reported = 3
 linear_damp_mode = 1
-script = ExtResource("1_m0iey")
+script = ExtResource("1_qm2km")
+base_endurance = 1000.0
+minimum_damage = 300.0
+minimum_external_damage = 100000.0
+endur_to_pieces_proportion = 10
+damage_module = NodePath("DamageModule")
+broken_piece_scene = ExtResource("2_qm2km")
+enemy_scene = ExtResource("3_kmany")
+is_fix = true
 collision = NodePath("CollisionShape2D")
 sprite = NodePath("Sprite2D")
 gravitational_field = NodePath("GravitationalField")
+body_randomizer = NodePath("BodyRandomizer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vpe2g")
 
+[node name="BodyRandomizer" type="Node2D" parent="." node_paths=PackedStringArray("owner_body")]
+script = ExtResource("9_hjx7e")
+owner_body = NodePath("..")
+rand_scale = false
+rand_rotation = false
+rand_linear_velocity = false
+ang_vel_min = -0.05
+ang_vel_max = 0.05
+metadata/_custom_type_script = "uid://dakt7r353r7ae"
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.66083336, 1, 0.45, 1)
-scale = Vector2(10, 10)
-texture = ExtResource("1_xehyc")
+texture = ExtResource("4_qm2km")
+script = ExtResource("5_kmany")
+texture_options = Array[Texture]([ExtResource("4_qm2km"), ExtResource("4_skk7a"), ExtResource("7_w18ph")])
 
 [node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("2_vpe2g")]
 linear_damp = 0.0
@@ -37,3 +71,13 @@ mass_to_radius_multiply = 0.5
 attraction_received_multiply = 0.01
 attraction_executed_multiply = 2.8
 increase_with_proximity = 0.94
+
+[node name="DamageModule" type="Node2D" parent="." node_paths=PackedStringArray("owner_body")]
+script = ExtResource("4_w18ph")
+owner_body = NodePath("..")
+metadata/_custom_type_script = "uid://dny3ctsdweann"
+
+[node name="BreakSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_jgwd8")
+volume_db = -15.0
+pitch_scale = 0.7

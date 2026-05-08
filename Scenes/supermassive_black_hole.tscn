@@ -37,7 +37,7 @@ shader_parameter/strenght = 0.30000006175000005
 blend_mode = 1
 
 [sub_resource type="Gradient" id="Gradient_v4hwt"]
-offsets = PackedFloat32Array(0.44715446, 0.5230352, 0.66395664)
+offsets = PackedFloat32Array(0.13043478, 0.29565218, 0.70434785)
 colors = PackedColorArray(0, 0, 0, 1, 0.17, 0.17, 0.17, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_v4hwt"]
@@ -90,7 +90,7 @@ script = ExtResource("4_lfh63")
 
 [node name="Glow" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_dv4l3")
-scale = Vector2(1.59375, 1.59375)
+scale = Vector2(2.4, 2.4)
 texture = SubResource("GradientTexture2D_v4hwt")
 
 [node name="Center" type="Sprite2D" parent="."]

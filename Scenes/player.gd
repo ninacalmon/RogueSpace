@@ -2,7 +2,7 @@ extends BodySetup
 class_name Player
 
 @export var speed: float = 700
-@export var burst_speed: float = 2000
+@export var burst_speed: float = 3000
 @export var break_speed: float = 2
 @export var max_velocity: float = 1000.0
 
@@ -12,13 +12,13 @@ class_name Player
 @onready var space_winds_sfx: AudioStreamPlayer = $SFX/SpaceWindsSFX
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
+@export var damage_module: DamageModule
 @export var base_burst_cooldown: float = 3.0
 var burst_cooldown_timer: float
 
 @export var base_destroy_tolerance_timer: float = 0.5
 var destroy_tolerance_timer: float
 
-@export var damage_module: DamageModule
 
 var player_init_pos: Vector2
 var original_speed: float = speed
