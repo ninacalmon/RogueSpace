@@ -7,12 +7,12 @@
 [ext_resource type="Script" uid="uid://bh0d8bq6rk6f" path="res://Scenes/black_hole_shader.gd" id="4_lfh63"]
 [ext_resource type="AudioStream" uid="uid://cyu78nkci5acj" path="res://Sound Effects/gulp.mp3" id="6_lfh63"]
 
-[sub_resource type="Gradient" id="Gradient_0htpi"]
+[sub_resource type="Gradient" id="Gradient_lfh63"]
 offsets = PackedFloat32Array(0, 0.63010204)
 colors = PackedColorArray(0.37, 0.37, 0.37, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_retql"]
-gradient = SubResource("Gradient_0htpi")
+gradient = SubResource("Gradient_lfh63")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -36,24 +36,24 @@ shader_parameter/strenght = 0.30000006175000005
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dv4l3"]
 blend_mode = 1
 
-[sub_resource type="Gradient" id="Gradient_lfh63"]
+[sub_resource type="Gradient" id="Gradient_v4hwt"]
 offsets = PackedFloat32Array(0.44715446, 0.5230352, 0.66395664)
 colors = PackedColorArray(0, 0, 0, 1, 0.17, 0.17, 0.17, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_v4hwt"]
-gradient = SubResource("Gradient_lfh63")
+gradient = SubResource("Gradient_v4hwt")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lfh63"]
 blend_mode = 2
 
-[sub_resource type="Gradient" id="Gradient_v4hwt"]
-offsets = PackedFloat32Array(0.09214092, 0.20596206)
+[sub_resource type="Gradient" id="Gradient_81w2e"]
+offsets = PackedFloat32Array(0.16521738, 0.43913043)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_81w2e"]
-gradient = SubResource("Gradient_v4hwt")
+gradient = SubResource("Gradient_81w2e")
 width = 640
 height = 640
 fill = 1
@@ -71,7 +71,7 @@ contact_monitor = true
 max_contacts_reported = 3
 script = ExtResource("1_8py6e")
 collision = NodePath("CollisionShape2D")
-sprite = NodePath("Sprite2D")
+sprite = NodePath("Center")
 gravitational_field = NodePath("GravitationalField")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
@@ -88,12 +88,12 @@ scale = Vector2(6, 6)
 texture = ExtResource("2_8py6e")
 script = ExtResource("4_lfh63")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Glow" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_dv4l3")
 scale = Vector2(1.59375, 1.59375)
 texture = SubResource("GradientTexture2D_v4hwt")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Center" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_lfh63")
 scale = Vector2(0.2, 0.2)
 texture = SubResource("GradientTexture2D_81w2e")
