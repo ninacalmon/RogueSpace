@@ -1,6 +1,8 @@
 extends Area2D
 var check_input: bool = false
 
+@export var disable: bool
+
 func _ready() -> void:
 	Globals.changing_scene = false
 	check_input = false
@@ -12,6 +14,8 @@ func _on_body_entered(body: RigidBody2D):
 	Globals.resources_gathered <= 0:
 		return
 	check_input = true
+	if disable:
+		return
 	EventBus.mothership_entrance_entered.emit()
 
 func _on_body_exited(body: RigidBody2D):
@@ -25,4 +29,4 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("confirm"):
 		check_input = false
 		Globals.changing_scene = true
-		LevelTransition.change_scene_to("res://Scenes/resources_counting.tscn")
+		LevelTransition.change_scene_to("res://Scenes/Levels/resources_counting.tscn")

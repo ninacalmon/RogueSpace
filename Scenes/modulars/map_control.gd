@@ -13,7 +13,6 @@ var rect: Rect2
 @onready var almost_out_area: Area2D = $AlmostOutArea
 @onready var almost_out_area_shape: CollisionShape2D = $AlmostOutArea/AlmostOutAreaShape
 
-
 func _ready() -> void:
 	var new_circle_shape: CircleShape2D = safe_area_shape.shape.duplicate()
 	new_circle_shape.radius = 1000 * safe_area_radius_multiply

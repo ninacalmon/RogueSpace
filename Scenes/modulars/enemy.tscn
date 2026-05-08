@@ -10,12 +10,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ghaa6"]
 radius = 12.0
 
-[node name="Enemy" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "gravitational_field", "body_randomizer")]
+[node name="Enemy" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "body_randomizer")]
 lock_rotation = true
 script = ExtResource("1_287tu")
 collision = NodePath("CollisionShape2D")
 sprite = NodePath("Sprite2D")
-gravitational_field = NodePath("")
 body_randomizer = NodePath("BodyRandomizer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -32,8 +31,8 @@ owner_body = NodePath("..")
 rand_rotation = false
 rand_linear_velocity = false
 rand_angular_velocity = false
-scale_min = 0.5
-scale_max = 1.0
+scale_min = 0.8
+scale_max = 1.2
 metadata/_custom_type_script = "uid://dakt7r353r7ae"
 
 [node name="HurtBox" type="Area2D" parent="."]

@@ -1,21 +1,31 @@
-[gd_scene load_steps=10 format=3 uid="uid://3en43s0xvhci"]
+[gd_scene load_steps=12 format=3 uid="uid://3en43s0xvhci"]
 
-[ext_resource type="Texture2D" uid="uid://dlv776axrbuj0" path="res://Sprites/background.png" id="1_wwsa2"]
+[ext_resource type="Texture2D" uid="uid://berv7f5gv13en" path="res://Sprites(main)/background.png" id="1_dsa84"]
 [ext_resource type="Script" uid="uid://cem6pnv2cepc7" path="res://menu_buttons_control.gd" id="2_jsrd8"]
 [ext_resource type="FontFile" uid="uid://bcct8k0olmbi4" path="res://Fonts/batmfa__.ttf" id="3_jsrd8"]
 [ext_resource type="FontFile" uid="uid://ynyhx0lmxagx" path="res://Fonts/MonospaceTypewriter.ttf" id="3_wbdvm"]
 [ext_resource type="Texture2D" uid="uid://dvfptl0u1lq0d" path="res://Sprites/controller.jpg" id="4_q3rjx"]
 [ext_resource type="FontFile" uid="uid://dq0nn8i2xfigj" path="res://Fonts/F25_Bank_Printer_Bold.ttf" id="5_6swd7"]
+[ext_resource type="Texture2D" uid="uid://bhshref68qilg" path="res://Sprites/panorama6.jpg" id="7_00qkb"]
+
+[sub_resource type="Environment" id="Environment_00qkb"]
+background_mode = 3
+tonemap_mode = 2
+tonemap_exposure = 5.05
+tonemap_white = 4.31
+glow_enabled = true
+glow_intensity = 8.0
+glow_bloom = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfqti"]
-bg_color = Color(0.13644001, 0.18, 0.10080001, 1)
+bg_color = Color(0.15288003, 0.42, 0.11759999, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qvly"]
-bg_color = Color(0.31836, 0.42, 0.23519999, 1)
+bg_color = Color(0.33734995, 0.65, 0.16899998, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -26,6 +36,9 @@ bg_color = Color(1, 1, 1, 1)
 
 [node name="Menu" type="Node2D"]
 process_mode = 3
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_00qkb")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -39,10 +52,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
 layout_mode = 0
 offset_right = 1156.3475
 offset_bottom = 649.0
-texture = ExtResource("1_wwsa2")
+texture = ExtResource("1_dsa84")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
 layout_mode = 1
@@ -51,7 +65,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0758, 0.1, 0.056, 0.68235296)
+color = Color(0.20784314, 0.14117648, 0.2509804, 0.78431374)
 metadata/_edit_lock_ = true
 
 [node name="ButtonsControl" type="Control" parent="CanvasLayer"]
@@ -352,3 +366,9 @@ offset_bottom = 231.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Voltar"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.16, 0.16, 0.16, 1)
+position = Vector2(598.78174, 321.99994)
+scale = Vector2(0.1625, 0.16250002)
+texture = ExtResource("7_00qkb")

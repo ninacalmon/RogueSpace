@@ -16,7 +16,7 @@ func _ready() -> void:
 	start.grab_focus()
 
 func _on_start_button_pressed():
-	LevelTransition.change_scene_to("res://Scenes/Levels/Level1.tscn")
+	LevelTransition.change_scene_to("res://Scenes/Levels/Tutorial.tscn")
 
 func _on_controls_button_pressed():
 	controlers.show()

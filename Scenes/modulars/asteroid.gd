@@ -19,6 +19,7 @@ class_name Asteroid
 @export var is_fix: bool
 
 @onready var break_sound: AudioStreamPlayer = $BreakSound
+@onready var critter_sound: AudioStreamPlayer = $CritterSound
 
 var endurance: float
 var first_impact_bonus: float = 1.5
@@ -84,7 +85,7 @@ func handle_player_damage(damage: float, player: Player):
 
 	call_deferred("shed_pieces", pieces)
 	if will_spawn_critters:
-		spawn_critters()
+		spawn_critters(true)
 
 
 func handle_external_damage(damage: float):
@@ -111,7 +112,7 @@ func shed_pieces(pieces: int):
 	scale_down(0.8, 0.2)
 
 
-func spawn_critters():
+func spawn_critters(is_player: bool = false):
 	var chance = randi_range(0, 100)
 
 	if chance <= critters_chance_percentage:
@@ -122,7 +123,8 @@ func spawn_critters():
 			new_critter.global_position = global_position \
 			+ Vector2(randi_range(-20, 20), randi_range(-20, 20))
 			parent.call_deferred("add_child", new_critter)
-
+		if is_player:
+			SFXManager.play_sound(critter_sound)
 
 func scale_down(amount: float, duration: float = 0.5):
 	var sprite_new_scale = sprite.scale * amount

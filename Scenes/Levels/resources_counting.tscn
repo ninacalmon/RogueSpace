@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cbk3swogwrgtr"]
+[gd_scene load_steps=15 format=3 uid="uid://cbk3swogwrgtr"]
 
 [ext_resource type="Texture2D" uid="uid://dlv776axrbuj0" path="res://Sprites/background.png" id="1_mlhmh"]
 [ext_resource type="PackedScene" uid="uid://fjxp66w0rpvl" path="res://Scenes/UI/impulse_power_up.tscn" id="2_h1t7e"]
@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://dq0nn8i2xfigj" path="res://Fonts/F25_Bank_Printer_Bold.ttf" id="4_mlhmh"]
 [ext_resource type="PackedScene" uid="uid://dtf5df5lkbpnc" path="res://Scenes/UI/teleport_power_up.tscn" id="4_ws088"]
 [ext_resource type="AudioStream" uid="uid://3ywm8o38t0d4" path="res://Sound Effects/value_up3.wav" id="5_ws088"]
+[ext_resource type="Texture2D" uid="uid://berv7f5gv13en" path="res://Sprites(main)/background.png" id="10_m5xn0"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ue4wm"]
 random_pitch = 1.3
@@ -16,18 +17,27 @@ streams_count = 1
 stream_0/stream = ExtResource("5_ws088")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ue4wm"]
-bg_color = Color(0.13644001, 0.18, 0.10080001, 1)
+bg_color = Color(0.15294118, 0.41960785, 0.11764706, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ws088"]
-bg_color = Color(0.31836, 0.42, 0.23519999, 1)
+bg_color = Color(0.3372549, 0.6509804, 0.16862746, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+
+[sub_resource type="Environment" id="Environment_i7pnh"]
+background_mode = 3
+tonemap_mode = 2
+tonemap_exposure = 5.05
+tonemap_white = 4.31
+glow_enabled = true
+glow_intensity = 8.0
+glow_bloom = 1.0
 
 [node name="ResourcesCounting" type="Node2D"]
 
@@ -43,6 +53,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
 layout_mode = 0
 offset_right = 1156.3475
 offset_bottom = 649.0
@@ -55,7 +66,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0758, 0.1, 0.056, 0.68235296)
+color = Color(0.20599999, 0.14, 0.25, 0.8862745)
 metadata/_edit_lock_ = true
 
 [node name="Texts" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("button")]
@@ -170,3 +181,11 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_ue4wm")
 theme_override_styles/focus = SubResource("StyleBoxFlat_ws088")
 disabled = true
 text = "Continuar... -->"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_i7pnh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(528, 287)
+scale = Vector2(0.9068628, 0.9068628)
+texture = ExtResource("10_m5xn0")

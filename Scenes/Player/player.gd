@@ -23,11 +23,10 @@ var destroy_tolerance_timer: float
 var player_init_pos: Vector2
 var original_speed: float = speed
 
-var start_of_game: bool = true
+@export var start_of_game: bool = true
 
 var can_destroy: bool
 
-@export var enemi: PackedScene
 
 func _ready() -> void:
 	if body_randomizer: body_randomizer.initialize(sprite, collision)
