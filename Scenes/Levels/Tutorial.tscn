@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://cvkswh6huo7av"]
+[gd_scene load_steps=42 format=4 uid="uid://cvkswh6huo7av"]
 
 [ext_resource type="Texture2D" uid="uid://b4go5brbh3ndq" path="res://Sprites/Starfields/Starfield 1 - 1024x1024.png" id="1_1wrtt"]
 [ext_resource type="Script" uid="uid://yfnxaboej4ja" path="res://Scenes/Levels/tutorial.gd" id="1_55wm2"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" uid="uid://bghsvebqm65vs" path="res://Scenes/Levels/tutorial_area5.gd" id="20_nwkth"]
 [ext_resource type="Script" uid="uid://c3r4b8e2ndjwq" path="res://Scenes/Levels/tutorial_area8.gd" id="22_2s7u0"]
 [ext_resource type="Script" uid="uid://b2bjxptkx43d1" path="res://Scenes/Levels/tutorial_area7.gd" id="22_55wm2"]
+[ext_resource type="AudioStream" uid="uid://djeuv8xr5pfp8" path="res://Sound Effects/sfx_enemy.mp3" id="24_7pjfj"]
 
 [sub_resource type="Environment" id="Environment_n7yfy"]
 background_mode = 3
@@ -279,6 +280,9 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area7/RigidBody2D"]
 shape = SubResource("RectangleShape2D_7pjfj")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Area7"]
+stream = ExtResource("24_7pjfj")
 
 [node name="Area8" type="Area2D" parent="." node_paths=PackedStringArray("tutorial_warning")]
 position = Vector2(4742, 9)
