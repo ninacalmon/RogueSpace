@@ -33,10 +33,10 @@ func get_input_controller():
 			shoot(last_aim_direction)
 			last_aim_direction = Vector2.ZERO
 
-#func get_input_mouse():
-	#if Input.is_action_just_released("left_click"):
-		#var aim_direction = global_position.direction_to(get_global_mouse_position())
-		#shoot(aim_direction)
+func get_input_mouse():
+	if Input.is_action_pressed("left_click"):
+		var aim_direction = global_position.direction_to(get_global_mouse_position())
+		shoot(aim_direction)
 #
 #
 #func shoot(direction: Vector2):

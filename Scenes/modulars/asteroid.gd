@@ -64,10 +64,7 @@ func _on_damage_taken(damage: float, causer: RigidBody2D):
 		call_deferred("queue_free")
 
 
-func handle_player_damage(damage: float, player: Player):
-	if !player.can_destroy:
-		return
-
+func handle_player_damage(damage: float, _player: Player):
 	var bonus_multiplier: float = 1.0
 
 	if damage >= base_endurance and endurance == base_endurance:

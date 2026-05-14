@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b512vj2a4a3y"]
+[gd_scene load_steps=20 format=3 uid="uid://b512vj2a4a3y"]
 
 [ext_resource type="Script" uid="uid://i7mc57eu0q83" path="res://Scenes/Player/player.gd" id="1_ktxno"]
 [ext_resource type="Texture2D" uid="uid://bvfcnrinovvxl" path="res://Sprites(main)/Deimos.png" id="2_pu2lt"]
@@ -7,12 +7,12 @@
 [ext_resource type="AudioStream" uid="uid://cfoo2b2apjwmw" path="res://Sound Effects/fly1.mp3" id="7_3smsa"]
 [ext_resource type="AudioStream" uid="uid://cx2tfq2v41dbw" path="res://Sound Effects/tech1.mp3" id="8_8erm5"]
 [ext_resource type="AudioStream" uid="uid://b4ni1pu1osv1e" path="res://Sound Effects/tech2.mp3" id="9_f1ek2"]
-[ext_resource type="Script" uid="uid://dny3ctsdweann" path="res://Scenes/SpaceBodies/damage_module.gd" id="10_gymyn"]
 [ext_resource type="AudioStream" uid="uid://cwxkne077kuw6" path="res://Sound Effects/spacewinds.mp3" id="10_tx1dd"]
 [ext_resource type="Script" uid="uid://dsbdvxfei8u0x" path="res://Scenes/Modulars/resource_collector.gd" id="11_gymyn"]
 [ext_resource type="Script" uid="uid://cd5ihl6hfs16d" path="res://Scenes/Modulars/bullet_shooter.gd" id="11_pu2lt"]
 [ext_resource type="PackedScene" uid="uid://qyycjggr322o" path="res://Scenes/Bullets/basic_bullet.tscn" id="12_pu2lt"]
 [ext_resource type="AudioStream" uid="uid://cyu78nkci5acj" path="res://Sound Effects/gulp.mp3" id="13_06tpx"]
+[ext_resource type="Script" uid="uid://yorcpoevwvbr" path="res://Scenes/Player/hurt_box_player.gd" id="13_7g0yx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m0iey"]
 friction = 0.0
@@ -36,7 +36,10 @@ random_volume_offset_db = 2.0
 streams_count = 1
 stream_0/stream = ExtResource("13_06tpx")
 
-[node name="Player" type="RigidBody2D" node_paths=PackedStringArray("damage_module", "collision", "sprite", "gravitational_field", "gravitational_field_resources") groups=["Player_Group"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_dey5f"]
+radius = 15.0
+
+[node name="Player" type="RigidBody2D" node_paths=PackedStringArray("hurt_box_player", "collision", "sprite", "gravitational_field", "gravitational_field_resources") groups=["Player_Group"]]
 mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_m0iey")
 can_sleep = false
@@ -46,7 +49,7 @@ max_contacts_reported = 1
 linear_damp_mode = 1
 script = ExtResource("1_ktxno")
 break_speed = 5.0
-damage_module = NodePath("DamageModule")
+hurt_box_player = NodePath("HurtBoxPlayer")
 collision = NodePath("CollisionShape2D")
 sprite = NodePath("Sprite2D")
 gravitational_field = NodePath("GravitationalField")
@@ -111,12 +114,6 @@ owner_body = NodePath("..")
 [node name="CollisionShapeResources" type="CollisionShape2D" parent="ResourceCollector"]
 shape = SubResource("CircleShape2D_tx1dd")
 
-[node name="DamageModule" type="Node2D" parent="." node_paths=PackedStringArray("owner_body")]
-script = ExtResource("10_gymyn")
-owner_body = NodePath("..")
-minimum_impact = 140.0
-metadata/_custom_type_script = "uid://dny3ctsdweann"
-
 [node name="BulletShooter" type="Node2D" parent="."]
 script = ExtResource("11_pu2lt")
 bullet_scene = ExtResource("12_pu2lt")
@@ -125,5 +122,13 @@ bullet_scene = ExtResource("12_pu2lt")
 stream = SubResource("AudioStreamRandomizer_7g0yx")
 volume_db = -15.0
 pitch_scale = 4.0
+
+[node name="HurtBoxPlayer" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource("13_7g0yx")
+enemy_body_sensible = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxPlayer"]
+shape = SubResource("CircleShape2D_dey5f")
 
 [editable path="GravitationalFieldResources"]

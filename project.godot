@@ -26,6 +26,7 @@ PowerUps="*res://power_ups.gd"
 [display]
 
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="uid://cmlx2ppg3l6lj"
 
 [dotnet]
 

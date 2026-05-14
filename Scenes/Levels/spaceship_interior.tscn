@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://c0lfvcrle3frk"]
+[gd_scene load_steps=13 format=3 uid="uid://c0lfvcrle3frk"]
 
+[ext_resource type="PackedScene" uid="uid://cgfq6udrxu5hm" path="res://Scenes/UI/mouse.tscn" id="1_ntswj"]
 [ext_resource type="Texture2D" uid="uid://d21ykxh1yegmk" path="res://Sprites(main)/Placeholders/d2eb949b37550efab1e77247aab44aa2.jpg" id="1_wmbd2"]
 [ext_resource type="Shader" uid="uid://kyf6ladmlc1w" path="res://Shaders/blur.gdshader" id="2_tlbit"]
 [ext_resource type="Script" uid="uid://dei8kv4pd3sf0" path="res://Scenes/UI/camera_follow_cursor.gd" id="3_nkmj0"]
@@ -82,3 +83,6 @@ script = ExtResource("6_cootd")
 area = NodePath("..")
 sprite = NodePath("../Sprite2D")
 metadata/_custom_type_script = "uid://jtbq6dor8pk0"
+
+[node name="Mouse" parent="." instance=ExtResource("1_ntswj")]
+position = Vector2(-130, -141)

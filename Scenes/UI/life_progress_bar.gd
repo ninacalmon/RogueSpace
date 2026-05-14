@@ -25,4 +25,3 @@ func update_overlay():
 		tween.tween_property(low_hp_overlay, "modulate:a", 0.2, 1)
 		if value <= max_hp / 4:
 			tween.tween_property(low_hp_overlay, "modulate:a", 0.4, 1)
-		

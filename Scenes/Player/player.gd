@@ -12,7 +12,7 @@ class_name Player
 @onready var space_winds_sfx: AudioStreamPlayer = $SFX/SpaceWindsSFX
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
-@export var damage_module: DamageModule
+@export var hurt_box_player: HurtBoxPlayer
 @export var base_burst_cooldown: float = 3.0
 var burst_cooldown_timer: float
 
@@ -38,8 +38,8 @@ func _ready() -> void:
 	EventBus.player_almost_out_of_bounds.connect(_on_player_almost_out_of_bounds)
 	EventBus.player_out_of_bounds.connect(_on_player_out_of_bounds)
 	EventBus.cutscene_off.connect(start_game)
-	damage_module.damage_taken.connect(_on_damage_taken)
-	damage_module.enemy_damage_taken.connect(_on_enemy_damage_taken)
+	hurt_box_player.damage_taken.connect(_on_enemy_damage_taken)
+	
 
 func start_game():
 	if start_of_game:
@@ -71,8 +71,6 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	
 	if state.linear_velocity.length() > max_velocity:
 		state.linear_velocity = state.linear_velocity.normalized() * max_velocity
-
-	able_destroy()
 
 	if Input.is_action_just_pressed("restart"):
 		Globals.reload_current_scene()
@@ -149,15 +147,6 @@ func steer_velocity(state: PhysicsDirectBodyState2D):
 
 	state.linear_velocity = vel.rotated(angle)
 
-func able_destroy():
-	if Input.is_action_just_pressed("destroy"):
-		
-		destroy_tolerance_timer = base_destroy_tolerance_timer
-	can_destroy = !(destroy_tolerance_timer <= 0)
-	if can_destroy:
-		modulate = Color(0, 0, 1)
-	else:
-		modulate = Color(1, 1, 1)
 
 func _on_damage_taken(amount: float, _causer: RigidBody2D):
 	if can_destroy:
@@ -166,7 +155,7 @@ func _on_damage_taken(amount: float, _causer: RigidBody2D):
 		var damage = amount / 20
 		EventBus.damage_taken.emit(self, damage)
 
-func _on_enemy_damage_taken(amount: float):
+func _on_enemy_damage_taken(amount: float, _causer: Node2D):
 	flash()
 	EventBus.damage_taken.emit(self, amount)
 
