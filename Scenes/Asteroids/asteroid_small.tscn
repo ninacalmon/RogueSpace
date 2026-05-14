@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://dakt7r353r7ae" path="res://Scenes/SpaceBodies/body_randomizer.gd" id="7_mi7vy"]
 [ext_resource type="Texture2D" uid="uid://dx0xv4geqjvp8" path="res://Sprites(main)/asteroid_default_pallete.png" id="7_v3ypu"]
 [ext_resource type="AudioStream" uid="uid://b5s0ptmpaw0he" path="res://Sound Effects/break2.wav" id="8_3rjb2"]
-[ext_resource type="Shader" uid="uid://bjetsh4wdtn8e" path="res://Scenes/Asteroids/palette_swap.tres" id="8_xavby"]
+[ext_resource type="Shader" uid="uid://bjetsh4wdtn8e" path="res://Shaders/palette_swap.tres" id="8_xavby"]
 [ext_resource type="AudioStream" uid="uid://djeuv8xr5pfp8" path="res://Sound Effects/sfx_enemy.mp3" id="15_3rjb2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5h4od"]

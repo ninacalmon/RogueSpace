@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dr85npip0vvdg" path="res://Scenes/BackHoles/superm_black_hole.gd" id="1_8py6e"]
 [ext_resource type="Texture2D" uid="uid://506majaor5n" path="res://Sprites/Black_hole.png" id="2_8py6e"]
-[ext_resource type="Shader" uid="uid://s03egy3ha6nk" path="res://Scenes/BackHoles/BlackHoleShader.gdshader" id="2_lfh63"]
+[ext_resource type="Shader" uid="uid://s03egy3ha6nk" path="res://Shaders/BlackHoleShader.gdshader" id="2_lfh63"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="3_dv4l3"]
 [ext_resource type="Script" uid="uid://bh0d8bq6rk6f" path="res://Scenes/BackHoles/black_hole_shader.gd" id="4_lfh63"]
 [ext_resource type="AudioStream" uid="uid://cyu78nkci5acj" path="res://Sound Effects/gulp.mp3" id="6_lfh63"]

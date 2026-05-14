@@ -22,11 +22,9 @@ EventBus="*res://event_bus.gd"
 SFXManager="*res://sfx_manager.gd"
 LevelTransition="*res://level_transition.tscn"
 PowerUps="*res://power_ups.gd"
-ObjectPool="*res://object_pool.gd"
 
 [display]
 
-window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [dotnet]
@@ -35,7 +33,7 @@ project/assembly_name="rogue-space"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/tile_to_scene/plugin.cfg")
+enabled=PackedStringArray()
 
 [global_group]
 

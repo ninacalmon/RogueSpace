@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://c0lfvcrle3frk"]
+
+[ext_resource type="Texture2D" uid="uid://d21ykxh1yegmk" path="res://Sprites(main)/Placeholders/d2eb949b37550efab1e77247aab44aa2.jpg" id="1_wmbd2"]
+[ext_resource type="Shader" uid="uid://kyf6ladmlc1w" path="res://Shaders/blur.gdshader" id="2_tlbit"]
+[ext_resource type="Script" uid="uid://dei8kv4pd3sf0" path="res://Scenes/UI/camera_follow_cursor.gd" id="3_nkmj0"]
+[ext_resource type="Texture2D" uid="uid://bvfcnrinovvxl" path="res://Sprites(main)/Deimos.png" id="4_1d80w"]
+[ext_resource type="Shader" uid="uid://cccnue3fm2pyc" path="res://Shaders/outline.gdshader" id="4_n2uyx"]
+[ext_resource type="Script" uid="uid://jtbq6dor8pk0" path="res://Scenes/Modulars/clickable_highlight.gd" id="6_cootd"]
+[ext_resource type="Texture2D" uid="uid://81sauyddd7km" path="res://Sprites(main)/Asteroid_small.png" id="7_cootd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ntswj"]
+shader = ExtResource("2_tlbit")
+shader_parameter/blur_amount = 2.000000095
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tlbit"]
+resource_local_to_scene = true
+shader = ExtResource("4_n2uyx")
+shader_parameter/rounded = true
+shader_parameter/alpha_threshold = 0.1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tlbit"]
+size = Vector2(76, 120)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ntswj"]
+radius = 66.1211
+
+[node name="SpaceshipInterior" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(5.407281, 1.2763488)
+texture = ExtResource("1_wmbd2")
+
+[node name="BlurRect" type="ColorRect" parent="Background"]
+material = SubResource("ShaderMaterial_ntswj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -368.0
+offset_top = -259.5
+offset_right = -368.0
+offset_bottom = -259.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_nkmj0")
+
+[node name="Exemple" type="Area2D" parent="."]
+position = Vector2(-346, 0)
+priority = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="Exemple"]
+material = SubResource("ShaderMaterial_tlbit")
+scale = Vector2(5, 5)
+texture = ExtResource("4_1d80w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exemple"]
+shape = SubResource("RectangleShape2D_tlbit")
+
+[node name="ClickableHighlight" type="Node2D" parent="Exemple" node_paths=PackedStringArray("area", "sprite")]
+position = Vector2(346, 0)
+script = ExtResource("6_cootd")
+area = NodePath("..")
+sprite = NodePath("../Sprite2D")
+metadata/_custom_type_script = "uid://jtbq6dor8pk0"
+
+[node name="Exemple2" type="Area2D" parent="."]
+position = Vector2(239, -55)
+priority = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="Exemple2"]
+material = SubResource("ShaderMaterial_tlbit")
+scale = Vector2(5, 5)
+texture = ExtResource("7_cootd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exemple2"]
+shape = SubResource("CircleShape2D_ntswj")
+
+[node name="ClickableHighlight" type="Node2D" parent="Exemple2" node_paths=PackedStringArray("area", "sprite")]
+script = ExtResource("6_cootd")
+area = NodePath("..")
+sprite = NodePath("../Sprite2D")
+metadata/_custom_type_script = "uid://jtbq6dor8pk0"

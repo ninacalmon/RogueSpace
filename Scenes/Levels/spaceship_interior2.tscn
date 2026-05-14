@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0akbqrjjhnvw"]
+
+[ext_resource type="Script" uid="uid://dgmkg0h3yl5l2" path="res://Scenes/Levels/teste_script_bobao.gd" id="1_52nvp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hbjr"]
+size = Vector2(182, 107)
+
+[node name="SpaceshipInterior2" type="Area2D"]
+position = Vector2(163, 80)
+script = ExtResource("1_52nvp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(75, 23.5)
+shape = SubResource("RectangleShape2D_2hbjr")
