@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cbk3swogwrgtr"]
+[gd_scene load_steps=12 format=3 uid="uid://cbk3swogwrgtr"]
 
 [ext_resource type="Texture2D" uid="uid://dlv776axrbuj0" path="res://Sprites/background.png" id="1_mlhmh"]
 [ext_resource type="PackedScene" uid="uid://fjxp66w0rpvl" path="res://Scenes/UI/PowerUpSetup.tscn" id="2_h1t7e"]
 [ext_resource type="Script" uid="uid://mltr71hmkppb" path="res://Scenes/UI/resources_counter_texts.gd" id="2_m21qu"]
 [ext_resource type="Script" uid="uid://ce4k3gvavwn0b" path="res://Scenes/UI/power_ups_container.gd" id="2_ws088"]
 [ext_resource type="AudioStream" uid="uid://3ywm8o38t0d4" path="res://Sound Effects/value_up3.wav" id="5_ws088"]
+[ext_resource type="Script" uid="uid://dd5gfcig6vm08" path="res://Scenes/Levels/button.gd" id="6_x6732"]
 [ext_resource type="Texture2D" uid="uid://berv7f5gv13en" path="res://Sprites(main)/background.png" id="10_m5xn0"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ue4wm"]
@@ -180,6 +181,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_ue4wm")
 theme_override_styles/focus = SubResource("StyleBoxFlat_ws088")
 disabled = true
 text = "Continuar... -->"
+script = ExtResource("6_x6732")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_i7pnh")

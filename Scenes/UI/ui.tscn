@@ -146,12 +146,14 @@ offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxDirection" type="VBoxContainer" parent="UIControlRect"]
+[node name="VBoxDirection" type="VBoxContainer" parent="UIControlRect" node_paths=PackedStringArray("arrow", "km_label")]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 0
 offset_right = 150.0
 offset_bottom = 139.0
 script = ExtResource("1_gm34j")
+arrow = NodePath("TextureRect/ArrowControl/Arrow")
+km_label = NodePath("KmLabel")
 
 [node name="TitleTextLabel" type="RichTextLabel" parent="UIControlRect/VBoxDirection"]
 custom_minimum_size = Vector2(100, 0)

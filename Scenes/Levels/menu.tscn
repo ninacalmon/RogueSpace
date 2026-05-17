@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://3en43s0xvhci"]
+[gd_scene load_steps=7 format=3 uid="uid://3en43s0xvhci"]
 
 [ext_resource type="Texture2D" uid="uid://berv7f5gv13en" path="res://Sprites(main)/background.png" id="1_dsa84"]
 [ext_resource type="Script" uid="uid://cem6pnv2cepc7" path="res://menu_buttons_control.gd" id="2_jsrd8"]
@@ -13,20 +13,6 @@ tonemap_white = 4.31
 glow_enabled = true
 glow_intensity = 8.0
 glow_bloom = 1.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfqti"]
-bg_color = Color(0.15288003, 0.42, 0.11759999, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qvly"]
-bg_color = Color(0.33734995, 0.65, 0.16899998, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8i7c"]
 bg_color = Color(1, 1, 1, 1)
@@ -125,35 +111,14 @@ alignment = 1
 
 [node name="Start" type="Button" parent="CanvasLayer/ButtonsControl/Pressable"]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_rfqti")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_rfqti")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7qvly")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_7qvly")
-theme_override_styles/hover = SubResource("StyleBoxFlat_7qvly")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_rfqti")
-theme_override_styles/focus = SubResource("StyleBoxFlat_7qvly")
 text = "Começar"
 
 [node name="Controls" type="Button" parent="CanvasLayer/ButtonsControl/Pressable"]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_rfqti")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_rfqti")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7qvly")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_7qvly")
-theme_override_styles/hover = SubResource("StyleBoxFlat_7qvly")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_rfqti")
-theme_override_styles/focus = SubResource("StyleBoxFlat_7qvly")
 text = "Ver controles"
 
 [node name="Exit" type="Button" parent="CanvasLayer/ButtonsControl/Pressable"]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_rfqti")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_rfqti")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7qvly")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_7qvly")
-theme_override_styles/hover = SubResource("StyleBoxFlat_7qvly")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_rfqti")
-theme_override_styles/focus = SubResource("StyleBoxFlat_7qvly")
 text = "Sair"
 
 [node name="Controlers" type="ColorRect" parent="CanvasLayer/ButtonsControl"]

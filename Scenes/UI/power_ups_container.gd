@@ -12,7 +12,9 @@ func _on_count_finished():
 	for p in power_up_options_array:
 		p.show()
 		await flash(p, p.modulate)
-	power_up_options_array.back().grab_focus()
+	var first_pu: PowerUpSetup = power_up_options_array.get(0)
+	first_pu._grab_focus()
+	print(power_up_options_array)
 
 func flash(what: Control, original_color):
 	var tween = get_tree().create_tween()
