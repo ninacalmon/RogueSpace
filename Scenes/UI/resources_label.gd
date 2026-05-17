@@ -5,7 +5,8 @@ var current_resources: int = 0
 
 func _ready() -> void:
 	Globals.resources_gathered = 0
-	text = "recursos: [b]%d/%d[/b]" %[current_resources, Globals.resources_needed]
+	text = "[b]%d/%d[/b]
+	recursos" %[current_resources, Globals.resources_needed]
 	EventBus.space_resource_collected.connect(_on_resource_collected)
 	EventBus.player_out_of_bounds.connect(_on_player_out_off_bounds)
 

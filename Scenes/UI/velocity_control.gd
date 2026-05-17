@@ -1,4 +1,4 @@
-extends Control
+extends VBoxContainer
 
 @export var arrow: Node2D
 @export var km_label: RichTextLabel

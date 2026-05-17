@@ -2,7 +2,7 @@ extends TextureButton
 class_name PowerUp
 
 @export var price: int = 100
-@onready var price_label: RichTextLabel = $PriceLabel
+@export var price_label: RichTextLabel
 
 var self_modulate_color = Color(0.49, 0.678, 0.286)
 

@@ -1,7 +1,7 @@
-extends ProgressBar
+extends TextureProgressBar
 
 @export var max_hp: float = 100
-@onready var low_hp_overlay: Sprite2D = $LowHPOverlay
+@export var low_hp_overlay: Sprite2D
 
 var emitted: bool = false
 

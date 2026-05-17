@@ -1,11 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://3en43s0xvhci"]
+[gd_scene load_steps=9 format=3 uid="uid://3en43s0xvhci"]
 
 [ext_resource type="Texture2D" uid="uid://berv7f5gv13en" path="res://Sprites(main)/background.png" id="1_dsa84"]
 [ext_resource type="Script" uid="uid://cem6pnv2cepc7" path="res://menu_buttons_control.gd" id="2_jsrd8"]
-[ext_resource type="FontFile" uid="uid://bcct8k0olmbi4" path="res://Fonts/batmfa__.ttf" id="3_jsrd8"]
-[ext_resource type="FontFile" uid="uid://ynyhx0lmxagx" path="res://Fonts/MonospaceTypewriter.ttf" id="3_wbdvm"]
 [ext_resource type="Texture2D" uid="uid://dvfptl0u1lq0d" path="res://Sprites/controller.jpg" id="4_q3rjx"]
-[ext_resource type="FontFile" uid="uid://dq0nn8i2xfigj" path="res://Fonts/F25_Bank_Printer_Bold.ttf" id="5_6swd7"]
 [ext_resource type="Texture2D" uid="uid://bhshref68qilg" path="res://Sprites/panorama6.jpg" id="7_00qkb"]
 
 [sub_resource type="Environment" id="Environment_00qkb"]
@@ -87,7 +84,6 @@ offset_top = 43.0
 offset_right = 178.0
 offset_bottom = 190.0
 grow_horizontal = 2
-theme_override_fonts/normal_font = ExtResource("3_jsrd8")
 theme_override_font_sizes/normal_font_size = 64
 text = "Rogue-Space"
 horizontal_alignment = 1
@@ -103,7 +99,7 @@ offset_right = 238.0
 offset_bottom = 472.0
 grow_horizontal = 2
 bbcode_enabled = true
-text = "[b]Você é um astronauta coletor. Use seu traje mecânico para se chocar contra asteroides e coletar seus fragmentos.[/b]
+text = "Você é um astronauta coletor. Use seu traje mecânico para se chocar contra asteroides e coletar seus fragmentos. 
 
 --LORE--
 Você era só mais um astronauta de baixa patente da nave Nostromo. Devido a um acidente, você é o último tripulante vivo.
@@ -129,7 +125,6 @@ alignment = 1
 
 [node name="Start" type="Button" parent="CanvasLayer/ButtonsControl/Pressable"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_wbdvm")
 theme_override_styles/normal = SubResource("StyleBoxFlat_rfqti")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_rfqti")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7qvly")
@@ -141,7 +136,6 @@ text = "Começar"
 
 [node name="Controls" type="Button" parent="CanvasLayer/ButtonsControl/Pressable"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_wbdvm")
 theme_override_styles/normal = SubResource("StyleBoxFlat_rfqti")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_rfqti")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7qvly")
@@ -153,7 +147,6 @@ text = "Ver controles"
 
 [node name="Exit" type="Button" parent="CanvasLayer/ButtonsControl/Pressable"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_wbdvm")
 theme_override_styles/normal = SubResource("StyleBoxFlat_rfqti")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_rfqti")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7qvly")
@@ -346,7 +339,6 @@ offset_right = 168.0
 offset_bottom = 222.0
 grow_horizontal = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("5_6swd7")
 theme_override_font_sizes/normal_font_size = 32
 text = "CONTROLES"
 horizontal_alignment = 1

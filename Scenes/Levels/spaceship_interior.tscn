@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://c0lfvcrle3frk"]
 
 [ext_resource type="PackedScene" uid="uid://cgfq6udrxu5hm" path="res://Scenes/UI/mouse.tscn" id="1_ntswj"]
-[ext_resource type="Texture2D" uid="uid://d21ykxh1yegmk" path="res://Sprites(main)/Placeholders/d2eb949b37550efab1e77247aab44aa2.jpg" id="1_wmbd2"]
+[ext_resource type="Texture2D" uid="uid://dwfu7nvo6supn" path="res://Sprites(main)/SpaceshipInside/SpaceShipInside.png" id="1_rveu7"]
 [ext_resource type="Shader" uid="uid://kyf6ladmlc1w" path="res://Shaders/blur.gdshader" id="2_tlbit"]
 [ext_resource type="Script" uid="uid://dei8kv4pd3sf0" path="res://Scenes/UI/camera_follow_cursor.gd" id="3_nkmj0"]
 [ext_resource type="Texture2D" uid="uid://bvfcnrinovvxl" path="res://Sprites(main)/Deimos.png" id="4_1d80w"]
@@ -28,10 +28,11 @@ radius = 66.1211
 [node name="SpaceshipInterior" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
-scale = Vector2(5.407281, 1.2763488)
-texture = ExtResource("1_wmbd2")
+scale = Vector2(0.61557007, 0.61557007)
+texture = ExtResource("1_rveu7")
 
 [node name="BlurRect" type="ColorRect" parent="Background"]
+visible = false
 material = SubResource("ShaderMaterial_ntswj")
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,10 +47,10 @@ mouse_filter = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("3_nkmj0")
-total_rooms_range = Vector2i(0, 0)
+room_width = 576
 
 [node name="Exemple" type="Area2D" parent="."]
-position = Vector2(-346, 0)
+position = Vector2(-302, 74)
 priority = 6
 
 [node name="Sprite2D" type="Sprite2D" parent="Exemple"]
@@ -68,7 +69,7 @@ sprite = NodePath("../Sprite2D")
 metadata/_custom_type_script = "uid://jtbq6dor8pk0"
 
 [node name="Exemple2" type="Area2D" parent="."]
-position = Vector2(239, -55)
+position = Vector2(318, 86)
 priority = 6
 
 [node name="Sprite2D" type="Sprite2D" parent="Exemple2"]

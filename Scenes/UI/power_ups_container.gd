@@ -2,29 +2,22 @@ extends HBoxContainer
 
 @export var texts: TextsControl
 
-@onready var impulse_power_up: TextureButton = $ImpulsePowerUp
-@onready var fuel_power_up: TextureButton = $FuelPowerUp
-@onready var teleport_power_up: TextureButton = $TeleportPowerUp
-
-var power_up_options_array: Array[TextureButton] 
+var power_up_options_array: Array[Node] 
 
 func _ready() -> void:
 	texts.count_finished.connect(_on_count_finished)
-	power_up_options_array = [impulse_power_up, fuel_power_up, teleport_power_up]
+	power_up_options_array = get_children()
 
-func _on_count_finished(enough: bool):
-	if !enough:
-		modulate = Color(1.0, 1.0, 1.0, 0.2)
+func _on_count_finished():
 	for p in power_up_options_array:
 		p.show()
-		p.disabled = false
-		await flash(p)
-	impulse_power_up.grab_focus()
+		await flash(p, p.modulate)
+	power_up_options_array.back().grab_focus()
 
-func flash(what: Control):
+func flash(what: Control, original_color):
 	var tween = get_tree().create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(what, "modulate", Color(0, 0, 0, 1), 0.04)
 	tween.tween_property(what, "modulate", Color(10, 10, 10, 10), 0.1)
-	tween.tween_property(what, "modulate", Color(1, 1, 1, 1), 0.4)
+	tween.tween_property(what, "modulate", original_color, 0.4)
 	await tween.finished

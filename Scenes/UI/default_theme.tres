@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://npl3mumy4crf"]
+
+[ext_resource type="FontFile" uid="uid://bkq3re32v3glf" path="res://Fonts/Commodore Pixelized v1.2.ttf" id="1_cr1n0"]
+
+[resource]
+RichTextLabel/constants/line_separation = 2
+RichTextLabel/font_sizes/bold_font_size = 24
+RichTextLabel/fonts/bold_font = ExtResource("1_cr1n0")
+RichTextLabel/fonts/normal_font = ExtResource("1_cr1n0")

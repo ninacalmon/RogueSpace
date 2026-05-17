@@ -1,6 +1,7 @@
 extends Camera2D
 
 @export var total_rooms_range: Vector2i = Vector2i(-1, 1)
+@export var room_width: int
 @export var viewport_border_width: float = 530
 @export var camera_speed: float = 0.8
 
@@ -42,11 +43,11 @@ func look_side(side: String):
 	match side:
 		"left":
 			can_look_left = false
-			new_pos -= Vector2(viewport_size.x, 0)
+			new_pos -= Vector2(room_width, 0)
 			current_room -= 1
 		"right":
 			can_look_right = false
-			new_pos += Vector2(viewport_size.x, 0)
+			new_pos += Vector2(room_width, 0)
 			current_room += 1
 
 	var tween = create_tween()

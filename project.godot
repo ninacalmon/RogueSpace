@@ -41,6 +41,10 @@ enabled=PackedStringArray()
 
 Player_Group=""
 
+[gui]
+
+theme/custom="uid://npl3mumy4crf"
+
 [input]
 
 ui_accept={

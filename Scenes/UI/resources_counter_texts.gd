@@ -5,7 +5,7 @@ class_name TextsControl
 @export var button: Button
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
-signal count_finished(enough: bool)
+signal count_finished
 
 var min_tween_duration: float = 1
 var max_tween_duration: float = 6
@@ -25,7 +25,7 @@ func _ready() -> void:
 	
 	counter.text = "[b]%d[/b]/%d" %[0, Globals.resources_needed]
 	await animate_number()
-	count_finished.emit(can_progress)
+	count_finished.emit()
 	await get_tree().create_timer(2).timeout
 	show_button()
 

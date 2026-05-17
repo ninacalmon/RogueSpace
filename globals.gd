@@ -13,7 +13,7 @@ var changing_scene: bool = false
 var level: int = 1
 
 var resources_gathered: int
-var resources_needed: int = 1
+var resources_needed: int = 100
 
 func _ready() -> void:
 	EventBus.cutscene_on.connect(func(): is_cutscene = true)
