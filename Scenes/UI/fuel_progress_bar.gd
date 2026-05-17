@@ -20,8 +20,9 @@ func _on_fuel_used():
 		emitted = true
 		EventBus.almost_out_of_fuel.emit()
 	if value == 0 and get_tree():
-		EventBus.out_of_fuel.emit()
-		get_tree().reload_current_scene()
+		Globals.player_died("Out of Fuel")
+		#EventBus.out_of_fuel.emit()
+		#get_tree().reload_current_scene()
 
 func _on_burst_fuel_used():
 	value -= burst_use_step
@@ -29,5 +30,6 @@ func _on_burst_fuel_used():
 		emitted = true
 		EventBus.almost_out_of_fuel.emit()
 	if value == 0 and get_tree():
-		EventBus.out_of_fuel.emit()
-		get_tree().reload_current_scene()
+		Globals.player_died("Out of Fuel")
+		#EventBus.out_of_fuel.emit()
+		#get_tree().reload_current_scene()

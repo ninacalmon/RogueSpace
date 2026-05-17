@@ -22,6 +22,7 @@ EventBus="*res://event_bus.gd"
 SFXManager="*res://sfx_manager.gd"
 LevelTransition="*res://level_transition.tscn"
 PowerUps="*res://power_ups.gd"
+ControllerVibration="*res://controller_vibration.gd"
 
 [display]
 

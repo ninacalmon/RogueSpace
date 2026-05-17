@@ -123,9 +123,10 @@ stream = SubResource("AudioStreamRandomizer_7g0yx")
 volume_db = -15.0
 pitch_scale = 4.0
 
-[node name="HurtBoxPlayer" type="Area2D" parent="."]
+[node name="HurtBoxPlayer" type="Area2D" parent="." node_paths=PackedStringArray("player")]
 collision_layer = 0
 script = ExtResource("13_7g0yx")
+player = NodePath("..")
 enemy_body_sensible = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxPlayer"]

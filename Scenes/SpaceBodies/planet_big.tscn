@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cveyscwq0qoda" path="res://Sprites(main)/TemporaryPlanets/2733907768 (2).png" id="5_0dus1"]
 [ext_resource type="Script" uid="uid://dbom7e2dansya" path="res://Scenes/SpaceBodies/random_planet.gd" id="6_6ef4u"]
 [ext_resource type="Script" uid="uid://dny3ctsdweann" path="res://Scenes/SpaceBodies/damage_module.gd" id="10_88xxd"]
-[ext_resource type="AudioStream" uid="uid://b7snqnvr1tlj" path="res://Sound Effects/break.wav" id="11_pepcc"]
-[ext_resource type="AudioStream" uid="uid://b5s0ptmpaw0he" path="res://Sound Effects/break2.wav" id="12_6y714"]
+[ext_resource type="AudioStream" uid="uid://b7snqnvr1tlj" path="res://Sound Effects/Asteroids/Break/break.wav" id="11_pepcc"]
+[ext_resource type="AudioStream" uid="uid://b5s0ptmpaw0he" path="res://Sound Effects/Asteroids/Break/break2.wav" id="12_6y714"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m0iey"]
 friction = 0.0

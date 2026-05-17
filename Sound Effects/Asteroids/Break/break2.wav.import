@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b5s0ptmpaw0he"
-path="res://.godot/imported/break2.wav-65679ab0ad3842af97ec79c37f246622.sample"
+path="res://.godot/imported/break2.wav-639ab9f2dfdf3c294610ee01334806df.sample"
 
 [deps]
 
-source_file="res://Sound Effects/break2.wav"
-dest_files=["res://.godot/imported/break2.wav-65679ab0ad3842af97ec79c37f246622.sample"]
+source_file="res://Sound Effects/Asteroids/Break/break2.wav"
+dest_files=["res://.godot/imported/break2.wav-639ab9f2dfdf3c294610ee01334806df.sample"]
 
 [params]
 

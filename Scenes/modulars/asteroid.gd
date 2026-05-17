@@ -1,6 +1,7 @@
 extends BodySetup
 class_name Asteroid
 
+@export_range(1, 3, 1) var size_index: int = 1
 @export var base_endurance: float = 200
 @export var minimum_damage: float = 70
 @export var minimum_external_damage: float = 160
@@ -53,8 +54,10 @@ func _ready() -> void:
 
 
 func _on_damage_taken(damage: float, causer: RigidBody2D):
-	if causer is Player and damage > minimum_damage:
-		handle_player_damage(damage, causer)
+	if causer is Player:
+		if damage > minimum_damage:
+			handle_player_damage(damage, causer)
+		else: ControllerVibration.vibrate_controller(1)
 
 	if !(causer is Player) and damage > minimum_external_damage:
 		handle_external_damage(damage)
@@ -65,6 +68,7 @@ func _on_damage_taken(damage: float, causer: RigidBody2D):
 
 
 func handle_player_damage(damage: float, _player: Player):
+	ControllerVibration.vibrate_controller(size_index, 0.3)
 	var bonus_multiplier: float = 1.0
 
 	if damage >= base_endurance and endurance == base_endurance:

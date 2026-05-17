@@ -12,8 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://6gc530t8v2ol" path="res://Sprites(main)/yellow_asteroid_pallete.png" id="6_iy4pt"]
 [ext_resource type="Script" uid="uid://dny3ctsdweann" path="res://Scenes/SpaceBodies/damage_module.gd" id="6_yu118"]
 [ext_resource type="Script" uid="uid://dakt7r353r7ae" path="res://Scenes/SpaceBodies/body_randomizer.gd" id="7_t4syf"]
-[ext_resource type="AudioStream" uid="uid://b7snqnvr1tlj" path="res://Sound Effects/break.wav" id="8_iy4pt"]
-[ext_resource type="AudioStream" uid="uid://b5s0ptmpaw0he" path="res://Sound Effects/break2.wav" id="9_xolh0"]
+[ext_resource type="AudioStream" uid="uid://b7snqnvr1tlj" path="res://Sound Effects/Asteroids/Break/break.wav" id="8_iy4pt"]
+[ext_resource type="AudioStream" uid="uid://b5s0ptmpaw0he" path="res://Sound Effects/Asteroids/Break/break2.wav" id="9_xolh0"]
 [ext_resource type="AudioStream" uid="uid://djeuv8xr5pfp8" path="res://Sound Effects/sfx_enemy.mp3" id="15_t4syf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0d5qe"]
@@ -30,7 +30,7 @@ shader_parameter/new_palette = ExtResource("5_t4syf")
 shader_parameter/colors_count = 6
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6lt0e"]
-streams_count = 2
+streams_count = 3
 stream_0/stream = ExtResource("8_iy4pt")
 stream_1/stream = ExtResource("9_xolh0")
 
@@ -43,8 +43,9 @@ stream_0/stream = ExtResource("15_t4syf")
 mass = 60.0
 physics_material_override = SubResource("PhysicsMaterial_0d5qe")
 contact_monitor = true
-max_contacts_reported = 2
+max_contacts_reported = 4
 script = ExtResource("1_r6oq4")
+size_index = 2
 base_endurance = 300.0
 minimum_damage = 100.0
 endur_to_pieces_proportion = 20

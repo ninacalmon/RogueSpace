@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="4_1kal1"]
 [ext_resource type="Texture2D" uid="uid://bflk5f2qeiyqi" path="res://Sprites(main)/pink_asteroid_pallete.png" id="4_cvdgt"]
 [ext_resource type="Texture2D" uid="uid://dacyxx5dau8bv" path="res://Sprites(main)/red_asteroid_pallete.png" id="5_6w43o"]
-[ext_resource type="AudioStream" uid="uid://b7snqnvr1tlj" path="res://Sound Effects/break.wav" id="5_72u5j"]
-[ext_resource type="AudioStream" uid="uid://b5s0ptmpaw0he" path="res://Sound Effects/break2.wav" id="6_empbd"]
+[ext_resource type="AudioStream" uid="uid://b7snqnvr1tlj" path="res://Sound Effects/Asteroids/Break/break.wav" id="5_72u5j"]
+[ext_resource type="AudioStream" uid="uid://b5s0ptmpaw0he" path="res://Sound Effects/Asteroids/Break/break2.wav" id="6_empbd"]
 [ext_resource type="Texture2D" uid="uid://6gc530t8v2ol" path="res://Sprites(main)/yellow_asteroid_pallete.png" id="6_nnd5f"]
 [ext_resource type="Script" uid="uid://dakt7r353r7ae" path="res://Scenes/SpaceBodies/body_randomizer.gd" id="7_1kal1"]
 [ext_resource type="Shader" uid="uid://bjetsh4wdtn8e" path="res://Shaders/palette_swap.tres" id="7_egnjl"]
@@ -42,8 +42,9 @@ stream_0/stream = ExtResource("15_6w43o")
 mass = 80.0
 physics_material_override = SubResource("PhysicsMaterial_1kal1")
 contact_monitor = true
-max_contacts_reported = 2
+max_contacts_reported = 6
 script = ExtResource("1_jr0l1")
+size_index = 3
 base_endurance = 600.0
 minimum_damage = 140.0
 minimum_external_damage = 200.0

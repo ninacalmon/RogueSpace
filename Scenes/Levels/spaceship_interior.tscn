@@ -46,6 +46,7 @@ mouse_filter = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("3_nkmj0")
+total_rooms_range = Vector2i(0, 0)
 
 [node name="Exemple" type="Area2D" parent="."]
 position = Vector2(-346, 0)
@@ -85,4 +86,3 @@ sprite = NodePath("../Sprite2D")
 metadata/_custom_type_script = "uid://jtbq6dor8pk0"
 
 [node name="Mouse" parent="." instance=ExtResource("1_ntswj")]
-position = Vector2(-130, -141)

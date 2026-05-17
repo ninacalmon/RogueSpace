@@ -38,8 +38,6 @@ func _ready() -> void:
 	EventBus.player_almost_out_of_bounds.connect(_on_player_almost_out_of_bounds)
 	EventBus.player_out_of_bounds.connect(_on_player_out_of_bounds)
 	EventBus.cutscene_off.connect(start_game)
-	hurt_box_player.damage_taken.connect(_on_enemy_damage_taken)
-	
 
 func start_game():
 	if start_of_game:
@@ -54,8 +52,6 @@ func _process(delta: float) -> void:
 	destroy_tolerance_timer -= delta
 	if burst_cooldown_timer <= 0:
 		burst_cooldown_timer = 0
-	if destroy_tolerance_timer <= 0:
-		destroy_tolerance_timer = 0
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if Globals.is_cutscene:
@@ -146,20 +142,3 @@ func steer_velocity(state: PhysicsDirectBodyState2D):
 	angle = clamp(angle, -max_turn, max_turn)
 
 	state.linear_velocity = vel.rotated(angle)
-
-
-func _on_damage_taken(amount: float, _causer: RigidBody2D):
-	if can_destroy:
-		return
-	else:
-		var damage = amount / 20
-		EventBus.damage_taken.emit(self, damage)
-
-func _on_enemy_damage_taken(amount: float, _causer: Node2D):
-	flash()
-	EventBus.damage_taken.emit(self, amount)
-
-func flash():
-	sprite_2d.modulate = Color(18.892, 18.892, 18.892)
-	await get_tree().create_timer(0.1).timeout
-	sprite_2d.modulate = Color(1, 1, 1)

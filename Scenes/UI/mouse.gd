@@ -5,7 +5,11 @@ const deadzone: float = 0.2
 
 @onready var mouse_pos: Vector2 = get_viewport().get_mouse_position()
 
+
 func _process(delta: float) -> void:
+	if !Input.get_connected_joypads():
+		return
+	
 	var move = Vector2(
 		Input.get_joy_axis(0, JOY_AXIS_LEFT_X),
 		Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)

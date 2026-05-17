@@ -6,6 +6,8 @@ class_name ClickableHighlight
 
 var is_mouse_over_area: bool
 
+signal was_clicked
+
 func _ready() -> void:
 	if !sprite.material:
 		print("you missed the sprite's outline shader")
@@ -21,15 +23,20 @@ func _ready() -> void:
 func _on_area_mouse_entered():
 	is_mouse_over_area = true
 	sprite.set_instance_shader_parameter("enabled", true)
+	ControllerVibration.vibrate_controller()
 
 func _on_area_mouse_exited():
 	is_mouse_over_area = false
 	sprite.set_instance_shader_parameter("enabled", false)
+	ControllerVibration.vibrate_controller()
 
 func _input(event: InputEvent) -> void:
 	if !is_mouse_over_area:
 		return
 	if event.is_action_pressed("left_click"):
+		print("clicando")
+		was_clicked.emit()
 		sprite.set_instance_shader_parameter("outline_color", Color(1.0, 0.0, 0.0))
 	if event.is_action_released("left_click"):
+		print("parei")
 		sprite.set_instance_shader_parameter("outline_color", Color(1.0, 1.0, 1.0))
