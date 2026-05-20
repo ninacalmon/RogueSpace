@@ -9,6 +9,8 @@ var is_mouse_over_area: bool
 
 signal was_clicked
 signal clicked_outside()
+signal is_on_hover
+
 
 func _ready() -> void:
 	if !sprite.material:
@@ -56,3 +58,7 @@ func _on_focus_changed(_focus: bool, _subject: Node2D):
 	# ClickableModule always deactivate everything because Main Area is responsible to activate as needed.
 	active = false
 	sprite.set_instance_shader_parameter("enabled", false)
+
+func _process(delta: float) -> void:
+	if is_mouse_over_area:
+		is_on_hover.emit()

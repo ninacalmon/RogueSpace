@@ -24,6 +24,7 @@ LevelTransition="*res://level_transition.tscn"
 PowerUps="*res://power_ups.gd"
 ControllerVibration="*res://controller_vibration.gd"
 SpaceshipEventBus="*res://spaceship_event_bus.gd"
+PopUpSystem="*res://Scenes/Spaceship/UI/pop_up_control.tscn"
 
 [display]
 
