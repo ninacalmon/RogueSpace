@@ -12,7 +12,7 @@ var changing_scene: bool = false
 
 var level: int = 1
 
-var resources_gathered: int
+var resources_gathered: int = 110
 var resources_needed: int = 100
 
 func _ready() -> void:

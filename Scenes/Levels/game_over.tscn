@@ -1,9 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbfue7xfisdim"]
+[gd_scene load_steps=6 format=3 uid="uid://bbfue7xfisdim"]
 
 [ext_resource type="Texture2D" uid="uid://eekvmorfi2ut" path="res://Sprites/Starfields/Starfield 2 - 1024x1024.png" id="1_cfvhd"]
 [ext_resource type="Script" uid="uid://wf0piy7g0hye" path="res://Scenes/Levels/game_over_control.gd" id="1_rohwx"]
-[ext_resource type="FontFile" uid="uid://by1q8m4k77q07" path="res://Fonts/F25_Bank_Printer.ttf" id="2_rohwx"]
-[ext_resource type="FontFile" uid="uid://ynyhx0lmxagx" path="res://Fonts/MonospaceTypewriter.ttf" id="3_0qwdj"]
 [ext_resource type="Script" uid="uid://ktd1ndy25a0o" path="res://Scenes/UI/GameOver/pressable_game_over.gd" id="4_l0mjm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stgsc"]
@@ -44,14 +42,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -213.0
+offset_left = -271.0
 offset_top = -20.0
-offset_right = 213.0
+offset_right = 271.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-theme_override_fonts/normal_font = ExtResource("2_rohwx")
 theme_override_font_sizes/normal_font_size = 34
 text = "DEIMOS ESTÁ MORTO"
 fit_content = true
@@ -70,7 +67,6 @@ offset_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-theme_override_fonts/normal_font = ExtResource("3_0qwdj")
 theme_override_font_sizes/normal_font_size = 16
 text = "Alguma lore sobre o que aconteceu com ele, dependendo de quem matou"
 fit_content = true
@@ -94,7 +90,6 @@ script = ExtResource("4_l0mjm")
 
 [node name="TryAgain" type="Button" parent="CanvasLayer/Pressable"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_0qwdj")
 theme_override_styles/normal = SubResource("StyleBoxFlat_stgsc")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_stgsc")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ts6st")
@@ -106,7 +101,6 @@ text = "Tentar novamente"
 
 [node name="Menu" type="Button" parent="CanvasLayer/Pressable"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_0qwdj")
 theme_override_styles/normal = SubResource("StyleBoxFlat_stgsc")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_stgsc")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ts6st")
