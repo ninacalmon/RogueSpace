@@ -1,27 +1,191 @@
-[gd_scene load_steps=7 format=3 uid="uid://3en43s0xvhci"]
+[gd_scene load_steps=36 format=3 uid="uid://3en43s0xvhci"]
 
 [ext_resource type="Texture2D" uid="uid://berv7f5gv13en" path="res://Sprites(main)/background.png" id="1_dsa84"]
 [ext_resource type="Script" uid="uid://cem6pnv2cepc7" path="res://menu_buttons_control.gd" id="2_jsrd8"]
-[ext_resource type="Texture2D" uid="uid://dvfptl0u1lq0d" path="res://Sprites/controller.jpg" id="4_q3rjx"]
+[ext_resource type="FontFile" uid="uid://bkq3re32v3glf" path="res://Fonts/Commodore Pixelized v1.2.ttf" id="3_rb8kr"]
+[ext_resource type="Theme" uid="uid://npl3mumy4crf" path="res://Scenes/UI/default_theme.tres" id="3_w6vxw"]
+[ext_resource type="Script" uid="uid://dfaqtws11ry3s" path="res://Scenes/Levels/rich_text_label_4.gd" id="4_3so5s"]
+[ext_resource type="Script" uid="uid://bpxtguck5t3o3" path="res://Scenes/Levels/rich_text_label.gd" id="4_g56od"]
+[ext_resource type="Script" uid="uid://bsrtfrgcfw0uh" path="res://Scenes/Levels/rich_text_label_2.gd" id="4_p4bun"]
+[ext_resource type="Texture2D" uid="uid://y5f6x8ssusmq" path="res://Sprites(main)/UI/MenuBG/1.png" id="5_rwfgf"]
+[ext_resource type="Texture2D" uid="uid://c2xrkx6umx7te" path="res://Sprites(main)/UI/MenuBG/2.png" id="6_w6vxw"]
 [ext_resource type="Texture2D" uid="uid://bhshref68qilg" path="res://Sprites/panorama6.jpg" id="7_00qkb"]
+[ext_resource type="Texture2D" uid="uid://0ebkr205wvv5" path="res://Sprites(main)/UI/MenuBG/3.png" id="7_rb8kr"]
+[ext_resource type="Texture2D" uid="uid://dvci0phr78syq" path="res://Sprites(main)/UI/MenuBG/4.png" id="8_3so5s"]
+[ext_resource type="Texture2D" uid="uid://dcy2i8w8i5ydg" path="res://Sprites(main)/UI/MenuBG/5.png" id="9_p4bun"]
+[ext_resource type="Texture2D" uid="uid://cjnck6cx3k841" path="res://Sprites(main)/UI/MenuBG/6.png" id="10_g56od"]
+[ext_resource type="Texture2D" uid="uid://b4cwoyw2dkt5p" path="res://Sprites(main)/UI/MenuBG/7.png" id="11_sic4q"]
+[ext_resource type="Texture2D" uid="uid://cs1dtd0j8ahjv" path="res://Sprites(main)/UI/MenuBG/8.png" id="12_kha57"]
+[ext_resource type="Texture2D" uid="uid://bcck2y3x0tkxt" path="res://Sprites(main)/UI/MenuBG/9.png" id="13_tulv5"]
+[ext_resource type="Texture2D" uid="uid://bd5xvgmfqj4i1" path="res://Sprites(main)/UI/MenuBG/10.png" id="14_fw6na"]
+[ext_resource type="Texture2D" uid="uid://dqs2wu6yni1jb" path="res://Sprites(main)/UI/MenuBG/11.png" id="15_qa3qj"]
+[ext_resource type="Texture2D" uid="uid://btw350hndttvj" path="res://Sprites(main)/UI/MenuBG/12.png" id="16_8mei2"]
+[ext_resource type="Texture2D" uid="uid://ra5834edaiwl" path="res://Sprites(main)/UI/MenuBG/13.png" id="17_eqhea"]
+[ext_resource type="Texture2D" uid="uid://fvpsd58fjmpp" path="res://Sprites(main)/UI/MenuBG/14.png" id="18_qivuu"]
+[ext_resource type="Texture2D" uid="uid://myng5yuktywm" path="res://Sprites(main)/UI/MenuBG/15.png" id="19_orbas"]
+[ext_resource type="Texture2D" uid="uid://huk82gn7dw4" path="res://Sprites(main)/UI/MenuBG/16.png" id="20_mddt8"]
+[ext_resource type="Texture2D" uid="uid://dgl8tu66vo2uf" path="res://Sprites(main)/UI/MenuBG/17.png" id="21_07c1g"]
+[ext_resource type="Texture2D" uid="uid://bcesdj3w5yl01" path="res://Sprites(main)/UI/MenuBG/18.png" id="22_g3be4"]
+[ext_resource type="Texture2D" uid="uid://p5mr3v4pwotx" path="res://Sprites(main)/UI/MenuBG/19.png" id="23_c18yr"]
+[ext_resource type="Texture2D" uid="uid://deo3dowgdwkgr" path="res://Sprites(main)/UI/MenuBG/20.png" id="24_ac2gt"]
+[ext_resource type="Texture2D" uid="uid://bo7qmdtgbq4i6" path="res://Sprites(main)/UI/MenuBG/21.png" id="25_2jmh0"]
+[ext_resource type="Texture2D" uid="uid://d2u6h1v2o34ci" path="res://Sprites(main)/UI/MenuBG/22.png" id="26_q8tft"]
+[ext_resource type="Texture2D" uid="uid://cmhb755c27p5i" path="res://Sprites(main)/UI/MenuBG/23.png" id="27_1famm"]
+[ext_resource type="Texture2D" uid="uid://bpk50r3mwdqp" path="res://Sprites(main)/UI/MenuBG/24.png" id="28_lrqgv"]
 
-[sub_resource type="Environment" id="Environment_00qkb"]
-background_mode = 3
-tonemap_mode = 2
-tonemap_exposure = 5.05
-tonemap_white = 4.31
-glow_enabled = true
-glow_intensity = 8.0
-glow_bloom = 1.0
+[sub_resource type="Theme" id="Theme_rb8kr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8i7c"]
 bg_color = Color(1, 1, 1, 1)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_dsa84"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_rwfgf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_w6vxw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rb8kr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3so5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_p4bun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_g56od")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_sic4q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_kha57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_tulv5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_fw6na")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_qa3qj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_8mei2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_eqhea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_qivuu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_orbas")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_mddt8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_07c1g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_g3be4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_c18yr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ac2gt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_2jmh0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_q8tft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_1famm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_lrqgv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_1famm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_q8tft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_2jmh0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ac2gt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_c18yr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_g3be4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_07c1g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_mddt8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_orbas")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_qivuu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_eqhea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_8mei2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_qa3qj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_fw6na")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_tulv5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_kha57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_sic4q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_g56od")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_p4bun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3so5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rb8kr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_w6vxw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="Menu" type="Node2D"]
 process_mode = 3
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_00qkb")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -42,6 +206,7 @@ offset_bottom = 649.0
 texture = ExtResource("1_dsa84")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -65,33 +230,63 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -178.0
-offset_top = 43.0
-offset_right = 178.0
-offset_bottom = 190.0
+offset_left = -60.99994
+offset_top = 44.0
+offset_right = 539.0
+offset_bottom = 191.0
 grow_horizontal = 2
-theme_override_font_sizes/normal_font_size = 64
-text = "Rogue-Space"
+scale = Vector2(1.0032214, 1.0436978)
+theme_override_colors/default_color = Color(0.40784314, 0.72156864, 0.1254902, 1)
+theme_override_fonts/normal_font = ExtResource("3_rb8kr")
+theme_override_font_sizes/normal_font_size = 67
+text = "Rogue
+    Space"
 horizontal_alignment = 1
+script = ExtResource("4_g56od")
 
-[node name="Instructions" type="RichTextLabel" parent="CanvasLayer/ButtonsControl"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -238.0
-offset_top = 188.0
-offset_right = 238.0
-offset_bottom = 472.0
-grow_horizontal = 2
-bbcode_enabled = true
-text = "Você é um astronauta coletor. Use seu traje mecânico para se chocar contra asteroides e coletar seus fragmentos. 
+[node name="Timer" type="Timer" parent="CanvasLayer/ButtonsControl/RichTextLabel"]
+wait_time = 0.05
+autostart = true
 
---LORE--
-Você era só mais um astronauta de baixa patente da nave Nostromo. Devido a um acidente, você é o último tripulante vivo.
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/ButtonsControl"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 611.0
+offset_right = 548.0
+offset_bottom = 636.0
+theme_override_colors/default_color = Color(0.6901961, 0.6901961, 0.6901961, 0.69803923)
+theme_override_fonts/normal_font = ExtResource("3_rb8kr")
+text = "6EQUJ5"
+script = ExtResource("4_p4bun")
 
-Para consertar a nave e melhorar seu traje, você deve se arriscar coletando recursos preciosos em sistemas solares desconhecidos."
-horizontal_alignment = 1
+[node name="Timer" type="Timer" parent="CanvasLayer/ButtonsControl/RichTextLabel2"]
+wait_time = 0.05
+autostart = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="CanvasLayer/ButtonsControl"]
+layout_mode = 0
+offset_left = 893.0
+offset_top = 611.0
+offset_right = 993.0
+offset_bottom = 636.0
+theme_override_colors/default_color = Color(0.6901961, 0.6901961, 0.6901961, 1)
+theme_override_fonts/normal_font = ExtResource("3_rb8kr")
+text = "31.7kb"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="CanvasLayer/ButtonsControl" node_paths=PackedStringArray("ButtonsControl")]
+layout_mode = 0
+offset_left = 986.0
+offset_top = 611.0
+offset_right = 1286.0
+offset_bottom = 636.0
+theme_override_colors/default_color = Color(0.6901961, 0.6901961, 0.6901961, 1)
+theme_override_fonts/normal_font = ExtResource("3_rb8kr")
+script = ExtResource("4_3so5s")
+ButtonsControl = NodePath("..")
+
+[node name="Timer" type="Timer" parent="CanvasLayer/ButtonsControl/RichTextLabel4"]
+wait_time = 0.05
+autostart = true
 
 [node name="Pressable" type="VBoxContainer" parent="CanvasLayer/ButtonsControl"]
 layout_mode = 1
@@ -100,26 +295,32 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -223.0
-offset_top = 36.0
-offset_right = 223.0
-offset_bottom = 403.0
+offset_left = 41.0
+offset_top = -229.0
+offset_right = 541.0
+offset_bottom = 138.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+theme = SubResource("Theme_rb8kr")
 theme_override_constants/separation = 24
 alignment = 1
 
 [node name="Start" type="Button" parent="CanvasLayer/ButtonsControl/Pressable"]
 layout_mode = 2
-text = "Começar"
+theme = ExtResource("3_w6vxw")
+text = "novo jogo"
+alignment = 0
 
 [node name="Controls" type="Button" parent="CanvasLayer/ButtonsControl/Pressable"]
 layout_mode = 2
-text = "Ver controles"
+text = "opções"
+alignment = 0
 
 [node name="Exit" type="Button" parent="CanvasLayer/ButtonsControl/Pressable"]
 layout_mode = 2
-text = "Sair"
+text = "sair"
+alignment = 0
 
 [node name="Controlers" type="ColorRect" parent="CanvasLayer/ButtonsControl"]
 visible = false
@@ -129,155 +330,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.34176, 0.48, 0.1728, 0.43529412)
-
-[node name="3533536608DiagramOfTheXboxOneControllerXbox11" type="Sprite2D" parent="CanvasLayer/ButtonsControl/Controlers"]
-position = Vector2(572, 352)
-texture = ExtResource("4_q3rjx")
-
-[node name="Guide" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
-layout_mode = 0
-offset_left = 329.0
-offset_top = 319.0
-offset_right = 437.0
-offset_bottom = 345.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_g8i7c")
-theme_override_styles/background = SubResource("StyleBoxFlat_g8i7c")
-text = "Movimento"
-fit_content = true
-horizontal_alignment = 1
-
-[node name="Guide9" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
-layout_mode = 0
-offset_left = 548.0
-offset_top = 230.0
-offset_right = 663.0
-offset_bottom = 267.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_g8i7c")
-theme_override_styles/background = SubResource("StyleBoxFlat_g8i7c")
-text = "	"
-fit_content = true
-horizontal_alignment = 1
-
-[node name="Guide10" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
-layout_mode = 0
-offset_left = 765.0
-offset_top = 383.0
-offset_right = 880.0
-offset_bottom = 420.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_g8i7c")
-theme_override_styles/background = SubResource("StyleBoxFlat_g8i7c")
-text = "	"
-fit_content = true
-horizontal_alignment = 1
-
-[node name="Guide11" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
-layout_mode = 0
-offset_left = 787.0
-offset_top = 197.0
-offset_right = 902.0
-offset_bottom = 234.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_g8i7c")
-theme_override_styles/background = SubResource("StyleBoxFlat_g8i7c")
-text = "	"
-fit_content = true
-horizontal_alignment = 1
-
-[node name="Guide12" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
-layout_mode = 0
-offset_left = 282.0
-offset_top = 347.0
-offset_right = 433.0
-offset_bottom = 418.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_g8i7c")
-theme_override_styles/background = SubResource("StyleBoxFlat_g8i7c")
-text = "	"
-fit_content = true
-horizontal_alignment = 1
-
-[node name="Guide4" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
-layout_mode = 0
-offset_left = 325.0
-offset_top = 203.0
-offset_right = 433.0
-offset_bottom = 229.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_g8i7c")
-theme_override_styles/background = SubResource("StyleBoxFlat_g8i7c")
-text = "Pausar"
-fit_content = true
-horizontal_alignment = 1
-
-[node name="Guide5" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
-layout_mode = 0
-offset_left = 788.0
-offset_top = 264.0
-offset_right = 896.0
-offset_bottom = 290.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_g8i7c")
-theme_override_styles/background = SubResource("StyleBoxFlat_g8i7c")
-text = "Zoom in"
-fit_content = true
-horizontal_alignment = 1
-
-[node name="Guide6" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
-layout_mode = 0
-offset_left = 330.0
-offset_top = 264.0
-offset_right = 438.0
-offset_bottom = 290.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_g8i7c")
-theme_override_styles/background = SubResource("StyleBoxFlat_g8i7c")
-text = "Zoom out"
-fit_content = true
-horizontal_alignment = 1
-
-[node name="Guide7" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
-layout_mode = 0
-offset_left = 330.0
-offset_top = 232.0
-offset_right = 438.0
-offset_bottom = 258.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_g8i7c")
-theme_override_styles/background = SubResource("StyleBoxFlat_g8i7c")
-text = "Freio"
-fit_content = true
-horizontal_alignment = 1
-
-[node name="Guide8" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
-layout_mode = 0
-offset_left = 789.0
-offset_top = 233.0
-offset_right = 916.0
-offset_bottom = 259.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_g8i7c")
-theme_override_styles/background = SubResource("StyleBoxFlat_g8i7c")
-text = "Dash / Impulso"
-fit_content = true
-horizontal_alignment = 1
-
-[node name="Guide2" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
-layout_mode = 0
-offset_left = 761.0
-offset_top = 355.0
-offset_right = 869.0
-offset_bottom = 381.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_g8i7c")
-theme_override_styles/background = SubResource("StyleBoxFlat_g8i7c")
-text = "Confirmar
-"
-fit_content = true
-horizontal_alignment = 1
+color = Color(0, 0, 0, 1)
 
 [node name="Guide3" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
 layout_mode = 0
@@ -303,7 +356,7 @@ offset_top = 142.0
 offset_right = 168.0
 offset_bottom = 222.0
 grow_horizontal = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/normal_font_size = 32
 text = "CONTROLES"
 horizontal_alignment = 1
@@ -326,6 +379,14 @@ text = "Voltar"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.16, 0.16, 0.16, 1)
+self_modulate = Color(0, 0, 0, 1)
 position = Vector2(598.78174, 321.99994)
 scale = Vector2(0.1625, 0.16250002)
 texture = ExtResource("7_00qkb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(576.37506, 322.125)
+scale = Vector2(0.603776, 0.6002315)
+sprite_frames = SubResource("SpriteFrames_dsa84")
+autoplay = "default"
+frame_progress = 0.7109047
