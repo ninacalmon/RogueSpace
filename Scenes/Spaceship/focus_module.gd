@@ -16,6 +16,7 @@ func _on_focus_on_requested(zoom_in_amount: float, zoom_offset: Vector2, emitter
 	if camera.is_busy or camera.is_focused:
 		return
 
+	print(emitter)
 	camera.is_busy = true
 	camera.is_focused = true
 	var new_zoom = camera.zoom * zoom_in_amount
