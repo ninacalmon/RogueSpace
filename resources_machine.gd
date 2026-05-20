@@ -20,7 +20,6 @@ func _on_focus_changed(focus: bool, subject: Node2D):
 	## on the ClickableHighlight module, we can work around this problem having a state here that changes
 	## clickable_highlight.active on process based off this state
 	if focus == false:
-		sub_area_resources_deposit.deactivate()
 		clickable_highlight.active = true
 		is_focused = false
 

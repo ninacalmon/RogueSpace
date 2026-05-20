@@ -9,8 +9,10 @@ var max_tween_duration: float = 6
 var value: int = 0
 var last_int: int = -1
 
-func initialize():
+func _ready() -> void:
 	text = "[b]%d[/b]/%d" %[0, Globals.resources_needed]
+
+func initialize():
 	await animate_number()
 	SpaceshipEventBus.resource_count_finished.emit()
 

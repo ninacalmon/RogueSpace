@@ -77,41 +77,30 @@ sprite = NodePath("../Sprite2D")
 active = false
 metadata/_custom_type_script = "uid://jtbq6dor8pk0"
 
-[node name="UIControl" type="Control" parent="ResourcesDeposit"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -17.0
-offset_top = -13.0
-offset_right = 38.0
-offset_bottom = 39.0
-mouse_filter = 2
-
-[node name="Counter" type="RichTextLabel" parent="ResourcesDeposit/UIControl"]
+[node name="CounterText" type="RichTextLabel" parent="ResourcesDeposit"]
 unique_name_in_owner = true
-visible = false
-layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -97.0
-offset_top = -45.0
-offset_right = 53.0
-offset_bottom = -9.0
+offset_left = -35.0
+offset_right = 44.0
+offset_bottom = 30.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_n2veb")
 theme_override_styles/background = SubResource("StyleBoxFlat_x7ic0")
 bbcode_enabled = true
-text = "[b]0[/b]/200"
+text = "0/200"
 fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
+vertical_alignment = 1
 script = ExtResource("5_ewulj")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ResourcesDeposit/UIControl/Counter"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ResourcesDeposit/CounterText"]
 stream = SubResource("AudioStreamRandomizer_wbabi")
 volume_db = -20.0
 pitch_scale = 2.0
