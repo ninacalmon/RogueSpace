@@ -1,17 +1,9 @@
-extends Area2D
-class_name MainArea
+extends MainArea
 
-@export var zoom_in_amount: float = 3
-@export var zoom_offset: Vector2 = Vector2.ZERO
-@export var zoom_speed: float = 1
-@export var clickable_highlight: ClickableHighlight
-
-var is_focused: bool
-var can_exit: bool = true
+@export var sub_area_screen: SubArea
 
 func _ready() -> void:
 	clickable_highlight.was_clicked.connect(_on_clicked)
-	#clickable_highlight.clicked_outside.connect(_was_clicked_outside)
 	SpaceshipEventBus.focus_changed.connect(_on_focus_changed)
 
 func _on_clicked():
@@ -32,4 +24,5 @@ func _on_focus_changed(focus: bool, subject: Node2D):
 		activate_sub_areas()
 
 func activate_sub_areas():
-	pass
+	sub_area_screen.clickable_highlight.active = true
+	sub_area_screen.collision_shape_2d.disabled = false

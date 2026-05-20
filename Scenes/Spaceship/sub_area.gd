@@ -6,7 +6,8 @@ class_name SubArea
 var can_exit_sub_area: bool = true
 
 func _ready() -> void:
-	clickable_highlight.was_clicked.connect(_on_clicked)
+	if clickable_highlight:
+		clickable_highlight.was_clicked.connect(_on_clicked)
 
 func _on_clicked():
 	pass

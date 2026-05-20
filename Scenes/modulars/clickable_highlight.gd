@@ -36,6 +36,8 @@ func _on_area_mouse_exited():
 		sprite.set_instance_shader_parameter("enabled", false)
 		ControllerVibration.vibrate_controller()
 
+
+
 func _input(event: InputEvent) -> void:
 	if !active:
 		return
@@ -45,11 +47,9 @@ func _input(event: InputEvent) -> void:
 			clicked_outside.emit()
 			return
 	if event.is_action_pressed("left_click"):
-		print("clicando")
 		was_clicked.emit()
 		sprite.set_instance_shader_parameter("outline_color", Color(1.0, 0.0, 0.0))
 	if event.is_action_released("left_click"):
-		print("parei")
 		sprite.set_instance_shader_parameter("outline_color", Color(1.0, 1.0, 1.0))
 
 func _on_focus_changed(_focus: bool, _subject: Node2D):

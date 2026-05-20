@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c0lfvcrle3frk"]
+[gd_scene load_steps=18 format=3 uid="uid://c0lfvcrle3frk"]
 
 [ext_resource type="PackedScene" uid="uid://cgfq6udrxu5hm" path="res://Scenes/UI/mouse.tscn" id="1_ntswj"]
 [ext_resource type="Texture2D" uid="uid://dwfu7nvo6supn" path="res://Sprites(main)/SpaceshipInside/SpaceShipInside.png" id="1_rveu7"]
@@ -6,10 +6,7 @@
 [ext_resource type="Script" uid="uid://dfov1lobu4khy" path="res://Scenes/Spaceship/camera_2d.gd" id="3_cfm2w"]
 [ext_resource type="Script" uid="uid://dei8kv4pd3sf0" path="res://Scenes/Spaceship/pan_view_module.gd" id="3_nkmj0"]
 [ext_resource type="Script" uid="uid://cpd1q7shcbn7h" path="res://Scenes/Spaceship/focus_module.gd" id="4_0gr6q"]
-[ext_resource type="Texture2D" uid="uid://bvfcnrinovvxl" path="res://Sprites(main)/Deimos.png" id="4_1d80w"]
-[ext_resource type="Shader" uid="uid://cccnue3fm2pyc" path="res://Shaders/outline.gdshader" id="4_n2uyx"]
-[ext_resource type="Script" uid="uid://jtbq6dor8pk0" path="res://Scenes/Modulars/clickable_highlight.gd" id="6_cootd"]
-[ext_resource type="Texture2D" uid="uid://81sauyddd7km" path="res://Sprites(main)/Asteroid_small.png" id="7_cootd"]
+[ext_resource type="PackedScene" uid="uid://bkjjj01xixl1j" path="res://Scenes/Spaceship/Monitor.tscn" id="7_cfm2w"]
 [ext_resource type="PackedScene" uid="uid://ck6swxjky54l3" path="res://Scenes/Spaceship/resources_machine.tscn" id="10_cfm2w"]
 [ext_resource type="Script" uid="uid://csvtg0a2joywc" path="res://Scenes/Spaceship/spaceship_lights.gd" id="12_4wenu"]
 [ext_resource type="Script" uid="uid://0cl5r6xdfj6q" path="res://Scenes/Spaceship/mouse_light.gd" id="12_uafmv"]
@@ -19,18 +16,6 @@
 shader = ExtResource("2_tlbit")
 shader_parameter/blur_amount = 2.000000095
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tlbit"]
-resource_local_to_scene = true
-shader = ExtResource("4_n2uyx")
-shader_parameter/rounded = true
-shader_parameter/alpha_threshold = 0.1
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tlbit"]
-size = Vector2(76, 120)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ntswj"]
-radius = 66.1211
-
 [sub_resource type="Gradient" id="Gradient_4wenu"]
 offsets = PackedFloat32Array(0, 0.6666667)
 colors = PackedColorArray(0.49, 0.2254, 0.2254, 1, 0, 0, 0, 1)
@@ -39,6 +24,17 @@ colors = PackedColorArray(0.49, 0.2254, 0.2254, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_4wenu")
 width = 256
 height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_i5u5t"]
+offsets = PackedFloat32Array(0, 0.6666667)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uvk7a"]
+gradient = SubResource("Gradient_i5u5t")
+width = 2560
+height = 640
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -80,45 +76,11 @@ room_width = 576
 script = ExtResource("4_0gr6q")
 camera = NodePath("..")
 
-[node name="Exemple" type="Area2D" parent="."]
-position = Vector2(-302, 74)
-priority = 6
-
-[node name="Sprite2D" type="Sprite2D" parent="Exemple"]
-material = SubResource("ShaderMaterial_tlbit")
-scale = Vector2(5, 5)
-texture = ExtResource("4_1d80w")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exemple"]
-shape = SubResource("RectangleShape2D_tlbit")
-
-[node name="ClickableHighlight" type="Node2D" parent="Exemple" node_paths=PackedStringArray("area", "sprite")]
-position = Vector2(346, 0)
-script = ExtResource("6_cootd")
-area = NodePath("..")
-sprite = NodePath("../Sprite2D")
-metadata/_custom_type_script = "uid://jtbq6dor8pk0"
-
-[node name="Exemple2" type="Area2D" parent="."]
-position = Vector2(318, 86)
-priority = 6
-
-[node name="Sprite2D" type="Sprite2D" parent="Exemple2"]
-material = SubResource("ShaderMaterial_tlbit")
-scale = Vector2(5, 5)
-texture = ExtResource("7_cootd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exemple2"]
-shape = SubResource("CircleShape2D_ntswj")
-
-[node name="ClickableHighlight" type="Node2D" parent="Exemple2" node_paths=PackedStringArray("area", "sprite")]
-script = ExtResource("6_cootd")
-area = NodePath("..")
-sprite = NodePath("../Sprite2D")
-metadata/_custom_type_script = "uid://jtbq6dor8pk0"
-
 [node name="ResourcesMachine" parent="." instance=ExtResource("10_cfm2w")]
-position = Vector2(-100, 79)
+position = Vector2(-169, 83)
+
+[node name="Monitor" parent="." instance=ExtResource("7_cfm2w")]
+position = Vector2(267, -105)
 
 [node name="VisualStuff" type="Node" parent="."]
 
@@ -127,9 +89,15 @@ texture = SubResource("GradientTexture2D_i5u5t")
 script = ExtResource("12_uafmv")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="VisualStuff"]
+visible = false
 color = Color(0.05, 0.05, 0.05, 1)
 script = ExtResource("12_4wenu")
-lights_on_color = Color(1, 1, 1, 1)
+
+[node name="MainLight" type="PointLight2D" parent="VisualStuff/CanvasModulate"]
+color = Color(0.68075, 0.7, 0.62299997, 1)
+energy = 0.0
+texture = SubResource("GradientTexture2D_uvk7a")
+texture_scale = 1.5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="VisualStuff"]
 environment = SubResource("Environment_uafmv")
