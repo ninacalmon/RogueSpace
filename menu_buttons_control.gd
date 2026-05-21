@@ -3,18 +3,19 @@ extends Control
 @onready var start: Button = $Pressable/Start
 @onready var controls: Button = $Pressable/Controls
 @onready var exit: Button = $Pressable/Exit
-@onready var controlers: ColorRect = $Controlers
+@onready var controlers_overlay: ColorRect = $ControlersOverlay
+
 signal menu_selection_changed(selection_number: int)
 
-@onready var control_button: Button = $Controlers/ControlButton
+@onready var control_exit_button: Button = $ControlersOverlay/ControlExitButton
+
 
 func _ready() -> void:
 	Globals.level = 1
 	start.pressed.connect(_on_start_button_pressed)
 	controls.pressed.connect(_on_controls_button_pressed)
 	exit.pressed.connect(_on_exit_button_pressed)
-	control_button.pressed.connect(_on_control_exit_pressed)
-	start.grab_focus()
+	control_exit_button.pressed.connect(_on_control_exit_pressed)
 	
 	start.mouse_entered.connect(_on_button_hovered.bind(1))
 	start.focus_entered.connect(_on_button_hovered.bind(1))
@@ -22,20 +23,29 @@ func _ready() -> void:
 	controls.focus_entered.connect(_on_button_hovered.bind(2))
 	exit.mouse_entered.connect(_on_button_hovered.bind(3))
 	exit.focus_entered.connect(_on_button_hovered.bind(3))
+	Input.joy_connection_changed.connect(_on_joy_connected)
+	
+	if Input.get_connected_joypads():
+		start.grab_focus()
 
 func _on_start_button_pressed():
 	LevelTransition.change_scene_to("res://Scenes/Levels/Tutorial.tscn")
 
 func _on_controls_button_pressed():
-	controlers.show()
-	control_button.grab_focus()
+	controlers_overlay.show()
+	control_exit_button.grab_focus()
 
 func _on_exit_button_pressed():
 	get_tree().quit()
 
 func _on_control_exit_pressed():
-	controlers.hide()
+	controlers_overlay.hide()
 	controls.grab_focus()
 	
 func _on_button_hovered(number: int) -> void:
 	menu_selection_changed.emit(number)
+
+func _on_joy_connected(_device: int, connected: bool):
+	if connected:
+		Input.MOUSE_MODE_HIDDEN
+		start.grab_focus()

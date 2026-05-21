@@ -33,10 +33,11 @@ func get_input_controller():
 			shoot(last_aim_direction)
 			last_aim_direction = Vector2.ZERO
 
-func get_input_mouse():
-	if Input.is_action_pressed("left_click"):
-		var aim_direction = global_position.direction_to(get_global_mouse_position())
-		shoot(aim_direction)
+#func get_input_mouse() -> Vector2:
+	#if Input.is_action_pressed("left_click"):
+		#print("clcik")
+		##var aim_direction = global_position.direction_to(get_global_mouse_position())
+	#return global_position.direction_to(get_global_mouse_position())
 #
 #
 #func shoot(direction: Vector2):
@@ -65,10 +66,14 @@ func _process(delta: float) -> void:
 	if cooldown <= 0:
 		cooldown = 0
 
-	var input_dir: Vector2 = Vector2(
-		Input.get_action_strength("r_stk_right") - Input.get_action_strength("r_stk_left"),
-		Input.get_action_strength("r_stk_down") - Input.get_action_strength("r_stk_up")
-	).normalized()
+	var input_dir: Vector2 = Vector2.ZERO
+	if Input.get_connected_joypads():
+		input_dir = Vector2(
+			Input.get_action_strength("r_stk_right") - Input.get_action_strength("r_stk_left"),
+			Input.get_action_strength("r_stk_down") - Input.get_action_strength("r_stk_up")
+		).normalized()
+	elif Input.is_action_pressed("left_click"):
+		input_dir = global_position.direction_to(get_global_mouse_position())
 
 	if input_dir == Vector2.ZERO:
 		return

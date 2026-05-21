@@ -1,6 +1,5 @@
-[gd_scene load_steps=39 format=3 uid="uid://3en43s0xvhci"]
+[gd_scene load_steps=38 format=3 uid="uid://3en43s0xvhci"]
 
-[ext_resource type="Texture2D" uid="uid://berv7f5gv13en" path="res://Sprites(main)/background.png" id="1_dsa84"]
 [ext_resource type="Script" uid="uid://cem6pnv2cepc7" path="res://menu_buttons_control.gd" id="2_jsrd8"]
 [ext_resource type="FontFile" uid="uid://bkq3re32v3glf" path="res://Fonts/Commodore Pixelized v1.2.ttf" id="3_rb8kr"]
 [ext_resource type="Theme" uid="uid://npl3mumy4crf" path="res://Scenes/UI/default_theme.tres" id="3_w6vxw"]
@@ -194,33 +193,6 @@ process_mode = 3
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
-clip_contents = true
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
-visible = false
-layout_mode = 0
-offset_right = 1156.3475
-offset_bottom = 649.0
-texture = ExtResource("1_dsa84")
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.20784314, 0.14117648, 0.2509804, 0.78431374)
-metadata/_edit_lock_ = true
-
-[node name="ButtonsControl" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -229,7 +201,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_jsrd8")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ButtonsControl"]
+[node name="TitleLabel" type="RichTextLabel" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -248,11 +220,11 @@ text = "Rogue
 horizontal_alignment = 1
 script = ExtResource("4_g56od")
 
-[node name="Timer" type="Timer" parent="CanvasLayer/ButtonsControl/RichTextLabel"]
+[node name="Timer" type="Timer" parent="CanvasLayer/Control/TitleLabel"]
 wait_time = 0.05
 autostart = true
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/ButtonsControl"]
+[node name="CodeLabel" type="RichTextLabel" parent="CanvasLayer/Control"]
 layout_mode = 0
 offset_left = 448.0
 offset_top = 611.0
@@ -263,11 +235,11 @@ theme_override_fonts/normal_font = ExtResource("3_rb8kr")
 text = "6EQUJ5"
 script = ExtResource("4_p4bun")
 
-[node name="Timer" type="Timer" parent="CanvasLayer/ButtonsControl/RichTextLabel2"]
+[node name="Timer" type="Timer" parent="CanvasLayer/Control/CodeLabel"]
 wait_time = 0.05
 autostart = true
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="CanvasLayer/ButtonsControl"]
+[node name="Code2Label" type="RichTextLabel" parent="CanvasLayer/Control"]
 layout_mode = 0
 offset_left = 893.0
 offset_top = 611.0
@@ -277,7 +249,7 @@ theme_override_colors/default_color = Color(0.6901961, 0.6901961, 0.6901961, 1)
 theme_override_fonts/normal_font = ExtResource("3_rb8kr")
 text = "31.7kb"
 
-[node name="RichTextLabel4" type="RichTextLabel" parent="CanvasLayer/ButtonsControl" node_paths=PackedStringArray("ButtonsControl")]
+[node name="MatchLabel" type="RichTextLabel" parent="CanvasLayer/Control" node_paths=PackedStringArray("ButtonsControl")]
 layout_mode = 0
 offset_left = 986.0
 offset_top = 611.0
@@ -285,14 +257,15 @@ offset_right = 1286.0
 offset_bottom = 636.0
 theme_override_colors/default_color = Color(0.6901961, 0.6901961, 0.6901961, 1)
 theme_override_fonts/normal_font = ExtResource("3_rb8kr")
+text = "match 1 of 2"
 script = ExtResource("4_3so5s")
 ButtonsControl = NodePath("..")
 
-[node name="Timer" type="Timer" parent="CanvasLayer/ButtonsControl/RichTextLabel4"]
+[node name="Timer" type="Timer" parent="CanvasLayer/Control/MatchLabel"]
 wait_time = 0.05
 autostart = true
 
-[node name="Pressable" type="VBoxContainer" parent="CanvasLayer/ButtonsControl"]
+[node name="Pressable" type="VBoxContainer" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -310,23 +283,23 @@ theme = SubResource("Theme_rb8kr")
 theme_override_constants/separation = 24
 alignment = 1
 
-[node name="Start" type="Button" parent="CanvasLayer/ButtonsControl/Pressable"]
+[node name="Start" type="Button" parent="CanvasLayer/Control/Pressable"]
 layout_mode = 2
 theme = ExtResource("3_w6vxw")
 text = "novo jogo"
 alignment = 0
 
-[node name="Controls" type="Button" parent="CanvasLayer/ButtonsControl/Pressable"]
+[node name="Controls" type="Button" parent="CanvasLayer/Control/Pressable"]
 layout_mode = 2
 text = "opções"
 alignment = 0
 
-[node name="Exit" type="Button" parent="CanvasLayer/ButtonsControl/Pressable"]
+[node name="Exit" type="Button" parent="CanvasLayer/Control/Pressable"]
 layout_mode = 2
 text = "sair"
 alignment = 0
 
-[node name="Controlers" type="ColorRect" parent="CanvasLayer/ButtonsControl"]
+[node name="ControlersOverlay" type="ColorRect" parent="CanvasLayer/Control"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -336,7 +309,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="RichTextLabel10" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
+[node name="RichTextLabel10" type="RichTextLabel" parent="CanvasLayer/Control/ControlersOverlay"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -354,11 +327,11 @@ horizontal_alignment = 1
 vertical_alignment = 2
 script = ExtResource("8_kha57")
 
-[node name="Timer" type="Timer" parent="CanvasLayer/ButtonsControl/Controlers/RichTextLabel10"]
+[node name="Timer" type="Timer" parent="CanvasLayer/Control/ControlersOverlay/RichTextLabel10"]
 wait_time = 0.05
 autostart = true
 
-[node name="ControlButton" type="Button" parent="CanvasLayer/ButtonsControl/Controlers"]
+[node name="ControlExitButton" type="Button" parent="CanvasLayer/Control/ControlersOverlay"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -373,12 +346,12 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Voltar"
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ButtonsControl/Controlers"]
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Control/ControlersOverlay"]
 position = Vector2(578.00006, 362)
 scale = Vector2(0.23242185, 0.23632813)
 texture = ExtResource("8_sic4q")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/ControlersOverlay"]
 layout_mode = 0
 offset_left = 241.00002
 offset_top = 198.00002
@@ -388,7 +361,7 @@ scale = Vector2(1.2, 1.2)
 theme = SubResource("Theme_kha57")
 text = "pausar"
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
+[node name="RichTextLabel3" type="RichTextLabel" parent="CanvasLayer/Control/ControlersOverlay"]
 layout_mode = 0
 offset_left = 257.0
 offset_top = 232.99998
@@ -398,7 +371,7 @@ scale = Vector2(1.2, 1.2)
 theme = SubResource("Theme_kha57")
 text = "freio"
 
-[node name="RichTextLabel4" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
+[node name="RichTextLabel4" type="RichTextLabel" parent="CanvasLayer/Control/ControlersOverlay"]
 layout_mode = 0
 offset_left = 213.99998
 offset_top = 269.0
@@ -408,7 +381,7 @@ scale = Vector2(1.2, 1.2)
 theme = SubResource("Theme_kha57")
 text = "zoom out"
 
-[node name="RichTextLabel6" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
+[node name="RichTextLabel6" type="RichTextLabel" parent="CanvasLayer/Control/ControlersOverlay"]
 layout_mode = 0
 offset_left = 824.00006
 offset_top = 231.0
@@ -418,7 +391,7 @@ scale = Vector2(1.2, 1.2)
 theme = SubResource("Theme_kha57")
 text = "dash/impulso"
 
-[node name="RichTextLabel7" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
+[node name="RichTextLabel7" type="RichTextLabel" parent="CanvasLayer/Control/ControlersOverlay"]
 layout_mode = 0
 offset_left = 823.99994
 offset_top = 266.0
@@ -428,7 +401,7 @@ scale = Vector2(1.2, 1.2)
 theme = SubResource("Theme_kha57")
 text = "zoom in"
 
-[node name="RichTextLabel8" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
+[node name="RichTextLabel8" type="RichTextLabel" parent="CanvasLayer/Control/ControlersOverlay"]
 layout_mode = 0
 offset_left = 823.00006
 offset_top = 336.0
@@ -438,7 +411,7 @@ scale = Vector2(1.2, 1.2)
 theme = SubResource("Theme_kha57")
 text = "teleporte*"
 
-[node name="RichTextLabel9" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
+[node name="RichTextLabel9" type="RichTextLabel" parent="CanvasLayer/Control/ControlersOverlay"]
 layout_mode = 0
 offset_left = 823.00006
 offset_top = 385.0
@@ -448,7 +421,7 @@ scale = Vector2(1.2, 1.2)
 theme = SubResource("Theme_kha57")
 text = "confirmar"
 
-[node name="RichTextLabel5" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
+[node name="RichTextLabel5" type="RichTextLabel" parent="CanvasLayer/Control/ControlersOverlay"]
 layout_mode = 0
 offset_left = 195.00002
 offset_top = 348.0

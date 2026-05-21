@@ -1,8 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://vbsslu1hl1sg"]
+[gd_scene load_steps=14 format=3 uid="uid://vbsslu1hl1sg"]
 
-[ext_resource type="Script" uid="uid://dp0jfjqkl4sdl" path="res://Scenes/Modulars/asteroid.gd" id="1_vx2wn"]
-[ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/Asteroids/asteroid_pieces.tscn" id="2_iegjr"]
-[ext_resource type="PackedScene" uid="uid://br070cnq6sve" path="res://Scenes/Modulars/enemy.tscn" id="3_yrgja"]
+[ext_resource type="Script" uid="uid://b6ch1ii8ge4tt" path="res://Scenes/SpaceBodies/planet.gd" id="1_2i0q5"]
 [ext_resource type="Script" uid="uid://dakt7r353r7ae" path="res://Scenes/SpaceBodies/body_randomizer.gd" id="4_bvtle"]
 [ext_resource type="Texture2D" uid="uid://bci2cc1cglgr" path="res://Sprites(main)/TemporaryPlanets/66.png" id="5_3e2ib"]
 [ext_resource type="Script" uid="uid://dbom7e2dansya" path="res://Scenes/SpaceBodies/random_planet.gd" id="6_epss5"]
@@ -25,21 +23,13 @@ streams_count = 2
 stream_0/stream = ExtResource("11_yda27")
 stream_1/stream = ExtResource("12_gbuad")
 
-[node name="Planet" type="RigidBody2D" node_paths=PackedStringArray("damage_module", "collision", "sprite", "gravitational_field", "body_randomizer")]
+[node name="Planet" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "gravitational_field", "body_randomizer")]
 mass = 1000.0
 physics_material_override = SubResource("PhysicsMaterial_m0iey")
 contact_monitor = true
 max_contacts_reported = 3
 linear_damp_mode = 1
-script = ExtResource("1_vx2wn")
-base_endurance = 1000.0
-minimum_damage = 300.0
-minimum_external_damage = 100000.0
-endur_to_pieces_proportion = 10
-damage_module = NodePath("DamageModule")
-broken_piece_scene = ExtResource("2_iegjr")
-enemy_scene = ExtResource("3_yrgja")
-is_fix = true
+script = ExtResource("1_2i0q5")
 collision = NodePath("CollisionShape2D")
 sprite = NodePath("Sprite2D")
 gravitational_field = NodePath("GravitationalField")

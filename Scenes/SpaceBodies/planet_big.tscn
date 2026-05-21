@@ -1,9 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://dbryy6fgrl2er"]
+[gd_scene load_steps=12 format=3 uid="uid://dbryy6fgrl2er"]
 
-[ext_resource type="Script" uid="uid://dp0jfjqkl4sdl" path="res://Scenes/Modulars/asteroid.gd" id="1_dgxwx"]
-[ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/Asteroids/asteroid_pieces.tscn" id="2_i2pdk"]
+[ext_resource type="Script" uid="uid://b6ch1ii8ge4tt" path="res://Scenes/SpaceBodies/planet.gd" id="1_xn48m"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="2_v5wqc"]
-[ext_resource type="PackedScene" uid="uid://br070cnq6sve" path="res://Scenes/Modulars/enemy.tscn" id="3_obwww"]
 [ext_resource type="Script" uid="uid://dakt7r353r7ae" path="res://Scenes/SpaceBodies/body_randomizer.gd" id="4_cwc5q"]
 [ext_resource type="Texture2D" uid="uid://cveyscwq0qoda" path="res://Sprites(main)/TemporaryPlanets/2733907768 (2).png" id="5_0dus1"]
 [ext_resource type="Script" uid="uid://dbom7e2dansya" path="res://Scenes/SpaceBodies/random_planet.gd" id="6_6ef4u"]
@@ -23,21 +21,13 @@ streams_count = 2
 stream_0/stream = ExtResource("11_pepcc")
 stream_1/stream = ExtResource("12_6y714")
 
-[node name="PlanetBig" type="RigidBody2D" node_paths=PackedStringArray("damage_module", "collision", "sprite", "gravitational_field", "body_randomizer")]
+[node name="PlanetBig" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "gravitational_field", "body_randomizer")]
 mass = 1800.0
 physics_material_override = SubResource("PhysicsMaterial_m0iey")
 contact_monitor = true
 max_contacts_reported = 3
 linear_damp_mode = 1
-script = ExtResource("1_dgxwx")
-base_endurance = 2000.0
-minimum_damage = 600.0
-minimum_external_damage = 100000.0
-endur_to_pieces_proportion = 10
-damage_module = NodePath("DamageModule")
-broken_piece_scene = ExtResource("2_i2pdk")
-enemy_scene = ExtResource("3_obwww")
-is_fix = true
+script = ExtResource("1_xn48m")
 collision = NodePath("CollisionShape2D")
 sprite = NodePath("Sprite2D")
 gravitational_field = NodePath("GravitationalField")

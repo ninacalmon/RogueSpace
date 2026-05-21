@@ -100,8 +100,7 @@ func handle_external_damage(damage: float):
 	SFXManager.play_sound(break_sound)
 
 	call_deferred("shed_pieces", pieces)
-	if will_spawn_critters:
-		spawn_critters()
+
 
 
 func shed_pieces(pieces: int):
