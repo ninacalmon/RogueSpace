@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://htap6wmpylrw"]
+
+[ext_resource type="Script" uid="uid://bvi2pvbxydcko" path="res://Scenes/Spaceship/door.gd" id="1_htx6n"]
+[ext_resource type="Texture2D" uid="uid://bkdqhgb761bil" path="res://Sprites(main)/Nave.png" id="2_6e4tg"]
+[ext_resource type="Shader" uid="uid://cccnue3fm2pyc" path="res://Shaders/outline.gdshader" id="2_v60d0"]
+[ext_resource type="Script" uid="uid://jtbq6dor8pk0" path="res://Scenes/Modulars/clickable_highlight.gd" id="3_v60d0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ofsvt"]
+size = Vector2(290, 258)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ofsvt"]
+shader = ExtResource("2_v60d0")
+shader_parameter/rounded = true
+shader_parameter/alpha_threshold = 0.1
+
+[node name="Door" type="Area2D" node_paths=PackedStringArray("clickable_highlight")]
+script = ExtResource("1_htx6n")
+clickable_highlight = NodePath("ClickableHighlight")
+metadata/_custom_type_script = "uid://cj0pm0s1qx8my"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ofsvt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ofsvt")
+texture = ExtResource("2_6e4tg")
+
+[node name="ClickableHighlight" type="Node2D" parent="." node_paths=PackedStringArray("area", "sprite")]
+script = ExtResource("3_v60d0")
+area = NodePath("..")
+sprite = NodePath("../Sprite2D")
+metadata/_custom_type_script = "uid://jtbq6dor8pk0"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -83.0
+offset_top = -46.0
+offset_right = 101.0
+offset_bottom = 62.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "SAIR DA NAVE"

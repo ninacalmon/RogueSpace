@@ -4,7 +4,6 @@ extends MainArea
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var shake_module: ShakeModule = $ShakeModule
 
-
 func _ready() -> void:
 	clickable_highlight.was_clicked.connect(_on_clicked)
 	#clickable_highlight.clicked_outside.connect(_was_clicked_outside)

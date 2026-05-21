@@ -1,0 +1,145 @@
+[gd_scene load_steps=14 format=3 uid="uid://bkjjj01xixl1j"]
+
+[ext_resource type="Script" uid="uid://f7hym6rcrxkn" path="res://Scenes/Spaceship/monitor.gd" id="1_s3qmo"]
+[ext_resource type="Shader" uid="uid://cccnue3fm2pyc" path="res://Shaders/outline.gdshader" id="2_41fxr"]
+[ext_resource type="Texture2D" uid="uid://c211vvvvl820r" path="res://Sprites(main)/Placeholders/vecteezy_vintage-television-with-cut-out-screen-on-isolated-ai_34374007.png" id="2_mwf53"]
+[ext_resource type="Script" uid="uid://jtbq6dor8pk0" path="res://Scenes/Modulars/clickable_highlight.gd" id="4_cokud"]
+[ext_resource type="Script" uid="uid://diumy6vgtvj8a" path="res://Scenes/Spaceship/sub_area_screen.gd" id="5_s3qmo"]
+[ext_resource type="Script" uid="uid://ce4k3gvavwn0b" path="res://Scenes/UI/power_ups_container.gd" id="6_s3qmo"]
+[ext_resource type="Texture2D" uid="uid://b0nhvewd5m0an" path="res://Sprites(main)/Placeholders/backgound.png" id="6_t6xb0"]
+[ext_resource type="Texture2D" uid="uid://ckd05m1gdy225" path="res://Sprites(main)/Placeholders/button.png" id="7_43iud"]
+[ext_resource type="PackedScene" uid="uid://fjxp66w0rpvl" path="res://Scenes/UI/PowerUpSetup.tscn" id="7_t6xb0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_41fxr"]
+size = Vector2(184, 136)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yjjt1"]
+shader = ExtResource("2_41fxr")
+shader_parameter/rounded = true
+shader_parameter/alpha_threshold = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3okkr"]
+shader = ExtResource("2_41fxr")
+shader_parameter/rounded = true
+shader_parameter/alpha_threshold = 0.1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43iud"]
+size = Vector2(30, 17.5)
+
+[node name="Monitor" type="Area2D" node_paths=PackedStringArray("sub_area_screen", "clickable_highlight")]
+script = ExtResource("1_s3qmo")
+sub_area_screen = NodePath("SubAreaScreen")
+zoom_in_amount = 6.0
+clickable_highlight = NodePath("ClickableHighlight")
+metadata/_custom_type_script = "uid://cj0pm0s1qx8my"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_41fxr")
+
+[node name="SpriteBackground" type="Sprite2D" parent="."]
+position = Vector2(1.5000024, 1)
+scale = Vector2(2.380282, 1.9375)
+texture = ExtResource("6_t6xb0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_yjjt1")
+scale = Vector2(3, 3)
+texture = ExtResource("2_mwf53")
+
+[node name="ClickableHighlight" type="Node2D" parent="." node_paths=PackedStringArray("area", "sprite")]
+script = ExtResource("4_cokud")
+area = NodePath("..")
+sprite = NodePath("../Sprite2D")
+metadata/_custom_type_script = "uid://jtbq6dor8pk0"
+
+[node name="SubAreaScreen" type="Area2D" parent="." node_paths=PackedStringArray("canvas_layer_monitor", "power_ups_conteiner", "clickable_highlight")]
+script = ExtResource("5_s3qmo")
+canvas_layer_monitor = NodePath("CanvasLayer")
+power_ups_conteiner = NodePath("CanvasLayer/Control/PowerUpsContainer")
+clickable_highlight = NodePath("ClickableHighlight")
+metadata/_custom_type_script = "uid://dro1ud0xvpd8l"
+
+[node name="SpriteButton" type="Sprite2D" parent="SubAreaScreen"]
+material = SubResource("ShaderMaterial_3okkr")
+position = Vector2(74, -35)
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("7_43iud")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubAreaScreen"]
+position = Vector2(74, -34.75)
+shape = SubResource("RectangleShape2D_43iud")
+disabled = true
+
+[node name="ClickableHighlight" type="Node2D" parent="SubAreaScreen" node_paths=PackedStringArray("area", "sprite")]
+script = ExtResource("4_cokud")
+area = NodePath("..")
+sprite = NodePath("../SpriteButton")
+active = false
+metadata/_custom_type_script = "uid://jtbq6dor8pk0"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="SubAreaScreen"]
+
+[node name="Control" type="Control" parent="SubAreaScreen/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = 31.0
+offset_right = -223.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PowerUpsContainer" type="HBoxContainer" parent="SubAreaScreen/CanvasLayer/Control" node_paths=PackedStringArray("texts")]
+custom_minimum_size = Vector2(1000, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -150.0
+offset_right = 500.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/separation = 64
+alignment = 1
+script = ExtResource("6_s3qmo")
+texts = NodePath("")
+
+[node name="PowerUp" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsContainer" instance=ExtResource("7_t6xb0")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2
+effect = "Impulse"
+title = "DASH+"
+description = "Dobra a capacidade do seu impulso."
+
+[node name="PowerUp2" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsContainer" instance=ExtResource("7_t6xb0")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2
+effect = "Fuel"
+title = "COMBUSTÍVEL+"
+description = "Aumenta a capacidade do seu tanque de combustível."
+
+[node name="PowerUp3" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsContainer" instance=ExtResource("7_t6xb0")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2
+effect = "Teleport"
+title = "TELEPORTE"
+price = 200
+description = "Retorne à nave-mãe imediatamente e sem perder recursos."

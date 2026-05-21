@@ -16,12 +16,15 @@ func _on_focus_on_requested(zoom_in_amount: float, zoom_offset: Vector2, emitter
 	if camera.is_busy or camera.is_focused:
 		return
 
+	print(emitter)
 	camera.is_busy = true
 	camera.is_focused = true
 	var new_zoom = camera.zoom * zoom_in_amount
 	var new_offset = emitter.global_position + zoom_offset
 	
 	var tween = create_tween()
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_QUAD)
 	tween.tween_property(camera, "zoom", new_zoom, zoom_speed)
 	tween.parallel().tween_property(camera, "offset", new_offset, zoom_speed)
 	
@@ -36,13 +39,15 @@ func _on_focus_off_requested():
 
 	camera.is_busy = true
 	camera.is_focused = false
+	SpaceshipEventBus.focus_changed.emit(false, null)
 	
 	var tween = create_tween()
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_QUAD)
 	tween.tween_property(camera, "zoom", init_zoom, zoom_speed)
 	tween.parallel().tween_property(camera, "offset", init_offset, zoom_speed)
 	
 	await tween.finished
 	print("emitidno falsooooooooooooo")
-	SpaceshipEventBus.focus_changed.emit(false, null)
 	
 	camera.is_busy = false
