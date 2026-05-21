@@ -16,7 +16,6 @@ func _on_focus_on_requested(zoom_in_amount: float, zoom_offset: Vector2, emitter
 	if camera.is_busy or camera.is_focused:
 		return
 
-	print(emitter)
 	camera.is_busy = true
 	camera.is_focused = true
 	var new_zoom = camera.zoom * zoom_in_amount
@@ -48,6 +47,5 @@ func _on_focus_off_requested():
 	tween.parallel().tween_property(camera, "offset", init_offset, zoom_speed)
 	
 	await tween.finished
-	print("emitidno falsooooooooooooo")
 	
 	camera.is_busy = false

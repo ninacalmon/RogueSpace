@@ -11,7 +11,8 @@ func _ready() -> void:
 	SpaceshipEventBus.resource_count_started.connect(_on_resource_count_started)
 
 func _on_clicked():
-	if !is_focused:
+	print("haroooooooooo")
+	if !is_focused and clickable_highlight.is_mouse_over_area:
 		change_to_focused()
 
 func _on_focus_changed(focus: bool, subject: Node2D):

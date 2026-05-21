@@ -11,6 +11,7 @@ class_name Player
 @onready var teleport_sfx: AudioStreamPlayer = $SFX/TeleportSFX
 @onready var space_winds_sfx: AudioStreamPlayer = $SFX/SpaceWindsSFX
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var dash_sfx: AudioStreamPlayer = $SFX/DashSFX
 
 @export var hurt_box_player: HurtBoxPlayer
 @export var base_burst_cooldown: float = 3.0
@@ -110,6 +111,7 @@ func movement(state):
 func impulse_burst(state):
 	if Input.is_action_just_pressed("impulse_burst")\
 		and burst_cooldown_timer <= 0:
+			SFXManager.play_sound(dash_sfx)
 			burst_cooldown_timer = base_burst_cooldown
 			EventBus.burst_fuel_used.emit()
 			state.apply_impulse(linear_velocity.normalized() * burst_speed)

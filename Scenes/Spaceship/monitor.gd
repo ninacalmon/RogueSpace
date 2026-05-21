@@ -1,13 +1,24 @@
 extends MainArea
 
 @export var sub_area_screen: SubArea
+@onready var sprite_background: Sprite2D = $SpriteBackground
+
+var has_energy: bool = false
+var lights_on: bool = false
 
 func _ready() -> void:
 	clickable_highlight.was_clicked.connect(_on_clicked)
 	SpaceshipEventBus.focus_changed.connect(_on_focus_changed)
+	SpaceshipEventBus.resource_count_finished.connect(_on_resource_count_finished)
+
+func _on_resource_count_finished():
+	has_energy = true
 
 func _on_clicked():
-	if !is_focused:
+	if !has_energy:
+		PopUpSystem.show_text("Sem energia.")
+		return
+	if !is_focused and clickable_highlight.is_mouse_over_area:
 		is_focused = true
 		#trocar sprite aqui
 		SpaceshipEventBus.focus_on.emit(zoom_in_amount, zoom_offset, self)
@@ -19,6 +30,8 @@ func _on_focus_changed(focus: bool, subject: Node2D):
 	if focus == false:
 		clickable_highlight.active = true
 		is_focused = false
+		if !lights_on and has_energy:
+			turn_lights_on()
 
 	elif  focus == true and subject == self:
 		activate_sub_areas()
@@ -26,3 +39,10 @@ func _on_focus_changed(focus: bool, subject: Node2D):
 func activate_sub_areas():
 	sub_area_screen.clickable_highlight.active = true
 	sub_area_screen.collision_shape_2d.disabled = false
+
+func turn_lights_on():
+	await get_tree().create_timer(1.5).timeout
+	var tween = create_tween()
+	tween.tween_property(sprite_background, "modulate", Color(8, 8, 8), 0.02)
+	tween.tween_property(sprite_background, "modulate", Color(4, 4, 4), 0.08)
+	

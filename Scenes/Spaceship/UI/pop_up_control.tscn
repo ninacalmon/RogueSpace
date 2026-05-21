@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cu46ci360div7" path="res://Scenes/Spaceship/UI/pop_up_control.gd" id="1_4b7r7"]
 
-[node name="PopUp" type="CanvasLayer" node_paths=PackedStringArray("original_bottom_text", "bottom_control")]
+[node name="PopUp" type="CanvasLayer" node_paths=PackedStringArray("original_bottom_text", "v_box_bottom")]
 script = ExtResource("1_4b7r7")
-original_bottom_text = NodePath("PopUpControl/BottomControl/RichTextLabel")
-bottom_control = NodePath("PopUpControl/BottomControl")
+original_bottom_text = NodePath("PopUpControl/VBoxBottom/RichTextLabel")
+v_box_bottom = NodePath("PopUpControl/VBoxBottom")
 flash_color = Color(0.3102684, 1.8247963, 0, 1)
 
 [node name="PopUpControl" type="Control" parent="."]
@@ -13,34 +13,28 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = 27.0
+offset_right = -39.0
+offset_bottom = -76.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="BottomControl" type="Control" parent="PopUpControl"]
-custom_minimum_size = Vector2(0, 160)
+[node name="VBoxBottom" type="VBoxContainer" parent="PopUpControl"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 488.0
+offset_top = -17.0
 grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+grow_vertical = 0
+theme_override_constants/separation = 16
+alignment = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PopUpControl/BottomControl"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -220.0
-offset_top = -20.0
-offset_right = 220.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="RichTextLabel" type="RichTextLabel" parent="PopUpControl/VBoxBottom"]
+layout_mode = 2
 mouse_filter = 2
 text = "pksfklçsdfklsdjfklsdjf"
 fit_content = true

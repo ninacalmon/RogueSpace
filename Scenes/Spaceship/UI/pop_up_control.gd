@@ -1,15 +1,23 @@
 extends CanvasLayer
 
 @export var original_bottom_text: RichTextLabel
-@export var bottom_control: Control
+@export var v_box_bottom: VBoxContainer
 @export var flash_color: Color
+@export var texts_limit: int = 2
+
+var texts_count: int = 0
+
+signal text_vanished
 
 func _ready() -> void:
 	original_bottom_text.hide()
 
 func show_text(new_text: String, duration: float = 3.0):
+	if texts_count >= texts_limit:
+		return
+	texts_count += 1
 	var bottom_text: RichTextLabel = original_bottom_text.duplicate()
-	bottom_control.add_child(bottom_text)
+	v_box_bottom.add_child(bottom_text)
 	bottom_text.text = new_text
 	bottom_text.show()
 	await flash(bottom_text, false)
@@ -17,6 +25,8 @@ func show_text(new_text: String, duration: float = 3.0):
 	await flash(bottom_text, true)
 	bottom_text.hide()
 	bottom_text.call_deferred("queue_free")
+	texts_count -= 1
+	text_vanished.emit()
 
 func flash(subject: CanvasItem, invisible: bool):
 	var original_modulate: Color = subject.modulate

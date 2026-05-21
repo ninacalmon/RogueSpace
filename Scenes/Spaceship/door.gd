@@ -1,10 +1,19 @@
 extends MainArea
 
+var has_energy: bool = false
+
 func _ready() -> void:
 	clickable_highlight.was_clicked.connect(_on_clicked)
 	SpaceshipEventBus.focus_changed.connect(_on_focus_changed)
+	SpaceshipEventBus.resource_count_finished.connect(_on_resource_count_finished)
+
+func _on_resource_count_finished():
+	has_energy = true
 
 func _on_clicked():
+	if !has_energy:
+		PopUpSystem.show_text("Sem energia.")
+		return
 	LevelTransition.change_scene_to("res://Scenes/Levels/Level1.tscn", 1, 1)
 
 func _on_focus_changed(focus: bool, _subject: Node2D):

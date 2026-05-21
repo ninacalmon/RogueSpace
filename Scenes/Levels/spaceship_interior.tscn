@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c0lfvcrle3frk"]
+[gd_scene load_steps=23 format=3 uid="uid://c0lfvcrle3frk"]
 
 [ext_resource type="Script" uid="uid://dh0io287hog2e" path="res://Scenes/Levels/spaceship_interior.gd" id="1_4wenu"]
 [ext_resource type="PackedScene" uid="uid://cgfq6udrxu5hm" path="res://Scenes/UI/mouse.tscn" id="1_ntswj"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://htap6wmpylrw" path="res://Scenes/Spaceship/door.tscn" id="12_i5u5t"]
 [ext_resource type="Script" uid="uid://0cl5r6xdfj6q" path="res://Scenes/Spaceship/mouse_light.gd" id="12_uafmv"]
 [ext_resource type="Script" uid="uid://bnroivcak8mw" path="res://Scenes/Spaceship/UI/focus_exit_button.gd" id="14_i5u5t"]
+[ext_resource type="AudioStream" uid="uid://btxx18n8epxo" path="res://Sound Effects/Ambience/sfx_loopnave.wav" id="14_uvk7a"]
+[ext_resource type="Script" uid="uid://dxuxs0f181lv8" path="res://Scenes/Spaceship/ambient_sfx.gd" id="15_uvk7a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ntswj"]
 shader = ExtResource("2_tlbit")
@@ -45,6 +47,11 @@ background_mode = 3
 glow_enabled = true
 glow_bloom = 0.88
 glow_hdr_threshold = 0.0
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_n7pqb"]
+fade_time = 0.0
+stream_count = 1
+stream_0 = ExtResource("14_uvk7a")
 
 [node name="SpaceshipInterior" type="Node2D"]
 script = ExtResource("1_4wenu")
@@ -151,3 +158,9 @@ script = ExtResource("14_i5u5t")
 
 [node name="Door" parent="." instance=ExtResource("12_i5u5t")]
 position = Vector2(873, -46)
+
+[node name="AmbientSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamPlaylist_n7pqb")
+volume_db = -28.0
+bus = &"Sound Effects"
+script = ExtResource("15_uvk7a")

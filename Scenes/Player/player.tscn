@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b512vj2a4a3y"]
+[gd_scene load_steps=21 format=3 uid="uid://b512vj2a4a3y"]
 
 [ext_resource type="Script" uid="uid://i7mc57eu0q83" path="res://Scenes/Player/player.gd" id="1_ktxno"]
 [ext_resource type="Texture2D" uid="uid://bvfcnrinovvxl" path="res://Sprites(main)/Deimos.png" id="2_pu2lt"]
@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dp3f278n4cqbm" path="res://Scenes/Player/motor_gpu_particles.tscn" id="5_d77i8"]
 [ext_resource type="AudioStream" uid="uid://cfoo2b2apjwmw" path="res://Sound Effects/fly1.mp3" id="7_3smsa"]
 [ext_resource type="AudioStream" uid="uid://cx2tfq2v41dbw" path="res://Sound Effects/tech1.mp3" id="8_8erm5"]
+[ext_resource type="AudioStream" uid="uid://o2bfikd1xdi6" path="res://Sound Effects/SFX_dash.wav" id="9_7g0yx"]
 [ext_resource type="AudioStream" uid="uid://b4ni1pu1osv1e" path="res://Sound Effects/tech2.mp3" id="9_f1ek2"]
-[ext_resource type="AudioStream" uid="uid://cwxkne077kuw6" path="res://Sound Effects/spacewinds.mp3" id="10_tx1dd"]
+[ext_resource type="AudioStream" uid="uid://cwxkne077kuw6" path="res://Sound Effects/Ambience/spacewinds.mp3" id="10_tx1dd"]
 [ext_resource type="Script" uid="uid://dsbdvxfei8u0x" path="res://Scenes/Modulars/resource_collector.gd" id="11_gymyn"]
 [ext_resource type="Script" uid="uid://cd5ihl6hfs16d" path="res://Scenes/Modulars/bullet_shooter.gd" id="11_pu2lt"]
 [ext_resource type="PackedScene" uid="uid://qyycjggr322o" path="res://Scenes/Bullets/basic_bullet.tscn" id="12_pu2lt"]
@@ -104,6 +105,10 @@ volume_db = -25.0
 autoplay = true
 bus = &"Sound Effects"
 parameters/looping = true
+
+[node name="DashSFX" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("9_7g0yx")
+volume_db = -26.0
 
 [node name="ResourceCollector" type="Area2D" parent="." node_paths=PackedStringArray("owner_body")]
 collision_layer = 0
