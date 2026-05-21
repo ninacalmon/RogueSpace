@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://3en43s0xvhci"]
+[gd_scene load_steps=39 format=3 uid="uid://3en43s0xvhci"]
 
 [ext_resource type="Texture2D" uid="uid://berv7f5gv13en" path="res://Sprites(main)/background.png" id="1_dsa84"]
 [ext_resource type="Script" uid="uid://cem6pnv2cepc7" path="res://menu_buttons_control.gd" id="2_jsrd8"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://bhshref68qilg" path="res://Sprites/panorama6.jpg" id="7_00qkb"]
 [ext_resource type="Texture2D" uid="uid://0ebkr205wvv5" path="res://Sprites(main)/UI/MenuBG/3.png" id="7_rb8kr"]
 [ext_resource type="Texture2D" uid="uid://dvci0phr78syq" path="res://Sprites(main)/UI/MenuBG/4.png" id="8_3so5s"]
+[ext_resource type="Script" uid="uid://cp811on8gxwg6" path="res://Scenes/Levels/rich_text_label_10.gd" id="8_kha57"]
+[ext_resource type="Texture2D" uid="uid://tumvrrknvrfb" path="res://Sprites(main)/UI/controls.png" id="8_sic4q"]
 [ext_resource type="Texture2D" uid="uid://dcy2i8w8i5ydg" path="res://Sprites(main)/UI/MenuBG/5.png" id="9_p4bun"]
 [ext_resource type="Texture2D" uid="uid://cjnck6cx3k841" path="res://Sprites(main)/UI/MenuBG/6.png" id="10_g56od"]
 [ext_resource type="Texture2D" uid="uid://b4cwoyw2dkt5p" path="res://Sprites(main)/UI/MenuBG/7.png" id="11_sic4q"]
@@ -35,8 +37,10 @@
 
 [sub_resource type="Theme" id="Theme_rb8kr"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8i7c"]
-bg_color = Color(1, 1, 1, 1)
+[sub_resource type="Theme" id="Theme_sic4q"]
+default_font = ExtResource("3_rb8kr")
+
+[sub_resource type="Theme" id="Theme_kha57"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dsa84"]
 animations = [{
@@ -332,35 +336,27 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Guide3" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
-layout_mode = 0
-offset_left = 790.0
-offset_top = 316.0
-offset_right = 898.0
-offset_bottom = 342.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_g8i7c")
-theme_override_styles/background = SubResource("StyleBoxFlat_g8i7c")
-text = "Teleporte **
-"
-fit_content = true
-horizontal_alignment = 1
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
+[node name="RichTextLabel10" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -130.0
-offset_top = 142.0
-offset_right = 168.0
-offset_bottom = 222.0
+offset_left = -147.00006
+offset_top = 8.0
+offset_right = 151.0
+offset_bottom = 88.0
 grow_horizontal = 2
-theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme = SubResource("Theme_sic4q")
+theme_override_colors/default_color = Color(0.40784314, 0.72156864, 0.1254902, 1)
 theme_override_font_sizes/normal_font_size = 32
 text = "CONTROLES"
 horizontal_alignment = 1
 vertical_alignment = 2
+script = ExtResource("8_kha57")
+
+[node name="Timer" type="Timer" parent="CanvasLayer/ButtonsControl/Controlers/RichTextLabel10"]
+wait_time = 0.05
+autostart = true
 
 [node name="ControlButton" type="Button" parent="CanvasLayer/ButtonsControl/Controlers"]
 layout_mode = 1
@@ -369,13 +365,99 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -27.5
-offset_top = 200.0
-offset_right = 27.5
-offset_bottom = 231.0
+offset_left = -509.0
+offset_top = 258.0
+offset_right = -454.0
+offset_bottom = 289.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Voltar"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ButtonsControl/Controlers"]
+position = Vector2(578.00006, 362)
+scale = Vector2(0.23242185, 0.23632813)
+texture = ExtResource("8_sic4q")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
+layout_mode = 0
+offset_left = 241.00002
+offset_top = 198.00002
+offset_right = 441.0
+offset_bottom = 238.00002
+scale = Vector2(1.2, 1.2)
+theme = SubResource("Theme_kha57")
+text = "pausar"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
+layout_mode = 0
+offset_left = 257.0
+offset_top = 232.99998
+offset_right = 457.0
+offset_bottom = 273.0
+scale = Vector2(1.2, 1.2)
+theme = SubResource("Theme_kha57")
+text = "freio"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
+layout_mode = 0
+offset_left = 213.99998
+offset_top = 269.0
+offset_right = 414.0
+offset_bottom = 309.0
+scale = Vector2(1.2, 1.2)
+theme = SubResource("Theme_kha57")
+text = "zoom out"
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
+layout_mode = 0
+offset_left = 824.00006
+offset_top = 231.0
+offset_right = 1024.0
+offset_bottom = 271.0
+scale = Vector2(1.2, 1.2)
+theme = SubResource("Theme_kha57")
+text = "dash/impulso"
+
+[node name="RichTextLabel7" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
+layout_mode = 0
+offset_left = 823.99994
+offset_top = 266.0
+offset_right = 1023.9999
+offset_bottom = 306.0
+scale = Vector2(1.2, 1.2)
+theme = SubResource("Theme_kha57")
+text = "zoom in"
+
+[node name="RichTextLabel8" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
+layout_mode = 0
+offset_left = 823.00006
+offset_top = 336.0
+offset_right = 1023.00006
+offset_bottom = 376.0
+scale = Vector2(1.2, 1.2)
+theme = SubResource("Theme_kha57")
+text = "teleporte*"
+
+[node name="RichTextLabel9" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
+layout_mode = 0
+offset_left = 823.00006
+offset_top = 385.0
+offset_right = 1023.00006
+offset_bottom = 425.0
+scale = Vector2(1.2, 1.2)
+theme = SubResource("Theme_kha57")
+text = "confirmar"
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="CanvasLayer/ButtonsControl/Controlers"]
+layout_mode = 0
+offset_left = 195.00002
+offset_top = 348.0
+offset_right = 395.0
+offset_bottom = 388.0
+scale = Vector2(1.2, 1.2)
+theme = SubResource("Theme_kha57")
+text = "movimento
+"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.16, 0.16, 0.16, 1)
@@ -389,4 +471,4 @@ position = Vector2(576.37506, 322.125)
 scale = Vector2(0.603776, 0.6002315)
 sprite_frames = SubResource("SpriteFrames_dsa84")
 autoplay = "default"
-frame_progress = 0.7109047
+frame_progress = 0.16102698
