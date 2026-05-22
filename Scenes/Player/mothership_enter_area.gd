@@ -1,4 +1,6 @@
 extends Area2D
+class_name MotherShipEntrance
+
 var check_input: bool = false
 
 @export var disable: bool
@@ -11,7 +13,7 @@ func _ready() -> void:
 
 func _on_body_entered(body: RigidBody2D):
 	if !(body is Player) or \
-	Globals.resources_gathered <= 0:
+	StatsManager.current_resources <= 0:
 		return
 	check_input = true
 	if disable:

@@ -11,8 +11,6 @@ signal player_back_in_bounds
 @warning_ignore("unused_signal")
 signal fuel_used
 @warning_ignore("unused_signal")
-signal burst_fuel_used
-@warning_ignore("unused_signal")
 signal almost_out_of_fuel
 @warning_ignore("unused_signal")
 signal out_of_fuel

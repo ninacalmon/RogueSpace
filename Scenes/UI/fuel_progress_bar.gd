@@ -1,35 +1,15 @@
 extends TextureProgressBar
-
-@export var max_fuel: float = 100
-@export var use_step: float = 0.02
-@export var burst_use_step: float = 0.5
+class_name FuelProgressBar
 
 var emitted: bool = false
 
 func _ready() -> void:
-	max_fuel = Globals.max_fuel
 	EventBus.fuel_used.connect(_on_fuel_used)
-	EventBus.burst_fuel_used.connect(_on_burst_fuel_used)
-	max_value = max_fuel
-	value = max_fuel
-	print(value)
+	max_value = StatsManager.player_max_fuel
+	value = StatsManager.player_current_fuel
 
 func _on_fuel_used():
-	value -= use_step
-	if value <= max_fuel/5 and !emitted:
-		emitted = true
-		EventBus.almost_out_of_fuel.emit()
-	if value == 0 and get_tree():
-		Globals.player_died("Out of Fuel")
-		#EventBus.out_of_fuel.emit()
-		#get_tree().reload_current_scene()
+	value = StatsManager.player_current_fuel
 
-func _on_burst_fuel_used():
-	value -= burst_use_step
-	if value <= max_fuel/5 and !emitted:
-		emitted = true
-		EventBus.almost_out_of_fuel.emit()
-	if value == 0 and get_tree():
-		Globals.player_died("Out of Fuel")
 		#EventBus.out_of_fuel.emit()
 		#get_tree().reload_current_scene()

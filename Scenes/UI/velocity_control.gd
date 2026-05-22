@@ -1,4 +1,5 @@
 extends VBoxContainer
+class_name VelocityControlDisplay
 
 @export var arrow: Node2D
 @export var km_label: RichTextLabel
@@ -16,10 +17,10 @@ func _process(_delta: float) -> void:
 	if !arrow or !km_label:
 		return
 	
-	var speed = Globals.player_linear_velocity.length()
+	var speed = StatsManager.player_current_linear_velocity.length()
 	var t = clamp(speed / max_speed, 0.0, 1.0)
 
-	arrow.look_at(arrow.global_position + Globals.player_linear_velocity)
+	arrow.look_at(arrow.global_position + StatsManager.player_current_linear_velocity)
 
 	arrow.modulate = get_gradient_color(t)
 

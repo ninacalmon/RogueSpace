@@ -49,7 +49,6 @@ contact_monitor = true
 max_contacts_reported = 1
 linear_damp_mode = 1
 script = ExtResource("1_ktxno")
-break_speed = 5.0
 hurt_box_player = NodePath("HurtBoxPlayer")
 collision = NodePath("CollisionShape2D")
 sprite = NodePath("Sprite2D")

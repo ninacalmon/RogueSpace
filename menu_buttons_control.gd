@@ -47,5 +47,4 @@ func _on_button_hovered(number: int) -> void:
 
 func _on_joy_connected(_device: int, connected: bool):
 	if connected:
-		Input.MOUSE_MODE_HIDDEN
 		start.grab_focus()

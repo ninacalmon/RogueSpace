@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="rogue-space"
-run/main_scene="uid://c0lfvcrle3frk"
+run/main_scene="uid://caunmk6gg411l"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -25,6 +25,8 @@ PowerUps="*res://power_ups.gd"
 ControllerVibration="*res://controller_vibration.gd"
 SpaceshipEventBus="*res://spaceship_event_bus.gd"
 PopUpSystem="*res://Scenes/Spaceship/UI/pop_up_control.tscn"
+StatsManager="*res://stats_manager.gd"
+PathsHub="*res://paths_hub.gd"
 
 [display]
 

@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://coahuft63xqca"]
+
+[ext_resource type="Script" uid="uid://bptehg4lojwkg" path="res://Scenes/Spaceship/UI/resources_label.gd" id="1_6hd2b"]
+[ext_resource type="Script" uid="uid://bnroivcak8mw" path="res://Scenes/Spaceship/UI/focus_exit_button.gd" id="2_okbct"]
+
+[node name="UISpaceship" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="UIControlRect" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 21.0
+offset_right = -22.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ResourcesLabel" type="RichTextLabel" parent="UIControlRect"]
+clip_contents = false
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -301.0
+offset_bottom = 139.0
+grow_horizontal = 0
+mouse_filter = 2
+bbcode_enabled = true
+text = "[b]200 recursos[/b]"
+fit_content = true
+horizontal_alignment = 1
+script = ExtResource("1_6hd2b")
+
+[node name="ButtonControl" type="Control" parent="UIControlRect"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="FocusExitButton" type="Button" parent="UIControlRect/ButtonControl"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -29.0
+offset_top = -25.0
+offset_right = 29.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Sair"
+script = ExtResource("2_okbct")

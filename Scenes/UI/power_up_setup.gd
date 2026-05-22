@@ -16,6 +16,8 @@ var not_focused_color: Color = Color(1.0, 1.0, 1.0, 0.3)
 
 var have_enough_to_buy: bool
 
+
+
 func _ready() -> void:
 	modulate = not_focused_color
 	
@@ -37,7 +39,7 @@ func setup_nodes():
 	texture_button.texture_normal = texture
 
 func check_availability():
-	have_enough_to_buy = Globals.resources_gathered >= price
+	have_enough_to_buy = StatsManager.current_resources >= price
 	if !have_enough_to_buy:
 		texture_button.modulate = Color(0.0, 0.0, 0.0, 0.4)
 
@@ -45,11 +47,12 @@ func _on_button_pressed():
 	if !have_enough_to_buy:
 		shake()
 		return
-	if Globals.resources_gathered >= price:
+	if StatsManager.current_resources >= price:
 		modulate = Color(0.153, 0.212, 0.086)
 		PowerUps.apply_power_up(effect)
-		Globals.resources_gathered -= price
-		EventBus.resources_used.emit()
+		StatsManager.current_resources -= price
+		#EventBus.resources_used.emit()
+		SpaceshipEventBus.resources_spent.emit()
 		print("aplied")
 	else:
 		shake()
