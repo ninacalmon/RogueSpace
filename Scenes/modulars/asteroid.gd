@@ -5,7 +5,7 @@ class_name Asteroid
 @export var base_endurance: float = 200
 @export var minimum_damage: float = 70
 @export var minimum_external_damage: float = 160
-@export var endur_to_pieces_proportion: int = 8
+@export var endur_to_pieces_proportion: float = 0.5 #8
 @export var will_spawn_critters: bool
 @export_range(0, 100, 1) var critters_chance_percentage: int
 @export var critters_amount_min: int = 2

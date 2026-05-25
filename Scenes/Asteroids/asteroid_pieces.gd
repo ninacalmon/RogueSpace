@@ -5,13 +5,17 @@ class_name CollectableResource
 var collect_offset: float = 10
 var following: bool
 var target: Node2D
+@onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = %VisibleOnScreenNotifier2D
 
 func _ready() -> void:
 	if body_randomizer: body_randomizer.initialize(sprite, collision)
 	if gravitational_field: gravitational_field.initialize()
 	if gravitational_field_resources: gravitational_field_resources.initialize()
 
+
 func _process(delta: float) -> void:
+	freeze = !visible_on_screen_notifier_2d.is_on_screen()
+	
 	if not following or target == null:
 		return
 	var direction = (target.global_position - global_position).normalized()

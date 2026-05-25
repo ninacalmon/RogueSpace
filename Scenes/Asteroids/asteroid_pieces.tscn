@@ -9,7 +9,7 @@
 radius = 4.0
 
 [node name="AsteroidPieces" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "gravitational_field", "body_randomizer")]
-collision_layer = 3
+collision_layer = 2
 collision_mask = 3
 mass = 10.0
 script = ExtResource("1_m5km2")
@@ -25,8 +25,9 @@ shape = SubResource("CircleShape2D_ekiyu")
 texture = ExtResource("2_x22kp")
 
 [node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("3_m5km2")]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 0
+monitoring = false
+monitorable = false
 owner_body = NodePath("..")
 owner_collision_shape = NodePath("../CollisionShape2D")
 attraction_executed_multiply = 0.0
@@ -35,3 +36,7 @@ attraction_executed_multiply = 0.0
 owner_body = NodePath("..")
 scale_min = 0.8
 scale_max = 1.8
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+unique_name_in_owner = true
+rect = Rect2(-36, -36, 72, 72)
