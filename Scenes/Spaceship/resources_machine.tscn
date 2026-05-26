@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://btutin3dslh6c" path="res://Scenes/Spaceship/resource_counter.gd" id="5_ewulj"]
 [ext_resource type="Script" uid="uid://027n44axvh63" path="res://Scenes/Spaceship/resources_deposit.gd" id="5_n2veb"]
 [ext_resource type="AudioStream" uid="uid://3ywm8o38t0d4" path="res://Sound Effects/value_up3.wav" id="6_8efwl"]
-[ext_resource type="Texture2D" uid="uid://81sauyddd7km" path="res://Sprites(main)/Asteroid_small.png" id="7_8efwl"]
+[ext_resource type="Texture2D" uid="uid://81sauyddd7km" path="res://Sprites(main)/Asteroids/Asteroid_small.png" id="7_8efwl"]
 [ext_resource type="Script" uid="uid://c4rjuhxn0t5h3" path="res://Scenes/Spaceship/shake_module.gd" id="9_x7ic0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x7ic0"]

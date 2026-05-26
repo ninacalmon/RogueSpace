@@ -10,7 +10,6 @@ var impulse_cooldown_timer: float = StatsManager.player_impulse_cooldown_duratio
 @export var camera: Camera2D
 @onready var propulsor_sfx: AudioStreamPlayer = $SFX/PropulsorSFX
 @onready var teleport_sfx: AudioStreamPlayer = $SFX/TeleportSFX
-@onready var space_winds_sfx: AudioStreamPlayer = $SFX/SpaceWindsSFX
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var dash_sfx: AudioStreamPlayer = $SFX/DashSFX
 

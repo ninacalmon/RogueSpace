@@ -1,5 +1,6 @@
-[gd_scene load_steps=37 format=3 uid="uid://3en43s0xvhci"]
+[gd_scene load_steps=38 format=3 uid="uid://3en43s0xvhci"]
 
+[ext_resource type="PackedScene" uid="uid://buqlpqb51bwy" path="res://ui_sounds.tscn" id="1_sic4q"]
 [ext_resource type="Script" uid="uid://cem6pnv2cepc7" path="res://menu_buttons_control.gd" id="2_jsrd8"]
 [ext_resource type="FontFile" uid="uid://bkq3re32v3glf" path="res://Fonts/Commodore Pixelized v1.2.ttf" id="3_rb8kr"]
 [ext_resource type="Theme" uid="uid://npl3mumy4crf" path="res://Scenes/UI/default_theme.tres" id="3_w6vxw"]
@@ -182,6 +183,9 @@ animations = [{
 
 [node name="Menu" type="Node2D"]
 process_mode = 3
+
+[node name="UISounds" parent="." instance=ExtResource("1_sic4q")]
+root_path = NodePath("../CanvasLayer/Control")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

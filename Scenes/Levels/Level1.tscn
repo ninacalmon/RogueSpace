@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://caunmk6gg411l"]
+[gd_scene load_steps=25 format=4 uid="uid://caunmk6gg411l"]
 
 [ext_resource type="Texture2D" uid="uid://b4go5brbh3ndq" path="res://Sprites/Starfields/Starfield 1 - 1024x1024.png" id="1_kpfdn"]
 [ext_resource type="Texture2D" uid="uid://xuvojlr8s030" path="res://Sprites(main)/TemporaryPlanets/66888997 (3).png" id="2_dgnnc"]
@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://c2v243rukexl6" path="res://Scenes/Modulars/map_control.tscn" id="12_c1j88"]
 [ext_resource type="PackedScene" uid="uid://c7nj6rbljyvk3" path="res://Scenes/BackHoles/supermassive_black_hole.tscn" id="13_4f3qw"]
 [ext_resource type="PackedScene" uid="uid://3vg8bv7t077f" path="res://Scenes/BackHoles/black_hole.tscn" id="14_aajud"]
+[ext_resource type="AudioStream" uid="uid://cwxkne077kuw6" path="res://Sound Effects/Ambience/spacewinds.mp3" id="20_uqlrs"]
+[ext_resource type="Script" uid="uid://da05f5oj8b66c" path="res://Scenes/Levels/space_winds_sfx.gd" id="21_htexa"]
 
 [sub_resource type="Environment" id="Environment_n7yfy"]
 background_mode = 3
@@ -95,6 +97,7 @@ camera = NodePath("Camera2D")
 script = ExtResource("3_aajud")
 full_view_zoom = Vector2(0.3, 0.3)
 full_view_pos = Vector2(0, -800)
+deactivate_cutscene = true
 
 [node name="Mothership" parent="." instance=ExtResource("4_4f3qw")]
 position = Vector2(0, 190)
@@ -135,5 +138,13 @@ position = Vector2(-1037, -1386)
 [node name="MapControl" parent="." node_paths=PackedStringArray("player") instance=ExtResource("12_c1j88")]
 player = NodePath("../Player")
 metadata/_edit_lock_ = true
+
+[node name="SpaceWindsSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_uqlrs")
+volume_db = -25.0
+autoplay = true
+bus = &"Sound Effects"
+parameters/looping = true
+script = ExtResource("21_htexa")
 
 [editable path="CanvasLayer/UI"]

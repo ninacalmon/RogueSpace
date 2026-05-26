@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dti25n138kmrg"
-path="res://.godot/imported/Asteroid_big.png-460bb6f6fa96d6098612403196158ce4.ctex"
+uid="uid://v7rhaqerd48m"
+path="res://.godot/imported/alien_VermeLanceiro.png-8997ce73fc859630477898532838e9e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites(main)/Asteroid_big.png"
-dest_files=["res://.godot/imported/Asteroid_big.png-460bb6f6fa96d6098612403196158ce4.ctex"]
+source_file="res://Sprites(main)/Enemies/alien_VermeLanceiro.png"
+dest_files=["res://.godot/imported/alien_VermeLanceiro.png-8997ce73fc859630477898532838e9e4.ctex"]
 
 [params]
 

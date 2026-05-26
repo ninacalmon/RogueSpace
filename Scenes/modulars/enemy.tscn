@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://br070cnq6sve"]
+[gd_scene load_steps=6 format=3 uid="uid://br070cnq6sve"]
 
 [ext_resource type="Script" uid="uid://7afwh36bc151" path="res://Scenes/Modulars/enemy.gd" id="1_287tu"]
-[ext_resource type="Texture2D" uid="uid://d1sc3tvg23xsr" path="res://Sprites/Aliens/Alien_Ground1.png" id="2_0830c"]
-[ext_resource type="Script" uid="uid://dakt7r353r7ae" path="res://Scenes/SpaceBodies/body_randomizer.gd" id="4_1dp5w"]
+[ext_resource type="Texture2D" uid="uid://cx0i5vabq2pgx" path="res://Sprites(main)/Enemies/alien_FuraDetrito.png" id="2_b5pc1"]
 [ext_resource type="Script" uid="uid://iatwgk3de1nj" path="res://Scenes/Modulars/hurt_box.gd" id="5_0830c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_auwsv"]
+radius = 15.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ghaa6"]
 radius = 12.0
@@ -15,25 +15,13 @@ lock_rotation = true
 script = ExtResource("1_287tu")
 collision = NodePath("CollisionShape2D")
 sprite = NodePath("Sprite2D")
-body_randomizer = NodePath("BodyRandomizer")
+body_randomizer = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_auwsv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(1, 0.07999998, 0.07999998, 1)
-rotation = -1.5707964
-texture = ExtResource("2_0830c")
-
-[node name="BodyRandomizer" type="Node2D" parent="." node_paths=PackedStringArray("owner_body")]
-script = ExtResource("4_1dp5w")
-owner_body = NodePath("..")
-rand_rotation = false
-rand_linear_velocity = false
-rand_angular_velocity = false
-scale_min = 0.8
-scale_max = 1.2
-metadata/_custom_type_script = "uid://dakt7r353r7ae"
+texture = ExtResource("2_b5pc1")
 
 [node name="HurtBox" type="Area2D" parent="."]
 script = ExtResource("5_0830c")

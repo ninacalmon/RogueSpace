@@ -19,7 +19,7 @@ func _ready() -> void:
 	
 
 func _process(_delta: float) -> void:
-	sprite_2d.flip_v = global_position > player.global_position
+	sprite_2d.flip_h = global_position > player.global_position
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if not is_instance_valid(player):

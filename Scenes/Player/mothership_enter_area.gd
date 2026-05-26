@@ -4,6 +4,7 @@ class_name MotherShipEntrance
 var check_input: bool = false
 
 @export var disable: bool
+@onready var door_sfx: AudioStreamPlayer = $DoorSFX
 
 func _ready() -> void:
 	Globals.changing_scene = false
@@ -29,6 +30,8 @@ func _input(event: InputEvent) -> void:
 	if !check_input:
 		return
 	if event.is_action_pressed("confirm"):
+		EventBus.player_wants_to_enter_mothership.emit()
 		check_input = false
 		Globals.changing_scene = true
-		LevelTransition.change_scene_to("res://Scenes/Levels/spaceship_interior.tscn")
+		SFXManager.play_sound(door_sfx)
+		LevelTransition.change_scene_to("res://Scenes/Levels/spaceship_interior.tscn", 1.2)

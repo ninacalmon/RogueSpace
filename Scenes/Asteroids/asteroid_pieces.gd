@@ -6,6 +6,7 @@ var collect_offset: float = 10
 var following: bool
 var target: Node2D
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = %VisibleOnScreenNotifier2D
+@onready var collectiong_sfx: AudioStreamPlayer = $CollectiongSFX
 
 func _ready() -> void:
 	if body_randomizer: body_randomizer.initialize(sprite, collision)
@@ -27,4 +28,5 @@ func _process(delta: float) -> void:
 func collect():
 	if target is Player:
 		EventBus.space_resource_collected.emit()
+		SFXManager.play_sound(collectiong_sfx)
 		queue_free()

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d0cl4oppaa2um"
+path="res://.godot/imported/sfx_coletarecursos.wav-ea03662909a4921cb8b944a26ba572cb.sample"
+
+[deps]
+
+source_file="res://Sound Effects/Collecting/sfx_coletarecursos.wav"
+dest_files=["res://.godot/imported/sfx_coletarecursos.wav-ea03662909a4921cb8b944a26ba572cb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

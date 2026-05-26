@@ -2,7 +2,10 @@ extends MainArea
 
 var has_energy: bool = false
 
+@onready var door_sfx: AudioStreamPlayer = $DoorSFX
+
 func _ready() -> void:
+	has_energy = true
 	clickable_highlight.was_clicked.connect(_on_clicked)
 	SpaceshipEventBus.focus_changed.connect(_on_focus_changed)
 	SpaceshipEventBus.resource_count_finished.connect(_on_resource_count_finished)
@@ -14,6 +17,8 @@ func _on_clicked():
 	if !has_energy:
 		PopUpSystem.show_text("Sem energia.")
 		return
+	SFXManager.play_sound(door_sfx)
+	await get_tree().create_timer(1.2).timeout
 	LevelTransition.change_scene_to("res://Scenes/Levels/Level1.tscn", 1, 1)
 
 func _on_focus_changed(focus: bool, _subject: Node2D):

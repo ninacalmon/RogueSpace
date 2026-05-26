@@ -16,4 +16,7 @@ signal resource_count_started(duration: float)
 signal focus_changed(focus: bool, subject: Node2D)
 
 @warning_ignore("unused_signal")
-signal resources_spent()
+signal resources_spent
+
+@warning_ignore("unused_signal")
+signal player_going_out

@@ -1,12 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://sfrd0aftb340"]
+[gd_scene load_steps=9 format=3 uid="uid://sfrd0aftb340"]
 
 [ext_resource type="Script" uid="uid://bbrlxfbmbnwgh" path="res://Scenes/Asteroids/asteroid_pieces.gd" id="1_m5km2"]
 [ext_resource type="PackedScene" uid="uid://b7rex1sowfwcb" path="res://Scenes/Modulars/body_randomizer.tscn" id="2_m5km2"]
 [ext_resource type="Texture2D" uid="uid://dii6xe8rdlgc4" path="res://Sprites/Other_Asteroid1.png" id="2_x22kp"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="3_m5km2"]
+[ext_resource type="AudioStream" uid="uid://bbct4wahuembw" path="res://Sound Effects/Collecting/sfx_coletarecursos2.wav" id="5_t6nkm"]
+[ext_resource type="AudioStream" uid="uid://d0cl4oppaa2um" path="res://Sound Effects/Collecting/sfx_coletarecursos.wav" id="6_qresu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ekiyu"]
 radius = 4.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lm11g"]
+random_pitch = 1.6
+streams_count = 2
+stream_0/stream = ExtResource("5_t6nkm")
+stream_1/stream = ExtResource("6_qresu")
 
 [node name="AsteroidPieces" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "gravitational_field", "body_randomizer")]
 collision_layer = 2
@@ -40,3 +48,7 @@ scale_max = 1.8
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 unique_name_in_owner = true
 rect = Rect2(-36, -36, 72, 72)
+
+[node name="CollectiongSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_lm11g")
+volume_db = -10.0

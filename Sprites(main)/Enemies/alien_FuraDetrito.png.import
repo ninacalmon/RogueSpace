@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://81sauyddd7km"
-path="res://.godot/imported/Asteroid_small.png-45301b4b4c6706b0df73261c870ab74e.ctex"
+uid="uid://cx0i5vabq2pgx"
+path="res://.godot/imported/alien_FuraDetrito.png-3f1c5c8609ca55ada18f846eba8fa1dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites(main)/Asteroid_small.png"
-dest_files=["res://.godot/imported/Asteroid_small.png-45301b4b4c6706b0df73261c870ab74e.ctex"]
+source_file="res://Sprites(main)/Enemies/alien_FuraDetrito.png"
+dest_files=["res://.godot/imported/alien_FuraDetrito.png-3f1c5c8609ca55ada18f846eba8fa1dc.ctex"]
 
 [params]
 
