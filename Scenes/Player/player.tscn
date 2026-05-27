@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b512vj2a4a3y"]
+[gd_scene load_steps=28 format=3 uid="uid://b512vj2a4a3y"]
 
 [ext_resource type="Script" uid="uid://i7mc57eu0q83" path="res://Scenes/Player/player.gd" id="1_ktxno"]
 [ext_resource type="Texture2D" uid="uid://bvfcnrinovvxl" path="res://Sprites(main)/Deimos.png" id="2_pu2lt"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://qyycjggr322o" path="res://Scenes/Bullets/basic_bullet.tscn" id="12_pu2lt"]
 [ext_resource type="Script" uid="uid://yorcpoevwvbr" path="res://Scenes/Player/hurt_box_player.gd" id="13_7g0yx"]
 [ext_resource type="AudioStream" uid="uid://bhajosbgqm8fk" path="res://Sound Effects/Shoot/sfx_tiro1.wav" id="13_dey5f"]
+[ext_resource type="Texture2D" uid="uid://dtnbw56aodt0c" path="res://Sprites(main)/UI/arrow.png" id="14_aqm4k"]
 [ext_resource type="AudioStream" uid="uid://dy3eobtygv1pq" path="res://Sound Effects/Shoot/sfx_tiro2.wav" id="14_r5xpd"]
 [ext_resource type="AudioStream" uid="uid://dw2sq44bp1kld" path="res://Sound Effects/Player/Damage/sfx_dano3.wav" id="15_hnuln"]
 [ext_resource type="Script" uid="uid://c8vhfkoa08kcq" path="res://Scenes/Player/death_setup.gd" id="15_r5xpd"]
@@ -136,6 +137,13 @@ bullet_scene = ExtResource("12_pu2lt")
 stream = SubResource("AudioStreamRandomizer_7g0yx")
 volume_db = -40.0
 bus = &"Sound Effects"
+
+[node name="ArrowPivot" type="Node2D" parent="BulletShooter"]
+
+[node name="Sprite2D" type="Sprite2D" parent="BulletShooter/ArrowPivot"]
+position = Vector2(20, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_aqm4k")
 
 [node name="HurtBoxPlayer" type="Area2D" parent="." node_paths=PackedStringArray("player")]
 collision_layer = 0

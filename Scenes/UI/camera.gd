@@ -25,23 +25,23 @@ func _ready():
 		start_cutscene()
 	else: Globals.is_cutscene = false
 
-func _input(event: InputEvent) -> void:
-	if Globals.is_cutscene:
-		return
-	
-	if event.is_action_pressed("scroll_up"):
-		target_zoom += Vector2.ONE * zoom_speed
-
-	if event.is_action_pressed("scroll_down"):
-		target_zoom -= Vector2.ONE * zoom_speed
-
-	if event.is_action_pressed("middle_mouse"):
-		target_zoom = default_zoom
-
-	target_zoom = target_zoom.clamp(
-		Vector2(min_zoom, min_zoom),
-		Vector2(max_zoom, max_zoom)
-	)
+#func _input(event: InputEvent) -> void:
+	#if Globals.is_cutscene:
+		#return
+	#
+	#if event.is_action_pressed("scroll_up"):
+		#target_zoom += Vector2.ONE * zoom_speed
+#
+	#if event.is_action_pressed("scroll_down"):
+		#target_zoom -= Vector2.ONE * zoom_speed
+#
+	#if event.is_action_pressed("middle_mouse"):
+		#target_zoom = default_zoom
+#
+	#target_zoom = target_zoom.clamp(
+		#Vector2(min_zoom, min_zoom),
+		#Vector2(max_zoom, max_zoom)
+	#)
 
 func _process(delta):
 	if Globals.is_cutscene:
