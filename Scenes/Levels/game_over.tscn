@@ -1,22 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbfue7xfisdim"]
+[gd_scene load_steps=4 format=3 uid="uid://bbfue7xfisdim"]
 
 [ext_resource type="Texture2D" uid="uid://eekvmorfi2ut" path="res://Sprites/Starfields/Starfield 2 - 1024x1024.png" id="1_cfvhd"]
 [ext_resource type="Script" uid="uid://wf0piy7g0hye" path="res://Scenes/Levels/game_over_control.gd" id="1_rohwx"]
 [ext_resource type="Script" uid="uid://ktd1ndy25a0o" path="res://Scenes/UI/GameOver/pressable_game_over.gd" id="4_l0mjm"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stgsc"]
-bg_color = Color(0.15288003, 0.42, 0.11759999, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ts6st"]
-bg_color = Color(0.33734995, 0.65, 0.16899998, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
 
 [node name="GameOver" type="Control" node_paths=PackedStringArray("background_texture", "sub_text")]
 process_mode = 3
@@ -68,7 +54,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/normal_font_size = 16
-text = "Alguma lore sobre o que aconteceu com ele, dependendo de quem matou"
+text = "Alguma frase legal."
 fit_content = true
 horizontal_alignment = 1
 
@@ -90,22 +76,8 @@ script = ExtResource("4_l0mjm")
 
 [node name="TryAgain" type="Button" parent="CanvasLayer/Pressable"]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_stgsc")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_stgsc")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ts6st")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_ts6st")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ts6st")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_stgsc")
-theme_override_styles/focus = SubResource("StyleBoxFlat_ts6st")
 text = "Tentar novamente"
 
 [node name="Menu" type="Button" parent="CanvasLayer/Pressable"]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_stgsc")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_stgsc")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ts6st")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_ts6st")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ts6st")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_stgsc")
-theme_override_styles/focus = SubResource("StyleBoxFlat_ts6st")
 text = "Menu"

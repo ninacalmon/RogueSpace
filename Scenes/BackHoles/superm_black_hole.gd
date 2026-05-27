@@ -43,7 +43,8 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	await start_suck_animation(body, center, radius, angle, duration)
 	
-	if body is Player: Globals.reload_current_scene()
+	if body is Player: 
+		EventBus.player_death.emit(false)
 	else:
 		body.queue_free()
 
@@ -75,6 +76,3 @@ func start_suck_animation(body, center, r, a, duration): # lá ele - AI vvvvvvv
 	tween.tween_method(bound_lambda, 0.0, 1.0, duration)
 
 	await tween.finished
-	
-	if is_instance_valid(body):
-		body.queue_free()

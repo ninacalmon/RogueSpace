@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dsw810ysjgsn2"]
+[gd_scene load_steps=23 format=3 uid="uid://dsw810ysjgsn2"]
 
 [ext_resource type="Script" uid="uid://dp0jfjqkl4sdl" path="res://Scenes/Modulars/asteroid.gd" id="1_r6oq4"]
 [ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/Asteroids/asteroid_pieces.tscn" id="2_0d5qe"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://b557g0uedb6a0" path="res://Sprites(main)/Asteroids/Asteroid_medium (1).png" id="9_t4syf"]
 [ext_resource type="AudioStream" uid="uid://b5s0ptmpaw0he" path="res://Sound Effects/Asteroids/Break/break2.wav" id="9_xolh0"]
 [ext_resource type="AudioStream" uid="uid://djeuv8xr5pfp8" path="res://Sound Effects/sfx_enemy.mp3" id="15_t4syf"]
+[ext_resource type="AudioStream" uid="uid://ctde66tr3dsom" path="res://Sound Effects/Asteroids/sfx_colisao.wav" id="16_iy4pt"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0d5qe"]
 bounce = 0.1
@@ -28,6 +29,12 @@ shader = ExtResource("4_34314")
 shader_parameter/original_palette = ExtResource("5_agbyp")
 shader_parameter/new_palette = ExtResource("5_t4syf")
 shader_parameter/colors_count = 6
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xolh0"]
+random_pitch = 1.5
+random_volume_offset_db = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("16_iy4pt")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6lt0e"]
 streams_count = 3
@@ -45,7 +52,7 @@ physics_material_override = SubResource("PhysicsMaterial_0d5qe")
 contact_monitor = true
 max_contacts_reported = 4
 script = ExtResource("1_r6oq4")
-size_index = 2
+asteroid_size = "medium"
 base_endurance = 300.0
 minimum_damage = 100.0
 will_spawn_critters = true
@@ -78,6 +85,10 @@ script = ExtResource("6_yu118")
 owner_body = NodePath("..")
 minimum_impact = 30.0
 metadata/_custom_type_script = "uid://dny3ctsdweann"
+
+[node name="CollisionSFX" type="AudioStreamPlayer" parent="DamageModule"]
+stream = SubResource("AudioStreamRandomizer_xolh0")
+volume_db = -24.0
 
 [node name="BodyRandomizer" type="Node2D" parent="." node_paths=PackedStringArray("owner_body")]
 script = ExtResource("7_t4syf")

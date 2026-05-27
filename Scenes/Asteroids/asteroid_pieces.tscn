@@ -52,3 +52,4 @@ rect = Rect2(-36, -36, 72, 72)
 [node name="CollectiongSFX" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_lm11g")
 volume_db = -10.0
+bus = &"Sound Effects"

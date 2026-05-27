@@ -5,7 +5,6 @@ var has_energy: bool = false
 @onready var door_sfx: AudioStreamPlayer = $DoorSFX
 
 func _ready() -> void:
-	has_energy = true
 	clickable_highlight.was_clicked.connect(_on_clicked)
 	SpaceshipEventBus.focus_changed.connect(_on_focus_changed)
 	SpaceshipEventBus.resource_count_finished.connect(_on_resource_count_finished)
@@ -13,6 +12,7 @@ func _ready() -> void:
 func _on_resource_count_finished():
 	has_energy = true
 
+### CODIGO FEIAO vvvv
 func _on_clicked():
 	if !has_energy:
 		PopUpSystem.show_text("Sem energia.")

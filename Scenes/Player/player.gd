@@ -69,8 +69,8 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if state.linear_velocity.length() > max_velocity:
 		state.linear_velocity = state.linear_velocity.normalized() * max_velocity
 
-	if Input.is_action_just_pressed("restart"):
-		Globals.reload_current_scene()
+	#if Input.is_action_just_pressed("restart"):
+		#Globals.reload_current_scene()
 	
 	if Input.is_action_just_pressed("teleport") and Globals.can_teleport:
 		execute_teletransport()
@@ -156,4 +156,4 @@ func update_fuel(is_impulse: bool = false):
 		emitted_fuel_waning = true
 		EventBus.almost_out_of_fuel.emit()
 	if StatsManager.player_current_fuel <= 0:
-		Globals.player_died("Out of Fuel")
+		EventBus.player_death.emit(true)

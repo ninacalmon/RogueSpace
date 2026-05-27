@@ -23,8 +23,5 @@ func _ready() -> void:
 func reload_current_scene():
 	get_tree().reload_current_scene()
 
-func player_died(cause_of_death: String):
-	var game_over_scene: GameOverScene = preload("res://Scenes/Levels/game_over.tscn").instantiate()
-	game_over_scene.cause_of_death = cause_of_death
-	get_tree().paused = true
-	get_tree().current_scene.add_child(game_over_scene)
+func player_died():
+	LevelTransition.change_scene_to("res://Scenes/Levels/game_over.tscn")

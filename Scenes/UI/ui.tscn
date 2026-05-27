@@ -44,7 +44,9 @@ font_name = "F25 Bank Printer"
 style_name = "Bold"
 font_style = 1
 font_weight = 700
+subpixel_positioning = 0
 msdf_pixel_range = 8
+msdf_size = 128
 cache/0/16/0/ascent = 12.0
 cache/0/16/0/descent = 4.0
 cache/0/16/0/underline_position = 1.59375
@@ -213,7 +215,6 @@ layout_mode = 2
 value = 100.0
 texture_progress = ExtResource("5_vy225")
 script = ExtResource("5_huoym")
-use_step = 0.03
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UIControlRect/HBoxBars/FuelProgressBar"]
 custom_minimum_size = Vector2(150, 34)

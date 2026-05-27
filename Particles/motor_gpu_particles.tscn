@@ -1,7 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dp3f278n4cqbm"]
 
-[ext_resource type="Texture2D" uid="uid://cbcuca4hv1ck1" path="res://Sprites/Explosion_Sheet.png" id="1_c2g25"]
-[ext_resource type="Script" uid="uid://din5gfl2ln18x" path="res://Scenes/Player/motor_gpu_particles.gd" id="2_gs4q6"]
+[ext_resource type="Texture2D" uid="uid://cbcuca4hv1ck1" path="res://Sprites/Explosion_Sheet.png" id="1_qsfuh"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gs4q6"]
 particles_animation = true
@@ -45,10 +44,18 @@ alpha_curve = SubResource("CurveTexture_gs4q6")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
+[sub_resource type="GDScript" id="GDScript_kwma8"]
+script/source = "extends GPUParticles2D
+
+@export var player: Player
+
+var changed: bool =  false
+"
+
 [node name="MotorGPUParticles" type="GPUParticles2D"]
 material = SubResource("CanvasItemMaterial_gs4q6")
 amount = 64
-texture = ExtResource("1_c2g25")
+texture = ExtResource("1_qsfuh")
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_fxmdp")
-script = ExtResource("2_gs4q6")
+script = SubResource("GDScript_kwma8")

@@ -23,6 +23,7 @@ func _ready():
 	target_zoom = Vector2(1, 1)
 	if !deactivate_cutscene:
 		start_cutscene()
+	else: Globals.is_cutscene = false
 
 func _input(event: InputEvent) -> void:
 	if Globals.is_cutscene:

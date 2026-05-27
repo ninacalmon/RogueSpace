@@ -7,15 +7,14 @@ var emitted: bool = false
 
 func _ready() -> void:
 	low_hp_overlay.modulate.a = 0
-	EventBus.damage_taken.connect(_on_damage_taken)
-	max_value = max_hp
-	value = max_hp
 
-func _on_damage_taken(damaged: RigidBody2D, amount: float):
-	pass
+	EventBus.damage_taken.connect(_on_damage_taken)
+	max_value = StatsManager.player_max_health
+	value = StatsManager.player_current_health
+
+func _on_damage_taken(damaged: RigidBody2D, _amount: float):
 	if damaged is Player:
-		value -= amount
-		if value <= 0: get_tree().reload_current_scene()
+		value = StatsManager.player_current_health
 	update_overlay()
 
 func update_overlay():

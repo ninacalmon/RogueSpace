@@ -43,3 +43,6 @@ signal resources_used
 
 @warning_ignore("unused_signal")
 signal level_pass
+
+@warning_ignore("unused_signal")
+signal player_death(explode: bool)

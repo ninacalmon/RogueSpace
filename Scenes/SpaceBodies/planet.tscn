@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://vbsslu1hl1sg"]
+[gd_scene load_steps=16 format=3 uid="uid://vbsslu1hl1sg"]
 
 [ext_resource type="Script" uid="uid://b6ch1ii8ge4tt" path="res://Scenes/SpaceBodies/planet.gd" id="1_2i0q5"]
 [ext_resource type="Script" uid="uid://dakt7r353r7ae" path="res://Scenes/SpaceBodies/body_randomizer.gd" id="4_bvtle"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dbom7e2dansya" path="res://Scenes/SpaceBodies/random_planet.gd" id="6_epss5"]
 [ext_resource type="Texture2D" uid="uid://ch2myk1haewwx" path="res://Sprites(main)/TemporaryPlanets/22951 (1).png" id="7_bq83f"]
 [ext_resource type="Texture2D" uid="uid://2galbdfu7ycj" path="res://Sprites(main)/TemporaryPlanets/2295125163 (1).png" id="8_pbhjm"]
+[ext_resource type="AudioStream" uid="uid://ctde66tr3dsom" path="res://Sound Effects/Asteroids/sfx_colisao.wav" id="9_aertx"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="9_sm51w"]
 [ext_resource type="Script" uid="uid://dny3ctsdweann" path="res://Scenes/SpaceBodies/damage_module.gd" id="10_lh1vx"]
 [ext_resource type="AudioStream" uid="uid://b7snqnvr1tlj" path="res://Sound Effects/Asteroids/Break/break.wav" id="11_yda27"]
@@ -17,6 +18,12 @@ bounce = 0.1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpe2g"]
 radius = 278.04495
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vx2wn"]
+random_pitch = 1.5
+random_volume_offset_db = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("9_aertx")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jgwd8"]
 streams_count = 2
@@ -66,6 +73,10 @@ increase_with_proximity = 0.94
 script = ExtResource("10_lh1vx")
 owner_body = NodePath("..")
 metadata/_custom_type_script = "uid://dny3ctsdweann"
+
+[node name="CollisionSFX" type="AudioStreamPlayer" parent="DamageModule"]
+stream = SubResource("AudioStreamRandomizer_vx2wn")
+volume_db = -24.0
 
 [node name="BreakSound" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_jgwd8")

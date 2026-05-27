@@ -1,7 +1,7 @@
 extends BodySetup
 class_name Asteroid
 
-@export_range(1, 3, 1) var size_index: int = 1
+@export_enum("small", "medium", "big") var asteroid_size = "small"
 @export var base_endurance: float = 200
 @export var minimum_damage: float = 70
 @export var minimum_external_damage: float = 160
@@ -68,6 +68,11 @@ func _on_damage_taken(damage: float, causer: RigidBody2D):
 
 
 func handle_player_damage(damage: float, _player: Player):
+	var size_index: int = 0
+	match asteroid_size:
+		"small": size_index = 1
+		"medium": size_index = 2
+		"big": size_index = 3
 	ControllerVibration.vibrate_controller(size_index, 0.3)
 	var bonus_multiplier: float = 1.0
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dxg5doh1x8ch2"]
+[gd_scene load_steps=22 format=3 uid="uid://dxg5doh1x8ch2"]
 
 [ext_resource type="Script" uid="uid://dp0jfjqkl4sdl" path="res://Scenes/Modulars/asteroid.gd" id="1_cygtc"]
 [ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/Asteroids/asteroid_pieces.tscn" id="2_mi7vy"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dx0xv4geqjvp8" path="res://Sprites(main)/asteroid_default_pallete.png" id="7_v3ypu"]
 [ext_resource type="AudioStream" uid="uid://b5s0ptmpaw0he" path="res://Sound Effects/Asteroids/Break/break2.wav" id="8_3rjb2"]
 [ext_resource type="Shader" uid="uid://bjetsh4wdtn8e" path="res://Shaders/palette_swap.tres" id="8_xavby"]
+[ext_resource type="AudioStream" uid="uid://ctde66tr3dsom" path="res://Sound Effects/Asteroids/sfx_colisao.wav" id="12_k2t86"]
 [ext_resource type="AudioStream" uid="uid://djeuv8xr5pfp8" path="res://Sound Effects/sfx_enemy.mp3" id="15_3rjb2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5h4od"]
@@ -24,6 +25,12 @@ resource_local_to_scene = true
 shader = ExtResource("8_xavby")
 shader_parameter/original_palette = ExtResource("7_v3ypu")
 shader_parameter/colors_count = 6
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v3ypu"]
+random_pitch = 1.5
+random_volume_offset_db = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("12_k2t86")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6lt0e"]
 streams_count = 2
@@ -69,6 +76,10 @@ script = ExtResource("5_qdgsb")
 owner_body = NodePath("..")
 minimum_impact = 30.0
 metadata/_custom_type_script = "uid://dny3ctsdweann"
+
+[node name="CollisionSFX" type="AudioStreamPlayer" parent="DamageModule"]
+stream = SubResource("AudioStreamRandomizer_v3ypu")
+volume_db = -24.0
 
 [node name="BodyRandomizer" type="Node2D" parent="." node_paths=PackedStringArray("owner_body")]
 script = ExtResource("7_mi7vy")
