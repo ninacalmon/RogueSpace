@@ -15,7 +15,6 @@ func _process(delta: float) -> void:
 	if Globals.is_cutscene:
 		return
 
-	# Cooldown
 	cooldown -= delta
 	if cooldown < 0:
 		cooldown = 0
@@ -30,11 +29,9 @@ func handle_aim():
 		Input.get_action_strength("r_stk_down") - Input.get_action_strength("r_stk_up")
 	)
 
-	# Deadzone check
 	if input_dir.length() > 0.2:
 		aim_direction = input_dir.normalized()
 
-		# Rotate arrow to match direction
 		arrow_pivot.rotation = aim_direction.angle()
 
 

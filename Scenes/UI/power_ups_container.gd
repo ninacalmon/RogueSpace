@@ -1,15 +1,19 @@
-extends HBoxContainer
+extends VBoxContainer
 class_name PowerUpList
 
-@export var texts: TextsControl
+#@export var texts: TextsControl
 
-var power_up_options_array: Array[Node] 
+@export var power_up_options_array: Array[PowerUpSetup] 
+
+var is_on: bool
 
 func initialize() -> void:
+	if is_on: return
 	#texts.count_finished.connect(_on_count_finished)
-	power_up_options_array = get_children()
+	#power_up_options_array = get_children()
 	await get_tree().create_timer(1).timeout
 	show_power_ups()
+	is_on = true
 	
 
 func show_power_ups():
@@ -18,7 +22,7 @@ func show_power_ups():
 		await flash(p, p.modulate)
 	var first_pu: PowerUpSetup = power_up_options_array.get(0)
 	first_pu._grab_focus()
-	print(power_up_options_array)
+	print(first_pu)
 
 func flash(what: Control, original_color):
 	var tween = get_tree().create_tween()

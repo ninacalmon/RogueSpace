@@ -55,7 +55,7 @@ metadata/_custom_type_script = "uid://jtbq6dor8pk0"
 [node name="SubAreaScreen" type="Area2D" parent="." node_paths=PackedStringArray("canvas_layer_monitor", "power_ups_conteiner", "clickable_highlight")]
 script = ExtResource("5_s3qmo")
 canvas_layer_monitor = NodePath("CanvasLayer")
-power_ups_conteiner = NodePath("CanvasLayer/Control/PowerUpsContainer")
+power_ups_conteiner = NodePath("CanvasLayer/Control/PowerUpsConteinerVertical")
 clickable_highlight = NodePath("ClickableHighlight")
 metadata/_custom_type_script = "uid://dro1ud0xvpd8l"
 
@@ -92,27 +92,25 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PowerUpsContainer" type="HBoxContainer" parent="SubAreaScreen/CanvasLayer/Control"]
-custom_minimum_size = Vector2(1000, 300)
+[node name="PowerUpsConteinerVertical" type="VBoxContainer" parent="SubAreaScreen/CanvasLayer/Control" node_paths=PackedStringArray("power_up_options_array")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -500.0
-offset_top = -150.0
-offset_right = 500.0
-offset_bottom = 150.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 127.0
+offset_right = 1127.0
+offset_bottom = 604.0
+theme_override_constants/separation = -46
+alignment = 2
+script = ExtResource("6_s3qmo")
+power_up_options_array = [NodePath("PowerUpsContainerHorizontal/PowerUp"), NodePath("PowerUpsContainerHorizontal/PowerUp2"), NodePath("PowerUpsContainerHorizontal/PowerUp3"), NodePath("PowerUpsContainerHorizontal2/PowerUp4"), NodePath("PowerUpsContainerHorizontal2/PowerUp5"), NodePath("PowerUpsContainerHorizontal2/PowerUp6")]
+
+[node name="PowerUpsContainerHorizontal" type="HBoxContainer" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical"]
+custom_minimum_size = Vector2(1000, 300)
+layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
-theme_override_constants/separation = 64
-alignment = 1
-script = ExtResource("6_s3qmo")
+theme_override_constants/separation = 24
 
-[node name="PowerUp" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsContainer" instance=ExtResource("7_t6xb0")]
+[node name="PowerUp" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical/PowerUpsContainerHorizontal" instance=ExtResource("7_t6xb0")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
@@ -122,7 +120,7 @@ effect = "Impulse"
 title = "DASH+"
 description = "Dobra a capacidade do seu impulso."
 
-[node name="PowerUp2" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsContainer" instance=ExtResource("7_t6xb0")]
+[node name="PowerUp2" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical/PowerUpsContainerHorizontal" instance=ExtResource("7_t6xb0")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
@@ -132,7 +130,47 @@ effect = "Fuel"
 title = "COMBUSTÍVEL+"
 description = "Aumenta a capacidade do seu tanque de combustível."
 
-[node name="PowerUp3" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsContainer" instance=ExtResource("7_t6xb0")]
+[node name="PowerUp3" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical/PowerUpsContainerHorizontal" instance=ExtResource("7_t6xb0")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2
+effect = "Teleport"
+title = "TELEPORTE"
+price = 200
+description = "Retorne à nave-mãe imediatamente e sem perder recursos."
+
+[node name="PowerUpsContainerHorizontal2" type="HBoxContainer" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical"]
+custom_minimum_size = Vector2(1000, 300)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/separation = 24
+
+[node name="PowerUp4" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical/PowerUpsContainerHorizontal2" instance=ExtResource("7_t6xb0")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2
+effect = "Teleport"
+title = "TELEPORTE"
+price = 200
+description = "Retorne à nave-mãe imediatamente e sem perder recursos."
+
+[node name="PowerUp5" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical/PowerUpsContainerHorizontal2" instance=ExtResource("7_t6xb0")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2
+effect = "Teleport"
+title = "TELEPORTE"
+price = 200
+description = "Retorne à nave-mãe imediatamente e sem perder recursos."
+
+[node name="PowerUp6" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical/PowerUpsContainerHorizontal2" instance=ExtResource("7_t6xb0")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4

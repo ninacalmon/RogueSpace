@@ -11,18 +11,22 @@ class_name PowerUpSetup
 @export var texture_button: TextureButton
 @export var description_label: RichTextLabel
 
-@onready var default_color: Color = modulate
-var not_focused_color: Color = Color(1.0, 1.0, 1.0, 0.3)
+@export var default_color: Color
+@export var unavailiable_color: Color
+@export var focused_color: Color
+@export var unavailiable_focused_color: Color
+@export var bought_color: Color
 
 var have_enough_to_buy: bool
 
 
-
 func _ready() -> void:
-	modulate = not_focused_color
+	modulate = default_color
 	
 	setup_nodes()
 	check_availability()
+	
+	SpaceshipEventBus.resources_spent.connect(_on_resources_spent)
 	
 	texture_button.pressed.connect(_on_button_pressed)
 	texture_button.focus_entered.connect(_on_focus_entered)
@@ -41,14 +45,17 @@ func setup_nodes():
 func check_availability():
 	have_enough_to_buy = StatsManager.current_resources >= price
 	if !have_enough_to_buy:
-		texture_button.modulate = Color(0.0, 0.0, 0.0, 0.4)
+		default_color = unavailiable_color
+		focused_color = unavailiable_focused_color
+		modulate = default_color
 
 func _on_button_pressed():
 	if !have_enough_to_buy:
 		shake()
 		return
 	if StatsManager.current_resources >= price:
-		modulate = Color(0.153, 0.212, 0.086)
+		modulate = bought_color
+		default_color = bought_color
 		PowerUps.apply_power_up(effect)
 		StatsManager.current_resources -= price
 		#EventBus.resources_used.emit()
@@ -67,7 +74,10 @@ func shake():
 	tween.tween_property(self, "position:x", original_pos_x, 0.1)
 
 func _on_focus_entered():
-	self_modulate = default_color
+	modulate = focused_color
 
 func _on_focus_exited():
-	self_modulate = not_focused_color
+	modulate = default_color
+
+func _on_resources_spent():
+	check_availability()

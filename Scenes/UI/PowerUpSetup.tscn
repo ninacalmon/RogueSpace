@@ -15,23 +15,30 @@ description = "adicionar descrição"
 price_label = NodePath("PriceLabel")
 texture_button = NodePath("Texture")
 description_label = NodePath("DescriptionLabel")
+default_color = Color(0.40784314, 0.72156864, 0.1254902, 1)
+unavailiable_color = Color(0.40127996, 0.72, 0.122400016, 0.23529412)
+focused_color = Color(18.892157, 18.892157, 18.892157, 1)
+unavailiable_focused_color = Color(18.892157, 18.892157, 18.892157, 0.23529412)
+bought_color = Color(11.528807, 0, 0, 0.43137255)
 
 [node name="PriceLabel" type="RichTextLabel" parent="."]
 layout_mode = 2
 size_flags_vertical = 0
+theme_override_colors/default_color = Color(0.40784314, 0.72156864, 0.1254902, 1)
 bbcode_enabled = true
 text = "100 recursos"
 fit_content = true
 horizontal_alignment = 1
 
 [node name="Texture" type="TextureButton" parent="."]
-self_modulate = Color(0.49019608, 0.6784314, 0.28627452, 1)
+self_modulate = Color(0.40784314, 0.72156864, 0.1254902, 1)
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("1_tybp7")
 
 [node name="DescriptionLabel" type="RichTextLabel" parent="."]
 layout_mode = 2
+theme_override_colors/default_color = Color(0.40784314, 0.72156864, 0.1254902, 1)
 bbcode_enabled = true
 text = "TÍTULO EM CAPS
 descrição tal tal tal "

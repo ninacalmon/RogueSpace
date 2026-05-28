@@ -7,6 +7,7 @@ var has_energy: bool = false
 var lights_on: bool = false
 
 func _ready() -> void:
+	has_energy = true
 	clickable_highlight.was_clicked.connect(_on_clicked)
 	SpaceshipEventBus.focus_changed.connect(_on_focus_changed)
 	SpaceshipEventBus.resource_count_finished.connect(_on_resource_count_finished)
@@ -44,5 +45,5 @@ func turn_lights_on():
 	await get_tree().create_timer(1.5).timeout
 	var tween = create_tween()
 	tween.tween_property(sprite_background, "modulate", Color(8, 8, 8), 0.02)
-	tween.tween_property(sprite_background, "modulate", Color(4, 4, 4), 0.08)
+	tween.tween_property(sprite_background, "modulate", Color(0.102, 0.102, 0.102), 0.08)
 	
