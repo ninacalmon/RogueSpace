@@ -2,7 +2,7 @@ extends Node
 
 #### RESOURCES BANK ####
 var resources_needed: int = 100
-var current_resources: int = 10
+var current_resources: int = 0
 
 #### POWER UPS ####
 var PowerUpsLevels: Dictionary = {
@@ -25,6 +25,9 @@ var current_day: int = 1
 var death_count: int = 0
 
 #### PLAYER CONST BASE STATS ####
+
+var player_current_bullet: String = "res://Scenes/Bullets/basic_bullet.tscn"
+
 #region CONST BaseLifeStats
 const PLAYER_MAX_HEALTH: float = 100.0
 const PLAYER_MAX_FUEL: float = 1000.0
@@ -37,6 +40,7 @@ const PLAYER_IMPULSE_SPEED: float = 1000.0
 const PLAYER_IMPULSE_COOLDOWN_DURATION: float = 3.0
 const PLAYER_BREAK_SPEED: float = 2.0
 const PLAYER_MAX_VELOCITY: float = 1000.0
+const PLAYER_MAX_TURN: float = 0.01
 #endregion
 
 #### PLAYER VARIABLE BASE STATS ####
@@ -50,6 +54,7 @@ var player_impulse_speed: float = PLAYER_IMPULSE_SPEED
 var player_impulse_cooldown_duration: float = PLAYER_IMPULSE_COOLDOWN_DURATION
 var player_break_speed: float = PLAYER_BREAK_SPEED
 var player_max_velocity: float = PLAYER_MAX_VELOCITY
+var player_max_turn: float = PLAYER_MAX_TURN
 #endregion
 
 #### PLAYER CURRENT STATS ####

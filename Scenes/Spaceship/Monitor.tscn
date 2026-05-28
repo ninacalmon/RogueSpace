@@ -117,7 +117,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 mouse_filter = 2
 effect = "Impulse"
-title = "DASH+"
+title = "IMPULSO+"
 description = "Dobra a capacidade do seu impulso."
 
 [node name="PowerUp2" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical/PowerUpsContainerHorizontal" instance=ExtResource("7_t6xb0")]
@@ -154,10 +154,10 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 mouse_filter = 2
-effect = "Teleport"
-title = "TELEPORTE"
+effect = "Health"
+title = "VIDA+"
 price = 200
-description = "Retorne à nave-mãe imediatamente e sem perder recursos."
+description = "Aguente mais porrada."
 
 [node name="PowerUp5" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical/PowerUpsContainerHorizontal2" instance=ExtResource("7_t6xb0")]
 visible = false
@@ -165,10 +165,10 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 mouse_filter = 2
-effect = "Teleport"
-title = "TELEPORTE"
+effect = "Propulsors"
+title = "PROPULSORES+"
 price = 200
-description = "Retorne à nave-mãe imediatamente e sem perder recursos."
+description = "Repare seu velho traje de cosmonauta. Melhora a movimentação no espaço."
 
 [node name="PowerUp6" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical/PowerUpsContainerHorizontal2" instance=ExtResource("7_t6xb0")]
 visible = false
@@ -176,7 +176,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 mouse_filter = 2
-effect = "Teleport"
-title = "TELEPORTE"
+effect = "Bullet"
+title = "LASER APRIMORADO"
 price = 200
-description = "Retorne à nave-mãe imediatamente e sem perder recursos."
+description = "Mais chances de sobrevivência com mais dano e precisão."

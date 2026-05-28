@@ -1,7 +1,7 @@
 extends VBoxContainer
 class_name PowerUpSetup
 
-@export_enum("Impulse", "Fuel", "Teleport") var effect: String
+@export_enum("Impulse", "Fuel", "Teleport", "Health", "Propulsors", "Bullet") var effect: String
 @export var title: String
 @export var price: int = 100
 @export var texture: Texture
@@ -39,7 +39,7 @@ func _grab_focus():
 
 func setup_nodes():
 	price_label.text = "%d recursos" %price
-	description_label.text = "%s[br]%s" %[title, description]
+	description_label.text = "%s[br][color=376311]%s[/color]" %[title, description]
 	texture_button.texture_normal = texture
 
 func check_availability():

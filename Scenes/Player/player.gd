@@ -141,7 +141,7 @@ func steer_velocity(state: PhysicsDirectBodyState2D):
 	var target_vel = input_dir * magnitude
 	var angle = vel.angle_to(target_vel)
 
-	var max_turn = 0.01
+	var max_turn = StatsManager.player_max_turn
 	angle = clamp(angle, -max_turn, max_turn)
 
 	state.linear_velocity = vel.rotated(angle)

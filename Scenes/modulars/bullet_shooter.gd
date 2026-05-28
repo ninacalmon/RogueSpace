@@ -1,7 +1,6 @@
 extends Node2D
 class_name BulletShooter
 
-@export var bullet_scene: PackedScene
 @export var base_cooldown: float = 0.2
 
 var cooldown: float = 0
@@ -10,6 +9,7 @@ var aim_direction: Vector2 = Vector2.RIGHT
 @onready var bullet_sfx: AudioStreamPlayer = $BulletSFX
 @onready var arrow_pivot: Node2D = $ArrowPivot
 
+@onready var bullet_scene: PackedScene = load(StatsManager.player_current_bullet)
 
 func _process(delta: float) -> void:
 	if Globals.is_cutscene:
