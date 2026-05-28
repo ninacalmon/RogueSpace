@@ -20,10 +20,14 @@ func _process(delta: float) -> void:
 		cooldown = 0
 
 	handle_aim()
+	handle_aim_mouse()
 	handle_shoot()
 
 
 func handle_aim():
+	if !Input.get_connected_joypads():
+		return
+
 	var input_dir: Vector2 = Vector2(
 		Input.get_action_strength("r_stk_right") - Input.get_action_strength("r_stk_left"),
 		Input.get_action_strength("r_stk_down") - Input.get_action_strength("r_stk_up")
@@ -34,11 +38,28 @@ func handle_aim():
 
 		arrow_pivot.rotation = aim_direction.angle()
 
+func handle_aim_mouse():
+	if Input.get_connected_joypads():
+		return
+
+	var cursor_dir: Vector2 = global_position.direction_to(get_global_mouse_position())
+	
+	if cursor_dir.length() > 0.2:
+		aim_direction = cursor_dir.normalized()
+
+		arrow_pivot.rotation = aim_direction.angle()
+
 
 func handle_shoot():
-	if Input.is_action_just_pressed("shoulderR"):
+	if Input.is_action_just_pressed("shoulderR") or Input.is_action_pressed("left_click"):
 		shoot(aim_direction)
 
+
+func get_input_mouse() -> Vector2:
+	if Input.is_action_pressed("left_click"):
+		print("clcik")
+		#var aim_direction = global_position.direction_to(get_global_mouse_position())
+	return global_position.direction_to(get_global_mouse_position())
 
 func shoot(direction: Vector2):
 	if cooldown > 0:

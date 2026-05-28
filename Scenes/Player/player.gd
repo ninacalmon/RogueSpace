@@ -34,6 +34,8 @@ func _ready() -> void:
 	if gravitational_field_resources: gravitational_field_resources.initialize()
 
 	StatsManager.player_current_fuel = StatsManager.player_max_fuel
+	StatsManager.player_current_health = StatsManager.player_max_health
+
 	player_init_pos = global_position + Vector2(0.0, -50)
 	EventBus.player_almost_out_of_bounds.connect(_on_player_almost_out_of_bounds)
 	EventBus.player_out_of_bounds.connect(_on_player_out_of_bounds)
