@@ -10,7 +10,7 @@ var impulse_cooldown_timer: float = StatsManager.player_impulse_cooldown_duratio
 @export var camera: Camera2D
 @onready var propulsor_sfx: AudioStreamPlayer = $SFX/PropulsorSFX
 @onready var teleport_sfx: AudioStreamPlayer = $SFX/TeleportSFX
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite_2d: PlayerSprite2D = $Sprite2D
 @onready var dash_sfx: AudioStreamPlayer = $SFX/DashSFX
 
 @export var hurt_box_player: HurtBoxPlayer
@@ -27,6 +27,9 @@ var original_speed: float = speed
 
 var can_destroy: bool
 var emitted_fuel_waning: bool = false
+
+var facing_direction: String
+
 
 func _ready() -> void:
 	if body_randomizer: body_randomizer.initialize(sprite, collision)
@@ -65,6 +68,9 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	steer_velocity(state)
 	impulse_burst(state)
 	break_stop(state)
+	
+	update_facing_direction(state.linear_velocity)
+	sprite_2d.update_sprite(facing_direction)
 	
 	StatsManager.player_current_linear_velocity = state.linear_velocity
 	
@@ -109,6 +115,19 @@ func movement(state):
 	state.apply_central_force(input_dir * speed)
 	update_fuel()
 	SFXManager.play_sound(propulsor_sfx)
+
+func update_facing_direction(dir: Vector2):
+	if abs(dir.x) > abs(dir.y):
+		if dir.x > 0:
+			facing_direction = "right"
+		else:
+			facing_direction = "left"
+	else:
+		if dir.y > 0:
+			facing_direction = "down"
+		else:
+			facing_direction = "up"
+
 
 func impulse_burst(state):
 	if Input.is_action_just_pressed("impulse_burst")\
