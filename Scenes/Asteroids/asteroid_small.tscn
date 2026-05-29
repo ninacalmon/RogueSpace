@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dxg5doh1x8ch2"]
+[gd_scene load_steps=23 format=3 uid="uid://dxg5doh1x8ch2"]
 
 [ext_resource type="Script" uid="uid://dp0jfjqkl4sdl" path="res://Scenes/Modulars/asteroid.gd" id="1_cygtc"]
 [ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/Asteroids/asteroid_pieces.tscn" id="2_mi7vy"]
@@ -15,7 +15,8 @@
 [ext_resource type="AudioStream" uid="uid://b5s0ptmpaw0he" path="res://Sound Effects/Asteroids/Break/break2.wav" id="8_3rjb2"]
 [ext_resource type="Shader" uid="uid://bjetsh4wdtn8e" path="res://Shaders/palette_swap.tres" id="8_xavby"]
 [ext_resource type="AudioStream" uid="uid://ctde66tr3dsom" path="res://Sound Effects/Asteroids/sfx_colisao.wav" id="12_k2t86"]
-[ext_resource type="AudioStream" uid="uid://djeuv8xr5pfp8" path="res://Sound Effects/sfx_enemy.mp3" id="15_3rjb2"]
+[ext_resource type="AudioStream" uid="uid://6nqgebd8dtyr" path="res://Sound Effects/Enemies/sfx_inimigosBasic (2).wav" id="16_v3ypu"]
+[ext_resource type="AudioStream" uid="uid://7lu32wsorlh5" path="res://Sound Effects/Enemies/sfx_inimigosBasic.wav" id="17_xavby"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5h4od"]
 radius = 14.142136
@@ -37,10 +38,11 @@ streams_count = 2
 stream_0/stream = ExtResource("7_c1mj4")
 stream_1/stream = ExtResource("8_3rjb2")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_k2t86"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2d67q"]
 random_pitch = 1.5
-streams_count = 1
-stream_0/stream = ExtResource("15_3rjb2")
+streams_count = 2
+stream_0/stream = ExtResource("16_v3ypu")
+stream_1/stream = ExtResource("17_xavby")
 
 [node name="AsteroidSmall" type="RigidBody2D" node_paths=PackedStringArray("damage_module", "collision", "sprite", "gravitational_field", "body_randomizer")]
 mass = 20.0
@@ -93,5 +95,5 @@ volume_db = -15.0
 pitch_scale = 0.7
 
 [node name="CritterSound" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_k2t86")
-volume_db = -15.0
+stream = SubResource("AudioStreamRandomizer_2d67q")
+volume_db = -13.0

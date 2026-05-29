@@ -7,8 +7,8 @@ class_name PlayerSprite2D
 func update_sprite(facing_direction: String):
 	match facing_direction:
 		"up":
-			frame_coords.y = 2
-			motor_gpu_particles.show_behind_parent = false
+			frame_coords.y = 0
+			motor_gpu_particles.show_behind_parent = true
 		"down":
 			frame_coords.y = 0
 			motor_gpu_particles.show_behind_parent = true

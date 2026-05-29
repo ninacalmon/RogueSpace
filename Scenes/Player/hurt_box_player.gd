@@ -6,6 +6,7 @@ class_name HurtBoxPlayer
 @export var enemy_body_sensible: bool = false
 
 @onready var damage_sfx: AudioStreamPlayer = $DamageSFX
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 signal damage_taken(amount: float, causer: Node2D)
 
