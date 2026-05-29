@@ -117,8 +117,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 mouse_filter = 2
 effect = "Impulse"
-title = "IMPULSO+"
+title = "IMPULSO+ [&]"
 description = "Dobra a capacidade do seu impulso."
+max_level = 3
 
 [node name="PowerUp2" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical/PowerUpsContainerHorizontal" instance=ExtResource("7_t6xb0")]
 visible = false
@@ -129,6 +130,7 @@ mouse_filter = 2
 effect = "Fuel"
 title = "COMBUSTÍVEL+"
 description = "Aumenta a capacidade do seu tanque de combustível."
+max_level = 3
 
 [node name="PowerUp3" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical/PowerUpsContainerHorizontal" instance=ExtResource("7_t6xb0")]
 visible = false
@@ -136,10 +138,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 mouse_filter = 2
-effect = "Teleport"
-title = "TELEPORTE"
+effect = "Health"
+title = "VIDA+"
 price = 200
-description = "Retorne à nave-mãe imediatamente e sem perder recursos."
+description = "Aguente mais porrada."
+max_level = 3
 
 [node name="PowerUpsContainerHorizontal2" type="HBoxContainer" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical"]
 custom_minimum_size = Vector2(1000, 300)
@@ -154,10 +157,10 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 mouse_filter = 2
-effect = "Health"
-title = "VIDA+"
+effect = "Teleport"
+title = "TELEPORTE"
 price = 200
-description = "Aguente mais porrada."
+description = "Retorne à nave-mãe imediatamente e sem perder recursos."
 
 [node name="PowerUp5" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical/PowerUpsContainerHorizontal2" instance=ExtResource("7_t6xb0")]
 visible = false

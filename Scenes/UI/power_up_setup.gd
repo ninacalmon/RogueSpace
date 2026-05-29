@@ -6,6 +6,7 @@ class_name PowerUpSetup
 @export var price: int = 100
 @export var texture: Texture
 @export var description: String
+@export var max_level: int = 1
 
 @export var price_label: RichTextLabel
 @export var texture_button: TextureButton
@@ -18,7 +19,9 @@ class_name PowerUpSetup
 @export var bought_color: Color
 
 var have_enough_to_buy: bool
+var current_level: int
 
+var custom_tooltip_text
 
 func _ready() -> void:
 	modulate = default_color
@@ -40,30 +43,44 @@ func _grab_focus():
 func setup_nodes():
 	price_label.text = "%d recursos" %price
 	description_label.text = "%s[br][color=376311]%s[/color]" %[title, description]
+	var next_level: int = min(current_level + 1, max_level)
+	var next_level_string: String = str(next_level)
+	description_label.text = description_label.text.replace("&", next_level_string)
 	texture_button.texture_normal = texture
 
 func check_availability():
 	have_enough_to_buy = StatsManager.current_resources >= price
 	if !have_enough_to_buy:
-		default_color = unavailiable_color
-		focused_color = unavailiable_focused_color
-		modulate = default_color
+		deactivate_buying("Not enough resources")
+	if current_level >= max_level:
+		deactivate_buying("Already at max level")
+
+func deactivate_buying(reason: String):
+	default_color = unavailiable_color
+	focused_color = unavailiable_focused_color
+	modulate = default_color
+	if reason == "Not enough resources":
+		custom_tooltip_text = "Sem recursos suficientes. [color=68b820]%d / %d[/color] recursos" %[StatsManager.current_resources, price]
+	if reason == "Already at max level":
+		custom_tooltip_text = "Já alcançou o nível máximo. nível [color=68b820]%d / %d[/color]" %[current_level, max_level]
 
 func _on_button_pressed():
 	if !have_enough_to_buy:
 		shake()
 		return
-	if StatsManager.current_resources >= price:
-		modulate = bought_color
-		default_color = bought_color
-		PowerUps.apply_power_up(effect)
-		StatsManager.current_resources -= price
-		#EventBus.resources_used.emit()
-		SpaceshipEventBus.resources_spent.emit()
-		print("aplied")
-	else:
-		shake()
+	buy_power_up()
 
+
+
+func buy_power_up():
+	current_level += 1
+	modulate = bought_color
+	default_color = bought_color
+	PowerUps.apply_power_up(effect)
+	StatsManager.current_resources -= price
+	SpaceshipEventBus.resources_spent.emit()
+	print("aplied")
+	
 func shake():
 	var original_pos_x = position.x
 	var tween = create_tween()
@@ -75,9 +92,13 @@ func shake():
 
 func _on_focus_entered():
 	modulate = focused_color
+	if custom_tooltip_text:
+		CustomTooltip.show_tooltip(custom_tooltip_text, self.global_position)
 
 func _on_focus_exited():
 	modulate = default_color
+	if custom_tooltip_text:
+		CustomTooltip.hide_tooltip()
 
 func _on_resources_spent():
 	check_availability()

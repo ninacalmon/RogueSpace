@@ -110,8 +110,10 @@ func movement(state):
 	).normalized()
 	
 	if input_dir == Vector2.ZERO:
+		#sprite_2d.animate_stop_propelling()
 		return
 	
+	#sprite_2d.animate_start_propelling()
 	state.apply_central_force(input_dir * speed)
 	update_fuel()
 	SFXManager.play_sound(propulsor_sfx)

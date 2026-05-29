@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccrpttrm0ylai"]
+
+[ext_resource type="Script" uid="uid://bjsbtxgchsek0" path="res://custom_tooltip.gd" id="1_wgoo6"]
+
+[node name="CustomTooltip" type="CanvasLayer"]
+script = ExtResource("1_wgoo6")
+
+[node name="CustomTooltipControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="CustomTooltipControl"]
+visible = false
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 341.0
+offset_bottom = 89.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CustomTooltipControl/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 8.0
+offset_right = -5.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "Sem recursos suficientes. [color=68b820]100/200[/color]"

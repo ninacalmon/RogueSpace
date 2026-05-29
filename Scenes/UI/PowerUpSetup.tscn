@@ -8,6 +8,7 @@
 custom_minimum_size = Vector2(200, 300)
 offset_right = 200.0
 offset_bottom = 300.0
+mouse_filter = 0
 script = ExtResource("1_x7njx")
 title = "TESTE"
 texture = ExtResource("2_vjedb")

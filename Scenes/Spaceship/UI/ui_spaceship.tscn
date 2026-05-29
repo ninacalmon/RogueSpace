@@ -64,5 +64,5 @@ offset_top = -25.0
 offset_right = 29.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Sair"
+text = "Sair [B]"
 script = ExtResource("2_okbct")
