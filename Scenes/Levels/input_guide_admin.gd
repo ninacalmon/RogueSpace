@@ -41,6 +41,7 @@ func _on_mothership_entrance_exited():
 	if is_showing_confirm_guide:
 		InputGuide.clear_guides()
 		show_movement_guides()
+		is_showing_confirm_guide = false
 
 
 func show_movement_guides():

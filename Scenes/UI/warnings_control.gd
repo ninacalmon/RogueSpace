@@ -5,15 +5,12 @@ extends Control
 var cautious_text: String = "CUIDADO!
 DÊ MEIA VOLTA
 VOCÊ ESTÁ QUASE FORA DO ALCANÇE DE SUA NAVE MÃE
-(você será teletransportado e perderá recursos)"
+(você será teleportado e perderá recursos)"
 
 var fuel_text: String = "Seu combustível está acabando!
-Volte para a nave mãe."
+Garanta seus recursos e volte para a nave mãe."
 
-var mothership_text: String = "Deseja voltar para a nave mãe
-e contar seus resursos?
-
-Aperte [SPACE] ou [A] para confirmar."
+var mothership_text: String = "Deseja voltar para a nave mãe?"
 
 func _ready() -> void:
 	rich_text_label.self_modulate = Color(1, 1, 1, 0)

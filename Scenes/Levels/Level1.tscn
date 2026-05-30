@@ -98,7 +98,6 @@ camera = NodePath("Camera2D")
 script = ExtResource("3_aajud")
 full_view_zoom = Vector2(0.3, 0.3)
 full_view_pos = Vector2(0, -800)
-deactivate_cutscene = true
 
 [node name="Mothership" parent="." instance=ExtResource("4_4f3qw")]
 position = Vector2(0, 190)

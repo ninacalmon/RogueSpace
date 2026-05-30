@@ -105,7 +105,7 @@ const COMMON_ACTIONS: Dictionary = {
 	ActionType.UI_MOVEMENT: "Navegar UI"
 }
 
-var final_unit_alpha: float = 0.5
+var final_unit_alpha: float = 1
 
 
 func _ready() -> void:
