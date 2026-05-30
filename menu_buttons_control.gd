@@ -25,10 +25,12 @@ func _ready() -> void:
 	exit.focus_entered.connect(_on_button_hovered.bind(3))
 	Input.joy_connection_changed.connect(_on_joy_connected)
 	
-	if Input.get_connected_joypads():
-		start.grab_focus()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+	start.grab_focus()
 
 func _on_start_button_pressed():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	LevelTransition.change_scene_to("res://Scenes/Levels/Tutorial.tscn")
 
 func _on_controls_button_pressed():

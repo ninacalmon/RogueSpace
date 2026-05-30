@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://fjxp66w0rpvl"]
+[gd_scene load_steps=7 format=3 uid="uid://fjxp66w0rpvl"]
 
 [ext_resource type="Texture2D" uid="uid://be1fm65sme3rk" path="res://Sprites(main)/UI/powerup.png" id="1_tybp7"]
 [ext_resource type="Script" uid="uid://dk2opjtgiv5x6" path="res://Scenes/UI/power_up_setup.gd" id="1_x7njx"]
 [ext_resource type="Texture2D" uid="uid://nufx44r3we8u" path="res://Sprites(main)/UI/powerup2.png" id="2_vjedb"]
+[ext_resource type="AudioStream" uid="uid://2v525hgwqcju" path="res://Sound Effects/UI/SFX_boosterselectOK.wav" id="4_msej6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u025h"]
+bg_color = Color(0.11703998, 0.21, 0.0357, 0.48235294)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msej6"]
+bg_color = Color(0.40784314, 0.72156864, 0.1254902, 1)
 
 [node name="PowerUp" type="VBoxContainer" node_paths=PackedStringArray("price_label", "texture_button", "description_label")]
 custom_minimum_size = Vector2(200, 300)
@@ -45,3 +52,16 @@ text = "TÍTULO EM CAPS
 [color=376311]descrição tal tal tal[/color]"
 fit_content = true
 horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_u025h")
+theme_override_styles/fill = SubResource("StyleBoxFlat_msej6")
+show_percentage = false
+
+[node name="BoughtPowerUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_msej6")
+volume_db = -11.0
+bus = &"Sound Effects"

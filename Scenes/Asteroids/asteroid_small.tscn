@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dp0jfjqkl4sdl" path="res://Scenes/Modulars/asteroid.gd" id="1_cygtc"]
 [ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/Asteroids/asteroid_pieces.tscn" id="2_mi7vy"]
-[ext_resource type="PackedScene" uid="uid://br070cnq6sve" path="res://Scenes/Modulars/enemy.tscn" id="3_xqr1j"]
+[ext_resource type="PackedScene" uid="uid://br070cnq6sve" path="res://Scenes/Enemies/enemy_basic.tscn" id="3_xqr1j"]
 [ext_resource type="Texture2D" uid="uid://bflk5f2qeiyqi" path="res://Sprites(main)/pink_asteroid_pallete.png" id="4_c1mj4"]
 [ext_resource type="Texture2D" uid="uid://81sauyddd7km" path="res://Sprites(main)/Asteroids/Asteroid_small.png" id="4_cygtc"]
 [ext_resource type="Texture2D" uid="uid://dacyxx5dau8bv" path="res://Sprites(main)/red_asteroid_pallete.png" id="5_3rjb2"]

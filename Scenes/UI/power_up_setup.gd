@@ -18,6 +18,9 @@ class_name PowerUpSetup
 @export var unavailiable_focused_color: Color
 @export var bought_color: Color
 
+@onready var progress_bar: ProgressBar = $ProgressBar
+@onready var bought_power_up: AudioStreamPlayer = $BoughtPowerUp
+
 var have_enough_to_buy: bool
 var current_level: int
 
@@ -34,8 +37,8 @@ func _ready() -> void:
 	texture_button.pressed.connect(_on_button_pressed)
 	texture_button.focus_entered.connect(_on_focus_entered)
 	texture_button.focus_exited.connect(_on_focus_exited)
-	texture_button.mouse_entered.connect(_on_focus_entered)
-	texture_button.mouse_exited.connect(_on_focus_exited)
+	#texture_button.mouse_entered.connect(_on_focus_entered)
+	#texture_button.mouse_exited.connect(_on_focus_exited)
 
 func _grab_focus():
 	texture_button.grab_focus()
@@ -79,8 +82,16 @@ func buy_power_up():
 	PowerUps.apply_power_up(effect)
 	StatsManager.current_resources -= price
 	SpaceshipEventBus.resources_spent.emit()
-	print("aplied")
+	progress_bar.show()
+	SFXManager.play_sound(bought_power_up)
+	var tween = create_tween()
+	tween.tween_property(progress_bar, "value", progress_bar.max_value, 1)
+	await tween.finished
+	progress_bar.hide()
 	
+	
+
+
 func shake():
 	var original_pos_x = position.x
 	var tween = create_tween()

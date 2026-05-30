@@ -14,7 +14,8 @@ func _ready() -> void:
 
 func install_sounds(node: Node):
 	for i in node.get_children():
-		if i is Button:
+		if i is Button or i is TextureButton:
+			i.focus_entered.connect(func(): ui_sfx_play(&"UI_Hover"))
 			i.mouse_entered.connect(func(): ui_sfx_play(&"UI_Hover"))
 			i.pressed.connect(func(): ui_sfx_play(&"UI_Click"))
 		

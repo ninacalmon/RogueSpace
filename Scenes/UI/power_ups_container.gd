@@ -4,6 +4,8 @@ class_name PowerUpList
 #@export var texts: TextsControl
 
 @export var power_up_options_array: Array[PowerUpSetup] 
+@onready var power_up_pop_up_sfx: AudioStreamPlayer = $PowerUpPopUpSFX
+
 
 var is_on: bool
 
@@ -19,6 +21,7 @@ func initialize() -> void:
 func show_power_ups():
 	for p in power_up_options_array:
 		p.show()
+		SFXManager.play_sound(power_up_pop_up_sfx)
 		await flash(p, p.modulate)
 	var first_pu: PowerUpSetup = power_up_options_array.get(0)
 	first_pu._grab_focus()

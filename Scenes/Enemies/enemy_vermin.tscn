@@ -1,11 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://br070cnq6sve"]
+[gd_scene load_steps=11 format=3 uid="uid://8f0m410ylbbe"]
 
-[ext_resource type="Script" uid="uid://7afwh36bc151" path="res://Scenes/Modulars/enemy.gd" id="1_287tu"]
-[ext_resource type="Texture2D" uid="uid://cx0i5vabq2pgx" path="res://Sprites(main)/Enemies/alien_FuraDetrito.png" id="2_b5pc1"]
-[ext_resource type="AudioStream" uid="uid://7lu32wsorlh5" path="res://Sound Effects/Enemies/sfx_inimigosBasic.wav" id="4_oi8nr"]
-[ext_resource type="AudioStream" uid="uid://6nqgebd8dtyr" path="res://Sound Effects/Enemies/sfx_inimigosBasic (2).wav" id="5_8mh73"]
-[ext_resource type="Script" uid="uid://iatwgk3de1nj" path="res://Scenes/Modulars/hurt_box.gd" id="5_0830c"]
-[ext_resource type="AudioStream" uid="uid://bkpogun2por27" path="res://Sound Effects/Enemies/sfx_enemy_attack.mp3" id="6_8mh73"]
+[ext_resource type="Script" uid="uid://dtkhiaas5anjp" path="res://Scenes/Enemies/enemy_vermin.gd" id="1_k0yb4"]
+[ext_resource type="Texture2D" uid="uid://v7rhaqerd48m" path="res://Sprites(main)/Enemies/alien_VermeLanceiro.png" id="2_0ktlt"]
+[ext_resource type="Script" uid="uid://iatwgk3de1nj" path="res://Scenes/Modulars/hurt_box.gd" id="3_adcwm"]
+[ext_resource type="AudioStream" uid="uid://7lu32wsorlh5" path="res://Sound Effects/Enemies/sfx_inimigosBasic.wav" id="4_x66mb"]
+[ext_resource type="AudioStream" uid="uid://6nqgebd8dtyr" path="res://Sound Effects/Enemies/sfx_inimigosBasic (2).wav" id="5_1lrlx"]
+[ext_resource type="AudioStream" uid="uid://bkpogun2por27" path="res://Sound Effects/Enemies/sfx_enemy_attack.mp3" id="6_oaun8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_auwsv"]
 radius = 15.0
@@ -14,35 +14,37 @@ radius = 15.0
 radius = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pi7rj"]
-radius = 595.9144
+radius = 266.12027
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_c5h00"]
 playback_mode = 1
 random_pitch = 2.0
 random_volume_offset_db = 4.0
 streams_count = 3
-stream_0/stream = ExtResource("4_oi8nr")
-stream_1/stream = ExtResource("5_8mh73")
-stream_2/stream = ExtResource("6_8mh73")
+stream_0/stream = ExtResource("4_x66mb")
+stream_1/stream = ExtResource("5_1lrlx")
+stream_2/stream = ExtResource("6_oaun8")
 stream_2/weight = 5.0
 
 [node name="Enemy" type="RigidBody2D"]
 lock_rotation = true
-script = ExtResource("1_287tu")
+script = ExtResource("1_k0yb4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_auwsv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_b5pc1")
+texture = ExtResource("2_0ktlt")
 
 [node name="HurtBox" type="Area2D" parent="."]
-script = ExtResource("5_0830c")
+script = ExtResource("3_adcwm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CircleShape2D_ghaa6")
 
 [node name="AggroArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AggroArea"]
 shape = SubResource("CircleShape2D_pi7rj")

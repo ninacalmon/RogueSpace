@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bkjjj01xixl1j"]
+[gd_scene load_steps=17 format=3 uid="uid://bkjjj01xixl1j"]
 
 [ext_resource type="Script" uid="uid://f7hym6rcrxkn" path="res://Scenes/Spaceship/monitor.gd" id="1_s3qmo"]
 [ext_resource type="Shader" uid="uid://cccnue3fm2pyc" path="res://Shaders/outline.gdshader" id="2_41fxr"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://b0nhvewd5m0an" path="res://Sprites(main)/Placeholders/backgound.png" id="6_t6xb0"]
 [ext_resource type="Texture2D" uid="uid://ckd05m1gdy225" path="res://Sprites(main)/Placeholders/button.png" id="7_43iud"]
 [ext_resource type="PackedScene" uid="uid://fjxp66w0rpvl" path="res://Scenes/UI/PowerUpSetup.tscn" id="7_t6xb0"]
+[ext_resource type="AudioStream" uid="uid://cuyalodvbr04t" path="res://Sound Effects/UI/SFX_buttonswitch.wav" id="10_3okkr"]
+[ext_resource type="PackedScene" uid="uid://buqlpqb51bwy" path="res://ui_sounds.tscn" id="11_5toxe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_41fxr"]
 size = Vector2(184, 136)
@@ -25,6 +27,12 @@ shader_parameter/alpha_threshold = 0.1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43iud"]
 size = Vector2(30, 17.5)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5toxe"]
+random_pitch = 2.0
+random_volume_offset_db = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("10_3okkr")
 
 [node name="Monitor" type="Area2D" node_paths=PackedStringArray("sub_area_screen", "clickable_highlight")]
 script = ExtResource("1_s3qmo")
@@ -78,6 +86,9 @@ active = false
 metadata/_custom_type_script = "uid://jtbq6dor8pk0"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="SubAreaScreen"]
+
+[node name="UISounds" parent="SubAreaScreen/CanvasLayer" instance=ExtResource("11_5toxe")]
+root_path = NodePath("../Control")
 
 [node name="Control" type="Control" parent="SubAreaScreen/CanvasLayer"]
 layout_mode = 3
@@ -183,3 +194,8 @@ effect = "Bullet"
 title = "LASER APRIMORADO"
 price = 200
 description = "Mais chances de sobrevivência com mais dano e precisão."
+
+[node name="PowerUpPopUpSFX" type="AudioStreamPlayer" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical"]
+stream = SubResource("AudioStreamRandomizer_5toxe")
+volume_db = -5.0
+bus = &"Sound Effects"

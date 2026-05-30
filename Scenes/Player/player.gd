@@ -103,6 +103,7 @@ func execute_teletransport():
 	linear_velocity = Vector2.ZERO
 	global_position = player_init_pos
 
+
 func movement(state):
 	var input_dir: Vector2 = Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
