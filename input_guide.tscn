@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7mq3s1mkxtly"]
+
+[ext_resource type="Script" uid="uid://jmevw3wkeigu" path="res://input_guide.gd" id="1_iq3nb"]
+[ext_resource type="PackedScene" uid="uid://c0h5vysul4ic7" path="res://input_guide_unit.tscn" id="2_3mihy"]
+
+[node name="InputGuide" type="CanvasLayer" node_paths=PackedStringArray("hidden_guide_array")]
+script = ExtResource("1_iq3nb")
+hidden_guide_array = [NodePath("Control/HBoxContainer/Guide"), NodePath("Control/HBoxContainer/Guide2"), NodePath("Control/HBoxContainer/Guide3"), NodePath("Control/HBoxContainer/Guide4")]
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 84.0
+offset_top = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -452.0
+offset_top = -20.0
+offset_right = 452.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 45
+alignment = 2
+
+[node name="Guide" parent="Control/HBoxContainer" instance=ExtResource("2_3mihy")]
+layout_mode = 2
+
+[node name="Guide2" parent="Control/HBoxContainer" instance=ExtResource("2_3mihy")]
+layout_mode = 2
+
+[node name="Guide3" parent="Control/HBoxContainer" instance=ExtResource("2_3mihy")]
+layout_mode = 2
+
+[node name="Guide4" parent="Control/HBoxContainer" instance=ExtResource("2_3mihy")]
+layout_mode = 2

@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0h5vysul4ic7"]
+
+[ext_resource type="Script" uid="uid://c38u5mb2gtnty" path="res://input_guide_unit.gd" id="1_acmaf"]
+[ext_resource type="Texture2D" uid="uid://xyveaim3bqrb" path="res://Sprites(main)/UI/Kenney Input/tile_0004.png" id="2_lw4ka"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gajip"]
+
+[node name="Guide" type="HBoxContainer" node_paths=PackedStringArray("texture_rect", "text_label")]
+custom_minimum_size = Vector2(0, 22)
+offset_right = 151.0
+offset_bottom = 22.0
+mouse_filter = 2
+script = ExtResource("1_acmaf")
+texture_rect = NodePath("ControlIcon/TextureRect")
+text_label = NodePath("PanelContainerText/RichTextLabel")
+
+[node name="ControlIcon" type="Control" parent="."]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="ControlIcon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_lw4ka")
+stretch_mode = 5
+
+[node name="PanelContainerText" type="PanelContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gajip")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainerText"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Selecionar"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
