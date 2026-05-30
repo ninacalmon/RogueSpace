@@ -10,6 +10,8 @@ var is_cutscene: bool
 
 var changing_scene: bool = false
 
+var fake_mouse_input: bool
+
 #var level: int = 1
 #
 #var resources_gathered: int = 110

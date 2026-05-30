@@ -1,4 +1,5 @@
 extends MainArea
+class_name Monitor
 
 @export var sub_area_screen: SubArea
 @onready var sprite_background: Sprite2D = $SpriteBackground

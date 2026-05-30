@@ -1,4 +1,5 @@
 extends MainArea
+class_name ResourcesMachine
 
 @export var sub_area_resources_deposit: SubArea
 @onready var sprite_2d: Sprite2D = $Sprite2D

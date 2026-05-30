@@ -9,16 +9,17 @@ enum InputDevice { KEYBOARD, CONTROLLER }
 enum ActionType {
 CONFIRM, RETURN, TELEPORT,
 MOVEMENT, IMPULSE, BREAK,
-AIM, SHOOT
+AIM, SHOOT,
+POINT, CLICK, UI_MOVEMENT
 }
 
 var current_input_device: InputDevice = InputDevice.KEYBOARD
 
 # ICONS CONTROLER
-const ICON_A: CompressedTexture2D = preload("res://Sprites(main)/UI/Kenney Input/tile_0004.png")
-const ICON_B: CompressedTexture2D = preload("res://Sprites(main)/UI/Kenney Input/tile_0005.png")
-const ICON_Y: CompressedTexture2D = preload("res://Sprites(main)/UI/Kenney Input/tile_0007.png")
-const ICON_X: CompressedTexture2D = preload("res://Sprites(main)/UI/Kenney Input/tile_0006.png")
+const A_BUTTON: CompressedTexture2D = preload("res://Sprites(main)/UI/Kenney Input/tile_0004.png")
+const B_BUTTON: CompressedTexture2D = preload("res://Sprites(main)/UI/Kenney Input/tile_0005.png")
+const Y_BUTTON: CompressedTexture2D = preload("res://Sprites(main)/UI/Kenney Input/tile_0007.png")
+const X_BUTTON: CompressedTexture2D = preload("res://Sprites(main)/UI/Kenney Input/tile_0006.png")
 const L_TRIGGER: CompressedTexture2D = preload("res://Sprites(main)/UI/Kenney Input/tile_0621.png")
 const R_TRIGGER: CompressedTexture2D = preload("res://Sprites(main)/UI/Kenney Input/tile_0622.png")
 const L_SHOULDER: CompressedTexture2D = preload("res://Sprites(main)/UI/Kenney Input/tile_0623.png")
@@ -37,23 +38,23 @@ const CTRL_KEY: CompressedTexture2D = preload("res://Sprites(main)/UI/Kenney Inp
 const MOUSE: CompressedTexture2D = preload("res://Sprites(main)/UI/Kenney Input/tile_0076.png")
 const CURSOR: CompressedTexture2D = preload("res://Sprites(main)/UI/Kenney Input/tile_0822.png")
 const L_CLICK: CompressedTexture2D = preload("res://Sprites(main)/UI/Kenney Input/tile_0077.png")
-const R_CLICL: CompressedTexture2D = preload("res://Sprites(main)/UI/Kenney Input/tile_0078.png")
+const R_CLICK: CompressedTexture2D = preload("res://Sprites(main)/UI/Kenney Input/tile_0078.png")
 #const NAME: CompressedTexture2D = preload()
 
 
 
 const INPUT_ICONS: Dictionary = {
 	ActionType.CONFIRM: {
-		InputDevice.CONTROLLER: ICON_A,
-		InputDevice.KEYBOARD: CURSOR
+		InputDevice.CONTROLLER: A_BUTTON,
+		InputDevice.KEYBOARD: SPACE_KEY
 	},
 	ActionType.RETURN: {
-		InputDevice.CONTROLLER: ICON_B,
-		InputDevice.KEYBOARD: ICON_B
+		InputDevice.CONTROLLER: B_BUTTON,
+		InputDevice.KEYBOARD: X_KEY
 	},
 	ActionType.TELEPORT: {
-		InputDevice.CONTROLLER: ICON_Y,
-		InputDevice.KEYBOARD: ICON_Y
+		InputDevice.CONTROLLER: Y_BUTTON,
+		InputDevice.KEYBOARD: T_KEY
 	},
 	ActionType.MOVEMENT: {
 		InputDevice.CONTROLLER: L_ANALOG,
@@ -74,6 +75,18 @@ const INPUT_ICONS: Dictionary = {
 	ActionType.SHOOT: {
 		InputDevice.CONTROLLER: R_SHOULDER,
 		InputDevice.KEYBOARD: L_CLICK
+	},
+	ActionType.POINT: {
+		InputDevice.CONTROLLER: L_ANALOG,
+		InputDevice.KEYBOARD: CURSOR,
+	},
+	ActionType.CLICK : {
+		InputDevice.CONTROLLER: A_BUTTON,
+		InputDevice.KEYBOARD: L_CLICK,
+	},
+	ActionType.UI_MOVEMENT : {
+		InputDevice.CONTROLLER: L_ANALOG,
+		InputDevice.KEYBOARD: WASD_KEY,
 	}
 }
 
@@ -86,7 +99,10 @@ const COMMON_ACTIONS: Dictionary = {
 	ActionType.IMPULSE: "Impulso",
 	ActionType.BREAK: "Frear",
 	ActionType.AIM: "Mirar",
-	ActionType.SHOOT: "Disparar"
+	ActionType.SHOOT: "Disparar",
+	ActionType.POINT: "Mirar",
+	ActionType.CLICK: "Selecionar",
+	ActionType.UI_MOVEMENT: "Navegar UI"
 }
 
 var final_unit_alpha: float = 0.5
@@ -99,6 +115,8 @@ func _ready() -> void:
 
 func _input(event):
 	if event is InputEventKey or event is InputEventMouse:
+		if Globals.fake_mouse_input:
+			return
 		set_input_device(InputDevice.KEYBOARD)
 
 	elif event is InputEventJoypadButton or event is InputEventJoypadMotion:
@@ -133,6 +151,7 @@ func show_guide(action: ActionType, duration: float = 0) -> InputGuideUnit:
 	guide_unit.show()
 	flash(guide_unit)
 	active_guide_array.append(guide_unit)
+	guide_unit.get_parent().move_child(guide_unit, active_guide_array.size() - 1)
 
 	if duration != 0:
 		hide_guide(guide_unit, duration)

@@ -8,6 +8,7 @@ const deadzone: float = 0.2
 
 func _process(delta: float) -> void:
 	if !Input.get_connected_joypads():
+		Globals.fake_mouse_input = false
 		return
 	
 	var move = Vector2(
@@ -35,6 +36,8 @@ func _process(delta: float) -> void:
 		click.pressed = false
 		click.position = mouse_pos
 		get_viewport().push_input(click)
+
+	Globals.fake_mouse_input = true
 
 #func _process(delta: float) -> void:
 	#var move = Vector2(

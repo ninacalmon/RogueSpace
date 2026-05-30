@@ -43,6 +43,7 @@ horizontal_alignment = 1
 script = ExtResource("1_6hd2b")
 
 [node name="ButtonControl" type="Control" parent="UIControlRect"]
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
