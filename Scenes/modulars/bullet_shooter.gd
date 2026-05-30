@@ -51,7 +51,7 @@ func handle_aim_mouse():
 
 
 func handle_shoot():
-	if Input.is_action_just_pressed("shoulderR") or Input.is_action_pressed("left_click"):
+	if Input.is_action_pressed("shoulderR") or Input.is_action_pressed("left_click"):
 		shoot(aim_direction)
 
 

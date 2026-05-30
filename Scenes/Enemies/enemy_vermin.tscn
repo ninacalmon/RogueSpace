@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://8f0m410ylbbe"]
+[gd_scene load_steps=12 format=3 uid="uid://8f0m410ylbbe"]
 
 [ext_resource type="Script" uid="uid://dtkhiaas5anjp" path="res://Scenes/Enemies/enemy_vermin.gd" id="1_k0yb4"]
 [ext_resource type="Texture2D" uid="uid://v7rhaqerd48m" path="res://Sprites(main)/Enemies/alien_VermeLanceiro.png" id="2_0ktlt"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://7lu32wsorlh5" path="res://Sound Effects/Enemies/sfx_inimigosBasic.wav" id="4_x66mb"]
 [ext_resource type="AudioStream" uid="uid://6nqgebd8dtyr" path="res://Sound Effects/Enemies/sfx_inimigosBasic (2).wav" id="5_1lrlx"]
 [ext_resource type="AudioStream" uid="uid://bkpogun2por27" path="res://Sound Effects/Enemies/sfx_enemy_attack.mp3" id="6_oaun8"]
+[ext_resource type="Script" uid="uid://e5cfbq8jk5j5" path="res://Scenes/Enemies/enemy_visible_on_screen.gd" id="7_0ktlt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_auwsv"]
 radius = 15.0
@@ -53,3 +54,7 @@ shape = SubResource("CircleShape2D_pi7rj")
 stream = SubResource("AudioStreamRandomizer_c5h00")
 volume_db = -18.0
 bus = &"Sound Effects"
+
+[node name="EnemyVisibleOnScreen" type="VisibleOnScreenNotifier2D" parent="."]
+script = ExtResource("7_0ktlt")
+metadata/_custom_type_script = "uid://e5cfbq8jk5j5"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://br070cnq6sve"]
+[gd_scene load_steps=12 format=3 uid="uid://br070cnq6sve"]
 
 [ext_resource type="Script" uid="uid://7afwh36bc151" path="res://Scenes/Enemies/enemy_basic.gd" id="1_eog5f"]
 [ext_resource type="Texture2D" uid="uid://cx0i5vabq2pgx" path="res://Sprites(main)/Enemies/alien_FuraDetrito.png" id="2_ldqpc"]
@@ -6,12 +6,13 @@
 [ext_resource type="AudioStream" uid="uid://7lu32wsorlh5" path="res://Sound Effects/Enemies/sfx_inimigosBasic.wav" id="4_c17sm"]
 [ext_resource type="AudioStream" uid="uid://6nqgebd8dtyr" path="res://Sound Effects/Enemies/sfx_inimigosBasic (2).wav" id="5_2mprn"]
 [ext_resource type="AudioStream" uid="uid://bkpogun2por27" path="res://Sound Effects/Enemies/sfx_enemy_attack.mp3" id="6_50j16"]
+[ext_resource type="Script" uid="uid://e5cfbq8jk5j5" path="res://Scenes/Enemies/enemy_visible_on_screen.gd" id="7_ldqpc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_auwsv"]
 radius = 15.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ghaa6"]
-radius = 12.0
+radius = 27.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pi7rj"]
 radius = 595.9144
@@ -29,6 +30,14 @@ stream_2/weight = 5.0
 [node name="Enemy" type="RigidBody2D"]
 lock_rotation = true
 script = ExtResource("1_eog5f")
+speed = null
+max_velocity = null
+life = null
+damage = null
+wander_speed = null
+attack_force = null
+attack_distance = null
+retreat_time = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_auwsv")
@@ -53,3 +62,7 @@ shape = SubResource("CircleShape2D_pi7rj")
 stream = SubResource("AudioStreamRandomizer_c5h00")
 volume_db = -18.0
 bus = &"Sound Effects"
+
+[node name="EnemyVisibleOnScreen" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-16, -16, 32, 32)
+script = ExtResource("7_ldqpc")

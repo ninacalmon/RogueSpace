@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://caunmk6gg411l"]
+[gd_scene load_steps=26 format=4 uid="uid://caunmk6gg411l"]
 
 [ext_resource type="Texture2D" uid="uid://b4go5brbh3ndq" path="res://Sprites/Starfields/Starfield 1 - 1024x1024.png" id="1_kpfdn"]
 [ext_resource type="Texture2D" uid="uid://xuvojlr8s030" path="res://Sprites(main)/TemporaryPlanets/66888997 (3).png" id="2_dgnnc"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://3vg8bv7t077f" path="res://Scenes/BackHoles/black_hole.tscn" id="14_aajud"]
 [ext_resource type="AudioStream" uid="uid://cwxkne077kuw6" path="res://Sound Effects/Ambience/spacewinds.mp3" id="20_uqlrs"]
 [ext_resource type="Script" uid="uid://da05f5oj8b66c" path="res://Scenes/Levels/space_winds_sfx.gd" id="21_htexa"]
+[ext_resource type="Script" uid="uid://cf16x4l41vkpo" path="res://Scenes/Levels/input_guide_admin.gd" id="22_2oprd"]
 
 [sub_resource type="Environment" id="Environment_n7yfy"]
 background_mode = 3
@@ -146,5 +147,8 @@ autoplay = true
 bus = &"Sound Effects"
 parameters/looping = true
 script = ExtResource("21_htexa")
+
+[node name="InputGuideAdmin" type="Node" parent="."]
+script = ExtResource("22_2oprd")
 
 [editable path="CanvasLayer/UI"]

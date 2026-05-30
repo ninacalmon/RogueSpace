@@ -104,7 +104,6 @@ func _on_aggro_exited(body):
 	if body == player:
 		state = State.WANDER
 
-
 func _on_damage_taken(amount: float, _causer: Node2D):
 	life -= amount
 	flash()

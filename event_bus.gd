@@ -46,3 +46,9 @@ signal level_pass
 
 @warning_ignore("unused_signal")
 signal player_death(explode: bool)
+
+@warning_ignore("unused_signal")
+signal enemy_on_screen
+
+@warning_ignore("unused_signal")
+signal enemy_off_screen

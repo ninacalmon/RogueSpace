@@ -104,8 +104,6 @@ func _input(event):
 	elif event is InputEventJoypadButton or event is InputEventJoypadMotion:
 		set_input_device(InputDevice.CONTROLLER)
 
-	if event.is_action_pressed("confirm"):
-		show_guide(InputGuide.ActionType.CONFIRM)
 
 
 func set_input_device(device: InputDevice):
@@ -125,7 +123,7 @@ func show_guide(action: ActionType, duration: float = 0) -> InputGuideUnit:
 			return null
 		hidden_guide_array.append(active_guide_array.pop_back())
 
-	var guide_unit: InputGuideUnit = hidden_guide_array.pop_back()
+	var guide_unit: InputGuideUnit = hidden_guide_array.pop_front()
 
 	var icon = INPUT_ICONS[action][current_input_device]
 	var text = COMMON_ACTIONS[action]
@@ -141,7 +139,7 @@ func show_guide(action: ActionType, duration: float = 0) -> InputGuideUnit:
 
 	return guide_unit
 
-func hide_guide(guide_unit: InputGuideUnit, duration):
+func hide_guide(guide_unit: InputGuideUnit, duration: float = 0):
 	await get_tree().create_timer(duration).timeout
 
 	if active_guide_array.is_empty():
@@ -155,6 +153,13 @@ func hide_guide(guide_unit: InputGuideUnit, duration):
 	await vanish(guide_unit)
 	guide_unit.hide()
 
+func clear_guides():
+	for guide in active_guide_array:
+		guide.hide()
+		guide.modulate.a = 0
+		hidden_guide_array.append(guide)
+	
+	active_guide_array.clear()
 
 # ANIMATIONS
 func flash(subject: Control):

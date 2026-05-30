@@ -1,1 +1,53 @@
 extends Node
+
+var enemies_on_screen: int
+
+var is_showing_combat_guide: bool
+var is_showing_confirm_guide: bool
+
+func _ready() -> void:
+	InputGuide.clear_guides()
+	show_movement_guides()
+	
+	EventBus.enemy_on_screen.connect(_on_enemy_entered_screen)
+	EventBus.enemy_off_screen.connect(_on_enemy_exited_screen)
+
+	EventBus.mothership_entrance_entered.connect(_on_mothership_entrance_entered)
+	EventBus.mothership_entrance_exited.connect(_on_mothership_entrance_exited)
+
+
+func _on_enemy_entered_screen():
+	enemies_on_screen += 1
+	if !is_showing_combat_guide:
+		is_showing_combat_guide = true
+		InputGuide.clear_guides()
+		show_combat_guides()
+
+func _on_enemy_exited_screen():
+	enemies_on_screen -= 1
+	if enemies_on_screen < 0: enemies_on_screen = 0
+	if enemies_on_screen <= 0 and is_showing_combat_guide:
+		is_showing_combat_guide = false
+		InputGuide.clear_guides()
+		show_movement_guides()
+
+func _on_mothership_entrance_entered():
+	if !is_showing_confirm_guide:
+		is_showing_confirm_guide = true
+		InputGuide.clear_guides()
+		InputGuide.show_guide(InputGuide.ActionType.CONFIRM)
+
+func _on_mothership_entrance_exited():
+	if is_showing_confirm_guide:
+		InputGuide.clear_guides()
+		show_movement_guides()
+
+
+func show_movement_guides():
+	InputGuide.show_guide(InputGuide.ActionType.MOVEMENT)
+	InputGuide.show_guide(InputGuide.ActionType.IMPULSE)
+	InputGuide.show_guide(InputGuide.ActionType.BREAK)
+
+func show_combat_guides():
+	InputGuide.show_guide(InputGuide.ActionType.AIM)
+	InputGuide.show_guide(InputGuide.ActionType.SHOOT)
