@@ -30,14 +30,7 @@ stream_2/weight = 5.0
 [node name="Enemy" type="RigidBody2D"]
 lock_rotation = true
 script = ExtResource("1_eog5f")
-speed = null
-max_velocity = null
-life = null
-damage = null
-wander_speed = null
-attack_force = null
-attack_distance = null
-retreat_time = null
+speed = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_auwsv")
