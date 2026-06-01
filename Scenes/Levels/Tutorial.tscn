@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/Asteroids/asteroid_pieces.tscn" id="14_axxwk"]
 [ext_resource type="PackedScene" uid="uid://br070cnq6sve" path="res://Scenes/Enemies/enemy_basic.tscn" id="14_ev6ts"]
 [ext_resource type="Script" uid="uid://bhrrg6hud6dxq" path="res://Scenes/UI/tutorial_control.gd" id="15_fxugg"]
-[ext_resource type="FontFile" path="res://Fonts/MonospaceTypewriter.ttf" id="16_qlkbh"]
 [ext_resource type="PackedScene" uid="uid://3vg8bv7t077f" path="res://Scenes/BackHoles/black_hole.tscn" id="16_sw71j"]
 [ext_resource type="Script" uid="uid://clhd57u8quoxj" path="res://Scenes/Levels/tutorial_area.gd" id="17_1llwk"]
 [ext_resource type="Script" uid="uid://cvnhqvpx04eey" path="res://Scenes/Levels/tutorial_area2.gd" id="17_u4w04"]
@@ -27,7 +26,8 @@
 [ext_resource type="Script" uid="uid://bghsvebqm65vs" path="res://Scenes/Levels/tutorial_area5.gd" id="20_nwkth"]
 [ext_resource type="Script" uid="uid://c3r4b8e2ndjwq" path="res://Scenes/Levels/tutorial_area8.gd" id="22_2s7u0"]
 [ext_resource type="Script" uid="uid://b2bjxptkx43d1" path="res://Scenes/Levels/tutorial_area7.gd" id="22_55wm2"]
-[ext_resource type="AudioStream" uid="uid://djeuv8xr5pfp8" path="res://Sound Effects/sfx_enemy.mp3" id="24_7pjfj"]
+[ext_resource type="AudioStream" uid="uid://7lu32wsorlh5" path="res://Sound Effects/Enemies/sfx_inimigosBasic.wav" id="24_7pjfj"]
+[ext_resource type="Script" uid="uid://cf16x4l41vkpo" path="res://Scenes/Levels/input_guide_admin.gd" id="28_7pjfj"]
 
 [sub_resource type="Environment" id="Environment_n7yfy"]
 background_mode = 3
@@ -128,8 +128,6 @@ rotation = 0.38397244
 texture = ExtResource("5_nwkth")
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("6_ada67")]
-speed = 600.0
-max_velocity = 900.0
 camera = NodePath("Camera2D")
 start_of_game = false
 
@@ -142,9 +140,6 @@ full_view_pos = Vector2(1200, -100)
 position = Vector2(5104.5, 9)
 rotation = -1.5707964
 
-[node name="EnterArea" parent="Mothership" index="2"]
-disable = true
-
 [node name="MapGenerator" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAB+AP//AAAHAAAAAACCAAIAAAAHAAAAAABGAAIAAAAHAAAAAABIAP7/AAAHAAAAAABKAAMAAAAHAAAAAABOAP3/AAAHAAAAAABOAAEAAAAHAAAAAABRAP7/AAAHAAAAAABRAP//AAAHAAAAAABRAAIAAAAHAAAAAABSAP7/AAAHAAAAAABSAP//AAAHAAAAAABSAAAAAAAHAAAAAABTAP3/AAAHAAAAAABVAAEAAAAHAAAAAABWAP//AAAHAAAAAABXAP3/AAAHAAAAAABXAAMAAAAHAAAAAABYAP//AAAHAAAAAABZAAEAAAAHAAAAAABaAP7/AAAHAAAAAABaAAMAAAAHAAAAAABeAPz/AAAHAAAAAABgAAMAAAAHAAAAAAA=")
 tile_set = SubResource("TileSet_dt2g4")
@@ -156,14 +151,20 @@ resource_scene = ExtResource("14_axxwk")
 
 [node name="Enemy" parent="MapGenerator" node_paths=PackedStringArray("player") instance=ExtResource("14_ev6ts")]
 position = Vector2(4860, -60)
+collision_layer = 9
+collision_mask = 9
 player = NodePath("../../Player")
 
 [node name="Enemy2" parent="MapGenerator" node_paths=PackedStringArray("player") instance=ExtResource("14_ev6ts")]
 position = Vector2(4847, -3)
+collision_layer = 9
+collision_mask = 9
 player = NodePath("../../Player")
 
 [node name="Enemy3" parent="MapGenerator" node_paths=PackedStringArray("player") instance=ExtResource("14_ev6ts")]
 position = Vector2(4882, 65)
+collision_layer = 9
+collision_mask = 9
 player = NodePath("../../Player")
 
 [node name="AsteroidBig" parent="MapGenerator" instance=ExtResource("13_shmn6")]
@@ -282,6 +283,7 @@ metadata/_edit_lock_ = true
 [node name="StaticBody2D" type="StaticBody2D" parent="Bounds"]
 position = Vector2(0, -121)
 disable_mode = 1
+collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/StaticBody2D"]
@@ -291,6 +293,7 @@ shape = SubResource("RectangleShape2D_qlkbh")
 [node name="StaticBody2D2" type="StaticBody2D" parent="Bounds"]
 position = Vector2(0, 141)
 disable_mode = 1
+collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/StaticBody2D2"]
@@ -301,6 +304,7 @@ shape = SubResource("RectangleShape2D_qlkbh")
 position = Vector2(-87, 1)
 rotation = 1.5707964
 disable_mode = 1
+collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/StaticBody2D3"]
@@ -386,6 +390,7 @@ shape = SubResource("RectangleShape2D_7pjfj")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Area7"]
 stream = ExtResource("24_7pjfj")
+volume_db = -8.0
 
 [node name="Area8" type="Area2D" parent="." node_paths=PackedStringArray("tutorial_warning")]
 position = Vector2(4742, 9)
@@ -418,7 +423,6 @@ offset_right = 725.5
 offset_bottom = 189.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("16_qlkbh")
 bbcode_enabled = true
 text = "CUIDADO!
 VOCÊ ESTÁ QUASE FORA DO ALCANÇE DE SUA NAVE MÃE
@@ -428,12 +432,12 @@ horizontal_alignment = 1
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("18_8x3qo")]
 
-[node name="FuelProgressBar" parent="CanvasLayer/UI" index="3"]
-use_step = 0.01
-
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="InputGuideAdmin" type="Node" parent="."]
+script = ExtResource("28_7pjfj")
 
 [editable path="Mothership"]
 [editable path="CanvasLayer/UI"]

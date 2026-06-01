@@ -8,10 +8,7 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
-		tutorial_warning.label.text = "Se movimentar em zero gravidade não é fácil...
-		
-[GATILHO ESQUERDO] para freiar.
-[GATILHO DIREITO] para se propulsionar."
+		tutorial_warning.label.text = "Se movimentar em zero gravidade não é fácil..."
 		tutorial_warning.show_warning()
 
 func _on_body_exited(body: Node2D) -> void:

@@ -50,3 +50,7 @@ func _on_button_hovered(number: int) -> void:
 func _on_joy_connected(_device: int, connected: bool):
 	if connected:
 		start.grab_focus()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("left_click"):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

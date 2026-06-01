@@ -3,7 +3,7 @@ class_name EnemyVermin
 
 enum State { IDLE, CHASE, FLEE }
 
-@export var stun_time: float = 3
+@export var stun_time: float = 6
 
 @export var flee_speed_multiplier: float = 1.0
 @export var safe_distance: float = 180

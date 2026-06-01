@@ -9,7 +9,9 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
-		tutorial_warning.label.text = "Ah! Aliás, [JOYSTICK DIREITO] para atirar."
+		tutorial_warning.label.text = "Ah! Aliás, você está equipado com uma arma a laser.
+		
+Preste atenção às guias do lado inferior esquerdo para conferir os controles."
 		tutorial_warning.show_warning()
 
 func _on_body_exited(body: Node2D) -> void:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://bcffh04lffmyi"]
+[gd_scene load_steps=25 format=3 uid="uid://bcffh04lffmyi"]
 
 [ext_resource type="Script" uid="uid://dp0jfjqkl4sdl" path="res://Scenes/Modulars/asteroid.gd" id="1_jr0l1"]
 [ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/Asteroids/asteroid_pieces.tscn" id="2_exshx"]
 [ext_resource type="Texture2D" uid="uid://dti25n138kmrg" path="res://Sprites(main)/Asteroids/Asteroid_big.png" id="2_ne8lo"]
+[ext_resource type="PackedScene" uid="uid://br070cnq6sve" path="res://Scenes/Enemies/enemy_basic.tscn" id="3_akcm3"]
 [ext_resource type="PackedScene" uid="uid://8f0m410ylbbe" path="res://Scenes/Enemies/enemy_vermin.tscn" id="3_egnjl"]
 [ext_resource type="Script" uid="uid://dny3ctsdweann" path="res://Scenes/SpaceBodies/damage_module.gd" id="3_exshx"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="4_1kal1"]
@@ -62,7 +63,7 @@ critters_chance_percentage = 30
 critters_amount_min = 3
 damage_module = NodePath("DamageModule")
 broken_piece_scene = ExtResource("2_exshx")
-enemy_scene = ExtResource("3_egnjl")
+enemy_option_array = Array[PackedScene]([ExtResource("3_akcm3"), ExtResource("3_egnjl")])
 palette_options = Array[Texture]([ExtResource("4_cvdgt"), ExtResource("5_6w43o"), ExtResource("6_nnd5f"), ExtResource("8_akcm3")])
 collision = NodePath("CollisionShape2D")
 sprite = NodePath("Sprite2D")

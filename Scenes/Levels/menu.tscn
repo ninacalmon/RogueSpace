@@ -181,8 +181,10 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="Menu" type="Node2D"]
+[node name="Menu" type="Control"]
 process_mode = 3
+layout_mode = 3
+anchors_preset = 0
 
 [node name="UISounds" parent="." instance=ExtResource("1_sic4q")]
 root_path = NodePath("../CanvasLayer/Control")

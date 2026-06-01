@@ -21,7 +21,7 @@ func start_tutorial():
 	label.text = "Você está sozinho.
 Siga à direita.
 
-[JOYSTICK ESQUERDO] para se movimentar."
+Preste atenção às guias do lado inferior esquerdo para conferir os controles."
 	show_warning()
 	await get_tree().create_timer(5).timeout
 	hide_warning()

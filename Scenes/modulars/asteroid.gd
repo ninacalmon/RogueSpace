@@ -13,7 +13,7 @@ class_name Asteroid
 
 @export var damage_module: DamageModule
 @export var broken_piece_scene: PackedScene
-@export var enemy_scene: PackedScene
+@export var enemy_option_array: Array[PackedScene]
 
 @export var palette_options: Array[Texture]
 
@@ -122,8 +122,10 @@ func spawn_critters(is_player: bool = false):
 
 	if chance <= critters_chance_percentage:
 		var critters_amount = randi_range(critters_amount_min, critters_amount_max)
+
 		for i in critters_amount:
-			var new_critter: Enemy = enemy_scene.instantiate()
+			var new_critter: Enemy = enemy_option_array.pick_random().instantiate()
+			#var new_critter: Enemy = enemy_scene.instantiate()
 			new_critter.player = get_tree().get_first_node_in_group("Player_Group")
 			new_critter.global_position = global_position \
 			+ Vector2(randi_range(-20, 20), randi_range(-20, 20))

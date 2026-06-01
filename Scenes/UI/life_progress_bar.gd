@@ -3,6 +3,7 @@ extends TextureProgressBar
 @export var max_hp: float = 100
 @export var low_hp_overlay: Sprite2D
 
+
 var emitted: bool = false
 
 func _ready() -> void:
@@ -11,6 +12,7 @@ func _ready() -> void:
 	EventBus.damage_taken.connect(_on_damage_taken)
 	max_value = StatsManager.player_max_health
 	value = StatsManager.player_current_health
+	
 
 func _on_damage_taken(damaged: RigidBody2D, _amount: float):
 	if damaged is Player:
