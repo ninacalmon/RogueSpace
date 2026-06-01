@@ -32,7 +32,8 @@ InputGuide="*res://input_guide.tscn"
 
 [display]
 
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
 mouse_cursor/custom_image="uid://cmlx2ppg3l6lj"
 
 [dotnet]
