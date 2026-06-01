@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://dsw810ysjgsn2"]
+[gd_scene load_steps=25 format=3 uid="uid://dsw810ysjgsn2"]
 
 [ext_resource type="Script" uid="uid://dp0jfjqkl4sdl" path="res://Scenes/Modulars/asteroid.gd" id="1_r6oq4"]
 [ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/Asteroids/asteroid_pieces.tscn" id="2_0d5qe"]
 [ext_resource type="PackedScene" uid="uid://br070cnq6sve" path="res://Scenes/Enemies/enemy_basic.tscn" id="3_34314"]
 [ext_resource type="Shader" uid="uid://bjetsh4wdtn8e" path="res://Shaders/palette_swap.tres" id="4_34314"]
+[ext_resource type="PackedScene" uid="uid://8f0m410ylbbe" path="res://Scenes/Enemies/enemy_vermin.tscn" id="4_drwe2"]
 [ext_resource type="Texture2D" uid="uid://bflk5f2qeiyqi" path="res://Sprites(main)/pink_asteroid_pallete.png" id="4_yu118"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="5_6rrup"]
 [ext_resource type="Texture2D" uid="uid://dx0xv4geqjvp8" path="res://Sprites(main)/asteroid_default_pallete.png" id="5_agbyp"]
@@ -59,10 +60,11 @@ base_endurance = 300.0
 minimum_damage = 100.0
 will_spawn_critters = true
 critters_chance_percentage = 10
-critters_amount_max = 3
+critters_amount_min = 1
+critters_amount_max = 1
 damage_module = NodePath("DamageModule")
 broken_piece_scene = ExtResource("2_0d5qe")
-enemy_scene = ExtResource("3_34314")
+enemy_option_array = Array[PackedScene]([ExtResource("3_34314"), ExtResource("4_drwe2")])
 palette_options = Array[Texture]([ExtResource("4_yu118"), ExtResource("5_t4syf"), ExtResource("6_iy4pt"), ExtResource("5_agbyp")])
 collision = NodePath("CollisionShape2D")
 sprite = NodePath("Sprite2D")

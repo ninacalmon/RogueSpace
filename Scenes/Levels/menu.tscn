@@ -205,17 +205,19 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -60.99994
+offset_left = -78.0
 offset_top = 44.0
-offset_right = 539.0
-offset_bottom = 191.0
+offset_right = 522.0
+offset_bottom = 202.0
 grow_horizontal = 2
 scale = Vector2(1.0032214, 1.0436978)
 theme_override_colors/default_color = Color(0.40784314, 0.72156864, 0.1254902, 1)
 theme_override_fonts/normal_font = ExtResource("3_rb8kr")
-theme_override_font_sizes/normal_font_size = 67
-text = "Rogue
-    Space"
+theme_override_font_sizes/normal_font_size = 80
+text = "VOX
+	VACUI"
+fit_content = true
+autowrap_mode = 0
 horizontal_alignment = 1
 script = ExtResource("4_g56od")
 

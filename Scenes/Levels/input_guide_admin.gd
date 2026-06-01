@@ -52,3 +52,10 @@ func show_movement_guides():
 func show_combat_guides():
 	InputGuide.show_guide(InputGuide.ActionType.AIM)
 	InputGuide.show_guide(InputGuide.ActionType.SHOOT)
+
+func _input(event):
+	if event is InputEventKey or event is InputEventMouse:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+	elif event is InputEventJoypadButton or event is InputEventJoypadMotion:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
