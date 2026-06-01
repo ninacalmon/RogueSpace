@@ -30,6 +30,7 @@ var emitted_fuel_waning: bool = false
 
 var facing_direction: String
 
+var is_stuned: bool
 
 func _ready() -> void:
 	if body_randomizer: body_randomizer.initialize(sprite, collision)
@@ -115,6 +116,7 @@ func movement(state):
 		return
 	
 	#sprite_2d.animate_start_propelling()
+	if is_stuned: input_dir *= -0.6
 	state.apply_central_force(input_dir * speed)
 	update_fuel()
 	SFXManager.play_sound(propulsor_sfx)
@@ -181,3 +183,10 @@ func update_fuel(is_impulse: bool = false):
 		EventBus.almost_out_of_fuel.emit()
 	if StatsManager.player_current_fuel <= 0:
 		EventBus.player_death.emit(true)
+
+func apply_stun(stun_duration: float):
+	print("beloooo stunununjnnnnnnn")
+	PopUpSystem.show_text("Você se sente atordoado", stun_duration)
+	is_stuned = true
+	await get_tree().create_timer(stun_duration).timeout
+	is_stuned = false
