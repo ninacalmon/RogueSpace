@@ -89,7 +89,7 @@ func perform_attack():
 
 	# Optional small damage
 	if player.has_method("take_damage"):
-		player.take_damage(1)
+		player.take_damage(1, self)
 
 
 func start_flee_timer():

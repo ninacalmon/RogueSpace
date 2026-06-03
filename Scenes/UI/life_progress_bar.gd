@@ -16,6 +16,8 @@ func _ready() -> void:
 
 func _on_damage_taken(damaged: RigidBody2D, _amount: float):
 	if damaged is Player:
+		await get_tree().process_frame
+		print("recebiiiiiii")
 		value = StatsManager.player_current_health
 	update_overlay()
 

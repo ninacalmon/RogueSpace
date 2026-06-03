@@ -98,6 +98,7 @@ camera = NodePath("Camera2D")
 script = ExtResource("3_aajud")
 full_view_zoom = Vector2(0.3, 0.3)
 full_view_pos = Vector2(0, -800)
+deactivate_cutscene = true
 
 [node name="Mothership" parent="." instance=ExtResource("4_4f3qw")]
 position = Vector2(0, 190)
@@ -134,6 +135,9 @@ position = Vector2(-1037, -1386)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("11_gvak4")]
+
+[node name="UIControlRect" parent="CanvasLayer/UI" index="0"]
+mouse_filter = 1
 
 [node name="MapControl" parent="." node_paths=PackedStringArray("player") instance=ExtResource("12_c1j88")]
 player = NodePath("../Player")

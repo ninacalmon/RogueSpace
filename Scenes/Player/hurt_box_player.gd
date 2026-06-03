@@ -8,7 +8,6 @@ class_name HurtBoxPlayer
 @onready var damage_sfx: AudioStreamPlayer = $DamageSFX
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
-signal damage_taken(amount: float, causer: Node2D)
 
 var stuning: bool
 
@@ -28,13 +27,13 @@ func _on_body_entered(body: RigidBody2D):
 
 func _on_enemy_damage_taken(amount: float, _causer: Node2D):
 	EventBus.damage_taken.emit(player, amount)
+	print("emitiiiiiiiiii")
 	StatsManager.player_current_health -= amount
 	SFXManager.play_sound(damage_sfx)
 	flash()
 	ControllerVibration.vibrate_controller()
 
 	if StatsManager.player_current_health <= 0:
-		print("mori")
 		EventBus.player_death.emit(true)
 
 var is_stuned: bool
@@ -47,6 +46,8 @@ func stun(duration: float):
 		stuning = false
 		is_stuned = false
 
+func _on_damage_taken(amount: float, _causer: Node2D):
+	_on_enemy_damage_taken(amount, _causer)
 
 func flash():
 	player.sprite_2d.modulate = Color(18.892, 18.892, 18.892)

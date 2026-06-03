@@ -19,7 +19,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_76ouu"]
 shader = ExtResource("4_76ouu")
-shader_parameter/pixel_size = 9.0710003833725
+shader_parameter/pixel_size = 8.0000003325
 
 [sub_resource type="Gradient" id="Gradient_4wenu"]
 offsets = PackedFloat32Array(0, 0.6666667)
@@ -58,7 +58,7 @@ stream_0 = ExtResource("14_uvk7a")
 script = ExtResource("1_4wenu")
 
 [node name="Background" type="Sprite2D" parent="."]
-scale = Vector2(0.60312504, 0.45)
+scale = Vector2(0.65, 0.65)
 texture = ExtResource("2_n7pqb")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -89,10 +89,10 @@ material = SubResource("ShaderMaterial_76ouu")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1795.8551
-offset_top = -379.40436
-offset_right = -1795.8551
-offset_bottom = -379.40436
+offset_left = -1902.0001
+offset_top = -489.99997
+offset_right = -1853.5829
+offset_bottom = -519.1433
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3.1480725, 1.575486)

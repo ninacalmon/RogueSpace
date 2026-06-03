@@ -8,7 +8,7 @@ var has_energy: bool = false
 var lights_on: bool = false
 
 func _ready() -> void:
-	has_energy = true
+	#has_energy = true
 	clickable_highlight.was_clicked.connect(_on_clicked)
 	SpaceshipEventBus.focus_changed.connect(_on_focus_changed)
 	SpaceshipEventBus.resource_count_finished.connect(_on_resource_count_finished)

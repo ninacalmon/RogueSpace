@@ -200,3 +200,7 @@ func apply_stun(stun_duration: float):
 	speed = original_speed
 	tween.tween_property(sprite_stun, "modulate:a", 0, 0.3)
 	sprite_stun.hide()
+
+func take_damage(amount: float, causer: Node2D):
+	hurt_box_player._on_enemy_damage_taken(amount, causer)
+	print("chameiiii")

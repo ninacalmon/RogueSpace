@@ -136,6 +136,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="UIControlRect" type="Control" parent="."]
 layout_mode = 1
@@ -148,12 +149,14 @@ offset_right = -22.0
 offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VBoxDirection" type="VBoxContainer" parent="UIControlRect" node_paths=PackedStringArray("arrow", "km_label")]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 0
 offset_right = 150.0
 offset_bottom = 139.0
+mouse_filter = 2
 script = ExtResource("1_gm34j")
 arrow = NodePath("TextureRect/ArrowControl/Arrow")
 km_label = NodePath("KmLabel")
@@ -162,6 +165,7 @@ km_label = NodePath("KmLabel")
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 0
+mouse_filter = 2
 text = "direção"
 fit_content = true
 horizontal_alignment = 1
@@ -170,6 +174,7 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+mouse_filter = 2
 texture = ExtResource("2_t7te2")
 metadata/_edit_use_anchors_ = true
 
@@ -182,6 +187,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Arrow" type="Node2D" parent="UIControlRect/VBoxDirection/TextureRect/ArrowControl"]
 
@@ -193,12 +199,14 @@ offset_top = -7.0
 offset_right = 48.0
 offset_bottom = 7.0
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("3_t7te2")
 stretch_mode = 2
 
 [node name="KmLabel" type="RichTextLabel" parent="UIControlRect/VBoxDirection"]
 custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
+mouse_filter = 2
 text = "0.0 m/s"
 fit_content = true
 horizontal_alignment = 1
@@ -208,10 +216,12 @@ layout_mode = 0
 offset_left = 174.0
 offset_right = 870.0
 offset_bottom = 39.0
+mouse_filter = 2
 theme_override_constants/separation = 80
 
 [node name="FuelProgressBar" type="TextureProgressBar" parent="UIControlRect/HBoxBars"]
 layout_mode = 2
+mouse_filter = 2
 value = 100.0
 texture_progress = ExtResource("5_vy225")
 script = ExtResource("5_huoym")
@@ -221,6 +231,7 @@ custom_minimum_size = Vector2(150, 34)
 layout_mode = 1
 offset_right = 150.0
 offset_bottom = 17.0
+mouse_filter = 2
 theme = ExtResource("7_fy0us")
 text = "combustível"
 fit_content = true
@@ -238,6 +249,7 @@ offset_top = -19.5
 offset_right = 53.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
 bbcode_enabled = true
 text = "100%"
 fit_content = true
@@ -247,6 +259,7 @@ bar = NodePath("..")
 
 [node name="LifeProgressBar" type="TextureProgressBar" parent="UIControlRect/HBoxBars" node_paths=PackedStringArray("low_hp_overlay")]
 layout_mode = 2
+mouse_filter = 2
 value = 100.0
 texture_progress = ExtResource("7_h6tq4")
 script = ExtResource("6_wvggw")
@@ -256,6 +269,7 @@ low_hp_overlay = NodePath("../../../LowHPOverlay")
 layout_mode = 1
 offset_right = 150.0
 offset_bottom = 34.0
+mouse_filter = 2
 text = "vida"
 vertical_alignment = 2
 
@@ -271,6 +285,7 @@ offset_top = -19.5
 offset_right = 53.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
 bbcode_enabled = true
 text = "100%"
 fit_content = true
@@ -286,6 +301,7 @@ offset_left = 894.0
 offset_top = -9.0
 offset_right = 1094.0
 offset_bottom = 130.0
+mouse_filter = 2
 bbcode_enabled = true
 text = "[b]0/200[/b]
 recursos"
@@ -319,6 +335,7 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
+mouse_filter = 2
 script = ExtResource("4_l7l08")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UIControlRect/WarningsControl"]
@@ -334,6 +351,7 @@ offset_right = 169.5
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 bbcode_enabled = true
 text = "CUIDADO!
 VOCÊ ESTÁ QUASE FORA DO ALCANÇE DE SUA NAVE MÃE
@@ -365,6 +383,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("8_teh6u")
 metadata/_edit_lock_ = true
 
@@ -376,6 +395,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.34176, 0.48, 0.1728, 0.43529412)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PauseOverlay/ColorRect"]

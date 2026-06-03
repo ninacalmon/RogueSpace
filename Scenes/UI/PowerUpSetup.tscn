@@ -15,7 +15,7 @@ bg_color = Color(0.40784314, 0.72156864, 0.1254902, 1)
 custom_minimum_size = Vector2(200, 300)
 offset_right = 200.0
 offset_bottom = 300.0
-mouse_filter = 0
+mouse_filter = 2
 script = ExtResource("1_x7njx")
 title = "TESTE"
 texture = ExtResource("2_vjedb")
@@ -32,6 +32,7 @@ bought_color = Color(11.528807, 0, 0, 0.43137255)
 [node name="PriceLabel" type="RichTextLabel" parent="."]
 layout_mode = 2
 size_flags_vertical = 0
+mouse_filter = 2
 theme_override_colors/default_color = Color(0.40784314, 0.72156864, 0.1254902, 1)
 bbcode_enabled = true
 text = "100 recursos"
@@ -42,10 +43,12 @@ horizontal_alignment = 1
 self_modulate = Color(0.40784314, 0.72156864, 0.1254902, 1)
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_filter = 2
 texture_normal = ExtResource("1_tybp7")
 
 [node name="DescriptionLabel" type="RichTextLabel" parent="."]
 layout_mode = 2
+mouse_filter = 2
 theme_override_colors/default_color = Color(0.40784314, 0.72156864, 0.1254902, 1)
 bbcode_enabled = true
 text = "TÍTULO EM CAPS
@@ -57,6 +60,7 @@ horizontal_alignment = 1
 visible = false
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_u025h")
 theme_override_styles/fill = SubResource("StyleBoxFlat_msej6")
 show_percentage = false

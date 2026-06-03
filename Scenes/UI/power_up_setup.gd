@@ -37,8 +37,8 @@ func _ready() -> void:
 	texture_button.pressed.connect(_on_button_pressed)
 	texture_button.focus_entered.connect(_on_focus_entered)
 	texture_button.focus_exited.connect(_on_focus_exited)
-	texture_button.mouse_entered.connect(_on_focus_entered)
-	texture_button.mouse_exited.connect(_on_focus_exited)
+	#texture_button.mouse_entered.connect(_on_focus_entered)
+	#texture_button.mouse_exited.connect(_on_focus_exited)
 
 func _grab_focus():
 	texture_button.grab_focus()
