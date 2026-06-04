@@ -1,0 +1,399 @@
+[gd_scene load_steps=18 format=3 uid="uid://bvmqc5jgquxeu"]
+
+[ext_resource type="Texture2D" uid="uid://cyrvbfkrobaa1" path="res://Sprites(main)/bookTileset.png" id="1_7yh6m"]
+[ext_resource type="Texture2D" uid="uid://drluyy4fl7yg3" path="res://Sprites(main)/SpaceshipInterior/book.png" id="1_j6pbb"]
+[ext_resource type="Script" uid="uid://4dv3d2vyvbp1" path="res://Scenes/Spaceship/diary.gd" id="1_mlqjd"]
+[ext_resource type="Shader" uid="uid://cccnue3fm2pyc" path="res://Shaders/outline.gdshader" id="2_7afck"]
+[ext_resource type="Script" uid="uid://jtbq6dor8pk0" path="res://Scenes/Modulars/clickable_highlight.gd" id="4_wy5ug"]
+[ext_resource type="Shader" uid="uid://kyf6ladmlc1w" path="res://Shaders/blur.gdshader" id="5_cr6hc"]
+[ext_resource type="Texture2D" uid="uid://b1idceig4yflc" path="res://Sprites(main)/SpaceshipInterior/drawingTest.png" id="7_cr6hc"]
+[ext_resource type="FontFile" uid="uid://cwut5ptwefh1" path="res://Fonts/PearSoda.ttf" id="7_w3sy0"]
+[ext_resource type="Texture2D" uid="uid://dsyx4jt8a7deg" path="res://Sprites(main)/UI/Kenney Input/tile_0568.png" id="8_w3sy0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cr6hc"]
+shader = ExtResource("2_7afck")
+shader_parameter/rounded = true
+shader_parameter/alpha_threshold = 0.1
+
+[sub_resource type="Animation" id="Animation_ug76w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteMiniBook:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteMiniBook:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.7453293]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteMiniBook:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.3, 0.3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpriteMiniBook:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vokqo"]
+resource_name = "take_book"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteMiniBook:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 200)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteMiniBook:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(3.031435, 1),
+"update": 0,
+"values": [0.0, 1.3962634015954636]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteMiniBook:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.12, 0.12), Vector2(0.3, 0.3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpriteMiniBook:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(7.209994, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mlqjd"]
+_data = {
+&"RESET": SubResource("Animation_ug76w"),
+&"take_book": SubResource("Animation_vokqo")
+}
+
+[sub_resource type="Animation" id="Animation_j6pbb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BookCanvasLayer/SpriteOpen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BookCanvasLayer/SpriteOpen:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_7yh6m"]
+resource_name = "open_book"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BookCanvasLayer/SpriteOpen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.22),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BookCanvasLayer/SpriteOpen:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.96666664, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0, 16, 14]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vokqo"]
+_data = {
+&"RESET": SubResource("Animation_j6pbb"),
+&"open_book": SubResource("Animation_7yh6m")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hmmsy"]
+shader = ExtResource("5_cr6hc")
+shader_parameter/blur_amount = 1.5
+
+[node name="Diary" type="Area2D" node_paths=PackedStringArray("clickable_highlight")]
+script = ExtResource("1_mlqjd")
+zoom_in_amount = 1.0
+clickable_highlight = NodePath("ClickableHighlight")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(1, 28, 45, 0, 46, -9, -6, -28, -47, -17, -45, -9)
+
+[node name="SpriteMiniBook" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_cr6hc")
+instance_shader_parameters/outline_width = 8
+scale = Vector2(0.120000005, 0.120000005)
+texture = ExtResource("1_j6pbb")
+
+[node name="AnimationTakeBook" type="AnimationPlayer" parent="SpriteMiniBook"]
+reset_on_save = false
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_mlqjd")
+}
+
+[node name="ClickableHighlight" type="Node2D" parent="." node_paths=PackedStringArray("area", "sprite")]
+position = Vector2(0, 200)
+rotation = 1.3962634
+scale = Vector2(0.29999998, 0.29999998)
+script = ExtResource("4_wy5ug")
+area = NodePath("..")
+sprite = NodePath("../SpriteMiniBook")
+metadata/_custom_type_script = "uid://jtbq6dor8pk0"
+
+[node name="BookCanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SpriteOpen" type="Sprite2D" parent="BookCanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(579, 264)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_7yh6m")
+hframes = 5
+vframes = 4
+
+[node name="AnimationBookOpen" type="AnimationPlayer" parent="BookCanvasLayer/SpriteOpen"]
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_vokqo")
+}
+
+[node name="BookControl" type="Control" parent="BookCanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 229.0
+offset_top = 109.0
+offset_right = -236.0
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PagesContainer" type="HBoxContainer" parent="BookCanvasLayer/BookControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="PageL" type="VBoxContainer" parent="BookCanvasLayer/BookControl/PagesContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 24
+
+[node name="Day" type="RichTextLabel" parent="BookCanvasLayer/BookControl/PagesContainer/PageL"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.2, 0.124800004, 0.106, 1)
+theme_override_font_sizes/normal_font_size = 32
+text = "Dia 1 - - -"
+fit_content = true
+
+[node name="Head" type="RichTextLabel" parent="BookCanvasLayer/BookControl/PagesContainer/PageL"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.44, 0.11968, 0.096800014, 1)
+theme_override_fonts/bold_font = ExtResource("7_w3sy0")
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "[b]BEM VINDO AO DIÁRIO DO DEIMOS FODIDO![/b]"
+fit_content = true
+
+[node name="Main" type="RichTextLabel" parent="BookCanvasLayer/BookControl/PagesContainer/PageL"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.2, 0.124800004, 0.106, 1)
+theme_override_fonts/bold_font = ExtResource("7_w3sy0")
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "Textos e tal yapping yapping oi meu nome é deimos to aqui yapping pra caralho!!!
+
+Yapping oi meu nome é deimos to aqui yapping pra caralho!!! Textos e tal yapping yapping oi meu nome é deimos to aqui 
+
+[b]Yapping frase de efeito?[/b]
+tchau tchau kafkers!!!"
+fit_content = true
+
+[node name="PageR" type="VBoxContainer" parent="BookCanvasLayer/BookControl/PagesContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 24
+
+[node name="Day" type="RichTextLabel" parent="BookCanvasLayer/BookControl/PagesContainer/PageR"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.2, 0.124800004, 0.106, 1)
+theme_override_font_sizes/normal_font_size = 32
+text = "Dia 2 - - -"
+fit_content = true
+
+[node name="Head" type="RichTextLabel" parent="BookCanvasLayer/BookControl/PagesContainer/PageR"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.44, 0.11968, 0.096800014, 1)
+theme_override_fonts/bold_font = ExtResource("7_w3sy0")
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "[b]TESTES, TESTES HAHAHA![/b]"
+fit_content = true
+
+[node name="Main" type="RichTextLabel" parent="BookCanvasLayer/BookControl/PagesContainer/PageR"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.2, 0.124800004, 0.106, 1)
+theme_override_fonts/bold_font = ExtResource("7_w3sy0")
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "Textos e tal yapping yapping oi meu nome é deimos to aqui yapping pra caralho!!!
+
+[b]Beijos do Deimos[/b]
+boca de inseto KAKAKAKAKAKAKAKAKAKA."
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="BookCanvasLayer/BookControl/PagesContainer/PageR"]
+modulate = Color(0.4392157, 0.12156863, 0.09803922, 1)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+texture = ExtResource("7_cr6hc")
+stretch_mode = 5
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="BookCanvasLayer/BookControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_right = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="ButtonL" type="Button" parent="BookCanvasLayer/BookControl/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="BookCanvasLayer/BookControl/ButtonsContainer/ButtonL"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+texture = ExtResource("8_w3sy0")
+
+[node name="ButtonR" type="Button" parent="BookCanvasLayer/BookControl/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="BookCanvasLayer/BookControl/ButtonsContainer/ButtonR"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("8_w3sy0")
+flip_h = true
+
+[node name="BlurRect" type="ColorRect" parent="BookCanvasLayer"]
+z_index = -1
+material = SubResource("ShaderMaterial_hmmsy")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

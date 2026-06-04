@@ -5,6 +5,11 @@ var has_energy: bool = false
 @onready var door_sfx: AudioStreamPlayer = $DoorSFX
 
 func _ready() -> void:
+	#has_energy = true
+	_connect_signals()
+
+
+func _connect_signals():
 	clickable_highlight.was_clicked.connect(_on_clicked)
 	SpaceshipEventBus.focus_changed.connect(_on_focus_changed)
 	SpaceshipEventBus.resource_count_finished.connect(_on_resource_count_finished)

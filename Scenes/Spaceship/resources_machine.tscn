@@ -40,6 +40,9 @@ stream_0/stream = ExtResource("6_8efwl")
 [node name="ResourcesMachine" type="Area2D" node_paths=PackedStringArray("sub_area_resources_deposit", "clickable_highlight")]
 script = ExtResource("1_15nl0")
 sub_area_resources_deposit = NodePath("ResourcesDeposit")
+zoom_in_amount = null
+zoom_offset = null
+zoom_speed = null
 clickable_highlight = NodePath("ClickableHighlight")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

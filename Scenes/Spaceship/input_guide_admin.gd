@@ -17,6 +17,11 @@ func _on_focus_changed(focus: bool, subject: Node2D):
 			InputGuide.show_guide(InputGuide.ActionType.UI_MOVEMENT)
 			InputGuide.show_guide(InputGuide.ActionType.CONFIRM)
 			InputGuide.show_guide(InputGuide.ActionType.RETURN)
+		elif subject is Diary:
+			InputGuide.clear_guides()
+			InputGuide.show_guide(InputGuide.ActionType.CLICK)
+			InputGuide.show_guide(InputGuide.ActionType.POINT)
+			InputGuide.show_guide(InputGuide.ActionType.RETURN)
 		else:
 			InputGuide.clear_guides()
 			show_default()

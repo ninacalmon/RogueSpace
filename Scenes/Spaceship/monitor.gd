@@ -11,6 +11,10 @@ var lights_on: bool = false
 
 func _ready() -> void:
 	#has_energy = true
+	_connect_signals()
+
+
+func _connect_signals():
 	clickable_highlight.was_clicked.connect(_on_clicked)
 	SpaceshipEventBus.focus_changed.connect(_on_focus_changed)
 	SpaceshipEventBus.resource_count_finished.connect(_on_resource_count_finished)
@@ -25,7 +29,7 @@ func _on_clicked():
 	if !is_focused and clickable_highlight.is_mouse_over_area:
 		is_focused = true
 		#trocar sprite aqui
-		SpaceshipEventBus.focus_on.emit(zoom_in_amount, zoom_offset, self)
+		SpaceshipEventBus.focus_on.emit(zoom_in_amount, zoom_offset, self, false)
 
 func _on_focus_changed(focus: bool, subject: Node2D):
 	## If there is a race condition with the activation of the clickable_highlight here and the disabling of it

@@ -1,7 +1,7 @@
 extends Node
 
 @warning_ignore("unused_signal")
-signal focus_on(zoom_in_amount: float, zoom_offset: Vector2, emitter: Node2D)
+signal focus_on(zoom_in_amount: float, zoom_offset: Vector2, emitter: Node2D, keep_camera: bool)
 
 @warning_ignore("unused_signal")
 signal focus_off

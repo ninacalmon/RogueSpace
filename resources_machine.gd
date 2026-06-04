@@ -6,6 +6,10 @@ class_name ResourcesMachine
 @onready var shake_module: ShakeModule = $ShakeModule
 
 func _ready() -> void:
+	_connect_signals()
+
+
+func _connect_signals():
 	clickable_highlight.was_clicked.connect(_on_clicked)
 	#clickable_highlight.clicked_outside.connect(_was_clicked_outside)
 	SpaceshipEventBus.focus_changed.connect(_on_focus_changed)
@@ -32,7 +36,7 @@ func activate_sub_areas():
 
 func change_to_focused():
 	is_focused = true
-	SpaceshipEventBus.focus_on.emit(zoom_in_amount, zoom_offset, self)
+	SpaceshipEventBus.focus_on.emit(zoom_in_amount, zoom_offset, self, false)
 	#trocar sprite aqui
 
 func _process(_delta: float) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bkjjj01xixl1j"]
+[gd_scene load_steps=19 format=3 uid="uid://bkjjj01xixl1j"]
 
 [ext_resource type="Script" uid="uid://f7hym6rcrxkn" path="res://Scenes/Spaceship/monitor.gd" id="1_s3qmo"]
 [ext_resource type="Texture2D" uid="uid://b5oolandwoj16" path="res://Sprites(main)/SpaceshipInterior/SpaceshipMonitorScreen.png" id="2_5toxe"]
@@ -12,6 +12,64 @@
 [ext_resource type="PackedScene" uid="uid://fjxp66w0rpvl" path="res://Scenes/UI/PowerUpSetup.tscn" id="7_t6xb0"]
 [ext_resource type="AudioStream" uid="uid://cuyalodvbr04t" path="res://Sound Effects/UI/SFX_buttonswitch.wav" id="10_3okkr"]
 [ext_resource type="PackedScene" uid="uid://buqlpqb51bwy" path="res://ui_sounds.tscn" id="11_5toxe"]
+
+[sub_resource type="Animation" id="Animation_oqhwa"]
+resource_name = "face"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.9, -0.13, -0.14999999, 0, 0),
+"times": PackedFloat32Array(0, 3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -2.3, -0.13, 0.38333333, 0, 0),
+"times": PackedFloat32Array(0, 3)
+}
+
+[sub_resource type="Animation" id="Animation_acnb0"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i22b5"]
+_data = {
+&"RESET": SubResource("Animation_acnb0"),
+&"face": SubResource("Animation_oqhwa")
+}
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yjjt1"]
 shader = ExtResource("2_41fxr")
@@ -48,6 +106,12 @@ texture = ExtResource("2_5toxe")
 modulate = Color(1, 1, 1, 0)
 texture = ExtResource("3_oqhwa")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteBackground/SpriteFace"]
+libraries = {
+&"": SubResource("AnimationLibrary_i22b5")
+}
+autoplay = "face"
+
 [node name="SpriteMain" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_yjjt1")
 instance_shader_parameters/outline_color = Color(0.55, 0.16, 0.17, 1)
@@ -62,12 +126,11 @@ area = NodePath("..")
 sprite = NodePath("../SpriteMain")
 metadata/_custom_type_script = "uid://jtbq6dor8pk0"
 
-[node name="SubAreaScreen" type="Area2D" parent="." node_paths=PackedStringArray("canvas_layer_monitor", "power_ups_conteiner", "clickable_highlight")]
+[node name="SubAreaScreen" type="Area2D" parent="." node_paths=PackedStringArray("canvas_layer_monitor", "power_ups_conteiner")]
 position = Vector2(-2, 23)
 script = ExtResource("5_s3qmo")
 canvas_layer_monitor = NodePath("CanvasLayer")
 power_ups_conteiner = NodePath("CanvasLayer/Control/PowerUpsConteinerVertical")
-clickable_highlight = NodePath("")
 metadata/_custom_type_script = "uid://dro1ud0xvpd8l"
 
 [node name="SpriteButton" type="Sprite2D" parent="SubAreaScreen"]
