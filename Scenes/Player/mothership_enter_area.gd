@@ -23,6 +23,9 @@ func _ready() -> void:
 	button_yes.focus_entered.connect(_on_yes_focus_entered)
 	button_no.focus_entered.connect(_on_no_focus_entered)
 
+func _process(_delta: float) -> void:
+	Globals.is_showing_confirmation = is_showing_confirmation
+
 func _on_body_entered(body: RigidBody2D):
 	if !(body is Player):
 		return
@@ -43,7 +46,7 @@ func _on_body_exited(body: RigidBody2D):
 		EventBus.mothership_entrance_exited.emit()
 
 func _input(event: InputEvent) -> void:
-	if Globals.is_cutscene:
+	if Globals.is_cutscene or get_tree().paused:
 		return
 	if event.is_action_pressed("confirm"):
 		#get_viewport().set_input_as_handled()
@@ -70,6 +73,7 @@ func _on_yes_pressed():
 	SFXManager.play_sound(door_sfx)
 	is_showing_confirmation = false
 	LevelTransition.change_scene_to("res://Scenes/Levels/spaceship_interior.tscn", 1.2)
+	
 
 func _on_no_pressed():
 	#get_tree().paused = false

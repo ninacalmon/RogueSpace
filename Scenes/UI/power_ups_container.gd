@@ -15,17 +15,19 @@ func initialize() -> void:
 	#power_up_options_array = get_children()
 	await get_tree().create_timer(1).timeout
 	show_power_ups()
-	is_on = true
-	
 
 func show_power_ups():
 	for p in power_up_options_array:
 		p.show()
 		SFXManager.play_sound(power_up_pop_up_sfx)
 		await flash(p, p.modulate)
+	is_on = true
 	var first_pu: PowerUpSetup = power_up_options_array.get(0)
 	first_pu._grab_focus()
-	print(first_pu)
+
+func hide_power_ups():
+	for p in power_up_options_array:
+		p.hide()
 
 func flash(what: Control, original_color):
 	var tween = get_tree().create_tween()

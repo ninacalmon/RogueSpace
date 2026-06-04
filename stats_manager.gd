@@ -2,7 +2,7 @@ extends Node
 
 #### RESOURCES BANK ####
 var resources_needed: int = 100
-var current_resources: int = 0
+var current_resources: int = 200
 
 #### POWER UPS ####
 var PowerUpsLevels: Dictionary = {

@@ -12,6 +12,8 @@ var changing_scene: bool = false
 
 var fake_mouse_input: bool
 
+var is_showing_confirmation: bool
+
 #var level: int = 1
 #
 #var resources_gathered: int = 110

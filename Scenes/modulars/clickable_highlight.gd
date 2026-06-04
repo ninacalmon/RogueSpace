@@ -50,15 +50,15 @@ func _input(event: InputEvent) -> void:
 			return
 	if event.is_action_pressed("left_click"):
 		was_clicked.emit()
-		sprite.set_instance_shader_parameter("outline_color", Color(1.0, 0.0, 0.0))
-	if event.is_action_released("left_click"):
-		sprite.set_instance_shader_parameter("outline_color", Color(1.0, 1.0, 1.0))
+		#sprite.set_instance_shader_parameter("outline_color", Color(1.0, 0.0, 0.0))
+	#if event.is_action_released("left_click"):
+		#sprite.set_instance_shader_parameter("outline_color", Color(1.0, 1.0, 1.0))
 
 func _on_focus_changed(_focus: bool, _subject: Node2D):
 	# ClickableModule always deactivate everything because Main Area is responsible to activate as needed.
 	active = false
 	sprite.set_instance_shader_parameter("enabled", false)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if is_mouse_over_area:
 		is_on_hover.emit()

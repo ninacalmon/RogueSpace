@@ -1,32 +1,26 @@
-[gd_scene load_steps=17 format=3 uid="uid://bkjjj01xixl1j"]
+[gd_scene load_steps=16 format=3 uid="uid://bkjjj01xixl1j"]
 
 [ext_resource type="Script" uid="uid://f7hym6rcrxkn" path="res://Scenes/Spaceship/monitor.gd" id="1_s3qmo"]
+[ext_resource type="Texture2D" uid="uid://b5oolandwoj16" path="res://Sprites(main)/SpaceshipInterior/SpaceshipMonitorScreen.png" id="2_5toxe"]
 [ext_resource type="Shader" uid="uid://cccnue3fm2pyc" path="res://Shaders/outline.gdshader" id="2_41fxr"]
-[ext_resource type="Texture2D" uid="uid://c211vvvvl820r" path="res://Sprites(main)/Placeholders/vecteezy_vintage-television-with-cut-out-screen-on-isolated-ai_34374007.png" id="2_mwf53"]
+[ext_resource type="Texture2D" uid="uid://bmd80ccl2fbcp" path="res://Sprites(main)/SpaceshipInterior/SpaceshipMonitorDeimos.png" id="3_oqhwa"]
 [ext_resource type="Script" uid="uid://jtbq6dor8pk0" path="res://Scenes/Modulars/clickable_highlight.gd" id="4_cokud"]
+[ext_resource type="Texture2D" uid="uid://c06c2uw4mhk5k" path="res://Sprites(main)/SpaceshipInterior/SpaceshipMonitorFrame.png" id="4_oqhwa"]
 [ext_resource type="Script" uid="uid://diumy6vgtvj8a" path="res://Scenes/Spaceship/sub_area_screen.gd" id="5_s3qmo"]
 [ext_resource type="Script" uid="uid://ce4k3gvavwn0b" path="res://Scenes/UI/power_ups_container.gd" id="6_s3qmo"]
-[ext_resource type="Texture2D" uid="uid://b0nhvewd5m0an" path="res://Sprites(main)/Placeholders/backgound.png" id="6_t6xb0"]
-[ext_resource type="Texture2D" uid="uid://ckd05m1gdy225" path="res://Sprites(main)/Placeholders/button.png" id="7_43iud"]
+[ext_resource type="Texture2D" uid="uid://bgc2a51wevbrs" path="res://Sprites(main)/SpaceshipInterior/SpaceshipMonitorButton.png" id="7_acnb0"]
 [ext_resource type="PackedScene" uid="uid://fjxp66w0rpvl" path="res://Scenes/UI/PowerUpSetup.tscn" id="7_t6xb0"]
 [ext_resource type="AudioStream" uid="uid://cuyalodvbr04t" path="res://Sound Effects/UI/SFX_buttonswitch.wav" id="10_3okkr"]
 [ext_resource type="PackedScene" uid="uid://buqlpqb51bwy" path="res://ui_sounds.tscn" id="11_5toxe"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_41fxr"]
-size = Vector2(184, 136)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yjjt1"]
 shader = ExtResource("2_41fxr")
 shader_parameter/rounded = true
-shader_parameter/alpha_threshold = 0.1
+shader_parameter/alpha_threshold = 0.08
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3okkr"]
-shader = ExtResource("2_41fxr")
-shader_parameter/rounded = true
-shader_parameter/alpha_threshold = 0.1
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_43iud"]
-size = Vector2(30, 17.5)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5toxe"]
+radius = 3.69
+height = 23.1
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5toxe"]
 random_pitch = 2.0
@@ -37,53 +31,55 @@ stream_0/stream = ExtResource("10_3okkr")
 [node name="Monitor" type="Area2D" node_paths=PackedStringArray("sub_area_screen", "clickable_highlight")]
 script = ExtResource("1_s3qmo")
 sub_area_screen = NodePath("SubAreaScreen")
-zoom_in_amount = 6.0
+zoom_in_amount = 6.8
+zoom_offset = Vector2(0, -45)
 clickable_highlight = NodePath("ClickableHighlight")
 metadata/_custom_type_script = "uid://cj0pm0s1qx8my"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_41fxr")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(111, 156, 114, 133, 82, 92, 85, 61, 78, 58, 78, 35, 69, 24, 83, 10, 84, -51, 78, -110, -45, -113, -77, -110, -83, -42, -85, 9, -71, 26, -80, 38, -80, 61, -85, 67, -85, 98, -113, 133, -112, 156, 6, 155)
 
 [node name="SpriteBackground" type="Sprite2D" parent="."]
-position = Vector2(1.5000024, 1)
-scale = Vector2(2.380282, 1.9375)
-texture = ExtResource("6_t6xb0")
+position = Vector2(1.5000024, 21.5)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_5toxe")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="SpriteFace" type="Sprite2D" parent="SpriteBackground"]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("3_oqhwa")
+
+[node name="SpriteMain" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_yjjt1")
-scale = Vector2(3, 3)
-texture = ExtResource("2_mwf53")
+instance_shader_parameters/outline_color = Color(0.55, 0.16, 0.17, 1)
+instance_shader_parameters/outline_width = 8
+position = Vector2(0, 20.5)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_oqhwa")
 
 [node name="ClickableHighlight" type="Node2D" parent="." node_paths=PackedStringArray("area", "sprite")]
 script = ExtResource("4_cokud")
 area = NodePath("..")
-sprite = NodePath("../Sprite2D")
+sprite = NodePath("../SpriteMain")
 metadata/_custom_type_script = "uid://jtbq6dor8pk0"
 
 [node name="SubAreaScreen" type="Area2D" parent="." node_paths=PackedStringArray("canvas_layer_monitor", "power_ups_conteiner", "clickable_highlight")]
+position = Vector2(-2, 23)
 script = ExtResource("5_s3qmo")
 canvas_layer_monitor = NodePath("CanvasLayer")
 power_ups_conteiner = NodePath("CanvasLayer/Control/PowerUpsConteinerVertical")
-clickable_highlight = NodePath("ClickableHighlight")
+clickable_highlight = NodePath("")
 metadata/_custom_type_script = "uid://dro1ud0xvpd8l"
 
 [node name="SpriteButton" type="Sprite2D" parent="SubAreaScreen"]
-material = SubResource("ShaderMaterial_3okkr")
-position = Vector2(74, -35)
-scale = Vector2(2.3, 2.3)
-texture = ExtResource("7_43iud")
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("7_acnb0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubAreaScreen"]
-position = Vector2(74, -34.75)
-shape = SubResource("RectangleShape2D_43iud")
+position = Vector2(-43, 22)
+rotation = 1.5707964
+scale = Vector2(0.975, 0.975)
+shape = SubResource("CapsuleShape2D_5toxe")
 disabled = true
-
-[node name="ClickableHighlight" type="Node2D" parent="SubAreaScreen" node_paths=PackedStringArray("area", "sprite")]
-script = ExtResource("4_cokud")
-area = NodePath("..")
-sprite = NodePath("../SpriteButton")
-active = false
-metadata/_custom_type_script = "uid://jtbq6dor8pk0"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="SubAreaScreen"]
 
@@ -95,10 +91,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 39.0
-offset_top = 31.0
-offset_right = -223.0
-offset_bottom = -34.0
+offset_left = 143.0
+offset_top = 47.0
+offset_right = 143.0
+offset_bottom = 47.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -106,8 +102,9 @@ mouse_filter = 2
 [node name="PowerUpsConteinerVertical" type="VBoxContainer" parent="SubAreaScreen/CanvasLayer/Control" node_paths=PackedStringArray("power_up_options_array")]
 layout_mode = 1
 offset_left = 127.0
+offset_top = -29.0
 offset_right = 1127.0
-offset_bottom = 604.0
+offset_bottom = 575.0
 theme_override_constants/separation = -46
 alignment = 2
 script = ExtResource("6_s3qmo")
@@ -122,33 +119,27 @@ mouse_filter = 2
 theme_override_constants/separation = 24
 
 [node name="PowerUp" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical/PowerUpsContainerHorizontal" instance=ExtResource("7_t6xb0")]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-mouse_filter = 2
 effect = "Impulse"
 title = "IMPULSO+ [&]"
 description = "Dobra a capacidade do seu impulso."
 max_level = 3
 
 [node name="PowerUp2" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical/PowerUpsContainerHorizontal" instance=ExtResource("7_t6xb0")]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-mouse_filter = 2
 effect = "Fuel"
 title = "COMBUSTÍVEL+"
 description = "Aumenta a capacidade do seu tanque de combustível."
 max_level = 3
 
 [node name="PowerUp3" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical/PowerUpsContainerHorizontal" instance=ExtResource("7_t6xb0")]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-mouse_filter = 2
 effect = "Health"
 title = "VIDA+"
 price = 200
@@ -163,33 +154,27 @@ mouse_filter = 2
 theme_override_constants/separation = 24
 
 [node name="PowerUp4" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical/PowerUpsContainerHorizontal2" instance=ExtResource("7_t6xb0")]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-mouse_filter = 2
 effect = "Teleport"
 title = "TELEPORTE"
 price = 200
 description = "Retorne à nave-mãe imediatamente e sem perder recursos."
 
 [node name="PowerUp5" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical/PowerUpsContainerHorizontal2" instance=ExtResource("7_t6xb0")]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-mouse_filter = 2
 effect = "Propulsors"
 title = "PROPULSORES+"
 price = 200
 description = "Repare seu velho traje de cosmonauta. Melhora a movimentação no espaço."
 
 [node name="PowerUp6" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical/PowerUpsContainerHorizontal2" instance=ExtResource("7_t6xb0")]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-mouse_filter = 2
 effect = "Bullet"
 title = "LASER APRIMORADO"
 price = 200

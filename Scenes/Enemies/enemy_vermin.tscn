@@ -34,6 +34,7 @@ lock_rotation = true
 contact_monitor = true
 script = ExtResource("1_k0yb4")
 speed = 200.0
+life = 2.0
 damage = 6.0
 attack_distance = 40.0
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c0lfvcrle3frk"]
+[gd_scene load_steps=25 format=3 uid="uid://c0lfvcrle3frk"]
 
 [ext_resource type="Script" uid="uid://dh0io287hog2e" path="res://Scenes/Levels/spaceship_interior.gd" id="1_4wenu"]
 [ext_resource type="PackedScene" uid="uid://cgfq6udrxu5hm" path="res://Scenes/UI/mouse.tscn" id="1_ntswj"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://dei8kv4pd3sf0" path="res://Scenes/Spaceship/pan_view_module.gd" id="3_nkmj0"]
 [ext_resource type="Script" uid="uid://cpd1q7shcbn7h" path="res://Scenes/Spaceship/focus_module.gd" id="4_0gr6q"]
 [ext_resource type="Shader" uid="uid://bpeqc2oh4cgdj" path="res://Shaders/pixelated.gdshader" id="4_76ouu"]
-[ext_resource type="Texture2D" uid="uid://dsyx4jt8a7deg" path="res://Sprites(main)/UI/Kenney Input/tile_0568.png" id="5_tfcmn"]
 [ext_resource type="PackedScene" uid="uid://bkjjj01xixl1j" path="res://Scenes/Spaceship/Monitor.tscn" id="7_cfm2w"]
 [ext_resource type="PackedScene" uid="uid://ck6swxjky54l3" path="res://Scenes/Spaceship/resources_machine.tscn" id="10_cfm2w"]
 [ext_resource type="Script" uid="uid://csvtg0a2joywc" path="res://Scenes/Spaceship/spaceship_lights.gd" id="12_4wenu"]
@@ -19,10 +18,6 @@
 [ext_resource type="Script" uid="uid://c3vmsf4qyoerg" path="res://Scenes/Spaceship/input_guide_admin.gd" id="16_76ouu"]
 [ext_resource type="PackedScene" uid="uid://coahuft63xqca" path="res://Scenes/Spaceship/UI/ui_spaceship.tscn" id="16_n7pqb"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jfm16"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3unc4"]
-
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_n7pqb"]
 fade_time = 0.0
 stream_count = 1
@@ -30,8 +25,7 @@ stream_0 = ExtResource("14_uvk7a")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_76ouu"]
 shader = ExtResource("4_76ouu")
-shader_parameter/pixel_size = 5.00000019
-shader_parameter/camera_pos = Vector2(0, 0)
+shader_parameter/pixel_size = 8.0000003325
 
 [sub_resource type="Gradient" id="Gradient_4wenu"]
 offsets = PackedFloat32Array(0, 0.6666667)
@@ -65,71 +59,26 @@ glow_hdr_threshold = 0.0
 script = ExtResource("1_4wenu")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(13.000001, -19.000013)
-scale = Vector2(0.6347222, 0.6253333)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_n7pqb")
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("pixel_rect")]
+[node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(1.0005939, 1)
 script = ExtResource("3_cfm2w")
-offset_strength_y = 0.35
-pixel_rect = NodePath("../VisualStuff/PixelRect")
 
 [node name="PanViewModule" type="CanvasLayer" parent="Camera2D" node_paths=PackedStringArray("camera")]
 script = ExtResource("3_nkmj0")
 camera = NodePath("..")
+total_rooms_range = null
 room_width = 1152
+viewport_border_width = null
+camera_speed = null
 
 [node name="ButtonL" type="Button" parent="Camera2D/PanViewModule"]
-custom_minimum_size = Vector2(72, 648)
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 72.0
+offset_right = 73.0
 grow_vertical = 2
-theme_override_styles/hover = SubResource("StyleBoxEmpty_jfm16")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_3unc4")
-
-[node name="TextureRect" type="TextureRect" parent="Camera2D/PanViewModule/ButtonL"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_tfcmn")
-
-[node name="ButtonR" type="Button" parent="Camera2D/PanViewModule"]
-custom_minimum_size = Vector2(72, 648)
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_styles/hover = SubResource("StyleBoxEmpty_jfm16")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_3unc4")
-
-[node name="TextureRect" type="TextureRect" parent="Camera2D/PanViewModule/ButtonR"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_tfcmn")
-flip_h = true
 
 [node name="FocusModule" type="Node2D" parent="Camera2D" node_paths=PackedStringArray("camera")]
 script = ExtResource("4_0gr6q")
@@ -140,13 +89,13 @@ position = Vector2(-429, 124)
 scale = Vector2(1.0005939, 1)
 
 [node name="Monitor" parent="." instance=ExtResource("7_cfm2w")]
-position = Vector2(-22.000002, -6)
+position = Vector2(-29, -6)
 scale = Vector2(1.0005939, 1)
 
 [node name="MouseEmulator" parent="." instance=ExtResource("1_ntswj")]
 
 [node name="Door" parent="." instance=ExtResource("12_i5u5t")]
-position = Vector2(1399.0001, 52)
+position = Vector2(1280, 37)
 scale = Vector2(1.0005939, 1)
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
@@ -154,7 +103,7 @@ scroll_scale = Vector2(1.15, 1)
 
 [node name="CeilingTubes" type="Sprite2D" parent="Parallax2D"]
 position = Vector2(-308, 55.999996)
-scale = Vector2(0.79236114, 0.75)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_76ouu")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -179,9 +128,9 @@ material = SubResource("ShaderMaterial_76ouu")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1993.9998
+offset_left = -1902.0001
 offset_top = -489.99997
-offset_right = -1887.1343
+offset_right = -1853.5829
 offset_bottom = -519.1433
 grow_horizontal = 2
 grow_vertical = 2
@@ -197,7 +146,6 @@ script = ExtResource("12_uafmv")
 visible = false
 color = Color(0.4, 0.4, 0.4, 1)
 script = ExtResource("12_4wenu")
-deactivate = true
 
 [node name="MainLight" type="PointLight2D" parent="VisualStuff/CanvasModulate"]
 color = Color(0.68075, 0.7, 0.62299997, 1)
