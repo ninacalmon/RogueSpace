@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c0lfvcrle3frk"]
+[gd_scene load_steps=32 format=3 uid="uid://c0lfvcrle3frk"]
 
 [ext_resource type="Script" uid="uid://dh0io287hog2e" path="res://Scenes/Levels/spaceship_interior.gd" id="1_4wenu"]
 [ext_resource type="PackedScene" uid="uid://cgfq6udrxu5hm" path="res://Scenes/UI/mouse.tscn" id="1_ntswj"]
@@ -10,7 +10,10 @@
 [ext_resource type="Shader" uid="uid://bpeqc2oh4cgdj" path="res://Shaders/pixelated.gdshader" id="4_76ouu"]
 [ext_resource type="Texture2D" uid="uid://dsyx4jt8a7deg" path="res://Sprites(main)/UI/Kenney Input/tile_0568.png" id="5_tfcmn"]
 [ext_resource type="PackedScene" uid="uid://bkjjj01xixl1j" path="res://Scenes/Spaceship/Monitor.tscn" id="7_cfm2w"]
+[ext_resource type="Texture2D" uid="uid://6ivw36hwbai8" path="res://Sprites(main)/SpaceshipInterior/Machine/SpaceshipCable.png" id="8_3unc4"]
+[ext_resource type="Script" uid="uid://cbpgnuq5d011c" path="res://Scenes/Levels/spaceship_cable.gd" id="9_xv1p6"]
 [ext_resource type="PackedScene" uid="uid://ck6swxjky54l3" path="res://Scenes/Spaceship/resources_machine.tscn" id="10_cfm2w"]
+[ext_resource type="Script" uid="uid://c4rjuhxn0t5h3" path="res://Scenes/Spaceship/shake_module.gd" id="10_vo7cp"]
 [ext_resource type="Script" uid="uid://csvtg0a2joywc" path="res://Scenes/Spaceship/spaceship_lights.gd" id="12_4wenu"]
 [ext_resource type="PackedScene" uid="uid://htap6wmpylrw" path="res://Scenes/Spaceship/door.tscn" id="12_i5u5t"]
 [ext_resource type="Script" uid="uid://0cl5r6xdfj6q" path="res://Scenes/Spaceship/mouse_light.gd" id="12_uafmv"]
@@ -139,6 +142,16 @@ camera = NodePath("..")
 [node name="Diary" parent="." instance=ExtResource("19_jfm16")]
 position = Vector2(312, 117)
 
+[node name="SpaceshipCable" type="Sprite2D" parent="."]
+position = Vector2(-237.75055, 125)
+scale = Vector2(1.0005939, 1)
+texture = ExtResource("8_3unc4")
+script = ExtResource("9_xv1p6")
+
+[node name="ShakeModule" type="Node" parent="SpaceshipCable"]
+script = ExtResource("10_vo7cp")
+metadata/_custom_type_script = "uid://c4rjuhxn0t5h3"
+
 [node name="ResourcesMachine" parent="." instance=ExtResource("10_cfm2w")]
 position = Vector2(-658, -53)
 scale = Vector2(1.0005939, 1)
@@ -199,11 +212,12 @@ script = ExtResource("12_uafmv")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="VisualStuff"]
 visible = false
-color = Color(0.4, 0.4, 0.4, 1)
+color = Color(0.56, 0.56, 0.56, 1)
 script = ExtResource("12_4wenu")
 
 [node name="MainLight" type="PointLight2D" parent="VisualStuff/CanvasModulate"]
 z_index = 4096
+scale = Vector2(1.6973958, 1)
 color = Color(0.68075, 0.7, 0.62299997, 1)
 energy = 0.0
 texture = SubResource("GradientTexture2D_uvk7a")
