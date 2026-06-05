@@ -34,7 +34,7 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -323.0
+offset_left = -200.0
 offset_bottom = 139.0
 grow_horizontal = 0
 mouse_filter = 2
@@ -45,7 +45,7 @@ fit_content = true
 horizontal_alignment = 2
 script = ExtResource("1_6hd2b")
 
-[node name="DayControl" type="Control" parent="UIControlRect"]
+[node name="DayControl" type="Control" parent="UIControlRect/ResourcesLabel"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -53,14 +53,13 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -56.0
-offset_top = -519.0
-offset_bottom = -467.0
+offset_top = -52.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 4
 script = ExtResource("2_isle0")
 
-[node name="TextureRect" type="TextureRect" parent="UIControlRect/DayControl"]
+[node name="TextureRect" type="TextureRect" parent="UIControlRect/ResourcesLabel/DayControl"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -75,7 +74,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_xmkce")
 
-[node name="DayLabel" type="RichTextLabel" parent="UIControlRect/DayControl"]
+[node name="DayLabel" type="RichTextLabel" parent="UIControlRect/ResourcesLabel/DayControl"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
