@@ -1,5 +1,7 @@
 extends Node
 
+var day: int = 3
+
 #### RESOURCES BANK ####
 var resources_needed: int = 100
 var current_resources: int = 0

@@ -29,6 +29,7 @@ StatsManager="*res://stats_manager.gd"
 PathsHub="*res://paths_hub.gd"
 CustomTooltip="*res://custom_tooltip.tscn"
 InputGuide="*res://input_guide.tscn"
+DiaryDatabase="*res://diary_database.gd"
 
 [display]
 

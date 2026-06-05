@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bvmqc5jgquxeu"]
+[gd_scene load_steps=22 format=3 uid="uid://bvmqc5jgquxeu"]
 
 [ext_resource type="Texture2D" uid="uid://cyrvbfkrobaa1" path="res://Sprites(main)/bookTileset.png" id="1_7yh6m"]
 [ext_resource type="Texture2D" uid="uid://drluyy4fl7yg3" path="res://Sprites(main)/SpaceshipInterior/book.png" id="1_j6pbb"]
@@ -6,9 +6,9 @@
 [ext_resource type="Shader" uid="uid://cccnue3fm2pyc" path="res://Shaders/outline.gdshader" id="2_7afck"]
 [ext_resource type="Script" uid="uid://jtbq6dor8pk0" path="res://Scenes/Modulars/clickable_highlight.gd" id="4_wy5ug"]
 [ext_resource type="Shader" uid="uid://kyf6ladmlc1w" path="res://Shaders/blur.gdshader" id="5_cr6hc"]
-[ext_resource type="Texture2D" uid="uid://b1idceig4yflc" path="res://Sprites(main)/SpaceshipInterior/drawingTest.png" id="7_cr6hc"]
-[ext_resource type="FontFile" uid="uid://cwut5ptwefh1" path="res://Fonts/PearSoda.ttf" id="7_w3sy0"]
-[ext_resource type="Texture2D" uid="uid://dsyx4jt8a7deg" path="res://Sprites(main)/UI/Kenney Input/tile_0568.png" id="8_w3sy0"]
+[ext_resource type="Script" uid="uid://fvfblb6b10sn" path="res://Scenes/Spaceship/diary_control.gd" id="6_w3sy0"]
+[ext_resource type="PackedScene" uid="uid://qwqle3odi0wk" path="res://Scenes/Spaceship/diary_page.tscn" id="7_32dq5"]
+[ext_resource type="Texture2D" uid="uid://di2ndivrt2452" path="res://Sprites(main)/UI/Kenney Input/tile_0823.png" id="8_w3sy0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cr6hc"]
 shader = ExtResource("2_7afck")
@@ -184,11 +184,20 @@ _data = {
 &"open_book": SubResource("Animation_7yh6m")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w3sy0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_32dq5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hmmsy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yyvya"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hmmsy"]
 shader = ExtResource("5_cr6hc")
 shader_parameter/blur_amount = 1.5
 
 [node name="Diary" type="Area2D" node_paths=PackedStringArray("clickable_highlight")]
+light_mask = 17
 script = ExtResource("1_mlqjd")
 zoom_in_amount = 1.0
 clickable_highlight = NodePath("ClickableHighlight")
@@ -234,7 +243,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_vokqo")
 }
 
-[node name="BookControl" type="Control" parent="BookCanvasLayer"]
+[node name="DiaryControl" type="Control" parent="BookCanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -246,8 +255,9 @@ offset_bottom = -109.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("6_w3sy0")
 
-[node name="PagesContainer" type="HBoxContainer" parent="BookCanvasLayer/BookControl"]
+[node name="PagesContainer" type="HBoxContainer" parent="BookCanvasLayer/DiaryControl"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -258,108 +268,35 @@ mouse_filter = 2
 theme_override_constants/separation = 64
 alignment = 1
 
-[node name="PageL" type="VBoxContainer" parent="BookCanvasLayer/BookControl/PagesContainer"]
+[node name="PageL" parent="BookCanvasLayer/DiaryControl/PagesContainer" instance=ExtResource("7_32dq5")]
 layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-theme_override_constants/separation = 24
 
-[node name="Day" type="RichTextLabel" parent="BookCanvasLayer/BookControl/PagesContainer/PageL"]
+[node name="PageR" parent="BookCanvasLayer/DiaryControl/PagesContainer" instance=ExtResource("7_32dq5")]
 layout_mode = 2
-mouse_filter = 2
-theme_override_colors/default_color = Color(0.2, 0.124800004, 0.106, 1)
-theme_override_font_sizes/normal_font_size = 32
-text = "Dia 1 - - -"
-fit_content = true
 
-[node name="Head" type="RichTextLabel" parent="BookCanvasLayer/BookControl/PagesContainer/PageL"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_colors/default_color = Color(0.44, 0.11968, 0.096800014, 1)
-theme_override_fonts/bold_font = ExtResource("7_w3sy0")
-theme_override_font_sizes/bold_font_size = 32
-bbcode_enabled = true
-text = "[b]BEM VINDO AO DIÁRIO DO DEIMOS FODIDO![/b]"
-fit_content = true
-
-[node name="Main" type="RichTextLabel" parent="BookCanvasLayer/BookControl/PagesContainer/PageL"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_colors/default_color = Color(0.2, 0.124800004, 0.106, 1)
-theme_override_fonts/bold_font = ExtResource("7_w3sy0")
-theme_override_font_sizes/bold_font_size = 32
-bbcode_enabled = true
-text = "Textos e tal yapping yapping oi meu nome é deimos to aqui yapping pra caralho!!!
-
-Yapping oi meu nome é deimos to aqui yapping pra caralho!!! Textos e tal yapping yapping oi meu nome é deimos to aqui 
-
-[b]Yapping frase de efeito?[/b]
-tchau tchau kafkers!!!"
-fit_content = true
-
-[node name="PageR" type="VBoxContainer" parent="BookCanvasLayer/BookControl/PagesContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-theme_override_constants/separation = 24
-
-[node name="Day" type="RichTextLabel" parent="BookCanvasLayer/BookControl/PagesContainer/PageR"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_colors/default_color = Color(0.2, 0.124800004, 0.106, 1)
-theme_override_font_sizes/normal_font_size = 32
-text = "Dia 2 - - -"
-fit_content = true
-
-[node name="Head" type="RichTextLabel" parent="BookCanvasLayer/BookControl/PagesContainer/PageR"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_colors/default_color = Color(0.44, 0.11968, 0.096800014, 1)
-theme_override_fonts/bold_font = ExtResource("7_w3sy0")
-theme_override_font_sizes/bold_font_size = 32
-bbcode_enabled = true
-text = "[b]TESTES, TESTES HAHAHA![/b]"
-fit_content = true
-
-[node name="Main" type="RichTextLabel" parent="BookCanvasLayer/BookControl/PagesContainer/PageR"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_colors/default_color = Color(0.2, 0.124800004, 0.106, 1)
-theme_override_fonts/bold_font = ExtResource("7_w3sy0")
-theme_override_font_sizes/bold_font_size = 32
-bbcode_enabled = true
-text = "Textos e tal yapping yapping oi meu nome é deimos to aqui yapping pra caralho!!!
-
-[b]Beijos do Deimos[/b]
-boca de inseto KAKAKAKAKAKAKAKAKAKA."
-fit_content = true
-
-[node name="TextureRect" type="TextureRect" parent="BookCanvasLayer/BookControl/PagesContainer/PageR"]
-modulate = Color(0.4392157, 0.12156863, 0.09803922, 1)
-layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-texture = ExtResource("7_cr6hc")
-stretch_mode = 5
-
-[node name="ButtonsContainer" type="HBoxContainer" parent="BookCanvasLayer/BookControl"]
+[node name="ButtonsContainer" type="HBoxContainer" parent="BookCanvasLayer/DiaryControl"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -75.0
+offset_top = -27.0
 offset_right = 75.0
+offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/separation = 64
 alignment = 1
 
-[node name="ButtonL" type="Button" parent="BookCanvasLayer/BookControl/ButtonsContainer"]
+[node name="ButtonL" type="Button" parent="BookCanvasLayer/DiaryControl/ButtonsContainer"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 2
+theme_override_styles/hover = SubResource("StyleBoxEmpty_w3sy0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_32dq5")
 
-[node name="TextureRect" type="TextureRect" parent="BookCanvasLayer/BookControl/ButtonsContainer/ButtonL"]
+[node name="TextureRect" type="TextureRect" parent="BookCanvasLayer/DiaryControl/ButtonsContainer/ButtonL"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -370,11 +307,14 @@ offset_bottom = 20.0
 grow_vertical = 2
 texture = ExtResource("8_w3sy0")
 
-[node name="ButtonR" type="Button" parent="BookCanvasLayer/BookControl/ButtonsContainer"]
+[node name="ButtonR" type="Button" parent="BookCanvasLayer/DiaryControl/ButtonsContainer"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hmmsy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yyvya")
 
-[node name="TextureRect" type="TextureRect" parent="BookCanvasLayer/BookControl/ButtonsContainer/ButtonR"]
+[node name="TextureRect" type="TextureRect" parent="BookCanvasLayer/DiaryControl/ButtonsContainer/ButtonR"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -386,6 +326,7 @@ offset_top = -20.0
 offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("8_w3sy0")
 flip_h = true
 
@@ -397,3 +338,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+
+[node name="CanvasModulateOpenBook" type="CanvasModulate" parent="BookCanvasLayer"]
+light_mask = 16
+visibility_layer = 16
+z_index = 4096
+color = Color(0.44464, 0.48, 0.4176, 1)

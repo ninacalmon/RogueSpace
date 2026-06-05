@@ -8,13 +8,13 @@ var has_energy: bool = false
 
 @onready var animation_take_book: AnimationPlayer = $SpriteMiniBook/AnimationTakeBook
 @onready var animation_book_open: AnimationPlayer = $BookCanvasLayer/SpriteOpen/AnimationBookOpen
-
-@onready var book_control: Control = $BookCanvasLayer/BookControl
+@onready var diary_control: DiaryPageController = $BookCanvasLayer/DiaryControl
 @onready var blur_rect: ColorRect = $BookCanvasLayer/BlurRect
 
 
 
 func _ready() -> void:
+	has_energy = true
 	_connect_signals()
 	_initialize_ui()
 
@@ -27,7 +27,7 @@ func _connect_signals():
 
 func _initialize_ui():
 	blur_rect.hide()
-	book_control.hide()
+	diary_control.hide()
 	sprite_open.hide()
 
 
@@ -64,6 +64,7 @@ func _take_book():
 
 
 func _open_book():
+	diary_control.open_diary()
 	_show_blur()
 	await _play_open_animation()
 	_show_book_ui()
@@ -110,15 +111,15 @@ func _play_close_animation():
 
 
 func _show_book_ui():
-	book_control.modulate.a = 0
-	book_control.show()
-	slow_color_change(book_control, 0.2, Color(1, 1, 1, 1))
+	diary_control.modulate.a = 0
+	diary_control.show()
+	slow_color_change(diary_control, 0.2, Color(1, 1, 1, 1))
 
 
 func _hide_book_ui():
-	slow_color_change(book_control, 0.2)
+	slow_color_change(diary_control, 0.2)
 	await get_tree().create_timer(0.2).timeout
-	book_control.hide()
+	diary_control.hide()
 
 func slow_color_change(subject: Node, duration: float = 0.5, final_modulate: Color = Color(1, 1, 1, 0)):
 	var tween = create_tween()

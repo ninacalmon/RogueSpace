@@ -45,12 +45,12 @@ height = 256
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="Gradient" id="Gradient_i5u5t"]
+[sub_resource type="Gradient" id="Gradient_jfm16"]
 offsets = PackedFloat32Array(0, 0.6666667)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_uvk7a"]
-gradient = SubResource("Gradient_i5u5t")
+gradient = SubResource("Gradient_jfm16")
 width = 2560
 height = 640
 fill = 1
@@ -201,11 +201,11 @@ texture = SubResource("GradientTexture2D_i5u5t")
 script = ExtResource("12_uafmv")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="VisualStuff"]
-visible = false
 color = Color(0.4, 0.4, 0.4, 1)
 script = ExtResource("12_4wenu")
 
 [node name="MainLight" type="PointLight2D" parent="VisualStuff/CanvasModulate"]
+z_index = 4096
 color = Color(0.68075, 0.7, 0.62299997, 1)
 energy = 0.0
 texture = SubResource("GradientTexture2D_uvk7a")
