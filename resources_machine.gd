@@ -2,7 +2,7 @@ extends MainArea
 class_name ResourcesMachine
 
 @export var sub_area_resources_deposit: SubArea
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite_main: Sprite2D = $SpriteMain
 @onready var shake_module: ShakeModule = $ShakeModule
 
 func _ready() -> void:
@@ -26,6 +26,7 @@ func _on_focus_changed(focus: bool, subject: Node2D):
 	## clickable_highlight.active on process based off this state
 	if focus == false:
 		clickable_highlight.active = true
+		clickable_highlight.is_mouse_over_area = false
 		is_focused = false
 
 	elif  focus == true and subject == self:

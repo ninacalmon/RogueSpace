@@ -37,6 +37,7 @@ func _on_focus_changed(focus: bool, subject: Node2D):
 	## clickable_highlight.active on process based off this state
 	if focus == false:
 		deimos_face(false)
+		clickable_highlight.is_mouse_over_area = false
 		clickable_highlight.active = true
 		is_focused = false
 		if !lights_on and has_energy:

@@ -207,7 +207,7 @@ polygon = PackedVector2Array(1, 28, 45, 0, 46, -9, -6, -28, -47, -17, -45, -9)
 
 [node name="SpriteMiniBook" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_cr6hc")
-instance_shader_parameters/outline_width = 8
+instance_shader_parameters/outline_width = 30
 scale = Vector2(0.120000005, 0.120000005)
 texture = ExtResource("1_j6pbb")
 
@@ -331,6 +331,7 @@ texture = ExtResource("8_w3sy0")
 flip_h = true
 
 [node name="BlurRect" type="ColorRect" parent="BookCanvasLayer"]
+visible = false
 z_index = -1
 material = SubResource("ShaderMaterial_hmmsy")
 anchors_preset = 15

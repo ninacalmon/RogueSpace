@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://coahuft63xqca"]
+[gd_scene load_steps=5 format=3 uid="uid://coahuft63xqca"]
 
 [ext_resource type="Script" uid="uid://bptehg4lojwkg" path="res://Scenes/Spaceship/UI/resources_label.gd" id="1_6hd2b"]
+[ext_resource type="Texture2D" uid="uid://66jhwcha15q8" path="res://Sprites(main)/UI/Kenney Input/tile_calendar.png" id="1_xmkce"]
+[ext_resource type="Script" uid="uid://cupbln1kclekx" path="res://Scenes/UI/day_control.gd" id="2_isle0"]
 [ext_resource type="Script" uid="uid://bnroivcak8mw" path="res://Scenes/Spaceship/UI/focus_exit_button.gd" id="2_okbct"]
 
 [node name="UISpaceship" type="Control"]
@@ -32,15 +34,63 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -301.0
+offset_left = -200.0
 offset_bottom = 139.0
 grow_horizontal = 0
 mouse_filter = 2
 bbcode_enabled = true
-text = "[b]200 recursos[/b]"
+text = "[b]200[/b] 
+recursos"
 fit_content = true
-horizontal_alignment = 1
+horizontal_alignment = 2
 script = ExtResource("1_6hd2b")
+
+[node name="DayControl" type="Control" parent="UIControlRect/ResourcesLabel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -52.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+script = ExtResource("2_isle0")
+
+[node name="TextureRect" type="TextureRect" parent="UIControlRect/ResourcesLabel/DayControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_xmkce")
+
+[node name="DayLabel" type="RichTextLabel" parent="UIControlRect/ResourcesLabel/DayControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "dia
+#"
+horizontal_alignment = 1
 
 [node name="ButtonControl" type="Control" parent="UIControlRect"]
 visible = false

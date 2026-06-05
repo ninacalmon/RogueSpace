@@ -1,6 +1,7 @@
 extends SubArea
 
 @onready var counter_text: ResourceCounter = %CounterText
+@onready var sprite_valve: Sprite2D = $SpriteValve
 
 var was_counted: bool = false
 
@@ -17,6 +18,7 @@ func _on_clicked():
 		return
 	was_counted = true
 	can_exit_sub_area = false
+	sprite_valve.frame = 1
 	counter_text.initialize()
 
 func _on_resource_count_finished():

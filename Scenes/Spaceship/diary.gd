@@ -14,7 +14,7 @@ var has_energy: bool = false
 
 
 func _ready() -> void:
-	has_energy = true
+	#has_energy = true
 	_connect_signals()
 	_initialize_ui()
 
@@ -48,8 +48,10 @@ func _on_clicked():
 func _on_focus_changed(focus: bool, subject: Node2D):
 	if focus:
 		if subject == self:
+			can_exit = false
 			_take_book()
 	else:
+		clickable_highlight.is_mouse_over_area = false
 		clickable_highlight.active = true
 		_close_book()
 		is_focused = false
@@ -68,6 +70,7 @@ func _open_book():
 	_show_blur()
 	await _play_open_animation()
 	_show_book_ui()
+	can_exit = true
 
 
 func _close_book():

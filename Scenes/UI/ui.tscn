@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bskx6fe236s8a"]
+[gd_scene load_steps=20 format=3 uid="uid://bskx6fe236s8a"]
 
 [ext_resource type="Script" uid="uid://cwrgvd4dp6ts7" path="res://Scenes/UI/velocity_control.gd" id="1_gm34j"]
 [ext_resource type="Texture2D" uid="uid://dny5sfb4w1y05" path="res://Sprites(main)/UI/circle.png" id="2_t7te2"]
@@ -12,7 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://bhconrowq6xs4" path="res://Sprites(main)/UI/lifebar.png" id="7_h6tq4"]
 [ext_resource type="Script" uid="uid://bfxmcgyxsyte2" path="res://Scenes/UI/pause_overlay.gd" id="8_teh6u"]
 [ext_resource type="Script" uid="uid://8kbdlygu4h2r" path="res://Scenes/UI/percentage.gd" id="9_t7te2"]
+[ext_resource type="Script" uid="uid://cupbln1kclekx" path="res://Scenes/UI/day_control.gd" id="11_56q1t"]
 [ext_resource type="Script" uid="uid://d01jqjgknurin" path="res://Scenes/UI/indicator.gd" id="11_74pwq"]
+[ext_resource type="Texture2D" uid="uid://66jhwcha15q8" path="res://Sprites(main)/UI/Kenney Input/tile_calendar.png" id="11_t7te2"]
 [ext_resource type="Texture2D" uid="uid://c6c66sysu2jlq" path="res://Sprites/Ship_Mid.png" id="12_wvggw"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jsq1y"]
@@ -229,6 +231,52 @@ Volte para a nave-mãe.
 fit_content = true
 horizontal_alignment = 2
 
+[node name="DayControl" type="Control" parent="UIControlRect/ResourcesLabel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -66.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("11_56q1t")
+
+[node name="TextureRect" type="TextureRect" parent="UIControlRect/ResourcesLabel/DayControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_t7te2")
+
+[node name="DayLabel" type="RichTextLabel" parent="UIControlRect/ResourcesLabel/DayControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "dia
+#"
+horizontal_alignment = 1
+
 [node name="WarningsControl" type="Control" parent="UIControlRect"]
 custom_minimum_size = Vector2(0, 350)
 layout_mode = 1
@@ -277,6 +325,7 @@ metadata/_edit_lock_ = true
 
 [node name="PauseOverlay" type="Control" parent="." node_paths=PackedStringArray("pause_color_rect", "continue_button", "exit_button")]
 process_mode = 3
+visible = false
 z_index = 4096
 layout_mode = 1
 anchors_preset = 15

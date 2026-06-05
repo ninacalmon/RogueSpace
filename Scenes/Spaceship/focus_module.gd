@@ -5,28 +5,28 @@ extends Node2D
 
 
 @onready var init_zoom: Vector2 = camera.zoom
-@onready var init_offset: Vector2 = camera.offset
+@onready var init_position: Vector2 = camera.global_position
 
 
 func initialize() -> void:
 	SpaceshipEventBus.focus_on.connect(_on_focus_on_requested)
 	SpaceshipEventBus.focus_off.connect(_on_focus_off_requested)
 
-func _on_focus_on_requested(zoom_in_amount: float, zoom_offset: Vector2, emitter: Node2D, keep_camera: bool):
-	if camera.is_busy or camera.is_focused:
+func _on_focus_on_requested(zoom_in_amount: float, zoom_offset: Vector2, emitter: MainArea, keep_camera: bool):
+	if camera.is_busy or camera.is_focused or !emitter.clickable_highlight.is_mouse_over_area:
 		return
 
 	camera.is_busy = true
 	camera.is_focused = true
 	var new_zoom = camera.zoom * zoom_in_amount
-	var new_offset = emitter.global_position + zoom_offset
+	var new_position = emitter.global_position + zoom_offset
 	
 	if !keep_camera:
 		var tween = create_tween()
 		tween.set_ease(Tween.EASE_IN_OUT)
 		tween.set_trans(Tween.TRANS_QUAD)
 		tween.tween_property(camera, "zoom", new_zoom, zoom_speed)
-		tween.parallel().tween_property(camera, "offset", new_offset, zoom_speed)
+		tween.parallel().tween_property(camera, "global_position", new_position, zoom_speed)
 		
 		await tween.finished
 	SpaceshipEventBus.focus_changed.emit(true, emitter)
@@ -45,8 +45,7 @@ func _on_focus_off_requested():
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_QUAD)
 	tween.tween_property(camera, "zoom", init_zoom, zoom_speed)
-	tween.parallel().tween_property(camera, "offset", init_offset, zoom_speed)
-	
+	tween.tween_property(camera, "global_position", init_position, zoom_speed)	
 	await tween.finished
 	
 	camera.is_busy = false

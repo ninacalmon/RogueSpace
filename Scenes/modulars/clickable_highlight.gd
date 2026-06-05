@@ -38,8 +38,6 @@ func _on_area_mouse_exited():
 		sprite.set_instance_shader_parameter("enabled", false)
 		ControllerVibration.vibrate_controller()
 
-
-
 func _input(event: InputEvent) -> void:
 	if !active:
 		return

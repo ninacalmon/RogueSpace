@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dh0io287hog2e" path="res://Scenes/Levels/spaceship_interior.gd" id="1_4wenu"]
 [ext_resource type="PackedScene" uid="uid://cgfq6udrxu5hm" path="res://Scenes/UI/mouse.tscn" id="1_ntswj"]
-[ext_resource type="Texture2D" uid="uid://dy3ljnbxpjowe" path="res://Sprites(main)/SpaceshipInterior/SpaceshipBackground2.png" id="2_n7pqb"]
+[ext_resource type="Texture2D" uid="uid://cowjyayuawx8v" path="res://Sprites(main)/SpaceshipInterior/SpaceshipBackground3.png" id="2_jfm16"]
 [ext_resource type="Texture2D" uid="uid://crf37jptk3dbk" path="res://Sprites(main)/SpaceshipInterior/SpaceshipTUBOS.png" id="3_76ouu"]
 [ext_resource type="Script" uid="uid://dfov1lobu4khy" path="res://Scenes/Spaceship/camera_2d.gd" id="3_cfm2w"]
 [ext_resource type="Script" uid="uid://dei8kv4pd3sf0" path="res://Scenes/Spaceship/pan_view_module.gd" id="3_nkmj0"]
@@ -68,7 +68,7 @@ script = ExtResource("1_4wenu")
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(13.000001, -19.000013)
 scale = Vector2(0.6347222, 0.6253333)
-texture = ExtResource("2_n7pqb")
+texture = ExtResource("2_jfm16")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("pixel_rect")]
 scale = Vector2(1.0005939, 1)
@@ -136,12 +136,12 @@ flip_h = true
 script = ExtResource("4_0gr6q")
 camera = NodePath("..")
 
+[node name="Diary" parent="." instance=ExtResource("19_jfm16")]
+position = Vector2(312, 117)
+
 [node name="ResourcesMachine" parent="." instance=ExtResource("10_cfm2w")]
-position = Vector2(-429, 124)
+position = Vector2(-658, -53)
 scale = Vector2(1.0005939, 1)
-zoom_in_amount = 3.0
-zoom_offset = Vector2(0, 0)
-zoom_speed = 1.0
 
 [node name="Monitor" parent="." instance=ExtResource("7_cfm2w")]
 position = Vector2(-22.000002, -6)
@@ -152,9 +152,6 @@ scale = Vector2(1.0005939, 1)
 [node name="Door" parent="." instance=ExtResource("12_i5u5t")]
 position = Vector2(1399.0001, 52)
 scale = Vector2(1.0005939, 1)
-
-[node name="Diary" parent="." instance=ExtResource("19_jfm16")]
-position = Vector2(-241, 111)
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 scroll_scale = Vector2(1.15, 1)
@@ -201,6 +198,7 @@ texture = SubResource("GradientTexture2D_i5u5t")
 script = ExtResource("12_uafmv")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="VisualStuff"]
+visible = false
 color = Color(0.4, 0.4, 0.4, 1)
 script = ExtResource("12_4wenu")
 
