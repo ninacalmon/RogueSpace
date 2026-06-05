@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b5oolandwoj16" path="res://Sprites(main)/SpaceshipInterior/SpaceshipMonitorScreen.png" id="2_5toxe"]
 [ext_resource type="Shader" uid="uid://cccnue3fm2pyc" path="res://Shaders/outline.gdshader" id="2_41fxr"]
 [ext_resource type="Texture2D" uid="uid://bmd80ccl2fbcp" path="res://Sprites(main)/SpaceshipInterior/SpaceshipMonitorDeimos.png" id="3_oqhwa"]
-[ext_resource type="Script" uid="uid://jtbq6dor8pk0" path="res://Scenes/Modulars/clickable_highlight.gd" id="4_cokud"]
+[ext_resource type="Script" uid="uid://jtbq6dor8pk0" path="res://Scenes/modulars/clickable_highlight.gd" id="4_cokud"]
 [ext_resource type="Texture2D" uid="uid://c06c2uw4mhk5k" path="res://Sprites(main)/SpaceshipInterior/SpaceshipMonitorFrame.png" id="4_oqhwa"]
 [ext_resource type="Script" uid="uid://diumy6vgtvj8a" path="res://Scenes/Spaceship/sub_area_screen.gd" id="5_s3qmo"]
 [ext_resource type="Script" uid="uid://ce4k3gvavwn0b" path="res://Scenes/UI/power_ups_container.gd" id="6_s3qmo"]
