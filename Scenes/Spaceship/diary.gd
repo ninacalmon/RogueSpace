@@ -62,6 +62,7 @@ func _on_focus_changed(focus: bool, subject: Node2D):
 func _take_book():
 	animation_take_book.play("take_book")
 	await get_tree().create_timer(animation_take_book.current_animation_length * 0.9).timeout
+	HandsEventBus.book.emit(true)
 	_open_book()
 
 
@@ -79,6 +80,7 @@ func _close_book():
 
 	await _hide_book_ui()
 	await _play_close_animation()
+	HandsEventBus.book.emit(false)
 	_hide_blur()
 
 	_return_book()

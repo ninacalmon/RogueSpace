@@ -1,6 +1,8 @@
 extends Control
 class_name DiaryPageController
 
+@export var animation_delay: float = 1
+
 @onready var page_left: DiaryPage = $PagesContainer/PageL
 @onready var page_right: DiaryPage = $PagesContainer/PageR
 
@@ -54,14 +56,18 @@ func show_spread():
 func _on_next_pressed():
 	var max_spread = _get_max_spread()
 
-	if current_spread < max_spread:
+	if current_spread < max_spread and !HandsEventBus.hand_is_busy:
 		current_spread += 1
+		HandsEventBus.page_next.emit()
+		await get_tree().create_timer(animation_delay).timeout
 		show_spread()
 
 
 func _on_prev_pressed():
-	if current_spread > 0:
+	if current_spread > 0 and !HandsEventBus.hand_is_busy:
 		current_spread -= 1
+		HandsEventBus.page_prev.emit()
+		await get_tree().create_timer(animation_delay).timeout
 		show_spread()
 
 

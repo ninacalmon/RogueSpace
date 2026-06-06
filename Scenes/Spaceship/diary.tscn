@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bvmqc5jgquxeu"]
+[gd_scene load_steps=44 format=3 uid="uid://bvmqc5jgquxeu"]
 
 [ext_resource type="Texture2D" uid="uid://cyrvbfkrobaa1" path="res://Sprites(main)/bookTileset.png" id="1_7yh6m"]
 [ext_resource type="Texture2D" uid="uid://drluyy4fl7yg3" path="res://Sprites(main)/SpaceshipInterior/book.png" id="1_j6pbb"]
@@ -9,6 +9,20 @@
 [ext_resource type="Script" uid="uid://fvfblb6b10sn" path="res://Scenes/Spaceship/diary_control.gd" id="6_w3sy0"]
 [ext_resource type="PackedScene" uid="uid://qwqle3odi0wk" path="res://Scenes/Spaceship/diary_page.tscn" id="7_32dq5"]
 [ext_resource type="Texture2D" uid="uid://di2ndivrt2452" path="res://Sprites(main)/UI/Kenney Input/tile_0823.png" id="8_w3sy0"]
+[ext_resource type="Script" uid="uid://bnhd18fc2a4ua" path="res://Scenes/Spaceship/hands_diary_overlay.gd" id="10_hmmsy"]
+[ext_resource type="Shader" uid="uid://bxa51o8hm1602" path="res://Shaders/pixel_sprite.gdshader" id="11_8jwq2"]
+[ext_resource type="Texture2D" uid="uid://p1ig5h8l3fu7" path="res://Sprites/DeimosHands/MovingPagesBook/IMG_4498.PNG" id="11_twokt"]
+[ext_resource type="Texture2D" uid="uid://dkyketm6eerv8" path="res://Sprites/DeimosHands/MovingPagesBook/IMG_4499.PNG" id="12_8jwq2"]
+[ext_resource type="Texture2D" uid="uid://cgurtbkfhkn7b" path="res://Sprites/DeimosHands/MovingPagesBook/IMG_4500.PNG" id="13_brskc"]
+[ext_resource type="Texture2D" uid="uid://bkm2ayasvqwr4" path="res://Sprites/DeimosHands/MovingPagesBook/IMG_4501.PNG" id="14_22rv0"]
+[ext_resource type="Texture2D" uid="uid://bo4ot0byk271s" path="res://Sprites/DeimosHands/MovingPagesBook/IMG_4502.PNG" id="15_r4lg0"]
+[ext_resource type="Texture2D" uid="uid://dmqfk4pn0vjrp" path="res://Sprites/DeimosHands/MovingPagesBook/IMG_4503.PNG" id="16_ocb5l"]
+[ext_resource type="Texture2D" uid="uid://d3wpk2ngfow7x" path="res://Sprites/DeimosHands/MovingPagesBook/IMG_4504.PNG" id="17_16jo8"]
+[ext_resource type="Texture2D" uid="uid://crnj7wfkc3g5n" path="res://Sprites/DeimosHands/MovingPagesBook/IMG_4505.PNG" id="18_kcsfy"]
+[ext_resource type="Texture2D" uid="uid://c70vm1up7f53q" path="res://Sprites/DeimosHands/MovingPagesBook/IMG_4506.PNG" id="19_d0x8c"]
+[ext_resource type="Texture2D" uid="uid://dlyw7eieh3w8t" path="res://Sprites/DeimosHands/MovingPagesBook/IMG_4507.PNG" id="20_wrdrj"]
+[ext_resource type="Texture2D" uid="uid://c35wmrmrokrqk" path="res://Sprites/DeimosHands/MovingPagesBook/IMG_4508.PNG" id="21_c5s3n"]
+[ext_resource type="Texture2D" uid="uid://d3m3p58r026te" path="res://Sprites/DeimosHands/MovingPagesBook/IMG_4509.PNG" id="22_7py28"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cr6hc"]
 shader = ExtResource("2_7afck")
@@ -163,7 +177,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.22),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(0.573775, 0.59, 0.5251, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -195,6 +209,156 @@ _data = {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hmmsy"]
 shader = ExtResource("5_cr6hc")
 shader_parameter/blur_amount = 1.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8jwq2"]
+shader = ExtResource("11_8jwq2")
+shader_parameter/pixel_size = 4.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_brskc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_twokt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_8jwq2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_brskc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_22rv0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_r4lg0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ocb5l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_16jo8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_kcsfy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_d0x8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_wrdrj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_c5s3n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_7py28")
+}],
+"loop": false,
+"name": &"FlippingPagesBookBACK",
+"speed": 9.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_22rv0"]
+shader = ExtResource("11_8jwq2")
+shader_parameter/pixel_size = 8.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r4lg0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_7py28")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_c5s3n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_wrdrj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_d0x8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_kcsfy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_16jo8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ocb5l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_r4lg0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_22rv0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_brskc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_8jwq2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_twokt")
+}],
+"loop": false,
+"name": &"FlippingPagesBookNEXT",
+"speed": 9.0
+}]
+
+[sub_resource type="Animation" id="Animation_upq7j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(335, 718)]
+}
+
+[sub_resource type="Animation" id="Animation_u66qk"]
+resource_name = "hand_show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(335, 718), Vector2(556, 303.99994)]
+}
+
+[sub_resource type="Animation" id="Animation_8jwq2"]
+resource_name = "next_hand_show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(943, 718), Vector2(556, 303.99994)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bxwrm"]
+_data = {
+&"RESET": SubResource("Animation_upq7j"),
+&"next_hand_show": SubResource("Animation_8jwq2"),
+&"prev_hand_show": SubResource("Animation_u66qk")
+}
 
 [node name="Diary" type="Area2D" node_paths=PackedStringArray("clickable_highlight")]
 light_mask = 17
@@ -244,6 +408,7 @@ libraries = {
 }
 
 [node name="DiaryControl" type="Control" parent="BookCanvasLayer"]
+modulate = Color(0.573775, 0.59, 0.5251, 1)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -341,8 +506,40 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="CanvasModulateOpenBook" type="CanvasModulate" parent="BookCanvasLayer"]
-light_mask = 16
-visibility_layer = 16
-z_index = 4096
-color = Color(0.44464, 0.48, 0.4176, 1)
+[node name="HandsCanvasLayer" type="CanvasLayer" parent="BookCanvasLayer"]
+
+[node name="Control" type="Control" parent="BookCanvasLayer/HandsCanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -241.0
+offset_top = 394.0
+offset_right = -200.99994
+offset_bottom = 434.00012
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_hmmsy")
+
+[node name="HandsAnimationPREV" type="AnimatedSprite2D" parent="BookCanvasLayer/HandsCanvasLayer/Control"]
+modulate = Color(0.86, 0.8078267, 0.63640004, 1)
+material = SubResource("ShaderMaterial_8jwq2")
+position = Vector2(66, 21)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_brskc")
+animation = &"FlippingPagesBookBACK"
+
+[node name="HandsAnimationNEXT" type="AnimatedSprite2D" parent="BookCanvasLayer/HandsCanvasLayer/Control"]
+modulate = Color(0.86, 0.8078267, 0.63640004, 1)
+material = SubResource("ShaderMaterial_22rv0")
+position = Vector2(233, 21)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_r4lg0")
+animation = &"FlippingPagesBookNEXT"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BookCanvasLayer/HandsCanvasLayer/Control"]
+libraries = {
+&"": SubResource("AnimationLibrary_bxwrm")
+}

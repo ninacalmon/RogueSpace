@@ -151,7 +151,7 @@ script = ExtResource("5_n2veb")
 clickable_highlight = NodePath("ClickableHighlight")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ResourcesDeposit"]
-polygon = PackedVector2Array(5, -45, 25, -81, 38, -82, 41, -68, 23, -38, 33, -22, 28, -4, 9, 5, -8, 2, -19, -15, -14, -37)
+polygon = PackedVector2Array(-3.2000122, -49.100006, -22.200012, -76.100006, -35.200012, -76.100006, -39.200012, -62.100006, -18.200012, -36.100006, -23.200012, -12.100006, -6.200012, 6.899994, 21.799988, 7.899994, 38.799988, -16.100006, 30.799988, -41.100006, 14.799988, -50.100006)
 
 [node name="SpriteValve" type="Sprite2D" parent="ResourcesDeposit"]
 material = SubResource("ShaderMaterial_x7ic0")
@@ -159,6 +159,7 @@ instance_shader_parameters/outline_width = 6
 position = Vector2(2, -41)
 texture = ExtResource("6_wbabi")
 hframes = 2
+frame = 1
 
 [node name="ClickableHighlight" type="Node2D" parent="ResourcesDeposit" node_paths=PackedStringArray("area", "sprite")]
 script = ExtResource("4_8efwl")

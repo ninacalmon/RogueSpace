@@ -37,16 +37,17 @@ func _on_focus_changed(focus: bool, subject: Node2D):
 	## on the ClickableHighlight module, we can work around this problem having a state here that changes
 	## clickable_highlight.active on process based off this state
 	if focus == false:
-		deimos_face(false)
+		visual_state(false)
 		clickable_highlight.is_mouse_over_area = false
 		clickable_highlight.active = true
 		is_focused = false
+		print("focus off, energy: ", has_energy)
 		if !lights_on and has_energy:
 			turn_lights_on()
 
 	elif  focus == true and subject == self:
 		activate_sub_areas()
-		deimos_face(true)
+		visual_state(true)
 
 func activate_sub_areas():
 	sub_area_screen.activate()
@@ -62,9 +63,12 @@ func _process(_delta: float) -> void:
 	if is_focused:
 		can_exit = sub_area_screen.can_exit
 
-func deimos_face(_show: bool):
+func visual_state(state: bool):
+	if !is_focused: 
+		return
+	HandsEventBus.monitor.emit(false)
 	var new_alpha: float 
-	if _show: new_alpha = 0.13
+	if state: new_alpha = 0.13
 	else:  new_alpha = 0
 	
 	var tween = create_tween()

@@ -16,18 +16,17 @@ func _ready() -> void:
 func _on_clicked():
 	if was_counted:
 		return
-	HandsEventBus.machine_interaction.emit()
 	was_counted = true
 	can_exit_sub_area = false
-	sprite_valve.frame = 1
+	HandsEventBus.machine_interaction.emit()
+	await get_tree().create_timer(0.5).timeout
+	sprite_valve.frame = 0
 	counter_text.initialize()
 
 func _on_resource_count_finished():
 	can_exit_sub_area = true
 	StatsManager.current_resources -= StatsManager.resources_needed
 	SpaceshipEventBus.resources_spent.emit()
-	SpaceshipEventBus.focus_off.emit()
-
 #func _on_hover():
 	#if !has_showed_text:
 		#has_showed_text = true
@@ -37,7 +36,7 @@ func _on_resource_count_finished():
 
 func _process(_delta: float) -> void:
 	if clickable_highlight.is_mouse_over_area:
-		if !has_showed_text:
+		if !has_showed_text and !was_counted:
 			has_showed_text = true
 			PopUpSystem.show_text("Clique para inserir recursos.", 3)
 	else:

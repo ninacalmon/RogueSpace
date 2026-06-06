@@ -40,6 +40,7 @@ func _on_focus_off_requested():
 	camera.is_busy = true
 	camera.is_focused = false
 	SpaceshipEventBus.focus_changed.emit(false, null)
+	print("focus_off")
 	
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT)

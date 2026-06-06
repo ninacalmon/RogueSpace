@@ -1,5 +1,7 @@
 extends Node
 
+var hand_is_busy: bool
+
 @warning_ignore("unused_signal")
 signal machine_interaction
 @warning_ignore("unused_signal")
