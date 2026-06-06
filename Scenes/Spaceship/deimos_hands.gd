@@ -4,11 +4,13 @@ extends Node2D
 
 @onready var hands_animation: AnimatedSprite2D = $HandsAnimation
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var snot_timer: Timer = $SnotTimer
 
 enum HandState { IDLE, NEGATIVE, MACHINE, BOOK_NEXT, BOOK_PREV, SNOT }
 
 func _ready() -> void:
 	#SpaceshipEventBus.focus_off.connect(_on_focus_off)
+	snot_timer.timeout.connect(_on_snot_timer_timout)
 	
 	HandsEventBus.machine_interaction.connect(_on_machine_interaction)
 	HandsEventBus.monitor.connect(_on_monitor)
@@ -49,3 +51,13 @@ func _on_book(state: bool):
 
 func _process(_delta: float) -> void:
 	global_position = camera.global_position + camera.offset
+
+func _input(event: InputEvent) -> void:
+	if event:
+		snot_timer.start()
+
+func _on_snot_timer_timout():
+	hands_animation.play("Meleca")
+	await hands_animation.animation_finished
+	hands_animation.play("Idle")
+	snot_timer.start()
