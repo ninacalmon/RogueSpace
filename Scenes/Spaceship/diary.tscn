@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://drluyy4fl7yg3" path="res://Sprites(main)/SpaceshipInterior/book.png" id="1_j6pbb"]
 [ext_resource type="Script" uid="uid://4dv3d2vyvbp1" path="res://Scenes/Spaceship/diary.gd" id="1_mlqjd"]
 [ext_resource type="Shader" uid="uid://cccnue3fm2pyc" path="res://Shaders/outline.gdshader" id="2_7afck"]
-[ext_resource type="Script" uid="uid://jtbq6dor8pk0" path="res://Scenes/Modulars/clickable_highlight.gd" id="4_wy5ug"]
+[ext_resource type="Script" uid="uid://jtbq6dor8pk0" path="res://Scenes/modulars/clickable_highlight.gd" id="4_wy5ug"]
 [ext_resource type="Shader" uid="uid://kyf6ladmlc1w" path="res://Shaders/blur.gdshader" id="5_cr6hc"]
 [ext_resource type="Script" uid="uid://fvfblb6b10sn" path="res://Scenes/Spaceship/diary_control.gd" id="6_w3sy0"]
 [ext_resource type="PackedScene" uid="uid://qwqle3odi0wk" path="res://Scenes/Spaceship/diary_page.tscn" id="7_32dq5"]

@@ -30,6 +30,7 @@ func _on_clicked():
 		is_focused = true
 		#trocar sprite aqui
 		SpaceshipEventBus.focus_on.emit(zoom_in_amount, zoom_offset, self, false)
+		HandsEventBus.monitor.emit(true)
 
 func _on_focus_changed(focus: bool, subject: Node2D):
 	## If there is a race condition with the activation of the clickable_highlight here and the disabling of it

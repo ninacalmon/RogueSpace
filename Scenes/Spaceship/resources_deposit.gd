@@ -16,6 +16,7 @@ func _ready() -> void:
 func _on_clicked():
 	if was_counted:
 		return
+	HandsEventBus.machine_interaction.emit()
 	was_counted = true
 	can_exit_sub_area = false
 	sprite_valve.frame = 1

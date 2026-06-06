@@ -19,6 +19,7 @@ func _on_resource_count_finished():
 
 ### CODIGO FEIAO vvvv
 func _on_clicked():
+	HandsEventBus.door_interaction.emit()
 	if !has_energy:
 		PopUpSystem.show_text("Sem energia.")
 		return
