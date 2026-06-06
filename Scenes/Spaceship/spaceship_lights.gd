@@ -10,4 +10,4 @@ func _ready() -> void:
 func _on_resource_count_finished():
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT)
-	tween.tween_property(main_light, "energy", 1, 0.4)
+	tween.tween_property(main_light, "energy", 1.4, 0.4)

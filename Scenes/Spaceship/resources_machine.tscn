@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ck6swxjky54l3"]
+[gd_scene load_steps=21 format=3 uid="uid://ck6swxjky54l3"]
 
 [ext_resource type="Script" uid="uid://cvgon225rqb0a" path="res://resources_machine.gd" id="1_15nl0"]
 [ext_resource type="Shader" uid="uid://cccnue3fm2pyc" path="res://Shaders/outline.gdshader" id="2_drgh0"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://3ywm8o38t0d4" path="res://Sound Effects/value_up3.wav" id="6_8efwl"]
 [ext_resource type="Texture2D" uid="uid://bkgumtoiaufnr" path="res://Sprites(main)/SpaceshipInterior/Machine/SpaceshipMachineON.png" id="6_wbabi"]
 [ext_resource type="Texture2D" uid="uid://cmk6eejwryikt" path="res://Sprites(main)/SpaceshipInterior/Machine/SpaceshipMachineRecursos.png" id="7_wbabi"]
+[ext_resource type="Script" uid="uid://cx8xpcwfpxaru" path="res://Scenes/Spaceship/falling_parallax_control.gd" id="9_c7f82"]
 [ext_resource type="Script" uid="uid://c4rjuhxn0t5h3" path="res://Scenes/Spaceship/shake_module.gd" id="9_x7ic0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n2veb"]
@@ -21,16 +22,104 @@ shader = ExtResource("2_drgh0")
 shader_parameter/rounded = true
 shader_parameter/alpha_threshold = 0.4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2veb"]
-bg_color = Color(0.08801, 0.13, 0.0806, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c7f82"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x7ic0"]
-bg_color = Color(0, 0, 0, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mcih3"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wbabi"]
 random_pitch = 1.3
 streams_count = 1
 stream_0/stream = ExtResource("6_8efwl")
+
+[sub_resource type="Animation" id="Animation_mcih3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FallingResources:repeat_times")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-70, -315)]
+}
+
+[sub_resource type="Animation" id="Animation_c7f82"]
+resource_name = "Maximum"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FallingResources:repeat_times")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [60]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-70, -7512), Vector2(-70, 8080)]
+}
+
+[sub_resource type="Animation" id="Animation_ul7fi"]
+resource_name = "Medium"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FallingResources:repeat_times")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [30]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.7666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-70, -3898), Vector2(-70, 4324)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ul7fi"]
+_data = {
+&"Maximum": SubResource("Animation_c7f82"),
+&"Medium": SubResource("Animation_ul7fi"),
+&"RESET": SubResource("Animation_mcih3")
+}
 
 [node name="ResourcesMachine" type="Area2D" node_paths=PackedStringArray("sub_area_resources_deposit", "clickable_highlight")]
 script = ExtResource("1_15nl0")
@@ -78,32 +167,26 @@ sprite = NodePath("../SpriteValve")
 active = false
 metadata/_custom_type_script = "uid://jtbq6dor8pk0"
 
-[node name="FallingResources" type="Parallax2D" parent="ResourcesDeposit"]
-z_index = -1
-scroll_offset = Vector2(-134.20001, -157.1)
-repeat_size = Vector2(0, 311.59)
-repeat_times = 2
+[node name="ConterOverlay" type="CanvasLayer" parent="ResourcesDeposit"]
 
-[node name="Resources" type="Sprite2D" parent="ResourcesDeposit/FallingResources"]
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("7_wbabi")
-
-[node name="CounterText" type="RichTextLabel" parent="ResourcesDeposit"]
+[node name="CounterText" type="RichTextLabel" parent="ResourcesDeposit/ConterOverlay"]
 unique_name_in_owner = true
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -175.20001
-offset_top = -178.1
-offset_right = -96.20001
-offset_bottom = -148.1
-grow_horizontal = 0
-grow_vertical = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -32.0
+offset_right = 125.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_n2veb")
-theme_override_styles/background = SubResource("StyleBoxFlat_x7ic0")
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 96
+theme_override_styles/normal = SubResource("StyleBoxEmpty_c7f82")
+theme_override_styles/background = SubResource("StyleBoxEmpty_mcih3")
 bbcode_enabled = true
 text = "0/200"
 fit_content = true
@@ -112,11 +195,33 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("5_ewulj")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ResourcesDeposit/CounterText"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ResourcesDeposit/ConterOverlay/CounterText"]
 stream = SubResource("AudioStreamRandomizer_wbabi")
 volume_db = -20.0
 pitch_scale = 2.0
 bus = &"Sound Effects"
+
+[node name="FallingParallaxControl" type="Node2D" parent="."]
+show_behind_parent = true
+position = Vector2(-70, -315)
+script = ExtResource("9_c7f82")
+
+[node name="FallingResources" type="Parallax2D" parent="FallingParallaxControl"]
+rotation = -3.1415925
+scroll_offset = Vector2(4, -316.99994)
+repeat_size = Vector2(0, 246.07)
+repeat_times = 2
+ignore_camera_scroll = true
+screen_offset = Vector2(0, -500)
+
+[node name="Resources" type="Sprite2D" parent="FallingParallaxControl/FallingResources"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_wbabi")
+
+[node name="FallingAnimation" type="AnimationPlayer" parent="FallingParallaxControl"]
+libraries = {
+&"": SubResource("AnimationLibrary_ul7fi")
+}
 
 [node name="ShakeModule" type="Node2D" parent="."]
 script = ExtResource("9_x7ic0")
