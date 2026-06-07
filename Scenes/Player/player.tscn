@@ -58,7 +58,7 @@ random_pitch = 2.0
 streams_count = 1
 stream_0/stream = ExtResource("15_hnuln")
 
-[node name="Player" type="RigidBody2D" node_paths=PackedStringArray("hurt_box_player", "collision", "sprite", "gravitational_field", "gravitational_field_resources") groups=["Player_Group"]]
+[node name="Player" type="RigidBody2D" node_paths=PackedStringArray("hurt_box_player", "bullet_shooter_module", "collision", "sprite", "gravitational_field", "gravitational_field_resources") groups=["Player_Group"]]
 process_mode = 1
 collision_layer = 265
 collision_mask = 265
@@ -71,6 +71,7 @@ max_contacts_reported = 1
 linear_damp_mode = 1
 script = ExtResource("1_ktxno")
 hurt_box_player = NodePath("HurtBoxPlayer")
+bullet_shooter_module = NodePath("BulletShooter")
 collision = NodePath("CollisionShape2D")
 sprite = NodePath("Sprite2D")
 gravitational_field = NodePath("GravitationalField")

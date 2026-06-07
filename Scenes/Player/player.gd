@@ -16,7 +16,7 @@ var impulse_cooldown_timer: float = StatsManager.player_impulse_cooldown_duratio
 
 
 @export var hurt_box_player: HurtBoxPlayer
-
+@export var bullet_shooter_module: BulletShooter
 
 @export var base_destroy_tolerance_timer: float = 0.5
 var destroy_tolerance_timer: float
@@ -188,6 +188,7 @@ func update_fuel(is_impulse: bool = false):
 
 func apply_stun(stun_duration: float):
 	is_stuned = true
+	bullet_shooter_module.set_inverse_control(is_stuned)
 
 	linear_velocity *= 0.1
 	speed /= 2
@@ -196,7 +197,10 @@ func apply_stun(stun_duration: float):
 	var tween = create_tween()
 	tween.tween_property(sprite_stun, "modulate:a", 1, 0.3)
 	await get_tree().create_timer(stun_duration).timeout
+
 	is_stuned = false
+	bullet_shooter_module.set_inverse_control(is_stuned)
+
 	speed = original_speed
 	tween.tween_property(sprite_stun, "modulate:a", 0, 0.3)
 	sprite_stun.hide()

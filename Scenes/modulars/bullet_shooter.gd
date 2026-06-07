@@ -5,6 +5,7 @@ class_name BulletShooter
 
 var cooldown: float = 0
 var aim_direction: Vector2 = Vector2.RIGHT
+var inverse_control_on: bool = false
 
 @onready var bullet_sfx: AudioStreamPlayer = $BulletSFX
 @onready var arrow_pivot: Node2D = $ArrowPivot
@@ -52,7 +53,7 @@ func handle_aim_mouse():
 
 func handle_shoot():
 	if Input.is_action_pressed("shoulderR") or Input.is_action_pressed("left_click"):
-		shoot(aim_direction)
+		shoot(aim_direction if not inverse_control_on else aim_direction * -1)
 
 
 func get_input_mouse() -> Vector2:
@@ -75,6 +76,9 @@ func shoot(direction: Vector2):
 	new_bullet.rotation = direction.angle()
 
 	SFXManager.play_sound(bullet_sfx)
+
+func set_inverse_control(should_inverse: bool):
+	inverse_control_on = should_inverse
 	
 #extends Node2D
 #class_name BulletShooter
