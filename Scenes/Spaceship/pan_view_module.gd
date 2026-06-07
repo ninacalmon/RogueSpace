@@ -30,6 +30,7 @@ func initialize() -> void:
 func _on_left_button_pressed():
 	if camera.is_busy or \
 	camera.is_focused or \
+	current_room <= total_rooms_range.x or \
 	deactivated:
 		return
 	look_side("left")
@@ -37,6 +38,7 @@ func _on_left_button_pressed():
 func _on_right_button_pressed():
 	if camera.is_busy or \
 	camera.is_focused or \
+	current_room >= total_rooms_range.y or \
 	deactivated:
 		return
 	look_side("right")
