@@ -1,7 +1,7 @@
 extends RichTextLabel
 class_name ResourcesLabel
 
-@onready var warning_label: RichTextLabel = $WarningLabel
+@onready var warning_label: RichTextLabel = $"../WarningLabel"
 
 func _ready() -> void:
 	text = "[b]%d/%d[/b]

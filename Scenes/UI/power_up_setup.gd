@@ -45,7 +45,7 @@ func _grab_focus():
 
 func setup_nodes():
 	price_label.text = "%d recursos" %price
-	description_label.text = "%s[br][color=376311]%s[/color]" %[title, description]
+	description_label.text = "%s[br]* %s *" %[title, description]
 	var next_level: int = min(current_level + 1, max_level)
 	var next_level_string: String = str(next_level)
 	description_label.text = description_label.text.replace("&", next_level_string)
