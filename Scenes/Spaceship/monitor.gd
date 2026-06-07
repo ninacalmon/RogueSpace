@@ -3,7 +3,7 @@ class_name Monitor
 
 @export var sub_area_screen: Screen
 @onready var sprite_background: Sprite2D = $SpriteBackground
-@onready var sprite_face: Sprite2D = $SpriteBackground/SpriteFace
+@onready var sprite_face: AnimatedSprite2D = $SpriteBackground/SpriteFace
 
 var has_energy: bool = false
 var lights_on: bool = false
@@ -57,7 +57,7 @@ func turn_lights_on():
 	await get_tree().create_timer(1.5).timeout
 	var tween = create_tween()
 	tween.tween_property(sprite_background, "self_modulate", Color(8, 8, 8), 0.02)
-	tween.tween_property(sprite_background, "self_modulate", Color(0.212, 0.212, 0.212), 0.08)
+	tween.tween_property(sprite_background, "self_modulate", Color(0.016, 0.016, 0.016, 1.0), 0.08)
 
 func _process(_delta: float) -> void:
 	if is_focused:
@@ -68,7 +68,7 @@ func visual_state(state: bool):
 		return
 	HandsEventBus.monitor.emit(false)
 	var new_alpha: float 
-	if state: new_alpha = 0.13
+	if state: new_alpha = 0.07
 	else:  new_alpha = 0
 	
 	var tween = create_tween()

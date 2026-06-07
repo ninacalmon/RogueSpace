@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmd80ccl2fbcp"
-path="res://.godot/imported/SpaceshipMonitorDeimos.png-5314a87cba53e24af428116a0b4d1d52.ctex"
+uid="uid://dxqnkfbe4hw57"
+path="res://.godot/imported/SpaceshipMonitorDeimospiscandolentinho2.png-46445541168e6fbd3a3baba0f0affba8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites(main)/SpaceshipInterior/SpaceshipMonitorDeimos.png"
-dest_files=["res://.godot/imported/SpaceshipMonitorDeimos.png-5314a87cba53e24af428116a0b4d1d52.ctex"]
+source_file="res://Sprites(main)/SpaceshipInterior/DeimosFace/SpaceshipMonitorDeimospiscandolentinho2.png"
+dest_files=["res://.godot/imported/SpaceshipMonitorDeimospiscandolentinho2.png-46445541168e6fbd3a3baba0f0affba8.ctex"]
 
 [params]
 
