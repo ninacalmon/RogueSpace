@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwjcvu1jqapnx"]
+
+[ext_resource type="Script" uid="uid://clcm8jx1m8eel" path="res://Scenes/SpaceBodies/Moons/static_rotation.gd" id="1_s6wm5"]
+[ext_resource type="Texture2D" uid="uid://cqfleh4uuynj3" path="res://Sprites(main)/TemporaryPlanets/NewMap/moon1.png" id="2_s6wm5"]
+[ext_resource type="PackedScene" uid="uid://bu2k0aqen7pbj" path="res://Scenes/SpaceBodies/orbit.tscn" id="3_lfe6a"]
+[ext_resource type="PackedScene" uid="uid://dnjex5t4bsfgk" path="res://Scenes/SpaceBodies/Moons/Moon3.tscn" id="4_kofm8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8abtl"]
+radius = 101.31634
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_s6wm5")
+rotation_speed = 0.1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8abtl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_s6wm5")
+
+[node name="Orbit" parent="." instance=ExtResource("3_lfe6a")]
+radius = 150.0
+point_count = 20
+speed = 80.0
+body_scene = ExtResource("4_kofm8")
+
+[node name="Camera2D" type="Camera2D" parent="."]

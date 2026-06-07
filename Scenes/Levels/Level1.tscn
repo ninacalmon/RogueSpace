@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bjqibpfesudnp" path="res://Scenes/SpaceBodies/planet_big1.tscn" id="15_lty4u"]
 [ext_resource type="PackedScene" uid="uid://dbryy6fgrl2er" path="res://Scenes/SpaceBodies/planet_medium1.tscn" id="16_efsfe"]
 [ext_resource type="PackedScene" uid="uid://ckxo0qbnyh7ea" path="res://Scenes/SpaceBodies/planet_medium2.tscn" id="17_et44u"]
-[ext_resource type="PackedScene" uid="uid://b31sq5e3ikty8" path="res://Scenes/SpaceBodies/planet_small.tscn" id="18_rd2vd"]
+[ext_resource type="PackedScene" uid="uid://b31sq5e3ikty8" path="res://Scenes/SpaceBodies/PickedPlanets/planet_medium.tscn" id="18_rd2vd"]
 [ext_resource type="PackedScene" uid="uid://gcaxr5wvuwar" path="res://Scenes/SpaceBodies/sun.tscn" id="19_efsfe"]
 [ext_resource type="AudioStream" uid="uid://cwxkne077kuw6" path="res://Sound Effects/Ambience/spacewinds.mp3" id="20_uqlrs"]
 [ext_resource type="Script" uid="uid://da05f5oj8b66c" path="res://Scenes/Levels/space_winds_sfx.gd" id="21_htexa"]

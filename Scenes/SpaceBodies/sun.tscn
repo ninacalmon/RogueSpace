@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://w2mwru3kmv6g" path="res://Sound Effects/burn.mp3" id="5_upyw3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gwkba"]
-radius = 1169.0
+radius = 360.05
 
 [sub_resource type="Gradient" id="Gradient_r217k"]
 offsets = PackedFloat32Array(0, 0.6302817)
@@ -21,7 +21,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nxpjy"]
-radius = 1061.2073
+radius = 235.25731
 
 [node name="Sun" type="Area2D"]
 script = ExtResource("1_nxpjy")
@@ -32,6 +32,7 @@ shape = SubResource("CircleShape2D_gwkba")
 [node name="Sun3" type="Sprite2D" parent="."]
 modulate = Color(0.64, 0.24063998, 0.17919998, 1)
 self_modulate = Color(0.05, 0.05, 0.05, 1)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_gwkba")
 
 [node name="PointLight2D" type="PointLight2D" parent="Sun3"]
@@ -57,7 +58,7 @@ shape = SubResource("CircleShape2D_nxpjy")
 [node name="GravitationalField" parent="RigidBody2D" node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("2_eixih")]
 owner_body = NodePath("..")
 owner_collision_shape = NodePath("../CollisionShape2D")
-mass_to_radius_multiply = 0.00159999999999999
+mass_to_radius_multiply = 0.0006
 attraction_received_multiply = 0.0
 attraction_executed_multiply = 0.2
 

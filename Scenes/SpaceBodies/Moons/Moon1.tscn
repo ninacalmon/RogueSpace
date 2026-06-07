@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cre4hd4xn0lv1" path="res://Sprites(main)/TemporaryPlanets/NewMap/moon2.png" id="1_47tkn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8abtl"]
-radius = 65.76473
+radius = 39.012817
 
 [node name="StaticBody2D" type="StaticBody2D"]
 script = ExtResource("1_8abtl")
@@ -14,4 +14,5 @@ rotation_speed = 0.1
 shape = SubResource("CircleShape2D_8abtl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_47tkn")

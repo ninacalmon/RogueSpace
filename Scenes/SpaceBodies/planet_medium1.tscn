@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dvh8dqxbai705" path="res://Sprites(main)/TemporaryPlanets/NewMap/mediumbig.png" id="3_bicaa"]
 [ext_resource type="Script" uid="uid://dakt7r353r7ae" path="res://Scenes/SpaceBodies/body_randomizer.gd" id="4_cwc5q"]
 [ext_resource type="PackedScene" uid="uid://bu2k0aqen7pbj" path="res://Scenes/SpaceBodies/orbit.tscn" id="6_v01n4"]
-[ext_resource type="PackedScene" uid="uid://bc5bo0yxlptcu" path="res://Scenes/SpaceBodies/Moons/Moon2.tscn" id="7_2i6ho"]
+[ext_resource type="PackedScene" uid="uid://bc5bo0yxlptcu" path="res://Scenes/SpaceBodies/PickedPlanets/planet_small2.tscn" id="7_2i6ho"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m0iey"]
 friction = 0.0

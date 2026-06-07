@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bcffh04lffmyi" path="res://Scenes/Asteroids/asteroid_big.tscn" id="13_edlhv"]
 [ext_resource type="PackedScene" uid="uid://gcaxr5wvuwar" path="res://Scenes/SpaceBodies/sun.tscn" id="14_r217k"]
 [ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/Asteroids/asteroid_pieces.tscn" id="14_vxx58"]
-[ext_resource type="PackedScene" uid="uid://b31sq5e3ikty8" path="res://Scenes/SpaceBodies/planet_small.tscn" id="16_fpecf"]
+[ext_resource type="PackedScene" uid="uid://b31sq5e3ikty8" path="res://Scenes/SpaceBodies/PickedPlanets/planet_medium.tscn" id="16_fpecf"]
 [ext_resource type="PackedScene" uid="uid://bjqibpfesudnp" path="res://Scenes/SpaceBodies/planet_big1.tscn" id="17_85bba"]
 [ext_resource type="PackedScene" uid="uid://dbryy6fgrl2er" path="res://Scenes/SpaceBodies/planet_medium1.tscn" id="18_hpov5"]
 [ext_resource type="PackedScene" uid="uid://bskx6fe236s8a" path="res://Scenes/UI/ui.tscn" id="18_k0mbv"]

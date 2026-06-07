@@ -10,7 +10,7 @@ friction = 0.0
 bounce = 0.1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpe2g"]
-radius = 301.20093
+radius = 212.02122
 
 [node name="PlanetMedium" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "gravitational_field", "body_randomizer")]
 mass = 1000.0
@@ -38,6 +38,7 @@ ang_vel_max = 0.05
 metadata/_custom_type_script = "uid://dakt7r353r7ae"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_sgehv")
 
 [node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("4_26cmf")]
