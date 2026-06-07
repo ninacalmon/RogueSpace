@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://3en43s0xvhci"]
+[gd_scene load_steps=40 format=3 uid="uid://3en43s0xvhci"]
 
 [ext_resource type="PackedScene" uid="uid://buqlpqb51bwy" path="res://ui_sounds.tscn" id="1_sic4q"]
 [ext_resource type="Script" uid="uid://cem6pnv2cepc7" path="res://menu_buttons_control.gd" id="2_jsrd8"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://d1nws3uf6rnh1" path="res://Sprites(main)/UI/menu BG/21.png" id="30_5w0iu"]
 [ext_resource type="Texture2D" uid="uid://vgtdxb4ahypd" path="res://Sprites(main)/UI/menu BG/22.png" id="31_xvk17"]
 [ext_resource type="Texture2D" uid="uid://b44fiqo3pw6c8" path="res://Sprites(main)/UI/menu BG/23.png" id="32_xbvu4"]
+[ext_resource type="AudioStream" uid="uid://fe4qkemuc5kx" path="res://Music/menu__vox_vacui.mp3" id="34_kha57"]
 
 [sub_resource type="Theme" id="Theme_rb8kr"]
 
@@ -180,6 +181,10 @@ animations = [{
 "name": &"new_animation",
 "speed": 6.0
 }]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_tulv5"]
+stream_count = 1
+stream_0 = ExtResource("34_kha57")
 
 [node name="Menu" type="Control"]
 process_mode = 3
@@ -446,3 +451,8 @@ scale = Vector2(0.475, 0.471)
 sprite_frames = SubResource("SpriteFrames_dsa84")
 animation = &"new_animation"
 autoplay = "new_animation"
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamPlaylist_tulv5")
+autoplay = true
+bus = &"Music"
