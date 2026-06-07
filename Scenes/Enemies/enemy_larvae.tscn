@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bpy311ttuke1b"]
+[gd_scene load_steps=15 format=3 uid="uid://bpy311ttuke1b"]
 
 [ext_resource type="Script" uid="uid://bnv4lu80gauic" path="res://Scenes/Enemies/enemy_larvae.gd" id="1_4xthq"]
 [ext_resource type="Shader" uid="uid://bbjhla7uoi5tp" path="res://Shaders/inflation.gdshader" id="2_ogwh0"]
@@ -34,9 +34,13 @@ stream_1/stream = ExtResource("5_137m0")
 stream_2/stream = ExtResource("6_d0w55")
 stream_2/weight = 5.0
 
-[node name="EnemyLarvae" type="RigidBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ogwh0"]
+radius = 354.1892
+
+[node name="EnemyLarvae" type="RigidBody2D" node_paths=PackedStringArray("explosion_area")]
 can_sleep = false
 script = ExtResource("1_4xthq")
+explosion_area = NodePath("ExplosionArea")
 speed = 30.0
 max_velocity = 100.0
 damage = 10.0
@@ -70,3 +74,8 @@ bus = &"Sound Effects"
 [node name="EnemyVisibleOnScreen" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-16, -16, 32, 32)
 script = ExtResource("7_dd8ds")
+
+[node name="ExplosionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea"]
+shape = SubResource("CircleShape2D_ogwh0")
