@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c0lfvcrle3frk"]
+[gd_scene load_steps=34 format=3 uid="uid://c0lfvcrle3frk"]
 
 [ext_resource type="Script" uid="uid://dh0io287hog2e" path="res://Scenes/Levels/spaceship_interior.gd" id="1_4wenu"]
 [ext_resource type="PackedScene" uid="uid://cgfq6udrxu5hm" path="res://Scenes/UI/mouse.tscn" id="1_ntswj"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://0cl5r6xdfj6q" path="res://Scenes/Spaceship/mouse_light.gd" id="12_uafmv"]
 [ext_resource type="AudioStream" uid="uid://btxx18n8epxo" path="res://Sound Effects/Ambience/sfx_loopnave.wav" id="14_uvk7a"]
 [ext_resource type="Script" uid="uid://dxuxs0f181lv8" path="res://Scenes/Spaceship/ambient_sfx.gd" id="15_uvk7a"]
+[ext_resource type="PackedScene" uid="uid://djdhgyun4m2fy" path="res://Scenes/Spaceship/door_closed.tscn" id="15_vhqlx"]
 [ext_resource type="Script" uid="uid://c3vmsf4qyoerg" path="res://Scenes/Spaceship/input_guide_admin.gd" id="16_76ouu"]
 [ext_resource type="PackedScene" uid="uid://coahuft63xqca" path="res://Scenes/Spaceship/UI/ui_spaceship.tscn" id="16_n7pqb"]
 [ext_resource type="PackedScene" uid="uid://bvmqc5jgquxeu" path="res://Scenes/Spaceship/diary.tscn" id="19_jfm16"]
@@ -166,6 +167,9 @@ scale = Vector2(1.0005939, 1)
 [node name="Door" parent="." instance=ExtResource("12_i5u5t")]
 position = Vector2(1399.0001, 52)
 scale = Vector2(1.0005939, 1)
+
+[node name="DoorClosed" parent="." instance=ExtResource("15_vhqlx")]
+position = Vector2(-1363, 16)
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 scroll_scale = Vector2(1.15, 1)

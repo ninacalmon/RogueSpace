@@ -14,7 +14,7 @@ var has_energy: bool = false
 
 
 func _ready() -> void:
-	has_energy = true
+	#has_energy = true
 	_connect_signals()
 	_initialize_ui()
 
@@ -37,6 +37,7 @@ func _on_resource_count_finished():
 
 func _on_clicked():
 	if !has_energy:
+		HandsEventBus.door_interaction.emit()
 		PopUpSystem.show_text("Está muito escuro.")
 		return
 

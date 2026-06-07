@@ -15,7 +15,7 @@ func initialize() -> void:
 func _on_focus_on_requested(zoom_in_amount: float, zoom_offset: Vector2, emitter: MainArea, keep_camera: bool):
 	if camera.is_busy or camera.is_focused or !emitter.clickable_highlight.is_mouse_over_area:
 		return
-
+	
 	camera.is_busy = true
 	camera.is_focused = true
 
@@ -34,6 +34,7 @@ func _on_focus_on_requested(zoom_in_amount: float, zoom_offset: Vector2, emitter
 		tween.parallel().tween_property(camera, "global_position", new_position, zoom_speed)
 		
 		await tween.finished
+
 	SpaceshipEventBus.focus_changed.emit(true, emitter)
 	
 	camera.is_busy = false

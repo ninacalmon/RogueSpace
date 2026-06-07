@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://djdhgyun4m2fy"]
+
+[ext_resource type="Script" uid="uid://cjo186wx81yoa" path="res://Scenes/Spaceship/door_closed.gd" id="1_gx1va"]
+[ext_resource type="Shader" uid="uid://cccnue3fm2pyc" path="res://Shaders/outline.gdshader" id="2_x5vf2"]
+[ext_resource type="Texture2D" uid="uid://2njdt1dx0y8n" path="res://Sprites(main)/SpaceshipInterior/SpaceshipDoor.png" id="3_rnpjw"]
+[ext_resource type="Script" uid="uid://jtbq6dor8pk0" path="res://Scenes/Modulars/clickable_highlight.gd" id="4_oc366"]
+[ext_resource type="AudioStream" uid="uid://bjpdfvmmyk2k1" path="res://Sound Effects/Spaceship/SFX_dooropen.wav" id="5_lnxwh"]
+[ext_resource type="Script" uid="uid://c4rjuhxn0t5h3" path="res://Scenes/Spaceship/shake_module.gd" id="6_x5vf2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ofsvt"]
+shader = ExtResource("2_x5vf2")
+shader_parameter/rounded = true
+shader_parameter/alpha_threshold = 0.1
+
+[node name="Door" type="Area2D" node_paths=PackedStringArray("clickable_highlight")]
+script = ExtResource("1_gx1va")
+clickable_highlight = NodePath("ClickableHighlight")
+metadata/_custom_type_script = "uid://cj0pm0s1qx8my"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(145, -246, 148, 291, -129, 316, -139, -315)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ofsvt")
+instance_shader_parameters/enabled = true
+instance_shader_parameters/outline_color = Color(0.55, 0.16, 0.17, 1)
+instance_shader_parameters/outline_width = 6
+scale = Vector2(-0.6, -0.6)
+texture = ExtResource("3_rnpjw")
+
+[node name="ClickableHighlight" type="Node2D" parent="." node_paths=PackedStringArray("area", "sprite")]
+script = ExtResource("4_oc366")
+area = NodePath("..")
+sprite = NodePath("../Sprite2D")
+metadata/_custom_type_script = "uid://jtbq6dor8pk0"
+
+[node name="DoorSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_lnxwh")
+volume_db = -6.0
+bus = &"Sound Effects"
+
+[node name="ShakeModule" type="Node" parent="."]
+script = ExtResource("6_x5vf2")
+metadata/_custom_type_script = "uid://c4rjuhxn0t5h3"

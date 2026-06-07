@@ -4,6 +4,8 @@ var has_energy: bool = false
 
 @onready var door_sfx: AudioStreamPlayer = $DoorSFX
 
+var has_showed_text: bool = false
+
 func _ready() -> void:
 	#has_energy = true
 	_connect_signals()
@@ -19,8 +21,8 @@ func _on_resource_count_finished():
 
 ### CODIGO FEIAO vvvv
 func _on_clicked():
-	HandsEventBus.door_interaction.emit()
 	if !has_energy:
+		HandsEventBus.door_interaction.emit()
 		PopUpSystem.show_text("Sem energia.")
 		return
 	SFXManager.play_sound(door_sfx)
@@ -36,3 +38,11 @@ func _on_focus_changed(focus: bool, _subject: Node2D):
 		clickable_highlight.is_mouse_over_area = false
 		clickable_highlight.active = true
 		is_focused = false
+
+func _process(_delta: float) -> void:
+	if clickable_highlight.is_mouse_over_area:
+		if !has_showed_text:
+			has_showed_text = true
+			PopUpSystem.show_text("Sair da nave e iniciar um novo dia?", 3)
+	else:
+		has_showed_text = false

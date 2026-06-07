@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bvi2pvbxydcko" path="res://Scenes/Spaceship/door.gd" id="1_htx6n"]
 [ext_resource type="Shader" uid="uid://cccnue3fm2pyc" path="res://Shaders/outline.gdshader" id="2_v60d0"]
 [ext_resource type="Texture2D" uid="uid://2njdt1dx0y8n" path="res://Sprites(main)/SpaceshipInterior/SpaceshipDoor.png" id="3_ofsvt"]
-[ext_resource type="Script" uid="uid://jtbq6dor8pk0" path="res://Scenes/modulars/clickable_highlight.gd" id="3_v60d0"]
+[ext_resource type="Script" uid="uid://jtbq6dor8pk0" path="res://Scenes/Modulars/clickable_highlight.gd" id="3_v60d0"]
 [ext_resource type="AudioStream" uid="uid://bjpdfvmmyk2k1" path="res://Sound Effects/Spaceship/SFX_dooropen.wav" id="5_v60d0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ofsvt"]

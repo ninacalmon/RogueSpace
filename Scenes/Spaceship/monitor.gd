@@ -23,13 +23,12 @@ func _on_resource_count_finished():
 
 func _on_clicked():
 	if !has_energy:
+		HandsEventBus.door_interaction.emit()
 		PopUpSystem.show_text("Sem energia.")
 		return
+
 	if !is_focused and clickable_highlight.is_mouse_over_area:
-		is_focused = true
-		#trocar sprite aqui
 		SpaceshipEventBus.focus_on.emit(zoom_in_amount, zoom_offset, self, false)
-		HandsEventBus.monitor.emit(true)
 
 func _on_focus_changed(focus: bool, subject: Node2D):
 	## If there is a race condition with the activation of the clickable_highlight here and the disabling of it
@@ -45,6 +44,8 @@ func _on_focus_changed(focus: bool, subject: Node2D):
 			turn_lights_on()
 
 	elif  focus == true and subject == self:
+		is_focused = true
+		HandsEventBus.monitor.emit(true)
 		activate_sub_areas()
 		visual_state(true)
 
