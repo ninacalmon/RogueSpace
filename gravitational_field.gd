@@ -3,7 +3,7 @@ class_name GravitationalField
 
 @export var owner_body: RigidBody2D
 @export var owner_collision_shape: CollisionShape2D
-@export var mass_to_radius_multiply: float = 3.0
+@export_range(0, 10000000000, 0.0001) var mass_to_radius_multiply: float = 3.0
 @export var attraction_received_multiply: float = 1.0
 @export var attraction_executed_multiply: float = 1.0
 @export_range(0.3, 1.3, 0.01, "lower number = higher increase. and vice-versa") var increase_with_proximity: float = 1 ##lower number, higher increase.

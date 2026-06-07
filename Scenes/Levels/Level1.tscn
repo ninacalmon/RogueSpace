@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://caunmk6gg411l"]
+[gd_scene load_steps=33 format=4 uid="uid://caunmk6gg411l"]
 
 [ext_resource type="Texture2D" uid="uid://b4go5brbh3ndq" path="res://Sprites/Starfields/Starfield 1 - 1024x1024.png" id="1_kpfdn"]
 [ext_resource type="Texture2D" uid="uid://xuvojlr8s030" path="res://Sprites(main)/TemporaryPlanets/66888997 (3).png" id="2_dgnnc"]
@@ -14,14 +14,20 @@
 [ext_resource type="PackedScene" uid="uid://dsw810ysjgsn2" path="res://Scenes/Asteroids/asteroid_medium.tscn" id="8_kpfdn"]
 [ext_resource type="PackedScene" uid="uid://dxg5doh1x8ch2" path="res://Scenes/Asteroids/asteroid_small.tscn" id="8_l87mc"]
 [ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/Asteroids/asteroid_pieces.tscn" id="9_qsm5a"]
-[ext_resource type="PackedScene" uid="uid://vbsslu1hl1sg" path="res://Scenes/SpaceBodies/planet.tscn" id="11_dt2g4"]
 [ext_resource type="PackedScene" uid="uid://bskx6fe236s8a" path="res://Scenes/UI/ui.tscn" id="11_gvak4"]
 [ext_resource type="PackedScene" uid="uid://c2v243rukexl6" path="res://Scenes/Modulars/map_control.tscn" id="12_c1j88"]
 [ext_resource type="PackedScene" uid="uid://c7nj6rbljyvk3" path="res://Scenes/BackHoles/supermassive_black_hole.tscn" id="13_4f3qw"]
 [ext_resource type="PackedScene" uid="uid://3vg8bv7t077f" path="res://Scenes/BackHoles/black_hole.tscn" id="14_aajud"]
+[ext_resource type="PackedScene" uid="uid://bjqibpfesudnp" path="res://Scenes/SpaceBodies/planet_big1.tscn" id="15_lty4u"]
+[ext_resource type="PackedScene" uid="uid://dbryy6fgrl2er" path="res://Scenes/SpaceBodies/planet_medium1.tscn" id="16_efsfe"]
+[ext_resource type="PackedScene" uid="uid://ckxo0qbnyh7ea" path="res://Scenes/SpaceBodies/planet_medium2.tscn" id="17_et44u"]
+[ext_resource type="PackedScene" uid="uid://b31sq5e3ikty8" path="res://Scenes/SpaceBodies/planet_small.tscn" id="18_rd2vd"]
+[ext_resource type="PackedScene" uid="uid://gcaxr5wvuwar" path="res://Scenes/SpaceBodies/sun.tscn" id="19_efsfe"]
 [ext_resource type="AudioStream" uid="uid://cwxkne077kuw6" path="res://Sound Effects/Ambience/spacewinds.mp3" id="20_uqlrs"]
 [ext_resource type="Script" uid="uid://da05f5oj8b66c" path="res://Scenes/Levels/space_winds_sfx.gd" id="21_htexa"]
 [ext_resource type="Script" uid="uid://cf16x4l41vkpo" path="res://Scenes/Levels/input_guide_admin.gd" id="22_2oprd"]
+[ext_resource type="Shader" uid="uid://1bxsadijf628" path="res://Scenes/Levels/hot_deform.gdshader" id="27_rd2vd"]
+[ext_resource type="Texture2D" uid="uid://wye3e38tj8hc" path="res://Sprites(main)/TemporaryPlanets/NewMap/sun.png" id="28_snvte"]
 
 [sub_resource type="Environment" id="Environment_n7yfy"]
 background_mode = 3
@@ -43,6 +49,15 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_kpfdn")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rd2vd"]
+shader = ExtResource("27_rd2vd")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/radius = 0.6
+shader_parameter/falloff = 0.85
+shader_parameter/distortion_strength = 0.007
+shader_parameter/speed = 0.5
+shader_parameter/scale = 80.0
+
 [node name="Main" type="Node2D"]
 process_mode = 3
 
@@ -55,7 +70,7 @@ environment = SubResource("Environment_n7yfy")
 z_index = -999
 scroll_scale = Vector2(0.2, 0.2)
 repeat_size = Vector2(1024, 1024)
-repeat_times = 6
+repeat_times = 11
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayers/Main"]
@@ -103,7 +118,7 @@ full_view_pos = Vector2(0, -800)
 position = Vector2(0, 190)
 
 [node name="MapGenerator" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AADy//X/AAACAAAAAAAHAPn/AAACAAAAAAD7/+7/AAAAAAAAAAD9/+//AAAAAAAAAAABAOr/AAAAAAAAAAANAPb/AAAAAAAAAADx/wUAAAAAAAAAAAD0/wcAAAAAAAAAAAD0/wMAAAAAAAAAAAD4//z/AAAAAAAAAAAMAAQAAAAAAAAAAAAMAP//AAAAAAAAAAAOAP7/AAAAAAAAAAAAAPv/AAAAAAAAAAD8//T/AAABAAAAAAAFAPH/AAABAAAAAAD4//f/AAAHAAAAAAD6//n/AAAHAAAAAADz//3/AAAHAAAAAAAFAP3/AAAHAAAAAAAHAP7/AAAHAAAAAAAHAP3/AAAHAAAAAAABAPL/AAAHAAAAAADr//L/AAAHAAAAAADr//X/AAAHAAAAAADq//X/AAAHAAAAAADp//X/AAAHAAAAAAANAAoAAAAHAAAAAAATAPL/AAAHAAAAAAATAPP/AAAHAAAAAAALAMz/AAACAAAAAAAmAOT/AAACAAAAAADW/xIAAAACAAAAAAD3/x0AAAACAAAAAADT//H/AAACAAAAAADa//b/AAABAAAAAADP/+b/AAABAAAAAAAeAPT/AAABAAAAAAAfANv/AAABAAAAAAAgAM//AAACAAAAAAAZAMv/AAACAAAAAAAlAPv/AAACAAAAAAAtAO//AAACAAAAAAAjAOr/AAACAAAAAAAxAPr/AAABAAAAAAAsAAsAAAABAAAAAADV//r/AAABAAAAAADB/+L/AAACAAAAAADG/wIAAAACAAAAAADE//f/AAABAAAAAADj/xYAAAABAAAAAADc/woAAAAAAAAAAADT/wQAAAAAAAAAAADi/+r/AAAAAAAAAAA7AAoAAAAAAAAAAAAqABQAAAAAAAAAAAAZABcAAAABAAAAAAAMAC0AAAABAAAAAAD7/xMAAAABAAAAAAARABoAAAABAAAAAADq/yoAAAABAAAAAAAaAPr/AAAHAAAAAAAjAO//AAAHAAAAAAAuAAUAAAAHAAAAAADn/wwAAAAHAAAAAADd//H/AAAHAAAAAADI//3/AAAHAAAAAADF/9b/AAAHAAAAAADF/xYAAAAHAAAAAAAgABkAAAAHAAAAAAAGAAYAAAAHAAAAAAAaAPv/AAAHAAAAAAAeAOv/AAAHAAAAAAA=")
+tile_map_data = PackedByteArray("AADd/wkAAAABAAAAAADp/xgAAAACAAAAAAAZAPT/AAACAAAAAAAyAAwAAAAAAAAAAAAkAPr/AAABAAAAAAAJAPr/AAACAAAAAADx/+P/AAABAAAAAADz/9P/AAAAAAAAAAC7/9D/AAABAAAAAAC5/9z/AAABAAAAAACy/+z/AAAAAAAAAACp/87/AAACAAAAAABSALX/AAACAAAAAABQAMj/AAAAAAAAAABbAMr/AAAAAAAAAABiANz/AAACAAAAAABsAOv/AAABAAAAAABNAB4AAAABAAAAAAA2ADIAAAAAAAAAAADe/yMAAAAAAAAAAADF/xwAAAAAAAAAAAC//wMAAAAAAAAAAACZ/9z/AAAAAAAAAABIAI//AAAAAAAAAABeAKr/AAACAAAAAAAxAJH/AAAAAAAAAAALAIL/AAAAAAAAAACP/8b/AAACAAAAAABuAMT/AAAAAAAAAABwABsAAAACAAAAAABYADEAAAABAAAAAABXACoAAAAAAAAAAADe/zYAAAABAAAAAAC8/zQAAAABAAAAAAC8/zMAAAACAAAAAADC/xYAAAAAAAAAAACe/xsAAAABAAAAAACr/wYAAAAAAAAAAACt/ycAAAACAAAAAADA/ywAAAACAAAAAADB/ywAAAABAAAAAADC/ywAAAABAAAAAAA/ACcAAAABAAAAAAApACkAAAAAAAAAAAAjADUAAAAAAAAAAADh/1kAAAABAAAAAAAkAOz/AAABAAAAAACCAKj/AAACAAAAAAAhAHj/AAAAAAAAAAAXAKL/AAAAAAAAAAAyAKP/AAABAAAAAAChADcAAAACAAAAAABYAGcAAAAAAAAAAACg/+j/AAACAAAAAACh/+j/AAAAAAAAAACi/+f/AAABAAAAAAC7/9n/AAABAAAAAACm//v/AAACAAAAAADw/8b/AAACAAAAAAAFAK3/AAABAAAAAAD7/+b/AAABAAAAAAAeAOv/AAAAAAAAAAAYAPL/AAACAAAAAADx//v/AAAHAAAAAADr////AAAHAAAAAADm////AAAHAAAAAADc/wEAAAAHAAAAAADt/xYAAAAHAAAAAAANABsAAAAHAAAAAAASABMAAAAHAAAAAADz/wsAAAACAAAAAADm/w8AAAACAAAAAADP//7/AAACAAAAAABIAA8AAAACAAAAAABFANL/AAACAAAAAACh/9v/AAACAAAAAACg/w8AAAACAAAAAADI/x0AAAACAAAAAAD6/7r/AAACAAAAAABjAML/AAACAAAAAABsAND/AAACAAAAAACWAOP/AAACAAAAAAB2AAQAAAACAAAAAAB1APz/AAACAAAAAAAUAPv/AAAHAAAAAAATAPf/AAAHAAAAAADx/wMAAAAHAAAAAAD3//n/AAAHAAAAAADy//D/AAAHAAAAAAABAOv/AAAHAAAAAAAMAO//AAAHAAAAAAAYAOn/AAAHAAAAAAArAAwAAAAHAAAAAAAtABEAAAAHAAAAAAA4AAsAAAAHAAAAAADS/xUAAAAHAAAAAADD/xMAAAAHAAAAAADC/xMAAAAHAAAAAACq/xMAAAAHAAAAAABaAMn/AAAHAAAAAABQALz/AAAHAAAAAABQALv/AAAHAAAAAABYAKr/AAAHAAAAAABLAKX/AAAHAAAAAABZAJn/AAAHAAAAAABSAJn/AAAHAAAAAABPAJz/AAAHAAAAAABKAJL/AAAHAAAAAAB+/8f/AAAHAAAAAACG/87/AAAHAAAAAAB//9j/AAAHAAAAAACC/9r/AAAHAAAAAACD/9r/AAAHAAAAAACG/97/AAAHAAAAAACO/83/AAAHAAAAAACI/8P/AAAHAAAAAADJ/+D/AAAHAAAAAADI/+H/AAAHAAAAAADG/+P/AAAHAAAAAADA//D/AAAHAAAAAAC1/wUAAAAHAAAAAAC1/wYAAAAHAAAAAAAAABkAAAAHAAAAAAACABoAAAAHAAAAAAAEABsAAAAHAAAAAAAHABwAAAAHAAAAAAAJAAcAAAAHAAAAAAAKAAcAAAAHAAAAAAA8ABsAAAAHAAAAAAA9ABwAAAAHAAAAAAA9AB0AAAAHAAAAAAA+AB4AAAAHAAAAAAA+AB8AAAAHAAAAAAAFAPD/AAAAAAAAAAD///b/AAAAAAAAAAD7/+//AAABAAAAAAAJAO3/AAABAAAAAAADAOP/AAABAAAAAAD9/97/AAABAAAAAAD4////AAABAAAAAAAgAPX/AAACAAAAAAAgAPT/AAAAAAAAAAAlAOT/AAACAAAAAAA1AOj/AAABAAAAAAAvAO7/AAABAAAAAAA2APP/AAAAAAAAAAAzAO3/AAABAAAAAAAyAPj/AAABAAAAAADM/w8AAAACAAAAAADR/wIAAAACAAAAAADN//b/AAACAAAAAAC1//L/AAACAAAAAADp/8//AAACAAAAAAD3/87/AAACAAAAAAD0/8X/AAABAAAAAADv/8v/AAACAAAAAABNAMz/AAABAAAAAABXANb/AAACAAAAAABSANf/AAAAAAAAAABUANL/AAABAAAAAAA1AJ7/AAAAAAAAAAA7AKT/AAAAAAAAAABAAKT/AAAAAAAAAAAyAKj/AAABAAAAAAA5AKD/AAAAAAAAAAA8AKn/AAABAAAAAABEAJL/AAACAAAAAACt/9b/AAACAAAAAACC/+L/AAAAAAAAAACD/+//AAABAAAAAACC/+//AAAAAAAAAACF/+3/AAAAAAAAAACC/+3/AAACAAAAAAD7//P/AAABAAAAAAABAO//AAABAAAAAAAFAP3/AAABAAAAAAAMAP7/AAABAAAAAAD6//3/AAABAAAAAAD2/wMAAAABAAAAAAAIAAUAAAABAAAAAADo//n/AAABAAAAAAA=")
 tile_set = SubResource("TileSet_dt2g4")
 script = ExtResource("6_tdwj4")
 small_asteroid_scene = ExtResource("8_l87mc")
@@ -111,11 +126,20 @@ medium_asteroid_scene = ExtResource("8_kpfdn")
 large_asteroid_scene = ExtResource("7_kfeyp")
 resource_scene = ExtResource("9_qsm5a")
 
-[node name="Planet" parent="MapGenerator" instance=ExtResource("11_dt2g4")]
-position = Vector2(-424, -949)
+[node name="PlanetBig" parent="MapGenerator" instance=ExtResource("15_lty4u")]
+position = Vector2(958, -1869)
 
-[node name="Planet2" parent="MapGenerator" instance=ExtResource("11_dt2g4")]
-position = Vector2(1794, -631)
+[node name="PlanetMedium" parent="MapGenerator" instance=ExtResource("16_efsfe")]
+position = Vector2(2616, -475)
+
+[node name="PlanetMedium2" parent="MapGenerator" instance=ExtResource("17_et44u")]
+position = Vector2(-1012, -555)
+
+[node name="Planet" parent="MapGenerator" instance=ExtResource("18_rd2vd")]
+position = Vector2(1067, 406)
+
+[node name="Sun3" parent="MapGenerator" instance=ExtResource("19_efsfe")]
+position = Vector2(-1882, -3765)
 
 [node name="BackBufferCopy" type="BackBufferCopy" parent="."]
 copy_mode = 2
@@ -123,13 +147,16 @@ copy_mode = 2
 [node name="BlackHoles" type="Node2D" parent="."]
 
 [node name="BlackHole" parent="BlackHoles" instance=ExtResource("14_aajud")]
-position = Vector2(459, -900)
+position = Vector2(533, -652)
 
 [node name="BlackHole2" parent="BlackHoles" instance=ExtResource("14_aajud")]
-position = Vector2(-833, 91)
+position = Vector2(-198, 490)
 
 [node name="SupermassiveBlackHole" parent="BlackHoles" instance=ExtResource("13_4f3qw")]
-position = Vector2(-1037, -1386)
+position = Vector2(-1397, -1111)
+
+[node name="SupermassiveBlackHole2" parent="BlackHoles" instance=ExtResource("13_4f3qw")]
+position = Vector2(2599, -2750)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -152,5 +179,11 @@ script = ExtResource("21_htexa")
 
 [node name="InputGuideAdmin" type="Node" parent="."]
 script = ExtResource("22_2oprd")
+
+[node name="SunShader" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_rd2vd")
+position = Vector2(-1881.9999, -3765)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("28_snvte")
 
 [editable path="CanvasLayer/UI"]

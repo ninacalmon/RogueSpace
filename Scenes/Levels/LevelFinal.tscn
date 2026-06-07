@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://ub1u26ntpxj3"]
+[gd_scene load_steps=31 format=4 uid="uid://ub1u26ntpxj3"]
 
 [ext_resource type="Texture2D" uid="uid://b4go5brbh3ndq" path="res://Sprites/Starfields/Starfield 1 - 1024x1024.png" id="1_hp2an"]
 [ext_resource type="Texture2D" uid="uid://dxfs6gmq8441e" path="res://Sprites(main)/TemporaryPlanets/2524948669.png" id="3_85bba"]
@@ -16,7 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/Asteroids/asteroid_pieces.tscn" id="14_vxx58"]
 [ext_resource type="PackedScene" uid="uid://b31sq5e3ikty8" path="res://Scenes/SpaceBodies/planet_small.tscn" id="16_fpecf"]
 [ext_resource type="PackedScene" uid="uid://bjqibpfesudnp" path="res://Scenes/SpaceBodies/planet_big1.tscn" id="17_85bba"]
+[ext_resource type="PackedScene" uid="uid://dbryy6fgrl2er" path="res://Scenes/SpaceBodies/planet_medium1.tscn" id="18_hpov5"]
 [ext_resource type="PackedScene" uid="uid://bskx6fe236s8a" path="res://Scenes/UI/ui.tscn" id="18_k0mbv"]
+[ext_resource type="PackedScene" uid="uid://ckxo0qbnyh7ea" path="res://Scenes/SpaceBodies/planet_medium2.tscn" id="18_o18ga"]
 [ext_resource type="PackedScene" uid="uid://c2v243rukexl6" path="res://Scenes/Modulars/map_control.tscn" id="19_qfuk4"]
 [ext_resource type="AudioStream" uid="uid://cwxkne077kuw6" path="res://Sound Effects/Ambience/spacewinds.mp3" id="20_6gs4a"]
 [ext_resource type="Texture2D" uid="uid://wye3e38tj8hc" path="res://Sprites(main)/TemporaryPlanets/NewMap/sun.png" id="20_bwcaq"]
@@ -66,7 +68,7 @@ environment = SubResource("Environment_n7yfy")
 z_index = -999
 scroll_scale = Vector2(0.2, 0.2)
 repeat_size = Vector2(1024, 1024)
-repeat_times = 20
+repeat_times = 30
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayers/Main"]
@@ -104,13 +106,13 @@ camera = NodePath("Camera2D")
 [node name="Camera2D" type="Camera2D" parent="Player"]
 script = ExtResource("7_etab7")
 full_view_zoom = Vector2(0.1, 0.1)
-full_view_pos = Vector2(0, -2700)
+full_view_pos = Vector2(0, -2000)
 
 [node name="Mothership" parent="." instance=ExtResource("8_y5yii")]
 position = Vector2(0, 190)
 
 [node name="MapGenerator" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAsAIf/AAACAAAAAAAtALD/AAACAAAAAAAyAJ7/AAACAAAAAAAyAJ//AAACAAAAAAAyAKD/AAACAAAAAAAyAKH/AAACAAAAAAAyAKL/AAACAAAAAAAyAKP/AAACAAAAAAA0AMf/AAACAAAAAAA1AJD/AAACAAAAAAA1AK//AAACAAAAAAA1AMf/AAACAAAAAAA2AMb/AAACAAAAAAA3AJj/AAACAAAAAAA3AK7/AAACAAAAAAA4AK7/AAACAAAAAAA5AIf/AAACAAAAAAA5AIr/AAACAAAAAAA5AJ7/AAACAAAAAAA6AIn/AAACAAAAAAA6AIr/AAACAAAAAAA6AJ7/AAACAAAAAAA6AJ//AAACAAAAAAA7AKD/AAACAAAAAAA8AKz/AAACAAAAAABBAKD/AAACAAAAAABCAKD/AAACAAAAAABCAKH/AAACAAAAAABCAKL/AAACAAAAAABDAKP/AAACAAAAAABDAKT/AAACAAAAAABDAKX/AAACAAAAAABDAKb/AAACAAAAAABDAKf/AAACAAAAAABDAKj/AAACAAAAAABEAMb/AAACAAAAAABFAMX/AAACAAAAAABFAMb/AAACAAAAAAA=")
+tile_map_data = PackedByteArray("AACT/3T/AAAAAAAAAAC//7z/AAAAAAAAAACd/6r/AAAAAAAAAABOALb/AAACAAAAAAB3AIP/AAABAAAAAACdALr/AAABAAAAAACcAH//AAACAAAAAACmAE//AAAAAAAAAACmAE7/AAACAAAAAACwACL/AAAAAAAAAACHAG7/AAAAAAAAAACtAJT/AAACAAAAAACtAJX/AAACAAAAAACtAJb/AAACAAAAAAC2AMf/AAACAAAAAACAAOX/AAACAAAAAADf/9P/AAABAAAAAADf/9T/AAACAAAAAADg/9T/AAACAAAAAADh/9T/AAACAAAAAAADANz/AAABAAAAAAAEAN3/AAABAAAAAAAEAN7/AAABAAAAAAADAN7/AAACAAAAAADr/+z/AAACAAAAAADV//H/AAAAAAAAAAC8/9T/AAAAAAAAAABbAM7/AAABAAAAAABbAM//AAABAAAAAABOAO7/AAACAAAAAAA4ANf/AAAAAAAAAABJAPX/AAAAAAAAAABJAPb/AAACAAAAAABIABEAAAAAAAAAAADC/+f/AAAAAAAAAAC8//X/AAAAAAAAAACf/5//AAABAAAAAACx/8T/AAAAAAAAAACy/8T/AAABAAAAAACz/8P/AAACAAAAAAC0/8L/AAACAAAAAADQ/57/AAACAAAAAABgAPr+AAABAAAAAABhAPn+AAABAAAAAAB6ANb+AAABAAAAAABC/9/+AAAAAAAAAAAx/13/AAABAAAAAADKAFj/AAAAAAAAAADNAMj/AAABAAAAAACwABwAAAACAAAAAABfABoAAAAAAAAAAABeABsAAAACAAAAAABdABsAAAABAAAAAABcABwAAAABAAAAAABbAB0AAAABAAAAAABaAB4AAAAAAAAAAABaAB8AAAABAAAAAABZACAAAAAAAAAAAABZACEAAAAAAAAAAABYACIAAAABAAAAAAAoAEoAAAABAAAAAADJ/zUAAAACAAAAAACX/zMAAAABAAAAAACX/zIAAAACAAAAAACW/zEAAAACAAAAAACW/zAAAAAAAAAAAACV/y8AAAAAAAAAAACU/y4AAAACAAAAAACU/y0AAAAAAAAAAACT/ywAAAABAAAAAACT/ysAAAACAAAAAACS/yoAAAACAAAAAACS/ykAAAABAAAAAACR/ygAAAABAAAAAACR/ycAAAABAAAAAACQ/yYAAAABAAAAAACQ/yUAAAACAAAAAAB6/woAAAAAAAAAAAA7AJL/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_dt2g4")
 script = ExtResource("10_n2i81")
 small_asteroid_scene = ExtResource("11_3atw5")
@@ -119,17 +121,30 @@ large_asteroid_scene = ExtResource("13_edlhv")
 resource_scene = ExtResource("14_vxx58")
 
 [node name="Sun3" parent="." instance=ExtResource("14_r217k")]
-position = Vector2(18, -3163)
+position = Vector2(18, -5259)
 
 [node name="OrbitSmallPlanet1" parent="Sun3" instance=ExtResource("21_hp2an")]
-radius = 2000.0
+radius = 1700.0
 point_count = 50
+reverse = true
+initi_progress_ration = 0.42
 body_scene = ExtResource("16_fpecf")
 
-[node name="OrbitBigPlanet1" parent="Sun3" instance=ExtResource("21_hp2an")]
-radius = 3700.0
+[node name="OrbitMediumlPlanet2" parent="Sun3" instance=ExtResource("21_hp2an")]
+radius = 2350.0
 point_count = 50
-body_scene = ExtResource("17_85bba")
+speed = 200.0
+initi_progress_ration = 0.255
+body_scene = ExtResource("18_o18ga")
+
+[node name="OrbitMediumPlanet1" parent="Sun3" instance=ExtResource("21_hp2an")]
+radius = 3000.0
+point_count = 50
+initi_progress_ration = 0.909
+body_scene = ExtResource("18_hpov5")
+
+[node name="PlanetBig" parent="Sun3" instance=ExtResource("17_85bba")]
+position = Vector2(0, -3246)
 
 [node name="BackBufferCopy" type="BackBufferCopy" parent="."]
 copy_mode = 2
@@ -145,6 +160,7 @@ mouse_filter = 1
 
 [node name="MapControl" parent="." node_paths=PackedStringArray("player") instance=ExtResource("19_qfuk4")]
 player = NodePath("../Player")
+safe_area_radius_multiply = 25.0
 metadata/_edit_lock_ = true
 
 [node name="SpaceWindsSFX" type="AudioStreamPlayer" parent="."]
@@ -160,7 +176,7 @@ script = ExtResource("22_c043v")
 
 [node name="SunShader" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_fpecf")
-position = Vector2(18, -3163)
+position = Vector2(18, -5259)
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("20_bwcaq")
 

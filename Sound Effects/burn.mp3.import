@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://w2mwru3kmv6g"
+path="res://.godot/imported/burn.mp3-f29575f4861a30f9f1795fbb1d360e41.mp3str"
+
+[deps]
+
+source_file="res://Sound Effects/burn.mp3"
+dest_files=["res://.godot/imported/burn.mp3-f29575f4861a30f9f1795fbb1d360e41.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

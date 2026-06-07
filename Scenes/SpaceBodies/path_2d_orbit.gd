@@ -4,6 +4,7 @@ class_name PathOrbit
 @export var radius: float = 400
 @export var point_count: int = 12
 @export var speed: float = 50.0
+@export var reverse: bool = false
 @export_range(0, 1, 0.001) var initi_progress_ration = 0.0
 @export var body_scene: PackedScene
 
@@ -12,6 +13,7 @@ class_name PathOrbit
 func _ready() -> void:
 	var new_body = body_scene.instantiate()
 	path_follow_2d.add_child(new_body)
+	path_follow_2d.reverse = reverse
 	path_follow_2d.speed = speed
 	curve.clear_points()
 	curve = make_circle_path(radius, point_count)

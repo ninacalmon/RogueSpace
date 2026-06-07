@@ -60,8 +60,8 @@ stream_0/stream = ExtResource("15_hnuln")
 
 [node name="Player" type="RigidBody2D" node_paths=PackedStringArray("hurt_box_player", "collision", "sprite", "gravitational_field", "gravitational_field_resources") groups=["Player_Group"]]
 process_mode = 1
-collision_layer = 9
-collision_mask = 9
+collision_layer = 265
+collision_mask = 265
 mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_m0iey")
 can_sleep = false

@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjqibpfesudnp"]
+[gd_scene load_steps=8 format=3 uid="uid://do0ufj3s6rev3"]
 
-[ext_resource type="Script" uid="uid://b6ch1ii8ge4tt" path="res://Scenes/SpaceBodies/planet.gd" id="1_s7w56"]
-[ext_resource type="Texture2D" uid="uid://b1scxp4l23a6w" path="res://Sprites(main)/TemporaryPlanets/NewMap/planet_big1.png" id="2_g3wn1"]
-[ext_resource type="PackedScene" uid="uid://dnjex5t4bsfgk" path="res://Scenes/SpaceBodies/Moons/Moon3.tscn" id="5_g3wn1"]
-[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="5_q0eps"]
-[ext_resource type="PackedScene" uid="uid://bu2k0aqen7pbj" path="res://Scenes/SpaceBodies/orbit.tscn" id="6_ul01m"]
+[ext_resource type="Script" uid="uid://b6ch1ii8ge4tt" path="res://Scenes/SpaceBodies/planet.gd" id="1_8u6wc"]
+[ext_resource type="Texture2D" uid="uid://b1scxp4l23a6w" path="res://Sprites(main)/TemporaryPlanets/NewMap/planet_big1.png" id="2_co8ls"]
+[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="3_chc1g"]
+[ext_resource type="PackedScene" uid="uid://bu2k0aqen7pbj" path="res://Scenes/SpaceBodies/orbit.tscn" id="4_rfydb"]
+[ext_resource type="PackedScene" uid="uid://dnjex5t4bsfgk" path="res://Scenes/SpaceBodies/Moons/Moon3.tscn" id="5_2dq11"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m0iey"]
 friction = 0.0
@@ -14,14 +14,12 @@ bounce = 0.1
 radius = 797.106
 
 [node name="PlanetBig" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "gravitational_field")]
-collision_layer = 2
-collision_mask = 2
 mass = 3000.0
 physics_material_override = SubResource("PhysicsMaterial_m0iey")
 contact_monitor = true
 max_contacts_reported = 3
 linear_damp_mode = 1
-script = ExtResource("1_s7w56")
+script = ExtResource("1_8u6wc")
 collision = NodePath("CollisionShape2D")
 sprite = NodePath("Sprite2D")
 gravitational_field = NodePath("GravitationalField")
@@ -30,9 +28,9 @@ gravitational_field = NodePath("GravitationalField")
 shape = SubResource("CircleShape2D_vpe2g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_g3wn1")
+texture = ExtResource("2_co8ls")
 
-[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("5_q0eps")]
+[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("3_chc1g")]
 linear_damp = 0.0
 owner_body = NodePath("..")
 owner_collision_shape = NodePath("../CollisionShape2D")
@@ -41,12 +39,12 @@ attraction_received_multiply = 0.01
 attraction_executed_multiply = 3.2
 increase_with_proximity = 0.8999999999999999
 
-[node name="Orbit" parent="." instance=ExtResource("6_ul01m")]
+[node name="Orbit" parent="." instance=ExtResource("4_rfydb")]
 radius = 1100.0
 point_count = 20
 speed = 150.0
 initi_progress_ration = 0.201
-body_scene = ExtResource("5_g3wn1")
+body_scene = ExtResource("5_2dq11")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.2, 0.2)

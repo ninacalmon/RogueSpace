@@ -8,6 +8,5 @@
 script = ExtResource("1_omyco")
 
 [node name="Range" type="CollisionShape2D" parent="."]
-z_index = 4096
 shape = SubResource("CircleShape2D_n6f51")
 debug_color = Color(0.69942325, 0.49083304, 0.12215363, 0.41960785)

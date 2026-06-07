@@ -12,11 +12,15 @@ script = ExtResource("1_bc0b1")
 
 [node name="SafeArea" type="Area2D" parent="."]
 z_index = -1000
+collision_layer = 256
+collision_mask = 256
 
 [node name="SafeAreaShape" type="CollisionShape2D" parent="SafeArea"]
 shape = SubResource("CircleShape2D_odgiy")
 
 [node name="AlmostOutArea" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 256
 
 [node name="AlmostOutAreaShape" type="CollisionShape2D" parent="AlmostOutArea"]
 shape = SubResource("CircleShape2D_doqc6")

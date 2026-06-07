@@ -28,7 +28,6 @@ func _on_event_horizon_entered(area: GravitationalField):
 	if body == owner_body:
 		return
 	
-	# "Consumed" by the black hole
 	if is_instance_valid(body):
 		return
 
@@ -36,7 +35,7 @@ func _physics_process(_delta: float) -> void:
 	for b in body_near:
 		apply_gravity(b)
 
-func apply_gravity(near_body: PhysicsBody2D):
+func apply_gravity(near_body: PhysicsBody2D): #AI vvvvvvv
 	if near_body == owner_body:
 		return
 	
