@@ -21,8 +21,8 @@ texture = ExtResource("2_s6wm5")
 
 [node name="Orbit" parent="." instance=ExtResource("3_lfe6a")]
 radius = 150.0
-point_count = 20
-speed = 80.0
+speed = 90.0
+reverse = true
 body_scene = ExtResource("4_kofm8")
 
 [node name="Camera2D" type="Camera2D" parent="."]

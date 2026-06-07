@@ -26,7 +26,7 @@ func _on_clicked():
 	SFXManager.play_sound(door_sfx)
 	await get_tree().create_timer(1.2).timeout
 	StatsManager.day += 1
-	LevelTransition.change_scene_to("res://Scenes/Levels/Level1.tscn", 3, 2)
+	LevelTransition.change_scene_to("res://Scenes/Levels/LevelFinal2.tscn", 3, 2)
 
 func _on_focus_changed(focus: bool, _subject: Node2D):
 	## If there is a race condition with the activation of the clickable_highlight here and the disabling of it

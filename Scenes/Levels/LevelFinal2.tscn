@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cs7xq5woqx1js"]
+[gd_scene load_steps=33 format=4 uid="uid://cs7xq5woqx1js"]
 
 [ext_resource type="Texture2D" uid="uid://b4go5brbh3ndq" path="res://Sprites/Starfields/Starfield 1 - 1024x1024.png" id="1_w468r"]
 [ext_resource type="Texture2D" uid="uid://dxfs6gmq8441e" path="res://Sprites(main)/TemporaryPlanets/2524948669.png" id="2_5luui"]
@@ -20,7 +20,9 @@
 [ext_resource type="PackedScene" uid="uid://bs6twtddsrxb" path="res://Scenes/SpaceBodies/PickedPlanets/planet_medium2.tscn" id="18_st3n8"]
 [ext_resource type="PackedScene" uid="uid://bwjcvu1jqapnx" path="res://Scenes/SpaceBodies/PickedPlanets/planet_small1.tscn" id="19_w468r"]
 [ext_resource type="PackedScene" uid="uid://bskx6fe236s8a" path="res://Scenes/UI/ui.tscn" id="20_0sgvc"]
+[ext_resource type="PackedScene" uid="uid://3vg8bv7t077f" path="res://Scenes/BackHoles/black_hole.tscn" id="20_tv6pm"]
 [ext_resource type="PackedScene" uid="uid://c2v243rukexl6" path="res://Scenes/Modulars/map_control.tscn" id="21_7kma5"]
+[ext_resource type="PackedScene" uid="uid://c7nj6rbljyvk3" path="res://Scenes/BackHoles/supermassive_black_hole.tscn" id="21_clwmq"]
 [ext_resource type="AudioStream" uid="uid://cwxkne077kuw6" path="res://Sound Effects/Ambience/spacewinds.mp3" id="22_p07k5"]
 [ext_resource type="Script" uid="uid://da05f5oj8b66c" path="res://Scenes/Levels/space_winds_sfx.gd" id="23_6lnh2"]
 [ext_resource type="Script" uid="uid://cf16x4l41vkpo" path="res://Scenes/Levels/input_guide_admin.gd" id="24_1syvi"]
@@ -111,6 +113,7 @@ full_view_pos = Vector2(0, -800)
 position = Vector2(0, 190)
 
 [node name="MapGenerator" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD1//7/AAACAAAAAAAIAPP/AAACAAAAAADt//L/AAACAAAAAADf/wEAAAABAAAAAAARAPz/AAAAAAAAAAAKABUAAAAAAAAAAAAxAOH/AAAAAAAAAAApAPT/AAABAAAAAAAdAOj/AAABAAAAAAAqANz/AAABAAAAAAAtAOf/AAABAAAAAAAtAOb/AAAAAAAAAABAALn/AAABAAAAAABQAOT/AAACAAAAAABEAPr/AAABAAAAAAA8ANn/AAACAAAAAABKANX/AAABAAAAAADU/+n/AAAAAAAAAADU//X/AAABAAAAAADp/+L/AAACAAAAAADp/+H/AAACAAAAAADI/9r/AAAAAAAAAADU/8P/AAABAAAAAADT/9L/AAACAAAAAADE/8X/AAACAAAAAAD9/6r/AAACAAAAAAAWANP/AAABAAAAAAACAN//AAAAAAAAAAD2/9j/AAABAAAAAAD5/6j/AAACAAAAAAALAJX/AAACAAAAAAAWAJ7/AAAAAAAAAAAZAJ7/AAACAAAAAAAeAJD/AAACAAAAAAARAI//AAABAAAAAAAeAIT/AAABAAAAAAArAJ3/AAACAAAAAAAyAKX/AAACAAAAAAAzAKX/AAABAAAAAAAzAKT/AAACAAAAAAA0AKP/AAABAAAAAAA1AKP/AAACAAAAAABEAJv/AAAAAAAAAACr/5X/AAACAAAAAADU/6X/AAACAAAAAADN/6r/AAAAAAAAAADM/6r/AAAAAAAAAAC6/7L/AAACAAAAAAC8/53/AAAAAAAAAACg/8D/AAAAAAAAAAC6/8f/AAACAAAAAAC2/9v/AAABAAAAAAC5/+P/AAAAAAAAAADK//L/AAABAAAAAADK//P/AAACAAAAAAC///v/AAABAAAAAADD/xEAAAAAAAAAAACm/+v/AAABAAAAAAD6//r/AAABAAAAAAAOAAMAAAABAAAAAAAZAPH/AAABAAAAAAADAPr/AAAHAAAAAAAFAPv/AAAHAAAAAAAFAPn/AAAHAAAAAADy//n/AAAHAAAAAADx//z/AAAHAAAAAADu//r/AAAHAAAAAADt//f/AAAHAAAAAAAVAPj/AAAHAAAAAAATAPX/AAAHAAAAAAAWAPb/AAAHAAAAAADj//v/AAAHAAAAAADg//H/AAAHAAAAAADc//L/AAAHAAAAAADd//D/AAAHAAAAAADd//P/AAAHAAAAAAAPAOD/AAAHAAAAAAASAOD/AAAHAAAAAADT/wcAAAAHAAAAAADW/wkAAAAHAAAAAADZ/wYAAAAHAAAAAAAbAMH/AAAHAAAAAAAgAMH/AAAHAAAAAAAgAL7/AAAHAAAAAADM/7v/AAAHAAAAAADA/7r/AAAHAAAAAADB/9D/AAAHAAAAAAC1/9b/AAAHAAAAAAC2/9P/AAAHAAAAAAC2/9L/AAAHAAAAAAC2/9D/AAAHAAAAAADj/6H/AAAHAAAAAADt/6X/AAAHAAAAAADq/5v/AAAHAAAAAADp/53/AAAHAAAAAAAWAJ3/AAAHAAAAAAAmAJX/AAAHAAAAAAAmAJ3/AAAHAAAAAAAwAKT/AAAHAAAAAABFAK//AAAHAAAAAAAwALf/AAAHAAAAAAAhALP/AAAHAAAAAAAlALP/AAAHAAAAAAAlALD/AAAHAAAAAABJANT/AAAHAAAAAABMAMr/AAAHAAAAAABOANT/AAAHAAAAAABDAA8AAAACAAAAAAAzABYAAAACAAAAAAA2ABQAAAAHAAAAAAAjABUAAAAHAAAAAADR/yUAAAABAAAAAAD7/yoAAAABAAAAAAAAACYAAAABAAAAAAA=")
 tile_set = SubResource("TileSet_dt2g4")
 script = ExtResource("9_4hc51")
 small_asteroid_scene = ExtResource("10_yj5bc")
@@ -119,17 +122,15 @@ large_asteroid_scene = ExtResource("12_hh5gn")
 resource_scene = ExtResource("13_47jra")
 
 [node name="Sun3" parent="MapGenerator" instance=ExtResource("14_11s50")]
-position = Vector2(18, -1776)
+position = Vector2(18, -1880)
 
 [node name="OrbitSPlanet" parent="MapGenerator/Sun3" instance=ExtResource("15_6c07g")]
 radius = 600.0
-point_count = 20
 initi_progress_ration = 0.034
 body_scene = ExtResource("17_st3n8")
 
 [node name="OrbitMPlanet" parent="MapGenerator/Sun3" instance=ExtResource("15_6c07g")]
 radius = 980.0
-point_count = 30
 speed = 30.0
 reverse = true
 initi_progress_ration = 0.432
@@ -137,12 +138,14 @@ body_scene = ExtResource("16_a661v")
 
 [node name="OrbitMPlanet2" parent="MapGenerator/Sun3" instance=ExtResource("15_6c07g")]
 radius = 1360.0
+point_count = 128
 speed = 70.0
 initi_progress_ration = 0.159
 body_scene = ExtResource("18_st3n8")
 
 [node name="OrbitSPlanet2" parent="MapGenerator/Sun3" instance=ExtResource("15_6c07g")]
 radius = 1700.0
+point_count = 128
 speed = 100.0
 initi_progress_ration = 0.051
 body_scene = ExtResource("19_w468r")
@@ -151,6 +154,18 @@ body_scene = ExtResource("19_w468r")
 copy_mode = 2
 
 [node name="BlackHoles" type="Node2D" parent="."]
+
+[node name="BlackHole" parent="BlackHoles" instance=ExtResource("20_tv6pm")]
+position = Vector2(-845, 802)
+
+[node name="BlackHole2" parent="BlackHoles" instance=ExtResource("20_tv6pm")]
+position = Vector2(1578, -3366)
+
+[node name="SupermassiveBlackHole" parent="BlackHoles" instance=ExtResource("21_clwmq")]
+position = Vector2(-2541, -2679)
+
+[node name="SupermassiveBlackHole2" parent="BlackHoles" instance=ExtResource("21_clwmq")]
+position = Vector2(1517, 305)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -176,8 +191,8 @@ script = ExtResource("24_1syvi")
 
 [node name="SunShader" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_clwmq")
-position = Vector2(18, -2303.0002)
-scale = Vector2(0.66, 0.66)
+position = Vector2(18, -1880)
+scale = Vector2(0.38, 0.38)
 texture = ExtResource("26_adkbm")
 
 [editable path="CanvasLayer/UI"]

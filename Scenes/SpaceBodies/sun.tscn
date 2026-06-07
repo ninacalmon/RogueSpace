@@ -43,7 +43,7 @@ texture = SubResource("GradientTexture2D_hp2an")
 [node name="RigidBody2D" type="RigidBody2D" parent="." node_paths=PackedStringArray("collision", "sprite", "gravitational_field")]
 collision_layer = 0
 collision_mask = 0
-mass = 1000000.0
+mass = 80000.0
 sleeping = true
 can_sleep = false
 freeze = true
@@ -60,7 +60,7 @@ owner_body = NodePath("..")
 owner_collision_shape = NodePath("../CollisionShape2D")
 mass_to_radius_multiply = 0.0006
 attraction_received_multiply = 0.0
-attraction_executed_multiply = 0.2
+attraction_executed_multiply = 0.1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.1, 0.1)
