@@ -195,14 +195,20 @@ autowrap_mode = 0
 script = ExtResource("9_t7te2")
 bar = NodePath("..")
 
-[node name="ResourcesLabel" type="RichTextLabel" parent="UIControlRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UIControlRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_bottom = 46.0
+grow_horizontal = 0
+
+[node name="ResourcesLabel" type="RichTextLabel" parent="UIControlRect/VBoxContainer"]
 clip_contents = false
 custom_minimum_size = Vector2(200, 0)
-layout_mode = 0
-offset_left = 894.0
-offset_top = -9.0
-offset_right = 1094.0
-offset_bottom = 130.0
+layout_mode = 2
+size_flags_horizontal = 8
 mouse_filter = 2
 bbcode_enabled = true
 text = "[b]0/200[/b]
@@ -211,19 +217,10 @@ fit_content = true
 horizontal_alignment = 2
 script = ExtResource("6_74pwq")
 
-[node name="WarningLabel" type="RichTextLabel" parent="UIControlRect/ResourcesLabel"]
+[node name="WarningLabel" type="RichTextLabel" parent="UIControlRect/VBoxContainer"]
 visible = false
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -271.0
-offset_top = -84.0
-offset_right = 15.5
-grow_horizontal = 0
-grow_vertical = 0
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
 theme_override_colors/default_color = Color(0.67883337, 1, 0.53, 1)
 text = "Recursos coletados!
 Volte para a nave-mãe.
@@ -231,20 +228,14 @@ Volte para a nave-mãe.
 fit_content = true
 horizontal_alignment = 2
 
-[node name="DayControl" type="Control" parent="UIControlRect/ResourcesLabel"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -72.0
-offset_top = -66.0
-grow_horizontal = 0
-grow_vertical = 0
+[node name="DayControl" type="Control" parent="UIControlRect/VBoxContainer"]
+custom_minimum_size = Vector2(59.16, 68.835)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
 script = ExtResource("11_56q1t")
 
-[node name="TextureRect" type="TextureRect" parent="UIControlRect/ResourcesLabel/DayControl"]
+[node name="TextureRect" type="TextureRect" parent="UIControlRect/VBoxContainer/DayControl"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -259,7 +250,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("11_t7te2")
 
-[node name="DayLabel" type="RichTextLabel" parent="UIControlRect/ResourcesLabel/DayControl"]
+[node name="DayLabel" type="RichTextLabel" parent="UIControlRect/VBoxContainer/DayControl"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
