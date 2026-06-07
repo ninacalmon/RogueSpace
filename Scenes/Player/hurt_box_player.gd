@@ -20,7 +20,7 @@ func _on_area_entered(area: Area2D):
 		var _bullet: Bullet = area as Bullet
 		_on_enemy_damage_taken(_bullet.damage, _bullet)
 
-func _on_body_entered(body: RigidBody2D):
+func _on_body_entered(body: PhysicsBody2D):
 	if enemy_body_sensible and body is Enemy:
 		var _enemy: Enemy = body as Enemy
 		_on_enemy_damage_taken(_enemy.damage, _enemy)

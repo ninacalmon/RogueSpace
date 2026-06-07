@@ -15,10 +15,11 @@ func _ready() -> void:
 			"medium": collision_sfx.pitch_scale = 1.0
 			"big": collision_sfx.pitch_scale = 0.6
 
-func _on_body_collided(body: RigidBody2D):
+func _on_body_collided(body: PhysicsBody2D):
 	if body is BlackHole \
 	or body is SuperMBlackHole \
-	or body is CollectableResource:
+	or body is CollectableResource \
+	or body is StaticBody2D:
 		return
 
 	else:

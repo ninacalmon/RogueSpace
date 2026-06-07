@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://3vg8bv7t077f" path="res://Scenes/BackHoles/black_hole.tscn" id="7_4ljym"]
 [ext_resource type="Texture2D" uid="uid://curwcau163khw" path="res://Sprites/tileset.png" id="9_4ljym"]
 [ext_resource type="Script" uid="uid://bm2kpm32ooqhk" path="res://Scenes/Modulars/tile_map_generator.gd" id="10_nwpaj"]
-[ext_resource type="PackedScene" uid="uid://dbryy6fgrl2er" path="res://Scenes/SpaceBodies/planet_big.tscn" id="10_ya3ly"]
+[ext_resource type="PackedScene" uid="uid://dbryy6fgrl2er" path="res://Scenes/SpaceBodies/planet_medium1.tscn" id="10_ya3ly"]
 [ext_resource type="PackedScene" uid="uid://bskx6fe236s8a" path="res://Scenes/UI/ui.tscn" id="11_ngp1c"]
 [ext_resource type="PackedScene" uid="uid://c7nj6rbljyvk3" path="res://Scenes/BackHoles/supermassive_black_hole.tscn" id="11_uk4s3"]
 [ext_resource type="PackedScene" uid="uid://dxg5doh1x8ch2" path="res://Scenes/Asteroids/asteroid_small.tscn" id="11_yanqf"]

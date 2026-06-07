@@ -36,7 +36,7 @@ func _physics_process(_delta: float) -> void:
 	for b in body_near:
 		apply_gravity(b)
 
-func apply_gravity(near_body: RigidBody2D):
+func apply_gravity(near_body: PhysicsBody2D):
 	if near_body == owner_body:
 		return
 	

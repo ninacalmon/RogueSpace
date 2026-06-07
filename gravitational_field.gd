@@ -9,14 +9,14 @@ class_name GravitationalField
 @export_range(0.3, 1.3, 0.01, "lower number = higher increase. and vice-versa") var increase_with_proximity: float = 1 ##lower number, higher increase.
 @onready var _range: CollisionShape2D = $Range
 
-signal grav_field_entered(body: RigidBody2D)
-signal grav_field_exited(body: RigidBody2D)
+signal grav_field_entered(body: PhysicsBody2D)
+signal grav_field_exited(body: PhysicsBody2D)
 
-var body_near: Array[RigidBody2D] = []
+var body_near: Array[PhysicsBody2D] = []
 
 var activated: bool = false
 
-var collision_exception_array: Array[RigidBody2D]
+var collision_exception_array: Array[PhysicsBody2D]
 
 func initialize() -> void:
 	var range_circle: CircleShape2D = _range.shape.duplicate()
@@ -52,7 +52,7 @@ func _physics_process(_delta: float) -> void:
 		apply_gravity(b)
 
 
-func apply_gravity(near_body: RigidBody2D):
+func apply_gravity(near_body: PhysicsBody2D):
 	if near_body == owner_body:
 		return
 	if not is_instance_valid(near_body):
@@ -72,5 +72,5 @@ func apply_gravity(near_body: RigidBody2D):
 	near_body.apply_central_force(force_on_other)
 	owner_body.apply_central_force(force_on_self)
 
-func _add_collision_exception_with(body: RigidBody2D):
+func _add_collision_exception_with(body: PhysicsBody2D):
 	collision_exception_array.append(body)
