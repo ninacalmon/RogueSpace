@@ -1,28 +1,31 @@
-[gd_scene load_steps=15 format=3 uid="uid://bpy311ttuke1b"]
+[gd_scene load_steps=25 format=3 uid="uid://bpy311ttuke1b"]
 
 [ext_resource type="Script" uid="uid://bnv4lu80gauic" path="res://Scenes/Enemies/enemy_larvae.gd" id="1_4xthq"]
-[ext_resource type="Shader" uid="uid://bbjhla7uoi5tp" path="res://Shaders/inflation.gdshader" id="2_ogwh0"]
+[ext_resource type="Shader" uid="uid://diwkfayvo06cx" path="res://Shaders/inflation.gdshader" id="2_ogwh0"]
 [ext_resource type="Script" uid="uid://iatwgk3de1nj" path="res://Scenes/Modulars/hurt_box.gd" id="3_d7wtw"]
-[ext_resource type="Texture2D" uid="uid://bacf5jem3ey7g" path="res://Sprites(main)/Enemies/alien_Larvae.png" id="3_ogwh0"]
+[ext_resource type="Texture2D" uid="uid://vaqxnaqn7oax" path="res://Sprites(main)/Enemies/Alien_Gordo.png" id="3_ogwh0"]
 [ext_resource type="AudioStream" uid="uid://7lu32wsorlh5" path="res://Sound Effects/Enemies/sfx_inimigosBasic.wav" id="4_lpb1s"]
 [ext_resource type="AudioStream" uid="uid://6nqgebd8dtyr" path="res://Sound Effects/Enemies/sfx_inimigosBasic (2).wav" id="5_137m0"]
 [ext_resource type="AudioStream" uid="uid://bkpogun2por27" path="res://Sound Effects/Enemies/sfx_enemy_attack.mp3" id="6_d0w55"]
 [ext_resource type="Script" uid="uid://e5cfbq8jk5j5" path="res://Scenes/Enemies/enemy_visible_on_screen.gd" id="7_dd8ds"]
+[ext_resource type="Texture2D" uid="uid://cbcuca4hv1ck1" path="res://Sprites/Explosion_Sheet.png" id="9_d7wtw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_auwsv"]
 radius = 15.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d7wtw"]
 shader = ExtResource("2_ogwh0")
-shader_parameter/puff_amount = 0.0
-shader_parameter/wobble_strength = 0.05
-shader_parameter/wobble_speed = 4.0
+shader_parameter/inflate = 0.0
+shader_parameter/radius = 0.5
+shader_parameter/softness = 0.3
+shader_parameter/inflate_color = Color(1, 0.5, 0.5, 1)
+shader_parameter/color_strength = 3.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ghaa6"]
 radius = 27.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pi7rj"]
-radius = 143.0
+radius = 168.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_c5h00"]
 playback_mode = 1
@@ -35,17 +38,67 @@ stream_2/stream = ExtResource("6_d0w55")
 stream_2/weight = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ogwh0"]
-radius = 354.1892
+radius = 214.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lpb1s"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_137m0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.81578946, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_d0w55"]
+curve = SubResource("Curve_137m0")
+
+[sub_resource type="Gradient" id="Gradient_dd8ds"]
+offsets = PackedFloat32Array(0, 0.19166666, 0.6625, 0.94166666)
+colors = PackedColorArray(0.29411766, 0.92941177, 0.27058825, 1, 0.84313726, 1, 0.21960784, 1, 0.9372549, 0.6901961, 0.23921569, 1, 0.3254902, 0, 0.24705882, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_it2th"]
+gradient = SubResource("Gradient_dd8ds")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kd7u2"]
+particle_flag_disable_z = true
+angle_min = -360.0
+angle_max = 360.00003
+spread = 180.0
+initial_velocity_min = 98.68
+initial_velocity_max = 332.22998
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+color_initial_ramp = SubResource("GradientTexture1D_it2th")
+alpha_curve = SubResource("CurveTexture_d0w55")
+anim_speed_max = 5.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d7wtw"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_lpb1s"]
+offsets = PackedFloat32Array(0.26408452, 0.5528169, 0.7183099)
+colors = PackedColorArray(0, 0, 0, 1, 0.14, 0.08866666, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_137m0"]
+gradient = SubResource("Gradient_lpb1s")
+width = 600
+height = 600
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="EnemyLarvae" type="RigidBody2D" node_paths=PackedStringArray("explosion_area")]
+mass = 3.0
 can_sleep = false
 script = ExtResource("1_4xthq")
 explosion_area = NodePath("ExplosionArea")
-speed = 30.0
+speed = 50.0
 max_velocity = 100.0
+life = 8.0
 damage = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_auwsv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -54,6 +107,7 @@ rotation = -1.5707964
 texture = ExtResource("3_ogwh0")
 
 [node name="HurtBox" type="Area2D" parent="."]
+visible = false
 script = ExtResource("3_d7wtw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
@@ -64,6 +118,7 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AggroArea"]
+visible = false
 shape = SubResource("CircleShape2D_pi7rj")
 
 [node name="AttackSFX" type="AudioStreamPlayer" parent="."]
@@ -79,3 +134,19 @@ script = ExtResource("7_dd8ds")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea"]
 shape = SubResource("CircleShape2D_ogwh0")
+
+[node name="ExplosionParticles" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_lpb1s")
+emitting = false
+amount = 60
+texture = ExtResource("9_d7wtw")
+lifetime = 0.7
+one_shot = true
+explosiveness = 0.65
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_kd7u2")
+
+[node name="ExplosionAureaSprite" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_d7wtw")
+scale = Vector2(0.75999993, 0.75999993)
+texture = SubResource("GradientTexture2D_137m0")

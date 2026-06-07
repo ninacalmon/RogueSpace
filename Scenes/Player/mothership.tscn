@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://b60wc4xruimxc"]
 
-[ext_resource type="Texture2D" uid="uid://bkdqhgb761bil" path="res://Sprites(main)/Nave.png" id="1_ffvao"]
+[ext_resource type="Texture2D" uid="uid://c22k5j456bso3" path="res://Sprites(main)/Nave (1).png" id="1_2mxmk"]
 [ext_resource type="Script" uid="uid://cpkq2vhfiv77u" path="res://Scenes/Player/mothership_enter_area.gd" id="2_ffvao"]
 [ext_resource type="AudioStream" uid="uid://bjpdfvmmyk2k1" path="res://Sound Effects/Spaceship/SFX_dooropen.wav" id="3_2mxmk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q0gh8"]
-size = Vector2(312, 224)
+size = Vector2(410, 312)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q0gh8"]
 radius = 124.004036
@@ -25,10 +25,10 @@ shape = SubResource("RectangleShape2D_q0gh8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 3.1415927
-texture = ExtResource("1_ffvao")
+texture = ExtResource("1_2mxmk")
 
 [node name="EnterArea" type="Area2D" parent="."]
-position = Vector2(0, -114)
+position = Vector2(0, -133)
 input_pickable = false
 script = ExtResource("2_ffvao")
 

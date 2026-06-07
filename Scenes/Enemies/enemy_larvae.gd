@@ -22,6 +22,8 @@ var puff_timer: float = 0.0
 var player_inside_aggro: bool = false
 
 @onready var mat: ShaderMaterial = sprite_2d.material
+@onready var explosion_particles: GPUParticles2D = $ExplosionParticles
+@onready var explosion_aurea_sprite: Sprite2D = $ExplosionAureaSprite
 
 
 func _ready():
@@ -29,6 +31,8 @@ func _ready():
 	aggro_area.body_entered.connect(_on_aggro_entered)
 	aggro_area.body_exited.connect(_on_aggro_exited)
 	player = get_tree().get_first_node_in_group("Player_Group")
+
+	explosion_aurea_sprite.modulate.a = 0
 
 
 func _process(delta):
@@ -125,16 +129,14 @@ func handle_deflate(delta):
 # -----------------------
 
 func update_shader(puff_to_explosion_time: float = time_to_explode):
+	var normalizes_aurea: float = (puff_timer / puff_to_explosion_time)
+	explosion_aurea_sprite.modulate.a = normalizes_aurea
+	
 	if mat:
-		var normalized: float = puff_timer / puff_to_explosion_time # 0 → 1 (FIXED)
+		var normalized: float = (puff_timer / puff_to_explosion_time) * 0.6
 
-		mat.set_shader_parameter("puff_amount", normalized)
+		mat.set_shader_parameter("inflate", normalized)
 
-		# Juice near explosion
-		if normalized > 0.8:
-			mat.set_shader_parameter("wobble_strength", 0.12)
-		else:
-			mat.set_shader_parameter("wobble_strength", 0.05)
 
 
 # -----------------------
@@ -163,6 +165,13 @@ func explode():
 
 		if collider.has_method("apply_stun"):
 			collider.apply_stun(stun_time)
+
+	var p = explosion_particles
+	p.one_shot = true
+	p.reparent(get_tree().current_scene)
+	p.global_position = global_position
+
+	p.emitting = true
 
 	queue_free()
 

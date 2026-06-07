@@ -1,25 +1,28 @@
 shader_type canvas_item;
 
-uniform float puff_amount : hint_range(0.0, 2.0) = 0.0;
-uniform float wobble_strength : hint_range(0.0, 0.2) = 0.05;
-uniform float wobble_speed : hint_range(0.0, 10.0) = 4.0;
+uniform float inflate : hint_range(0.0, 0.6) = 0.0;
+uniform float radius : hint_range(0.0, 1.0) = 0.5;
+uniform float softness : hint_range(0.01, 1.0) = 0.3;
+
+uniform vec4 inflate_color : source_color = vec4(1.0, 0.5, 0.5, 1.0);
+uniform float color_strength : hint_range(0.0, 3.0) = 1.0;
 
 void fragment() {
-	vec2 uv = UV;
+    vec2 center = vec2(0.5);
+    vec2 dir = UV - center;
+    float dist = length(dir);
 
-	// Center UV (-0.5 to 0.5)
-	vec2 centered = uv - 0.5;
+    float mask = smoothstep(radius, radius - softness, dist);
 
-	float dist = length(centered);
+    vec2 offset = normalize(dir) * inflate * mask * 0.2;
+    vec2 uv = UV - offset;
 
-	// Radial expansion (core of the puff)
-	float inflate = 1.0 + puff_amount;
+    vec4 tex = texture(TEXTURE, uv);
 
-	// Wobble (organic motion)
-	float wobble = sin(dist * 20.0 - TIME * wobble_speed) * wobble_strength * puff_amount;
+  
+    float influence = inflate * mask * color_strength;
 
-	// Apply deformation
-	vec2 new_uv = centered / (inflate + wobble) + 0.5;
+    vec3 final_color = mix(tex.rgb, tex.rgb * inflate_color.rgb, influence);
 
-	COLOR = texture(TEXTURE, new_uv);
+    COLOR = vec4(final_color, tex.a);
 }
