@@ -2,16 +2,18 @@ extends Node
 
 var pages: Dictionary = {
 	1: {
-		"head": "[b]Teste dia 1 bla bla",
-		"main": "Yapping yapping oi oioi oi oi oi oi!!!!Yapping yapping oi oioi oi oi oi oi!!!!
-
-Yapping yapping oi oioi oi oi oi oi!!!!oi oi oi!!!!",
+		"head": "[b]Lorem ipsum dolor sit amet, consectetur",
+		"main": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
 		"sketch": preload("res://Sprites(main)/SpaceshipInterior/drawingTest.png")
 	},
 
 	2: {
-		"head": "[b]Teste dia 2 ohmagaaah",
-		"main": "Fodaseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+		"head": "[b]Lorem ipsum!",
+		"main": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+		
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
 		"sketch": null
 	},
 

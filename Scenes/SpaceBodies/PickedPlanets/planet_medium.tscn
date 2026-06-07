@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b31sq5e3ikty8"]
 
 [ext_resource type="Script" uid="uid://clcm8jx1m8eel" path="res://Scenes/SpaceBodies/Moons/static_rotation.gd" id="1_bc8jl"]
-[ext_resource type="Texture2D" uid="uid://dwl1rmlthue31" path="res://Sprites(main)/TemporaryPlanets/NewMap/planet_small.png" id="2_40wpp"]
+[ext_resource type="Texture2D" uid="uid://c3ou6rt756n5u" path="res://Sprites(main)/Planetas/planetaMédio2.png" id="2_bc8jl"]
 [ext_resource type="PackedScene" uid="uid://bu2k0aqen7pbj" path="res://Scenes/SpaceBodies/orbit.tscn" id="3_e8ykg"]
 [ext_resource type="PackedScene" uid="uid://bk55i4wpulfxb" path="res://Scenes/SpaceBodies/Moons/Moon1.tscn" id="4_xmv35"]
 
@@ -20,7 +20,7 @@ script = ExtResource("1_bc8jl")
 shape = SubResource("CircleShape2D_vpe2g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_40wpp")
+texture = ExtResource("2_bc8jl")
 
 [node name="Orbit" parent="." instance=ExtResource("3_e8ykg")]
 radius = 200.0
