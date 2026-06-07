@@ -8,7 +8,6 @@ class_name Monitor
 var has_energy: bool = false
 var lights_on: bool = false
 
-
 func _ready() -> void:
 	#has_energy = true
 	_connect_signals()
