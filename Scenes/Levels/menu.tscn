@@ -357,7 +357,7 @@ position = Vector2(578.00006, 362)
 scale = Vector2(0.23242185, 0.23632813)
 texture = ExtResource("8_sic4q")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/ControlersOverlay"]
+[node name="PauseRichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/ControlersOverlay"]
 layout_mode = 0
 offset_left = 241.00002
 offset_top = 198.00002
@@ -367,7 +367,7 @@ scale = Vector2(1.2, 1.2)
 theme = SubResource("Theme_kha57")
 text = "pausar"
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="CanvasLayer/Control/ControlersOverlay"]
+[node name="BrakeRichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/ControlersOverlay"]
 layout_mode = 0
 offset_left = 257.0
 offset_top = 232.99998
@@ -377,7 +377,7 @@ scale = Vector2(1.2, 1.2)
 theme = SubResource("Theme_kha57")
 text = "freio"
 
-[node name="RichTextLabel4" type="RichTextLabel" parent="CanvasLayer/Control/ControlersOverlay"]
+[node name="ZoomOutRichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/ControlersOverlay"]
 layout_mode = 0
 offset_left = 213.99998
 offset_top = 269.0
@@ -387,7 +387,7 @@ scale = Vector2(1.2, 1.2)
 theme = SubResource("Theme_kha57")
 text = "zoom out"
 
-[node name="RichTextLabel6" type="RichTextLabel" parent="CanvasLayer/Control/ControlersOverlay"]
+[node name="DashRichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/ControlersOverlay"]
 layout_mode = 0
 offset_left = 824.00006
 offset_top = 231.0
@@ -397,7 +397,7 @@ scale = Vector2(1.2, 1.2)
 theme = SubResource("Theme_kha57")
 text = "dash/impulso"
 
-[node name="RichTextLabel7" type="RichTextLabel" parent="CanvasLayer/Control/ControlersOverlay"]
+[node name="ZoomInRichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/ControlersOverlay"]
 layout_mode = 0
 offset_left = 823.99994
 offset_top = 266.0
@@ -407,7 +407,7 @@ scale = Vector2(1.2, 1.2)
 theme = SubResource("Theme_kha57")
 text = "zoom in"
 
-[node name="RichTextLabel8" type="RichTextLabel" parent="CanvasLayer/Control/ControlersOverlay"]
+[node name="TeleportRichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/ControlersOverlay"]
 layout_mode = 0
 offset_left = 823.00006
 offset_top = 336.0
@@ -417,7 +417,7 @@ scale = Vector2(1.2, 1.2)
 theme = SubResource("Theme_kha57")
 text = "teleporte*"
 
-[node name="RichTextLabel9" type="RichTextLabel" parent="CanvasLayer/Control/ControlersOverlay"]
+[node name="ConfirmRichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/ControlersOverlay"]
 layout_mode = 0
 offset_left = 823.00006
 offset_top = 385.0
@@ -427,7 +427,7 @@ scale = Vector2(1.2, 1.2)
 theme = SubResource("Theme_kha57")
 text = "confirmar"
 
-[node name="RichTextLabel5" type="RichTextLabel" parent="CanvasLayer/Control/ControlersOverlay"]
+[node name="MovementRichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/ControlersOverlay"]
 layout_mode = 0
 offset_left = 195.00002
 offset_top = 348.0

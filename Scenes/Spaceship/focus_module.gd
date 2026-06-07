@@ -18,13 +18,18 @@ func _on_focus_on_requested(zoom_in_amount: float, zoom_offset: Vector2, emitter
 
 	camera.is_busy = true
 	camera.is_focused = true
+
 	var new_zoom = camera.zoom * zoom_in_amount
-	var new_position = emitter.global_position + zoom_offset
+	## The camera following the mouse uses offset to calculate the position of the camera.
+	## Changing offset does not change camera global transform, therefore, we need to
+	## "cancel out" the offset here when calculating where to focus
+	var new_position = emitter.global_position + zoom_offset - camera.offset
 	
 	if !keep_camera:
 		var tween = create_tween()
 		tween.set_ease(Tween.EASE_IN_OUT)
 		tween.set_trans(Tween.TRANS_QUAD)
+
 		tween.tween_property(camera, "zoom", new_zoom, zoom_speed)
 		tween.parallel().tween_property(camera, "global_position", new_position, zoom_speed)
 		

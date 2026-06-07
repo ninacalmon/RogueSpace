@@ -90,7 +90,7 @@ stream_0/stream = ExtResource("10_3okkr")
 script = ExtResource("1_s3qmo")
 sub_area_screen = NodePath("SubAreaScreen")
 zoom_in_amount = 6.8
-zoom_offset = Vector2(0, -30)
+zoom_offset = Vector2(0, -45)
 clickable_highlight = NodePath("ClickableHighlight")
 metadata/_custom_type_script = "uid://cj0pm0s1qx8my"
 

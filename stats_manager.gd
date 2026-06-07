@@ -32,7 +32,7 @@ var player_current_bullet: String = "res://Scenes/Bullets/basic_bullet.tscn"
 
 #region CONST BaseLifeStats
 const PLAYER_MAX_HEALTH: float = 100.0
-const PLAYER_MAX_FUEL: float = 1000.0
+const PLAYER_MAX_FUEL: float = 550.0
 const FUEL_USE_STEP: float = 0.1
 const FUEL_IMPULSE_USE_STEP: = 0.5
 #endregion
