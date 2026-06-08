@@ -2,25 +2,27 @@ extends Node
 
 var pages: Dictionary = {
 	1: {
-		"head": "[b]Lorem ipsum dolor sit amet, consectetur",
-		"main": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-		"sketch": preload("res://Sprites(main)/SpaceshipInterior/drawingTest.png")
-	},
+		"head": "[b]Primeiro log.",
+		"main": "Vasily costumava manter um diário de bordo da expedição. Agora que estou sozinho, acho que essa tarefa passou para mim.
 
-	2: {
-		"head": "[b]Lorem ipsum!",
-		"main": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-		
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+A Icarus está funcionando à base de aparelhos, cada vez mais tenho saído apenas para conseguir recursos para mantê-la operacional.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+Isso está ficando cansativo.",
 		"sketch": null
 	},
 
+	2: {
+		"head": "[b]Eu odeio insetos!",
+		"main": "O sistema de aquecimento da nave quebrou há alguns dias e só agora consegui arrumar.
+ 
+A pior parte de tudo são aquelas pestes, que mesmo servindo como almoço, são um grande estorvo.",
+		"sketch": preload("res://Sprites(main)/SpaceshipInterior/drawingTest.png")
+	},
+
 	3: {
-		"head": "[b]deimos fodido 3",
-		"main": "kakakakakkakakakakakakkaka merda fodasse",
-		"sketch": preload("res://Sprites(main)/SpaceshipInterior/drawingTest2.png")
+		"head": "[b]Eu amo comer insetos...",
+		"main": "Aprendi a preparar uma sopa deliciosa com esses pestinhas. Vou anotar a receita aqui por precaução:",
+		"sketch": preload("res://Sprites(main)/SpaceshipInterior/DesenhoDiario.png")
 	}
 }
 

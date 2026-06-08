@@ -27,7 +27,9 @@ func _on_clicked():
 		return
 	SFXManager.play_sound(door_sfx)
 	await get_tree().create_timer(1.2).timeout
-	StatsManager.day += 1
+	if !Globals.just_finished_tutorial: StatsManager.day += 1
+	Globals.just_finished_tutorial = false
+	Globals.update_resources_goal()
 	LevelTransition.change_scene_to("res://Scenes/Levels/LevelFinal2.tscn", 3, 2)
 
 func _on_focus_changed(focus: bool, _subject: Node2D):

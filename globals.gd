@@ -14,6 +14,8 @@ var fake_mouse_input: bool
 
 var is_showing_confirmation: bool
 
+var just_finished_tutorial: bool = true
+
 #var level: int = 1
 #
 #var resources_gathered: int = 110
@@ -29,3 +31,6 @@ func reload_current_scene():
 
 func player_died():
 	LevelTransition.change_scene_to("res://Scenes/Levels/game_over.tscn")
+
+func update_resources_goal():
+	StatsManager.resources_needed *= StatsManager.day

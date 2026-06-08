@@ -5,15 +5,21 @@ var enemies_on_screen: int
 var is_showing_combat_guide: bool
 var is_showing_confirm_guide: bool
 
+var have_teleport: bool
+
 func _ready() -> void:
-	InputGuide.clear_guides()
-	show_movement_guides()
 	
 	EventBus.enemy_on_screen.connect(_on_enemy_entered_screen)
 	EventBus.enemy_off_screen.connect(_on_enemy_exited_screen)
 
 	EventBus.mothership_entrance_entered.connect(_on_mothership_entrance_entered)
 	EventBus.mothership_entrance_exited.connect(_on_mothership_entrance_exited)
+
+	have_teleport = Globals.can_teleport
+
+	InputGuide.clear_guides()
+	show_movement_guides()
+
 
 
 func _on_enemy_entered_screen():
@@ -48,6 +54,9 @@ func show_movement_guides():
 	InputGuide.show_guide(InputGuide.ActionType.MOVEMENT)
 	InputGuide.show_guide(InputGuide.ActionType.IMPULSE)
 	InputGuide.show_guide(InputGuide.ActionType.BREAK)
+	if have_teleport:
+		InputGuide.show_guide(InputGuide.ActionType.TELEPORT)
+		print("bla bla bla")
 
 func show_combat_guides():
 	InputGuide.show_guide(InputGuide.ActionType.AIM)
