@@ -140,6 +140,7 @@ flip_h = true
 [node name="FocusModule" type="Node2D" parent="Camera2D" node_paths=PackedStringArray("camera")]
 script = ExtResource("4_0gr6q")
 camera = NodePath("..")
+zoom_speed = null
 
 [node name="Diary" parent="." instance=ExtResource("19_jfm16")]
 position = Vector2(312, 117)

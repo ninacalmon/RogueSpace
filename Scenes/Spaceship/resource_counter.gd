@@ -19,7 +19,7 @@ func initialize():
 	#await tween.finished
 	await animate_number()
 	SpaceshipEventBus.resource_count_finished.emit()
-	SpaceshipEventBus.focus_off.emit()
+	
 
 	tween = create_tween()
 	tween.tween_property(self, "modulate:a", 0, 0.5)

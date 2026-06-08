@@ -6,6 +6,7 @@ extends Node2D
 
 @onready var init_zoom: Vector2 = camera.zoom
 @onready var init_position: Vector2 = camera.global_position
+@onready var pan_view_module: PanViewModule = $"../PanViewModule"
 
 
 func initialize() -> void:
@@ -56,3 +57,5 @@ func _on_focus_off_requested():
 	await tween.finished
 	
 	camera.is_busy = false
+
+	camera.update_current_room()

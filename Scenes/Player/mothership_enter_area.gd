@@ -7,6 +7,7 @@ var door_sfx_pitch: float
 
 var is_entering: bool
 var is_showing_confirmation: bool = false
+var player_onto_area: bool
 
 @onready var confirmation_canvas_layer: CanvasLayer = $"../ConfirmationCanvasLayer"
 @onready var button_no: Button = $"../ConfirmationCanvasLayer/HBoxContainer/ButtonNo"
@@ -31,6 +32,7 @@ func _on_body_entered(body: RigidBody2D):
 		return
 	if disable:
 		return
+	player_onto_area = true
 	if StatsManager.current_resources < StatsManager.resources_needed:
 		var resources_you_need: int = StatsManager.resources_needed - StatsManager.current_resources
 		PopUpSystem.show_text("Colete [b]%d[/b] ou mais recursos para retornar à nave-mãe." %resources_you_need, 5)
@@ -39,6 +41,7 @@ func _on_body_entered(body: RigidBody2D):
 
 func _on_body_exited(body: RigidBody2D):
 	if body is Player:
+		player_onto_area = false
 		disable = false
 		Engine.time_scale = 1
 		confirmation_canvas_layer.hide()
@@ -48,7 +51,7 @@ func _on_body_exited(body: RigidBody2D):
 func _input(event: InputEvent) -> void:
 	if Globals.is_cutscene or get_tree().paused:
 		return
-	if event.is_action_pressed("confirm"):
+	if event.is_action_pressed("confirm") and player_onto_area:
 		#get_viewport().set_input_as_handled()
 		if StatsManager.current_resources < StatsManager.resources_needed:
 			## feebback!!

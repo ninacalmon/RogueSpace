@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cvgon225rqb0a" path="res://resources_machine.gd" id="1_15nl0"]
 [ext_resource type="Shader" uid="uid://cccnue3fm2pyc" path="res://Shaders/outline.gdshader" id="2_drgh0"]
 [ext_resource type="Texture2D" uid="uid://db2ksdva63mnk" path="res://Sprites(main)/SpaceshipInterior/Machine/SpaceshipMachine.png" id="3_x7ic0"]
-[ext_resource type="Script" uid="uid://jtbq6dor8pk0" path="res://Scenes/modulars/clickable_highlight.gd" id="4_8efwl"]
+[ext_resource type="Script" uid="uid://jtbq6dor8pk0" path="res://Scenes/Modulars/clickable_highlight.gd" id="4_8efwl"]
 [ext_resource type="Script" uid="uid://btutin3dslh6c" path="res://Scenes/Spaceship/resource_counter.gd" id="5_ewulj"]
 [ext_resource type="Script" uid="uid://027n44axvh63" path="res://Scenes/Spaceship/resources_deposit.gd" id="5_n2veb"]
 [ext_resource type="AudioStream" uid="uid://3ywm8o38t0d4" path="res://Sound Effects/value_up3.wav" id="6_8efwl"]

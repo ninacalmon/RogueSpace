@@ -20,12 +20,20 @@ var current_room: int = 0
 
 var deactivated: bool = true
 
+var room_0_position_x: float
+var room_1_position_x: float
+var room_minus_1_position_x: float
+
 func initialize() -> void: 
 	#viewport_size = get_viewport_rect().size
 	#viewport_center = camera.get_screen_center_position()
 	deactivated = false
 	button_l.pressed.connect(_on_left_button_pressed)
 	button_r.pressed.connect(_on_right_button_pressed)
+
+	room_0_position_x = camera.global_position.x
+	room_1_position_x = room_0_position_x + room_width
+	room_minus_1_position_x = room_0_position_x - room_width
 
 func _on_left_button_pressed():
 	if camera.is_busy or \
@@ -66,6 +74,22 @@ func look_side(side: String):
 	#viewport_center = camera.get_screen_center_position()
 	camera.is_busy = false
 
+func update_current_room():
+	var is_camera_on_room_zero: bool = abs(camera.global_position.x - \
+		room_0_position_x) < 50
+
+	var is_camera_on_room_1: bool = abs(camera.global_position.x - \
+		room_1_position_x) < 50
+
+	var is_camera_on_room_minus_1: bool = abs(camera.global_position.x - \
+		room_minus_1_position_x) < 50
+
+	if is_camera_on_room_zero:
+		current_room = 0
+	elif is_camera_on_room_1:
+		current_room = 1
+	elif is_camera_on_room_minus_1:
+		current_room = -1
 
 #func _input(event: InputEvent) -> void:
 	#if camera.is_busy or \

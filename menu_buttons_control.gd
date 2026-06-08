@@ -16,7 +16,7 @@ func _ready() -> void:
 	controls.pressed.connect(_on_controls_button_pressed)
 	exit.pressed.connect(_on_exit_button_pressed)
 	control_exit_button.pressed.connect(_on_control_exit_pressed)
-	
+
 	start.mouse_entered.connect(_on_button_hovered.bind(1))
 	start.focus_entered.connect(_on_button_hovered.bind(1))
 	controls.mouse_entered.connect(_on_button_hovered.bind(2))
@@ -26,6 +26,8 @@ func _ready() -> void:
 	Input.joy_connection_changed.connect(_on_joy_connected)
 	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+	InputGuide.clear_guides()
 
 	start.grab_focus()
 

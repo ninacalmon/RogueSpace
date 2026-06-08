@@ -37,3 +37,6 @@ func _process(_delta):
 	var mat: ShaderMaterial = pixel_rect.material as ShaderMaterial
 	if mat:
 		mat.set_shader_parameter("camera_pos", global_position + offset)
+
+func update_current_room():
+	pan_view_module.update_current_room()
