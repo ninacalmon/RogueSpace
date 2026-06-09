@@ -283,7 +283,7 @@ metadata/_edit_lock_ = true
 [node name="StaticBody2D" type="StaticBody2D" parent="Bounds"]
 position = Vector2(0, -121)
 disable_mode = 1
-collision_layer = 8
+collision_layer = 9
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/StaticBody2D"]
@@ -293,7 +293,7 @@ shape = SubResource("RectangleShape2D_qlkbh")
 [node name="StaticBody2D2" type="StaticBody2D" parent="Bounds"]
 position = Vector2(0, 141)
 disable_mode = 1
-collision_layer = 8
+collision_layer = 9
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/StaticBody2D2"]
@@ -304,7 +304,7 @@ shape = SubResource("RectangleShape2D_qlkbh")
 position = Vector2(-87, 1)
 rotation = 1.5707964
 disable_mode = 1
-collision_layer = 8
+collision_layer = 9
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/StaticBody2D3"]

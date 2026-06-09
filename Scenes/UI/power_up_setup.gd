@@ -61,7 +61,7 @@ func check_availability():
 func deactivate_buying(reason: String):
 	default_color = unavailiable_color
 	focused_color = unavailiable_focused_color
-	modulate = default_color
+	self_modulate = default_color
 	if reason == "Not enough resources":
 		custom_tooltip_text = "Sem recursos suficientes. [color=68b820]%d / %d[/color] recursos" %[StatsManager.current_resources, price]
 	if reason == "Already at max level":
@@ -77,8 +77,8 @@ func _on_button_pressed():
 
 func buy_power_up():
 	current_level += 1
-	modulate = bought_color
-	default_color = bought_color
+	#modulate = bought_color
+	#default_color = bought_color
 	PowerUps.apply_power_up(effect)
 	StatsManager.current_resources -= price
 	SpaceshipEventBus.resources_spent.emit()

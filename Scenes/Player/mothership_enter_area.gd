@@ -27,7 +27,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	Globals.is_showing_confirmation = is_showing_confirmation
 
-func _on_body_entered(body: RigidBody2D):
+func _on_body_entered(body: PhysicsBody2D):
 	if !(body is Player):
 		return
 	if disable:
@@ -40,7 +40,7 @@ func _on_body_entered(body: RigidBody2D):
 	EventBus.mothership_entrance_entered.emit()
 
 
-func _on_body_exited(body: RigidBody2D):
+func _on_body_exited(body: PhysicsBody2D):
 	if body is Player:
 		print("exited")
 		player_onto_area = false

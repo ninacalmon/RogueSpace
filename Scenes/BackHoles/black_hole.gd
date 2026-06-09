@@ -15,12 +15,12 @@ func _ready() -> void:
 	gravitational_field.body_entered.connect(_on_gravitational_field_body_entered)
 	gravitational_field.body_exited.connect(_on_gravitational_field_body_exited)
 
-func _on_gravitational_field_body_entered(_body: RigidBody2D):
+func _on_gravitational_field_body_entered(_body: PhysicsBody2D):
 	if _body is Player:
 		player = _body
 		check_distance = true
 
-func _on_gravitational_field_body_exited(_body: RigidBody2D):
+func _on_gravitational_field_body_exited(_body: PhysicsBody2D):
 	if _body is Player:
 		check_distance = false
 
