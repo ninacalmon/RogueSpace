@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bnv4lu80gauic" path="res://Scenes/Enemies/enemy_larvae.gd" id="1_4xthq"]
 [ext_resource type="Shader" uid="uid://diwkfayvo06cx" path="res://Shaders/inflation.gdshader" id="2_ogwh0"]
-[ext_resource type="Script" uid="uid://iatwgk3de1nj" path="res://Scenes/Modulars/hurt_box.gd" id="3_d7wtw"]
+[ext_resource type="Script" uid="uid://iatwgk3de1nj" path="res://Scenes/modulars/hurt_box.gd" id="3_d7wtw"]
 [ext_resource type="Texture2D" uid="uid://vaqxnaqn7oax" path="res://Sprites(main)/Enemies/Alien_Gordo.png" id="3_ogwh0"]
 [ext_resource type="AudioStream" uid="uid://7lu32wsorlh5" path="res://Sound Effects/Enemies/sfx_inimigosBasic.wav" id="4_lpb1s"]
 [ext_resource type="AudioStream" uid="uid://6nqgebd8dtyr" path="res://Sound Effects/Enemies/sfx_inimigosBasic (2).wav" id="5_137m0"]
@@ -14,12 +14,15 @@
 radius = 15.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d7wtw"]
+resource_local_to_scene = true
 shader = ExtResource("2_ogwh0")
 shader_parameter/inflate = 0.0
 shader_parameter/radius = 0.5
 shader_parameter/softness = 0.3
 shader_parameter/inflate_color = Color(1, 0.5, 0.5, 1)
 shader_parameter/color_strength = 3.0
+shader_parameter/tint_color = Color(1, 1, 1, 1)
+shader_parameter/tint_strength = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ghaa6"]
 radius = 27.0

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://8f0m410ylbbe"]
+[gd_scene load_steps=14 format=3 uid="uid://8f0m410ylbbe"]
 
 [ext_resource type="Script" uid="uid://dtkhiaas5anjp" path="res://Scenes/Enemies/enemy_vermin.gd" id="1_k0yb4"]
 [ext_resource type="Texture2D" uid="uid://v7rhaqerd48m" path="res://Sprites(main)/Enemies/alien_VermeLanceiro.png" id="2_0ktlt"]
-[ext_resource type="Script" uid="uid://iatwgk3de1nj" path="res://Scenes/Modulars/hurt_box.gd" id="3_adcwm"]
+[ext_resource type="Shader" uid="uid://diwkfayvo06cx" path="res://Shaders/inflation.gdshader" id="2_adcwm"]
+[ext_resource type="Script" uid="uid://iatwgk3de1nj" path="res://Scenes/modulars/hurt_box.gd" id="3_adcwm"]
 [ext_resource type="AudioStream" uid="uid://7lu32wsorlh5" path="res://Sound Effects/Enemies/sfx_inimigosBasic.wav" id="4_x66mb"]
 [ext_resource type="AudioStream" uid="uid://6nqgebd8dtyr" path="res://Sound Effects/Enemies/sfx_inimigosBasic (2).wav" id="5_1lrlx"]
 [ext_resource type="AudioStream" uid="uid://bkpogun2por27" path="res://Sound Effects/Enemies/sfx_enemy_attack.mp3" id="6_oaun8"]
@@ -10,6 +11,17 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_auwsv"]
 radius = 15.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x66mb"]
+resource_local_to_scene = true
+shader = ExtResource("2_adcwm")
+shader_parameter/inflate = 0.0
+shader_parameter/radius = 0.5
+shader_parameter/softness = 0.3
+shader_parameter/inflate_color = Color(1, 0.5, 0.5, 1)
+shader_parameter/color_strength = 1.0
+shader_parameter/tint_color = Color(1, 1, 1, 1)
+shader_parameter/tint_strength = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ghaa6"]
 radius = 29.068884
@@ -42,6 +54,7 @@ attack_distance = 40.0
 shape = SubResource("CircleShape2D_auwsv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_x66mb")
 rotation = -1.5707964
 texture = ExtResource("2_0ktlt")
 

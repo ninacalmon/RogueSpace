@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://wye3e38tj8hc" path="res://Sprites(main)/TemporaryPlanets/NewMap/sun.png" id="1_gwkba"]
 [ext_resource type="Script" uid="uid://x8dn2ub84fyj" path="res://Scenes/SpaceBodies/sun.gd" id="1_nxpjy"]
-[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="2_eixih"]
+[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="2_eixih"]
 [ext_resource type="Script" uid="uid://b8uwpl8kmnf0e" path="res://Scenes/SpaceBodies/body_setup.gd" id="2_gwkba"]
 [ext_resource type="AudioStream" uid="uid://w2mwru3kmv6g" path="res://Sound Effects/burn.mp3" id="5_upyw3"]
 
@@ -58,9 +58,10 @@ shape = SubResource("CircleShape2D_nxpjy")
 [node name="GravitationalField" parent="RigidBody2D" node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("2_eixih")]
 owner_body = NodePath("..")
 owner_collision_shape = NodePath("../CollisionShape2D")
-mass_to_radius_multiply = 0.0006
+mass_to_radius_multiply = 0.01
 attraction_received_multiply = 0.0
-attraction_executed_multiply = 0.1
+attraction_executed_multiply = 0.023
+increase_with_proximity = 0.8
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.1, 0.1)

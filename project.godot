@@ -34,7 +34,6 @@ HandsEventBus="*res://hands_event_bus.gd"
 
 [display]
 
-window/size/mode=3
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="uid://cmlx2ppg3l6lj"
 

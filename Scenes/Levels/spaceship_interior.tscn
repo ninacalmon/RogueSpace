@@ -201,6 +201,7 @@ script = ExtResource("16_76ouu")
 [node name="VisualStuff" type="Node" parent="."]
 
 [node name="PixelRect" type="ColorRect" parent="VisualStuff"]
+visible = false
 material = SubResource("ShaderMaterial_76ouu")
 anchors_preset = 15
 anchor_right = 1.0

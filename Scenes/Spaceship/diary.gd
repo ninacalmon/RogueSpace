@@ -14,7 +14,7 @@ var has_energy: bool = false
 
 
 func _ready() -> void:
-	has_energy = true
+	#has_energy = true
 	_connect_signals()
 	_initialize_ui()
 

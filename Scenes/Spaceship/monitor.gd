@@ -20,6 +20,7 @@ func _connect_signals():
 
 func _on_resource_count_finished():
 	has_energy = true
+	turn_lights_on()
 
 func _on_clicked():
 	if !has_energy:
@@ -39,9 +40,6 @@ func _on_focus_changed(focus: bool, subject: Node2D):
 		clickable_highlight.is_mouse_over_area = false
 		clickable_highlight.active = true
 		is_focused = false
-		print("focus off, energy: ", has_energy)
-		if !lights_on and has_energy:
-			turn_lights_on()
 
 	elif  focus == true and subject == self:
 		is_focused = true

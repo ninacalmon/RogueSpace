@@ -233,6 +233,9 @@ func _on_damage_taken(amount: float, _causer: Node2D):
 
 
 func flash():
-	sprite_2d.modulate = Color(18.892, 18.892, 18.892)
+	if !mat:
+		return
+
+	mat.set_shader_parameter("tint_strength", 1.0)
 	await get_tree().create_timer(0.1).timeout
-	sprite_2d.modulate = Color(1, 1, 1)
+	mat.set_shader_parameter("tint_strength", 0)

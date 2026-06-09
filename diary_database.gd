@@ -1,6 +1,12 @@
 extends Node
 
 var pages: Dictionary = {
+	0: {
+		"head": "",
+		"main": "",
+		"sketch": null
+	},
+	
 	1: {
 		"head": "[b]Primeiro log.",
 		"main": "Vasily costumava manter um diário de bordo da expedição. Agora que estou sozinho, acho que essa tarefa passou para mim.

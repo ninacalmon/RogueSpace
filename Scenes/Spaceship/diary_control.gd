@@ -22,7 +22,7 @@ func open_diary():
 	show_spread()
 
 func show_spread():
-	var day_left = current_spread * 2 + 1
+	var day_left = current_spread * 2 
 	var day_right = day_left + 1
 
 	var max_day = StatsManager.day
@@ -77,7 +77,7 @@ func _on_prev_pressed():
 
 func _get_max_spread() -> int:
 	var max_day = StatsManager.day
-	return int(ceil(max_day / 2.0)) - 1
+	return int(floor(max_day / 2.0))
 
 
 func _update_buttons():
