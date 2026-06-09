@@ -33,7 +33,7 @@ input_pickable = false
 script = ExtResource("2_ffvao")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnterArea"]
-position = Vector2(0, 38)
+position = Vector2(0, 13)
 shape = SubResource("CircleShape2D_q0gh8")
 
 [node name="DoorSFX" type="AudioStreamPlayer" parent="EnterArea"]

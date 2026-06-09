@@ -27,7 +27,6 @@ func _on_body_entered(body: PhysicsBody2D):
 
 func _on_enemy_damage_taken(amount: float, _causer: Node2D):
 	EventBus.damage_taken.emit(player, amount)
-	print("emitiiiiiiiiii")
 	StatsManager.player_current_health -= amount
 	SFXManager.play_sound(damage_sfx)
 	flash()

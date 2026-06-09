@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="rogue-space"
+config/name="vox vacui"
 run/main_scene="uid://3en43s0xvhci"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://dernurpysipe2"
 
 [autoload]
 

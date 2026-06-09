@@ -1,7 +1,7 @@
 extends Area2D
 class_name MotherShipEntrance
 
-@export var disable: bool = true
+@export var disable: bool = false
 @onready var door_sfx: AudioStreamPlayer = $DoorSFX
 var door_sfx_pitch: float
 
@@ -32,6 +32,7 @@ func _on_body_entered(body: RigidBody2D):
 		return
 	if disable:
 		return
+	print("entered")
 	player_onto_area = true
 	if StatsManager.current_resources < StatsManager.resources_needed:
 		var resources_you_need: int = StatsManager.resources_needed - StatsManager.current_resources
@@ -41,6 +42,7 @@ func _on_body_entered(body: RigidBody2D):
 
 func _on_body_exited(body: RigidBody2D):
 	if body is Player:
+		print("exited")
 		player_onto_area = false
 		disable = false
 		Engine.time_scale = 1
