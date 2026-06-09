@@ -9,6 +9,8 @@ enum State { IDLE, CHASE, FLEE }
 @export var safe_distance: float = 180
 @export var fleeing_time: Vector2 = Vector2(1, 1.5)
 
+@onready var mat: ShaderMaterial = sprite_2d.material
+
 var state: State = State.IDLE
 
 var can_attack: bool = true
@@ -145,9 +147,11 @@ func _on_damage_taken(amount: float, _causer: Node2D):
 
 
 func flash():
-	sprite_2d.modulate = Color(18.892, 18.892, 18.892)
+	if !mat:
+		return
+	mat.set_shader_parameter("tint_strength", 1.0)
 	await get_tree().create_timer(0.1).timeout
-	sprite_2d.modulate = Color(1, 1, 1)
+	mat.set_shader_parameter("tint_strength", 0)
 
 #extends Enemy
 #

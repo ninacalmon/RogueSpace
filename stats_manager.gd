@@ -1,6 +1,6 @@
 extends Node
 
-var day: int = 1
+var day: int = 0
 
 #### RESOURCES BANK ####
 var resources_needed: int = 100

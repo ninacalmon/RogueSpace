@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://br070cnq6sve"]
+[gd_scene load_steps=14 format=3 uid="uid://br070cnq6sve"]
 
 [ext_resource type="Script" uid="uid://7afwh36bc151" path="res://Scenes/Enemies/enemy_basic.gd" id="1_eog5f"]
 [ext_resource type="Texture2D" uid="uid://cx0i5vabq2pgx" path="res://Sprites(main)/Enemies/alien_FuraDetrito.png" id="2_ldqpc"]
-[ext_resource type="Script" uid="uid://iatwgk3de1nj" path="res://Scenes/Modulars/hurt_box.gd" id="3_ry8es"]
+[ext_resource type="Shader" uid="uid://diwkfayvo06cx" path="res://Shaders/inflation.gdshader" id="2_ry8es"]
+[ext_resource type="Script" uid="uid://iatwgk3de1nj" path="res://Scenes/modulars/hurt_box.gd" id="3_ry8es"]
 [ext_resource type="AudioStream" uid="uid://7lu32wsorlh5" path="res://Sound Effects/Enemies/sfx_inimigosBasic.wav" id="4_c17sm"]
 [ext_resource type="AudioStream" uid="uid://6nqgebd8dtyr" path="res://Sound Effects/Enemies/sfx_inimigosBasic (2).wav" id="5_2mprn"]
 [ext_resource type="AudioStream" uid="uid://bkpogun2por27" path="res://Sound Effects/Enemies/sfx_enemy_attack.mp3" id="6_50j16"]
@@ -10,6 +11,17 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_auwsv"]
 radius = 15.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c17sm"]
+resource_local_to_scene = true
+shader = ExtResource("2_ry8es")
+shader_parameter/inflate = 0.0
+shader_parameter/radius = 0.5
+shader_parameter/softness = 0.3
+shader_parameter/inflate_color = Color(1, 0.5, 0.5, 1)
+shader_parameter/color_strength = 1.0
+shader_parameter/tint_color = Color(1, 1, 1, 1)
+shader_parameter/tint_strength = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ghaa6"]
 radius = 27.0
@@ -36,6 +48,7 @@ speed = 200.0
 shape = SubResource("CircleShape2D_auwsv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_c17sm")
 texture = ExtResource("2_ldqpc")
 
 [node name="HurtBox" type="Area2D" parent="."]

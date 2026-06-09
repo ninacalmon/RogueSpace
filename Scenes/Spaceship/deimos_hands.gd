@@ -57,6 +57,8 @@ func _input(event: InputEvent) -> void:
 		snot_timer.start()
 
 func _on_snot_timer_timout():
+	if not (hands_animation.animation == "Idle"):
+		return
 	hands_animation.play("Meleca")
 	await hands_animation.animation_finished
 	hands_animation.play("Idle")
