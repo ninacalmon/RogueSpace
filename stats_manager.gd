@@ -29,6 +29,7 @@ var death_count: int = 0
 #### PLAYER CONST BASE STATS ####
 
 var player_current_bullet: String = "res://Scenes/Bullets/basic_bullet.tscn"
+var player_have_perfurator: bool = true
 
 #region CONST BaseLifeStats
 const PLAYER_MAX_HEALTH: float = 100.0

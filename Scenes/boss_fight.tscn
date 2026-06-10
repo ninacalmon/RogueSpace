@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://dvmhop17frfjx"]
+
+[ext_resource type="Texture2D" uid="uid://b4go5brbh3ndq" path="res://Sprites/Starfields/Starfield 1 - 1024x1024.png" id="1_pdkig"]
+[ext_resource type="PackedScene" uid="uid://b512vj2a4a3y" path="res://Scenes/Player/player.tscn" id="2_rc8yv"]
+[ext_resource type="Script" uid="uid://d4cye4xtr5qhy" path="res://Scenes/test_gravity_changes.gd" id="3_41hqx"]
+[ext_resource type="Script" uid="uid://e5chkuqimfoi" path="res://Scenes/Modulars/gravity_module.gd" id="3_wha5u"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rc8yv"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_41hqx"]
+offsets = PackedFloat32Array(0.6302817, 0.6373239)
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.51, 0.7141666, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wha5u"]
+gradient = SubResource("Gradient_41hqx")
+width = 1000
+height = 1000
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="BossFight" type="Node2D"]
+
+[node name="Main" type="Parallax2D" parent="."]
+z_index = -999
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(1024, 1024)
+repeat_times = 11
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Main"]
+texture = ExtResource("1_pdkig")
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("2_rc8yv")]
+position = Vector2(-18, -57)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="GravityModule" type="Node" parent="Player" node_paths=PackedStringArray("target")]
+script = ExtResource("3_wha5u")
+target = NodePath("..")
+gravity_strength = 1280.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="RoomSpr" type="Sprite2D" parent="StaticBody2D"]
+material = SubResource("CanvasItemMaterial_rc8yv")
+texture = SubResource("GradientTexture2D_wha5u")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(6, 497, 8, 445, 62, 446, 124, 429, 205, 398, 270, 358, 322, 312, 366, 261, 406, 193, 430, 126, 447, 47, 449, -20, 442, -83, 424, -150, 392, -225, 354, -279, 300, -338, 239, -384, 178, -414, 115, -436, 50, -449, -15, -449, -76, -447, -142, -427, -216, -398, -269, -363, -320, -317, -370, -260, -409, -201, -433, -133, -449, -73, -450, 0, -446, 67, -432, 130, -407, 197, -372, 256, -334, 303, -290, 347, -242, 381, -190, 410, -129, 433, -67, 447, -6, 446, -9, 498, -347, 459, -609, 171, -576, -236, -429, -461, -191, -525, 410, -497, 615, -219, 611, 262, 435, 478, 92, 538)
+
+[node name="Test-GravityChanges" type="Node" parent="." node_paths=PackedStringArray("gravity_module")]
+script = ExtResource("3_41hqx")
+gravity_module = NodePath("../Player/GravityModule")

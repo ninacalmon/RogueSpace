@@ -10,6 +10,8 @@ func _ready() -> void:
 
 func _on_area_entered(area: Area2D):
 	if bullet_sensible and area is Bullet:
+		if area is BossBullet:
+			return
 		var _bullet: Bullet = area as Bullet
 		damage_taken.emit(_bullet.damage, _bullet)
 	

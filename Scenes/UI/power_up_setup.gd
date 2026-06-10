@@ -1,7 +1,7 @@
 extends VBoxContainer
 class_name PowerUpSetup
 
-@export_enum("Impulse", "Fuel", "Teleport", "Health", "Propulsors", "Bullet") var effect: String
+@export_enum("Impulse", "Fuel", "Teleport", "Health", "Propulsors", "Bullet", "Perfurator") var effect: String
 @export var title: String
 @export var price: int = 100
 @export var texture: Texture

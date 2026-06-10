@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpfy5u1qycpx2"]
+
+[ext_resource type="Script" uid="uid://m4nkyewpnskh" path="res://Scenes/Bullets/boss_bullet.gd" id="1_meije"]
+[ext_resource type="Texture2D" uid="uid://ckd05m1gdy225" path="res://Sprites(main)/Placeholders/button.png" id="2_hych8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_meije"]
+size = Vector2(34, 14)
+
+[node name="BasicBullet" type="Area2D"]
+script = ExtResource("1_meije")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_meije")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_hych8")

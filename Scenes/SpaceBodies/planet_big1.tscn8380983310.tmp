@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjqibpfesudnp"]
+[gd_scene load_steps=9 format=3 uid="uid://bjqibpfesudnp"]
 
 [ext_resource type="Script" uid="uid://b6ch1ii8ge4tt" path="res://Scenes/SpaceBodies/planet.gd" id="1_s7w56"]
 [ext_resource type="Texture2D" uid="uid://bv75432b5i0ny" path="res://Sprites(main)/Planetas/PlanetaMaior.png" id="2_g3wn1"]
 [ext_resource type="Script" uid="uid://baypfk1ehotqr" path="res://Scenes/SpaceBodies/vulnerability_area.gd" id="4_dy5ji"]
-[ext_resource type="PackedScene" uid="uid://hxbixdf3j2uu" path="res://Scenes/Enemies/boss.tscn" id="5_djqm3"]
 [ext_resource type="Script" uid="uid://b2jggterxnagp" path="res://Scenes/Modulars/smooth_shake_module.gd" id="5_g3wn1"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="5_q0eps"]
 
@@ -42,10 +41,9 @@ mass_to_radius_multiply = 0.25
 attraction_received_multiply = 0.01
 increase_with_proximity = 0.8999999999999999
 
-[node name="VulnerabilityArea" type="Area2D" parent="." node_paths=PackedStringArray("planet_sprite")]
+[node name="VulnerabilityArea" type="Area2D" parent="." node_paths=PackedStringArray("planet")]
 script = ExtResource("4_dy5ji")
-planet_sprite = NodePath("../Sprite2D")
-boss_scene = ExtResource("5_djqm3")
+planet = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VulnerabilityArea"]
 shape = SubResource("CircleShape2D_dy5ji")

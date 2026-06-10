@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b5oolandwoj16" path="res://Sprites(main)/SpaceshipInterior/SpaceshipMonitorScreen.png" id="2_5toxe"]
 [ext_resource type="Shader" uid="uid://cccnue3fm2pyc" path="res://Shaders/outline.gdshader" id="2_41fxr"]
 [ext_resource type="Texture2D" uid="uid://catulgld40fhk" path="res://Sprites(main)/SpaceshipInterior/DeimosFace/SpaceshipMonitorDeimos2.png" id="3_i22b5"]
-[ext_resource type="Script" uid="uid://jtbq6dor8pk0" path="res://Scenes/modulars/clickable_highlight.gd" id="4_cokud"]
+[ext_resource type="Script" uid="uid://jtbq6dor8pk0" path="res://Scenes/Modulars/clickable_highlight.gd" id="4_cokud"]
 [ext_resource type="Texture2D" uid="uid://c06c2uw4mhk5k" path="res://Sprites(main)/SpaceshipInterior/SpaceshipMonitorFrame.png" id="4_oqhwa"]
 [ext_resource type="Texture2D" uid="uid://bix6waaoato1m" path="res://Sprites(main)/SpaceshipInterior/DeimosFace/SpaceshipMonitorDeimospiscandolentinho.png" id="4_se3rt"]
 [ext_resource type="Texture2D" uid="uid://dxqnkfbe4hw57" path="res://Sprites(main)/SpaceshipInterior/DeimosFace/SpaceshipMonitorDeimospiscandolentinho2.png" id="5_4mndj"]
@@ -205,7 +205,7 @@ offset_bottom = 575.0
 theme_override_constants/separation = -46
 alignment = 2
 script = ExtResource("6_s3qmo")
-power_up_options_array = [NodePath("PowerUpsContainerHorizontal/PowerUp"), NodePath("PowerUpsContainerHorizontal/PowerUp2"), NodePath("PowerUpsContainerHorizontal/PowerUp3"), NodePath("PowerUpsContainerHorizontal2/PowerUp4"), NodePath("PowerUpsContainerHorizontal2/PowerUp5"), NodePath("PowerUpsContainerHorizontal2/PowerUp6")]
+power_up_options_array = [NodePath("PowerUpsContainerHorizontal/PowerUp"), NodePath("PowerUpsContainerHorizontal/PowerUp2"), NodePath("PowerUpsContainerHorizontal/PowerUp5"), NodePath("PowerUpsContainerHorizontal2/PowerUp4"), NodePath("PowerUpsContainerHorizontal2/PowerUp6"), NodePath("PowerUpsContainerHorizontal2/PowerUp3")]
 
 [node name="PowerUpsContainerHorizontal" type="HBoxContainer" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical"]
 custom_minimum_size = Vector2(1000, 300)
@@ -233,15 +233,14 @@ title = "COMBUSTÍVEL+"
 description = "Aumenta a capacidade do seu tanque de combustível."
 max_level = 3
 
-[node name="PowerUp3" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical/PowerUpsContainerHorizontal" instance=ExtResource("7_t6xb0")]
+[node name="PowerUp5" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical/PowerUpsContainerHorizontal" instance=ExtResource("7_t6xb0")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-effect = "Health"
-title = "VIDA+"
-price = 200
-description = "Aguente mais porrada."
-max_level = 3
+effect = "Propulsors"
+title = "PROPULSORES+"
+price = 500
+description = "Repare seu velho traje de cosmonauta. Melhora a movimentação no espaço."
 
 [node name="PowerUpsContainerHorizontal2" type="HBoxContainer" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical"]
 custom_minimum_size = Vector2(1000, 300)
@@ -259,15 +258,6 @@ title = "TELEPORTE"
 price = 800
 description = "Retorne à nave-mãe imediatamente e sem perder recursos."
 
-[node name="PowerUp5" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical/PowerUpsContainerHorizontal2" instance=ExtResource("7_t6xb0")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-effect = "Propulsors"
-title = "PROPULSORES+"
-price = 500
-description = "Repare seu velho traje de cosmonauta. Melhora a movimentação no espaço."
-
 [node name="PowerUp6" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical/PowerUpsContainerHorizontal2" instance=ExtResource("7_t6xb0")]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -276,6 +266,16 @@ effect = "Bullet"
 title = "LASER APRIMORADO"
 price = 500
 description = "Mais chances de sobrevivência com mais dano e precisão."
+
+[node name="PowerUp3" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical/PowerUpsContainerHorizontal2" instance=ExtResource("7_t6xb0")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+effect = "Perfurator"
+title = "VIDA+"
+price = 300
+description = "Aguente mais porrada."
+max_level = 3
 
 [node name="PowerUpPopUpSFX" type="AudioStreamPlayer" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical"]
 stream = SubResource("AudioStreamRandomizer_5toxe")

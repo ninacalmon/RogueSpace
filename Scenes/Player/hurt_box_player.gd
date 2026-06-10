@@ -16,8 +16,8 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 
 func _on_area_entered(area: Area2D):
-	if bullet_sensible and area is Bullet:
-		var _bullet: Bullet = area as Bullet
+	if bullet_sensible and area is BossBullet:
+		var _bullet: BossBullet = area as BossBullet
 		_on_enemy_damage_taken(_bullet.damage, _bullet)
 
 func _on_body_entered(body: PhysicsBody2D):
