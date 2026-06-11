@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name Boss
 
 var player: Player
 
@@ -11,6 +12,8 @@ var player: Player
 @export var projectile_speed: float = 800
 @export var projectile_damage: float = 5
 @export var projectile_lifespan: float = 8.0
+
+@export var shoot_inaccuracy: float = 80
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var attack_timer: Timer = $attack_timer
@@ -43,8 +46,8 @@ func _on_attack_timeout():
 	var predicted_position: Vector2 = player.global_position + player.linear_velocity * time_to_hit
 
 	var random_offset = Vector2(
-	randf_range(-50, 50),
-	randf_range(-50, 50)
+	randf_range(-shoot_inaccuracy, shoot_inaccuracy),
+	randf_range(-shoot_inaccuracy, shoot_inaccuracy)
 	)
 
 	predicted_position += random_offset

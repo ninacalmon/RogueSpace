@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://cs7xq5woqx1js"]
+[gd_scene load_steps=37 format=4 uid="uid://cs7xq5woqx1js"]
 
 [ext_resource type="Texture2D" uid="uid://b4go5brbh3ndq" path="res://Sprites/Starfields/Starfield 1 - 1024x1024.png" id="1_w468r"]
 [ext_resource type="Texture2D" uid="uid://dxfs6gmq8441e" path="res://Sprites(main)/TemporaryPlanets/2524948669.png" id="2_5luui"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://c44gjd053ibld" path="res://Sprites(main)/TemporaryPlanets/2733907768.png" id="4_clwmq"]
 [ext_resource type="PackedScene" uid="uid://bjqibpfesudnp" path="res://Scenes/SpaceBodies/planet_big1.tscn" id="5_d8g84"]
 [ext_resource type="PackedScene" uid="uid://b512vj2a4a3y" path="res://Scenes/Player/player.tscn" id="5_k6p3q"]
-[ext_resource type="PackedScene" uid="uid://hxbixdf3j2uu" path="res://Scenes/Enemies/boss.tscn" id="5_r78l7"]
 [ext_resource type="Script" uid="uid://dw2m8ymjsljfq" path="res://Scenes/UI/camera.gd" id="6_d8g84"]
 [ext_resource type="PackedScene" uid="uid://b60wc4xruimxc" path="res://Scenes/Player/mothership.tscn" id="7_r78l7"]
 [ext_resource type="Texture2D" uid="uid://curwcau163khw" path="res://Sprites/tileset.png" id="8_srdaq"]
@@ -30,6 +29,8 @@
 [ext_resource type="Script" uid="uid://cf16x4l41vkpo" path="res://Scenes/Levels/input_guide_admin.gd" id="24_1syvi"]
 [ext_resource type="Shader" uid="uid://1bxsadijf628" path="res://Shaders/hot_deform.gdshader" id="25_lftmr"]
 [ext_resource type="Texture2D" uid="uid://wye3e38tj8hc" path="res://Sprites(main)/TemporaryPlanets/NewMap/sun.png" id="26_adkbm"]
+[ext_resource type="AudioStream" uid="uid://du10bq1ca4wqt" path="res://Music/INTRO_bgm_principal_vox_vacui.mp3" id="30_d8g84"]
+[ext_resource type="AudioStream" uid="uid://dmcpctmeq17xg" path="res://Music/bgm_principal_vox_vacui (3).mp3" id="31_r78l7"]
 
 [sub_resource type="Environment" id="Environment_n7yfy"]
 background_mode = 3
@@ -59,6 +60,16 @@ shader_parameter/falloff = 0.85
 shader_parameter/distortion_strength = 0.007
 shader_parameter/speed = 1.0
 shader_parameter/scale = 80.0
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_srdaq"]
+clip_count = 2
+clip_0/name = &"Intro Bgm Principal Vox Vacui"
+clip_0/stream = ExtResource("30_d8g84")
+clip_0/auto_advance = 1
+clip_0/next_clip = 1
+clip_1/name = &"Bgm Principal Vox Vacui (3)"
+clip_1/stream = ExtResource("31_r78l7")
+clip_1/auto_advance = 0
 
 [node name="Main" type="Node2D"]
 process_mode = 3
@@ -206,7 +217,9 @@ position = Vector2(18, -1880)
 scale = Vector2(0.38, 0.38)
 texture = ExtResource("26_adkbm")
 
-[node name="Boss" parent="." instance=ExtResource("5_r78l7")]
-position = Vector2(-29, -790)
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamInteractive_srdaq")
+volume_db = -30.0
+autoplay = true
 
 [editable path="CanvasLayer/UI"]

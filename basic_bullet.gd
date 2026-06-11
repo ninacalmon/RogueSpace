@@ -22,6 +22,6 @@ func _process(delta: float) -> void:
 	if lifespan <= 0:
 		queue_free()
 
-func _on_body_entered(body: RigidBody2D):
+func _on_body_entered(body: PhysicsBody2D):
 	if !(body is Player):
 		queue_free()
