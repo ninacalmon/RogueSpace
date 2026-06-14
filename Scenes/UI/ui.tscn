@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bskx6fe236s8a"]
+[gd_scene load_steps=22 format=3 uid="uid://bskx6fe236s8a"]
 
 [ext_resource type="Script" uid="uid://cwrgvd4dp6ts7" path="res://Scenes/UI/velocity_control.gd" id="1_gm34j"]
 [ext_resource type="Texture2D" uid="uid://dny5sfb4w1y05" path="res://Sprites(main)/UI/circle.png" id="2_t7te2"]
@@ -16,6 +16,8 @@
 [ext_resource type="Script" uid="uid://d01jqjgknurin" path="res://Scenes/UI/indicator.gd" id="11_74pwq"]
 [ext_resource type="Texture2D" uid="uid://66jhwcha15q8" path="res://Sprites(main)/UI/Kenney Input/tile_calendar.png" id="11_t7te2"]
 [ext_resource type="Texture2D" uid="uid://c6c66sysu2jlq" path="res://Sprites/Ship_Mid.png" id="12_wvggw"]
+[ext_resource type="Script" uid="uid://c4xr3keunlmlg" path="res://Scenes/UI/Settings/settings.gd" id="17_ny3ap"]
+[ext_resource type="PackedScene" uid="uid://c2ijay0wls6go" path="res://Scenes/UI/Settings/settings_container.tscn" id="18_vqjbf"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jsq1y"]
 blend_mode = 1
@@ -387,6 +389,14 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 16
 text = "Continuar"
 
+[node name="SettingsButton" type="Button" parent="PauseOverlay/PauseColorRect/PauseControlRect/VBoxContainer" node_paths=PackedStringArray("inverse_visibility_nodes")]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "Configurações"
+script = ExtResource("17_ny3ap")
+inverse_visibility_nodes = [NodePath("..")]
+
 [node name="ExitButton" type="Button" parent="PauseOverlay/PauseColorRect/PauseControlRect/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -394,12 +404,27 @@ theme_override_font_sizes/font_size = 16
 text = "Retornar ao menu"
 autowrap_mode = 2
 
+[node name="SettingsContainer" parent="PauseOverlay/PauseColorRect/PauseControlRect" node_paths=PackedStringArray("inverse_visibility_nodes") instance=ExtResource("18_vqjbf")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -125.0
+offset_right = 200.0
+offset_bottom = 125.0
+inverse_visibility_nodes = [NodePath("../VBoxContainer")]
+
 [node name="WarningLabel" type="RichTextLabel" parent="PauseOverlay/PauseColorRect/PauseControlRect"]
 layout_mode = 0
 offset_left = 361.0
-offset_top = 375.0
+offset_top = 409.0
 offset_right = 699.0
-offset_bottom = 444.0
+offset_bottom = 478.0
 theme_override_colors/default_color = Color(0.42, 0.42, 0.42, 1)
 text = "(você perderá todos os feitos desde de que saiu da nave!)"
 horizontal_alignment = 1

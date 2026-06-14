@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://3en43s0xvhci"]
+[gd_scene load_steps=42 format=3 uid="uid://3en43s0xvhci"]
 
 [ext_resource type="PackedScene" uid="uid://buqlpqb51bwy" path="res://ui_sounds.tscn" id="1_sic4q"]
 [ext_resource type="Script" uid="uid://cem6pnv2cepc7" path="res://menu_buttons_control.gd" id="2_jsrd8"]
@@ -8,8 +8,10 @@
 [ext_resource type="Script" uid="uid://bpxtguck5t3o3" path="res://Scenes/Levels/rich_text_label.gd" id="4_g56od"]
 [ext_resource type="Script" uid="uid://bsrtfrgcfw0uh" path="res://Scenes/Levels/rich_text_label_2.gd" id="4_p4bun"]
 [ext_resource type="Texture2D" uid="uid://bhshref68qilg" path="res://Sprites/panorama6.jpg" id="7_00qkb"]
+[ext_resource type="Script" uid="uid://c4xr3keunlmlg" path="res://Scenes/UI/Settings/settings.gd" id="8_fw6na"]
 [ext_resource type="Script" uid="uid://cp811on8gxwg6" path="res://Scenes/Levels/rich_text_label_10.gd" id="8_kha57"]
 [ext_resource type="Texture2D" uid="uid://tumvrrknvrfb" path="res://Sprites(main)/UI/controls.png" id="8_sic4q"]
+[ext_resource type="PackedScene" uid="uid://c2ijay0wls6go" path="res://Scenes/UI/Settings/settings_container.tscn" id="9_qa3qj"]
 [ext_resource type="Texture2D" uid="uid://b6lke2tlnjafj" path="res://Sprites(main)/UI/menu BG/1.png" id="10_g56od"]
 [ext_resource type="Texture2D" uid="uid://dlsxxjlva8x7j" path="res://Sprites(main)/UI/menu BG/2.png" id="11_sic4q"]
 [ext_resource type="Texture2D" uid="uid://dxl5lchol3x0m" path="res://Sprites(main)/UI/menu BG/3.png" id="12_kha57"]
@@ -300,10 +302,32 @@ layout_mode = 2
 text = "opções"
 alignment = 0
 
+[node name="Settings" type="Button" parent="CanvasLayer/Control/Pressable" node_paths=PackedStringArray("inverse_visibility_nodes")]
+layout_mode = 2
+text = "opções"
+alignment = 0
+script = ExtResource("8_fw6na")
+inverse_visibility_nodes = [NodePath("..")]
+
 [node name="Exit" type="Button" parent="CanvasLayer/Control/Pressable"]
 layout_mode = 2
 text = "sair"
 alignment = 0
+
+[node name="SettingsContainer" parent="CanvasLayer/Control" node_paths=PackedStringArray("inverse_visibility_nodes") instance=ExtResource("9_qa3qj")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -125.0
+offset_right = 200.0
+offset_bottom = 125.0
+inverse_visibility_nodes = [NodePath("../Pressable")]
 
 [node name="ControlersOverlay" type="ColorRect" parent="CanvasLayer/Control"]
 visible = false

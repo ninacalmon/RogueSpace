@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://dw2m8ymjsljfq" path="res://Scenes/UI/camera.gd" id="7_ev6ts"]
 [ext_resource type="PackedScene" uid="uid://b60wc4xruimxc" path="res://Scenes/Player/mothership.tscn" id="8_2s7u0"]
 [ext_resource type="Texture2D" uid="uid://curwcau163khw" path="res://Sprites/tileset.png" id="9_55wm2"]
-[ext_resource type="Script" uid="uid://bm2kpm32ooqhk" path="res://Scenes/Modulars/tile_map_generator.gd" id="10_7pjfj"]
+[ext_resource type="Script" uid="uid://bm2kpm32ooqhk" path="res://Scenes/modulars/tile_map_generator.gd" id="10_7pjfj"]
 [ext_resource type="PackedScene" uid="uid://dxg5doh1x8ch2" path="res://Scenes/Asteroids/asteroid_small.tscn" id="11_jtkh7"]
 [ext_resource type="PackedScene" uid="uid://dsw810ysjgsn2" path="res://Scenes/Asteroids/asteroid_medium.tscn" id="12_ht16h"]
 [ext_resource type="PackedScene" uid="uid://bcffh04lffmyi" path="res://Scenes/Asteroids/asteroid_big.tscn" id="13_shmn6"]
@@ -388,9 +388,10 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area7/RigidBody2D"]
 shape = SubResource("RectangleShape2D_7pjfj")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Area7"]
+[node name="CritterSound" type="AudioStreamPlayer" parent="Area7"]
 stream = ExtResource("24_7pjfj")
 volume_db = -8.0
+bus = &"Sound Effects"
 
 [node name="Area8" type="Area2D" parent="." node_paths=PackedStringArray("tutorial_warning")]
 position = Vector2(4742, 9)

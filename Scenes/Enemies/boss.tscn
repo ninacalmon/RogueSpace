@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cpfy5u1qycpx2" path="res://Scenes/Bullets/boss_bullet.tscn" id="2_djiw6"]
 [ext_resource type="Shader" uid="uid://diwkfayvo06cx" path="res://Shaders/inflation.gdshader" id="2_vr26e"]
 [ext_resource type="Texture2D" uid="uid://cx0i5vabq2pgx" path="res://Sprites(main)/Enemies/alien_FuraDetrito.png" id="3_djiw6"]
-[ext_resource type="Script" uid="uid://iatwgk3de1nj" path="res://Scenes/Modulars/hurt_box.gd" id="4_12bcj"]
+[ext_resource type="Script" uid="uid://iatwgk3de1nj" path="res://Scenes/modulars/hurt_box.gd" id="4_12bcj"]
 [ext_resource type="AudioStream" uid="uid://7lu32wsorlh5" path="res://Sound Effects/Enemies/sfx_inimigosBasic.wav" id="5_rhlrc"]
 [ext_resource type="AudioStream" uid="uid://6nqgebd8dtyr" path="res://Sound Effects/Enemies/sfx_inimigosBasic (2).wav" id="6_qmcpn"]
 [ext_resource type="AudioStream" uid="uid://bkpogun2por27" path="res://Sound Effects/Enemies/sfx_enemy_attack.mp3" id="7_yjcva"]
