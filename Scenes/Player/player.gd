@@ -12,6 +12,8 @@ var impulse_cooldown_timer: float = StatsManager.player_impulse_cooldown_duratio
 @onready var teleport_sfx: AudioStreamPlayer = $SFX/TeleportSFX
 @onready var sprite_2d: PlayerSprite2D = $Sprite2D
 @onready var dash_sfx: AudioStreamPlayer = $SFX/DashSFX
+@onready var dash_fail_sfx: AudioStreamPlayer = $SFX/DashFailSFX
+
 @onready var sprite_stun: Sprite2D = $SpriteStun
 
 
@@ -125,26 +127,32 @@ func movement(state):
 	update_fuel()
 	SFXManager.play_sound(propulsor_sfx)
 
+var last_facing_direction: String = "down"
+
 func update_facing_direction(dir: Vector2):
-	if abs(dir.x) > abs(dir.y):
-		if dir.x > 0:
-			facing_direction = "right"
-		else:
-			facing_direction = "left"
+	if dir == Vector2.ZERO:
+		return
+
+	var bias: float = 0.05
+
+	if abs(dir.x) > abs(dir.y) + bias:
+		facing_direction = "right" if dir.x > 0 else "left"
+	elif abs(dir.y) > abs(dir.x) + bias:
+		facing_direction = "down" if dir.y > 0 else "up"
 	else:
-		if dir.y > 0:
-			facing_direction = "down"
-		else:
-			facing_direction = "up"
+		facing_direction = last_facing_direction
+
+	last_facing_direction = facing_direction
 
 
 func impulse_burst(state):
-	if Input.is_action_just_pressed("impulse_burst")\
-		and impulse_cooldown_timer <= 0:
+	if Input.is_action_just_pressed("impulse_burst"):
+		if impulse_cooldown_timer <= 0:
 			SFXManager.play_sound(dash_sfx)
 			impulse_cooldown_timer = StatsManager.player_impulse_cooldown_duration
 			update_fuel(true)
 			state.apply_impulse(linear_velocity.normalized() * impulse_speed)
+		else: SFXManager.play_sound(dash_fail_sfx)
 
 
 func break_stop(state):

@@ -1,17 +1,19 @@
-[gd_scene load_steps=30 format=3 uid="uid://b512vj2a4a3y"]
+[gd_scene load_steps=35 format=3 uid="uid://b512vj2a4a3y"]
 
 [ext_resource type="Script" uid="uid://i7mc57eu0q83" path="res://Scenes/Player/player.gd" id="1_ktxno"]
 [ext_resource type="Texture2D" uid="uid://x6m3c8td5nfn" path="res://Sprites(main)/Deimos-Sheet.png" id="2_aqm4k"]
-[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="3_ikhnj"]
+[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="3_ikhnj"]
 [ext_resource type="Script" uid="uid://3bsd20l8onw4" path="res://Scenes/Player/player_sprite_control.gd" id="3_rcvs5"]
 [ext_resource type="PackedScene" uid="uid://dp3f278n4cqbm" path="res://Particles/motor_gpu_particles.tscn" id="5_d77i8"]
 [ext_resource type="Texture2D" uid="uid://smgygt1qu6gx" path="res://Sprites(main)/Backpack-Sheet.png" id="5_rcvs5"]
-[ext_resource type="AudioStream" uid="uid://cfoo2b2apjwmw" path="res://Sound Effects/fly1.mp3" id="7_3smsa"]
+[ext_resource type="Script" uid="uid://hrygf8oqcceo" path="res://Scenes/Player/line_trail.gd" id="6_jincj"]
+[ext_resource type="AudioStream" uid="uid://cfoo2b2apjwmw" path="res://Sound Effects/Player/Movement/fly1.mp3" id="7_3smsa"]
 [ext_resource type="AudioStream" uid="uid://cx2tfq2v41dbw" path="res://Sound Effects/tech1.mp3" id="8_8erm5"]
-[ext_resource type="AudioStream" uid="uid://dtdp0p6eo6fco" path="res://Sound Effects/SFX_dash2.wav" id="9_dey5f"]
+[ext_resource type="AudioStream" uid="uid://dtdp0p6eo6fco" path="res://Sound Effects/Player/Movement/SFX_dash2.wav" id="9_dey5f"]
 [ext_resource type="AudioStream" uid="uid://b4ni1pu1osv1e" path="res://Sound Effects/tech2.mp3" id="9_f1ek2"]
-[ext_resource type="Script" uid="uid://dsbdvxfei8u0x" path="res://Scenes/modulars/resource_collector.gd" id="11_gymyn"]
-[ext_resource type="Script" uid="uid://cd5ihl6hfs16d" path="res://Scenes/modulars/bullet_shooter.gd" id="11_pu2lt"]
+[ext_resource type="AudioStream" uid="uid://bca5c33ek4yyw" path="res://Sound Effects/Player/Movement/Sfx_dash_falhando (2).wav" id="11_eksi1"]
+[ext_resource type="Script" uid="uid://dsbdvxfei8u0x" path="res://Scenes/Modulars/resource_collector.gd" id="11_gymyn"]
+[ext_resource type="Script" uid="uid://cd5ihl6hfs16d" path="res://Scenes/Modulars/bullet_shooter.gd" id="11_pu2lt"]
 [ext_resource type="Script" uid="uid://yorcpoevwvbr" path="res://Scenes/Player/hurt_box_player.gd" id="13_7g0yx"]
 [ext_resource type="AudioStream" uid="uid://bhajosbgqm8fk" path="res://Sound Effects/Shoot/sfx_tiro1.wav" id="13_dey5f"]
 [ext_resource type="Texture2D" uid="uid://dtnbw56aodt0c" path="res://Sprites(main)/UI/arrow.png" id="14_aqm4k"]
@@ -26,6 +28,14 @@
 friction = 0.0
 bounce = 0.2
 
+[sub_resource type="Curve" id="Curve_jincj"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_jincj"]
+offsets = PackedFloat32Array(0.23214285, 1)
+colors = PackedColorArray(0.55358, 0.89, 0.1691, 0, 0.56078434, 0.89411765, 0.17254902, 1)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ukyrk"]
 height = 32.0
 
@@ -39,6 +49,11 @@ stream_0/stream = ExtResource("7_3smsa")
 random_pitch = 1.3
 streams_count = 1
 stream_0/stream = ExtResource("9_dey5f")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jincj"]
+random_pitch = 1.3
+streams_count = 1
+stream_0/stream = ExtResource("11_eksi1")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tx1dd"]
 radius = 66.0
@@ -84,23 +99,40 @@ vframes = 4
 script = ExtResource("3_rcvs5")
 
 [node name="MotorGPUParticles" parent="Sprite2D" node_paths=PackedStringArray("player") instance=ExtResource("5_d77i8")]
+visible = false
 show_behind_parent = true
 position = Vector2(0, 4)
+emitting = false
 player = NodePath("../..")
 
 [node name="BackpackSprite2D" type="Sprite2D" parent="Sprite2D"]
 texture = ExtResource("5_rcvs5")
 vframes = 4
 
+[node name="LineTrail" type="Line2D" parent="Sprite2D"]
+top_level = true
+z_index = -1
+position = Vector2(0, 5)
+width = 5.0
+width_curve = SubResource("Curve_jincj")
+default_color = Color(0.6639505, 2.4318616, 0, 1)
+gradient = SubResource("Gradient_jincj")
+joint_mode = 2
+antialiased = true
+script = ExtResource("6_jincj")
+trail_size = 40
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CapsuleShape2D_ukyrk")
 
 [node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("3_ikhnj")]
+visible = false
 owner_body = NodePath("..")
 owner_collision_shape = NodePath("../CollisionShape2D")
 
 [node name="GravitationalFieldResources" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("3_ikhnj")]
+visible = false
 collision_layer = 2
 collision_mask = 2
 owner_body = NodePath("..")
@@ -132,7 +164,13 @@ bus = &"Sound Effects"
 [node name="DashSFX" type="AudioStreamPlayer" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_r5xpd")
 volume_db = -25.0
-pitch_scale = 2.0
+pitch_scale = 3.0
+bus = &"Sound Effects"
+
+[node name="DashFailSFX" type="AudioStreamPlayer" parent="SFX"]
+stream = SubResource("AudioStreamRandomizer_jincj")
+volume_db = -20.0
+pitch_scale = 0.6
 bus = &"Sound Effects"
 
 [node name="ResourceCollector" type="Area2D" parent="." node_paths=PackedStringArray("owner_body")]

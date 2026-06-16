@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bca5c33ek4yyw"
+path="res://.godot/imported/Sfx_dash_falhando (2).wav-9e85dc25ee37f0764dcf66c09201fdb6.sample"
+
+[deps]
+
+source_file="res://Sound Effects/Player/Movement/Sfx_dash_falhando (2).wav"
+dest_files=["res://.godot/imported/Sfx_dash_falhando (2).wav-9e85dc25ee37f0764dcf66c09201fdb6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dh2qa5cmwi21m"
-path="res://.godot/imported/SFX_movloop.wav-b051d462ff74fda3702b867d10ed666b.sample"
+path="res://.godot/imported/SFX_movloop.wav-d7a0e57e8e494fcb1a9883220ade03ed.sample"
 
 [deps]
 
-source_file="res://Sound Effects/SFX_movloop.wav"
-dest_files=["res://.godot/imported/SFX_movloop.wav-b051d462ff74fda3702b867d10ed666b.sample"]
+source_file="res://Sound Effects/Player/Movement/SFX_movloop.wav"
+dest_files=["res://.godot/imported/SFX_movloop.wav-d7a0e57e8e494fcb1a9883220ade03ed.sample"]
 
 [params]
 

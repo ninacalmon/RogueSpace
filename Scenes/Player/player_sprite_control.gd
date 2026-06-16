@@ -26,26 +26,32 @@ func update_sprite(facing_direction: String):
 	backpack_sprite_2d.frame_coords.y = frame_coords.y
 
 func start_animation():
+	if is_propelling:
+		return
+		
 	is_propelling = true
+	animate_propelling()
 
 func stop_animation():
 	is_propelling = false
-	frame_coords.x = 0
 
 func animate_propelling():
-	frame_coords.x = 1
-	await get_tree().create_timer(seconds_per_frame).timeout
-	frame_coords.x = 2
-	await get_tree().create_timer(seconds_per_frame).timeout
-	frame_coords.x = 3
-	await get_tree().create_timer(seconds_per_frame).timeout
-	frame_coords.x = 2
-	await get_tree().create_timer(seconds_per_frame).timeout
-	frame_coords.x = 1
-	await get_tree().create_timer(seconds_per_frame).timeout
-	frame_coords.x = 0
+	while is_propelling:
+		frame_coords.x = 1
+		await get_tree().create_timer(seconds_per_frame).timeout
+		if not is_propelling:
+			break
 
+		frame_coords.x = 2
+		await get_tree().create_timer(seconds_per_frame).timeout
+		if not is_propelling:
+			break
 
-func _process(_delta: float) -> void:
-	if is_propelling:
-		await animate_propelling()
+		frame_coords.x = 3
+
+		while is_propelling:
+			await get_tree().process_frame
+
+	while frame_coords.x > 0:
+		frame_coords.x -= 1
+		await get_tree().create_timer(seconds_per_frame).timeout
