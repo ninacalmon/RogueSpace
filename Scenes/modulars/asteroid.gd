@@ -22,6 +22,11 @@ class_name Asteroid
 @onready var break_sound: AudioStreamPlayer = $BreakSound
 @onready var critter_sound: AudioStreamPlayer = $CritterSound
 
+@onready var particles_pivot: Node2D = $ParticlesPivot
+@onready var gpu_particles_2d: GPUParticles2D = $ParticlesPivot/GPUParticles2D
+
+var animated_sprite: AnimatedSprite2D
+
 var endurance: float
 var first_impact_bonus: float = 1.5
 
@@ -36,7 +41,8 @@ func _ready() -> void:
 	if gravitational_field: gravitational_field.initialize()
 	if body_randomizer: body_randomizer.initialize(sprite, collision)
 
-	sprite.frame = randi_range(0, 0)
+	animated_sprite = sprite as AnimatedSprite2D
+	animated_sprite.animation = "default"
 
 	original_sprite_scale = sprite.scale
 	original_collision_radius = collision.shape.radius
@@ -62,10 +68,16 @@ func _on_damage_taken(damage: float, causer: RigidBody2D):
 	if !(causer is Player) and damage > minimum_external_damage:
 		handle_external_damage(damage)
 	
+	
 	if endurance <= 0:
 		await scale_down(0)
 		call_deferred("queue_free")
 
+func update_sprite():
+	if endurance < base_endurance * 0.8 and endurance > base_endurance * 0.5:
+		animated_sprite.play("damaged1")
+	elif endurance < base_endurance * 0.5:
+		animated_sprite.play("damaged2")
 
 func handle_player_damage(damage: float, _player: Player):
 	var size_index: int = 0
@@ -75,6 +87,8 @@ func handle_player_damage(damage: float, _player: Player):
 		"big": size_index = 3
 	ControllerVibration.vibrate_controller(size_index, 0.3)
 	var bonus_multiplier: float = 1.0
+	emit_particles(_player)
+	
 
 	if damage >= base_endurance and endurance == base_endurance:
 		print("bonuuuus")
@@ -114,8 +128,13 @@ func shed_pieces(pieces: int):
 		new_piece.global_position = global_position \
 		+ Vector2(randi_range(-50, 50), randi_range(-50, 50))
 		parent.call_deferred("add_child", new_piece)
+	update_sprite()
 	scale_down(0.8, 0.2)
 
+func emit_particles(other: Node2D):
+	if other and particles_pivot and gpu_particles_2d:
+		particles_pivot.look_at(other.global_position)
+		gpu_particles_2d.emitting = true
 
 func spawn_critters(is_player: bool = false):
 	var chance = randi_range(0, 100)

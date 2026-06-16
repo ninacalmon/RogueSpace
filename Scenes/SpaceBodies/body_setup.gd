@@ -2,7 +2,7 @@ extends RigidBody2D
 class_name BodySetup
 
 @export var collision: CollisionShape2D
-@export var sprite: Sprite2D
+@export var sprite: Node2D
 @export var gravitational_field: GravitationalField
 @export var gravitational_field_resources: GravitationalField
 @export var body_randomizer: BodyRandomizer

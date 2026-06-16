@@ -1,8 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://bcffh04lffmyi"]
+[gd_scene load_steps=36 format=3 uid="uid://bcffh04lffmyi"]
 
 [ext_resource type="Script" uid="uid://dp0jfjqkl4sdl" path="res://Scenes/modulars/asteroid.gd" id="1_jr0l1"]
 [ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/Asteroids/asteroid_pieces.tscn" id="2_exshx"]
-[ext_resource type="Texture2D" uid="uid://dti25n138kmrg" path="res://Sprites(main)/Asteroids/Asteroid_big.png" id="2_ne8lo"]
+[ext_resource type="Texture2D" uid="uid://b8t87a6jwd2ua" path="res://Sprites(main)/Asteroids/Asteroid_big.png" id="2_ne8lo"]
 [ext_resource type="PackedScene" uid="uid://br070cnq6sve" path="res://Scenes/Enemies/enemy_basic.tscn" id="3_akcm3"]
 [ext_resource type="PackedScene" uid="uid://8f0m410ylbbe" path="res://Scenes/Enemies/enemy_vermin.tscn" id="3_egnjl"]
 [ext_resource type="Script" uid="uid://dny3ctsdweann" path="res://Scenes/SpaceBodies/damage_module.gd" id="3_exshx"]
@@ -17,8 +17,11 @@
 [ext_resource type="Shader" uid="uid://bjetsh4wdtn8e" path="res://Shaders/palette_swap.tres" id="7_egnjl"]
 [ext_resource type="Texture2D" uid="uid://dx0xv4geqjvp8" path="res://Sprites(main)/asteroid_default_pallete.png" id="8_akcm3"]
 [ext_resource type="AudioStream" uid="uid://ctde66tr3dsom" path="res://Sound Effects/Asteroids/sfx_colisao.wav" id="11_nnd5f"]
+[ext_resource type="Texture2D" uid="uid://x2hngyg5yryy" path="res://Sprites(main)/Asteroids/Asteroid_big_damaged1.png" id="11_qmomt"]
+[ext_resource type="Texture2D" uid="uid://caoviohaas4nb" path="res://Sprites(main)/Asteroids/Asteroid_big_damaged2.png" id="12_42qiu"]
 [ext_resource type="AudioStream" uid="uid://6nqgebd8dtyr" path="res://Sound Effects/Enemies/sfx_inimigosBasic (2).wav" id="16_egnjl"]
 [ext_resource type="AudioStream" uid="uid://7lu32wsorlh5" path="res://Sound Effects/Enemies/sfx_inimigosBasic.wav" id="17_akcm3"]
+[ext_resource type="Texture2D" uid="uid://cbcuca4hv1ck1" path="res://Sprites/Explosion_Sheet.png" id="22_42qiu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1kal1"]
 bounce = 0.2
@@ -31,6 +34,69 @@ resource_local_to_scene = true
 shader = ExtResource("7_egnjl")
 shader_parameter/original_palette = ExtResource("8_akcm3")
 shader_parameter/colors_count = 6
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iqyjo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_qmomt")
+}],
+"loop": true,
+"name": &"damaged1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_42qiu")
+}],
+"loop": true,
+"name": &"damaged2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ne8lo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_iqyjo"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_khdvs"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9842106, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_42qiu"]
+curve = SubResource("Curve_khdvs")
+
+[sub_resource type="Gradient" id="Gradient_42qiu"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.17948718, 0.33333334, 0.47435898, 0.75641024)
+colors = PackedColorArray(0.03137255, 0.69803923, 0.23137255, 1, 0.36862746, 0.9137255, 0.9137255, 1, 0.050980393, 0.07058824, 0.18431373, 1, 0.08627451, 0.28627452, 0.69803923, 1, 0.15686275, 0.5647059, 0.8627451, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_iqyjo"]
+gradient = SubResource("Gradient_42qiu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h5wv6"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+spread = 180.0
+initial_velocity_max = 113.81
+gravity = Vector3(0, 0, 0)
+scale_min = 0.29999998
+scale_max = 1.1999999
+color = Color(1, 1, 1, 0.45882353)
+color_ramp = SubResource("GradientTexture1D_iqyjo")
+alpha_curve = SubResource("CurveTexture_42qiu")
+anim_offset_max = 0.3793
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_egnjl"]
 random_pitch = 1.5
@@ -74,10 +140,26 @@ body_randomizer = NodePath("BodyRandomizer")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5h4od")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_ahukt")
 position = Vector2(0, 2)
-texture = ExtResource("2_ne8lo")
+sprite_frames = SubResource("SpriteFrames_iqyjo")
+animation = &"damaged2"
+
+[node name="ParticlesPivot" type="Node2D" parent="Sprite2D"]
+position = Vector2(0, -2)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D/ParticlesPivot"]
+material = SubResource("CanvasItemMaterial_iqyjo")
+position = Vector2(45, 0)
+emitting = false
+amount = 16
+texture = ExtResource("22_42qiu")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_h5wv6")
 
 [node name="DamageModule" type="Node2D" parent="." node_paths=PackedStringArray("owner_body")]
 script = ExtResource("3_exshx")
