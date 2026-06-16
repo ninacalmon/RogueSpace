@@ -1,17 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2ijay0wls6go"]
+[gd_scene load_steps=6 format=3 uid="uid://c2ijay0wls6go"]
 
 [ext_resource type="Script" uid="uid://dsx6kv5pj71rk" path="res://Scenes/UI/Settings/settings_container.gd" id="1_mh8ag"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scmtj"]
-bg_color = Color(0, 0, 0, 0.52156866)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mh8ag"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.40784314, 0.72156864, 0.1254902, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rss6"]
 content_margin_top = 8.0
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0.22, 0.22, 0.22, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -19,7 +20,7 @@ corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5rh3y"]
 content_margin_top = 8.0
-bg_color = Color(0.17254902, 0.14117648, 0.3882353, 1)
+bg_color = Color(0.40784314, 0.72156864, 0.1254902, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -27,46 +28,60 @@ corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nlsuc"]
 content_margin_top = 8.0
-bg_color = Color(0.27850664, 0.23520002, 0.56, 1)
+bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hclx"]
-bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_khm05"]
-bg_color = Color(0, 0, 0, 1)
-
-[node name="SettingsContainer" type="CenterContainer"]
-offset_right = 400.0
-offset_bottom = 250.0
+[node name="Settings" type="Control"]
+z_index = 1
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mh8ag")
 
-[node name="Background" type="Panel" parent="."]
-custom_minimum_size = Vector2(400, 250)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_scmtj")
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mh8ag")
 
-[node name="SettingsOptions" type="VBoxContainer" parent="."]
-layout_mode = 2
-theme_override_constants/separation = 34
+[node name="SettingsContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="MasterSoundSliderContainer" type="HBoxContainer" parent="SettingsOptions"]
+[node name="SettingsOptions" type="VBoxContainer" parent="SettingsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 59
+
+[node name="MasterSoundSliderContainer" type="HBoxContainer" parent="SettingsContainer/SettingsOptions"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SettingsOptions/MasterSoundSliderContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="SettingsContainer/SettingsOptions/MasterSoundSliderContainer"]
 custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
-text = "Master sound"
+theme_override_font_sizes/normal_font_size = 20
+text = "Master"
+fit_content = true
 scroll_active = false
 
-[node name="HSlider" type="HSlider" parent="SettingsOptions/MasterSoundSliderContainer"]
+[node name="HSlider" type="HSlider" parent="SettingsContainer/SettingsOptions/MasterSoundSliderContainer"]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 theme_override_styles/slider = SubResource("StyleBoxFlat_1rss6")
@@ -75,18 +90,20 @@ theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_nlsuc")
 max_value = 1.0
 step = 0.05
 
-[node name="MainMusicSliderContainer" type="HBoxContainer" parent="SettingsOptions"]
+[node name="MainMusicSliderContainer" type="HBoxContainer" parent="SettingsContainer/SettingsOptions"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SettingsOptions/MainMusicSliderContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="SettingsContainer/SettingsOptions/MainMusicSliderContainer"]
 custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
-text = "Main music"
+theme_override_font_sizes/normal_font_size = 20
+text = "Música"
+fit_content = true
 scroll_active = false
 
-[node name="HSlider" type="HSlider" parent="SettingsOptions/MainMusicSliderContainer"]
+[node name="HSlider" type="HSlider" parent="SettingsContainer/SettingsOptions/MainMusicSliderContainer"]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 theme_override_styles/slider = SubResource("StyleBoxFlat_1rss6")
@@ -96,18 +113,20 @@ max_value = 3.0
 step = 0.05
 value = 1.0
 
-[node name="SoundEffectsSliderContainer" type="HBoxContainer" parent="SettingsOptions"]
+[node name="SoundEffectsSliderContainer" type="HBoxContainer" parent="SettingsContainer/SettingsOptions"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SettingsOptions/SoundEffectsSliderContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="SettingsContainer/SettingsOptions/SoundEffectsSliderContainer"]
 custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
-text = "Sound effects"
+theme_override_font_sizes/normal_font_size = 20
+text = "Efeitos sonoros"
+fit_content = true
 scroll_active = false
 
-[node name="HSlider" type="HSlider" parent="SettingsOptions/SoundEffectsSliderContainer"]
+[node name="HSlider" type="HSlider" parent="SettingsContainer/SettingsOptions/SoundEffectsSliderContainer"]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 theme_override_styles/slider = SubResource("StyleBoxFlat_1rss6")
@@ -117,13 +136,7 @@ max_value = 3.0
 step = 0.05
 value = 1.0
 
-[node name="BackButton" type="Button" parent="SettingsOptions"]
+[node name="BackButton" type="Button" parent="SettingsContainer/SettingsOptions"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
-focus_mode = 0
-theme_override_colors/font_hover_color = Color(0.17254902, 0.14117648, 0.3882353, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_4hclx")
-theme_override_styles/hover = SubResource("StyleBoxFlat_khm05")
-text = "BACK
-"
+text = "Voltar"

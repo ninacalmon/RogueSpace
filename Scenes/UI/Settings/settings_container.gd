@@ -1,4 +1,5 @@
-extends CenterContainer
+extends Control
+class_name Settings
 
 @export var inverse_visibility_nodes: Array[Node]
 
@@ -12,7 +13,7 @@ extends CenterContainer
 @onready var sound_effects_slider: HSlider = sound_effects_slider_container.get_node("HSlider")
 
 @onready var back_button: Button = %BackButton
-@onready var settings_container: CenterContainer = $"."
+@onready var settings_container: Control = self
 
 @onready var master_bus_idx = AudioServer.get_bus_index("Master")
 @onready var music_bus_idx = AudioServer.get_bus_index("Music")
@@ -29,8 +30,11 @@ func _ready():
 	self.sound_effects_slider.value_changed.connect(_on_sound_effects_slider_changed)
 	self.back_button.pressed.connect(_on_back_button_pressed)
 
+func my_grab_focus():
+	master_sound_slider.grab_focus()
+
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("ui_cancel") or Input.is_action_just_pressed("return"):
 		self.settings_container.hide()
 		for canvas_node in inverse_visibility_nodes:
 			canvas_node.show()
@@ -55,3 +59,6 @@ func _on_back_button_pressed():
 
 	for canvas_node in inverse_visibility_nodes:
 		canvas_node.show()
+		for c in canvas_node.get_children():
+			if c is SettingsButton:
+				c.grab_focus()

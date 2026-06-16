@@ -404,21 +404,6 @@ theme_override_font_sizes/font_size = 16
 text = "Retornar ao menu"
 autowrap_mode = 2
 
-[node name="SettingsContainer" parent="PauseOverlay/PauseColorRect/PauseControlRect" node_paths=PackedStringArray("inverse_visibility_nodes") instance=ExtResource("18_vqjbf")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -125.0
-offset_right = 200.0
-offset_bottom = 125.0
-inverse_visibility_nodes = [NodePath("../VBoxContainer")]
-
 [node name="WarningLabel" type="RichTextLabel" parent="PauseOverlay/PauseColorRect/PauseControlRect"]
 layout_mode = 0
 offset_left = 361.0
@@ -428,3 +413,13 @@ offset_bottom = 478.0
 theme_override_colors/default_color = Color(0.42, 0.42, 0.42, 1)
 text = "(você perderá todos os feitos desde de que saiu da nave!)"
 horizontal_alignment = 1
+
+[node name="SettingsContainer" parent="PauseOverlay/PauseColorRect/PauseControlRect" node_paths=PackedStringArray("inverse_visibility_nodes") instance=ExtResource("18_vqjbf")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+offset_left = -200.0
+offset_top = -125.0
+offset_right = 200.0
+offset_bottom = 125.0
+inverse_visibility_nodes = [NodePath("../VBoxContainer")]

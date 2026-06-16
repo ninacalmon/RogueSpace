@@ -297,17 +297,17 @@ theme = ExtResource("3_w6vxw")
 text = "novo jogo"
 alignment = 0
 
-[node name="Controls" type="Button" parent="CanvasLayer/Control/Pressable"]
-layout_mode = 2
-text = "opções"
-alignment = 0
-
 [node name="Settings" type="Button" parent="CanvasLayer/Control/Pressable" node_paths=PackedStringArray("inverse_visibility_nodes")]
 layout_mode = 2
 text = "opções"
 alignment = 0
 script = ExtResource("8_fw6na")
 inverse_visibility_nodes = [NodePath("..")]
+
+[node name="Controls" type="Button" parent="CanvasLayer/Control/Pressable"]
+layout_mode = 2
+text = "controles"
+alignment = 0
 
 [node name="Exit" type="Button" parent="CanvasLayer/Control/Pressable"]
 layout_mode = 2
@@ -318,15 +318,6 @@ alignment = 0
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -125.0
-offset_right = 200.0
-offset_bottom = 125.0
 inverse_visibility_nodes = [NodePath("../Pressable")]
 
 [node name="ControlersOverlay" type="ColorRect" parent="CanvasLayer/Control"]
