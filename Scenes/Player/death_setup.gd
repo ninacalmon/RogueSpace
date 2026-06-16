@@ -21,6 +21,7 @@ func _on_player_death_signaled(explode: bool):
 	player.set_deferred("freeze", true)
 	player.hurt_box_player.collision_shape_2d.disabled = true
 	if explode: player_death_particles.emitting = true
+	EventBus.vibrate.emit(3)
 	await get_tree().create_timer(player_death_particles.lifetime / 2).timeout
 	player.sprite_2d.hide()
 	await get_tree().create_timer(wait_time).timeout

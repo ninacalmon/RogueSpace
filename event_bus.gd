@@ -52,3 +52,11 @@ signal enemy_on_screen
 
 @warning_ignore("unused_signal")
 signal enemy_off_screen
+
+@warning_ignore("unused_signal")
+signal vibrate(strength_index: int)
+##strength_index guide:
+## 0: low
+## 1: medium
+## 2: high
+## 3: very high

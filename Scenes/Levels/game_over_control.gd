@@ -6,6 +6,8 @@ class_name GameOverScene
 
 var cause_of_death: String
 
+func _ready() -> void:
+	PopUpSystem.clear()
 
 func initialize() -> void:
 	var death_cause_texture: Texture = background_texture.texture

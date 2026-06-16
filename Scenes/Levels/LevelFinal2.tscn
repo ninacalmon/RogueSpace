@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://cs7xq5woqx1js"]
+[gd_scene load_steps=35 format=4 uid="uid://cs7xq5woqx1js"]
 
 [ext_resource type="Texture2D" uid="uid://b4go5brbh3ndq" path="res://Sprites/Starfields/Starfield 1 - 1024x1024.png" id="1_w468r"]
 [ext_resource type="Texture2D" uid="uid://dxfs6gmq8441e" path="res://Sprites(main)/TemporaryPlanets/2524948669.png" id="2_5luui"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bjqibpfesudnp" path="res://Scenes/SpaceBodies/planet_big1.tscn" id="5_d8g84"]
 [ext_resource type="PackedScene" uid="uid://b512vj2a4a3y" path="res://Scenes/Player/player.tscn" id="5_k6p3q"]
 [ext_resource type="Script" uid="uid://dw2m8ymjsljfq" path="res://Scenes/UI/camera.gd" id="6_d8g84"]
+[ext_resource type="Script" uid="uid://ctwsp81gxl65g" path="res://Scenes/Modulars/camera_vibration.gd" id="7_k6p3q"]
 [ext_resource type="PackedScene" uid="uid://b60wc4xruimxc" path="res://Scenes/Player/mothership.tscn" id="7_r78l7"]
 [ext_resource type="Texture2D" uid="uid://curwcau163khw" path="res://Sprites/tileset.png" id="8_srdaq"]
 [ext_resource type="Script" uid="uid://bm2kpm32ooqhk" path="res://Scenes/Modulars/tile_map_generator.gd" id="9_4hc51"]
@@ -109,6 +110,10 @@ camera = NodePath("Camera2D")
 script = ExtResource("6_d8g84")
 full_view_zoom = Vector2(0.2, 0.2)
 full_view_pos = Vector2(0, -800)
+
+[node name="CameraVibration" type="Node2D" parent="Player/Camera2D" node_paths=PackedStringArray("camera")]
+script = ExtResource("7_k6p3q")
+camera = NodePath("..")
 
 [node name="Mothership" parent="." instance=ExtResource("7_r78l7")]
 position = Vector2(0, 190)

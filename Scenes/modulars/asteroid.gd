@@ -88,7 +88,6 @@ func handle_player_damage(damage: float, _player: Player):
 	ControllerVibration.vibrate_controller(size_index, 0.3)
 	var bonus_multiplier: float = 1.0
 	emit_particles(_player)
-	
 
 	if damage >= base_endurance and endurance == base_endurance:
 		print("bonuuuus")
@@ -106,6 +105,8 @@ func handle_player_damage(damage: float, _player: Player):
 	call_deferred("shed_pieces", pieces)
 	if will_spawn_critters:
 		spawn_critters(true)
+
+	signal_vibration(bonus_multiplier)
 
 
 func handle_external_damage(damage: float):
@@ -130,6 +131,28 @@ func shed_pieces(pieces: int):
 		parent.call_deferred("add_child", new_piece)
 	update_sprite()
 	scale_down(0.8, 0.2)
+
+func signal_vibration(bonus_multiplier: float):
+	var is_first_impact: bool = false
+
+	if bonus_multiplier == first_impact_bonus:
+		is_first_impact = true
+
+	var vibration_index: int = 0
+
+	match asteroid_size:
+		"small":
+			vibration_index = 0
+
+		"medium":
+			if not is_first_impact: vibration_index = 1
+			else: vibration_index = 2
+
+		"big" :
+			if not is_first_impact: vibration_index = 2
+			else: vibration_index = 3
+
+	EventBus.vibrate.emit(vibration_index)
 
 func emit_particles(other: Node2D):
 	if other and particles_pivot and gpu_particles_2d:

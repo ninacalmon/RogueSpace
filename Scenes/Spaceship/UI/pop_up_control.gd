@@ -40,3 +40,7 @@ func flash(subject: CanvasItem, invisible: bool):
 		final_color = original_modulate
 	tween.tween_property(subject, "modulate", final_color, 0.2)
 	await tween.finished
+
+func clear():
+	for p in v_box_bottom.get_children():
+		p.hide()
