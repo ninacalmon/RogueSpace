@@ -114,10 +114,12 @@ func movement(state):
 	).normalized()
 	
 	if input_dir == Vector2.ZERO:
-		#sprite_2d.animate_stop_propelling()
+		sprite_2d.stop_animation()
 		return
 	
 	#sprite_2d.animate_start_propelling()
+	sprite_2d.start_animation()
+
 	if is_stuned: input_dir *= -1
 	state.apply_central_force(input_dir * speed)
 	update_fuel()
