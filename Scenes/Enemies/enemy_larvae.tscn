@@ -1,14 +1,21 @@
-[gd_scene load_steps=25 format=3 uid="uid://bpy311ttuke1b"]
+[gd_scene load_steps=33 format=3 uid="uid://bpy311ttuke1b"]
 
 [ext_resource type="Script" uid="uid://bnv4lu80gauic" path="res://Scenes/Enemies/enemy_larvae.gd" id="1_4xthq"]
 [ext_resource type="Shader" uid="uid://diwkfayvo06cx" path="res://Shaders/inflation.gdshader" id="2_ogwh0"]
-[ext_resource type="Script" uid="uid://iatwgk3de1nj" path="res://Scenes/modulars/hurt_box.gd" id="3_d7wtw"]
-[ext_resource type="Texture2D" uid="uid://vaqxnaqn7oax" path="res://Sprites(main)/Enemies/Alien_Gordo.png" id="3_ogwh0"]
+[ext_resource type="Script" uid="uid://iatwgk3de1nj" path="res://Scenes/Modulars/hurt_box.gd" id="3_d7wtw"]
+[ext_resource type="Texture2D" uid="uid://bp13x806tbs1e" path="res://Sprites(main)/Enemies/AlienGordo/verme_caustico000.png" id="3_ggiva"]
+[ext_resource type="Texture2D" uid="uid://b1eujxvtnw04h" path="res://Sprites(main)/Enemies/AlienGordo/verme_caustico001.png" id="4_c2hg5"]
 [ext_resource type="AudioStream" uid="uid://7lu32wsorlh5" path="res://Sound Effects/Enemies/sfx_inimigosBasic.wav" id="4_lpb1s"]
 [ext_resource type="AudioStream" uid="uid://6nqgebd8dtyr" path="res://Sound Effects/Enemies/sfx_inimigosBasic (2).wav" id="5_137m0"]
+[ext_resource type="Texture2D" uid="uid://hbw7vda5xwo7" path="res://Sprites(main)/Enemies/AlienGordo/verme_caustico002.png" id="5_y5wr6"]
 [ext_resource type="AudioStream" uid="uid://bkpogun2por27" path="res://Sound Effects/Enemies/sfx_enemy_attack.mp3" id="6_d0w55"]
+[ext_resource type="Texture2D" uid="uid://bj6xygqld8q82" path="res://Sprites(main)/Enemies/AlienGordo/verme_caustico003.png" id="6_sexev"]
 [ext_resource type="Script" uid="uid://e5cfbq8jk5j5" path="res://Scenes/Enemies/enemy_visible_on_screen.gd" id="7_dd8ds"]
+[ext_resource type="Texture2D" uid="uid://c881ix5u6b356" path="res://Sprites(main)/Enemies/AlienGordo/verme_caustico004.png" id="7_gt6hp"]
+[ext_resource type="Texture2D" uid="uid://b20o355k22q73" path="res://Sprites(main)/Enemies/AlienGordo/verme_caustico005.png" id="8_wp377"]
 [ext_resource type="Texture2D" uid="uid://cbcuca4hv1ck1" path="res://Sprites/Explosion_Sheet.png" id="9_d7wtw"]
+[ext_resource type="Texture2D" uid="uid://1qx2uh8oku7v" path="res://Sprites(main)/Enemies/AlienGordo/verme_caustico006.png" id="9_hna8u"]
+[ext_resource type="Texture2D" uid="uid://3h402gfl1n0s" path="res://Sprites(main)/Enemies/AlienGordo/verme_caustico007.png" id="10_o7ch7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_auwsv"]
 radius = 15.0
@@ -23,6 +30,38 @@ shader_parameter/inflate_color = Color(1, 0.5, 0.5, 1)
 shader_parameter/color_strength = 3.0
 shader_parameter/tint_color = Color(1, 1, 1, 1)
 shader_parameter/tint_strength = 0.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sexev"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ggiva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_c2hg5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y5wr6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_sexev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gt6hp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wp377")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_hna8u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_o7ch7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ghaa6"]
 radius = 27.0
@@ -104,10 +143,12 @@ damage = 10.0
 visible = false
 shape = SubResource("CircleShape2D_auwsv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_d7wtw")
 rotation = -1.5707964
-texture = ExtResource("3_ogwh0")
+sprite_frames = SubResource("SpriteFrames_sexev")
+autoplay = "default"
+frame_progress = 0.72172177
 
 [node name="HurtBox" type="Area2D" parent="."]
 visible = false

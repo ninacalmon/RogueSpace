@@ -12,7 +12,7 @@ class_name Enemy
 @export var attack_distance: float = 80
 @export var retreat_time: float = 0.4
 
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 @onready var hurt_box: Area2D = $HurtBox
 @onready var aggro_area: Area2D = $AggroArea
 @onready var attack_sfx: AudioStreamPlayer = $AttackSFX

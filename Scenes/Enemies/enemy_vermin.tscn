@@ -1,9 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://8f0m410ylbbe"]
+[gd_scene load_steps=23 format=3 uid="uid://8f0m410ylbbe"]
 
 [ext_resource type="Script" uid="uid://dtkhiaas5anjp" path="res://Scenes/Enemies/enemy_vermin.gd" id="1_k0yb4"]
-[ext_resource type="Texture2D" uid="uid://v7rhaqerd48m" path="res://Sprites(main)/Enemies/alien_VermeLanceiro.png" id="2_0ktlt"]
 [ext_resource type="Shader" uid="uid://diwkfayvo06cx" path="res://Shaders/inflation.gdshader" id="2_adcwm"]
-[ext_resource type="Script" uid="uid://iatwgk3de1nj" path="res://Scenes/modulars/hurt_box.gd" id="3_adcwm"]
+[ext_resource type="Script" uid="uid://iatwgk3de1nj" path="res://Scenes/Modulars/hurt_box.gd" id="3_adcwm"]
+[ext_resource type="Texture2D" uid="uid://cg2tw8gmr2f1s" path="res://Sprites(main)/Enemies/alien_VermeLanceiro_idle-Sheet.png" id="3_x66mb"]
 [ext_resource type="AudioStream" uid="uid://7lu32wsorlh5" path="res://Sound Effects/Enemies/sfx_inimigosBasic.wav" id="4_x66mb"]
 [ext_resource type="AudioStream" uid="uid://6nqgebd8dtyr" path="res://Sound Effects/Enemies/sfx_inimigosBasic (2).wav" id="5_1lrlx"]
 [ext_resource type="AudioStream" uid="uid://bkpogun2por27" path="res://Sound Effects/Enemies/sfx_enemy_attack.mp3" id="6_oaun8"]
@@ -22,6 +22,70 @@ shader_parameter/inflate_color = Color(1, 0.5, 0.5, 1)
 shader_parameter/color_strength = 1.0
 shader_parameter/tint_color = Color(1, 1, 1, 1)
 shader_parameter/tint_strength = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lrlx"]
+atlas = ExtResource("3_x66mb")
+region = Rect2(0, 0, 21, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oaun8"]
+atlas = ExtResource("3_x66mb")
+region = Rect2(21, 0, 21, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpffj"]
+atlas = ExtResource("3_x66mb")
+region = Rect2(42, 0, 21, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngjy3"]
+atlas = ExtResource("3_x66mb")
+region = Rect2(63, 0, 21, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mw4iq"]
+atlas = ExtResource("3_x66mb")
+region = Rect2(84, 0, 21, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5m1c0"]
+atlas = ExtResource("3_x66mb")
+region = Rect2(105, 0, 21, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0boo"]
+atlas = ExtResource("3_x66mb")
+region = Rect2(126, 0, 21, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oauit"]
+atlas = ExtResource("3_x66mb")
+region = Rect2(147, 0, 21, 41)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ksqno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lrlx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oaun8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpffj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngjy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mw4iq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5m1c0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0boo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oauit")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ghaa6"]
 radius = 29.068884
@@ -53,10 +117,12 @@ attack_distance = 40.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_auwsv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_x66mb")
 rotation = -1.5707964
-texture = ExtResource("2_0ktlt")
+sprite_frames = SubResource("SpriteFrames_ksqno")
+autoplay = "default"
+frame_progress = 0.5059217
 
 [node name="HurtBox" type="Area2D" parent="."]
 script = ExtResource("3_adcwm")

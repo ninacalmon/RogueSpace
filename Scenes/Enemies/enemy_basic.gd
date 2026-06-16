@@ -64,6 +64,11 @@ func _integrate_forces(state_physics: PhysicsDirectBodyState2D) -> void:
 			var dir = player.global_position.direction_to(global_position)
 			apply_movement(state_physics, dir, speed * 0.6)
 
+### RTOATTIOJNNN
+	if state_physics.linear_velocity.length() > 5:
+		rotation = state_physics.linear_velocity.angle()
+########
+		
 	if state_physics.linear_velocity.length() > max_velocity:
 		state_physics.linear_velocity = state_physics.linear_velocity.normalized() * max_velocity
 
@@ -86,7 +91,7 @@ func steer_enemy_velocity(_state: PhysicsDirectBodyState2D, target_dir: Vector2)
 	var target_vel = target_dir * magnitude
 	var angle = vel.angle_to(target_vel)
 
-	var max_turn = 0.02
+	var max_turn = 0.05
 	angle = clamp(angle, -max_turn, max_turn)
 
 	_state.linear_velocity = vel.rotated(angle)

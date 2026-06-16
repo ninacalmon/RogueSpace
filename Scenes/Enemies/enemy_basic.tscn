@@ -1,9 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://br070cnq6sve"]
+[gd_scene load_steps=24 format=3 uid="uid://br070cnq6sve"]
 
 [ext_resource type="Script" uid="uid://7afwh36bc151" path="res://Scenes/Enemies/enemy_basic.gd" id="1_eog5f"]
-[ext_resource type="Texture2D" uid="uid://cx0i5vabq2pgx" path="res://Sprites(main)/Enemies/alien_FuraDetrito.png" id="2_ldqpc"]
 [ext_resource type="Shader" uid="uid://diwkfayvo06cx" path="res://Shaders/inflation.gdshader" id="2_ry8es"]
-[ext_resource type="Script" uid="uid://iatwgk3de1nj" path="res://Scenes/modulars/hurt_box.gd" id="3_ry8es"]
+[ext_resource type="Texture2D" uid="uid://3pnsx5o7lss8" path="res://Sprites(main)/Enemies/alien_FuraDetrito_idle-Sheet.png" id="3_c17sm"]
+[ext_resource type="Script" uid="uid://iatwgk3de1nj" path="res://Scenes/Modulars/hurt_box.gd" id="3_ry8es"]
 [ext_resource type="AudioStream" uid="uid://7lu32wsorlh5" path="res://Sound Effects/Enemies/sfx_inimigosBasic.wav" id="4_c17sm"]
 [ext_resource type="AudioStream" uid="uid://6nqgebd8dtyr" path="res://Sound Effects/Enemies/sfx_inimigosBasic (2).wav" id="5_2mprn"]
 [ext_resource type="AudioStream" uid="uid://bkpogun2por27" path="res://Sound Effects/Enemies/sfx_enemy_attack.mp3" id="6_50j16"]
@@ -22,6 +22,77 @@ shader_parameter/inflate_color = Color(1, 0.5, 0.5, 1)
 shader_parameter/color_strength = 1.0
 shader_parameter/tint_color = Color(1, 1, 1, 1)
 shader_parameter/tint_strength = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mprn"]
+atlas = ExtResource("3_c17sm")
+region = Rect2(0, 0, 40, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50j16"]
+atlas = ExtResource("3_c17sm")
+region = Rect2(40, 0, 40, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pthgr"]
+atlas = ExtResource("3_c17sm")
+region = Rect2(80, 0, 40, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eaw84"]
+atlas = ExtResource("3_c17sm")
+region = Rect2(120, 0, 40, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3qc3"]
+atlas = ExtResource("3_c17sm")
+region = Rect2(160, 0, 40, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odg4l"]
+atlas = ExtResource("3_c17sm")
+region = Rect2(200, 0, 40, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3sl0"]
+atlas = ExtResource("3_c17sm")
+region = Rect2(240, 0, 40, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16r11"]
+atlas = ExtResource("3_c17sm")
+region = Rect2(280, 0, 40, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_diu6i"]
+atlas = ExtResource("3_c17sm")
+region = Rect2(320, 0, 40, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o5v6r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mprn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50j16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pthgr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eaw84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3qc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odg4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3sl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16r11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_diu6i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 18.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ghaa6"]
 radius = 27.0
@@ -47,9 +118,12 @@ speed = 200.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_auwsv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_c17sm")
-texture = ExtResource("2_ldqpc")
+rotation = -1.5707964
+sprite_frames = SubResource("SpriteFrames_o5v6r")
+autoplay = "default"
+frame_progress = 0.50816697
 
 [node name="HurtBox" type="Area2D" parent="."]
 script = ExtResource("3_ry8es")
