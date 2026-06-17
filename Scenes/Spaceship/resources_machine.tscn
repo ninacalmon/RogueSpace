@@ -199,7 +199,7 @@ script = ExtResource("5_ewulj")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ResourcesDeposit/ConterOverlay/CounterText"]
 stream = SubResource("AudioStreamRandomizer_wbabi")
-volume_db = -20.0
+volume_db = -10.0
 pitch_scale = 2.0
 bus = &"Sound Effects"
 
