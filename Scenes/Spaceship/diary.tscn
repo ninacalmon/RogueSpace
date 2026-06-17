@@ -237,7 +237,7 @@ shader_parameter/blur_amount = 1.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8jwq2"]
 shader = ExtResource("11_8jwq2")
-shader_parameter/pixel_size = 4.0
+shader_parameter/pixel_size = 6.0000002375
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_brskc"]
 animations = [{
@@ -285,7 +285,7 @@ animations = [{
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_22rv0"]
 shader = ExtResource("11_8jwq2")
-shader_parameter/pixel_size = 8.0
+shader_parameter/pixel_size = 6.0000002375
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r4lg0"]
 animations = [{
@@ -395,6 +395,7 @@ clickable_highlight = NodePath("ClickableHighlight")
 polygon = PackedVector2Array(-68, -7, -68, 7, -26, 33, 58, 11, 60, -3, 11, -26)
 
 [node name="SpriteMiniBook" type="Sprite2D" parent="."]
+light_mask = 513
 material = SubResource("ShaderMaterial_cr6hc")
 instance_shader_parameters/outline_width = 6
 scale = Vector2(0.63, 0.63)

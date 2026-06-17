@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c0lfvcrle3frk"]
+[gd_scene load_steps=42 format=3 uid="uid://c0lfvcrle3frk"]
 
 [ext_resource type="Script" uid="uid://dh0io287hog2e" path="res://Scenes/Levels/spaceship_interior.gd" id="1_4wenu"]
 [ext_resource type="PackedScene" uid="uid://cgfq6udrxu5hm" path="res://Scenes/UI/mouse.tscn" id="1_ntswj"]
@@ -31,6 +31,45 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3unc4"]
 
+[sub_resource type="Gradient" id="Gradient_cd6pq"]
+offsets = PackedFloat32Array(0, 0.7007042)
+colors = PackedColorArray(0.51, 0.51, 0.51, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5sdax"]
+gradient = SubResource("Gradient_cd6pq")
+width = 210
+height = 254
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cd6pq"]
+gradient = SubResource("Gradient_cd6pq")
+width = 254
+height = 254
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jx13q"]
+gradient = SubResource("Gradient_cd6pq")
+width = 124
+height = 83
+fill_from = Vector2(0.48563218, 0.055809446)
+fill_to = Vector2(0.5143678, 0.8328486)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s2j2j"]
+gradient = SubResource("Gradient_cd6pq")
+width = 244
+height = 219
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_iqcib"]
+gradient = SubResource("Gradient_cd6pq")
+width = 244
+height = 219
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_n7pqb"]
 fade_time = 0.0
 stream_count = 1
@@ -38,7 +77,7 @@ stream_0 = ExtResource("14_uvk7a")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_76ouu"]
 shader = ExtResource("4_76ouu")
-shader_parameter/pixel_size = 5.00000019
+shader_parameter/pixel_size = 6.0000002375
 shader_parameter/camera_pos = Vector2(0, 0)
 
 [sub_resource type="Gradient" id="Gradient_4wenu"]
@@ -162,13 +201,40 @@ position = Vector2(-1363, 16)
 [node name="Papers" parent="." instance=ExtResource("9_cd6pq")]
 position = Vector2(1318, -75)
 
+[node name="RedLight" type="PointLight2D" parent="Papers"]
+position = Vector2(46, -120)
+color = Color(0.62, 0.17091332, 0.111600004, 1)
+energy = 1.3
+texture = SubResource("GradientTexture2D_5sdax")
+
 [node name="SpaceshipDesk" type="Sprite2D" parent="."]
 position = Vector2(1259, 160)
 scale = Vector2(0.6347222, 0.6253333)
 texture = ExtResource("9_woif5")
 
+[node name="RedLight" type="PointLight2D" parent="SpaceshipDesk"]
+position = Vector2(-376.5428, -196.69513)
+color = Color(0.62, 0.17091332, 0.111600004, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_cd6pq")
+
+[node name="RedLight2" type="PointLight2D" parent="SpaceshipDesk"]
+position = Vector2(-356.06128, -78.3582)
+color = Color(0.62, 0.17091332, 0.111600004, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_cd6pq")
+
 [node name="Diary" parent="." instance=ExtResource("19_jfm16")]
+light_mask = 513
 position = Vector2(1068, 136)
+
+[node name="RedLight" type="PointLight2D" parent="Diary"]
+position = Vector2(-0.9999542, 20)
+rotation = -0.2268928
+color = Color(0.62, 0.17091332, 0.111600004, 1)
+energy = 1.66
+range_item_cull_mask = 512
+texture = SubResource("GradientTexture2D_jx13q")
 
 [node name="SpaceshipCable" type="Sprite2D" parent="."]
 position = Vector2(-237.75055, 125)
@@ -184,9 +250,27 @@ metadata/_custom_type_script = "uid://c4rjuhxn0t5h3"
 position = Vector2(-658, -53)
 scale = Vector2(1.0005939, 1)
 
+[node name="RedLight" type="PointLight2D" parent="ResourcesMachine"]
+position = Vector2(52.968563, -72)
+color = Color(0.62, 0.17091332, 0.111600004, 1)
+energy = 3.0
+range_item_cull_mask = 512
+texture = SubResource("GradientTexture2D_s2j2j")
+
+[node name="RedLight2" type="PointLight2D" parent="ResourcesMachine"]
+position = Vector2(66.96025, -46)
+color = Color(0.62, 0.17091332, 0.111600004, 1)
+texture = SubResource("GradientTexture2D_iqcib")
+
 [node name="Monitor" parent="." instance=ExtResource("7_cfm2w")]
 position = Vector2(-22.000002, -6)
 scale = Vector2(1.0005939, 1)
+
+[node name="RedLight" type="PointLight2D" parent="Monitor"]
+position = Vector2(-41.97505, 47)
+color = Color(0.62, 0.17091332, 0.111600004, 1)
+energy = 1.16
+texture = SubResource("GradientTexture2D_s2j2j")
 
 [node name="MouseEmulator" parent="." instance=ExtResource("1_ntswj")]
 

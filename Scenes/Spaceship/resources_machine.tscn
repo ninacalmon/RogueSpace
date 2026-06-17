@@ -154,6 +154,7 @@ clickable_highlight = NodePath("ClickableHighlight")
 polygon = PackedVector2Array(-3.2000122, -49.100006, -22.200012, -76.100006, -35.200012, -76.100006, -39.200012, -62.100006, -18.200012, -36.100006, -23.200012, -12.100006, -6.200012, 6.899994, 21.799988, 7.899994, 38.799988, -16.100006, 30.799988, -41.100006, 14.799988, -50.100006)
 
 [node name="SpriteValve" type="Sprite2D" parent="ResourcesDeposit"]
+light_mask = 513
 material = SubResource("ShaderMaterial_x7ic0")
 instance_shader_parameters/outline_width = 6
 position = Vector2(2, -41)
