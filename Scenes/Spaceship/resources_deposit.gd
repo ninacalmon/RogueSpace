@@ -25,7 +25,7 @@ func _on_clicked():
 
 func _on_resource_count_finished():
 	can_exit_sub_area = true
-	SpaceshipEventBus.focus_off.emit()
+	SpaceshipEventBus.focus_off.emit(true)
 	StatsManager.current_resources -= StatsManager.resources_needed
 	SpaceshipEventBus.resources_spent.emit()
 #func _on_hover():

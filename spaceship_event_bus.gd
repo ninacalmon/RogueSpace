@@ -4,7 +4,7 @@ extends Node
 signal focus_on(zoom_in_amount: float, zoom_offset: Vector2, emitter: Node2D, keep_camera: bool)
 
 @warning_ignore("unused_signal")
-signal focus_off
+signal focus_off(reset_to_center_room: bool)
 
 @warning_ignore("unused_signal")
 signal resource_count_finished

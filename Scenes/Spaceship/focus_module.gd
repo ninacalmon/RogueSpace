@@ -40,7 +40,7 @@ func _on_focus_on_requested(zoom_in_amount: float, zoom_offset: Vector2, emitter
 	
 	camera.is_busy = false
 
-func _on_focus_off_requested():
+func _on_focus_off_requested(reset_to_center_room: bool = false):
 	if camera.is_busy or !camera.is_focused:
 		return
 
@@ -53,7 +53,10 @@ func _on_focus_off_requested():
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_QUAD)
 	tween.tween_property(camera, "zoom", init_zoom, zoom_speed)
-	tween.tween_property(camera, "global_position", init_position, zoom_speed)	
+
+	if reset_to_center_room:
+		tween.tween_property(camera, "global_position", init_position, zoom_speed)
+
 	await tween.finished
 	
 	camera.is_busy = false

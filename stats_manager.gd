@@ -4,7 +4,7 @@ var day: int = 0
 
 #### RESOURCES BANK ####
 var resources_needed: int = 100
-var current_resources: int = 100
+var current_resources: int = 1
 
 #### POWER UPS ####
 var PowerUpsLevels: Dictionary = {

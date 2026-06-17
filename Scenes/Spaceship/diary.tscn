@@ -66,7 +66,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.3, 0.3)]
+"values": [Vector2(0.63, 0.63)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -79,6 +79,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpriteMiniBook/ShadowSprite:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_vokqo"]
@@ -129,6 +141,18 @@ tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(7.209994, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpriteMiniBook/ShadowSprite:modulate")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
@@ -363,7 +387,6 @@ _data = {
 
 [node name="Diary" type="Area2D" node_paths=PackedStringArray("clickable_highlight")]
 light_mask = 17
-priority = 1
 script = ExtResource("1_mlqjd")
 zoom_in_amount = 1.0
 clickable_highlight = NodePath("ClickableHighlight")

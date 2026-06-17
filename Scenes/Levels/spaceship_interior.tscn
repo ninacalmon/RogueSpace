@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c0lfvcrle3frk"]
+[gd_scene load_steps=36 format=3 uid="uid://c0lfvcrle3frk"]
 
 [ext_resource type="Script" uid="uid://dh0io287hog2e" path="res://Scenes/Levels/spaceship_interior.gd" id="1_4wenu"]
 [ext_resource type="PackedScene" uid="uid://cgfq6udrxu5hm" path="res://Scenes/UI/mouse.tscn" id="1_ntswj"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bkjjj01xixl1j" path="res://Scenes/Spaceship/Monitor.tscn" id="7_cfm2w"]
 [ext_resource type="PackedScene" uid="uid://dckqqes7uw3fy" path="res://Scenes/Spaceship/deimos_hands.tscn" id="7_vo7cp"]
 [ext_resource type="Texture2D" uid="uid://6ivw36hwbai8" path="res://Sprites(main)/SpaceshipInterior/Machine/SpaceshipCable.png" id="8_3unc4"]
+[ext_resource type="PackedScene" uid="uid://brt0pxwj3kby8" path="res://Scenes/Spaceship/papers.tscn" id="9_cd6pq"]
 [ext_resource type="Texture2D" uid="uid://cjik0xqbk6bek" path="res://Sprites(main)/SpaceshipInterior/SpaceshipDesk.png" id="9_woif5"]
 [ext_resource type="Script" uid="uid://cbpgnuq5d011c" path="res://Scenes/Levels/spaceship_cable.gd" id="9_xv1p6"]
 [ext_resource type="PackedScene" uid="uid://ck6swxjky54l3" path="res://Scenes/Spaceship/resources_machine.tscn" id="10_cfm2w"]
@@ -70,6 +71,15 @@ glow_hdr_threshold = 0.0
 
 [node name="SpaceshipInterior" type="Node2D"]
 script = ExtResource("1_4wenu")
+
+[node name="BlackBack" type="ColorRect" parent="."]
+offset_left = -2670.0
+offset_top = -767.0
+offset_right = 2710.0
+offset_bottom = 807.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(13.000001, -19.000013)
@@ -141,14 +151,16 @@ flip_h = true
 [node name="FocusModule" type="Node2D" parent="Camera2D" node_paths=PackedStringArray("camera")]
 script = ExtResource("4_0gr6q")
 camera = NodePath("..")
-zoom_speed = null
 
 [node name="Door" parent="." instance=ExtResource("12_i5u5t")]
-position = Vector2(943, -76)
+position = Vector2(-1050, -318)
 scale = Vector2(1.0005939, 1)
 
 [node name="DoorClosed" parent="." instance=ExtResource("15_vhqlx")]
 position = Vector2(-1363, 16)
+
+[node name="Papers" parent="." instance=ExtResource("9_cd6pq")]
+position = Vector2(1318, -75)
 
 [node name="SpaceshipDesk" type="Sprite2D" parent="."]
 position = Vector2(1259, 160)
@@ -156,7 +168,7 @@ scale = Vector2(0.6347222, 0.6253333)
 texture = ExtResource("9_woif5")
 
 [node name="Diary" parent="." instance=ExtResource("19_jfm16")]
-position = Vector2(1043, 136)
+position = Vector2(1068, 136)
 
 [node name="SpaceshipCable" type="Sprite2D" parent="."]
 position = Vector2(-237.75055, 125)
@@ -211,10 +223,10 @@ material = SubResource("ShaderMaterial_76ouu")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1993.9998
-offset_top = -489.99997
-offset_right = -1887.1343
-offset_bottom = -519.1433
+offset_left = -2186.9998
+offset_top = -604.9999
+offset_right = -1957.5195
+offset_bottom = -488.15662
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3.1480725, 1.575486)
