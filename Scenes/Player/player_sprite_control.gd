@@ -8,22 +8,28 @@ class_name PlayerSprite2D
 
 var is_propelling: bool = false
 
+var current_direction: String = ""
+
 func update_sprite(facing_direction: String):
+	if facing_direction != current_direction:
+		current_direction = facing_direction
+		restart_animation()
+
 	match facing_direction:
-		"up":
+		"up", "down":
 			frame_coords.y = 0
-			motor_gpu_particles.show_behind_parent = true
-		"down":
-			frame_coords.y = 0
-			motor_gpu_particles.show_behind_parent = true
 		"left":
 			frame_coords.y = 3
-			motor_gpu_particles.show_behind_parent = true
 		"right":
 			frame_coords.y = 1
-			motor_gpu_particles.show_behind_parent = true
-	
+
 	backpack_sprite_2d.frame_coords.y = frame_coords.y
+
+func restart_animation():
+	is_propelling = false
+	await get_tree().process_frame
+	is_propelling = true
+	animate_propelling()
 
 func start_animation():
 	if is_propelling:
@@ -36,7 +42,7 @@ func stop_animation():
 	is_propelling = false
 
 func animate_propelling():
-	while is_propelling:
+	while is_propelling and is_inside_tree():
 		frame_coords.x = 1
 		await get_tree().create_timer(seconds_per_frame).timeout
 		if not is_propelling:
@@ -50,7 +56,7 @@ func animate_propelling():
 		frame_coords.x = 3
 
 		while is_propelling:
-			await get_tree().process_frame
+			await get_tree().create_timer(0.0).timeout
 
 	while frame_coords.x > 0:
 		frame_coords.x -= 1

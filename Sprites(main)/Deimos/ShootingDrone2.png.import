@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cowjyayuawx8v"
-path="res://.godot/imported/SpaceshipBackground3.png-b6f6798a056facfd763f3892c7724644.ctex"
+uid="uid://c6csc1ns1bw6m"
+path="res://.godot/imported/ShootingDrone2.png-a0605edfc3bba3c1805ccbaea83b4882.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites(main)/SpaceshipInterior/SpaceshipBackground3.png"
-dest_files=["res://.godot/imported/SpaceshipBackground3.png-b6f6798a056facfd763f3892c7724644.ctex"]
+source_file="res://Sprites(main)/Deimos/ShootingDrone2.png"
+dest_files=["res://.godot/imported/ShootingDrone2.png-a0605edfc3bba3c1805ccbaea83b4882.ctex"]
 
 [params]
 

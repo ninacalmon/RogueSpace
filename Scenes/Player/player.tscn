@@ -1,7 +1,7 @@
 [gd_scene load_steps=35 format=3 uid="uid://b512vj2a4a3y"]
 
 [ext_resource type="Script" uid="uid://i7mc57eu0q83" path="res://Scenes/Player/player.gd" id="1_ktxno"]
-[ext_resource type="Texture2D" uid="uid://x6m3c8td5nfn" path="res://Sprites(main)/Deimos-Sheet.png" id="2_aqm4k"]
+[ext_resource type="Texture2D" uid="uid://x6m3c8td5nfn" path="res://Sprites(main)/Deimos/Deimos-Sheet.png" id="2_aqm4k"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="3_ikhnj"]
 [ext_resource type="Script" uid="uid://3bsd20l8onw4" path="res://Scenes/Player/player_sprite_control.gd" id="3_rcvs5"]
 [ext_resource type="PackedScene" uid="uid://dp3f278n4cqbm" path="res://Particles/motor_gpu_particles.tscn" id="5_d77i8"]
@@ -16,11 +16,11 @@
 [ext_resource type="Script" uid="uid://cd5ihl6hfs16d" path="res://Scenes/Modulars/bullet_shooter.gd" id="11_pu2lt"]
 [ext_resource type="Script" uid="uid://yorcpoevwvbr" path="res://Scenes/Player/hurt_box_player.gd" id="13_7g0yx"]
 [ext_resource type="AudioStream" uid="uid://bhajosbgqm8fk" path="res://Sound Effects/Shoot/sfx_tiro1.wav" id="13_dey5f"]
-[ext_resource type="Texture2D" uid="uid://dtnbw56aodt0c" path="res://Sprites(main)/UI/arrow.png" id="14_aqm4k"]
 [ext_resource type="AudioStream" uid="uid://dy3eobtygv1pq" path="res://Sound Effects/Shoot/sfx_tiro2.wav" id="14_r5xpd"]
 [ext_resource type="AudioStream" uid="uid://dw2sq44bp1kld" path="res://Sound Effects/Player/Damage/sfx_dano3.wav" id="15_hnuln"]
 [ext_resource type="Script" uid="uid://c8vhfkoa08kcq" path="res://Scenes/Player/death_setup.gd" id="15_r5xpd"]
 [ext_resource type="PackedScene" uid="uid://cs3plu0tcpnyu" path="res://Particles/player_death_particles.tscn" id="16_ks1b7"]
+[ext_resource type="Texture2D" uid="uid://c6csc1ns1bw6m" path="res://Sprites(main)/Deimos/ShootingDrone2.png" id="17_jincj"]
 [ext_resource type="AudioStream" uid="uid://b4cbyqk77clli" path="res://Sound Effects/sfx_morte1.wav" id="17_ks1b7"]
 [ext_resource type="Texture2D" uid="uid://biyu4g7rbmpx0" path="res://Sprites(main)/Deimos/deimos_confused_popup.png" id="21_h8ma5"]
 
@@ -195,9 +195,8 @@ bus = &"Sound Effects"
 [node name="ArrowPivot" type="Node2D" parent="BulletShooter"]
 
 [node name="Sprite2D" type="Sprite2D" parent="BulletShooter/ArrowPivot"]
-position = Vector2(20, 0)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("14_aqm4k")
+position = Vector2(26, 0)
+texture = ExtResource("17_jincj")
 
 [node name="HurtBoxPlayer" type="Area2D" parent="." node_paths=PackedStringArray("player")]
 collision_layer = 0

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x6m3c8td5nfn"
-path="res://.godot/imported/Deimos-Sheet.png-559b85299ad751919d655d2f8611257c.ctex"
+uid="uid://bxa8okkgklqse"
+path="res://.godot/imported/LaserShot-Sheet (1).png-47eef58367bcb358f0576acac0154ef0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites(main)/Deimos-Sheet.png"
-dest_files=["res://.godot/imported/Deimos-Sheet.png-559b85299ad751919d655d2f8611257c.ctex"]
+source_file="res://Sprites(main)/Deimos/LaserShot-Sheet (1).png"
+dest_files=["res://.godot/imported/LaserShot-Sheet (1).png-47eef58367bcb358f0576acac0154ef0.ctex"]
 
 [params]
 

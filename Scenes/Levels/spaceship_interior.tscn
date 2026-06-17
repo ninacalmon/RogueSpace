@@ -1,8 +1,8 @@
-[gd_scene load_steps=34 format=3 uid="uid://c0lfvcrle3frk"]
+[gd_scene load_steps=35 format=3 uid="uid://c0lfvcrle3frk"]
 
 [ext_resource type="Script" uid="uid://dh0io287hog2e" path="res://Scenes/Levels/spaceship_interior.gd" id="1_4wenu"]
 [ext_resource type="PackedScene" uid="uid://cgfq6udrxu5hm" path="res://Scenes/UI/mouse.tscn" id="1_ntswj"]
-[ext_resource type="Texture2D" uid="uid://cowjyayuawx8v" path="res://Sprites(main)/SpaceshipInterior/SpaceshipBackground3.png" id="2_jfm16"]
+[ext_resource type="Texture2D" uid="uid://de57pwcmxnpsx" path="res://Sprites(main)/SpaceshipInterior/SpaceshipBackgroundSemiFinalVer.png" id="2_vhqlx"]
 [ext_resource type="Texture2D" uid="uid://crf37jptk3dbk" path="res://Sprites(main)/SpaceshipInterior/SpaceshipTUBOS.png" id="3_76ouu"]
 [ext_resource type="Script" uid="uid://dfov1lobu4khy" path="res://Scenes/Spaceship/camera_2d.gd" id="3_cfm2w"]
 [ext_resource type="Script" uid="uid://dei8kv4pd3sf0" path="res://Scenes/Spaceship/pan_view_module.gd" id="3_nkmj0"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bkjjj01xixl1j" path="res://Scenes/Spaceship/Monitor.tscn" id="7_cfm2w"]
 [ext_resource type="PackedScene" uid="uid://dckqqes7uw3fy" path="res://Scenes/Spaceship/deimos_hands.tscn" id="7_vo7cp"]
 [ext_resource type="Texture2D" uid="uid://6ivw36hwbai8" path="res://Sprites(main)/SpaceshipInterior/Machine/SpaceshipCable.png" id="8_3unc4"]
+[ext_resource type="Texture2D" uid="uid://cjik0xqbk6bek" path="res://Sprites(main)/SpaceshipInterior/SpaceshipDesk.png" id="9_woif5"]
 [ext_resource type="Script" uid="uid://cbpgnuq5d011c" path="res://Scenes/Levels/spaceship_cable.gd" id="9_xv1p6"]
 [ext_resource type="PackedScene" uid="uid://ck6swxjky54l3" path="res://Scenes/Spaceship/resources_machine.tscn" id="10_cfm2w"]
 [ext_resource type="Script" uid="uid://c4rjuhxn0t5h3" path="res://Scenes/Spaceship/shake_module.gd" id="10_vo7cp"]
@@ -73,7 +74,7 @@ script = ExtResource("1_4wenu")
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(13.000001, -19.000013)
 scale = Vector2(0.6347222, 0.6253333)
-texture = ExtResource("2_jfm16")
+texture = ExtResource("2_vhqlx")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("pixel_rect")]
 scale = Vector2(1.0005939, 1)
@@ -142,8 +143,20 @@ script = ExtResource("4_0gr6q")
 camera = NodePath("..")
 zoom_speed = null
 
+[node name="Door" parent="." instance=ExtResource("12_i5u5t")]
+position = Vector2(943, -76)
+scale = Vector2(1.0005939, 1)
+
+[node name="DoorClosed" parent="." instance=ExtResource("15_vhqlx")]
+position = Vector2(-1363, 16)
+
+[node name="SpaceshipDesk" type="Sprite2D" parent="."]
+position = Vector2(1259, 160)
+scale = Vector2(0.6347222, 0.6253333)
+texture = ExtResource("9_woif5")
+
 [node name="Diary" parent="." instance=ExtResource("19_jfm16")]
-position = Vector2(312, 117)
+position = Vector2(1043, 136)
 
 [node name="SpaceshipCable" type="Sprite2D" parent="."]
 position = Vector2(-237.75055, 125)
@@ -164,13 +177,6 @@ position = Vector2(-22.000002, -6)
 scale = Vector2(1.0005939, 1)
 
 [node name="MouseEmulator" parent="." instance=ExtResource("1_ntswj")]
-
-[node name="Door" parent="." instance=ExtResource("12_i5u5t")]
-position = Vector2(1399.0001, 52)
-scale = Vector2(1.0005939, 1)
-
-[node name="DoorClosed" parent="." instance=ExtResource("15_vhqlx")]
-position = Vector2(-1363, 16)
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 scroll_scale = Vector2(1.15, 1)

@@ -9,6 +9,7 @@ var inverse_control_on: bool = false
 
 @onready var bullet_sfx: AudioStreamPlayer = $BulletSFX
 @onready var arrow_pivot: Node2D = $ArrowPivot
+@onready var sprite_2d: Sprite2D = $ArrowPivot/Sprite2D
 
 @onready var bullet_scene: PackedScene = load(StatsManager.player_current_bullet)
 
@@ -71,7 +72,9 @@ func shoot(direction: Vector2):
 	var new_bullet: Bullet = bullet_scene.instantiate()
 	add_sibling(new_bullet)
 
-	new_bullet.global_position = global_position
+	new_bullet.show_behind_parent = true
+
+	new_bullet.global_position = sprite_2d.global_position
 	new_bullet.direction = direction
 	new_bullet.rotation = direction.angle()
 

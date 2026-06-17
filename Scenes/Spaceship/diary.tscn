@@ -1,9 +1,10 @@
-[gd_scene load_steps=44 format=3 uid="uid://bvmqc5jgquxeu"]
+[gd_scene load_steps=45 format=3 uid="uid://bvmqc5jgquxeu"]
 
 [ext_resource type="Texture2D" uid="uid://cyrvbfkrobaa1" path="res://Sprites(main)/bookTileset.png" id="1_7yh6m"]
-[ext_resource type="Texture2D" uid="uid://drluyy4fl7yg3" path="res://Sprites(main)/SpaceshipInterior/book.png" id="1_j6pbb"]
 [ext_resource type="Script" uid="uid://4dv3d2vyvbp1" path="res://Scenes/Spaceship/diary.gd" id="1_mlqjd"]
 [ext_resource type="Shader" uid="uid://cccnue3fm2pyc" path="res://Shaders/outline.gdshader" id="2_7afck"]
+[ext_resource type="Texture2D" uid="uid://br5ps5qcruhad" path="res://Sprites(main)/SpaceshipInterior/SpaceshipDeskDiaryShadow.png" id="2_brskc"]
+[ext_resource type="Texture2D" uid="uid://dspm451fbabyx" path="res://Sprites(main)/SpaceshipInterior/SpaceshipDeskDiary.png" id="3_8jwq2"]
 [ext_resource type="Script" uid="uid://jtbq6dor8pk0" path="res://Scenes/Modulars/clickable_highlight.gd" id="4_wy5ug"]
 [ext_resource type="Shader" uid="uid://kyf6ladmlc1w" path="res://Shaders/blur.gdshader" id="5_cr6hc"]
 [ext_resource type="Script" uid="uid://fvfblb6b10sn" path="res://Scenes/Spaceship/diary_control.gd" id="6_w3sy0"]
@@ -27,7 +28,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cr6hc"]
 shader = ExtResource("2_7afck")
 shader_parameter/rounded = true
-shader_parameter/alpha_threshold = 0.1
+shader_parameter/alpha_threshold = 0.82
 
 [sub_resource type="Animation" id="Animation_ug76w"]
 length = 0.001
@@ -93,7 +94,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 200)]
+"values": [Vector2(0, 0), Vector2(0, 300)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -105,7 +106,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(3.031435, 1),
 "update": 0,
-"values": [0.0, 1.3962634015954636]
+"values": [0.0, 0.5235987755982988]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -117,7 +118,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.12, 0.12), Vector2(0.3, 0.3)]
+"values": [Vector2(0.63, 0.63), Vector2(2, 2)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -362,18 +363,19 @@ _data = {
 
 [node name="Diary" type="Area2D" node_paths=PackedStringArray("clickable_highlight")]
 light_mask = 17
+priority = 1
 script = ExtResource("1_mlqjd")
 zoom_in_amount = 1.0
 clickable_highlight = NodePath("ClickableHighlight")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(1, 28, 45, 0, 46, -9, -6, -28, -47, -17, -45, -9)
+polygon = PackedVector2Array(-68, -7, -68, 7, -26, 33, 58, 11, 60, -3, 11, -26)
 
 [node name="SpriteMiniBook" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_cr6hc")
-instance_shader_parameters/outline_width = 30
-scale = Vector2(0.120000005, 0.120000005)
-texture = ExtResource("1_j6pbb")
+instance_shader_parameters/outline_width = 6
+scale = Vector2(0.63, 0.63)
+texture = ExtResource("3_8jwq2")
 
 [node name="AnimationTakeBook" type="AnimationPlayer" parent="SpriteMiniBook"]
 reset_on_save = false
@@ -381,6 +383,11 @@ root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_mlqjd")
 }
+
+[node name="ShadowSprite" type="Sprite2D" parent="SpriteMiniBook"]
+show_behind_parent = true
+scale = Vector2(1.0074954, 0.9925925)
+texture = ExtResource("2_brskc")
 
 [node name="ClickableHighlight" type="Node2D" parent="." node_paths=PackedStringArray("area", "sprite")]
 position = Vector2(0, 200)
