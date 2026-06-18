@@ -99,6 +99,8 @@ scale = Vector2(0.2, 0.2)
 texture = SubResource("GradientTexture2D_81w2e")
 
 [node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("3_dv4l3")]
+collision_layer = 129
+collision_mask = 129
 owner_body = NodePath("..")
 owner_collision_shape = NodePath("../CollisionShape2D")
 mass_to_radius_multiply = 0.04

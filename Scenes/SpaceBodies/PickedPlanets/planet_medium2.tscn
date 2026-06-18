@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bs6twtddsrxb"]
+[gd_scene load_steps=6 format=3 uid="uid://bs6twtddsrxb"]
 
-[ext_resource type="Script" uid="uid://clcm8jx1m8eel" path="res://Scenes/SpaceBodies/Moons/static_rotation.gd" id="1_1bvd2"]
+[ext_resource type="Script" uid="uid://b6ch1ii8ge4tt" path="res://Scenes/SpaceBodies/planet.gd" id="1_aiw0w"]
 [ext_resource type="Texture2D" uid="uid://soo6c1lbw424" path="res://Sprites(main)/Planetas/PlanetaMédio3.png" id="2_44fhj"]
+[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="3_n4h0n"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m0iey"]
 friction = 0.0
@@ -10,9 +11,13 @@ bounce = 0.1
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpe2g"]
 radius = 126.00397
 
-[node name="Planet" type="StaticBody2D"]
+[node name="Planet" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "gravitational_field")]
+mass = 800.0
 physics_material_override = SubResource("PhysicsMaterial_m0iey")
-script = ExtResource("1_1bvd2")
+script = ExtResource("1_aiw0w")
+collision = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
+gravitational_field = NodePath("GravitationalField")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vpe2g")
@@ -21,3 +26,8 @@ shape = SubResource("CircleShape2D_vpe2g")
 texture = ExtResource("2_44fhj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("3_n4h0n")]
+owner_body = NodePath("..")
+owner_collision_shape = NodePath("../CollisionShape2D")
+mass_to_radius_multiply = 0.25

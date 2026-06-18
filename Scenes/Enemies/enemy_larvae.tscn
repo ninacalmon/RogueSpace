@@ -80,7 +80,7 @@ stream_2/stream = ExtResource("6_d0w55")
 stream_2/weight = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ogwh0"]
-radius = 214.0
+radius = 158.01266
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lpb1s"]
 particles_animation = true
@@ -133,6 +133,7 @@ fill_from = Vector2(0.5, 0.5)
 mass = 3.0
 can_sleep = false
 script = ExtResource("1_4xthq")
+stun_time = 4.0
 explosion_area = NodePath("ExplosionArea")
 speed = 50.0
 max_velocity = 100.0
@@ -192,5 +193,5 @@ process_material = SubResource("ParticleProcessMaterial_kd7u2")
 
 [node name="ExplosionAureaSprite" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_d7wtw")
-scale = Vector2(0.75999993, 0.75999993)
+scale = Vector2(0.56, 0.5599999)
 texture = SubResource("GradientTexture2D_137m0")

@@ -8,14 +8,25 @@ var target: Node2D
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = %VisibleOnScreenNotifier2D
 @onready var collectiong_sfx: AudioStreamPlayer = $CollectiongSFX
 
+var _linear_velocity: Vector2
+var _angular_velocity: float
+
+var asteoid_parent: Asteroid = null
+
 func _ready() -> void:
 	if body_randomizer: body_randomizer.initialize(sprite, collision)
 	if gravitational_field: gravitational_field.initialize()
 	if gravitational_field_resources: gravitational_field_resources.initialize()
 
-
 func _process(delta: float) -> void:
-	freeze = !visible_on_screen_notifier_2d.is_on_screen()
+	var is_on_screen: bool = visible_on_screen_notifier_2d.is_on_screen()
+	if !is_on_screen and !freeze:
+		storage_vel()
+		freeze = true
+	#freeze = !visible_on_screen_notifier_2d.is_on_screen()
+	elif is_on_screen and freeze:
+		freeze = false
+		apply_vel()
 	
 	if not following or target == null:
 		return
@@ -30,3 +41,11 @@ func collect():
 		EventBus.space_resource_collected.emit()
 		SFXManager.play_sound(collectiong_sfx)
 		queue_free()
+
+func storage_vel():
+	_linear_velocity = linear_velocity
+	_angular_velocity = angular_velocity
+
+func apply_vel():
+	linear_velocity = _linear_velocity
+	angular_velocity = _angular_velocity

@@ -35,6 +35,8 @@ var parent
 var original_sprite_scale: Vector2
 var original_collision_radius: float
 
+var chosen_palette: Texture
+
 
 func _ready() -> void:
 	##setup
@@ -56,6 +58,7 @@ func _ready() -> void:
 	
 	if palette_options.size() > 0:
 		var new_palette = palette_options.pick_random()
+		chosen_palette = new_palette
 		sprite.material.set_shader_parameter("new_palette", new_palette)
 
 
@@ -125,9 +128,10 @@ func handle_external_damage(damage: float):
 
 func shed_pieces(pieces: int):
 	for p in pieces:
-		var new_piece: RigidBody2D = broken_piece_scene.instantiate()
+		var new_piece: CollectableResource = broken_piece_scene.instantiate()
 		new_piece.global_position = global_position \
 		+ Vector2(randi_range(-50, 50), randi_range(-50, 50))
+		new_piece.asteoid_parent = self
 		parent.call_deferred("add_child", new_piece)
 	update_sprite()
 	scale_down(0.8, 0.2)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b31sq5e3ikty8"]
+[gd_scene load_steps=8 format=3 uid="uid://b31sq5e3ikty8"]
 
-[ext_resource type="Script" uid="uid://clcm8jx1m8eel" path="res://Scenes/SpaceBodies/Moons/static_rotation.gd" id="1_bc8jl"]
+[ext_resource type="Script" uid="uid://b6ch1ii8ge4tt" path="res://Scenes/SpaceBodies/planet.gd" id="1_40wpp"]
 [ext_resource type="Texture2D" uid="uid://c3ou6rt756n5u" path="res://Sprites(main)/Planetas/planetaMédio2.png" id="2_bc8jl"]
 [ext_resource type="PackedScene" uid="uid://bu2k0aqen7pbj" path="res://Scenes/SpaceBodies/orbit.tscn" id="3_e8ykg"]
 [ext_resource type="PackedScene" uid="uid://bk55i4wpulfxb" path="res://Scenes/SpaceBodies/Moons/Moon1.tscn" id="4_xmv35"]
+[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="5_e8ykg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m0iey"]
 friction = 0.0
@@ -12,9 +13,13 @@ bounce = 0.1
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpe2g"]
 radius = 126.0
 
-[node name="Planet" type="StaticBody2D"]
+[node name="Planet" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "gravitational_field")]
+mass = 800.0
 physics_material_override = SubResource("PhysicsMaterial_m0iey")
-script = ExtResource("1_bc8jl")
+script = ExtResource("1_40wpp")
+collision = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
+gravitational_field = NodePath("GravitationalField")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vpe2g")
@@ -28,3 +33,8 @@ point_count = 96
 body_scene = ExtResource("4_xmv35")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("5_e8ykg")]
+owner_body = NodePath("..")
+owner_collision_shape = NodePath("../CollisionShape2D")
+mass_to_radius_multiply = 0.25
