@@ -13,7 +13,7 @@ shader_parameter/alpha_threshold = 0.505
 [node name="Papers" type="Area2D" node_paths=PackedStringArray("clickable_highlight")]
 script = ExtResource("1_evdcp")
 zoom_in_amount = 4.0
-zoom_offset = Vector2(0, 40)
+zoom_offset = Vector2(0, 10)
 clickable_highlight = NodePath("ClickableHighlight")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

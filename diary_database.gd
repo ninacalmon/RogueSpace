@@ -11,7 +11,7 @@ var pages: Dictionary = {
 		"head": "[b]Primeiro log.",
 		"main": "Vasily costumava manter um diário de bordo da expedição. Agora que estou sozinho, acho que essa tarefa passou para mim.
 
-A Icarus está funcionando à base de aparelhos, cada vez mais tenho saído apenas para conseguir recursos para mantê-la operacional.
+A Icarus está funcionando à base de aparelhos, cada vez mais tenho saído apenas para coletar os fragmentos para mantê-la operacional.
 
 Isso está ficando cansativo.",
 		"sketch": null

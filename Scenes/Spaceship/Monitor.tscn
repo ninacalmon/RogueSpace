@@ -229,7 +229,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 effect = "Fuel"
-title = "COMBUSTÍVEL+"
+title = "COMBUSTÍVEL+ [&]"
 description = "Aumenta a capacidade do seu tanque de combustível."
 max_level = 3
 
@@ -238,7 +238,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 effect = "Health"
-title = "VIDA+"
+title = "VIDA+ [&]"
 price = 300
 description = "Aguente mais porrada."
 max_level = 3

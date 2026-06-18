@@ -25,9 +25,9 @@ func _on_focus_changed(focus: bool, subject: Node2D):
 		elif subject is Papers:
 			InputGuide.clear_guides()
 			InputGuide.show_guide(InputGuide.ActionType.RETURN)
-		else:
-			InputGuide.clear_guides()
-			show_default()
+	else:
+		InputGuide.clear_guides()
+		show_default()
 
 func show_default():
 	InputGuide.show_guide(InputGuide.ActionType.CLICK)

@@ -70,7 +70,7 @@ layout_mode = 2
 mouse_filter = 2
 bbcode_enabled = true
 text = "[b]200[/b] 
-recursos"
+fragmentos"
 fit_content = true
 horizontal_alignment = 2
 script = ExtResource("1_6hd2b")

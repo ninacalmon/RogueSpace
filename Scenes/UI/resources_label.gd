@@ -5,20 +5,20 @@ class_name ResourcesLabel
 
 func _ready() -> void:
 	text = "[b]%d/%d[/b]
-	recursos" %[StatsManager.current_resources, StatsManager.resources_needed]
+	fragmentos" %[StatsManager.current_resources, StatsManager.resources_needed]
 	EventBus.space_resource_collected.connect(_on_resource_collected)
 	EventBus.player_out_of_bounds.connect(_on_player_out_off_bounds)
 
 func _on_resource_collected():
 	StatsManager.current_resources += 1
-	text = "recursos: [b]%d/%d[/b]" %[StatsManager.current_resources, StatsManager.resources_needed]
+	text = "fragmentos: [b]%d/%d[/b]" %[StatsManager.current_resources, StatsManager.resources_needed]
 	if StatsManager.current_resources >= StatsManager.resources_needed:
 		warning_label.show()
 		flash(warning_label)
 
 func _on_player_out_off_bounds():
 	StatsManager.current_resources = floor(StatsManager.current_resources / 2.0)
-	text = "recursos: [b]%d/%d[/b]" %[StatsManager.current_resources, StatsManager.resources_needed]
+	text = "fragmentos: [b]%d/%d[/b]" %[StatsManager.current_resources, StatsManager.resources_needed]
 	if StatsManager.current_resources < StatsManager.resources_needed:
 		warning_label.hide()
 

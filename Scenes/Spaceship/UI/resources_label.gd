@@ -3,7 +3,7 @@ extends RichTextLabel
 func _ready() -> void:
 	hide()
 	text = "[b]%d[/b]
-recursos" %StatsManager.current_resources
+fragmentos" %StatsManager.current_resources
 	SpaceshipEventBus.resources_spent.connect(_on_resources_spent)
 
 func _on_resources_spent():
@@ -11,7 +11,7 @@ func _on_resources_spent():
 	await get_tree().create_timer(1.5).timeout
 	flash(self)
 	text = "[b]%d[/b]
-recursos" %StatsManager.current_resources
+fragmentos" %StatsManager.current_resources
 
 func flash(what: Control):
 	var tween = get_tree().create_tween()

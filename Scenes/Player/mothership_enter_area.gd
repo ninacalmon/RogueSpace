@@ -36,7 +36,7 @@ func _on_body_entered(body: PhysicsBody2D):
 	player_onto_area = true
 	if StatsManager.current_resources < StatsManager.resources_needed:
 		var resources_you_need: int = StatsManager.resources_needed - StatsManager.current_resources
-		PopUpSystem.show_text("Colete [b]%d[/b] ou mais recursos para retornar à nave-mãe." %resources_you_need, 5)
+		PopUpSystem.show_text("Colete [b]%d[/b] ou mais fragmentos para retornar à nave-mãe." %resources_you_need, 5)
 	EventBus.mothership_entrance_entered.emit()
 
 

@@ -2,7 +2,7 @@ extends Camera2D
 class_name SpaceshipCam
 
 @onready var pan_view_module: PanViewModule = $PanViewModule
-@onready var focus_module: Node2D = $FocusModule
+@onready var focus_module: FocusModule = $FocusModule
 @export var min_offset: int = -200
 @export var max_offset: int = 200
 @export var offset_strength_x: float = 0.1
@@ -18,7 +18,7 @@ func _ready() -> void:
 	focus_module.initialize()
 
 func _process(_delta):
-	if is_focused:
+	if is_focused and not (focus_module.subject is Papers):
 		return
 	
 	var screen_center = get_screen_center_position()

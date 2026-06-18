@@ -45,7 +45,7 @@ func _grab_focus():
 
 
 func setup_nodes():
-	price_label.text = "%d recursos" %price
+	price_label.text = "%d fragmentos" %price
 	description_label.text = "%s[br]* %s *" %[title, description]
 	var next_level: int = min(current_level + 1, max_level)
 	var next_level_string: String = str(next_level)
@@ -68,9 +68,11 @@ func deactivate_buying(reason: String):
 	modulate = default_color #self
 
 	if reason == "Not enough resources":
-		custom_tooltip_text = "Sem recursos suficientes. [color=68b820]%d / %d[/color] recursos" %[StatsManager.current_resources, price]
+		custom_tooltip_text = "Sem fragmentos suficientes.
+[color=68b820]%d / %d[/color] fragmentos" %[StatsManager.current_resources, price]
 	if reason == "Already at max level":
-		custom_tooltip_text = "Já alcançou o nível máximo. nível [color=68b820]%d / %d[/color]" %[current_level, max_level]
+		custom_tooltip_text = "Já alcançou o nível máximo. 
+nível [color=68b820]%d / %d[/color]" %[current_level, max_level]
 
 
 func _on_button_pressed():

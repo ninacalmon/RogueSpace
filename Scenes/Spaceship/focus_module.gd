@@ -1,4 +1,5 @@
 extends Node2D
+class_name FocusModule
 
 @export var camera: SpaceshipCam
 @export var zoom_speed: float = 1.0
@@ -6,8 +7,10 @@ extends Node2D
 
 @onready var init_zoom: Vector2 = camera.zoom
 @onready var init_position: Vector2 = camera.global_position
+@onready var center_position: Vector2 = camera.global_position
 @onready var pan_view_module: PanViewModule = $"../PanViewModule"
 
+var subject: Node2D
 
 func initialize() -> void:
 	SpaceshipEventBus.focus_on.connect(_on_focus_on_requested)
@@ -19,6 +22,8 @@ func _on_focus_on_requested(zoom_in_amount: float, zoom_offset: Vector2, emitter
 	
 	camera.is_busy = true
 	camera.is_focused = true
+
+	init_position = camera.position
 
 	var new_zoom = camera.zoom * zoom_in_amount
 	## The camera following the mouse uses offset to calculate the position of the camera.
@@ -39,7 +44,10 @@ func _on_focus_on_requested(zoom_in_amount: float, zoom_offset: Vector2, emitter
 	SpaceshipEventBus.focus_changed.emit(true, emitter)
 	print("focus_OOOOOOOOOOON")
 
+	subject = emitter
+
 	camera.is_busy = false
+
 
 func _on_focus_off_requested(reset_to_center_room: bool = false):
 	if camera.is_busy or !camera.is_focused:
@@ -50,12 +58,17 @@ func _on_focus_off_requested(reset_to_center_room: bool = false):
 	SpaceshipEventBus.focus_changed.emit(false, null)
 	print("focus_off")
 	
+	camera.offset = Vector2.ZERO
+	
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_QUAD)
-	tween.tween_property(camera, "zoom", init_zoom, zoom_speed)
+	tween.tween_property(camera, "offset", Vector2.ZERO, zoom_speed)
+	tween.parallel().tween_property(camera, "zoom", init_zoom, zoom_speed)
 
 	if reset_to_center_room:
+		tween.tween_property(camera, "global_position", center_position, zoom_speed)
+	else: 
 		tween.tween_property(camera, "global_position", init_position, zoom_speed)
 
 	await tween.finished

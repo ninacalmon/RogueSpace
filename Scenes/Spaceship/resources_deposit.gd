@@ -31,7 +31,7 @@ func _on_resource_count_finished():
 #func _on_hover():
 	#if !has_showed_text:
 		#has_showed_text = true
-		#PopUpSystem.show_text("Clique para inserir recursos.", 3)
+		#PopUpSystem.show_text("Clique para inserir fragmentos.", 3)
 		#await PopUpSystem.text_vanished
 		#has_showed_text = false
 
@@ -39,6 +39,6 @@ func _process(_delta: float) -> void:
 	if clickable_highlight.is_mouse_over_area:
 		if !has_showed_text and !was_counted:
 			has_showed_text = true
-			PopUpSystem.show_text("Clique para inserir recursos.", 3)
+			PopUpSystem.show_text("Clique para inserir fragmentos.", 3)
 	else:
 		has_showed_text = false
