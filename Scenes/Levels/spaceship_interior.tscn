@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://c0lfvcrle3frk"]
+[gd_scene load_steps=47 format=3 uid="uid://c0lfvcrle3frk"]
 
 [ext_resource type="Script" uid="uid://dh0io287hog2e" path="res://Scenes/Levels/spaceship_interior.gd" id="1_4wenu"]
 [ext_resource type="PackedScene" uid="uid://cgfq6udrxu5hm" path="res://Scenes/UI/mouse.tscn" id="1_ntswj"]
@@ -37,7 +37,14 @@
 
 [sub_resource type="Gradient" id="Gradient_cd6pq"]
 offsets = PackedFloat32Array(0, 0.7007042)
-colors = PackedColorArray(0.51, 0.51, 0.51, 1, 0, 0, 0, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_npxme"]
+gradient = SubResource("Gradient_cd6pq")
+width = 379
+height = 209
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_5sdax"]
 gradient = SubResource("Gradient_cd6pq")
@@ -196,11 +203,21 @@ script = ExtResource("4_0gr6q")
 camera = NodePath("..")
 
 [node name="Door" parent="." instance=ExtResource("12_i5u5t")]
-position = Vector2(-1050, -318)
+position = Vector2(-1172, -7)
 scale = Vector2(1.0005939, 1)
 
+[node name="RedLight" type="PointLight2D" parent="Door"]
+position = Vector2(14.991047, -251)
+color = Color(0.62, 0.17091332, 0.111600004, 1)
+energy = 3.95
+range_item_cull_mask = 512
+texture = SubResource("GradientTexture2D_npxme")
+
 [node name="DoorClosed" parent="." instance=ExtResource("15_vhqlx")]
-position = Vector2(-1363, 16)
+position = Vector2(962, -76)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DoorClosed"]
+polygon = PackedVector2Array(147, 112, 70, 97, 35, 155, -94, 202, -92, 223, -82, 225, -79, 270, -158, 250, -163, -321, 147, -336)
 
 [node name="Papers" parent="." instance=ExtResource("9_cd6pq")]
 position = Vector2(1318, -75)
@@ -405,6 +422,7 @@ script = ExtResource("16_76ouu")
 [node name="VisualStuff" type="Node" parent="."]
 
 [node name="PixelRect" type="ColorRect" parent="VisualStuff"]
+visible = false
 material = SubResource("ShaderMaterial_76ouu")
 anchors_preset = 15
 anchor_right = 1.0

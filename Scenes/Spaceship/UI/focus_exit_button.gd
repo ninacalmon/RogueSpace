@@ -28,4 +28,5 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("return"):
 		if !can_operate:
 			return
-		SpaceshipEventBus.focus_off.emit()
+		if current_subject is ResourcesMachine: SpaceshipEventBus.focus_off.emit(true)
+		else: SpaceshipEventBus.focus_off.emit()

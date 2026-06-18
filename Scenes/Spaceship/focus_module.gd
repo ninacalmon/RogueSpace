@@ -37,7 +37,8 @@ func _on_focus_on_requested(zoom_in_amount: float, zoom_offset: Vector2, emitter
 		await tween.finished
 
 	SpaceshipEventBus.focus_changed.emit(true, emitter)
-	
+	print("focus_OOOOOOOOOOON")
+
 	camera.is_busy = false
 
 func _on_focus_off_requested(reset_to_center_room: bool = false):

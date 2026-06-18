@@ -3,7 +3,7 @@ extends CanvasLayer
 @export var original_bottom_text: RichTextLabel
 @export var v_box_bottom: VBoxContainer
 @export var flash_color: Color
-@export var texts_limit: int = 2
+@export var texts_limit: int = 1
 
 var texts_count: int = 0
 
