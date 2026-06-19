@@ -63,3 +63,6 @@ signal vibrate(strength_index: int)
 
 @warning_ignore("unused_signal")
 signal boss_in_capture_area(_bool: bool)
+
+@warning_ignore("unused_signal")
+signal start_planet_break

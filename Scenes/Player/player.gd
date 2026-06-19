@@ -66,6 +66,7 @@ func _process(delta: float) -> void:
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if Globals.is_cutscene:
+		linear_velocity = Vector2.ZERO
 		return
 	
 	## Movement here vvv

@@ -14,7 +14,7 @@
 radius = 779.0058
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ghaa6"]
-radius = 39.012817
+radius = 113.44161
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_c5h00"]
 playback_mode = 1
@@ -27,9 +27,9 @@ stream_2/stream = ExtResource("7_yjcva")
 stream_2/weight = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_djiw6"]
-radius = 304.00165
+radius = 635.0504
 
-[node name="Boss" type="RigidBody2D"]
+[node name="Boss" type="RigidBody2D" groups=["Boss_Group"]]
 mass = 1000.0
 can_sleep = false
 lock_rotation = true
@@ -42,10 +42,10 @@ projectile_speed = 200.0
 projectile_damage = 1.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-13, -22, 14, -22, 11, 1, 12, 7, 25, 1, 26, 13, 18, 41, 9, 29, 1, 33, -7, 28, -18, 41, -26, 8, -20, 0, -13, 7, -7, -1, -13, -12)
-disabled = true
+polygon = PackedVector2Array(36, -50, 9, 5, 48, 19, 10, 103, -48, 36, -9, -2, -40, -50, -1, -65, -37, -89, 42, -87, 6, -65, 15, -47)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("4_vr26e")
 
 [node name="AggroArea" type="Area2D" parent="."]
@@ -56,7 +56,6 @@ collision_mask = 8
 shape = SubResource("CircleShape2D_vr26e")
 
 [node name="HurtBox" type="Area2D" parent="."]
-visible = false
 script = ExtResource("4_12bcj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
@@ -68,7 +67,7 @@ volume_db = -18.0
 bus = &"Sound Effects"
 
 [node name="EnemyVisibleOnScreen" type="VisibleOnScreenNotifier2D" parent="."]
-rect = Rect2(-38, -38, 76, 76)
+rect = Rect2(-102, -113, 204, 226)
 script = ExtResource("8_afjt0")
 
 [node name="attack_timer" type="Timer" parent="."]

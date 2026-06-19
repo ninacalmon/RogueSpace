@@ -25,6 +25,10 @@ var player: Player
 
 @export var deactivate: bool = true
 
+@onready var collision_polygon_2d: CollisionPolygon2D = $CollisionPolygon2D
+
+signal cutscene_finished
+
 var is_dead: bool = false
 
 
@@ -34,7 +38,14 @@ func _ready() -> void:
 
 	aggro_area.body_entered.connect(_on_aggro_area_entered)
 
+	cutscene_finished.connect(activate)
+
 	restart_timer()
+
+func activate():
+	deactivate = false
+	collision_polygon_2d.disabled = false
+	attack_timer.start()
 
 func _on_aggro_area_entered(body: PhysicsBody2D):
 	if !(body is Player) or deactivate or is_dead:
@@ -96,7 +107,7 @@ func _on_damage_taken(amount: float, _causer: Node2D):
 	life -= amount
 	flash()
 	if life <= 0:
-		die()
+		call_deferred("die")
 
 func flash():
 	if !mat:
@@ -111,8 +122,26 @@ func setup_projectile(projectile: Bullet):
 	projectile.lifespan = projectile_lifespan
 
 func die():
+	print("diede")
 	is_dead = true
-	sprite_2d.modulate = Color(0.54, 0.416, 0.416)
-	mass = 1
+	sprite_2d.modulate = Color(0.3, 0.3, 0.4)
+
+	sleeping = false
+	freeze = false
+	set_deferred("sleeping", false)
+
+	mass = 0.1
 	lock_rotation = false
 	hook.initialize(player)
+
+func cutscene():
+	var y_offset: int = -10
+	var duration: float = 1.5
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(sprite_2d, "offset:y", y_offset, duration)
+	tween.tween_property(sprite_2d, "offset:y", 0, duration)
+	tween.tween_property(sprite_2d, "offset:y", y_offset, duration)
+	tween.tween_property(sprite_2d, "offset:y", 0, duration)
+	tween.tween_property(sprite_2d, "offset:y", y_offset, duration)
+	tween.tween_property(sprite_2d, "offset:y", 0, duration)

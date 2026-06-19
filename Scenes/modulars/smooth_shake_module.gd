@@ -17,6 +17,22 @@ func shake(target: Node2D, duration: float = 0.4, strength: float = 10.0):
 		"target_offset": Vector2.ZERO,
 	}
 
+# ✨ NEW: peak shake with shift control
+func shake_peak(target: Node2D, duration: float = 0.6, strength: float = 12.0, peak_shift: float = 0.7):
+	if not is_instance_valid(target):
+		return
+
+	targets[target] = {
+		"time_left": duration,
+		"duration": duration,
+		"strength": strength,
+		"original_position": target.position,
+		"current_offset": Vector2.ZERO,
+		"target_offset": Vector2.ZERO,
+		"mode": "peak",
+		"peak_shift": peak_shift
+	}
+
 func _process(delta: float) -> void:
 	for target in targets.keys():
 		if not is_instance_valid(target):
@@ -40,9 +56,17 @@ func _process(delta: float) -> void:
 		# progress (0 → 1)
 		var t: float = 1.0 - (time_left / duration)
 
-		# ✨ smooth falloff (nice ending)
-		var falloff: float = pow(1.0 - t, 3)
-		var current_strength: float = base_strength * falloff
+		# ✨ choose behavior
+		var current_strength: float
+
+		if data.has("mode") and data["mode"] == "peak":
+			var peak_shift: float = data.get("peak_shift", 0.7)
+			var shaped_t: float = pow(t, peak_shift)
+			current_strength = base_strength * sin(shaped_t * PI)
+		else:
+			# original falloff
+			var falloff: float = pow(1.0 - t, 3)
+			current_strength = base_strength * falloff
 
 		# 💥 dynamic sharpness (violent → smooth)
 		var sharpness: float = lerp(30.0, 6.0, t)

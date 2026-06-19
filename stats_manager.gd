@@ -1,9 +1,9 @@
 extends Node
 
-var day: int = 1
+var day: int = 3
 
 #### RESOURCES BANK ####
-var resources_needed: int = 200
+var resources_needed: int = 0
 var current_resources: int = 200
 
 var player_has_cadaver: bool = false
