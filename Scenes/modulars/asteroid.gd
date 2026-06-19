@@ -131,7 +131,7 @@ func shed_pieces(pieces: int):
 		var new_piece: CollectableResource = broken_piece_scene.instantiate()
 		new_piece.global_position = global_position \
 		+ Vector2(randi_range(-50, 50), randi_range(-50, 50))
-		new_piece.asteoid_parent = self
+		new_piece.asteroid_parent = self
 		parent.call_deferred("add_child", new_piece)
 	update_sprite()
 	scale_down(0.8, 0.2)

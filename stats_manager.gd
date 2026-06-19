@@ -1,10 +1,12 @@
 extends Node
 
-var day: int = 0
+var day: int = 2
 
 #### RESOURCES BANK ####
-var resources_needed: int = 100
-var current_resources: int = 1
+var resources_needed: int = 200
+var current_resources: int = 200
+
+var player_has_cadaver: bool = false
 
 #### POWER UPS ####
 var PowerUpsLevels: Dictionary = {

@@ -9,8 +9,7 @@ class_name DiaryPageController
 @onready var button_left: Button = $ButtonsContainer/ButtonL
 @onready var button_right: Button = $ButtonsContainer/ButtonR
 
-var current_spread: int = 0
-
+var current_day: int = 1
 
 func _ready():
 	button_left.pressed.connect(_on_prev_pressed)
@@ -18,57 +17,41 @@ func _ready():
 
 
 func open_diary():
-	current_spread = _get_max_spread()
-	show_spread()
+	current_day = StatsManager.day
+	show_day()
 
-func show_spread():
-	var day_left = current_spread * 2 
-	var day_right = day_left + 1
-
+func show_day():
 	var max_day = StatsManager.day
+	var day_data = DiaryDatabase.get_day(current_day)
 
-	#LEFT PAGE
-	var data_left = DiaryDatabase.get_page(day_left)
+	# LEFT
+	if current_day <= max_day:
+		page_left.setup_left(current_day, day_data["left"])
+	else:
+		page_left.setup_left(0, DiaryDatabase.EMPTY_DAY["left"])
 
-
-	if day_left > max_day:
-		data_left = DiaryDatabase.EMPTY_PAGE
-
-	page_left.setup_page(day_left, data_left)
-
-
-	#RIGHT PAGE
-	var data_right = DiaryDatabase.get_page(day_right)
-
-	if day_right > max_day:
-		data_right = DiaryDatabase.EMPTY_PAGE
-
-	page_right.setup_page(day_right, data_right)
-
+	# RIGHT
+	if current_day <= max_day:
+		page_right.setup_right(day_data["right"])
+	else:
+		page_right.setup_right(DiaryDatabase.EMPTY_DAY["right"])
 
 	_update_buttons()
-
 
 # ========================
 # Navigation
 # ========================
 
 func _on_next_pressed():
-	var max_spread = _get_max_spread()
-
-	if current_spread < max_spread and !HandsEventBus.hand_is_busy:
-		current_spread += 1
-		HandsEventBus.page_next.emit()
-		await get_tree().create_timer(animation_delay).timeout
-		show_spread()
+	if current_day < StatsManager.day:
+		current_day += 1
+		show_day()
 
 
 func _on_prev_pressed():
-	if current_spread > 0 and !HandsEventBus.hand_is_busy:
-		current_spread -= 1
-		HandsEventBus.page_prev.emit()
-		await get_tree().create_timer(animation_delay).timeout
-		show_spread()
+	if current_day > 1:
+		current_day -= 1
+		show_day()
 
 
 # ========================
@@ -81,10 +64,10 @@ func _get_max_spread() -> int:
 
 
 func _update_buttons():
-	var max_spread = _get_max_spread()
+	var max_day = StatsManager.day
 
-	var is_left_disabled = current_spread <= 0
-	var is_right_disabled = current_spread >= max_spread
+	var is_left_disabled = current_day <= 1
+	var is_right_disabled = current_day >= max_day
 
 	button_left.disabled = is_left_disabled
 	button_right.disabled = is_right_disabled

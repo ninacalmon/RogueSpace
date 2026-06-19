@@ -22,6 +22,11 @@ func _ready() -> void:
 	EventBus.mothership_entrance_entered.connect(mothership_entrance_entered)
 	EventBus.mothership_entrance_exited.connect(mothership_entrance_exited)
 
+## DAY 3 ======================================
+	if StatsManager.day == 3:
+		mothership_text = "Traga o corpo d'A Matriarca para retornar à nave mãe."
+## ===============================
+
 func _on_player_almost_out_of_bounds():
 	rich_text_label.text = cautious_text
 	show_warning()

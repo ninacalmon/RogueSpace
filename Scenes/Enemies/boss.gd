@@ -20,18 +20,31 @@ var player: Player
 @onready var mat: ShaderMaterial = sprite_2d.material
 
 @onready var hurt_box: HurtBox = $HurtBox
+@onready var hook: Hook = $Hook
+@onready var aggro_area: Area2D = $AggroArea
+
+@export var deactivate: bool = true
+
+var is_dead: bool = false
 
 
 func _ready() -> void:
-	print("i was born")
-	player = get_tree().get_first_node_in_group("Player_Group")
-
 	attack_timer.timeout.connect(_on_attack_timeout)
 	hurt_box.damage_taken.connect(_on_damage_taken)
 
+	aggro_area.body_entered.connect(_on_aggro_area_entered)
+
 	restart_timer()
 
+func _on_aggro_area_entered(body: PhysicsBody2D):
+	if !(body is Player) or deactivate or is_dead:
+		return
+	player = body
+
 func _on_attack_timeout():
+	if is_dead or deactivate:
+		return
+
 	print("attack timourt")
 
 	if player == null:
@@ -58,6 +71,9 @@ func _on_attack_timeout():
 	restart_timer()
 
 func shoot(direction: Vector2):
+	if is_dead or deactivate:
+		return
+
 	var new_bullet: Bullet = projectile_scene.instantiate()
 	add_sibling(new_bullet)
 
@@ -67,14 +83,20 @@ func shoot(direction: Vector2):
 	new_bullet.rotation = direction.angle()
 
 func restart_timer():
+	if is_dead or deactivate:
+		return
+
 	attack_timer.wait_time = randf_range(attack_wait_time_min, attack_wait_time_max)
 	attack_timer.start()
 
 func _on_damage_taken(amount: float, _causer: Node2D):
+	if is_dead or deactivate:
+		return
+
 	life -= amount
 	flash()
 	if life <= 0:
-		queue_free()
+		die()
 
 func flash():
 	if !mat:
@@ -87,3 +109,10 @@ func setup_projectile(projectile: Bullet):
 	projectile.speed = projectile_speed
 	projectile.damage = projectile_damage
 	projectile.lifespan = projectile_lifespan
+
+func die():
+	is_dead = true
+	sprite_2d.modulate = Color(0.54, 0.416, 0.416)
+	mass = 1
+	lock_rotation = false
+	hook.initialize(player)

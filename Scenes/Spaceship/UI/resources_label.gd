@@ -5,6 +5,7 @@ func _ready() -> void:
 	text = "[b]%d[/b]
 fragmentos" %StatsManager.current_resources
 	SpaceshipEventBus.resources_spent.connect(_on_resources_spent)
+	
 
 func _on_resources_spent():
 	show()

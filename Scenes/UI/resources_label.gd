@@ -9,7 +9,15 @@ func _ready() -> void:
 	EventBus.space_resource_collected.connect(_on_resource_collected)
 	EventBus.player_out_of_bounds.connect(_on_player_out_off_bounds)
 
+## DAY 3 ==========================================
+	if StatsManager.day == 3:
+		text = "Traga A Matriarca."
+## ========================================
+
 func _on_resource_collected():
+	if StatsManager.day == 3:
+		return
+
 	StatsManager.current_resources += 1
 	text = "fragmentos: [b]%d/%d[/b]" %[StatsManager.current_resources, StatsManager.resources_needed]
 	if StatsManager.current_resources >= StatsManager.resources_needed:
@@ -17,6 +25,9 @@ func _on_resource_collected():
 		flash(warning_label)
 
 func _on_player_out_off_bounds():
+	if StatsManager.day == 3:
+		return
+
 	StatsManager.current_resources = floor(StatsManager.current_resources / 2.0)
 	text = "fragmentos: [b]%d/%d[/b]" %[StatsManager.current_resources, StatsManager.resources_needed]
 	if StatsManager.current_resources < StatsManager.resources_needed:

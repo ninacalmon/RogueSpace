@@ -34,6 +34,7 @@ collision_layer = 130
 collision_mask = 3
 mass = 10.0
 script = ExtResource("1_m5km2")
+speed = 500.0
 collision = NodePath("CollisionShape2D")
 sprite = NodePath("Sprite2D")
 gravitational_field = NodePath("GravitationalField")
@@ -42,12 +43,12 @@ body_randomizer = NodePath("BodyRandomizer")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ekiyu")
 
-[node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("rigid_body")]
+[node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("fragment")]
 material = SubResource("ShaderMaterial_busin")
 texture = ExtResource("5_w0wth")
 hframes = 4
 script = ExtResource("6_q5q6c")
-rigid_body = NodePath("..")
+fragment = NodePath("..")
 palette_options = Array[Texture]([ExtResource("4_j5rpl"), ExtResource("3_vctm5"), ExtResource("7_j5rpl"), ExtResource("8_w0wth")])
 
 [node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("3_m5km2")]

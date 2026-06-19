@@ -60,3 +60,6 @@ signal vibrate(strength_index: int)
 ## 1: medium
 ## 2: high
 ## 3: very high
+
+@warning_ignore("unused_signal")
+signal boss_in_capture_area(_bool: bool)

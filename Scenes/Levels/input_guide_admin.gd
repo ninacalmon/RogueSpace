@@ -15,6 +15,8 @@ func _ready() -> void:
 	EventBus.mothership_entrance_entered.connect(_on_mothership_entrance_entered)
 	EventBus.mothership_entrance_exited.connect(_on_mothership_entrance_exited)
 
+	EventBus.boss_in_capture_area.connect(_on_boss_in_capture_area)
+
 	have_teleport = Globals.can_teleport
 
 	InputGuide.clear_guides()
@@ -61,6 +63,14 @@ func show_movement_guides():
 func show_combat_guides():
 	InputGuide.show_guide(InputGuide.ActionType.AIM)
 	InputGuide.show_guide(InputGuide.ActionType.SHOOT)
+
+func _on_boss_in_capture_area(_bool: bool):
+	if _bool:
+		InputGuide.clear_guides()
+		InputGuide.show_guide(InputGuide.ActionType.CONFIRM)
+	else:
+		InputGuide.clear_guides()
+		show_movement_guides()
 
 func _input(event):
 	if event is InputEventKey or event is InputEventMouse:

@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://cf2kk6i0kbsyk"]
+
+[ext_resource type="Script" uid="uid://8b3tv0wxnwkl" path="res://Scenes/SpaceBodies/boss_planet_day_3.gd" id="1_qimuy"]
+[ext_resource type="Texture2D" uid="uid://bv75432b5i0ny" path="res://Sprites(main)/Planetas/PlanetaMaior.png" id="2_drp2x"]
+[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="3_ueswk"]
+[ext_resource type="Script" uid="uid://baypfk1ehotqr" path="res://Scenes/SpaceBodies/vulnerability_area.gd" id="4_7iwph"]
+[ext_resource type="PackedScene" uid="uid://hxbixdf3j2uu" path="res://Scenes/Enemies/boss.tscn" id="5_kb7e1"]
+[ext_resource type="Script" uid="uid://b2jggterxnagp" path="res://Scenes/Modulars/smooth_shake_module.gd" id="6_858ty"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m0iey"]
+friction = 0.0
+bounce = 0.1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vpe2g"]
+radius = 250.018
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dy5ji"]
+radius = 255.00197
+
+[node name="PlanetBoss" type="RigidBody2D"]
+mass = 1500.0
+physics_material_override = SubResource("PhysicsMaterial_m0iey")
+contact_monitor = true
+max_contacts_reported = 3
+linear_damp_mode = 1
+script = ExtResource("1_qimuy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vpe2g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_drp2x")
+
+[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("3_ueswk")]
+linear_damp = 0.0
+owner_body = NodePath("..")
+owner_collision_shape = NodePath("../CollisionShape2D")
+mass_to_radius_multiply = 0.25
+attraction_received_multiply = 0.01
+increase_with_proximity = 0.8999999999999999
+
+[node name="VulnerabilityArea" type="Area2D" parent="." node_paths=PackedStringArray("planet_sprite")]
+script = ExtResource("4_7iwph")
+planet_sprite = NodePath("../Sprite2D")
+boss_scene = ExtResource("5_kb7e1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VulnerabilityArea"]
+shape = SubResource("CircleShape2D_dy5ji")
+
+[node name="SmoothShakeModule" type="Node" parent="VulnerabilityArea"]
+script = ExtResource("6_858ty")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Boss" parent="." instance=ExtResource("5_kb7e1")]
+show_behind_parent = true

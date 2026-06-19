@@ -15,8 +15,7 @@ var base_day_text: String
 func _ready():
 	base_day_text = day_label.text
 
-
-func setup_page(day: int, data: Dictionary):
+func setup_left(day: int, data: Dictionary):
 	head_label.text = ""
 	main_label.text = ""
 	sketch.texture = null
@@ -25,6 +24,22 @@ func setup_page(day: int, data: Dictionary):
 	day_label.text = base_day_text.replace("#", str(day))
 
 	head_label.text = data.get("head", "")
+	main_label.text = data.get("main", "")
+
+	var tex = data.get("sketch", null)
+	if tex:
+		sketch.texture = tex
+		sketch.show()
+
+
+func setup_right(data: Dictionary):
+	# NO DAY, NO HEAD
+	day_label.text = ""
+	head_label.text = ""
+	main_label.text = ""
+	sketch.texture = null
+	sketch.hide()
+
 	main_label.text = data.get("main", "")
 
 	var tex = data.get("sketch", null)

@@ -81,8 +81,19 @@ func go_out():
 	await get_tree().create_timer(1.2).timeout
 	StatsManager.day += 1
 	Globals.update_resources_goal()
-	LevelTransition.change_scene_to("res://Scenes/Levels/LevelFinal2.tscn", 3, 2)
+	var scene_to_go_path: String = get_next_level()
+	LevelTransition.change_scene_to(scene_to_go_path, 3, 2)
 
+func get_next_level() -> String:
+	var scene_path: String = "res://Scenes/Levels/LevelFinal2.tscn"
+	print(StatsManager.day)
+	match StatsManager.day:
+		#0: "res://Scenes/Levels/LevelFinal2.tscn"
+		1: scene_path = "res://Scenes/Levels/LevelFinal2.tscn"
+		2: scene_path = "res://Scenes/Levels/LevelFinal2.tscn"
+		3: scene_path = "res://Scenes/Levels/Level_Day3.tscn"
+	
+	return scene_path
 
 func _on_focus_changed(focus: bool, _subject: Node2D):
 	## If there is a race condition with the activation of the clickable_highlight here and the disabling of it

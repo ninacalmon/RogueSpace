@@ -11,7 +11,7 @@ var target: Node2D
 var _linear_velocity: Vector2
 var _angular_velocity: float
 
-var asteoid_parent: Asteroid = null
+var asteroid_parent: Asteroid = null
 
 func _ready() -> void:
 	if body_randomizer: body_randomizer.initialize(sprite, collision)

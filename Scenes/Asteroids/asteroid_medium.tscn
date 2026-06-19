@@ -32,7 +32,7 @@ radius = 27.018513
 resource_local_to_scene = true
 shader = ExtResource("4_34314")
 shader_parameter/original_palette = ExtResource("5_agbyp")
-shader_parameter/new_palette = ExtResource("5_t4syf")
+shader_parameter/new_palette = ExtResource("6_iy4pt")
 shader_parameter/colors_count = 6
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xolh0"]

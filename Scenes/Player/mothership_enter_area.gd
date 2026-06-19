@@ -37,6 +37,11 @@ func _on_body_entered(body: PhysicsBody2D):
 	if StatsManager.current_resources < StatsManager.resources_needed:
 		var resources_you_need: int = StatsManager.resources_needed - StatsManager.current_resources
 		PopUpSystem.show_text("Colete [b]%d[/b] ou mais fragmentos para retornar à nave-mãe." %resources_you_need, 5)
+
+## DAY 3 ===============================================
+	if StatsManager.day == 3 and !StatsManager.player_has_cadaver:
+		PopUpSystem.show_text("Traga o corpo d'A Matriarca.", 5)
+## =====================================================
 	EventBus.mothership_entrance_entered.emit()
 
 
