@@ -17,13 +17,16 @@ radius = 250.018
 [sub_resource type="CircleShape2D" id="CircleShape2D_dy5ji"]
 radius = 255.00197
 
-[node name="PlanetBoss" type="RigidBody2D"]
+[node name="PlanetBoss" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "gravitational_field")]
 mass = 1500.0
 physics_material_override = SubResource("PhysicsMaterial_m0iey")
 contact_monitor = true
 max_contacts_reported = 3
 linear_damp_mode = 1
 script = ExtResource("1_qimuy")
+collision = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
+gravitational_field = NodePath("GravitationalField")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vpe2g")

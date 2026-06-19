@@ -10,7 +10,8 @@ enum ActionType {
 CONFIRM, RETURN, TELEPORT,
 MOVEMENT, IMPULSE, BREAK,
 AIM, SHOOT,
-POINT, CLICK, UI_MOVEMENT
+POINT, CLICK, UI_MOVEMENT,
+SKIP
 }
 
 var current_input_device: InputDevice = InputDevice.KEYBOARD
@@ -87,6 +88,10 @@ const INPUT_ICONS: Dictionary = {
 	ActionType.UI_MOVEMENT : {
 		InputDevice.CONTROLLER: L_ANALOG,
 		InputDevice.KEYBOARD: WASD_KEY,
+	},
+	ActionType.SKIP : {
+		InputDevice.CONTROLLER: B_BUTTON,
+		InputDevice.KEYBOARD: X_KEY,
 	}
 }
 
@@ -102,7 +107,8 @@ const COMMON_ACTIONS: Dictionary = {
 	ActionType.SHOOT: "Disparar",
 	ActionType.POINT: "Mirar",
 	ActionType.CLICK: "Selecionar",
-	ActionType.UI_MOVEMENT: "Navegar UI"
+	ActionType.UI_MOVEMENT: "Navegar UI",
+	ActionType.SKIP: "Ignorar vídeo"
 }
 
 var final_unit_alpha: float = 1

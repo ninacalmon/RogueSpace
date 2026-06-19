@@ -14,6 +14,8 @@ var fake_mouse_input: bool
 
 var is_showing_confirmation: bool
 
+var next_scene_path: String
+
 #var level: int = 1
 #
 #var resources_gathered: int = 110

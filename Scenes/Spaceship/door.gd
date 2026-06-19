@@ -81,8 +81,8 @@ func go_out():
 	await get_tree().create_timer(1.2).timeout
 	StatsManager.day += 1
 	Globals.update_resources_goal()
-	var scene_to_go_path: String = get_next_level()
-	LevelTransition.change_scene_to(scene_to_go_path, 3, 2)
+	Globals.next_scene_path = get_next_level()
+	LevelTransition.change_scene_to("res://Scenes/Cutscenes/cutscene_out_spaceship.tscn", 2)
 
 func get_next_level() -> String:
 	var scene_path: String = "res://Scenes/Levels/LevelFinal2.tscn"
