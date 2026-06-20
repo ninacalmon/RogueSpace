@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtm7xjsnvddsm"]
+
+[ext_resource type="Script" uid="uid://cr4ttk7mjg166" path="res://Scenes/Bullets/boss_targeted_bullet.gd" id="1_14rbs"]
+[ext_resource type="Texture2D" uid="uid://bxa8okkgklqse" path="res://Sprites(main)/Deimos/LaserShot-Sheet (1).png" id="2_14rbs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_meije"]
+size = Vector2(46, 17)
+
+[node name="BasicBullet" type="Area2D"]
+script = ExtResource("1_14rbs")
+speed = 250.0
+damage = 20.0
+lifespan = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, -0.5)
+shape = SubResource("RectangleShape2D_meije")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 1.9178703, 0, 1)
+scale = Vector2(8, 8)
+texture = ExtResource("2_14rbs")
+hframes = 2

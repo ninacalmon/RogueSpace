@@ -16,6 +16,8 @@ var is_showing_confirmation: bool
 
 var next_scene_path: String
 
+var last_level_path: String
+
 #var level: int = 1
 #
 #var resources_gathered: int = 110
@@ -30,6 +32,7 @@ func reload_current_scene():
 	get_tree().reload_current_scene()
 
 func player_died():
+	last_level_path = get_tree().current_scene.scene_file_path
 	LevelTransition.change_scene_to("res://Scenes/Levels/game_over.tscn")
 	StatsManager.current_resources = 0
 

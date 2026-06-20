@@ -45,7 +45,7 @@ func start_cutscene():
 	await tween.finished
 	EventBus.start_planet_break.emit()
 
-	await get_tree().create_timer(15).timeout
+	await get_tree().create_timer(12).timeout
 
 	tween = create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT)

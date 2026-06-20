@@ -38,10 +38,10 @@ func start_cutscene():
 
 	await get_tree().create_timer(duration * 0.7).timeout
 	
-	boss.cutscene()
+	boss.activate()
 	await tween_shader_param(sprite.material, "dissolve_value", 1.0, 0.0, 4)
 
-	boss.cutscene_finished.emit()
+	#boss.cutscene_finished.emit()
 
 	call_deferred("queue_free")
 
