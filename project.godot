@@ -34,7 +34,6 @@ HandsEventBus="*res://hands_event_bus.gd"
 
 [display]
 
-window/size/mode=3
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="uid://cmlx2ppg3l6lj"
 
@@ -248,6 +247,7 @@ test_n={
 
 [layer_names]
 
+2d_physics/layer_2="asteroids"
 2d_physics/layer_8="black holes"
 2d_physics/layer_9="player"
 

@@ -25,7 +25,7 @@ var player: Player
 
 @export var deactivate: bool = true
 
-@onready var collision_polygon_2d: CollisionPolygon2D = $CollisionPolygon2D
+@onready var collision_polygon_2d: CollisionShape2D = $CollisionPolygon2D
 
 signal cutscene_finished
 
@@ -121,7 +121,14 @@ func setup_projectile(projectile: Bullet):
 	projectile.damage = projectile_damage
 	projectile.lifespan = projectile_lifespan
 
+func _physics_process(_delta):
+	if is_dead:
+		print(collision_polygon_2d.disabled)
+
 func die():
+	print("disabled:", collision_polygon_2d.disabled)
+	print("layer:", collision_layer)
+	print("mask:", collision_mask)
 	print("diede")
 	is_dead = true
 	sprite_2d.modulate = Color(0.3, 0.3, 0.4)
@@ -130,7 +137,7 @@ func die():
 	freeze = false
 	set_deferred("sleeping", false)
 
-	mass = 0.1
+	mass = 1
 	lock_rotation = false
 	hook.initialize(player)
 

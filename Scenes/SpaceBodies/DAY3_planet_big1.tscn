@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://8b3tv0wxnwkl" path="res://Scenes/SpaceBodies/boss_planet_day_3.gd" id="1_qimuy"]
 [ext_resource type="Texture2D" uid="uid://bv75432b5i0ny" path="res://Sprites(main)/Planetas/PlanetaMaior.png" id="2_drp2x"]
 [ext_resource type="Shader" uid="uid://wsx2nuynme5m" path="res://Scenes/SpaceBodies/dissolve.gdshader" id="2_ueswk"]
-[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="3_ueswk"]
+[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="3_ueswk"]
 [ext_resource type="Script" uid="uid://baypfk1ehotqr" path="res://Scenes/SpaceBodies/vulnerability_area.gd" id="4_7iwph"]
 [ext_resource type="PackedScene" uid="uid://hxbixdf3j2uu" path="res://Scenes/Enemies/boss.tscn" id="5_kb7e1"]
-[ext_resource type="Script" uid="uid://b2jggterxnagp" path="res://Scenes/Modulars/smooth_shake_module.gd" id="6_858ty"]
+[ext_resource type="Script" uid="uid://b2jggterxnagp" path="res://Scenes/modulars/smooth_shake_module.gd" id="6_858ty"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m0iey"]
 friction = 0.0
@@ -64,6 +64,8 @@ color = Color(1.8022759, 0, 0.6709294, 1)
 alpha_curve = SubResource("CurveTexture_ueswk")
 
 [node name="PlanetBoss" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "gravitational_field")]
+collision_layer = 2
+collision_mask = 2
 mass = 1500.0
 physics_material_override = SubResource("PhysicsMaterial_m0iey")
 contact_monitor = true
@@ -104,9 +106,6 @@ shape = SubResource("CircleShape2D_dy5ji")
 script = ExtResource("6_858ty")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="Boss" parent="." instance=ExtResource("5_kb7e1")]
-show_behind_parent = true
 
 [node name="BreakingParticles" type="GPUParticles2D" parent="."]
 amount = 1024

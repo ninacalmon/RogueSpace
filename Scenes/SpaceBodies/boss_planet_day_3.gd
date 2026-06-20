@@ -4,12 +4,16 @@ extends BodySetup
 
 @export var rotation_speed: float = 0.05
 
-@onready var boss: Boss = $Boss
+@onready var boss: Boss
 @onready var breaking_particles: GPUParticles2D = $BreakingParticles
 @onready var smooth_shake: SmoothShake = $SmoothShake
 
+##MY POSITIONNNNNNNNNNNNNNNN: (-361.0, -2045.0)
+
+
 func _ready() -> void:
-	boss.add_collision_exception_with(self)
+	boss = get_tree().get_first_node_in_group("Boss_Group")
+	#boss.add_collision_exception_with(self)
 	
 	##setup
 	if gravitational_field: gravitational_field.initialize()
@@ -39,17 +43,7 @@ func start_cutscene():
 
 	boss.cutscene_finished.emit()
 
-	var parent = get_parent()
-
-	## SAFE REPARENTING AND QUEUE FREEING
-	if boss.get_parent():
-		boss.get_parent().remove_child(boss)
-
-	parent.add_child(boss)
-
-	await get_tree().process_frame
-
-	queue_free()
+	call_deferred("queue_free")
 
 func tween_shader_param(mat: ShaderMaterial, param: String, from: float, to: float, duration: float):
 	var _tween = create_tween()

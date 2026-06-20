@@ -1,12 +1,12 @@
 [gd_scene load_steps=40 format=3 uid="uid://bcffh04lffmyi"]
 
-[ext_resource type="Script" uid="uid://dp0jfjqkl4sdl" path="res://Scenes/Modulars/asteroid.gd" id="1_jr0l1"]
+[ext_resource type="Script" uid="uid://dp0jfjqkl4sdl" path="res://Scenes/modulars/asteroid.gd" id="1_jr0l1"]
 [ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/Asteroids/asteroid_pieces.tscn" id="2_exshx"]
 [ext_resource type="Texture2D" uid="uid://b8t87a6jwd2ua" path="res://Sprites(main)/Asteroids/Asteroid_big.png" id="2_ne8lo"]
 [ext_resource type="PackedScene" uid="uid://br070cnq6sve" path="res://Scenes/Enemies/enemy_basic.tscn" id="3_akcm3"]
 [ext_resource type="PackedScene" uid="uid://8f0m410ylbbe" path="res://Scenes/Enemies/enemy_vermin.tscn" id="3_egnjl"]
 [ext_resource type="Script" uid="uid://dny3ctsdweann" path="res://Scenes/SpaceBodies/damage_module.gd" id="3_exshx"]
-[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="4_1kal1"]
+[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="4_1kal1"]
 [ext_resource type="Texture2D" uid="uid://bflk5f2qeiyqi" path="res://Sprites(main)/pink_asteroid_pallete.png" id="4_cvdgt"]
 [ext_resource type="Texture2D" uid="uid://dacyxx5dau8bv" path="res://Sprites(main)/red_asteroid_pallete.png" id="5_6w43o"]
 [ext_resource type="AudioStream" uid="uid://b7snqnvr1tlj" path="res://Sound Effects/Asteroids/Break/break.wav" id="5_72u5j"]
@@ -142,6 +142,8 @@ alpha_curve = SubResource("CurveTexture_ey7gc")
 anim_offset_max = 0.3793
 
 [node name="AsteroidBig" type="RigidBody2D" node_paths=PackedStringArray("damage_module", "collision", "sprite", "gravitational_field", "body_randomizer")]
+collision_layer = 3
+collision_mask = 3
 mass = 80.0
 physics_material_override = SubResource("PhysicsMaterial_1kal1")
 contact_monitor = true

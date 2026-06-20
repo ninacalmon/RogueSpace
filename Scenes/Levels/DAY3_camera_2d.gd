@@ -50,7 +50,7 @@ func start_cutscene():
 	tween = create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_EXPO)
-	tween.parallel().tween_property(self, "position", Vector2.ONE, zoom_in_speed)
+	tween.parallel().tween_property(self, "zoom", Vector2.ONE, zoom_in_speed)
 	tween.parallel().tween_property(self, "position", Vector2.ZERO, zoom_in_speed)
 	await tween.finished
 	

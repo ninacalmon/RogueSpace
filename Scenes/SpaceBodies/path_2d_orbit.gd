@@ -13,8 +13,9 @@ class_name PathOrbit
 @onready var path_follow_2d: PathFollowOrbit = $PathFollow2D
 
 func _ready() -> void:
-	var new_body = body_scene.instantiate()
-	path_follow_2d.add_child(new_body)
+	if body_scene:
+		var new_body = body_scene.instantiate()
+		path_follow_2d.add_child(new_body)
 	path_follow_2d.reverse = reverse
 	path_follow_2d.speed = speed
 	curve.clear_points()

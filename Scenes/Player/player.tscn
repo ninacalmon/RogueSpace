@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://i7mc57eu0q83" path="res://Scenes/Player/player.gd" id="1_ktxno"]
 [ext_resource type="Texture2D" uid="uid://x6m3c8td5nfn" path="res://Sprites(main)/Deimos/Deimos-Sheet.png" id="2_aqm4k"]
-[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="3_ikhnj"]
+[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/modulars/gravitational_field.tscn" id="3_ikhnj"]
 [ext_resource type="Script" uid="uid://3bsd20l8onw4" path="res://Scenes/Player/player_sprite_control.gd" id="3_rcvs5"]
 [ext_resource type="PackedScene" uid="uid://dp3f278n4cqbm" path="res://Particles/motor_gpu_particles.tscn" id="5_d77i8"]
 [ext_resource type="Texture2D" uid="uid://smgygt1qu6gx" path="res://Sprites(main)/Backpack-Sheet.png" id="5_rcvs5"]
@@ -12,8 +12,8 @@
 [ext_resource type="AudioStream" uid="uid://dtdp0p6eo6fco" path="res://Sound Effects/Player/Movement/SFX_dash2.wav" id="9_dey5f"]
 [ext_resource type="AudioStream" uid="uid://b4ni1pu1osv1e" path="res://Sound Effects/tech2.mp3" id="9_f1ek2"]
 [ext_resource type="AudioStream" uid="uid://bca5c33ek4yyw" path="res://Sound Effects/Player/Movement/Sfx_dash_falhando (2).wav" id="11_eksi1"]
-[ext_resource type="Script" uid="uid://dsbdvxfei8u0x" path="res://Scenes/Modulars/resource_collector.gd" id="11_gymyn"]
-[ext_resource type="Script" uid="uid://cd5ihl6hfs16d" path="res://Scenes/Modulars/bullet_shooter.gd" id="11_pu2lt"]
+[ext_resource type="Script" uid="uid://dsbdvxfei8u0x" path="res://Scenes/modulars/resource_collector.gd" id="11_gymyn"]
+[ext_resource type="Script" uid="uid://cd5ihl6hfs16d" path="res://Scenes/modulars/bullet_shooter.gd" id="11_pu2lt"]
 [ext_resource type="Script" uid="uid://yorcpoevwvbr" path="res://Scenes/Player/hurt_box_player.gd" id="13_7g0yx"]
 [ext_resource type="AudioStream" uid="uid://bhajosbgqm8fk" path="res://Sound Effects/Shoot/sfx_tiro1.wav" id="13_dey5f"]
 [ext_resource type="AudioStream" uid="uid://dy3eobtygv1pq" path="res://Sound Effects/Shoot/sfx_tiro2.wav" id="14_r5xpd"]
@@ -75,8 +75,8 @@ stream_0/stream = ExtResource("15_hnuln")
 
 [node name="Player" type="RigidBody2D" node_paths=PackedStringArray("hurt_box_player", "bullet_shooter_module", "collision", "sprite", "gravitational_field", "gravitational_field_resources") groups=["Player_Group"]]
 process_mode = 1
-collision_layer = 265
-collision_mask = 265
+collision_layer = 267
+collision_mask = 267
 mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_m0iey")
 can_sleep = false

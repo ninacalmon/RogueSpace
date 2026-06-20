@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://do0i8a3xqomtm"]
+[gd_scene load_steps=36 format=4 uid="uid://do0i8a3xqomtm"]
 
 [ext_resource type="Texture2D" uid="uid://b4go5brbh3ndq" path="res://Sprites/Starfields/Starfield 1 - 1024x1024.png" id="1_5nr40"]
 [ext_resource type="Texture2D" uid="uid://dxfs6gmq8441e" path="res://Sprites(main)/TemporaryPlanets/2524948669.png" id="2_pjb8x"]
@@ -6,10 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://c44gjd053ibld" path="res://Sprites(main)/TemporaryPlanets/2733907768.png" id="4_fkcu7"]
 [ext_resource type="PackedScene" uid="uid://b512vj2a4a3y" path="res://Scenes/Player/player.tscn" id="5_1djn7"]
 [ext_resource type="Script" uid="uid://brfdyildjhtka" path="res://Scenes/Levels/DAY3_camera_2d.gd" id="6_tjb76"]
-[ext_resource type="Script" uid="uid://ctwsp81gxl65g" path="res://Scenes/Modulars/camera_vibration.gd" id="7_umtsc"]
+[ext_resource type="Script" uid="uid://ctwsp81gxl65g" path="res://Scenes/modulars/camera_vibration.gd" id="7_umtsc"]
+[ext_resource type="PackedScene" uid="uid://hxbixdf3j2uu" path="res://Scenes/Enemies/boss.tscn" id="8_5nr40"]
 [ext_resource type="PackedScene" uid="uid://b60wc4xruimxc" path="res://Scenes/Player/mothership.tscn" id="8_47b40"]
 [ext_resource type="Texture2D" uid="uid://curwcau163khw" path="res://Sprites/tileset.png" id="9_sw1jx"]
-[ext_resource type="Script" uid="uid://bm2kpm32ooqhk" path="res://Scenes/Modulars/tile_map_generator.gd" id="10_lyu8g"]
+[ext_resource type="Script" uid="uid://bm2kpm32ooqhk" path="res://Scenes/modulars/tile_map_generator.gd" id="10_lyu8g"]
 [ext_resource type="PackedScene" uid="uid://dxg5doh1x8ch2" path="res://Scenes/Asteroids/asteroid_small.tscn" id="11_r6mse"]
 [ext_resource type="PackedScene" uid="uid://dsw810ysjgsn2" path="res://Scenes/Asteroids/asteroid_medium.tscn" id="12_rk605"]
 [ext_resource type="PackedScene" uid="uid://bcffh04lffmyi" path="res://Scenes/Asteroids/asteroid_big.tscn" id="13_3ds13"]
@@ -24,7 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://3vg8bv7t077f" path="res://Scenes/BackHoles/black_hole.tscn" id="22_0spui"]
 [ext_resource type="PackedScene" uid="uid://c7nj6rbljyvk3" path="res://Scenes/BackHoles/supermassive_black_hole.tscn" id="23_el5k8"]
 [ext_resource type="PackedScene" uid="uid://bskx6fe236s8a" path="res://Scenes/UI/ui.tscn" id="24_618ea"]
-[ext_resource type="PackedScene" uid="uid://c2v243rukexl6" path="res://Scenes/Modulars/map_control.tscn" id="25_t7rrs"]
+[ext_resource type="PackedScene" uid="uid://c2v243rukexl6" path="res://Scenes/modulars/map_control.tscn" id="25_t7rrs"]
 [ext_resource type="AudioStream" uid="uid://cwxkne077kuw6" path="res://Sound Effects/Ambience/spacewinds.mp3" id="26_v0xil"]
 [ext_resource type="Script" uid="uid://da05f5oj8b66c" path="res://Scenes/Levels/space_winds_sfx.gd" id="27_k0rup"]
 [ext_resource type="Script" uid="uid://cf16x4l41vkpo" path="res://Scenes/Levels/input_guide_admin.gd" id="28_7ff8p"]
@@ -106,12 +107,16 @@ texture = ExtResource("4_fkcu7")
 position = Vector2(0, 80)
 camera = NodePath("Camera2D")
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("target")]
 script = ExtResource("6_tjb76")
+target = NodePath("../../Boss")
 
 [node name="CameraVibration" type="Node2D" parent="Player/Camera2D" node_paths=PackedStringArray("camera")]
 script = ExtResource("7_umtsc")
 camera = NodePath("..")
+
+[node name="Boss" parent="." instance=ExtResource("8_5nr40")]
+position = Vector2(0, -4419)
 
 [node name="Mothership" parent="." instance=ExtResource("8_47b40")]
 position = Vector2(0, 190)
@@ -161,7 +166,9 @@ point_count = 80
 speed = 0.0
 reverse = true
 initi_progress_ration = 0.76
-body_scene = ExtResource("21_tjb76")
+
+[node name="PlanetBoss" parent="MapGenerator/Sun3" instance=ExtResource("21_tjb76")]
+position = Vector2(0, -2551)
 
 [node name="BackBufferCopy" type="BackBufferCopy" parent="."]
 copy_mode = 2
