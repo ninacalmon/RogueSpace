@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://fjxp66w0rpvl"]
 
-[ext_resource type="Texture2D" uid="uid://be1fm65sme3rk" path="res://Sprites(main)/UI/powerup.png" id="1_tybp7"]
+[ext_resource type="Texture2D" uid="uid://be1fm65sme3rk" path="res://Sprites(main)/UI/PUIcons/powerup.png" id="1_tybp7"]
 [ext_resource type="Script" uid="uid://dk2opjtgiv5x6" path="res://Scenes/UI/power_up_setup.gd" id="1_x7njx"]
-[ext_resource type="Texture2D" uid="uid://nufx44r3we8u" path="res://Sprites(main)/UI/powerup2.png" id="2_vjedb"]
+[ext_resource type="Texture2D" uid="uid://nufx44r3we8u" path="res://Sprites(main)/UI/PUIcons/powerup2.png" id="2_vjedb"]
 [ext_resource type="AudioStream" uid="uid://2v525hgwqcju" path="res://Sound Effects/UI/SFX_boosterselectOK.wav" id="4_msej6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u025h"]
@@ -67,5 +67,5 @@ show_percentage = false
 
 [node name="BoughtPowerUp" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_msej6")
-volume_db = -11.0
+volume_db = -15.0
 bus = &"Sound Effects"

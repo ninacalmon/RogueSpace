@@ -8,6 +8,7 @@ class_name GameOverScene
 var cause_of_death: String
 
 func _ready() -> void:
+	InputGuide.clear_guides()
 	PopUpSystem.clear()
 
 

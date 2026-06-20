@@ -1,7 +1,8 @@
 extends Control
 class_name CutsceneControl
 
-@onready var video_stream_player: VideoStreamPlayer = $VideoStreamPlayer
+@export var video_stream_player: VideoStreamPlayer
+@export var  animation_player: AnimationPlayer
 @onready var skip_progress: TextureProgressBar = $SkipProgress
 
 @export var hold_duration: float = 1
@@ -13,11 +14,16 @@ func _ready() -> void:
 	InputGuide.clear_guides()
 	InputGuide.show_guide(InputGuide.ActionType.SKIP)
 
-	video_stream_player.finished.connect(finish_cutscene)
-
 	setup_bar()
 
-	video_stream_player.play()
+	if video_stream_player:
+		video_stream_player.finished.connect(finish_cutscene)
+		video_stream_player.play()
+
+	elif animation_player:
+		animation_player.finished.connect(finish_cutscene)
+		animation_player.play()
+
 
 func setup_bar():
 	skip_progress.max_value = hold_duration

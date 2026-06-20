@@ -28,7 +28,9 @@ func _ready():
 	target_zoom = Vector2(1, 1)
 	if !deactivate_cutscene:
 		start_cutscene()
-	else: Globals.is_cutscene = false
+	else: 
+		Globals.is_cutscene = false
+		EventBus.start_planet_break.emit()
 
 
 func start_cutscene():
@@ -45,11 +47,15 @@ func start_cutscene():
 	await tween.finished
 	EventBus.start_planet_break.emit()
 
-	await get_tree().create_timer(12).timeout
+	await get_tree().create_timer(12).timeout #12
 
 	tween = create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_EXPO)
+
+	zoom_in_cutscene_sfx.pitch_scale *= 0.8
+	SFXManager.play_sound(zoom_in_cutscene_sfx)
+
 	tween.parallel().tween_property(self, "zoom", Vector2.ONE, zoom_in_speed)
 	tween.parallel().tween_property(self, "position", Vector2.ZERO, zoom_in_speed)
 	await tween.finished

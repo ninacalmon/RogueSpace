@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bkjjj01xixl1j"]
+[gd_scene load_steps=28 format=3 uid="uid://bkjjj01xixl1j"]
 
 [ext_resource type="Script" uid="uid://f7hym6rcrxkn" path="res://Scenes/Spaceship/monitor.gd" id="1_s3qmo"]
 [ext_resource type="Texture2D" uid="uid://b5oolandwoj16" path="res://Sprites(main)/SpaceshipInterior/SpaceshipMonitorScreen.png" id="2_5toxe"]
@@ -15,6 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://fjxp66w0rpvl" path="res://Scenes/UI/PowerUpSetup.tscn" id="7_t6xb0"]
 [ext_resource type="AudioStream" uid="uid://cuyalodvbr04t" path="res://Sound Effects/UI/SFX_buttonswitch.wav" id="10_3okkr"]
 [ext_resource type="PackedScene" uid="uid://buqlpqb51bwy" path="res://ui_sounds.tscn" id="11_5toxe"]
+[ext_resource type="Texture2D" uid="uid://b53cjoy7gkhh2" path="res://Sprites(main)/UI/PUIcons/powerup_fuel.png" id="15_bps4f"]
+[ext_resource type="Texture2D" uid="uid://ba2gm6am5k48t" path="res://Sprites(main)/UI/PUIcons/powerup_health1.png" id="16_qt7dx"]
+[ext_resource type="Texture2D" uid="uid://fdcpjgd8gif6" path="res://Sprites(main)/UI/PUIcons/powerup_teleport2.png" id="17_ipc6a"]
+[ext_resource type="Texture2D" uid="uid://cgl1heka2ahp4" path="res://Sprites(main)/UI/PUIcons/powerup_propulsor.png" id="18_dobmh"]
+[ext_resource type="Texture2D" uid="uid://be1fm65sme3rk" path="res://Sprites(main)/UI/PUIcons/powerup.png" id="19_y8yv0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jd7m1"]
 animations = [{
@@ -230,6 +235,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 effect = "Fuel"
 title = "COMBUSTÍVEL+ [&]"
+texture = ExtResource("15_bps4f")
 description = "Aumenta a capacidade do seu tanque de combustível."
 max_level = 3
 
@@ -240,6 +246,7 @@ size_flags_vertical = 8
 effect = "Health"
 title = "VIDA+ [&]"
 price = 300
+texture = ExtResource("16_qt7dx")
 description = "Aguente mais porrada."
 max_level = 3
 
@@ -257,6 +264,7 @@ size_flags_vertical = 8
 effect = "Teleport"
 title = "TELEPORTE"
 price = 800
+texture = ExtResource("17_ipc6a")
 description = "Retorne à nave-mãe imediatamente e sem perder recursos."
 
 [node name="PowerUp5" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical/PowerUpsContainerHorizontal2" instance=ExtResource("7_t6xb0")]
@@ -266,6 +274,7 @@ size_flags_vertical = 8
 effect = "Propulsors"
 title = "PROPULSORES+"
 price = 500
+texture = ExtResource("18_dobmh")
 description = "Repare seu velho traje de cosmonauta. Melhora a movimentação no espaço."
 
 [node name="PowerUp6" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical/PowerUpsContainerHorizontal2" instance=ExtResource("7_t6xb0")]
@@ -275,6 +284,7 @@ size_flags_vertical = 8
 effect = "Bullet"
 title = "LASER APRIMORADO"
 price = 500
+texture = ExtResource("19_y8yv0")
 description = "Mais chances de sobrevivência com mais dano e precisão."
 
 [node name="PowerUpPopUpSFX" type="AudioStreamPlayer" parent="SubAreaScreen/CanvasLayer/Control/PowerUpsConteinerVertical"]

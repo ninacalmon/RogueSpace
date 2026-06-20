@@ -45,6 +45,7 @@ func _grab_focus():
 
 
 func setup_nodes():
+	progress_bar.value = 0
 	price_label.text = "%d fragmentos" %price
 	description_label.text = "%s[br]* %s *" %[title, description]
 	var next_level: int = min(current_level + 1, max_level)
@@ -98,6 +99,7 @@ func buy_power_up():
 	tween.tween_property(progress_bar, "value", progress_bar.max_value, 1)
 	await tween.finished
 	progress_bar.hide()
+	setup_nodes()
 
 
 func shake():

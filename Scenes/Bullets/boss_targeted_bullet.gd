@@ -1,38 +1,41 @@
 extends BossBullet
 class_name BossTargetedBullet
 
-@export var turn_speed: float = 1.5
+@export var turn_speed: float = 0.5
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 var target: Node2D
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
-	area_entered.connect(_on_area_entered)
+	#area_entered.connect(_on_area_entered)
 
 func _process(delta: float) -> void:
 	if target and is_instance_valid(target):
-		var desired_direction = global_position.direction_to(
-			target.global_position
-		)
+		var desired_direction = global_position.direction_to(target.global_position)
 
-		direction = direction.slerp(
-			desired_direction,
-			turn_speed * delta
-		).normalized()
+		var current_angle = direction.angle()
+		var target_angle = desired_direction.angle()
+
+		var angle_diff = wrapf(target_angle - current_angle, -PI, PI)
+
+		var max_turn = turn_speed * delta
+
+		angle_diff = clamp(angle_diff, -max_turn, max_turn)
+
+		var new_angle = current_angle + angle_diff
+		direction = Vector2.RIGHT.rotated(new_angle)
 
 	global_position += direction * speed * delta
-
 	rotation = direction.angle()
 
 	lifespan -= delta
-
 	if lifespan <= 0:
 		decay_and_delete()
 
-func _on_area_entered(area: Area2D):
-	if area is Bullet:
-		decay_and_delete()
+#func _on_area_entered(area: Area2D):
+	#if area is Bullet:
+		#decay_and_delete()
 
 func decay_and_delete():
 	var tween = create_tween()

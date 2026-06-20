@@ -8,13 +8,17 @@ var player: Player
 
 @export var life: float = 100
 
-@export var bullet_count: int = 16
+@export var bullet_count: int = 24
 
-@export var attack_wait_time: float = 3
-@export var special_attack_wait_time_min: float = 6
-@export var special_attack_wait_time_max: float = 9
+@export var attack_wait_time: float = 4
+@export var special_attack_wait_time_min: float = 8
+@export var special_attack_wait_time_max: float = 15
+
+@export var projectile_time_offset: float = 0.05
+@export var attack_offset_change: float = 0.5
 
 @export var default_projectile_scene: PackedScene
+@export var child_scene: PackedScene
 @export var targeted_projectile_scene: PackedScene
 
 @export var deactivate: bool = true
@@ -36,6 +40,10 @@ var player: Player
 var is_dead: bool = false
 
 var current_state: State = State.IDLE
+
+var is_attacking_now: bool = false
+
+var attack_offset: float = 0.0
 
 
 func _ready() -> void:
@@ -72,7 +80,7 @@ func _ready() -> void:
 
 
 func _on_default_attack_timeout():
-	if is_dead or deactivate:
+	if is_dead or deactivate or is_attacking_now:
 		return
 
 	match current_state:
@@ -94,16 +102,18 @@ func _on_special_attack_timemout():
 			pass
 
 		State.ATTACKING:
-			pass
 			special_attack()
 
 	var duration = randf_range(special_attack_wait_time_min, special_attack_wait_time_max)
 	special_attack_timer.wait_time = duration
 	special_attack_timer.start()
 
+
 func default_attack():
+	is_attacking_now = true
+
 	for i in bullet_count:
-		var angle: float = TAU * float(i) / float(bullet_count)
+		var angle: float = TAU * float(i) / float(bullet_count) + attack_offset
 
 		var direction: Vector2 = Vector2.RIGHT.rotated(angle)
 
@@ -114,12 +124,26 @@ func default_attack():
 		bullet.direction = direction
 		bullet.rotation = direction.angle()
 
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(projectile_time_offset).timeout
 
+	attack_offset += TAU / float(bullet_count) * attack_offset_change
+
+	attack_offset = fmod(attack_offset, TAU)
+
+	is_attacking_now = false
+
+func birth_attack():
+	var new_child: Enemy = child_scene.instantiate()
+	add_sibling(new_child)
+
+	new_child.add_collision_exception_with(self)
+	new_child.global_position = global_position
+	new_child.player = player
+	
 func special_attack():
-	var direction: Vector2 = Vector2.ONE * Vector2([-1, 1].pick_random(), 0)
+	var direction: Vector2 = global_position.direction_to(player.global_position)
 
-	var bullet = targeted_projectile_scene.instantiate()
+	var bullet: BossBullet = targeted_projectile_scene.instantiate()
 	add_sibling(bullet)
 
 	bullet.global_position = global_position

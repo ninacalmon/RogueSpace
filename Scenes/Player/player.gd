@@ -36,6 +36,8 @@ var facing_direction: String
 
 var is_stuned: bool
 
+var init_camera_zoom: Vector2
+
 func _ready() -> void:
 	if body_randomizer: body_randomizer.initialize(sprite, collision)
 	if gravitational_field: gravitational_field.initialize()
@@ -48,6 +50,8 @@ func _ready() -> void:
 	EventBus.player_almost_out_of_bounds.connect(_on_player_almost_out_of_bounds)
 	EventBus.player_out_of_bounds.connect(_on_player_out_of_bounds)
 	EventBus.cutscene_off.connect(start_game)
+
+	init_camera_zoom = camera.zoom
 
 
 func start_game():
@@ -87,6 +91,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		#Globals.reload_current_scene()
 	
 	if Input.is_action_just_pressed("teleport") and Globals.can_teleport:
+		print("beloo")
 		execute_teletransport()
 
 func _on_player_almost_out_of_bounds():
@@ -97,7 +102,11 @@ func _on_player_out_of_bounds():
 	execute_teletransport()
 
 func execute_teletransport():
+	if StatsManager.player_has_cadaver:
+		return
+
 	SFXManager.play_sound(teleport_sfx)
+	
 	var tween = get_tree().create_tween()
 	tween.set_parallel()
 	tween.set_ease(Tween.EASE_IN_OUT)
@@ -106,6 +115,9 @@ func execute_teletransport():
 	tween.set_parallel(false)
 	tween.tween_property(self, "modulate", Color(1, 1, 1), 0.1)
 	await tween.finished
+	tween = get_tree().create_tween()
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(camera, "zoom", init_camera_zoom, 0.2)
 	linear_velocity = Vector2.ZERO
 	global_position = player_init_pos
 
