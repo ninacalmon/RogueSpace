@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://hxbixdf3j2uu"]
+[gd_scene load_steps=31 format=3 uid="uid://hxbixdf3j2uu"]
 
 [ext_resource type="Script" uid="uid://f7rnh4xfxkas" path="res://Scenes/Enemies/boss.gd" id="1_s7hs0"]
 [ext_resource type="PackedScene" uid="uid://cpfy5u1qycpx2" path="res://Scenes/Bullets/boss_bullet.tscn" id="2_djiw6"]
@@ -7,12 +7,23 @@
 [ext_resource type="PackedScene" uid="uid://dtm7xjsnvddsm" path="res://Scenes/Bullets/boss_targeted_bullet.tscn" id="4_rhlrc"]
 [ext_resource type="Texture2D" uid="uid://b7y5owh5ny7nt" path="res://Sprites(main)/Enemies/Matriarca_Morta Partes do Corpo/A Matriarca Morta.png" id="5_qmcpn"]
 [ext_resource type="AudioStream" uid="uid://7lu32wsorlh5" path="res://Sound Effects/Enemies/sfx_inimigosBasic.wav" id="5_rhlrc"]
+[ext_resource type="Shader" uid="uid://diwkfayvo06cx" path="res://Shaders/inflation.gdshader" id="5_yjcva"]
 [ext_resource type="AudioStream" uid="uid://6nqgebd8dtyr" path="res://Sound Effects/Enemies/sfx_inimigosBasic (2).wav" id="6_qmcpn"]
 [ext_resource type="Texture2D" uid="uid://b0lmp1bkulkw7" path="res://Sprites(main)/Enemies/Matriarca_Idle Resized-Sheet.png" id="6_yjcva"]
 [ext_resource type="Texture2D" uid="uid://d0tn6kcibbcwb" path="res://Sprites(main)/Enemies/Matriarca_Morta Partes do Corpo/A Matriarca Morta_head.png" id="7_afjt0"]
 [ext_resource type="AudioStream" uid="uid://bkpogun2por27" path="res://Sound Effects/Enemies/sfx_enemy_attack.mp3" id="7_yjcva"]
 [ext_resource type="Script" uid="uid://e5cfbq8jk5j5" path="res://Scenes/Enemies/enemy_visible_on_screen.gd" id="8_afjt0"]
 [ext_resource type="Script" uid="uid://crjbdbe6bxarl" path="res://Scenes/Enemies/hook.gd" id="9_vr26e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_afjt0"]
+shader = ExtResource("5_yjcva")
+shader_parameter/inflate = 0.0
+shader_parameter/radius = 0.5
+shader_parameter/softness = 0.3
+shader_parameter/inflate_color = Color(1, 0.5, 0.5, 1)
+shader_parameter/color_strength = 1.0
+shader_parameter/tint_color = Color(1, 1, 1, 1)
+shader_parameter/tint_strength = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fpihh"]
 atlas = ExtResource("5_qmcpn")
@@ -131,6 +142,7 @@ position = Vector2(-0.1375449, -20.564407)
 polygon = PackedVector2Array(17.137545, 11.564407, 37.137547, -14.435593, 34.137547, -39.435593, 10.137545, -36.435593, 7.137545, -51.435593, 42.137547, -67.43559, -38.862453, -67.43559, -8.862455, -53.435593, -14.862455, -34.435593, -36.862453, -39.435593, -36.862453, -15.435593, -22.862455, 10.564407, -38.862453, 58.564407, -43.862453, 86.56441, -23.862455, 103.56441, -1.8624551, 97.56441, 19.137545, 103.56441, 44.137547, 88.56441, 37.137547, 55.564407)
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_afjt0")
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_i37ux")
 animation = &"dead"
@@ -149,6 +161,7 @@ body = NodePath("..")
 [node name="Area2D" type="Area2D" parent="Hook"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hook/Area2D"]
+visible = false
 shape = SubResource("CircleShape2D_djiw6")
 
 [node name="Line2D" type="Line2D" parent="Hook"]
@@ -160,12 +173,14 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AggroArea"]
+visible = false
 shape = SubResource("CircleShape2D_vr26e")
 
 [node name="HurtBox" type="Area2D" parent="."]
 script = ExtResource("4_12bcj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+visible = false
 shape = SubResource("CircleShape2D_ghaa6")
 
 [node name="AttackSFX" type="AudioStreamPlayer" parent="."]

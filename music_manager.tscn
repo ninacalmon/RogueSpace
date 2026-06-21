@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://djdux44jscm01" path="res://music_manager.gd" id="1_tylfe"]
 
 [node name="MusicManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_tylfe")
 
 [node name="PlayerA" type="AudioStreamPlayer" parent="."]

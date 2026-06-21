@@ -45,6 +45,7 @@ func start_cutscene():
 	
 	await get_tree().create_timer(duration * 0.7).timeout
 	
+	EventBus.vibrate.emit(4)
 	boss.activate()
 	await tween_shader_param(sprite.material, "dissolve_value", 1.0, 0.0, 4)
 
@@ -54,6 +55,7 @@ func start_cutscene():
 
 func play_break_sound():
 	for i in 8:
+		#EventBus.vibrate.emit(3)
 		break_small_sfx.pitch_scale += i * 0.001
 		break_small_sfx.volume_db += 1 * 0.1
 		#if i == 1: break_small_sfx.pitch_scale = 0.5

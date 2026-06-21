@@ -238,7 +238,7 @@ func flash():
 
 
 func die():
-	float_tween.kill()
+	sprite_2d.material = null
 
 	print("disabled:", collision_polygon_2d.disabled)
 	print("layer:", collision_layer)

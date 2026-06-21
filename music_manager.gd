@@ -8,6 +8,8 @@ var inactive_player: AudioStreamPlayer
 
 var current_track: AudioStream = null
 
+var default_volume: float = 0.0
+var default_pitch: float = 1.0
 
 var music_map: Dictionary = {
 	"res://Scenes/Levels/menu.tscn": {
@@ -27,7 +29,7 @@ var music_map: Dictionary = {
 		},
 	"res://Scenes/Levels/Level_Day3.tscn": {
 		"stream": preload("res://Music/BossTheme.mp3"),
-		"volume": -17.0,
+		"volume": -12.0,
 		"pitch": 1.0
 		}
 }
@@ -41,13 +43,15 @@ func _ready():
 	
 	player_a.volume_db = 0
 	player_b.volume_db = -40
-	
-	get_tree().connect("node_added", Callable(self, "_on_node_added"))
+
 
 func changing_scene(next_scene_path: String):
+	print("PATH:", next_scene_path)
+	print("HAS:", music_map.has(next_scene_path))
 	if not music_map.has(next_scene_path):
 		await _fade_players(active_player)
 		current_track = null
+		print("music manager caí no return")
 		return
 	
 	var data = music_map[next_scene_path]
@@ -58,6 +62,7 @@ func changing_scene(next_scene_path: String):
 	
 	current_track = new_track
 	_crossfade_to(data)
+	print("music manager rodei ate o final")
 
 
 func _crossfade_to(data: Dictionary):
@@ -77,7 +82,11 @@ func _crossfade_to(data: Dictionary):
 	var temp = active_player
 	active_player = inactive_player
 	inactive_player = temp
-	
+
+	default_volume = volume
+	default_pitch = pitch
+
+
 func _fade_players(active: AudioStreamPlayer, inactive: AudioStreamPlayer = null, target_volume: float = -40.0):
 	var tween = create_tween()
 	
@@ -93,3 +102,18 @@ func _fade_players(active: AudioStreamPlayer, inactive: AudioStreamPlayer = null
 	await tween.finished
 	
 	active.stop()
+
+func set_pause_music(paused: bool):
+	if active_player == null:
+		return
+	
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	
+	if paused:
+		tween.tween_property(active_player, "pitch_scale", 0.6, 0.5)
+		tween.parallel().tween_property(active_player, "volume_db", default_volume - 10.0, 0.5)
+	else:
+		tween.tween_property(active_player, "pitch_scale", default_pitch, 0.5)
+		tween.parallel().tween_property(active_player, "volume_db", default_volume, 0.5)

@@ -33,6 +33,7 @@ func _on_vibrate(vibration_index: int):
 		1: apply_shake(3, 0.6)
 		2: apply_shake(4, 0.8)
 		3: apply_shake(6, 1)
+		4: apply_shake(10, 8)
 
 ##strength_index guide:
 ## 0: low

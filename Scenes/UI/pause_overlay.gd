@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
-		if Globals.is_showing_confirmation:
+		if Globals.is_showing_confirmation or Globals.is_cutscene:
 			return
 		
 		get_viewport().set_input_as_handled()
@@ -25,12 +25,14 @@ func _input(event: InputEvent) -> void:
 			pause()
 
 func pause():
+	MusicManager.set_pause_music(true)
 	is_paused = true
 	pause_color_rect.visible = true
 	get_tree().paused = true
 	continue_button.grab_focus()
 
 func unpause():
+	MusicManager.set_pause_music(false)
 	is_paused = false
 	pause_color_rect.visible = false
 	get_tree().paused = false

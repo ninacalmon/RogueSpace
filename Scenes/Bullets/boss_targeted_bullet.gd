@@ -2,7 +2,6 @@ extends BossBullet
 class_name BossTargetedBullet
 
 @export var turn_speed: float = 0.5
-@onready var sprite_2d: Sprite2D = $Sprite2D
 
 var target: Node2D
 

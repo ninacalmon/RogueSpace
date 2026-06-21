@@ -1,6 +1,6 @@
 extends Node
 
-var day: int = 3
+var day: int = 2
 
 #### RESOURCES BANK ####
 var resources_needed: int = 0
@@ -43,7 +43,7 @@ const FUEL_IMPULSE_USE_STEP: = 0.5
 const PLAYER_SPEED: float = 700.0
 const PLAYER_IMPULSE_SPEED: float = 1000.0
 const PLAYER_IMPULSE_COOLDOWN_DURATION: float = 3.0
-const PLAYER_BREAK_SPEED: float = 2.0
+const PLAYER_BREAK_SPEED: float = 3.0
 const PLAYER_MAX_VELOCITY: float = 1000.0
 const PLAYER_MAX_TURN: float = 0.01
 #endregion

@@ -12,6 +12,7 @@ func _ready() -> void:
 
 func _on_try_again_pressed():
 	LevelTransition.change_scene_to(Globals.last_level_path)
+	print("chamei o level trans, passei a cena: ", Globals.last_level_path)
 
 func _on_menu_pressed():
 	LevelTransition.change_scene_to("res://Scenes/Levels/menu.tscn")
