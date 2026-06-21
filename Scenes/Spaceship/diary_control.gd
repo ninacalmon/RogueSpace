@@ -9,7 +9,7 @@ class_name DiaryPageController
 @onready var button_left: Button = $ButtonsContainer/ButtonL
 @onready var button_right: Button = $ButtonsContainer/ButtonR
 
-var current_day: int = 1
+var current_day: int = 0
 
 func _ready():
 	button_left.pressed.connect(_on_prev_pressed)
@@ -45,12 +45,16 @@ func show_day():
 func _on_next_pressed():
 	if current_day < StatsManager.day:
 		current_day += 1
+		HandsEventBus.page_next.emit()
+		await get_tree().create_timer(1).timeout
 		show_day()
 
 
 func _on_prev_pressed():
-	if current_day > 1:
+	if current_day > 0:
 		current_day -= 1
+		HandsEventBus.page_prev.emit()
+		await get_tree().create_timer(1).timeout
 		show_day()
 
 
@@ -66,7 +70,7 @@ func _get_max_spread() -> int:
 func _update_buttons():
 	var max_day = StatsManager.day
 
-	var is_left_disabled = current_day <= 1
+	var is_left_disabled = current_day <= 0
 	var is_right_disabled = current_day >= max_day
 
 	button_left.disabled = is_left_disabled

@@ -23,7 +23,7 @@ autowrap_mode = 2
 [node name="HeadLabel" type="RichTextLabel" parent="."]
 layout_mode = 2
 mouse_filter = 2
-theme_override_colors/default_color = Color(0.44, 0.11968, 0.096800014, 1)
+theme_override_colors/default_color = Color(0.439, 0.122, 0.098, 1)
 theme_override_fonts/bold_font = ExtResource("1_6r7jf")
 theme_override_font_sizes/bold_font_size = 32
 bbcode_enabled = true

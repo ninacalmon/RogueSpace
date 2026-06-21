@@ -3,25 +3,67 @@ extends Node
 var pages := {
 	0: {
 		"left": {
-			"head": "[b]Teste dia 0 bla bla",
-			"main": "Texto da esquerda...",
+			"head": "[b]Primeiro log.",
+			"main": "Vasily costumava manter um diário de bordo da expedição. Agora que estou sozinho, acho que essa tarefa passou para mim.",
 			"sketch": preload("res://Sprites(main)/SpaceshipInterior/drawingTest.png")
 		},
 		"right": {
-			"main": "Continuação...",
+			"main": "Meu nome é Deimos.
+
+Sou ex-tripulante, agora capitão, da espaçonave Ikarus.
+
+Meu dia-a-dia por aqui se resume a coletar recursos para alimentar a nave e mantê-la funcionando. Não é uma tarefa fácil de se fazer sozinho, às vezes sinto falta deles...",
 			"sketch": null
 		}
 	},
 
 	1: {
 		"left": {
-			"head": "[b]Dia 1",
-			"main": "Mais texto...",
+			"head": "[b]De mal a pior!",
+			"main": "Ikarus está funcionando à base de aparelhos, e a cada dia parece precisar de mais e mais recursos para manter-se semi-funcional.
+
+Ah! Aquelas pestes nojentas estão por toda parte no espaço! É um tremendo estorvo ter de matá-las, mas ao menos, contribuem para o momento mais feliz do meu dia: quando posso desossa-las e preparar uma bela sopa!",
 			"sketch": null
 		},
 		"right": {
-			"main": "Final do dia 1...",
-			"sketch": preload("res://Sprites(main)/SpaceshipInterior/DesenhoDiario.png")
+			"main": "Bem, preciso ir descansar.
+
+Amanhã devo coletar recursos extra para me preparar...",
+			"sketch": preload("res://Sprites(main)/SpaceshipInterior/drawing_day1_3.png")
+		}
+	},
+
+	2: {
+		"left": {
+			"head": "[b]Preparativos.",
+			"main": "Amanhã é o grande dia, o que coletei lá fora deve ser o bastante pra me ajudar.
+
+Não vou mentir, estou me sentindo mal. Preciso concentrar meus pensamentos em coisas boas.
+
+Finalmente poderei retomar a missão, [b]retomar a missão com Ela!",
+			"sketch": null
+		},
+		"right": {
+			"main": "Se ao menos alguém estivesse aqui para ver… Uma pena que eles tenham escolhido aquele final…
+
+Acho que estou pronto.",
+			"sketch": preload("res://Sprites(main)/SpaceshipInterior/drawing_day3.png")
+		}
+	},
+
+	3: {
+		"left": {
+			"head": "[b]Sim!",
+			"main": "Consegui, finalmente consegui!
+
+A Matriarca está aqui comigo. Sua gloriosa carcaça concederá energia o suficiente para me conceder novamente o acesso às coordenadas.
+
+Enfim darei sequência à expedição. [b]Sim! A fonte do sinal será encontrada.",
+			"sketch": null
+		},
+		"right": {
+			"main": "",
+			"sketch": null
 		}
 	}
 }
