@@ -38,7 +38,7 @@ func player_died():
 
 func update_resources_goal():
 	match StatsManager.day:
-		0: StatsManager.resources_needed = 0
+		0: StatsManager.resources_needed = 50
 		1: StatsManager.resources_needed = 100
 		2: StatsManager.resources_needed = 200
 		3: StatsManager.resources_needed = 0

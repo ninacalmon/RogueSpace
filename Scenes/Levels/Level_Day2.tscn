@@ -1,0 +1,216 @@
+[gd_scene load_steps=35 format=4 uid="uid://da3332ucxrjgm"]
+
+[ext_resource type="Texture2D" uid="uid://b4go5brbh3ndq" path="res://Sprites/Starfields/Starfield 1 - 1024x1024.png" id="1_l53eh"]
+[ext_resource type="Texture2D" uid="uid://dxfs6gmq8441e" path="res://Sprites(main)/TemporaryPlanets/2524948669.png" id="2_cl0so"]
+[ext_resource type="Texture2D" uid="uid://dhtobhw3p6586" path="res://Sprites(main)/TemporaryPlanets/2121290283.png" id="3_d41w5"]
+[ext_resource type="Texture2D" uid="uid://c44gjd053ibld" path="res://Sprites(main)/TemporaryPlanets/2733907768.png" id="4_cssvt"]
+[ext_resource type="PackedScene" uid="uid://b512vj2a4a3y" path="res://Scenes/Player/player.tscn" id="5_dkoao"]
+[ext_resource type="Script" uid="uid://dw2m8ymjsljfq" path="res://Scenes/UI/camera.gd" id="6_k4yf2"]
+[ext_resource type="Script" uid="uid://ctwsp81gxl65g" path="res://Scenes/Modulars/camera_vibration.gd" id="7_v10fx"]
+[ext_resource type="PackedScene" uid="uid://b60wc4xruimxc" path="res://Scenes/Player/mothership.tscn" id="8_5viuu"]
+[ext_resource type="Texture2D" uid="uid://curwcau163khw" path="res://Sprites/tileset.png" id="9_2mao6"]
+[ext_resource type="Script" uid="uid://bm2kpm32ooqhk" path="res://Scenes/Modulars/tile_map_generator.gd" id="10_sedhw"]
+[ext_resource type="PackedScene" uid="uid://dxg5doh1x8ch2" path="res://Scenes/Asteroids/asteroid_small.tscn" id="11_sbokx"]
+[ext_resource type="PackedScene" uid="uid://dsw810ysjgsn2" path="res://Scenes/Asteroids/asteroid_medium.tscn" id="12_6k3yi"]
+[ext_resource type="PackedScene" uid="uid://bcffh04lffmyi" path="res://Scenes/Asteroids/asteroid_big.tscn" id="13_0287j"]
+[ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/Asteroids/asteroid_pieces.tscn" id="14_sxa3m"]
+[ext_resource type="PackedScene" uid="uid://gcaxr5wvuwar" path="res://Scenes/SpaceBodies/sun.tscn" id="15_4ahww"]
+[ext_resource type="PackedScene" uid="uid://bu2k0aqen7pbj" path="res://Scenes/SpaceBodies/orbit.tscn" id="16_ms6ap"]
+[ext_resource type="PackedScene" uid="uid://bc5bo0yxlptcu" path="res://Scenes/SpaceBodies/PickedPlanets/planet_small2.tscn" id="17_5yifu"]
+[ext_resource type="PackedScene" uid="uid://b31sq5e3ikty8" path="res://Scenes/SpaceBodies/PickedPlanets/planet_medium.tscn" id="18_naskf"]
+[ext_resource type="PackedScene" uid="uid://bs6twtddsrxb" path="res://Scenes/SpaceBodies/PickedPlanets/planet_medium2.tscn" id="19_it2tg"]
+[ext_resource type="PackedScene" uid="uid://bwjcvu1jqapnx" path="res://Scenes/SpaceBodies/PickedPlanets/planet_small1.tscn" id="20_1cuyn"]
+[ext_resource type="PackedScene" uid="uid://bjqibpfesudnp" path="res://Scenes/SpaceBodies/planet_big1.tscn" id="21_ch36g"]
+[ext_resource type="PackedScene" uid="uid://3vg8bv7t077f" path="res://Scenes/BackHoles/black_hole.tscn" id="22_2ggsd"]
+[ext_resource type="PackedScene" uid="uid://c7nj6rbljyvk3" path="res://Scenes/BackHoles/supermassive_black_hole.tscn" id="23_4t6w5"]
+[ext_resource type="PackedScene" uid="uid://bskx6fe236s8a" path="res://Scenes/UI/ui.tscn" id="24_jk6jk"]
+[ext_resource type="PackedScene" uid="uid://c2v243rukexl6" path="res://Scenes/Modulars/map_control.tscn" id="25_ym7v8"]
+[ext_resource type="AudioStream" uid="uid://cwxkne077kuw6" path="res://Sound Effects/Ambience/spacewinds.mp3" id="26_djwbk"]
+[ext_resource type="Script" uid="uid://da05f5oj8b66c" path="res://Scenes/Levels/space_winds_sfx.gd" id="27_v7ni1"]
+[ext_resource type="Script" uid="uid://cf16x4l41vkpo" path="res://Scenes/Levels/input_guide_admin.gd" id="28_npwx6"]
+[ext_resource type="Shader" uid="uid://1bxsadijf628" path="res://Shaders/hot_deform.gdshader" id="29_er35h"]
+[ext_resource type="Texture2D" uid="uid://wye3e38tj8hc" path="res://Sprites(main)/TemporaryPlanets/NewMap/sun.png" id="30_snqju"]
+
+[sub_resource type="Environment" id="Environment_n7yfy"]
+background_mode = 3
+tonemap_mode = 2
+tonemap_exposure = 1.4
+glow_enabled = true
+glow_bloom = 0.1
+glow_blend_mode = 1
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kpfdn"]
+texture = ExtResource("9_2mao6")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+7:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_dt2g4"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_kpfdn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_clwmq"]
+shader = ExtResource("29_er35h")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/radius = 0.6
+shader_parameter/falloff = 0.85
+shader_parameter/distortion_strength = 0.007
+shader_parameter/speed = 1.0
+shader_parameter/scale = 80.0
+
+[node name="Main" type="Node2D"]
+process_mode = 3
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_n7yfy")
+
+[node name="ParallaxLayers" type="Node" parent="."]
+
+[node name="Main" type="Parallax2D" parent="ParallaxLayers"]
+z_index = -999
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(1024, 1024)
+repeat_times = 11
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayers/Main"]
+texture = ExtResource("1_l53eh")
+metadata/_edit_lock_ = true
+
+[node name="BackgroundLayer" type="Parallax2D" parent="ParallaxLayers"]
+modulate = Color(0.06, 0.06, 0.06, 1)
+z_index = -3
+scroll_scale = Vector2(0.5, 0.5)
+scroll_offset = Vector2(-87, -476)
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayers/BackgroundLayer"]
+modulate = Color(0.41137332, 0.7026163, 0.41303015, 1)
+position = Vector2(-1406, -238)
+texture = ExtResource("2_cl0so")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxLayers/BackgroundLayer"]
+modulate = Color(0.84416664, 0.14999998, 1, 1)
+position = Vector2(1191.9998, 600)
+rotation = -2.2060962
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("3_d41w5")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxLayers/BackgroundLayer"]
+position = Vector2(-1004, 1202)
+rotation = 0.38397244
+texture = ExtResource("4_cssvt")
+
+[node name="P_Layer" type="Node2D" parent="."]
+
+[node name="Player" parent="P_Layer" node_paths=PackedStringArray("camera") instance=ExtResource("5_dkoao")]
+position = Vector2(0, 80)
+camera = NodePath("Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="P_Layer/Player"]
+script = ExtResource("6_k4yf2")
+full_view_zoom = Vector2(0.2, 0.2)
+full_view_pos = Vector2(0, -800)
+
+[node name="CameraVibration" type="Node2D" parent="P_Layer/Player/Camera2D" node_paths=PackedStringArray("camera")]
+script = ExtResource("7_v10fx")
+camera = NodePath("..")
+
+[node name="Mothership" parent="." instance=ExtResource("8_5viuu")]
+position = Vector2(0, 190)
+
+[node name="MapGenerator" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AADZ//H/AAACAAAAAADZ//D/AAAAAAAAAADe//b/AAACAAAAAADc//b/AAAAAAAAAADc//X/AAAAAAAAAADc//D/AAACAAAAAADu//3/AAACAAAAAADz////AAABAAAAAADy//v/AAAAAAAAAADs/wcAAAAAAAAAAAAUAPz/AAACAAAAAAAWAPb/AAACAAAAAAANAPn/AAACAAAAAAAUAO3/AAACAAAAAAABACAAAAAAAAAAAAD6/xcAAAACAAAAAAD1/x8AAAABAAAAAAD1/yAAAAABAAAAAADv/ygAAAAAAAAAAADu/ygAAAABAAAAAADb/yEAAAACAAAAAADT/xoAAAACAAAAAAAZACoAAAAAAAAAAAAbABwAAAACAAAAAAArACgAAAAAAAAAAABEAC4AAAABAAAAAAANAOb/AAAAAAAAAAD5/+b/AAACAAAAAAABAOf/AAABAAAAAADu/+v/AAABAAAAAADr/+D/AAACAAAAAAAeANz/AAABAAAAAAAoAOf/AAABAAAAAAAoAOj/AAABAAAAAAA6ANj/AAABAAAAAAAoANX/AAACAAAAAAAnANX/AAABAAAAAAAuAMX/AAABAAAAAAAkAMv/AAACAAAAAAA2ALj/AAAAAAAAAAA5AM7/AAAAAAAAAADa/9v/AAABAAAAAADd/+P/AAABAAAAAADT/9//AAAAAAAAAADL/+j/AAABAAAAAADK/+f/AAAAAAAAAAC//9r/AAAHAAAAAADS/9X/AAABAAAAAADQ/+j/AAAAAAAAAADY/87/AAACAAAAAADR/8b/AAABAAAAAADZ/8X/AAAAAAAAAADS/7X/AAACAAAAAADK/8//AAABAAAAAADG/8j/AAAAAAAAAADG/8f/AAABAAAAAADU/73/AAAAAAAAAADJ/7z/AAAAAAAAAADP/7P/AAABAAAAAADo/6L/AAACAAAAAADW/5L/AAAAAAAAAADT/6b/AAACAAAAAADB/6L/AAAAAAAAAADE/67/AAAAAAAAAACq/9f/AAACAAAAAAC1/+H/AAABAAAAAAC8//L/AAACAAAAAAC0//j/AAAAAAAAAADD/wQAAAACAAAAAADC/xEAAAABAAAAAADE/4z/AAABAAAAAADj/4z/AAAAAAAAAADd/5P/AAABAAAAAADS/5j/AAACAAAAAADS/5n/AAAAAAAAAAAaAH//AAABAAAAAADp/3b/AAABAAAAAAAcAI//AAACAAAAAAAvAIv/AAAAAAAAAAA/AID/AAABAAAAAABSAKD/AAABAAAAAABAAKv/AAACAAAAAAA1AJr/AAAAAAAAAAAzAKr/AAAAAAAAAABUAJj/AAABAAAAAABNAIf/AAABAAAAAAByAJH/AAAAAAAAAAByAJL/AAAAAAAAAABxAJL/AAAAAAAAAABwAJP/AAABAAAAAABJALn/AAAAAAAAAABaAMj/AAAAAAAAAABbAMj/AAAAAAAAAABcAMn/AAABAAAAAABdAMn/AAAAAAAAAABdANv/AAABAAAAAABcANz/AAACAAAAAABQAOD/AAACAAAAAABPAOD/AAACAAAAAABOAOD/AAAAAAAAAABBANv/AAACAAAAAABQAPH/AAACAAAAAABVAPr/AAAAAAAAAABWAPv/AAABAAAAAABKAAYAAAABAAAAAABJAAcAAAACAAAAAABJAAgAAAABAAAAAABIAAgAAAABAAAAAAA+AAIAAAAAAAAAAAA6APj/AAACAAAAAAA6APf/AAAAAAAAAAAcACQAAAACAAAAAAAcACUAAAABAAAAAAAdACUAAAABAAAAAAAeACYAAAACAAAAAAAfACYAAAABAAAAAAAgACcAAAACAAAAAAAhACgAAAACAAAAAAAiACgAAAAAAAAAAAAjACkAAAAAAAAAAAAkACkAAAACAAAAAABCADQAAAABAAAAAABJACYAAAACAAAAAABSABsAAAAAAAAAAAA3AB8AAAABAAAAAAA0ADMAAAACAAAAAAD4/zcAAAACAAAAAADq/zIAAAAAAAAAAADc/zUAAAABAAAAAADZ/y4AAAACAAAAAADC/x4AAAAAAAAAAACz/xgAAAAAAAAAAAC4/w8AAAAAAAAAAACV//L/AAACAAAAAACU/97/AAABAAAAAACZ/8X/AAAAAAAAAABWALf/AAAAAAAAAABhAK3/AAAAAAAAAAA9AHL/AAABAAAAAADS/23/AAAAAAAAAABEABoAAAACAAAAAAAFADEAAAACAAAAAAAwAPf/AAACAAAAAAD///P/AAAAAAAAAAADAO7/AAABAAAAAAD1//D/AAACAAAAAABJAM7/AAACAAAAAABHAMX/AAAAAAAAAABNAMf/AAAAAAAAAAC1/5r/AAACAAAA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")
+tile_set = SubResource("TileSet_dt2g4")
+script = ExtResource("10_sedhw")
+small_asteroid_scene = ExtResource("11_sbokx")
+medium_asteroid_scene = ExtResource("12_6k3yi")
+large_asteroid_scene = ExtResource("13_0287j")
+resource_scene = ExtResource("14_sxa3m")
+
+[node name="Sun3" parent="MapGenerator" instance=ExtResource("15_4ahww")]
+process_mode = 1
+position = Vector2(18, -1880)
+
+[node name="OrbitSPlanet" parent="MapGenerator/Sun3" instance=ExtResource("16_ms6ap")]
+radius = 600.0
+initi_progress_ration = 0.034
+body_scene = ExtResource("17_5yifu")
+
+[node name="OrbitMPlanet" parent="MapGenerator/Sun3" instance=ExtResource("16_ms6ap")]
+radius = 980.0
+speed = 30.0
+reverse = true
+initi_progress_ration = 0.432
+body_scene = ExtResource("18_naskf")
+
+[node name="OrbitMPlanet2" parent="MapGenerator/Sun3" instance=ExtResource("16_ms6ap")]
+radius = 1360.0
+point_count = 128
+speed = 70.0
+initi_progress_ration = 0.159
+body_scene = ExtResource("19_it2tg")
+
+[node name="OrbitSPlanet2" parent="MapGenerator/Sun3" instance=ExtResource("16_ms6ap")]
+radius = 1700.0
+point_count = 128
+speed = 100.0
+initi_progress_ration = 0.051
+body_scene = ExtResource("20_1cuyn")
+
+[node name="Orbit" parent="MapGenerator/Sun3" instance=ExtResource("16_ms6ap")]
+radius = 2560.0
+point_count = 80
+speed = 10.0
+reverse = true
+initi_progress_ration = 0.793
+body_scene = ExtResource("21_ch36g")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
+[node name="BlackHoles" type="Node2D" parent="."]
+
+[node name="BlackHole" parent="BlackHoles" instance=ExtResource("22_2ggsd")]
+position = Vector2(-845, 802)
+
+[node name="BlackHole2" parent="BlackHoles" instance=ExtResource("22_2ggsd")]
+position = Vector2(1578, -3366)
+
+[node name="SupermassiveBlackHole" parent="BlackHoles" instance=ExtResource("23_4t6w5")]
+position = Vector2(-2541, -2679)
+
+[node name="SupermassiveBlackHole2" parent="BlackHoles" instance=ExtResource("23_4t6w5")]
+position = Vector2(1517, 305)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("24_jk6jk")]
+
+[node name="UIControlRect" parent="CanvasLayer/UI" index="0"]
+mouse_filter = 1
+
+[node name="MapControl" parent="." node_paths=PackedStringArray("player") instance=ExtResource("25_ym7v8")]
+player = NodePath("../P_Layer/Player")
+safe_area_radius_multiply = 7.5
+metadata/_edit_lock_ = true
+
+[node name="SpaceWindsSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_djwbk")
+volume_db = -25.0
+autoplay = true
+bus = &"Sound Effects"
+parameters/looping = true
+script = ExtResource("27_v7ni1")
+
+[node name="InputGuideAdmin" type="Node" parent="."]
+script = ExtResource("28_npwx6")
+
+[node name="SunShader" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_clwmq")
+position = Vector2(18, -1880)
+scale = Vector2(0.38, 0.38)
+texture = ExtResource("30_snqju")
+
+[editable path="CanvasLayer/UI"]

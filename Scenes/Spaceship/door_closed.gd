@@ -15,4 +15,4 @@ func _on_clicked():
 		PopUpSystem.show_text("Não está na hora ainda.")
 		shake_module.shake(self, 0.2, 0.6)
 	else:
-		LevelTransition.change_scene_to("res://Scenes/Levels/menu.tscn")
+		LevelTransition.change_scene_to("res://Scenes/Cutscenes/cutscene_final.tscn")

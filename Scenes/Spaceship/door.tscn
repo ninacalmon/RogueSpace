@@ -30,7 +30,7 @@ light_mask = 513
 material = SubResource("ShaderMaterial_ofsvt")
 instance_shader_parameters/enabled = true
 instance_shader_parameters/outline_color = Color(0.55, 0.16, 0.17, 1)
-instance_shader_parameters/outline_width = 6
+instance_shader_parameters/outline_width = 12
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_ofsvt")
 

@@ -85,12 +85,12 @@ func go_out():
 	LevelTransition.change_scene_to("res://Scenes/Cutscenes/cutscene_out_spaceship.tscn", 2)
 
 func get_next_level() -> String:
-	var scene_path: String = "res://Scenes/Levels/LevelFinal2.tscn"
+	var scene_path: String = "res://Scenes/Levels/Level_Day1.tscn"
 	print(StatsManager.day)
 	match StatsManager.day:
 		#0: "res://Scenes/Levels/LevelFinal2.tscn"
-		1: scene_path = "res://Scenes/Levels/LevelFinal2.tscn"
-		2: scene_path = "res://Scenes/Levels/LevelFinal2.tscn"
+		1: scene_path = "res://Scenes/Levels/Level_Day1.tscn"
+		2: scene_path = "res://Scenes/Levels/Level_Day2.tscn"
 		3: scene_path = "res://Scenes/Levels/Level_Day3.tscn"
 	
 	return scene_path

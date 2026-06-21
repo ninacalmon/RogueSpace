@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctv08vyk56jg6"]
+
+[ext_resource type="Script" uid="uid://c85wpyx8ihx1i" path="res://Scenes/Cutscenes/cutscene.gd" id="1_fgmwn"]
+[ext_resource type="VideoStream" uid="uid://h5kp8wbj7mos" path="res://Sprites(main)/Cutscenes/Ending.ogv" id="2_fgmwn"]
+[ext_resource type="Shader" uid="uid://bpeqc2oh4cgdj" path="res://Shaders/pixelated.gdshader" id="3_4430o"]
+[ext_resource type="Texture2D" uid="uid://beinhniahsmx2" path="res://Sprites(main)/UI/circle3-export.png" id="4_gavya"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_di4wq"]
+shader = ExtResource("3_4430o")
+shader_parameter/pixel_size = 6.0000002375
+shader_parameter/camera_pos = Vector2(0, 0)
+
+[node name="CutsceneOutSpaceship" type="Control" node_paths=PackedStringArray("video_stream_player")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fgmwn")
+video_stream_player = NodePath("VideoStreamPlayer")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.6, 0.6)
+stream = ExtResource("2_fgmwn")
+
+[node name="PixelRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_di4wq")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2186.9998
+offset_top = -604.9999
+offset_right = -1957.5195
+offset_bottom = -488.15662
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.1480725, 1.575486)
+mouse_filter = 2
+
+[node name="SkipProgress" type="TextureProgressBar" parent="."]
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.497
+anchor_top = 0.49400002
+anchor_right = 0.497
+anchor_bottom = 0.49400002
+offset_left = -16.544006
+offset_top = -16.112
+offset_right = 15.455994
+offset_bottom = 15.8880005
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.001
+value = 100.0
+fill_mode = 5
+texture_progress = ExtResource("4_gavya")

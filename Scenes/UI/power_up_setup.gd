@@ -22,7 +22,7 @@ class_name PowerUpSetup
 @onready var bought_power_up: AudioStreamPlayer = $BoughtPowerUp
 
 var have_enough_to_buy: bool
-var current_level: int
+var current_level: int = 0
 
 var custom_tooltip_text
 
@@ -46,9 +46,10 @@ func _grab_focus():
 
 func setup_nodes():
 	progress_bar.value = 0
+	var next_level: int = min(current_level + 1, max_level)
+	price = max(price * next_level, price)
 	price_label.text = "%d fragmentos" %price
 	description_label.text = "%s[br]* %s *" %[title, description]
-	var next_level: int = min(current_level + 1, max_level)
 	var next_level_string: String = str(next_level)
 	description_label.text = description_label.text.replace("&", next_level_string)
 	texture_button.texture_normal = texture

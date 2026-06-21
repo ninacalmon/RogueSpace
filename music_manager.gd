@@ -17,16 +17,21 @@ var music_map: Dictionary = {
 		"volume": 0.0,
 		"pitch": 1.0
 		},
-		"res://Scenes/Levels/Tutorial.tscn": {
+	"res://Scenes/Levels/Tutorial.tscn": {
 		"stream": preload("res://Music/MainTheme.mp3"),
 		"volume": -30.0,
 		"pitch": 0.6 
 		},
-	"res://Scenes/Levels/LevelFinal2.tscn": {
+	"res://Scenes/Levels/Level_Day1.tscn": {
 		"stream": preload("res://Music/MainTheme.mp3"),
 		"volume": -20.0,
 		"pitch": 1.0
 		},
+	"res://Scenes/Levels/Level_Day2.tscn": {
+		"stream": preload("res://Music/MainTheme.mp3"),
+		"volume": -20.0,
+		"pitch": 1.0
+	},
 	"res://Scenes/Levels/Level_Day3.tscn": {
 		"stream": preload("res://Music/BossTheme.mp3"),
 		"volume": -12.0,
