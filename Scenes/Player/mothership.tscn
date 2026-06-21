@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://b60wc4xruimxc"]
 
-[ext_resource type="Texture2D" uid="uid://c22k5j456bso3" path="res://Sprites(main)/Nave (1).png" id="1_2mxmk"]
+[ext_resource type="Texture2D" uid="uid://cemdt5xxynwgc" path="res://Sprites(main)/Nave_final.png" id="1_2mxmk"]
 [ext_resource type="Script" uid="uid://cpkq2vhfiv77u" path="res://Scenes/Player/mothership_enter_area.gd" id="2_ffvao"]
 [ext_resource type="AudioStream" uid="uid://bjpdfvmmyk2k1" path="res://Sound Effects/Spaceship/SFX_dooropen.wav" id="3_2mxmk"]
 
@@ -24,7 +24,6 @@ position = Vector2(0, 18)
 shape = SubResource("RectangleShape2D_q0gh8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = 3.1415927
 texture = ExtResource("1_2mxmk")
 
 [node name="EnterArea" type="Area2D" parent="."]

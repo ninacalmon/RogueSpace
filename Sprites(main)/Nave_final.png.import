@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uktxakrbkucu"
-path="res://.godot/imported/SpaceshipPapers.png-1437c2fd7142f9a77cd1e06ab0a1a0a9.ctex"
+uid="uid://cemdt5xxynwgc"
+path="res://.godot/imported/Nave_final.png-ea7926af5c5f639310b81e90286b931f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites(main)/SpaceshipInterior/SpaceshipPapers.png"
-dest_files=["res://.godot/imported/SpaceshipPapers.png-1437c2fd7142f9a77cd1e06ab0a1a0a9.ctex"]
+source_file="res://Sprites(main)/Nave_final.png"
+dest_files=["res://.godot/imported/Nave_final.png-ea7926af5c5f639310b81e90286b931f.ctex"]
 
 [params]
 

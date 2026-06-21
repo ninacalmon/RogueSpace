@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkdqhgb761bil"
-path="res://.godot/imported/Nave.png-cd3a3f9720be269df18153f87767cb77.ctex"
+uid="uid://c11sdpki3rb42"
+path="res://.godot/imported/SpaceshipExitDoor.png-700cb051085294c6b889523c92c9fb75.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites(main)/Nave.png"
-dest_files=["res://.godot/imported/Nave.png-cd3a3f9720be269df18153f87767cb77.ctex"]
+source_file="res://Sprites(main)/SpaceshipInterior/SpaceshipExitDoor.png"
+dest_files=["res://.godot/imported/SpaceshipExitDoor.png-700cb051085294c6b889523c92c9fb75.ctex"]
 
 [params]
 

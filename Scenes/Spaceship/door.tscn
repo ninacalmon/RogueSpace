@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bvi2pvbxydcko" path="res://Scenes/Spaceship/door.gd" id="1_htx6n"]
 [ext_resource type="Shader" uid="uid://cccnue3fm2pyc" path="res://Shaders/outline.gdshader" id="2_v60d0"]
-[ext_resource type="Texture2D" uid="uid://2njdt1dx0y8n" path="res://Sprites(main)/SpaceshipInterior/SpaceshipDoor.png" id="3_ofsvt"]
+[ext_resource type="Texture2D" uid="uid://c11sdpki3rb42" path="res://Sprites(main)/SpaceshipInterior/SpaceshipExitDoor.png" id="3_ofsvt"]
 [ext_resource type="Script" uid="uid://jtbq6dor8pk0" path="res://Scenes/Modulars/clickable_highlight.gd" id="3_v60d0"]
 [ext_resource type="AudioStream" uid="uid://bjpdfvmmyk2k1" path="res://Sound Effects/Spaceship/SFX_dooropen.wav" id="5_v60d0"]
 
@@ -23,7 +23,7 @@ clickable_highlight = NodePath("ClickableHighlight")
 metadata/_custom_type_script = "uid://cj0pm0s1qx8my"
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(145, -246, 148, 291, -129, 316, -139, -315)
+polygon = PackedVector2Array(140, -234, -138, -293, -146, 292, 153, 232, 153, -223)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 light_mask = 513
@@ -31,7 +31,7 @@ material = SubResource("ShaderMaterial_ofsvt")
 instance_shader_parameters/enabled = true
 instance_shader_parameters/outline_color = Color(0.55, 0.16, 0.17, 1)
 instance_shader_parameters/outline_width = 6
-scale = Vector2(-0.6, -0.6)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_ofsvt")
 
 [node name="ClickableHighlight" type="Node2D" parent="." node_paths=PackedStringArray("area", "sprite")]
