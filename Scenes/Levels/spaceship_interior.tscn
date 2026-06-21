@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://c0lfvcrle3frk"]
+[gd_scene load_steps=50 format=3 uid="uid://c0lfvcrle3frk"]
 
 [ext_resource type="Script" uid="uid://dh0io287hog2e" path="res://Scenes/Levels/spaceship_interior.gd" id="1_4wenu"]
 [ext_resource type="PackedScene" uid="uid://cgfq6udrxu5hm" path="res://Scenes/UI/mouse.tscn" id="1_ntswj"]
@@ -25,6 +25,8 @@
 [ext_resource type="PackedScene" uid="uid://djdhgyun4m2fy" path="res://Scenes/Spaceship/door_closed.tscn" id="15_vhqlx"]
 [ext_resource type="Script" uid="uid://c3vmsf4qyoerg" path="res://Scenes/Spaceship/input_guide_admin.gd" id="16_76ouu"]
 [ext_resource type="PackedScene" uid="uid://coahuft63xqca" path="res://Scenes/Spaceship/UI/ui_spaceship.tscn" id="16_n7pqb"]
+[ext_resource type="Texture2D" uid="uid://bppl2cceeh7o0" path="res://Sprites(main)/SpaceshipInterior/SpaceshipBoss.png" id="18_npxme"]
+[ext_resource type="Texture2D" uid="uid://cgl0c2j1hbbil" path="res://Sprites(main)/SpaceshipBossShadowPretopng.png" id="19_6js7u"]
 [ext_resource type="PackedScene" uid="uid://bvmqc5jgquxeu" path="res://Scenes/Spaceship/diary.tscn" id="19_jfm16"]
 [ext_resource type="Script" uid="uid://bmdarrg3wbisw" path="res://Scenes/Levels/main_light.gd" id="27_5sdax"]
 [ext_resource type="Script" uid="uid://bfxmcgyxsyte2" path="res://Scenes/UI/pause_overlay.gd" id="28_iqcib"]
@@ -80,6 +82,8 @@ width = 244
 height = 219
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_btgwi"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_n7pqb"]
 fade_time = 0.0
@@ -203,7 +207,7 @@ script = ExtResource("4_0gr6q")
 camera = NodePath("..")
 
 [node name="Door" parent="." instance=ExtResource("12_i5u5t")]
-position = Vector2(-1341, 59)
+position = Vector2(-1341, 28)
 scale = Vector2(1.0005939, 1)
 
 [node name="RedLight" type="PointLight2D" parent="Door"]
@@ -302,6 +306,20 @@ scroll_scale = Vector2(1.15, 1)
 position = Vector2(-308, 55.999996)
 scale = Vector2(0.79236114, 0.75)
 texture = ExtResource("3_76ouu")
+
+[node name="MatriarchParallax" type="Parallax2D" parent="."]
+visible = false
+scroll_scale = Vector2(1.05, 1)
+
+[node name="Matriarch" type="Sprite2D" parent="MatriarchParallax"]
+position = Vector2(311.00003, -21)
+scale = Vector2(0.6347222, 0.6253333)
+texture = ExtResource("18_npxme")
+
+[node name="Shadow" type="Sprite2D" parent="MatriarchParallax/Matriarch"]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_btgwi")
+texture = ExtResource("19_6js7u")
 
 [node name="DeimosHand" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("7_vo7cp")]
 camera = NodePath("../Camera2D")

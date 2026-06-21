@@ -34,9 +34,9 @@ func _on_resource_count_finished():
 
 ### CODIGO FEIAO vvvv
 func _on_clicked():
-	if !has_energy:
+	if !has_energy or StatsManager.day == 3:
 		HandsEventBus.door_interaction.emit()
-		PopUpSystem.show_text("Sem energia.")
+		if StatsManager.day != 3: PopUpSystem.show_text("Sem energia.")
 		return
 	is_focused = true
 	SpaceshipEventBus.focus_on.emit(zoom_in_amount, zoom_offset, self, true)

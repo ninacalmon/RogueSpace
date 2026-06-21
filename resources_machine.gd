@@ -16,7 +16,10 @@ func _connect_signals():
 	SpaceshipEventBus.resource_count_started.connect(_on_resource_count_started)
 
 func _on_clicked():
-	print("haroooooooooo")
+	if StatsManager.day == 3:
+		HandsEventBus.door_interaction.emit()
+		#PopUpSystem.show_text("Não.")
+		return
 	if !is_focused and clickable_highlight.is_mouse_over_area:
 		change_to_focused()
 

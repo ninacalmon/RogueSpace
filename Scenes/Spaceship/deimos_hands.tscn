@@ -67,7 +67,8 @@ libraries = {
 modulate = Color(0.86, 0.8078267, 0.63640004, 1)
 scale = Vector2(0.6, 0.6)
 sprite_frames = ExtResource("2_uog6n")
-animation = &"Nananinanao"
+animation = &"Idle"
+frame_progress = 0.48999405
 
 [node name="SnotTimer" type="Timer" parent="."]
 wait_time = 30.0

@@ -27,7 +27,7 @@ var music_map: Dictionary = {
 		},
 	"res://Scenes/Levels/Level_Day3.tscn": {
 		"stream": preload("res://Music/BossTheme.mp3"),
-		"volume": -25.0,
+		"volume": -17.0,
 		"pitch": 1.0
 		}
 }

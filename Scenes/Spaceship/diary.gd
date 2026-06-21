@@ -36,9 +36,9 @@ func _on_resource_count_finished():
 
 
 func _on_clicked():
-	if !has_energy:
+	if !has_energy or StatsManager.day == 3:
 		HandsEventBus.door_interaction.emit()
-		PopUpSystem.show_text("Está muito escuro.")
+		if StatsManager.day != 3: PopUpSystem.show_text("Está muito escuro.")
 		return
 
 	if !is_focused and clickable_highlight.is_mouse_over_area:

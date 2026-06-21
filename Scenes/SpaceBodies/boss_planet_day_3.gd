@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 
 func start_cutscene():
 	 ## SENHA BOSSSSSSSSSSSSSSS
-	var duration: float = 10
+	var duration: float = 6
 	smooth_shake.shake_peak(sprite, duration, 12)
 	play_break_sound()
 	
@@ -53,7 +53,7 @@ func start_cutscene():
 	call_deferred("queue_free")
 
 func play_break_sound():
-	for i in 48:
+	for i in 8:
 		break_small_sfx.pitch_scale += i * 0.001
 		break_small_sfx.volume_db += 1 * 0.1
 		#if i == 1: break_small_sfx.pitch_scale = 0.5
@@ -61,7 +61,7 @@ func play_break_sound():
 		#elif i == 3: break_small_sfx.volume_db += 4
 		#elif i == 5: SFXManager.play_sound(break_sfx)
 		SFXManager.play_sound(break_small_sfx)
-		await get_tree().create_timer(0.7 - i * 0.035).timeout
+		await get_tree().create_timer(0.7).timeout
 
 
 

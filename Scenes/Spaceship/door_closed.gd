@@ -10,6 +10,9 @@ func _connect_signals():
 	SpaceshipEventBus.focus_changed.connect(_on_focus_changed)
 
 func _on_clicked():
-	HandsEventBus.door_interaction.emit()
-	PopUpSystem.show_text("Não está na hora ainda.")
-	shake_module.shake(self, 0.2, 0.6)
+	if StatsManager.day != 3:
+		HandsEventBus.door_interaction.emit()
+		PopUpSystem.show_text("Não está na hora ainda.")
+		shake_module.shake(self, 0.2, 0.6)
+	else:
+		LevelTransition.change_scene_to("res://Scenes/Levels/menu.tscn")

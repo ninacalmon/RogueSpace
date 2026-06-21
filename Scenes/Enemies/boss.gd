@@ -38,7 +38,7 @@ var player: Player
 @onready var hook: Hook = $Hook
 @onready var aggro_area: Area2D = $AggroArea
 
-@onready var collision_polygon_2d: CollisionShape2D = $CollisionPolygon2D
+@onready var collision_polygon_2d: CollisionPolygon2D = $CollisionPolygon2D
 
 var is_dead: bool = false
 
