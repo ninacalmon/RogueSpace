@@ -45,11 +45,13 @@ func _process(delta: float) -> void:
 	skip_progress.value = hold_time
 
 	if hold_time >= hold_duration:
-		finish_cutscene(true)
+		finish_cutscene(null, true)
 
-func finish_cutscene(bypass: bool = false, _anim = null):
+func finish_cutscene(_anim = null, bypass: bool = false):
+	print(_anim)
 	if animation_player:
-		if _anim != last_anim_name and !bypass:
-			return
+		if _anim == last_anim_name:
+			bypass = true
+		if !bypass: return
 	if video_stream_player: video_stream_player.stop()
 	LevelTransition.change_scene_to(Globals.next_scene_path)
