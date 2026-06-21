@@ -1,19 +1,107 @@
-[gd_scene load_steps=17 format=3 uid="uid://hxbixdf3j2uu"]
+[gd_scene load_steps=30 format=3 uid="uid://hxbixdf3j2uu"]
 
 [ext_resource type="Script" uid="uid://f7rnh4xfxkas" path="res://Scenes/Enemies/boss.gd" id="1_s7hs0"]
 [ext_resource type="PackedScene" uid="uid://cpfy5u1qycpx2" path="res://Scenes/Bullets/boss_bullet.tscn" id="2_djiw6"]
 [ext_resource type="PackedScene" uid="uid://br070cnq6sve" path="res://Scenes/Enemies/enemy_basic.tscn" id="3_djiw6"]
 [ext_resource type="Script" uid="uid://iatwgk3de1nj" path="res://Scenes/Modulars/hurt_box.gd" id="4_12bcj"]
 [ext_resource type="PackedScene" uid="uid://dtm7xjsnvddsm" path="res://Scenes/Bullets/boss_targeted_bullet.tscn" id="4_rhlrc"]
-[ext_resource type="Texture2D" uid="uid://buchl7r6h0c67" path="res://Sprites(main)/Enemies/boss_matriarch.png" id="4_vr26e"]
+[ext_resource type="Texture2D" uid="uid://b7y5owh5ny7nt" path="res://Sprites(main)/Enemies/Matriarca_Morta Partes do Corpo/A Matriarca Morta.png" id="5_qmcpn"]
 [ext_resource type="AudioStream" uid="uid://7lu32wsorlh5" path="res://Sound Effects/Enemies/sfx_inimigosBasic.wav" id="5_rhlrc"]
 [ext_resource type="AudioStream" uid="uid://6nqgebd8dtyr" path="res://Sound Effects/Enemies/sfx_inimigosBasic (2).wav" id="6_qmcpn"]
+[ext_resource type="Texture2D" uid="uid://b0lmp1bkulkw7" path="res://Sprites(main)/Enemies/Matriarca_Idle Resized-Sheet.png" id="6_yjcva"]
+[ext_resource type="Texture2D" uid="uid://d0tn6kcibbcwb" path="res://Sprites(main)/Enemies/Matriarca_Morta Partes do Corpo/A Matriarca Morta_head.png" id="7_afjt0"]
 [ext_resource type="AudioStream" uid="uid://bkpogun2por27" path="res://Sound Effects/Enemies/sfx_enemy_attack.mp3" id="7_yjcva"]
 [ext_resource type="Script" uid="uid://e5cfbq8jk5j5" path="res://Scenes/Enemies/enemy_visible_on_screen.gd" id="8_afjt0"]
 [ext_resource type="Script" uid="uid://crjbdbe6bxarl" path="res://Scenes/Enemies/hook.gd" id="9_vr26e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vr26e"]
 size = Vector2(108, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpihh"]
+atlas = ExtResource("5_qmcpn")
+region = Rect2(0, 0, 296, 230)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hncox"]
+atlas = ExtResource("6_yjcva")
+region = Rect2(0, 0, 296, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6j3qa"]
+atlas = ExtResource("6_yjcva")
+region = Rect2(296, 0, 296, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77gxu"]
+atlas = ExtResource("6_yjcva")
+region = Rect2(592, 0, 296, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2viw7"]
+atlas = ExtResource("6_yjcva")
+region = Rect2(888, 0, 296, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxdj7"]
+atlas = ExtResource("6_yjcva")
+region = Rect2(1184, 0, 296, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_roe5g"]
+atlas = ExtResource("6_yjcva")
+region = Rect2(1480, 0, 296, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ivfq"]
+atlas = ExtResource("6_yjcva")
+region = Rect2(1776, 0, 296, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psjqr"]
+atlas = ExtResource("6_yjcva")
+region = Rect2(2072, 0, 296, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqu4s"]
+atlas = ExtResource("6_yjcva")
+region = Rect2(2368, 0, 296, 239)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i37ux"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpihh")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hncox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6j3qa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77gxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2viw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxdj7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_roe5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ivfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psjqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqu4s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_djiw6"]
+radius = 378.06482
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vr26e"]
 radius = 779.0058
@@ -31,15 +119,13 @@ stream_1/stream = ExtResource("6_qmcpn")
 stream_2/stream = ExtResource("7_yjcva")
 stream_2/weight = 5.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_djiw6"]
-radius = 635.0504
-
 [node name="Boss" type="RigidBody2D" groups=["Boss_Group"]]
 z_index = 1
 mass = 1000.0
 can_sleep = false
 lock_rotation = true
 script = ExtResource("1_s7hs0")
+life = 1.0
 default_projectile_scene = ExtResource("2_djiw6")
 child_scene = ExtResource("3_djiw6")
 targeted_projectile_scene = ExtResource("4_rhlrc")
@@ -47,9 +133,30 @@ targeted_projectile_scene = ExtResource("4_rhlrc")
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_vr26e")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("4_vr26e")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_i37ux")
+animation = &"dead"
+autoplay = "default"
+
+[node name="Sprite2DDeadHead" type="Sprite2D" parent="Sprite2D"]
+visible = false
+z_index = 1
+position = Vector2(0, 5)
+texture = ExtResource("7_afjt0")
+
+[node name="Hook" type="Node2D" parent="." node_paths=PackedStringArray("body")]
+script = ExtResource("9_vr26e")
+body = NodePath("..")
+
+[node name="Area2D" type="Area2D" parent="Hook"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook/Area2D"]
+shape = SubResource("CircleShape2D_djiw6")
+
+[node name="Line2D" type="Line2D" parent="Hook"]
+width = 2.0
+default_color = Color(1, 1, 1, 0.5176471)
 
 [node name="AggroArea" type="Area2D" parent="."]
 collision_layer = 8
@@ -77,16 +184,3 @@ script = ExtResource("8_afjt0")
 
 [node name="special_attack_timer" type="Timer" parent="."]
 wait_time = 3.0
-
-[node name="Hook" type="Node2D" parent="." node_paths=PackedStringArray("body")]
-script = ExtResource("9_vr26e")
-body = NodePath("..")
-
-[node name="Area2D" type="Area2D" parent="Hook"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook/Area2D"]
-shape = SubResource("CircleShape2D_djiw6")
-
-[node name="Line2D" type="Line2D" parent="Hook"]
-width = 2.0
-default_color = Color(1, 1, 1, 0.5176471)

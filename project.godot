@@ -31,6 +31,7 @@ CustomTooltip="*res://custom_tooltip.tscn"
 InputGuide="*res://input_guide.tscn"
 DiaryDatabase="*res://diary_database.gd"
 HandsEventBus="*res://hands_event_bus.gd"
+MusicManager="*res://music_manager.tscn"
 
 [display]
 

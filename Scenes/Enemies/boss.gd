@@ -23,7 +23,10 @@ var player: Player
 
 @export var deactivate: bool = true
 
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite_2d: AnimatedSprite2D = $Sprite2D
+@onready var sprite_2d_dead_head: Sprite2D = $Sprite2D/Sprite2DDeadHead
+
+
 
 @onready var default_attack_timer: Timer = $default_attack_timer
 @onready var special_attack_timer: Timer = $special_attack_timer
@@ -45,8 +48,12 @@ var is_attacking_now: bool = false
 
 var attack_offset: float = 0.0
 
+var float_tween: Tween
 
 func _ready() -> void:
+	sprite_2d_dead_head.hide()
+	sprite_2d.play("default")
+
 	default_attack_timer.timeout.connect(_on_default_attack_timeout)
 	special_attack_timer.timeout.connect(_on_special_attack_timemout)
 	
@@ -57,14 +64,16 @@ func _ready() -> void:
 	default_attack_timer.start()
 	special_attack_timer.start()
 
-	var tween = create_tween()
-	tween.set_loops()
+	var base_y = sprite_2d.position.y
 
-	tween.set_ease(Tween.EASE_IN_OUT)
-	tween.set_trans(Tween.TRANS_SINE)
+	float_tween = create_tween()
+	float_tween.set_loops()
 
-	tween.tween_property(sprite_2d, "offset:y", -10, 1.5)
-	tween.tween_property(sprite_2d, "offset:y", 0, 1.5)
+	float_tween.set_ease(Tween.EASE_IN_OUT)
+	float_tween.set_trans(Tween.TRANS_SINE)
+
+	float_tween.tween_property(sprite_2d, "position:y", base_y - 10, 1.5)
+	float_tween.tween_property(sprite_2d, "position:y", base_y + 10, 1.5)
 
 #func _process(_delta: float) -> void:
 	#if is_dead or deactivate:
@@ -229,12 +238,17 @@ func flash():
 
 
 func die():
+	float_tween.kill()
+
 	print("disabled:", collision_polygon_2d.disabled)
 	print("layer:", collision_layer)
 	print("mask:", collision_mask)
 	print("diede")
 	is_dead = true
+	sprite_2d.play("dead")
 	sprite_2d.modulate = Color(0.3, 0.3, 0.4)
+	#sprite_2d_dead_head.modulate = sprite_2d.modulate
+	sprite_2d_dead_head.show()
 
 	sleeping = false
 	freeze = false

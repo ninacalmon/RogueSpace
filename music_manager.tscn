@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctnyc5cl3cqvt"]
+
+[ext_resource type="Script" uid="uid://djdux44jscm01" path="res://music_manager.gd" id="1_tylfe"]
+
+[node name="MusicManager" type="Node"]
+script = ExtResource("1_tylfe")
+
+[node name="PlayerA" type="AudioStreamPlayer" parent="."]
+
+[node name="PlayerB" type="AudioStreamPlayer" parent="."]
