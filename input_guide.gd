@@ -11,7 +11,7 @@ CONFIRM, RETURN, TELEPORT,
 MOVEMENT, IMPULSE, BREAK,
 AIM, SHOOT,
 POINT, CLICK, UI_MOVEMENT,
-SKIP
+SKIP, NEXT
 }
 
 var current_input_device: InputDevice = InputDevice.KEYBOARD
@@ -92,6 +92,10 @@ const INPUT_ICONS: Dictionary = {
 	ActionType.SKIP : {
 		InputDevice.CONTROLLER: B_BUTTON,
 		InputDevice.KEYBOARD: X_KEY,
+	},
+	ActionType.NEXT : {
+		InputDevice.CONTROLLER: A_BUTTON,
+		InputDevice.KEYBOARD: SPACE_KEY
 	}
 }
 
@@ -108,7 +112,8 @@ const COMMON_ACTIONS: Dictionary = {
 	ActionType.POINT: "Mirar",
 	ActionType.CLICK: "Selecionar",
 	ActionType.UI_MOVEMENT: "Navegar UI",
-	ActionType.SKIP: "Ignorar vídeo"
+	ActionType.SKIP: "Ignorar",
+	ActionType.NEXT: "Avançar"
 }
 
 var final_unit_alpha: float = 1

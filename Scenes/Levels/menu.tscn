@@ -1,7 +1,8 @@
-[gd_scene load_steps=42 format=3 uid="uid://3en43s0xvhci"]
+[gd_scene load_steps=41 format=3 uid="uid://3en43s0xvhci"]
 
 [ext_resource type="PackedScene" uid="uid://buqlpqb51bwy" path="res://ui_sounds.tscn" id="1_sic4q"]
 [ext_resource type="Script" uid="uid://cem6pnv2cepc7" path="res://menu_buttons_control.gd" id="2_jsrd8"]
+[ext_resource type="Texture2D" uid="uid://de7epffdq64cv" path="res://Sprites(main)/logo.png" id="3_qa3qj"]
 [ext_resource type="FontFile" uid="uid://bkq3re32v3glf" path="res://Fonts/Commodore Pixelized v1.2.ttf" id="3_rb8kr"]
 [ext_resource type="Theme" uid="uid://npl3mumy4crf" path="res://Scenes/UI/default_theme.tres" id="3_w6vxw"]
 [ext_resource type="Script" uid="uid://dfaqtws11ry3s" path="res://Scenes/Levels/rich_text_label_4.gd" id="4_3so5s"]
@@ -35,7 +36,6 @@
 [ext_resource type="Texture2D" uid="uid://d1nws3uf6rnh1" path="res://Sprites(main)/UI/menu BG/21.png" id="30_5w0iu"]
 [ext_resource type="Texture2D" uid="uid://vgtdxb4ahypd" path="res://Sprites(main)/UI/menu BG/22.png" id="31_xvk17"]
 [ext_resource type="Texture2D" uid="uid://b44fiqo3pw6c8" path="res://Sprites(main)/UI/menu BG/23.png" id="32_xbvu4"]
-[ext_resource type="AudioStream" uid="uid://fe4qkemuc5kx" path="res://Music/menu__vox_vacui.mp3" id="34_kha57"]
 
 [sub_resource type="Theme" id="Theme_rb8kr"]
 
@@ -184,10 +184,6 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_tulv5"]
-stream_count = 1
-stream_0 = ExtResource("34_kha57")
-
 [node name="Menu" type="Control"]
 process_mode = 3
 layout_mode = 3
@@ -207,25 +203,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_jsrd8")
 
-[node name="TitleLabel" type="RichTextLabel" parent="CanvasLayer/Control"]
+[node name="TitleLabel" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -78.0
+offset_left = -44.0
 offset_top = 44.0
-offset_right = 522.0
-offset_bottom = 202.0
+offset_right = 556.0
+offset_bottom = 237.0
 grow_horizontal = 2
 scale = Vector2(1.0032214, 1.0436978)
-theme_override_colors/default_color = Color(0.40784314, 0.72156864, 0.1254902, 1)
-theme_override_fonts/normal_font = ExtResource("3_rb8kr")
-theme_override_font_sizes/normal_font_size = 80
-text = "VOX
-	VACUI"
-fit_content = true
-autowrap_mode = 0
-horizontal_alignment = 1
+texture = ExtResource("3_qa3qj")
+stretch_mode = 3
 script = ExtResource("4_g56od")
 
 [node name="Timer" type="Timer" parent="CanvasLayer/Control/TitleLabel"]
@@ -281,9 +271,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 41.0
-offset_top = -192.0
+offset_top = -135.0
 offset_right = 541.0
-offset_bottom = 175.0
+offset_bottom = 232.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.2, 1.2)
@@ -466,8 +456,3 @@ scale = Vector2(0.475, 0.471)
 sprite_frames = SubResource("SpriteFrames_dsa84")
 animation = &"new_animation"
 autoplay = "new_animation"
-
-[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamPlaylist_tulv5")
-autoplay = true
-bus = &"Music"

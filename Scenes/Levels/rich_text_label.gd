@@ -1,4 +1,4 @@
-extends RichTextLabel
+extends TextureRect
 @onready var timer: Timer = $Timer
 
 var flicker_chances: float = 0.02
