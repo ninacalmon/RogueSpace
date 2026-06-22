@@ -22,11 +22,13 @@ class_name PowerUpSetup
 @onready var bought_power_up: AudioStreamPlayer = $BoughtPowerUp
 
 var have_enough_to_buy: bool
-var current_level: int = 0
+var current_level: int
 
 var custom_tooltip_text
 
+
 func _ready() -> void:
+	current_level = PowerUps.get_current_level(effect)
 	modulate = default_color
 	
 	setup_nodes()
@@ -85,7 +87,8 @@ func _on_button_pressed():
 
 
 func buy_power_up():
-	current_level += 1
+	PowerUps.add_current_level(effect)
+	current_level = PowerUps.get_current_level(effect)
 	#modulate = bought_color
 	#default_color = bought_color
 	PowerUps.apply_power_up(effect)
