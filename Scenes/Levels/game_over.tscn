@@ -4,13 +4,12 @@
 [ext_resource type="Script" uid="uid://wf0piy7g0hye" path="res://Scenes/Levels/game_over_control.gd" id="1_rohwx"]
 [ext_resource type="Script" uid="uid://ktd1ndy25a0o" path="res://Scenes/UI/GameOver/pressable_game_over.gd" id="4_l0mjm"]
 
-[node name="GameOver" type="Control" node_paths=PackedStringArray("background_texture", "sub_text")]
+[node name="GameOver" type="Control" node_paths=PackedStringArray("background_texture")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_rohwx")
 background_texture = NodePath("CanvasLayer/TextureRect")
-sub_text = NodePath("CanvasLayer/SubText")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -37,24 +36,6 @@ grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/normal_font_size = 34
 text = "DEIMOS ESTÁ MORTO"
-fit_content = true
-horizontal_alignment = 1
-
-[node name="SubText" type="RichTextLabel" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -172.75
-offset_top = 28.0
-offset_right = 172.75
-offset_bottom = 68.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/normal_font_size = 16
-text = "Alguma frase legal."
 fit_content = true
 horizontal_alignment = 1
 

@@ -14,7 +14,7 @@ var has_energy: bool = false
 
 
 func _ready() -> void:
-	has_energy = true
+	#has_energy = true
 	_connect_signals()
 	_initialize_ui()
 
@@ -36,10 +36,10 @@ func _on_resource_count_finished():
 
 
 func _on_clicked():
-	#if !has_energy or StatsManager.day == 3:
-		#HandsEventBus.door_interaction.emit()
-		#if StatsManager.day != 3: PopUpSystem.show_text("Está muito escuro.")
-		#return
+	if !has_energy or StatsManager.day == 3:
+		HandsEventBus.door_interaction.emit()
+		if StatsManager.day != 3: PopUpSystem.show_text("Está muito escuro.")
+		return
 
 	if !is_focused and clickable_highlight.is_mouse_over_area:
 		is_focused = true

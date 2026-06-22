@@ -11,6 +11,7 @@ var hold_time: float = 0.0
 var decay_speed: = 2
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	InputGuide.clear_guides()
 	if last_anim_name: InputGuide.show_guide(InputGuide.ActionType.NEXT)
 	InputGuide.show_guide(InputGuide.ActionType.SKIP)

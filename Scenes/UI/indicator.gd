@@ -1,7 +1,10 @@
 extends Node2D
 
-var mothership: RigidBody2D
-var player: Player
+@export var mothership: Node2D
+@export var player: Player
+
+#var mothership: RigidBody2D
+#var player: Player
 
 var margin: float = 45.0
 var corner_radius: float = 20.0
@@ -16,14 +19,14 @@ var was_visible_on_screen: bool = true
 var _mothership_radius: float = 0.0
 
 func _ready():
-	var main = get_tree().current_scene
-	mothership = main.get_node_or_null("Mothership")
+	#var main = get_tree().current_scene
+	#mothership = main.get_node_or_null("Mothership")
 	
-	if not mothership:
-		mothership = main.get_node_or_null("Bodies/Mothership")
-	player = main.get_node_or_null("Player")
-	if not player:
-		player = main.get_node_or_null("Bodies/Player")
+	#if not mothership:
+		#mothership = main.get_node_or_null("Bodies/Mothership")
+	#player = main.get_node_or_null("Player")
+	#if not player:
+		#player = main.get_node_or_null("Bodies/Player")
 	if mothership:
 		var collision = mothership.get_node_or_null("CollisionShape2D")
 		if collision and collision.shape is CircleShape2D:

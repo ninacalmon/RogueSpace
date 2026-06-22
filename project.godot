@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="vox vacui"
-run/main_scene="uid://do0i8a3xqomtm"
+run/main_scene="uid://m2oqym1qilyn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://dernurpysipe2"
 
@@ -35,6 +35,7 @@ MusicManager="*res://music_manager.tscn"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="uid://cmlx2ppg3l6lj"
 

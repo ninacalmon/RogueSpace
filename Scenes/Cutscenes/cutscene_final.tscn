@@ -22,10 +22,12 @@ video_stream_player = NodePath("VideoStreamPlayer")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(0.6, 0.6)
+offset_right = 2240.0
+offset_bottom = 1264.0
+scale = Vector2(0.515, 0.515)
 stream = ExtResource("2_fgmwn")
+volume_db = -11.999998
+bus = &"Sound Effects"
 
 [node name="PixelRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_di4wq")

@@ -191,6 +191,10 @@ position = Vector2(1517, 305)
 [node name="UIControlRect" parent="CanvasLayer/UI" index="0"]
 mouse_filter = 1
 
+[node name="MothershipIndicator" parent="CanvasLayer/UI/UIControlRect" index="4" node_paths=PackedStringArray("mothership", "player")]
+mothership = NodePath("../../../../Mothership")
+player = NodePath("../../../../P_Layer/Player")
+
 [node name="MapControl" parent="." node_paths=PackedStringArray("player") instance=ExtResource("25_ym7v8")]
 player = NodePath("../P_Layer/Player")
 safe_area_radius_multiply = 7.5

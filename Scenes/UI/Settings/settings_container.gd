@@ -35,9 +35,10 @@ func my_grab_focus():
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel") or Input.is_action_just_pressed("return"):
-		self.settings_container.hide()
-		for canvas_node in inverse_visibility_nodes:
-			canvas_node.show()
+		_on_back_button_pressed()
+		#self.settings_container.hide()
+		#for canvas_node in inverse_visibility_nodes:
+			#canvas_node.show()
 
 func _on_master_slider_changed(value: float):
 	var db = linear_to_db(value)

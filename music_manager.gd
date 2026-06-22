@@ -19,7 +19,7 @@ var music_map: Dictionary = {
 		},
 	"res://Scenes/Levels/Tutorial.tscn": {
 		"stream": preload("res://Music/MainTheme.mp3"),
-		"volume": -30.0,
+		"volume": -24.0,
 		"pitch": 0.6 
 		},
 	"res://Scenes/Levels/Level_Day1.tscn": {
@@ -36,7 +36,17 @@ var music_map: Dictionary = {
 		"stream": preload("res://Music/BossTheme.mp3"),
 		"volume": -12.0,
 		"pitch": 1.0
-		}
+		},
+	"res://Scenes/Cutscenes/cutscene_final2.tscn": {
+		"stream": preload("res://Music/final_music.mp3"),
+		"volume": -12.0,
+		"pitch": 0.7
+	},
+	"res://Scenes/Cutscenes/cutscene_credits.tscn": {
+		"stream": preload("res://Music/MainTheme.mp3"),
+		"volume": -17.0,
+		"pitch": 0.6
+	}
 }
 
 

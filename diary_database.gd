@@ -12,7 +12,7 @@ var pages := {
 
 Sou ex-tripulante, agora capitão, da espaçonave Ikarus.
 
-Meu dia-a-dia por aqui se resume a coletar recursos para alimentar a nave e mantê-la funcionando. Não é uma tarefa fácil de se fazer sozinho, às vezes sinto falta deles...",
+Meu dia-a-dia por aqui se resume a coletar fragmentos para alimentar a nave e mantê-la funcionando. Não é uma tarefa fácil de se fazer sozinho, às vezes sinto falta deles...",
 			"sketch": null
 		}
 	},
@@ -20,7 +20,7 @@ Meu dia-a-dia por aqui se resume a coletar recursos para alimentar a nave e mant
 	1: {
 		"left": {
 			"head": "[b]De mal a pior!",
-			"main": "Ikarus está funcionando à base de aparelhos, e a cada dia parece precisar de mais e mais recursos para manter-se semi-funcional.
+			"main": "Ikarus está funcionando à base de aparelhos, e a cada dia parece precisar de mais e mais fragmentos para manter-se semi-funcional.
 
 Ah! Aquelas pestes nojentas estão por toda parte no espaço! É um tremendo estorvo ter de matá-las, mas ao menos, contribuem para o momento mais feliz do meu dia: quando posso desossa-las e preparar uma bela sopa!",
 			"sketch": null
@@ -28,7 +28,7 @@ Ah! Aquelas pestes nojentas estão por toda parte no espaço! É um tremendo est
 		"right": {
 			"main": "Bem, preciso ir descansar.
 
-Amanhã devo coletar recursos extra para me preparar...",
+Amanhã devo coletar fragmentos extra para me preparar...",
 			"sketch": preload("res://Sprites(main)/SpaceshipInterior/drawing_day1_3.png")
 		}
 	},
@@ -56,14 +56,14 @@ Acho que estou pronto.",
 			"head": "[b]Sim!",
 			"main": "Consegui, finalmente consegui!
 
-A Matriarca está aqui comigo. Sua gloriosa carcaça concederá energia o suficiente para me conceder novamente o acesso às coordenadas.
+A Matriarca está aqui comigo. Sua gloriosa carcaça proverá energia o suficiente para me conceder novamente o acesso às coordenadas.
 
 Enfim darei sequência à expedição. [b]Sim! A fonte do sinal será encontrada.",
 			"sketch": null
 		},
 		"right": {
 			"main": "",
-			"sketch": null
+			"sketch": preload("res://Sprites(main)/SpaceshipInterior/drawing_day4.png")
 		}
 	}
 }

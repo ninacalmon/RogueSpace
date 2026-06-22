@@ -1,0 +1,198 @@
+[gd_scene load_steps=11 format=3 uid="uid://d3r2tex187gs2"]
+
+[ext_resource type="Script" uid="uid://c85wpyx8ihx1i" path="res://Scenes/Cutscenes/cutscene.gd" id="1_n3bjn"]
+[ext_resource type="Shader" uid="uid://bpeqc2oh4cgdj" path="res://Shaders/pixelated.gdshader" id="3_hstnp"]
+[ext_resource type="Texture2D" uid="uid://cyrvbfkrobaa1" path="res://Sprites(main)/bookTileset.png" id="4_k5qay"]
+[ext_resource type="Texture2D" uid="uid://beinhniahsmx2" path="res://Sprites(main)/UI/circle3-export.png" id="4_ne3gn"]
+[ext_resource type="Script" uid="uid://cfolitj2jt1tl" path="res://Scenes/Cutscenes/diary_final_cutscene.gd" id="5_ffttc"]
+[ext_resource type="PackedScene" uid="uid://qwqle3odi0wk" path="res://Scenes/Spaceship/diary_page.tscn" id="5_qdhs3"]
+
+[sub_resource type="Animation" id="Animation_j6pbb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CutsceneContext/SpriteOpen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutsceneContext/SpriteOpen:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CutsceneContext/SpriteOpen:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(579, 1056)]
+}
+
+[sub_resource type="Animation" id="Animation_7yh6m"]
+resource_name = "open_book"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CutsceneContext/SpriteOpen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.22),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0.57254905, 0.5882353, 0.5254902, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CutsceneContext/SpriteOpen:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.4, 4.4, 4.4333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0, 0, 16, 14]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CutsceneContext/SpriteOpen:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.27),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(579, 1056), Vector2(579, 259)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vokqo"]
+_data = {
+&"RESET": SubResource("Animation_j6pbb"),
+&"open_book": SubResource("Animation_7yh6m")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ee7t"]
+shader = ExtResource("3_hstnp")
+shader_parameter/pixel_size = 3.000000095
+shader_parameter/camera_pos = Vector2(0, 0)
+
+[node name="CutsceneContext" type="Control" node_paths=PackedStringArray("animation_player")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n3bjn")
+animation_player = NodePath("")
+last_anim_name = "context5"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="SpriteOpen" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(579, 1056)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_k5qay")
+hframes = 5
+vframes = 4
+
+[node name="AnimationBookOpen" type="AnimationPlayer" parent="SpriteOpen"]
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_vokqo")
+}
+autoplay = "open_book"
+
+[node name="DiaryControl" type="Control" parent="."]
+modulate = Color(0.573775, 0.59, 0.5251, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 229.0
+offset_top = 109.0
+offset_right = -236.0
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("5_ffttc")
+
+[node name="PagesContainer" type="HBoxContainer" parent="DiaryControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="PageL" parent="DiaryControl/PagesContainer" instance=ExtResource("5_qdhs3")]
+layout_mode = 2
+
+[node name="PageR" parent="DiaryControl/PagesContainer" instance=ExtResource("5_qdhs3")]
+layout_mode = 2
+
+[node name="PixelRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_1ee7t")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -775.89685
+offset_bottom = -209.40515
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.1480725, 1.575486)
+mouse_filter = 2
+
+[node name="SkipProgress" type="TextureProgressBar" parent="."]
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.497
+anchor_top = 0.49400002
+anchor_right = 0.497
+anchor_bottom = 0.49400002
+offset_left = -16.544006
+offset_top = -16.112
+offset_right = 15.455994
+offset_bottom = 15.8880005
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.001
+value = 100.0
+fill_mode = 5
+texture_progress = ExtResource("4_ne3gn")

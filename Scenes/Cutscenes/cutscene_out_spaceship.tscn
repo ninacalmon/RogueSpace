@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ca2sclqfvfr4l"]
 
 [ext_resource type="Script" uid="uid://c85wpyx8ihx1i" path="res://Scenes/Cutscenes/cutscene.gd" id="1_opyvh"]
-[ext_resource type="VideoStream" uid="uid://bf8x4qw348w4q" path="res://Sprites(main)/Cutscenes/InOutSpaceship.ogv" id="1_vpk22"]
+[ext_resource type="VideoStream" uid="uid://c16eqp5oos5kt" path="res://Sprites(main)/Cutscenes/FINALFINAL.ogv" id="2_3p2kt"]
 [ext_resource type="Shader" uid="uid://bpeqc2oh4cgdj" path="res://Shaders/pixelated.gdshader" id="4_3p2kt"]
 [ext_resource type="Texture2D" uid="uid://beinhniahsmx2" path="res://Sprites(main)/UI/circle3-export.png" id="4_di4wq"]
 
@@ -25,7 +25,8 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.6, 0.6)
-stream = ExtResource("1_vpk22")
+stream = ExtResource("2_3p2kt")
+volume_db = -17.0
 
 [node name="PixelRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_di4wq")

@@ -163,7 +163,7 @@ _data = {
 &"take_book": SubResource("Animation_vokqo")
 }
 
-[sub_resource type="Animation" id="Animation_j6pbb"]
+[sub_resource type="Animation" id="Animation_brskc"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -175,7 +175,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(0.573775, 0.59, 0.5251, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -190,7 +190,7 @@ tracks/1/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_7yh6m"]
+[sub_resource type="Animation" id="Animation_22rv0"]
 resource_name = "open_book"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -202,7 +202,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.22),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(0.573775, 0.59, 0.5251, 1)]
+"values": [Color(0.573775, 0.59, 0.5251, 0), Color(0.57254905, 0.5882353, 0.5254902, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -211,16 +211,16 @@ tracks/1/path = NodePath("BookCanvasLayer/SpriteOpen:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.96666664, 1),
+"times": PackedFloat32Array(0, 0.96, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0, 16, 14]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_vokqo"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r4lg0"]
 _data = {
-&"RESET": SubResource("Animation_j6pbb"),
-&"open_book": SubResource("Animation_7yh6m")
+&"RESET": SubResource("Animation_brskc"),
+&"open_book": SubResource("Animation_22rv0")
 }
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w3sy0"]
@@ -425,7 +425,7 @@ metadata/_custom_type_script = "uid://jtbq6dor8pk0"
 [node name="BookCanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="SpriteOpen" type="Sprite2D" parent="BookCanvasLayer"]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(0.573775, 0.59, 0.5251, 0)
 position = Vector2(579, 264)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_7yh6m")
@@ -435,7 +435,7 @@ vframes = 4
 [node name="AnimationBookOpen" type="AnimationPlayer" parent="BookCanvasLayer/SpriteOpen"]
 root_node = NodePath("../../..")
 libraries = {
-&"": SubResource("AnimationLibrary_vokqo")
+&"": SubResource("AnimationLibrary_r4lg0")
 }
 
 [node name="DiaryControl" type="Control" parent="BookCanvasLayer"]

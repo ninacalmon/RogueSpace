@@ -1,0 +1,249 @@
+[gd_scene load_steps=10 format=3 uid="uid://cvru8rcakgcju"]
+
+[ext_resource type="Script" uid="uid://c85wpyx8ihx1i" path="res://Scenes/Cutscenes/cutscene.gd" id="1_kkqed"]
+[ext_resource type="Shader" uid="uid://bpeqc2oh4cgdj" path="res://Shaders/pixelated.gdshader" id="3_f3fvv"]
+[ext_resource type="VideoStream" uid="uid://dq0erdaasuntc" path="res://Sprites(main)/Cutscenes/CreditsBGVideo (1).ogv" id="3_rmj1v"]
+[ext_resource type="Texture2D" uid="uid://beinhniahsmx2" path="res://Sprites(main)/UI/circle3-export.png" id="4_5h6vg"]
+[ext_resource type="Script" uid="uid://d0jyqcyajqo6q" path="res://Scenes/Cutscenes/credits_video.gd" id="4_b08x0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j84hh"]
+shader = ExtResource("3_f3fvv")
+shader_parameter/pixel_size = 5.00000019
+shader_parameter/camera_pos = Vector2(0, 0)
+
+[sub_resource type="Animation" id="Animation_rmj1v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(301.5, 669)]
+}
+
+[sub_resource type="Animation" id="Animation_6hsaq"]
+resource_name = "credits_roll"
+length = 23.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.8666667, 19.266666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(557, 669), Vector2(557, -1624)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b08x0"]
+_data = {
+&"RESET": SubResource("Animation_rmj1v"),
+&"credits_roll": SubResource("Animation_6hsaq")
+}
+
+[node name="CutsceneCredits" type="Control" node_paths=PackedStringArray("animation_player")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kkqed")
+animation_player = NodePath("AnimationPlayer")
+last_anim_name = "credits_roll"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.6, 0.6)
+stream = ExtResource("3_rmj1v")
+autoplay = true
+loop = true
+script = ExtResource("4_b08x0")
+
+[node name="PixelRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_j84hh")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -775.89685
+offset_bottom = -209.40515
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.1480725, 1.575486)
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -274.5
+offset_top = 345.0
+offset_right = 274.5
+offset_bottom = 2381.9932
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[b]Kafka Studios[/b]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[b]Programação[/b]
+
+Lead Developer: Morgothe - Nina
+
+Jr. Dev: Bakdorl
+
+
+
+
+
+
+
+
+
+[b]Arte[/b]
+
+Lead Pixel Artist: Salamendro - Vini
+
+Lead Digital Artist: Bakdorl
+
+Supporting artist: Morgothe - Nina
+
+
+
+
+
+
+
+
+
+[b]SFX e Música[/b]
+
+Audio designer: Nanavidad - Mari
+
+Audio designer: Okaal - Laura
+
+
+
+
+
+
+
+
+
+[b]Créditos externos[/b]
+
+Gabriel Bonat Costa
+
+GMRR - Thiago B.
+
+Deep Fold - pixel planet generator
+
+SFX Artninja
+
+Screaming Brain Studios - Space backgrounds
+
+
+
+
+
+
+
+
+
+[b]Feito na Godot Engine[/b]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[b]Obrigado por jogar!
+"
+fit_content = true
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="SkipProgress" type="TextureProgressBar" parent="."]
+modulate = Color(1, 1, 1, 0.5019608)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.497
+anchor_top = 0.49400002
+anchor_right = 0.497
+anchor_bottom = 0.49400002
+offset_left = -16.544006
+offset_top = -16.112
+offset_right = 15.455994
+offset_bottom = 15.8880005
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.001
+value = 100.0
+fill_mode = 5
+texture_progress = ExtResource("4_5h6vg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_b08x0")
+}
+autoplay = "credits_roll"

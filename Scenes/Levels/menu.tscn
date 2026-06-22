@@ -271,14 +271,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 41.0
-offset_top = -135.0
+offset_top = -160.0
 offset_right = 541.0
-offset_bottom = 232.0
+offset_bottom = 207.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.2, 1.2)
 theme = SubResource("Theme_rb8kr")
-theme_override_constants/separation = 24
+theme_override_constants/separation = 32
 alignment = 1
 
 [node name="Start" type="Button" parent="CanvasLayer/Control/Pressable"]
@@ -295,6 +295,7 @@ script = ExtResource("8_fw6na")
 inverse_visibility_nodes = [NodePath("..")]
 
 [node name="Controls" type="Button" parent="CanvasLayer/Control/Pressable"]
+visible = false
 layout_mode = 2
 text = "controles"
 alignment = 0
