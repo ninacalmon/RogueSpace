@@ -8,7 +8,7 @@ var is_playing_animation: bool = false
 
 
 func _ready() -> void:
-	Globals.next_scene_path = "res://Scenes/Levels/menu.tscn"
+	Globals.next_scene_path = "res://Scenes/start_limbo.tscn"
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	#music.play()
 	play("context1")

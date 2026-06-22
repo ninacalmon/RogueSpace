@@ -14,7 +14,7 @@ var fake_mouse_input: bool
 
 var is_showing_confirmation: bool
 
-var next_scene_path: String = "res://Scenes/Levels/menu.tscn"
+var next_scene_path: String = "res://Scenes/Cutscenes/cutscene_context.tscn"
 
 var last_level_path: String
 

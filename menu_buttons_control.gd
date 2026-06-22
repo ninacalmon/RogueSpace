@@ -11,6 +11,7 @@ signal menu_selection_changed(selection_number: int)
 
 
 func _ready() -> void:
+	MusicManager.changing_scene("res://Scenes/Levels/Tutorial.tscn")
 	#Globals.level = 1
 	start.pressed.connect(_on_start_button_pressed)
 	controls.pressed.connect(_on_controls_button_pressed)
@@ -33,7 +34,8 @@ func _ready() -> void:
 
 func _on_start_button_pressed():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	LevelTransition.change_scene_to("res://Scenes/Levels/Tutorial.tscn")
+	Globals.next_scene_path = "res://Scenes/start_limbo.tscn"
+	LevelTransition.change_scene_to("res://Scenes/Cutscenes/cutscene_context.tscn")
 
 func _on_controls_button_pressed():
 	controlers_overlay.show()
