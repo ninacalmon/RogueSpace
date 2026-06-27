@@ -4,6 +4,7 @@ extends Control
 @onready var controls: Button = $Pressable/Controls
 @onready var exit: Button = $Pressable/Exit
 @onready var controlers_overlay: ColorRect = $ControlersOverlay
+@onready var _continue: Button = $Pressable/Continue
 
 signal menu_selection_changed(selection_number: int)
 
@@ -11,28 +12,44 @@ signal menu_selection_changed(selection_number: int)
 
 
 func _ready() -> void:
+	Engine.time_scale = 1.0
+	
+	_continue.visible = StatsManager.day != 0
 	#Globals.level = 1
+	_continue.pressed.connect(_on_continue_pressed)
 	start.pressed.connect(_on_start_button_pressed)
 	controls.pressed.connect(_on_controls_button_pressed)
 	exit.pressed.connect(_on_exit_button_pressed)
 	control_exit_button.pressed.connect(_on_control_exit_pressed)
 
+	_continue.focus_entered.connect(_on_button_hovered.bind(0))
+	_continue.mouse_entered.connect(_on_button_hovered.bind(0))
 	start.mouse_entered.connect(_on_button_hovered.bind(1))
 	start.focus_entered.connect(_on_button_hovered.bind(1))
 	controls.mouse_entered.connect(_on_button_hovered.bind(2))
 	controls.focus_entered.connect(_on_button_hovered.bind(2))
 	exit.mouse_entered.connect(_on_button_hovered.bind(3))
 	exit.focus_entered.connect(_on_button_hovered.bind(3))
+	
 	Input.joy_connection_changed.connect(_on_joy_connected)
 	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 	InputGuide.clear_guides()
 
-	start.grab_focus()
+	if StatsManager.day != 0: _continue.grab_focus()
+	else: start.grab_focus()
+
+func _on_continue_pressed():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	Globals.add_frag_sum()
+	LevelTransition.change_scene_to("res://Scenes/Levels/spaceship_interior.tscn")
 
 func _on_start_button_pressed():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	Globals.reset_game_state()
+	StatsManager.reset_game_state()
+	PowerUps.reset_game_state()
 	LevelTransition.change_scene_to("res://Scenes/Levels/Tutorial.tscn")
 
 func _on_controls_button_pressed():

@@ -110,7 +110,7 @@ func execute_teletransport():
 	var tween = get_tree().create_tween()
 	tween.set_parallel()
 	tween.set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(camera, "zoom", camera.zoom + Vector2.ONE * 0.3, 0.2)
+	tween.tween_property(camera, "zoom", camera.zoom * 1.6, 0.2)
 	tween.tween_property(self, "modulate", Color(18.892, 18.892, 18.892), 0.1)
 	tween.set_parallel(false)
 	tween.tween_property(self, "modulate", Color(1, 1, 1), 0.1)

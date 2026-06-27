@@ -28,6 +28,7 @@ func _on_resource_count_finished():
 	SpaceshipEventBus.focus_off.emit(true)
 	StatsManager.current_resources -= StatsManager.resources_needed
 	SpaceshipEventBus.resources_spent.emit()
+	Globals.has_energy_in_spaceship = true
 #func _on_hover():
 	#if !has_showed_text:
 		#has_showed_text = true

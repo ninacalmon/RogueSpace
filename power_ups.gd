@@ -72,3 +72,11 @@ func apply_power_up(power_up: String):
 
 		"Perfurator":
 			StatsManager.player_have_perfurator = true
+
+func reset_game_state():
+	impulse_current_level = 0
+	fuel_current_level = 0
+	health_current_level = 0
+	propulsors_current_level = 0
+	bullet_current_level = 0
+	teleport_current_level = 0
