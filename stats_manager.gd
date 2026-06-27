@@ -4,7 +4,9 @@ var day: int = 0
 
 #### RESOURCES BANK ####
 var resources_needed: int = 50
-var current_resources: int = 0
+var current_resources: int = 0:
+	set(value):
+		current_resources = max(value, 0)
 
 var player_has_cadaver: bool = false
 
