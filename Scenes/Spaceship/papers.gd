@@ -29,7 +29,6 @@ func _on_clicked():
 
 
 	if !is_focused and clickable_highlight.is_mouse_over_area:
-		is_focused = true
 		SpaceshipEventBus.focus_on.emit(zoom_in_amount, zoom_offset, self, false)
 
 
@@ -38,3 +37,5 @@ func _on_focus_changed(focus: bool, _subject: Node2D):
 		clickable_highlight.is_mouse_over_area = false
 		clickable_highlight.active = true
 		is_focused = false
+	elif focus and _subject == self:
+		is_focused = true

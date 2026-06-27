@@ -18,6 +18,7 @@ func initialize() -> void:
 
 func _on_focus_on_requested(zoom_in_amount: float, zoom_offset: Vector2, emitter: MainArea, keep_camera: bool):
 	if camera.is_busy or camera.is_focused or !emitter.clickable_highlight.is_mouse_over_area:
+		print("BUSY CAMERAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
 		return
 	
 	camera.is_busy = true

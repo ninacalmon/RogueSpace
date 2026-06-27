@@ -38,9 +38,7 @@ func _on_clicked():
 		HandsEventBus.door_interaction.emit()
 		if StatsManager.day != 3: PopUpSystem.show_text("Sem energia.")
 		return
-	is_focused = true
 	SpaceshipEventBus.focus_on.emit(zoom_in_amount, zoom_offset, self, true)
-	show_confirm()
 
 func show_confirm():
 	if !is_showing_confirmation:
@@ -104,6 +102,9 @@ func _on_focus_changed(focus: bool, _subject: Node2D):
 		clickable_highlight.is_mouse_over_area = false
 		clickable_highlight.active = true
 		is_focused = false
+	elif focus and _subject == self:
+		is_focused = true
+		show_confirm()
 
 func _process(_delta: float) -> void:
 	if clickable_highlight.is_mouse_over_area and has_energy:

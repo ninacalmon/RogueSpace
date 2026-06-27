@@ -33,13 +33,13 @@ func _on_focus_changed(focus: bool, subject: Node2D):
 		is_focused = false
 
 	elif  focus == true and subject == self:
+		is_focused = true
 		activate_sub_areas()
 
 func activate_sub_areas():
 	sub_area_resources_deposit.clickable_highlight.active = true
 
 func change_to_focused():
-	is_focused = true
 	SpaceshipEventBus.focus_on.emit(zoom_in_amount, zoom_offset, self, false)
 	#trocar sprite aqui
 
