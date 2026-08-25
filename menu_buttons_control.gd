@@ -5,11 +5,11 @@ extends Control
 @onready var exit: Button = $Pressable/Exit
 @onready var controlers_overlay: ColorRect = $ControlersOverlay
 @onready var _continue: Button = $Pressable/Continue
+@onready var settings: SettingsButton = $Pressable/Settings
 
 signal menu_selection_changed(selection_number: int)
 
 @onready var control_exit_button: Button = $ControlersOverlay/ControlExitButton
-
 
 func _ready() -> void:
 	Engine.time_scale = 1.0
@@ -26,8 +26,8 @@ func _ready() -> void:
 	_continue.mouse_entered.connect(_on_button_hovered.bind(0))
 	start.mouse_entered.connect(_on_button_hovered.bind(1))
 	start.focus_entered.connect(_on_button_hovered.bind(1))
-	controls.mouse_entered.connect(_on_button_hovered.bind(2))
-	controls.focus_entered.connect(_on_button_hovered.bind(2))
+	settings.mouse_entered.connect(_on_button_hovered.bind(2))
+	settings.focus_entered.connect(_on_button_hovered.bind(2))
 	exit.mouse_entered.connect(_on_button_hovered.bind(3))
 	exit.focus_entered.connect(_on_button_hovered.bind(3))
 	

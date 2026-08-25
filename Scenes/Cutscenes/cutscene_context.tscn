@@ -405,7 +405,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["Procurando se manter sempre à frente de seus rivais, a União Soviética investiu em uma primeira expedição intergalátictica, buscando chegar à origem do sinal desconhecido."]
+"values": ["Procurando se manter sempre à frente de seus rivais, a União Soviética investiu em uma primeira expedição intergaláctica, buscando chegar à origem do sinal desconhecido."]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
