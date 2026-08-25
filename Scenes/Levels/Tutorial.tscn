@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/Asteroids/asteroid_pieces.tscn" id="14_axxwk"]
 [ext_resource type="PackedScene" uid="uid://br070cnq6sve" path="res://Scenes/Enemies/enemy_basic.tscn" id="14_ev6ts"]
 [ext_resource type="Script" uid="uid://bhrrg6hud6dxq" path="res://Scenes/UI/tutorial_control.gd" id="15_fxugg"]
-[ext_resource type="PackedScene" uid="uid://3vg8bv7t077f" path="res://Scenes/BackHoles/black_hole.tscn" id="16_sw71j"]
+[ext_resource type="PackedScene" uid="uid://3vg8bv7t077f" path="res://Scenes/BlackHoles/black_hole.tscn" id="16_sw71j"]
 [ext_resource type="Script" uid="uid://clhd57u8quoxj" path="res://Scenes/Levels/tutorial_area.gd" id="17_1llwk"]
 [ext_resource type="Script" uid="uid://cvnhqvpx04eey" path="res://Scenes/Levels/tutorial_area2.gd" id="17_u4w04"]
 [ext_resource type="PackedScene" uid="uid://bskx6fe236s8a" path="res://Scenes/UI/ui.tscn" id="18_8x3qo"]
