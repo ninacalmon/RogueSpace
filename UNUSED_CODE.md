@@ -19,26 +19,8 @@
 - **Part of scenes:** none.
 - **Recommendation:** remove the autoload entry (or implement the hub); as is, it is an empty registry occupying a global singleton slot.
 
-### 1.3 `res://Scenes/start_limbo.tscn` (+ `res://Scenes/start_limbo.gd`)
-- **Use case:** appears to be a loading/"limbo" transition scene (~40 lines, own script `start_limbo.gd`).
-- **Where it is used:** nowhere. Grep for `start_limbo` → only hits are the scene reference its own script (`Scenes/start_limbo.tscn:3`). No other scene/script/autoload loads the PackedScene.
-- **Part of scenes:** itself only.
-- **Recommendation:** confirm it is leftover; likely deletable.
 
 ### 1.4 Unused planet/moon body variants (SpaceBodies)
-Live level scenes reference exactly these bodies:
-
-| Body file | Referenced by |
-|---|---|
-| `res://Scenes/SpaceBodies/planet_big1.tscn` | `Level_Day1.tscn:7`, `Level_Day2.tscn:23` |
-| `res://Scenes/SpaceBodies/PickedPlanets/planet_medium.tscn` | `Day1:20`, `Day2:20`, `Day3:21` |
-| `res://Scenes/SpaceBodies/PickedPlanets/planet_small1.tscn` | `Day1:21`, `Day2:19`, `Day3:20` |
-| `res://Scenes/SpaceBodies/PickedPlanets/planet_small2.tscn` | `Day1:23`, `Day2:22`, `Day3:23` |
-| `res://Scenes/SpaceBodies/PickedPlanets/planet_medium2.tscn` | `Day1:22`, `Day2:21`, `Day3:22` |
-| `res://Scenes/SpaceBodies/DAY3_planet_big1.tscn` | `Level_Day3.tscn:24` |
-| `res://Scenes/SpaceBodies/sun.tscn` | `Day1:18`, `Day2:17`, `Day3:18` |
-
-The following `.tscn` exist on disk but are **never referenced** by any level scene → **unused**:
 
 | File | Notes |
 |---|---|
