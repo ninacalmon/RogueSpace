@@ -185,7 +185,6 @@ position = Vector2(-2541, -2679)
 position = Vector2(1517, 305)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("20_0sgvc")]
 
