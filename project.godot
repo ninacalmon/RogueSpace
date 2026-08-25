@@ -32,6 +32,7 @@ InputGuide="*res://input_guide.tscn"
 DiaryDatabase="*res://diary_database.gd"
 HandsEventBus="*res://hands_event_bus.gd"
 MusicManager="*res://music_manager.tscn"
+_mcp_game_helper="*res://addons/godot_ai/runtime/game_helper.gd"
 
 [display]
 
@@ -45,7 +46,11 @@ project/assembly_name="rogue-space"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg", "res://addons/godot_ai/plugin.cfg")
+
+[gdunit4]
+
+settings/test/test_lookup_folder="Tests"
 
 [global_group]
 
