@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://dfaqtws11ry3s" path="res://Scenes/Levels/rich_text_label_4.gd" id="4_3so5s"]
 [ext_resource type="Script" uid="uid://bpxtguck5t3o3" path="res://Scenes/Levels/rich_text_label.gd" id="4_g56od"]
 [ext_resource type="Script" uid="uid://bsrtfrgcfw0uh" path="res://Scenes/Levels/rich_text_label_2.gd" id="4_p4bun"]
-[ext_resource type="Texture2D" uid="uid://bhshref68qilg" path="res://Sprites/panorama6.jpg" id="7_00qkb"]
+[ext_resource type="Texture2D" path="res://Sprites/panorama6.jpg" id="7_00qkb"]
 [ext_resource type="Script" uid="uid://c4xr3keunlmlg" path="res://Scenes/UI/Settings/settings.gd" id="8_fw6na"]
 [ext_resource type="Script" uid="uid://cp811on8gxwg6" path="res://Scenes/Levels/rich_text_label_10.gd" id="8_kha57"]
 [ext_resource type="Texture2D" uid="uid://tumvrrknvrfb" path="res://Sprites(main)/UI/controls.png" id="8_sic4q"]
