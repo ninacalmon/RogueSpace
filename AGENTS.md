@@ -43,17 +43,16 @@ res://
 │   │                    #   but resolves to root basic_bullet.gd)
 │   ├── Modulars/        # gameplay modules (composition components), map/tile generation, asteroid.gd
 │   ├── SpaceBodies/     # body_setup.gd base, planets, sun, orbit, vulnerability_area
-│   ├── BackHoles/       # black_hole + supermassive (see the BackHoles/BlackHoles gotcha below)
+│   ├── BlackHoles/      # black_hole + supermassive (renamed from BackHoles — see gotcha below)
 │   ├── Spaceship/       # mothership interior: diary, papers, deimos_hands, Monitor, UI/
 │   ├── UI/              # in-space HUD (ui.tscn, warnings, velocity, tutorial, day, resources)
 │   ├── Cutscenes/       # cutscene_context/final/final2/out_spaceship/credits
 │   └── start_limbo.tscn # boot/loading scene (the MAIN scene — flagged "unused" by path-grep only!)
 ├── Sound Effects/       # WAV/MP3 SFX (bus: "Sound Effects")
 ├── Music/               # MP3 tracks (bus: "Music")
-├── Sprites/, Sprites(main)/, Shaders/, Fonts/   # assets
+├── Sprites_main/, Shaders/, Fonts/   # assets
 ├── Shaders/             # .gdshader files (+ Shaders/BlackHoleShader.gdshader)
 ├── Tests/               # gdUnit4 suites (see Testing)
-├── DEFAULT UNUSED_DOCS #
 ├── STYLE.md             # project code style + LLM modification rules
 ├── TESTS.md             # gdUnit4 how-to + quirks
 ├── UNUSED_CODE.md       # audit of dead code/oddities
@@ -117,7 +116,7 @@ Key modules under `Scenes/Modulars/`:
 
 `res://Scenes/SpaceBodies/body_setup.gd` (`extends RigidBody2D`, `class_name BodySetup`) is the base for all space bodies. Exported: `collision: CollisionShape2D`, `sprite: Node2D`, `gravitational_field`, `gravitational_field_resources`, `body_randomizer`.
 
-**Extends BodySetup:** `Scenes/Asteroids/asteroid_pieces.gd`, `Scenes/BackHoles/black_hole.gd`, `Scenes/BackHoles/superm_black_hole.gd`, `Scenes/Modulars/asteroid.gd`, `Scenes/Player/player.gd`, `Scenes/SpaceBodies/boss_planet_day_3.gd`, `Scenes/SpaceBodies/planet.gd`.
+**Extends BodySetup:** `Scenes/Asteroids/asteroid_pieces.gd`, `Scenes/BlackHoles/black_hole.gd`, `Scenes/BlackHoles/superm_black_hole.gd`, `Scenes/Modulars/asteroid.gd`, `Scenes/Player/player.gd`, `Scenes/SpaceBodies/boss_planet_day_3.gd`, `Scenes/SpaceBodies/planet.gd`.
 
 ### Event buses
 
@@ -183,7 +182,7 @@ See `TESTS.md` for full details, including the gdUnit4 quirks below.
 
 See `UNUSED_CODE.md` (code) and `UNUSED_RESOURCES.md` (assets) for the full audited inventory. Highlights:
 
-- **BackHoles vs BlackHoles (ACTIVE):** the on-disk folder is `Scenes/BackHoles/` (same-symbol self-reference; actually the folder is **typographically "BackHoles"**), and level scenes/tests reference it. The corrected rename **`BlackHoles` already exists on `main`** — resolve by **merging main**, do **not** rename locally. Consequence: `Tests/Unit/black_hole_test.gd` currently FAILS (expects `res://Scenes/BlackHoles/…`) until that merge.
+- **BackHoles → BlackHoles (RESOLVED):** the on-disk folder is now **`Scenes/BlackHoles/`** and every reference (level scenes `Level_Day1/2/3.tscn`, `Tutorial.tscn`, and `Tests/Unit/black_hole_test.gd`) consistently uses `res://Scenes/BlackHoles/…`. The rename landed via merging `main`. Do **not** rename locally again.
 - **`res://Scenes/start_limbo.tscn` is the MAIN scene** but is flagged "unused" in path-based audits because `project.godot` references it **by UID only**, not by path. Same trap as the icon. Any path-grep-based "unused" audit must also check UID references.
 - **Stale UIDs / folder renames:** renaming a folder in a scene (e.g. via editor or `git mv`) does **not** rewrite `res://` paths inside `.tscn`/`.gd` files; re-point ext_resource `path=` lines manually (or merge the upstream rename).
 - `stats_manager.gd:55` `const FUEL_IMPULSE_USE_STEP: = 0.5` — **malformed typed const** (missing type). Still parses; used at `Scenes/Player/player.gd:201`. Don't "fix" it silently — it's referenced in tests with the literal `0.5`.

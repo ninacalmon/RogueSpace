@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bk55i4wpulfxb"]
 
 [ext_resource type="Script" uid="uid://clcm8jx1m8eel" path="res://Scenes/SpaceBodies/Moons/static_rotation.gd" id="1_8abtl"]
-[ext_resource type="Texture2D" uid="uid://w1c1lfvkfim" path="res://Sprites(main)/Planetas/Lua2.png" id="2_8abtl"]
+[ext_resource type="Texture2D" uid="uid://w1c1lfvkfim" path="res://Sprites_main/Planetas/moon_2.png" id="2_8abtl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8abtl"]
 radius = 40.012497

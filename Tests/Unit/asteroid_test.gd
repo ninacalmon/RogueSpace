@@ -5,7 +5,7 @@ extends GdUnitTestSuite
 # exported values on the root node. We test that script's exported defaults and
 # the `calculate_damage_and_pieces` helper, which is fully deterministic.
 
-const ASTEROID_SCRIPT := "res://Scenes/Modulars/asteroid.gd"
+const ASTEROID_SCRIPT := "res://Scenes/Asteroids/asteroid.gd"
 
 
 func _make() -> Asteroid:

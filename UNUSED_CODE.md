@@ -79,12 +79,8 @@ var player_have_perfurator: bool = true
 - **Attached by** `res://Scenes/Bullets/basic_bullet.tscn:3` and `res://Scenes/Bullets/super_bullet.tscn:3`.
 - **Smell:** placement inconsistent with the folder the scenes live in. Tests reference the root path (`Tests/Unit/basic_bullet_test.gd:3`).
 
-### 3.5 `res://Scenes/BackHoles/` vs `res://Scenes/BlackHoles/` (folder typo; both on disk via git)
-- Git status shows an **in‑progress rename**: `D Scenes/BackHoles/*` (deleted: `black_hole.gd`, `.uid`, `black_hole.tscn`, `black_hole_shader.gd`, `superm_black_hole.gd`, `supermassive_black_hole.tscn`) and untracked `?? Scenes/BlackHoles/` (new folder, correct spelling).
-- All live level scenes now reference the **new** casing `res://Scenes/BlackHoles/…`:
-  - `Level_Day1.tscn:25` (`black_hole.tscn`), `:27` (`supermassive_black_hole.tscn`), `:173` node `BlackHoles`
-  - same pattern in `Level_Day2.tscn`, `Level_Day3.tscn`, `Tutorial.tscn`.
-- **Note for finish:** commit the rename (deleting `BackHoles`) so the repo state matches the live references.
+### 3.5 `BackHoles/` → `BlackHoles/` (folder typo — RESOLVED)
+- The on-disk folder is now **`Scenes/BlackHoles/`** (correct spelling). All live level scenes (`Level_Day1/2/3.tscn`, `Tutorial.tscn`) and `Tests/Unit/black_hole_test.gd` consistently reference `res://Scenes/BlackHoles/…`. The rename landed via merging `main`; the old `BackHoles/` folder no longer exists.
 
 ### 3.6 Case‑sensitivity of `res://Scenes/modulars/` (lowercase) inside asteroid scenes
 - `asteroid_big.tscn:9`, `asteroid_medium.tscn:9` reference `path="res://Scenes/modulars/gravitational_field.tscn"` — **lowercase `modulars/`**, while the folder on disk is `res://Scenes/Modulars/`.

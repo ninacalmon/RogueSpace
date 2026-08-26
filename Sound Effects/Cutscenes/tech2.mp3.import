@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b4ni1pu1osv1e"
+path="res://.godot/imported/tech2.mp3-0e6ae250180ffcf375071fb9c631d15f.mp3str"
+
+[deps]
+
+source_file="res://Sound Effects/Cutscenes/tech2.mp3"
+dest_files=["res://.godot/imported/tech2.mp3-0e6ae250180ffcf375071fb9c631d15f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

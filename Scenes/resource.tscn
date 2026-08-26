@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://duod8nt2wlend"]
+[gd_scene load_steps=7 format=3 uid="uid://bcl1kfonft5yi"]
 
-[ext_resource type="Texture2D" uid="uid://bh7ursa1gvsqs" path="res://Sprites/VFX/VFX_Explosion1_strip8.png" id="1_h2yrh"]
+[ext_resource type="Texture2D" uid="uid://bh7ursa1gvsqs" path="res://Sprites_main/VFX/VFX_Explosion1_strip8.png" id="1_h2yrh"]
 [ext_resource type="Script" uid="uid://b8uwpl8kmnf0e" path="res://Scenes/SpaceBodies/body_setup.gd" id="3_td3b6"]
 [ext_resource type="Script" uid="uid://dakt7r353r7ae" path="res://Scenes/SpaceBodies/body_randomizer.gd" id="4_8dxig"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="5_07tds"]

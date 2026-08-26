@@ -1,6 +1,6 @@
 extends GdUnitTestSuite
 
-const BASIC_BULLET_SCRIPT := "res://basic_bullet.gd"
+const BASIC_BULLET_SCRIPT := "res://Scenes/Bullets/player_bullet.gd"
 
 
 func _make_bullet() -> Bullet:
