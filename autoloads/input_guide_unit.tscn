@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c0h5vysul4ic7"]
 
-[ext_resource type="Script" uid="uid://c38u5mb2gtnty" path="res://input_guide_unit.gd" id="1_acmaf"]
+[ext_resource type="Script" uid="uid://c38u5mb2gtnty" path="res://autoloads/input_guide_unit.gd" id="1_acmaf"]
 [ext_resource type="Texture2D" uid="uid://xyveaim3bqrb" path="res://sprites/ui/kenney_input/tile_0004.png" id="2_lw4ka"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gajip"]

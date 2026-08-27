@@ -1,6 +1,6 @@
 extends GdUnitTestSuite
 
-const GLOBALS_SCRIPT := "res://globals.gd"
+const GLOBALS_SCRIPT := "res://autoloads/globals.gd"
 
 func test_default_values() -> void:
 	var g = load(GLOBALS_SCRIPT).new()

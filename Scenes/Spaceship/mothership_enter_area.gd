@@ -82,6 +82,7 @@ func _on_yes_pressed():
 	Globals.changing_scene = true
 	SFXManager.play_sound(door_sfx)
 	is_showing_confirmation = false
+	Globals.is_showing_confirmation = false
 	LevelTransition.change_scene_to("res://scenes/levels/spaceship_interior.tscn", 1.2)
 	
 

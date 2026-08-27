@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c7mq3s1mkxtly"]
 
-[ext_resource type="Script" uid="uid://jmevw3wkeigu" path="res://input_guide.gd" id="1_iq3nb"]
-[ext_resource type="PackedScene" uid="uid://c0h5vysul4ic7" path="res://input_guide_unit.tscn" id="2_3mihy"]
+[ext_resource type="Script" uid="uid://jmevw3wkeigu" path="res://autoloads/input_guide.gd" id="1_iq3nb"]
+[ext_resource type="PackedScene" uid="uid://c0h5vysul4ic7" path="res://autoloads/input_guide_unit.tscn" id="2_3mihy"]
 
 [node name="InputGuide" type="CanvasLayer" node_paths=PackedStringArray("hidden_guide_array")]
 script = ExtResource("1_iq3nb")

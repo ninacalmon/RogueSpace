@@ -1,6 +1,6 @@
 extends GdUnitTestSuite
 
-const STATS_MANAGER_SCRIPT := "res://stats_manager.gd"
+const STATS_MANAGER_SCRIPT := "res://autoloads/stats_manager.gd"
 
 func test_default_values_on_new_instance() -> void:
 	var sm = load(STATS_MANAGER_SCRIPT).new()

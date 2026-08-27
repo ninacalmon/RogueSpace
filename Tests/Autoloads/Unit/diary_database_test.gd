@@ -1,6 +1,6 @@
 extends GdUnitTestSuite
 
-const DIARY_SCRIPT := "res://diary_database.gd"
+const DIARY_SCRIPT := "res://autoloads/diary_database.gd"
 
 func _make():
 	return load(DIARY_SCRIPT).new()

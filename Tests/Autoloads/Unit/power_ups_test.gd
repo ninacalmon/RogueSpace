@@ -1,6 +1,6 @@
 extends GdUnitTestSuite
 
-const POWER_UPS_SCRIPT := "res://power_ups.gd"
+const POWER_UPS_SCRIPT := "res://autoloads/power_ups.gd"
 
 func _make():
 	return load(POWER_UPS_SCRIPT).new()

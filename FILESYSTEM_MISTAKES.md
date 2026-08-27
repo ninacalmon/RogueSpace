@@ -18,7 +18,7 @@ INSTRUCTION: move file and re-point its references.
 
 ### 1.2 `input_guide.gd` / `input_guide.tscn` / `input_guide_unit.gd` / `input_guide_unit.tscn` — key-hint UI at root
 - The InputGuide autoload scene chain lives at `res://` root, while its controller logic is **duplicated in two other folders**.
-- **Referenced by:** autoload `InputGuide="*res://input_guide.tscn"` (`project.godot:31`); consumed by `Scenes/Levels/Level_Day1.tscn`, `Level_Day2.tscn`, `Level_Day3.tscn`, `Scenes/Levels/spaceship_interior.tscn`, `Tutorial.tscn`. `input_guide.tscn:4` instantiates `input_guide_unit.tscn`; `input_guide_unit.tscn:3` → `input_guide_unit.gd`.
+- **Referenced by:** autoload `InputGuide="*res://autoloads/input_guide.tscn"` (`project.godot:31`); consumed by `Scenes/Levels/Level_Day1.tscn`, `Level_Day2.tscn`, `Level_Day3.tscn`, `Scenes/Levels/spaceship_interior.tscn`, `Tutorial.tscn`. `input_guide.tscn:4` instantiates `input_guide_unit.tscn`; `input_guide_unit.tscn:3` → `input_guide_unit.gd`.
 - **Two divergent admin variants (split):** `Scenes/Levels/input_guide_admin.gd` (used by `Level_Day1.tscn:30`, `Level_Day2.tscn:30`, `Level_Day3.tscn:31`, `Tutorial.tscn:31`) and a **separate** `Scenes/Spaceship/input_guide_admin.gd` (used by `spaceship_interior.tscn:26`). Same subsystem, base at root, admin logic duplicated across `Levels/` and `Spaceship/`.
 - **Use:** on-screen key hints driven by the input map.
 - **Recommendation:** consolidate admin variants; move unit/admin/control into a single dedicated folder (e.g. `Scenes/UI/InputGuide/`).

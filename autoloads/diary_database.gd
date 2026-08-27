@@ -100,7 +100,7 @@ const EMPTY_DAY := {
 	#2: {
 		#"head": "[b]Eu odeio insetos!",
 		#"main": "O sistema de aquecimento da nave quebrou há alguns dias e só agora consegui arrumar.
- #
+#
 #A pior parte de tudo são aquelas pestes, que mesmo servindo como almoço, são um grande estorvo.",
 		#"sketch": preload("res://sprites/spaceship_interior/drawingTest.png")
 	#},

@@ -43,19 +43,19 @@ These came up as "possibly unused" but are **genuinely referenced** by live scen
 | `res://scenes/levels/rich_text_label_2.gd` | Same — `menu.tscn:10`. |
 | `res://scenes/levels/rich_text_label_4.gd` | Same — `menu.tscn:8`. |
 | `res://scenes/levels/rich_text_label_10.gd` | Same — `menu.tscn:13`. |
-| `res://input_guide_unit.gd` | Node used by **autoload** `input_guide.tscn` (singleton `InputGuide`, `project.godot:31`). `input_guide.tscn:4` embeds `input_guide_unit.tscn:3` (→ `res://input_guide_unit.gd`). |
+| `res://autoloads/input_guide_unit.gd` | Node used by **autoload** `input_guide.tscn` (singleton `InputGuide`, `project.godot:31`). `input_guide.tscn:4` embeds `input_guide_unit.tscn:3` (→ `res://autoloads/input_guide_unit.gd`). |
 
 ---
 
 ## 3. Oddities / code smell
 
-### 3.1 `res://stats_manager.gd:55` — malformed typed `const`
+### 3.1 `res://autoloads/stats_manager.gd:55` — malformed typed `const`
 - **Code:** `const FUEL_IMPULSE_USE_STEP: = 0.5` (missing type between `:` and `=`, should be `: float = 0.5` or inferred `:=`).
 - **Still loads** (the project parses it), but it is inconsistent with every sibling const (`const FUEL_USE_STEP: float = 0.1`).
 - **Where it is used (line):** `res://scenes/player/player.gd:201` (`StatsManager.player_current_fuel -= StatsManager.FUEL_IMPULSE_USE_STEP`). So the value is live gameplay fuel cost for impulses.
 - **Recommendation:** fix to `const FUEL_IMPULSE_USE_STEP: float = 0.5` and re‑verify.
 
-### 3.2 `res://globals.gd:31-35` — setter flips the flag to `false` immediately
+### 3.2 `res://autoloads/globals.gd:31-35` — setter flips the flag to `false` immediately
 ```gdscript
 var has_energy_in_spaceship: bool = false:
 	set (value):
@@ -67,7 +67,7 @@ var has_energy_in_spaceship: bool = false:
 - `fragments_value_to_sum` is then added to the bank by `Globals.add_frag_sum()` at `globals.gd:38` (`StatsManager.current_resources += fragments_value_to_sum` at `:39`).
 - **Smell:** mixing "record energy deposit" side‑effect into a plain `bool` property, with a setter that always ends `false` — the `has_energy…` name is misleading. Tests (`Tests/Autoloads/Unit/globals_test.gd`) pin the current behavior.
 
-### 3.3 `res://stats_manager.gd:49` — `player_have_perfurator` defaults `true`
+### 3.3 `res://autoloads/stats_manager.gd:49` — `player_have_perfurator` defaults `true`
 ```gdscript
 var player_have_perfurator: bool = true
 ```

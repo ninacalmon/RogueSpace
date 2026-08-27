@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ccrpttrm0ylai"]
 
-[ext_resource type="Script" uid="uid://bjsbtxgchsek0" path="res://custom_tooltip.gd" id="1_wgoo6"]
+[ext_resource type="Script" uid="uid://bjsbtxgchsek0" path="res://autoloads/custom_tooltip.gd" id="1_wgoo6"]
 
 [node name="CustomTooltip" type="CanvasLayer"]
 script = ExtResource("1_wgoo6")

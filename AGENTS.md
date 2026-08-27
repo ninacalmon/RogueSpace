@@ -31,7 +31,9 @@ Core loop: **drift → break asteroids → collect resources → reach the mothe
 
 ```
 res://
-├── event_bus.gd, globals.gd, stats_manager.gd, power_ups.gd, …     # autoload scripts (root)
+├── autoloads/          # autoload singletons: globals, event_*_bus, stats_manager, power_ups,
+│                        #   sfx_manager, diary_database, hands_event_bus, controller_vibration
+│                        #   + level_transition/input_guide/custom_tooltip/music_manager scenes
 ├── scenes/              # all game folders are snake_case (Godot style guide)
 │   ├── levels/          # menu, Tutorial, Level_Day1/2/3, game_over,
 │   │                    #   spaceship_interior, resources_counting (+ input_guide_admin.gd, tutorial_area*.gd)
@@ -97,20 +99,20 @@ Registered in `project.godot` `[autoload]` (order matters — later autoloads ma
 
 | Name | Source | Purpose |
 |---|---|---|
-| `Globals` | `globals.gd` | Global flags (`can_teleport`, `is_cutscene`, `changing_scene`, `fake_mouse_input`), `next_scene_path`, `last_level_path`, `has_energy_in_spaceship` (+ `fragments_value_to_sum`), `add_frag_sum()`, `reload_current_scene()`, `update_resources_goal()`, `reset_game_state()` |
-| `EventBus` | `event_bus.gd` | Global gameplay signals (see [Event buses](#event-buses)) |
-| `SFXManager` | `sfx_manager.gd` | One-shot SFX: `play_sound(audio_player)` duplicates the player into the current scene, plays, `queue_free`s on `finished` |
-| `LevelTransition` | `level_transition.tscn/.gd` | `change_scene_to(scene_path, fade_in, fade_out)` → deferred `change_scene_to_file` |
-| `PowerUps` | `power_ups.gd` | Power-up levels (`add_current_level`/`get_current_level`/`apply_power_up`/`reset_game_state`) |
-| `ControllerVibration` | `controller_vibration.gd` | Gamepad rumble (`vibrate_controller(strength_index, duration, controller_index)`) |
-| `SpaceshipEventBus` | `spaceship_event_bus.gd` | Mothership-UI signals (focus, resource counting) |
+| `Globals` | `autoloads/globals.gd` | Global flags (`can_teleport`, `is_cutscene`, `changing_scene`, `fake_mouse_input`), `next_scene_path`, `last_level_path`, `has_energy_in_spaceship` (+ `fragments_value_to_sum`), `add_frag_sum()`, `reload_current_scene()`, `update_resources_goal()`, `reset_game_state()` |
+| `EventBus` | `autoloads/event_bus.gd` | Global gameplay signals (see [Event buses](#event-buses)) |
+| `SFXManager` | `autoloads/sfx_manager.gd` | One-shot SFX: `play_sound(audio_player)` duplicates the player into the current scene, plays, `queue_free`s on `finished` |
+| `LevelTransition` | `autoloads/level_transition.tscn/.gd` | `change_scene_to(scene_path, fade_in, fade_out)` → deferred `change_scene_to_file` |
+| `PowerUps` | `autoloads/power_ups.gd` | Power-up levels (`add_current_level`/`get_current_level`/`apply_power_up`/`reset_game_state`) |
+| `ControllerVibration` | `autoloads/controller_vibration.gd` | Gamepad rumble (`vibrate_controller(strength_index, duration, controller_index)`) |
+| `SpaceshipEventBus` | `autoloads/spaceship_event_bus.gd` | Mothership-UI signals (focus, resource counting) |
 | `PopUpSystem` | `scenes/spaceship/ui/pop_up_control.tscn` | Interaction pop-ups |
-| `StatsManager` | `stats_manager.gd` | **Central player/game state** (see below) |
-| `CustomTooltip` | `custom_tooltip.tscn` | Tooltip overlay |
-| `InputGuide` | `input_guide.tscn` (embeds `input_guide_unit.tscn`) | Key hints; levels use `input_guide_admin.gd` variants |
-| `DiaryDatabase` | `diary_database.gd` | Diary page content per day (`get_day(day) -> Dictionary`) |
-| `HandsEventBus` | `hands_event_bus.gd` | Deimos-hands interaction signals |
-| `MusicManager` | `music_manager.tscn/.gd` | Dual AudioStreamPlayer crossfade, `music_map` to `music/*.mp3` |
+| `StatsManager` | `autoloads/stats_manager.gd` | **Central player/game state** (see below) |
+| `CustomTooltip` | `autoloads/custom_tooltip.tscn` | Tooltip overlay |
+| `InputGuide` | `autoloads/input_guide.tscn` (embeds `autoloads/input_guide_unit.tscn`) | Key hints; levels use `input_guide_admin.gd` variants |
+| `DiaryDatabase` | `autoloads/diary_database.gd` | Diary page content per day (`get_day(day) -> Dictionary`) |
+| `HandsEventBus` | `autoloads/hands_event_bus.gd` | Deimos-hands interaction signals |
+| `MusicManager` | `autoloads/music_manager.tscn/.gd` | Dual AudioStreamPlayer crossfade, `music_map` to `music/*.mp3` |
 | `_mcp_game_helper` | `addons/godot_ai/runtime/game_helper.gd` | godot_ai MCP runtime bridge (addon; don't touch) |
 
 ### StatsManager — the state hub
@@ -214,6 +216,7 @@ See `UNUSED_CODE.md` (code) and `UNUSED_RESOURCES.md` (assets) for the full audi
 - **Stale UIDs / folder renames:** renaming a folder in a scene (e.g. via editor or `git mv`) does **not** rewrite `res://` paths inside `.tscn`/`.gd` files; re-point ext_resource `path=` lines manually (or merge the upstream rename).
 - `stats_manager.gd:55` `const FUEL_IMPULSE_USE_STEP: = 0.5` — **malformed typed const** (missing type). Still parses; used at `scenes/player/player.gd:201`. Don't "fix" it silently — it's referenced in tests with the literal `0.5`.
 - `globals.gd` `has_energy_in_spaceship` setter: setting it `true` stores `fragments_value_to_sum = StatsManager.resources_needed` and immediately self-resets to `false`; the only readable way it stays `true` is never — it's a trigger, not a flag. Tests encode this behavior.
+- **`Globals.is_showing_confirmation` is synced by hand, not a pure flag:** the only writer is `scenes/spaceship/mothership_enter_area.gd:28`, which copies the entrance's local `is_showing_confirmation` every `_process`. Because entering the mothership **pauses the tree** (via `LevelTransition.change_scene_to` → `get_tree().paused = true`) before the node is freed, the global could stay `true` and permanently block pause — `scenes/ui/pause_overlay.gd:17` early-returns while `Globals.is_showing_confirmation` or `Globals.is_cutscene` is set. The fix clears the global explicitly in `_on_yes_pressed()` (alongside the local). Keep the explicit clear if you touch entry logic.
 - `stats_manager.gd` `player_have_perfurator` defaults `true` (the only writer is `power_ups.gd:74`, guard at `vulnerability_area.gd:20`).
 - `res://basic_bullet.gd` lives at the **project root** (not `scenes/bullets/`) and is attached by both `basic_bullet.tscn` and `super_bullet.tscn`.
 - **Case-sensitivity trap (RESOLVED):** the folder is now **`scenes/modulars/`** (lowercase) so the old `res://Scenes/modulars/` case-mismatch in the asteroid scenes no longer breaks on case-sensitive filesystems.
