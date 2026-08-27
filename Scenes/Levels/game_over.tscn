@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bbfue7xfisdim"]
 
-[ext_resource type="Texture2D" uid="uid://eekvmorfi2ut" path="res://Sprites_main/Starfields/Starfield 2 - 1024x1024.png" id="1_cfvhd"]
+[ext_resource type="Texture2D" uid="uid://eekvmorfi2ut" path="res://Sprites/Starfields/Starfield 2 - 1024x1024.png" id="1_cfvhd"]
 [ext_resource type="Script" uid="uid://wf0piy7g0hye" path="res://Scenes/UI/game_over_control.gd" id="1_rohwx"]
 [ext_resource type="Script" uid="uid://ktd1ndy25a0o" path="res://Scenes/UI/GameOver/pressable_game_over.gd" id="4_l0mjm"]
 

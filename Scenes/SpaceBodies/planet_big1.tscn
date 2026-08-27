@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bjqibpfesudnp"]
 
 [ext_resource type="Script" uid="uid://b6ch1ii8ge4tt" path="res://Scenes/SpaceBodies/planet.gd" id="1_s7w56"]
-[ext_resource type="Texture2D" uid="uid://bv75432b5i0ny" path="res://Sprites_main/Planetas/PlanetaMaior.png" id="2_g3wn1"]
+[ext_resource type="Texture2D" uid="uid://bv75432b5i0ny" path="res://Sprites/Planetas/PlanetaMaior.png" id="2_g3wn1"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="5_q0eps"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m0iey"]

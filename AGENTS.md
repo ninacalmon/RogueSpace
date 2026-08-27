@@ -32,33 +32,59 @@ Core loop: **drift → break asteroids → collect resources → reach the mothe
 ```
 res://
 ├── event_bus.gd, globals.gd, stats_manager.gd, power_ups.gd, …     # autoload scripts (root)
-├── basic_bullet.gd                                                  # NOTE: lives at root, not Scenes/Bullets!
 ├── Scenes/
 │   ├── Levels/          # menu, Tutorial, Level_Day1/2/3, game_over,
-│   │                    #   spaceship_interior, resources_counting
-│   ├── Player/          # player.gd (BodySetup), mothership
-│   ├── Asteroids/       # asteroid_small/medium/big, asteroid_pieces
-│   ├── Enemies/         # enemy_basic, enemy_vermin, enemy_larvae, boss
-│   ├── Bullets/         # boss_bullet, boss_targeted_bullet (*basic_bullet*.tscn lives under Scenes/Bullets/
-│   │                    #   but resolves to root basic_bullet.gd)
-│   ├── Modulars/        # gameplay modules (composition components), map/tile generation, asteroid.gd
-│   ├── SpaceBodies/     # body_setup.gd base, planets, sun, orbit, vulnerability_area
+│   │                    #   spaceship_interior, resources_counting (+ input_guide_admin.gd, tutorial_area*.gd)
+│   ├── Player/          # player.gd (BodySetup), player.tscn
+│   ├── Asteroids/       # asteroid_small/medium/big, asteroid_pieces, asteroid.gd
+│   ├── Enemies/         # enemy_basic, enemy_vermin, enemy_larvae, boss, matriarch_hook.gd
+│   ├── Bullets/         # player_bullet.gd (shared by basic_bullet.tscn + super_bullet.tscn),
+│   │                    #   boss_bullet, boss_targeted_bullet
+│   ├── Modulars/        # gameplay modules (composition components), map/tile generation
+│   ├── SpaceBodies/     # body_setup.gd base, planets, sun, orbit, Moons/, vulnerability_area
 │   ├── BlackHoles/      # black_hole + supermassive (renamed from BackHoles — see gotcha below)
-│   ├── Spaceship/       # mothership interior: diary, papers, deimos_hands, Monitor, UI/
-│   ├── UI/              # in-space HUD (ui.tscn, warnings, velocity, tutorial, day, resources)
+│   ├── Spaceship/       # mothership + mothership_control + mothership_enter_area;
+│   │                    #   interior: diary, papers, deimos_hands, Monitor, UI/
+│   ├── UI/              # in-space HUD + shared UI scripts (ui.tscn, warnings, velocity, tutorial,
+│   │                    #   day, resources, rich_text_label*, button.gd, main_light.gd, game_over_control.gd)
 │   ├── Cutscenes/       # cutscene_context/final/final2/out_spaceship/credits
 │   └── start_limbo.tscn # boot/loading scene (the MAIN scene — flagged "unused" by path-grep only!)
-├── Sound Effects/       # WAV/MP3 SFX (bus: "Sound Effects")
+├── Sound Effects/       # WAV/MP3 SFX (bus: "Sound Effects") — subfolders: SpaceBodies/, Cutscenes/,
+│                        #   Player/, UI/, Ambience/, Asteroids/, Collecting/, Enemies/, Shoot/, Spaceship/
 ├── Music/               # MP3 tracks (bus: "Music")
-├── Sprites_main/, Shaders/, Fonts/   # assets
+├── Sprites/             # all sprite assets (merged from Sprites/ + Sprites(main)/; renamed from Sprites_main/)
 ├── Shaders/             # .gdshader files (+ Shaders/BlackHoleShader.gdshader)
+├── Fonts/               # .ttf fonts
 ├── Tests/               # gdUnit4 suites (see Testing)
-├── STYLE.md             # project code style + LLM modification rules
-├── TESTS.md             # gdUnit4 how-to + quirks
+├── STYLE.md             # project code style + LLM modification rules (read before editing code)
+├── TESTS.md             # gdUnit4 how-to + quirks (read before writing/running tests)
 ├── UNUSED_CODE.md       # audit of dead code/oddities
 ├── UNUSED_RESOURCES.md  # audit of dead asset resources
+├── FILESYSTEM_MISTAKES.md  # filesystem org audit (misplaced/disorganized/naming — prior fixes)
 └── AGENTS.md            # this file
 ```
+
+> **Note on prior reorganization:** the asset folders `Sprites/` + `Sprites(main)/` were merged into a single `Sprites_main/` (later renamed to `Sprites/`), `basic_bullet.gd` moved to `Scenes/Bullets/player_bullet.gd`, `asteroid.gd` moved to `Scenes/Asteroids/`, mothership moved to `Scenes/Spaceship/`, `SpaceBodies/PickedPlanets/` flattened to root, and shared UI scripts moved into `Scenes/UI/`. The tree above is the current on-disk layout.
+
+---
+
+## Documentation map — what to read, and when
+
+This project's notes are split across several files so each stays focused. **Read this file first** (it is the overview). Then, depending on the task, consult the following:
+
+| When you… | Read | Why |
+|---|---|---|
+| Are about to **write or edit any code** (script, scene, resource) | **`STYLE.md`** | Authoritative style guide **plus two mandatory LLM rules**: the *Variable Re-assertion Rule* (re-assert an `@export`/constant's original value after reassigning it) and the *Preservation of Functionality Rule* (keep behavior identical — only ordering/formatting/cleaning changes unless explicitly asked). **Both are mandatory** for any LLM editing code in this repo. |
+| Are about to **write, run, or debug tests** | **`TESTS.md`** | gdUnit4 how-to + the hard-won quirks (suite halts on first failure, lambda-by-value capture, two `process_frame` awaits, dead-end MCP `test_run` tool, etc.). Read it *before* touching `Tests/` or running the suite. |
+| Need to know **which code/scenes are dead or odd** | **`UNUSED_CODE.md`** | Audit of unused/dead scripts, unused scenes, and oddities (malformed const, trigger-not-flag setters, case-sensitivity traps). Don't re-create or re-import anything marked *resolved*. |
+| Need to know **which assets (images/audio/video/shaders) are dead** | **`UNUSED_RESOURCES.md`** | Audit of unused resources and which are safe to delete. Don't re-import or re-create anything marked resolved. |
+| Are about to **move/rename files or re-point references** | **`FILESYSTEM_MISTAKES.md`** | Audit of misplaced/disorganized/non-descriptive filesystem items and the reorganizations already applied. See the *Note on prior reorganization* in the layout above for the current state. |
+
+**Fast rules of thumb:**
+- Editing **code** → read `STYLE.md` first.
+- Touching **tests** → read `TESTS.md` first.
+- After **any** change → run the suite (see [Testing](#testing)); re-run the rescan command if you moved/renamed scripts (`/usr/local/bin/godot --headless --editor --quit --path .`) so the class cache rebuilds.
+- Before **deleting** something flagged dead in the UNUSED docs, re-verify references (UID-referenced files like the main scene and the icon are invisible to path-greps).
 
 ---
 

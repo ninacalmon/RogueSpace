@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://gcaxr5wvuwar"]
 
-[ext_resource type="Texture2D" uid="uid://wye3e38tj8hc" path="res://Sprites_main/TemporaryPlanets/NewMap/sun.png" id="1_gwkba"]
+[ext_resource type="Texture2D" uid="uid://wye3e38tj8hc" path="res://Sprites/TemporaryPlanets/NewMap/sun.png" id="1_gwkba"]
 [ext_resource type="Script" uid="uid://x8dn2ub84fyj" path="res://Scenes/SpaceBodies/sun.gd" id="1_nxpjy"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="2_eixih"]
 [ext_resource type="Script" uid="uid://b8uwpl8kmnf0e" path="res://Scenes/SpaceBodies/body_setup.gd" id="2_gwkba"]

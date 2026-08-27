@@ -17,29 +17,29 @@ SKIP, NEXT
 var current_input_device: InputDevice = InputDevice.KEYBOARD
 
 # ICONS CONTROLER
-const A_BUTTON: CompressedTexture2D = preload("res://Sprites_main/UI/Kenney Input/tile_0004.png")
-const B_BUTTON: CompressedTexture2D = preload("res://Sprites_main/UI/Kenney Input/tile_0005.png")
-const Y_BUTTON: CompressedTexture2D = preload("res://Sprites_main/UI/Kenney Input/tile_0007.png")
-const X_BUTTON: CompressedTexture2D = preload("res://Sprites_main/UI/Kenney Input/tile_0006.png")
-const L_TRIGGER: CompressedTexture2D = preload("res://Sprites_main/UI/Kenney Input/tile_0621.png")
-const R_TRIGGER: CompressedTexture2D = preload("res://Sprites_main/UI/Kenney Input/tile_0622.png")
-const L_SHOULDER: CompressedTexture2D = preload("res://Sprites_main/UI/Kenney Input/tile_0623.png")
-const R_SHOULDER: CompressedTexture2D = preload("res://Sprites_main/UI/Kenney Input/tile_0624.png")
-const L_ANALOG: CompressedTexture2D = preload("res://Sprites_main/UI/Kenney Input/tile_0423.png")
-const R_ANALOG: CompressedTexture2D = preload("res://Sprites_main/UI/Kenney Input/tile_0491.png")
-const D_PAD: CompressedTexture2D = preload("res://Sprites_main/UI/Kenney Input/tile_0034.png")
+const A_BUTTON: CompressedTexture2D = preload("res://Sprites/UI/Kenney Input/tile_0004.png")
+const B_BUTTON: CompressedTexture2D = preload("res://Sprites/UI/Kenney Input/tile_0005.png")
+const Y_BUTTON: CompressedTexture2D = preload("res://Sprites/UI/Kenney Input/tile_0007.png")
+const X_BUTTON: CompressedTexture2D = preload("res://Sprites/UI/Kenney Input/tile_0006.png")
+const L_TRIGGER: CompressedTexture2D = preload("res://Sprites/UI/Kenney Input/tile_0621.png")
+const R_TRIGGER: CompressedTexture2D = preload("res://Sprites/UI/Kenney Input/tile_0622.png")
+const L_SHOULDER: CompressedTexture2D = preload("res://Sprites/UI/Kenney Input/tile_0623.png")
+const R_SHOULDER: CompressedTexture2D = preload("res://Sprites/UI/Kenney Input/tile_0624.png")
+const L_ANALOG: CompressedTexture2D = preload("res://Sprites/UI/Kenney Input/tile_0423.png")
+const R_ANALOG: CompressedTexture2D = preload("res://Sprites/UI/Kenney Input/tile_0491.png")
+const D_PAD: CompressedTexture2D = preload("res://Sprites/UI/Kenney Input/tile_0034.png")
 
 # ICONS KEYBOARD
-const SPACE_KEY: CompressedTexture2D = preload("res://Sprites_main/UI/Kenney Input/tile_0801.png")
-const X_KEY: CompressedTexture2D = preload("res://Sprites_main/UI/Kenney Input/tile_0156.png")
-const T_KEY: CompressedTexture2D = preload("res://Sprites_main/UI/Kenney Input/tile_0089.png")
-const WASD_KEY: CompressedTexture2D = preload("res://Sprites_main/UI/Kenney Input/tile_0816.png")
-const SHIFT_KEY: CompressedTexture2D = preload("res://Sprites_main/UI/Kenney Input/tile_0819.png")
-const CTRL_KEY: CompressedTexture2D = preload("res://Sprites_main/UI/Kenney Input/tile_0820.png")
-const MOUSE: CompressedTexture2D = preload("res://Sprites_main/UI/Kenney Input/tile_0076.png")
-const CURSOR: CompressedTexture2D = preload("res://Sprites_main/UI/Kenney Input/tile_0822.png")
-const L_CLICK: CompressedTexture2D = preload("res://Sprites_main/UI/Kenney Input/tile_0077.png")
-const R_CLICK: CompressedTexture2D = preload("res://Sprites_main/UI/Kenney Input/tile_0078.png")
+const SPACE_KEY: CompressedTexture2D = preload("res://Sprites/UI/Kenney Input/tile_0801.png")
+const X_KEY: CompressedTexture2D = preload("res://Sprites/UI/Kenney Input/tile_0156.png")
+const T_KEY: CompressedTexture2D = preload("res://Sprites/UI/Kenney Input/tile_0089.png")
+const WASD_KEY: CompressedTexture2D = preload("res://Sprites/UI/Kenney Input/tile_0816.png")
+const SHIFT_KEY: CompressedTexture2D = preload("res://Sprites/UI/Kenney Input/tile_0819.png")
+const CTRL_KEY: CompressedTexture2D = preload("res://Sprites/UI/Kenney Input/tile_0820.png")
+const MOUSE: CompressedTexture2D = preload("res://Sprites/UI/Kenney Input/tile_0076.png")
+const CURSOR: CompressedTexture2D = preload("res://Sprites/UI/Kenney Input/tile_0822.png")
+const L_CLICK: CompressedTexture2D = preload("res://Sprites/UI/Kenney Input/tile_0077.png")
+const R_CLICK: CompressedTexture2D = preload("res://Sprites/UI/Kenney Input/tile_0078.png")
 #const NAME: CompressedTexture2D = preload()
 
 
@@ -220,25 +220,25 @@ func vanish(subject: Control):
 #enum ActionType { CONFIRM, RETURN, TELEPORT }
 #
 #const CONTROLLER_INPUT_TYPE: Dictionary [String, CompressedTexture2D] = {
-	#"A_BUTTON" : preload("res://Sprites_main/UI/Kenney Input/tile_0004.png"),
-	#"B_BUTTON" : preload("res://Sprites_main/UI/Kenney Input/tile_0005.png"),
-	#"Y_BUTTON" : preload("res://Sprites_main/UI/Kenney Input/tile_0007.png"),
-	#"L_ANALOG" : preload("res://Sprites_main/UI/Kenney Input/tile_0007.png"),
-	#"R_ANALOG" : preload("res://Sprites_main/UI/Kenney Input/tile_0007.png"),
-	#"R_SHOULDER" : preload("res://Sprites_main/UI/Kenney Input/tile_0007.png"),
-	#"L_TRIGGER" : preload("res://Sprites_main/UI/Kenney Input/tile_0007.png"),
-	#"R_TRIGGER" : preload("res://Sprites_main/UI/Kenney Input/tile_0007.png")
+	#"A_BUTTON" : preload("res://Sprites/UI/Kenney Input/tile_0004.png"),
+	#"B_BUTTON" : preload("res://Sprites/UI/Kenney Input/tile_0005.png"),
+	#"Y_BUTTON" : preload("res://Sprites/UI/Kenney Input/tile_0007.png"),
+	#"L_ANALOG" : preload("res://Sprites/UI/Kenney Input/tile_0007.png"),
+	#"R_ANALOG" : preload("res://Sprites/UI/Kenney Input/tile_0007.png"),
+	#"R_SHOULDER" : preload("res://Sprites/UI/Kenney Input/tile_0007.png"),
+	#"L_TRIGGER" : preload("res://Sprites/UI/Kenney Input/tile_0007.png"),
+	#"R_TRIGGER" : preload("res://Sprites/UI/Kenney Input/tile_0007.png")
 #}
 #
 #const KEYBOARD_INPUT_TYPE: Dictionary [String, CompressedTexture2D] = {
-	#"SPACE_KEY" : preload("res://Sprites_main/UI/Kenney Input/tile_0004.png"),
-	#"C_KEY" : preload("res://Sprites_main/UI/Kenney Input/tile_0005.png"),
-	#"T_KEY" : preload("res://Sprites_main/UI/Kenney Input/tile_0007.png"),
-	#"WASD_KEY" : preload("res://Sprites_main/UI/Kenney Input/tile_0007.png"),
-	#"MOUSE_CURSOR" : preload("res://Sprites_main/UI/Kenney Input/tile_0007.png"),
-	#"L_CLICK" : preload("res://Sprites_main/UI/Kenney Input/tile_0007.png"),
-	#"CTRL_KEY" : preload("res://Sprites_main/UI/Kenney Input/tile_0007.png"),
-	#"SHIFT_KEY" : preload("res://Sprites_main/UI/Kenney Input/tile_0007.png")
+	#"SPACE_KEY" : preload("res://Sprites/UI/Kenney Input/tile_0004.png"),
+	#"C_KEY" : preload("res://Sprites/UI/Kenney Input/tile_0005.png"),
+	#"T_KEY" : preload("res://Sprites/UI/Kenney Input/tile_0007.png"),
+	#"WASD_KEY" : preload("res://Sprites/UI/Kenney Input/tile_0007.png"),
+	#"MOUSE_CURSOR" : preload("res://Sprites/UI/Kenney Input/tile_0007.png"),
+	#"L_CLICK" : preload("res://Sprites/UI/Kenney Input/tile_0007.png"),
+	#"CTRL_KEY" : preload("res://Sprites/UI/Kenney Input/tile_0007.png"),
+	#"SHIFT_KEY" : preload("res://Sprites/UI/Kenney Input/tile_0007.png")
 #}
 #
 #const COMMON_ACTIONS: Dictionary [String, String] = {

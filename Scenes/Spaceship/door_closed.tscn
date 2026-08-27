@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cjo186wx81yoa" path="res://Scenes/Spaceship/door_closed.gd" id="1_gx1va"]
 [ext_resource type="Shader" uid="uid://cccnue3fm2pyc" path="res://Shaders/outline.gdshader" id="2_x5vf2"]
-[ext_resource type="Texture2D" uid="uid://2njdt1dx0y8n" path="res://Sprites_main/SpaceshipInterior/SpaceshipDoor.png" id="3_rnpjw"]
+[ext_resource type="Texture2D" uid="uid://2njdt1dx0y8n" path="res://Sprites/SpaceshipInterior/SpaceshipDoor.png" id="3_rnpjw"]
 [ext_resource type="Script" uid="uid://jtbq6dor8pk0" path="res://Scenes/Modulars/clickable_highlight.gd" id="4_oc366"]
 [ext_resource type="AudioStream" uid="uid://bjpdfvmmyk2k1" path="res://Sound Effects/Spaceship/SFX_dooropen.wav" id="5_lnxwh"]
 [ext_resource type="Script" uid="uid://c4rjuhxn0t5h3" path="res://Scenes/Spaceship/shake_module.gd" id="6_x5vf2"]
