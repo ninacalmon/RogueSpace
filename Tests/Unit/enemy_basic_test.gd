@@ -1,7 +1,7 @@
 extends GdUnitTestSuite
 
-const EnemyBasicScript := preload("res://Scenes/Enemies/enemy_basic.gd")
-const PlayerScript := preload("res://Scenes/Player/player.gd")
+const EnemyBasicScript := preload("res://scenes/enemies/enemy_basic.gd")
+const PlayerScript := preload("res://scenes/player/player.gd")
 
 
 func _make_player() -> Player:

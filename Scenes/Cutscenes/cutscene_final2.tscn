@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://d3r2tex187gs2"]
 
-[ext_resource type="Script" uid="uid://c85wpyx8ihx1i" path="res://Scenes/Cutscenes/cutscene.gd" id="1_n3bjn"]
-[ext_resource type="Shader" uid="uid://bpeqc2oh4cgdj" path="res://Shaders/pixelated.gdshader" id="3_hstnp"]
-[ext_resource type="Texture2D" uid="uid://cyrvbfkrobaa1" path="res://Sprites/bookTileset.png" id="4_k5qay"]
-[ext_resource type="Texture2D" uid="uid://beinhniahsmx2" path="res://Sprites/UI/circle3-export.png" id="4_ne3gn"]
-[ext_resource type="Script" uid="uid://cfolitj2jt1tl" path="res://Scenes/Cutscenes/diary_final_cutscene.gd" id="5_ffttc"]
-[ext_resource type="PackedScene" uid="uid://qwqle3odi0wk" path="res://Scenes/Spaceship/diary_page.tscn" id="5_qdhs3"]
+[ext_resource type="Script" uid="uid://c85wpyx8ihx1i" path="res://scenes/cutscenes/cutscene.gd" id="1_n3bjn"]
+[ext_resource type="Shader" uid="uid://bpeqc2oh4cgdj" path="res://shaders/pixelated.gdshader" id="3_hstnp"]
+[ext_resource type="Texture2D" uid="uid://cyrvbfkrobaa1" path="res://sprites/bookTileset.png" id="4_k5qay"]
+[ext_resource type="Texture2D" uid="uid://beinhniahsmx2" path="res://sprites/ui/circle3-export.png" id="4_ne3gn"]
+[ext_resource type="Script" uid="uid://cfolitj2jt1tl" path="res://scenes/cutscenes/diary_final_cutscene.gd" id="5_ffttc"]
+[ext_resource type="PackedScene" uid="uid://qwqle3odi0wk" path="res://scenes/spaceship/diary_page.tscn" id="5_qdhs3"]
 
 [sub_resource type="Animation" id="Animation_j6pbb"]
 length = 0.001

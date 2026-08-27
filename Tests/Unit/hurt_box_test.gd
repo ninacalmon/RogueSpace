@@ -1,6 +1,6 @@
 extends GdUnitTestSuite
 
-const HurtBoxScript := preload("res://Scenes/Modulars/hurt_box.gd")
+const HurtBoxScript := preload("res://scenes/modulars/hurt_box.gd")
 
 
 func test_extends_area2d() -> void:

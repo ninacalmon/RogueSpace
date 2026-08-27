@@ -15,5 +15,5 @@ func _on_clicked():
 		PopUpSystem.show_text("Não está na hora ainda.")
 		shake_module.shake(self, 0.2, 0.6)
 	else:
-		Globals.next_scene_path = "res://Scenes/Cutscenes/cutscene_final2.tscn"
-		LevelTransition.change_scene_to("res://Scenes/Cutscenes/cutscene_final.tscn")
+		Globals.next_scene_path = "res://scenes/cutscenes/cutscene_final2.tscn"
+		LevelTransition.change_scene_to("res://scenes/cutscenes/cutscene_final.tscn")

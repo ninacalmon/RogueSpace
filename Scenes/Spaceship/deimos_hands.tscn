@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dckqqes7uw3fy"]
 
-[ext_resource type="Script" uid="uid://fdyb228vvyco" path="res://Scenes/Spaceship/deimos_hands.gd" id="1_r7p7f"]
-[ext_resource type="SpriteFrames" uid="uid://d0x7c8g07d0kq" path="res://Scenes/Spaceship/deimos_hands.tres" id="2_uog6n"]
+[ext_resource type="Script" uid="uid://fdyb228vvyco" path="res://scenes/spaceship/deimos_hands.gd" id="1_r7p7f"]
+[ext_resource type="SpriteFrames" uid="uid://d0x7c8g07d0kq" path="res://scenes/spaceship/deimos_hands.tres" id="2_uog6n"]
 
 [sub_resource type="Animation" id="Animation_ikq8v"]
 length = 0.001

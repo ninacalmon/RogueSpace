@@ -1,0 +1,77 @@
+[gd_scene load_steps=16 format=3 uid="uid://sfrd0aftb340"]
+
+[ext_resource type="Script" uid="uid://bbrlxfbmbnwgh" path="res://scenes/asteroids/asteroid_fragment/asteroid_fragments.gd" id="1_1ost7"]
+[ext_resource type="Shader" uid="uid://bjetsh4wdtn8e" path="res://shaders/palette_swap.tres" id="2_yu30o"]
+[ext_resource type="Texture2D" uid="uid://bflk5f2qeiyqi" path="res://sprites/pink_asteroid_palette.png" id="3_ya7c0"]
+[ext_resource type="Texture2D" uid="uid://dx0xv4geqjvp8" path="res://sprites/asteroid_default_palette.png" id="4_at8hg"]
+[ext_resource type="Texture2D" uid="uid://bvkojri3acy6i" path="res://sprites/asteroids/Fragments-spritesheet.png" id="5_283n2"]
+[ext_resource type="Script" uid="uid://bh4nuygyw1vfw" path="res://scenes/asteroids/asteroid_fragment/fragments_sprite.gd" id="6_x2jkm"]
+[ext_resource type="Texture2D" uid="uid://dacyxx5dau8bv" path="res://sprites/red_asteroid_palette.png" id="7_nnxgn"]
+[ext_resource type="Texture2D" uid="uid://6gc530t8v2ol" path="res://sprites/yellow_asteroid_palette.png" id="8_h8sh1"]
+[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://scenes/modulars/gravitational_field.tscn" id="9_dcde7"]
+[ext_resource type="PackedScene" uid="uid://b7rex1sowfwcb" path="res://scenes/modulars/body_randomizer.tscn" id="10_wsrhj"]
+[ext_resource type="AudioStream" uid="uid://bbct4wahuembw" path="res://sound_effects/collecting/sfx_coletarecursos2.wav" id="11_aarmn"]
+[ext_resource type="AudioStream" uid="uid://d0cl4oppaa2um" path="res://sound_effects/collecting/sfx_coletarecursos.wav" id="12_pocts"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ekiyu"]
+radius = 4.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_busin"]
+resource_local_to_scene = true
+shader = ExtResource("2_yu30o")
+shader_parameter/original_palette = ExtResource("4_at8hg")
+shader_parameter/new_palette = ExtResource("3_ya7c0")
+shader_parameter/colors_count = 6
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lm11g"]
+random_pitch = 1.6
+streams_count = 2
+stream_0/stream = ExtResource("11_aarmn")
+stream_1/stream = ExtResource("12_pocts")
+
+[node name="AsteroidFragments" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "gravitational_field", "body_randomizer")]
+collision_layer = 130
+collision_mask = 3
+mass = 10.0
+script = ExtResource("1_1ost7")
+speed = 500.0
+collision = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
+gravitational_field = NodePath("GravitationalField")
+body_randomizer = NodePath("BodyRandomizer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ekiyu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("fragment")]
+material = SubResource("ShaderMaterial_busin")
+texture = ExtResource("5_283n2")
+hframes = 4
+script = ExtResource("6_x2jkm")
+fragment = NodePath("..")
+palette_options = Array[Texture]([ExtResource("4_at8hg"), ExtResource("3_ya7c0"), ExtResource("7_nnxgn"), ExtResource("8_h8sh1")])
+
+[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("9_dcde7")]
+visible = false
+collision_layer = 128
+collision_mask = 129
+monitoring = false
+owner_body = NodePath("..")
+owner_collision_shape = NodePath("../CollisionShape2D")
+attraction_executed_multiply = 0.0
+
+[node name="BodyRandomizer" parent="." node_paths=PackedStringArray("owner_body") instance=ExtResource("10_wsrhj")]
+visible = false
+owner_body = NodePath("..")
+rand_scale = false
+scale_min = 0.8
+scale_max = 1.8
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+unique_name_in_owner = true
+rect = Rect2(-36, -36, 72, 72)
+
+[node name="CollectiongSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_lm11g")
+volume_db = -10.0
+bus = &"Sound Effects"

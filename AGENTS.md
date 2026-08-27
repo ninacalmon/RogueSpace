@@ -20,7 +20,7 @@ Core loop: **drift → break asteroids → collect resources → reach the mothe
 | Godot version targeted | **4.5.1** (`config/features=PackedStringArray("4.5", "Forward Plus")`, `config_version=5`) |
 | Renderer | Forward Plus (2D game, but the GPU pipeline is used for shader effects) |
 | Project name | `vox vacui` |
-| Main scene | `res://Scenes/start_limbo.tscn` (referenced by **UID** `uid://m2oqym1qilyn`, not by path!) |
+| Main scene | `res://scenes/start_limbo.tscn` (referenced by **UID** `uid://m2oqym1qilyn`, not by path!) |
 | Icon | `res://VoxVacui_Icon_LowRes.png` (referenced by UID `uid://dernurpysipe2` in `project.godot`) |
 | Language | GDScript (static typing wherever practical) |
 | Tests | gdUnit4 (`res://addons/gdUnit4/`) — see [Testing](#testing) |
@@ -32,30 +32,31 @@ Core loop: **drift → break asteroids → collect resources → reach the mothe
 ```
 res://
 ├── event_bus.gd, globals.gd, stats_manager.gd, power_ups.gd, …     # autoload scripts (root)
-├── Scenes/
-│   ├── Levels/          # menu, Tutorial, Level_Day1/2/3, game_over,
+├── scenes/              # all game folders are snake_case (Godot style guide)
+│   ├── levels/          # menu, Tutorial, Level_Day1/2/3, game_over,
 │   │                    #   spaceship_interior, resources_counting (+ input_guide_admin.gd, tutorial_area*.gd)
-│   ├── Player/          # player.gd (BodySetup), player.tscn
-│   ├── Asteroids/       # asteroid_small/medium/big, asteroid_pieces, asteroid.gd
-│   ├── Enemies/         # enemy_basic, enemy_vermin, enemy_larvae, boss, matriarch_hook.gd
-│   ├── Bullets/         # player_bullet.gd (shared by basic_bullet.tscn + super_bullet.tscn),
+│   ├── player/          # player.gd (BodySetup), player.tscn, prtc_player_death.tscn
+│   ├── asteroids/       # asteroid_body/ (asteroid_small/medium/big, asteroid.gd),
+│   │                    #   asteroid_fragment/ (asteroid_fragments.tscn, asteroid_fragments.gd, fragments_sprite.gd)
+│   ├── enemies/         # enemy_basic, enemy_vermin, enemy_larvae, boss, matriarch_hook.gd
+│   ├── bullets/         # player_bullet.gd (shared by basic_bullet.tscn + super_bullet.tscn),
 │   │                    #   boss_bullet, boss_targeted_bullet
-│   ├── Modulars/        # gameplay modules (composition components), map/tile generation
-│   ├── SpaceBodies/     # body_setup.gd base, planets, sun, orbit, Moons/, vulnerability_area
-│   ├── BlackHoles/      # black_hole + supermassive (renamed from BackHoles — see gotcha below)
-│   ├── Spaceship/       # mothership + mothership_control + mothership_enter_area;
-│   │                    #   interior: diary, papers, deimos_hands, Monitor, UI/
-│   ├── UI/              # in-space HUD + shared UI scripts (ui.tscn, warnings, velocity, tutorial,
+│   ├── modulars/        # gameplay modules (composition components), map/tile generation
+│   ├── space_bodies/    # body_setup.gd base, planets, sun, orbit, moons/, vulnerability_area
+│   ├── black_hole/      # black_hole + supermassive_black_holes/ (renamed from BackHoles — see gotcha below)
+│   ├── spaceship/       # mothership + mothership_control + mothership_enter_area;
+│   │                    #   interior: diary, papers, deimos_hands, Monitor, ui/
+│   ├── ui/              # in-space HUD + shared UI scripts (ui.tscn, warnings, velocity, tutorial,
 │   │                    #   day, resources, rich_text_label*, button.gd, main_light.gd, game_over_control.gd)
-│   ├── Cutscenes/       # cutscene_context/final/final2/out_spaceship/credits
+│   ├── cutscenes/       # cutscene_context/final/final2/out_spaceship/credits
 │   └── start_limbo.tscn # boot/loading scene (the MAIN scene — flagged "unused" by path-grep only!)
-├── Sound Effects/       # WAV/MP3 SFX (bus: "Sound Effects") — subfolders: SpaceBodies/, Cutscenes/,
-│                        #   Player/, UI/, Ambience/, Asteroids/, Collecting/, Enemies/, Shoot/, Spaceship/
-├── Music/               # MP3 tracks (bus: "Music")
-├── Sprites/             # all sprite assets (merged from Sprites/ + Sprites(main)/; renamed from Sprites_main/)
-├── Shaders/             # .gdshader files (+ Shaders/BlackHoleShader.gdshader)
-├── Fonts/               # .ttf fonts
-├── Tests/               # gdUnit4 suites (see Testing)
+├── sound_effects/       # WAV/MP3 SFX (bus: "Sound Effects") — subfolders: space_bodies/, cutscenes/,
+│                        #   player/, ui/, ambience/, asteroids/, collecting/, enemies/, shoot/, spaceship/
+├── music/               # MP3 tracks (bus: "Music") — incl. cutscene_music/
+├── sprites/             # all sprite assets (merged from Sprites_main/ → Sprites/ → sprites/)
+├── shaders/             # .gdshader files (+ shaders/BlackHoleShader.gdshader)
+├── fonts/               # .ttf fonts
+├── tests/               # gdUnit4 suites (see Testing)
 ├── STYLE.md             # project code style + LLM modification rules (read before editing code)
 ├── TESTS.md             # gdUnit4 how-to + quirks (read before writing/running tests)
 ├── UNUSED_CODE.md       # audit of dead code/oddities
@@ -64,7 +65,7 @@ res://
 └── AGENTS.md            # this file
 ```
 
-> **Note on prior reorganization:** the asset folders `Sprites/` + `Sprites(main)/` were merged into a single `Sprites_main/` (later renamed to `Sprites/`), `basic_bullet.gd` moved to `Scenes/Bullets/player_bullet.gd`, `asteroid.gd` moved to `Scenes/Asteroids/`, mothership moved to `Scenes/Spaceship/`, `SpaceBodies/PickedPlanets/` flattened to root, and shared UI scripts moved into `Scenes/UI/`. The tree above is the current on-disk layout.
+> **Note on prior reorganizations:** the asset folders `Sprites/` + `Sprites(main)/` were merged into a single `Sprites_main/` (later renamed `Sprites/`, then `sprites/`); `asteroid.gd`/asteroid scenes moved to `scenes/asteroids/asteroid_body/` and fragments to `scenes/asteroids/asteroid_fragment/` (`asteroid_pieces` → `asteroid_fragments`); black-hole files moved to `scenes/black_hole/` (+ `supermassive_black_holes/`, `superm_black_hole.gd` → `supermassive_black_hole.gd`); `basic_bullet.gd` moved to `scenes/bullets/player_bullet.gd`; mothership moved to `scenes/spaceship/`; particle scenes moved to `scenes/player/` (`prtc_player_death.tscn`); all folders now snake_case per Godot style guide. The tree above is the current on-disk layout.
 
 ---
 
@@ -75,7 +76,7 @@ This project's notes are split across several files so each stays focused. **Rea
 | When you… | Read | Why |
 |---|---|---|
 | Are about to **write or edit any code** (script, scene, resource) | **`STYLE.md`** | Authoritative style guide **plus two mandatory LLM rules**: the *Variable Re-assertion Rule* (re-assert an `@export`/constant's original value after reassigning it) and the *Preservation of Functionality Rule* (keep behavior identical — only ordering/formatting/cleaning changes unless explicitly asked). **Both are mandatory** for any LLM editing code in this repo. |
-| Are about to **write, run, or debug tests** | **`TESTS.md`** | gdUnit4 how-to + the hard-won quirks (suite halts on first failure, lambda-by-value capture, two `process_frame` awaits, dead-end MCP `test_run` tool, etc.). Read it *before* touching `Tests/` or running the suite. |
+| Are about to **write, run, or debug tests** | **`TESTS.md`** | gdUnit4 how-to + the hard-won quirks (suite halts on first failure, lambda-by-value capture, two `process_frame` awaits, dead-end MCP `test_run` tool, etc.). Read it *before* touching `tests/` or running the suite. |
 | Need to know **which code/scenes are dead or odd** | **`UNUSED_CODE.md`** | Audit of unused/dead scripts, unused scenes, and oddities (malformed const, trigger-not-flag setters, case-sensitivity traps). Don't re-create or re-import anything marked *resolved*. |
 | Need to know **which assets (images/audio/video/shaders) are dead** | **`UNUSED_RESOURCES.md`** | Audit of unused resources and which are safe to delete. Don't re-import or re-create anything marked resolved. |
 | Are about to **move/rename files or re-point references** | **`FILESYSTEM_MISTAKES.md`** | Audit of misplaced/disorganized/non-descriptive filesystem items and the reorganizations already applied. See the *Note on prior reorganization* in the layout above for the current state. |
@@ -103,13 +104,13 @@ Registered in `project.godot` `[autoload]` (order matters — later autoloads ma
 | `PowerUps` | `power_ups.gd` | Power-up levels (`add_current_level`/`get_current_level`/`apply_power_up`/`reset_game_state`) |
 | `ControllerVibration` | `controller_vibration.gd` | Gamepad rumble (`vibrate_controller(strength_index, duration, controller_index)`) |
 | `SpaceshipEventBus` | `spaceship_event_bus.gd` | Mothership-UI signals (focus, resource counting) |
-| `PopUpSystem` | `Scenes/Spaceship/UI/pop_up_control.tscn` | Interaction pop-ups |
+| `PopUpSystem` | `scenes/spaceship/ui/pop_up_control.tscn` | Interaction pop-ups |
 | `StatsManager` | `stats_manager.gd` | **Central player/game state** (see below) |
 | `CustomTooltip` | `custom_tooltip.tscn` | Tooltip overlay |
 | `InputGuide` | `input_guide.tscn` (embeds `input_guide_unit.tscn`) | Key hints; levels use `input_guide_admin.gd` variants |
 | `DiaryDatabase` | `diary_database.gd` | Diary page content per day (`get_day(day) -> Dictionary`) |
 | `HandsEventBus` | `hands_event_bus.gd` | Deimos-hands interaction signals |
-| `MusicManager` | `music_manager.tscn/.gd` | Dual AudioStreamPlayer crossfade, `music_map` to `Music/*.mp3` |
+| `MusicManager` | `music_manager.tscn/.gd` | Dual AudioStreamPlayer crossfade, `music_map` to `music/*.mp3` |
 | `_mcp_game_helper` | `addons/godot_ai/runtime/game_helper.gd` | godot_ai MCP runtime bridge (addon; don't touch) |
 
 ### StatsManager — the state hub
@@ -120,7 +121,7 @@ Holds nearly all persistent/player state: `day`, `resources_needed`, `current_re
 
 The defining architectural pattern: **gameplay behaviors are child-node *components*** composed in `.tscn` files, then injected by `@export` reference into a parent (typically the `owner_body` / a `target`). This is **not** inheritance — modules are separate nodes.
 
-Key modules under `Scenes/Modulars/`:
+Key modules under `scenes/modulars/`:
 
 | Script | Type | Behavior |
 |---|---|---|
@@ -140,9 +141,9 @@ Key modules under `Scenes/Modulars/`:
 
 ### BodySetup — shared body base
 
-`res://Scenes/SpaceBodies/body_setup.gd` (`extends RigidBody2D`, `class_name BodySetup`) is the base for all space bodies. Exported: `collision: CollisionShape2D`, `sprite: Node2D`, `gravitational_field`, `gravitational_field_resources`, `body_randomizer`.
+`res://scenes/space_bodies/body_setup.gd` (`extends RigidBody2D`, `class_name BodySetup`) is the base for all space bodies. Exported: `collision: CollisionShape2D`, `sprite: Node2D`, `gravitational_field`, `gravitational_field_resources`, `body_randomizer`.
 
-**Extends BodySetup:** `Scenes/Asteroids/asteroid_pieces.gd`, `Scenes/BlackHoles/black_hole.gd`, `Scenes/BlackHoles/superm_black_hole.gd`, `Scenes/Modulars/asteroid.gd`, `Scenes/Player/player.gd`, `Scenes/SpaceBodies/boss_planet_day_3.gd`, `Scenes/SpaceBodies/planet.gd`.
+**Extends BodySetup:** `scenes/asteroids/asteroid_fragment/asteroid_fragments.gd`, `scenes/black_hole/black_hole.gd`, `scenes/black_hole/supermassive_black_holes/supermassive_black_hole.gd`, `scenes/asteroids/asteroid_body/asteroid.gd`, `scenes/player/player.gd`, `scenes/space_bodies/boss_planet_day_3.gd`, `scenes/space_bodies/planet.gd`.
 
 ### Event buses
 
@@ -177,16 +178,16 @@ General: UTF-8, tabs for indentation, `snake_case` for vars/functions, `PascalCa
 
 ## Testing
 
-gdUnit4, suites live under `res://Tests/` (`project.godot` `[gdunit4] settings/test/test_lookup_folder="Tests"`).
+gdUnit4, suites live under `res://tests/` (`project.godot` `[gdunit4] settings/test/test_lookup_folder="Tests"`).
 
 **Run the whole suite:**
 ```bash
 cd "/mnt/c/Users/thiag/Desktop/NinaPUC/GOTY/RogueSpace-main(2)/RogueSpace-main" && \
 export GODOT_BIN=/usr/local/bin/godot && \
-timeout 200 ./addons/gdUnit4/runtest.sh -a res://Tests --ignoreHeadlessMode
+timeout 200 ./addons/gdUnit4/runtest.sh -a res://tests --ignoreHeadlessMode
 ```
 
-Currently **~210 tests across 22 suites**: `Tests/Autoloads/Unit/` (stats_manager, power_ups, globals, diary_database, event_buses, sfx_controller) and `Tests/Unit/` (player, enemies, boss, bullets, asteroids, black_hole, map_generator, resource_collector, hurt/gravity modules) + `Tests/Menu/Unit/`.
+Currently **~210 tests across 22 suites**: `tests/autoloads/unit/` (stats_manager, power_ups, globals, diary_database, event_buses, sfx_controller) and `tests/unit/` (player, enemies, boss, bullets, asteroids, black_hole, map_generator, resource_collector, hurt/gravity modules) + `tests/menu/unit/`.
 
 See `TESTS.md` for full details, including the gdUnit4 quirks below.
 
@@ -208,14 +209,14 @@ See `TESTS.md` for full details, including the gdUnit4 quirks below.
 
 See `UNUSED_CODE.md` (code) and `UNUSED_RESOURCES.md` (assets) for the full audited inventory. Highlights:
 
-- **BackHoles → BlackHoles (RESOLVED):** the on-disk folder is now **`Scenes/BlackHoles/`** and every reference (level scenes `Level_Day1/2/3.tscn`, `Tutorial.tscn`, and `Tests/Unit/black_hole_test.gd`) consistently uses `res://Scenes/BlackHoles/…`. The rename landed via merging `main`. Do **not** rename locally again.
-- **`res://Scenes/start_limbo.tscn` is the MAIN scene** but is flagged "unused" in path-based audits because `project.godot` references it **by UID only**, not by path. Same trap as the icon. Any path-grep-based "unused" audit must also check UID references.
+- **BackHoles → black_hole (RESOLVED):** the on-disk folder is now **`scenes/black_hole/`** and every reference (level scenes `Level_Day1/2/3.tscn`, `Tutorial.tscn`, and `tests/unit/black_hole_test.gd`) consistently uses `res://scenes/black_hole/…`. Do **not** rename again.
+- **`res://scenes/start_limbo.tscn` is the MAIN scene** but is flagged "unused" in path-based audits because `project.godot` references it **by UID only**, not by path. Same trap as the icon. Any path-grep-based "unused" audit must also check UID references.
 - **Stale UIDs / folder renames:** renaming a folder in a scene (e.g. via editor or `git mv`) does **not** rewrite `res://` paths inside `.tscn`/`.gd` files; re-point ext_resource `path=` lines manually (or merge the upstream rename).
-- `stats_manager.gd:55` `const FUEL_IMPULSE_USE_STEP: = 0.5` — **malformed typed const** (missing type). Still parses; used at `Scenes/Player/player.gd:201`. Don't "fix" it silently — it's referenced in tests with the literal `0.5`.
+- `stats_manager.gd:55` `const FUEL_IMPULSE_USE_STEP: = 0.5` — **malformed typed const** (missing type). Still parses; used at `scenes/player/player.gd:201`. Don't "fix" it silently — it's referenced in tests with the literal `0.5`.
 - `globals.gd` `has_energy_in_spaceship` setter: setting it `true` stores `fragments_value_to_sum = StatsManager.resources_needed` and immediately self-resets to `false`; the only readable way it stays `true` is never — it's a trigger, not a flag. Tests encode this behavior.
 - `stats_manager.gd` `player_have_perfurator` defaults `true` (the only writer is `power_ups.gd:74`, guard at `vulnerability_area.gd:20`).
-- `res://basic_bullet.gd` lives at the **project root** (not `Scenes/Bullets/`) and is attached by both `basic_bullet.tscn` and `super_bullet.tscn`.
-- **Case-sensitivity trap:** `res://Scenes/modulars/` (lowercase) in `asteroid_big.tscn:9` & `asteroid_medium.tscn:9` breaks on case-sensitive filesystems (folder is `Scenes/Modulars/`).
+- `res://basic_bullet.gd` lives at the **project root** (not `scenes/bullets/`) and is attached by both `basic_bullet.tscn` and `super_bullet.tscn`.
+- **Case-sensitivity trap (RESOLVED):** the folder is now **`scenes/modulars/`** (lowercase) so the old `res://Scenes/modulars/` case-mismatch in the asteroid scenes no longer breaks on case-sensitive filesystems.
 - `ENEMY`/asteroid `-old` variants, `paths_hub.gd` (empty stub autoload, **already removed** from `project.godot`), unused planet/moon scenes, and a large inventory of unused images/videos/audio/shaders are documented in the two UNUSED docs (assets already deleted are marked resolved; **do not re-import or re-create them**).
 - `icon.svg` (default Godot icon) and `default_bus_layout.tres` were audited as unused but **kept by user decision** (verify before touching).
 
@@ -223,7 +224,7 @@ See `UNUSED_CODE.md` (code) and `UNUSED_RESOURCES.md` (assets) for the full audi
 
 ## Editing conventions for this repo
 
-- Prefer composition (Modulars child nodes) when adding behaviors.
+- Prefer composition (modulars child nodes) when adding behaviors.
 - Route runtime state through `StatsManager`/`Globals` autoloads rather than new globals.
 - Emit cross-system events via the three event buses; don't wire scenes to each other directly.
 - Keep `@export` names descriptive (`owner_body`, `target`, `gravitational_field`…) and match existing module conventions.

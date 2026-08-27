@@ -19,10 +19,10 @@ func _ready() -> void:
 	#match cause_of_death:
 		#"Out of Fuel":
 			#death_cause_text =  "SEM COMBUSTÍVEL, Deimos vagou pelo espaço sideral por tempo imesurável."
-			#death_cause_texture = preload("res://Sprites/background_legacy.png")
+			#death_cause_texture = preload("res://sprites/background_legacy.png")
 		#"Enemy: Basic":
 			#death_cause_text = "TRAÇAS DESGRAÇADAS, devoraram Deimos até seu fim."
-			#death_cause_texture = preload("res://Sprites/panorama6.jpg")
+			#death_cause_texture = preload("res://sprites/panorama6.jpg")
 	#
 	#sub_text.text = death_cause_text
 	#background_texture.texture = death_cause_texture

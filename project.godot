@@ -24,7 +24,7 @@ LevelTransition="*res://level_transition.tscn"
 PowerUps="*res://power_ups.gd"
 ControllerVibration="*res://controller_vibration.gd"
 SpaceshipEventBus="*res://spaceship_event_bus.gd"
-PopUpSystem="*res://Scenes/Spaceship/UI/pop_up_control.tscn"
+PopUpSystem="*res://scenes/spaceship/ui/pop_up_control.tscn"
 StatsManager="*res://stats_manager.gd"
 CustomTooltip="*res://custom_tooltip.tscn"
 InputGuide="*res://input_guide.tscn"
@@ -49,7 +49,7 @@ enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg", "res://addons/godot
 
 [gdunit4]
 
-settings/test/test_lookup_folder="Tests"
+settings/test/test_lookup_folder="tests"
 
 [global_group]
 

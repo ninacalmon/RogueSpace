@@ -1,6 +1,6 @@
 extends GdUnitTestSuite
 
-const SCRIPT_PATH := "res://Scenes/Bullets/boss_targeted_bullet.gd"
+const SCRIPT_PATH := "res://scenes/bullets/boss_targeted_bullet.gd"
 
 
 func _make() -> BossTargetedBullet:
@@ -37,7 +37,7 @@ func test_direction_defaults_to_zero() -> void:
 
 
 func test_body_entered_signal_fires_on_emit() -> void:
-	var scene := load("res://Scenes/Bullets/boss_targeted_bullet.tscn") as PackedScene
+	var scene := load("res://scenes/bullets/boss_targeted_bullet.tscn") as PackedScene
 	var b: BossTargetedBullet = scene.instantiate()
 	add_child(b)
 	await get_tree().process_frame

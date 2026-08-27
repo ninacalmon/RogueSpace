@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bo04t5ejdtv54"]
 
-[ext_resource type="Script" uid="uid://cu46ci360div7" path="res://Scenes/Spaceship/UI/pop_up_control.gd" id="1_4b7r7"]
+[ext_resource type="Script" uid="uid://cu46ci360div7" path="res://scenes/spaceship/ui/pop_up_control.gd" id="1_4b7r7"]
 
 [node name="PopUp" type="CanvasLayer" node_paths=PackedStringArray("original_bottom_text", "v_box_bottom")]
 script = ExtResource("1_4b7r7")

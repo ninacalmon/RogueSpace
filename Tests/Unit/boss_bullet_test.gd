@@ -1,6 +1,6 @@
 extends GdUnitTestSuite
 
-const BOSS_BULLET_SCRIPT := "res://Scenes/Bullets/boss_bullet.gd"
+const BOSS_BULLET_SCRIPT := "res://scenes/bullets/boss_bullet.gd"
 
 
 func _make() -> BossBullet:
@@ -28,7 +28,7 @@ func test_direction_defaults_to_zero() -> void:
 
 
 func test_sprite_flip_v_is_set_in_ready() -> void:
-	var scene := load("res://Scenes/Bullets/boss_bullet.tscn") as PackedScene
+	var scene := load("res://scenes/bullets/boss_bullet.tscn") as PackedScene
 	var b: BossBullet = scene.instantiate()
 	add_child(b)
 	await get_tree().process_frame
@@ -43,7 +43,7 @@ func test_sprite_flip_v_is_set_in_ready() -> void:
 
 
 func test_body_entered_signal_fires_on_emit() -> void:
-	var scene := load("res://Scenes/Bullets/boss_bullet.tscn") as PackedScene
+	var scene := load("res://scenes/bullets/boss_bullet.tscn") as PackedScene
 	var b: BossBullet = scene.instantiate()
 	add_child(b)
 	await get_tree().process_frame

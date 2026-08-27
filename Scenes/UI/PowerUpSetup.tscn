@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://fjxp66w0rpvl"]
 
-[ext_resource type="Texture2D" uid="uid://be1fm65sme3rk" path="res://Sprites/UI/PUIcons/powerup.png" id="1_tybp7"]
-[ext_resource type="Script" uid="uid://dk2opjtgiv5x6" path="res://Scenes/UI/power_up_setup.gd" id="1_x7njx"]
-[ext_resource type="Texture2D" uid="uid://nufx44r3we8u" path="res://Sprites/UI/PUIcons/powerup2.png" id="2_vjedb"]
-[ext_resource type="AudioStream" uid="uid://2v525hgwqcju" path="res://Sound Effects/UI/SFX_boosterselectOK.wav" id="4_msej6"]
+[ext_resource type="Texture2D" uid="uid://be1fm65sme3rk" path="res://sprites/ui/pu_icons/powerup.png" id="1_tybp7"]
+[ext_resource type="Script" uid="uid://dk2opjtgiv5x6" path="res://scenes/ui/power_up_setup.gd" id="1_x7njx"]
+[ext_resource type="Texture2D" uid="uid://nufx44r3we8u" path="res://sprites/ui/pu_icons/powerup2.png" id="2_vjedb"]
+[ext_resource type="AudioStream" uid="uid://2v525hgwqcju" path="res://sound_effects/ui/SFX_boosterselectOK.wav" id="4_msej6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u025h"]
 bg_color = Color(0.11703998, 0.21, 0.0357, 0.48235294)

@@ -2,7 +2,7 @@ extends Control
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	Globals.next_scene_path = "res://Scenes/Cutscenes/cutscene_context.tscn"
+	Globals.next_scene_path = "res://scenes/cutscenes/cutscene_context.tscn"
 
 
 func _input(event: InputEvent) -> void:

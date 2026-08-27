@@ -7,8 +7,8 @@
 
 ## 1. Confirmed unused / dead code
 
-### 1.1 `res://Scenes/Modulars/asteroid-old.gd`
-- **Use case:** Older (pre‑refactor) version of the asteroid `RigidBody2D` script (`extends BodySetup`, 122 lines). The current asteroid logic lives in `res://Scenes/Modulars/asteroid.gd` and is attached to `asteroid_small.tscn` / `asteroid_medium.tscn` / `asteroid_big.tscn`.
+### 1.1 `res://scenes/modulars/asteroid-old.gd`
+- **Use case:** Older (pre‑refactor) version of the asteroid `RigidBody2D` script (`extends BodySetup`, 122 lines). The current asteroid logic lives in `res://scenes/modulars/asteroid.gd` and is attached to `asteroid_small.tscn` / `asteroid_medium.tscn` / `asteroid_big.tscn`.
 - **Where it is used:** nowhere. Grep for `asteroid-old` → **0 hits** in any `.gd`/`.tscn`/`.godot`.
 - **Part of scenes:** none.
 - **Recommendation:** delete; it is a leftover duplicate that can confuse future changes (identical filename prefix).
@@ -24,11 +24,11 @@
 
 | File | Notes |
 |---|---|
-| `res://Scenes/SpaceBodies/planet.tscn` | generic base planet, no refs |
-| `res://Scenes/SpaceBodies/planet_giant.tscn` | no refs |
-| `res://Scenes/SpaceBodies/planet_medium1.tscn` | superseded by `PickedPlanets/planet_medium.tscn` |
-| `res://Scenes/SpaceBodies/Moons/Moon1.tscn` | no refs |
-| `res://Scenes/SpaceBodies/Moons/Moon3.tscn` | no refs |
+| `res://scenes/space_bodies/planet.tscn` | generic base planet, no refs |
+| `res://scenes/space_bodies/planet_giant.tscn` | no refs |
+| `res://scenes/space_bodies/planet_medium1.tscn` | superseded by `PickedPlanets/planet_medium.tscn` |
+| `res://scenes/space_bodies/moons/Moon1.tscn` | no refs |
+| `res://scenes/space_bodies/moons/Moon3.tscn` | no refs |
 
 ---
 
@@ -38,11 +38,11 @@ These came up as "possibly unused" but are **genuinely referenced** by live scen
 
 | File | Confirmed use |
 |---|---|
-| `res://ui_sounds.tscn` (script `res://ui_sounds.gd`) | Audio SFX nodes for UI. Referenced by `res://Scenes/Levels/menu.tscn:3` (root ext_resource) and `res://Scenes/Spaceship/Monitor.tscn:17`. |
-| `res://Scenes/Levels/rich_text_label.gd` | Flicker/timed text behavior on the menu. Attached in `menu.tscn:9`. |
-| `res://Scenes/Levels/rich_text_label_2.gd` | Same — `menu.tscn:10`. |
-| `res://Scenes/Levels/rich_text_label_4.gd` | Same — `menu.tscn:8`. |
-| `res://Scenes/Levels/rich_text_label_10.gd` | Same — `menu.tscn:13`. |
+| `res://ui_sounds.tscn` (script `res://ui_sounds.gd`) | Audio SFX nodes for UI. Referenced by `res://scenes/levels/menu.tscn:3` (root ext_resource) and `res://scenes/spaceship/Monitor.tscn:17`. |
+| `res://scenes/levels/rich_text_label.gd` | Flicker/timed text behavior on the menu. Attached in `menu.tscn:9`. |
+| `res://scenes/levels/rich_text_label_2.gd` | Same — `menu.tscn:10`. |
+| `res://scenes/levels/rich_text_label_4.gd` | Same — `menu.tscn:8`. |
+| `res://scenes/levels/rich_text_label_10.gd` | Same — `menu.tscn:13`. |
 | `res://input_guide_unit.gd` | Node used by **autoload** `input_guide.tscn` (singleton `InputGuide`, `project.godot:31`). `input_guide.tscn:4` embeds `input_guide_unit.tscn:3` (→ `res://input_guide_unit.gd`). |
 
 ---
@@ -52,7 +52,7 @@ These came up as "possibly unused" but are **genuinely referenced** by live scen
 ### 3.1 `res://stats_manager.gd:55` — malformed typed `const`
 - **Code:** `const FUEL_IMPULSE_USE_STEP: = 0.5` (missing type between `:` and `=`, should be `: float = 0.5` or inferred `:=`).
 - **Still loads** (the project parses it), but it is inconsistent with every sibling const (`const FUEL_USE_STEP: float = 0.1`).
-- **Where it is used (line):** `res://Scenes/Player/player.gd:201` (`StatsManager.player_current_fuel -= StatsManager.FUEL_IMPULSE_USE_STEP`). So the value is live gameplay fuel cost for impulses.
+- **Where it is used (line):** `res://scenes/player/player.gd:201` (`StatsManager.player_current_fuel -= StatsManager.FUEL_IMPULSE_USE_STEP`). So the value is live gameplay fuel cost for impulses.
 - **Recommendation:** fix to `const FUEL_IMPULSE_USE_STEP: float = 0.5` and re‑verify.
 
 ### 3.2 `res://globals.gd:31-35` — setter flips the flag to `false` immediately
@@ -63,7 +63,7 @@ var has_energy_in_spaceship: bool = false:
 			fragments_value_to_sum = StatsManager.resources_needed
 			has_energy_in_spaceship = false   # <-- self reset
 ```
-- Any writer setting `true` (only site: `res://Scenes/Spaceship/resources_deposit.gd:31`) will **store the current `resources_needed` into `fragments_value_to_sum` and immediately clear the flag**. The property itself can therefore never be read as `true`.
+- Any writer setting `true` (only site: `res://scenes/spaceship/resources_deposit.gd:31`) will **store the current `resources_needed` into `fragments_value_to_sum` and immediately clear the flag**. The property itself can therefore never be read as `true`.
 - `fragments_value_to_sum` is then added to the bank by `Globals.add_frag_sum()` at `globals.gd:38` (`StatsManager.current_resources += fragments_value_to_sum` at `:39`).
 - **Smell:** mixing "record energy deposit" side‑effect into a plain `bool` property, with a setter that always ends `false` — the `has_energy…` name is misleading. Tests (`Tests/Autoloads/Unit/globals_test.gd`) pin the current behavior.
 
@@ -71,21 +71,21 @@ var has_energy_in_spaceship: bool = false:
 ```gdscript
 var player_have_perfurator: bool = true
 ```
-- Default `true`, while everything else that grants it (`power_ups.gd:74` in `apply_power_up("Perfurator")`) implies it must be **earned.** Guard site: `res://Scenes/SpaceBodies/vulnerability_area.gd:20` (`if !(body is Player) or !StatsManager.player_have_perfurator:`). Only writer is `power_ups.gd:74`.
+- Default `true`, while everything else that grants it (`power_ups.gd:74` in `apply_power_up("Perfurator")`) implies it must be **earned.** Guard site: `res://scenes/space_bodies/vulnerability_area.gd:20` (`if !(body is Player) or !StatsManager.player_have_perfurator:`). Only writer is `power_ups.gd:74`.
 - **Smell:** start‑of‑game state grants the power-up; likely should be `false` (reach/ask design).
 
 ### 3.4 `res://basic_bullet.gd` lives at project **root**, not in `Scenes/Bullets/`
-- The bullet script is at `res://basic_bullet.gd` (not `res://Scenes/Bullets/basic_bullet.gd` — no such file).
-- **Attached by** `res://Scenes/Bullets/basic_bullet.tscn:3` and `res://Scenes/Bullets/super_bullet.tscn:3`.
+- The bullet script is at `res://basic_bullet.gd` (not `res://scenes/bullets/basic_bullet.gd` — no such file).
+- **Attached by** `res://scenes/bullets/basic_bullet.tscn:3` and `res://scenes/bullets/super_bullet.tscn:3`.
 - **Smell:** placement inconsistent with the folder the scenes live in. Tests reference the root path (`Tests/Unit/basic_bullet_test.gd:3`).
 
 ### 3.5 `BackHoles/` → `BlackHoles/` (folder typo — RESOLVED)
-- The on-disk folder is now **`Scenes/BlackHoles/`** (correct spelling). All live level scenes (`Level_Day1/2/3.tscn`, `Tutorial.tscn`) and `Tests/Unit/black_hole_test.gd` consistently reference `res://Scenes/BlackHoles/…`. The rename landed via merging `main`; the old `BackHoles/` folder no longer exists.
+- The on-disk folder is now **`Scenes/BlackHoles/`** (correct spelling). All live level scenes (`Level_Day1/2/3.tscn`, `Tutorial.tscn`) and `Tests/Unit/black_hole_test.gd` consistently reference `res://scenes/black_hole/…`. The rename landed via merging `main`; the old `BackHoles/` folder no longer exists.
 
-### 3.6 Case‑sensitivity of `res://Scenes/modulars/` (lowercase) inside asteroid scenes
-- `asteroid_big.tscn:9`, `asteroid_medium.tscn:9` reference `path="res://Scenes/modulars/gravitational_field.tscn"` — **lowercase `modulars/`**, while the folder on disk is `res://Scenes/Modulars/`.
+### 3.6 Case‑sensitivity of `res://scenes/modulars/` (lowercase) inside asteroid scenes
+- `asteroid_big.tscn:9`, `asteroid_medium.tscn:9` reference `path="res://scenes/modulars/gravitational_field.tscn"` — **lowercase `modulars/`**, while the folder on disk is `res://scenes/modulars/`.
 - This works on the usual Windows editor (case‑insensitive file systems) but **breaks on case‑sensitive systems** (Linux/macOS/CI). Same class of hazard as 3.5.
-- **Recommendation:** normalize these paths to `res://Scenes/Modulars/…` exactly.
+- **Recommendation:** normalize these paths to `res://scenes/modulars/…` exactly.
 
 ---
 

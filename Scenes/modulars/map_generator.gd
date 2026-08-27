@@ -4,9 +4,9 @@ class_name MapGenerator
 @export var asteroids_noise_texture: NoiseTexture2D
 @export var tile_map_layer_asteroids: TileMapLayer
 
-@onready var small_asteroid_scene = preload("res://Scenes/Asteroids/asteroid_small.tscn")
-@onready var medium_asteroid_scene = preload("res://Scenes/Asteroids/asteroid_small.tscn")
-@onready var large_asteroid_scene = preload("res://Scenes/Asteroids/asteroid_big.tscn")
+@onready var small_asteroid_scene = preload("res://scenes/asteroids/asteroid_body/asteroid_small.tscn")
+@onready var medium_asteroid_scene = preload("res://scenes/asteroids/asteroid_body/asteroid_small.tscn")
+@onready var large_asteroid_scene = preload("res://scenes/asteroids/asteroid_body/asteroid_big.tscn")
 
 var noise: Noise
 

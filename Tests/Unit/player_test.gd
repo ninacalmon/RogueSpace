@@ -2,7 +2,7 @@ extends GdUnitTestSuite
 
 const FUEL_USE_STEP: float = 0.1
 const FUEL_IMPULSE_USE_STEP: float = 0.5
-const PlayerScript := preload("res://Scenes/Player/player.gd")
+const PlayerScript := preload("res://scenes/player/player.gd")
 
 
 # ---------- Defaults (script-level, no instantiation needed) ----------

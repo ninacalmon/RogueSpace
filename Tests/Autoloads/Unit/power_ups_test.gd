@@ -83,7 +83,7 @@ func test_apply_power_up_bullet_switches_to_super_bullet() -> void:
 	var orig: String = StatsManager.player_current_bullet
 	var pu = _make()
 	pu.apply_power_up("Bullet")
-	assert_that(StatsManager.player_current_bullet).is_equal("res://Scenes/Bullets/super_bullet.tscn")
+	assert_that(StatsManager.player_current_bullet).is_equal("res://scenes/bullets/super_bullet.tscn")
 	StatsManager.player_current_bullet = orig
 
 func test_apply_power_up_perfurator_enables_it() -> void:

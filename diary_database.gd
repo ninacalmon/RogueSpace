@@ -5,7 +5,7 @@ var pages := {
 		"left": {
 			"head": "[b]Primeiro log.",
 			"main": "Vasily costumava manter um diário de bordo da expedição. Agora que estou sozinho, acho que essa tarefa passou para mim.",
-			"sketch": preload("res://Sprites/SpaceshipInterior/drawingTest.png")
+			"sketch": preload("res://sprites/spaceship_interior/drawingTest.png")
 		},
 		"right": {
 			"main": "Meu nome é Deimos.
@@ -29,7 +29,7 @@ Ah! Aquelas pestes nojentas estão por toda parte no espaço! É um tremendo est
 			"main": "Bem, preciso ir descansar.
 
 Amanhã devo coletar fragmentos extra para me preparar...",
-			"sketch": preload("res://Sprites/SpaceshipInterior/drawing_day1_3.png")
+			"sketch": preload("res://sprites/spaceship_interior/drawing_day1_3.png")
 		}
 	},
 
@@ -47,7 +47,7 @@ Finalmente poderei retomar a missão, [b]retomar a missão com Ela!",
 			"main": "Se ao menos alguém estivesse aqui para ver… Uma pena que eles tenham escolhido aquele final…
 
 Acho que estou pronto.",
-			"sketch": preload("res://Sprites/SpaceshipInterior/drawing_day3.png")
+			"sketch": preload("res://sprites/spaceship_interior/drawing_day3.png")
 		}
 	},
 
@@ -63,7 +63,7 @@ Enfim darei sequência à expedição. [b]Sim! A fonte do sinal será encontrada
 		},
 		"right": {
 			"main": "",
-			"sketch": preload("res://Sprites/SpaceshipInterior/drawing_day4.png")
+			"sketch": preload("res://sprites/spaceship_interior/drawing_day4.png")
 		}
 	}
 }
@@ -102,13 +102,13 @@ const EMPTY_DAY := {
 		#"main": "O sistema de aquecimento da nave quebrou há alguns dias e só agora consegui arrumar.
  #
 #A pior parte de tudo são aquelas pestes, que mesmo servindo como almoço, são um grande estorvo.",
-		#"sketch": preload("res://Sprites/SpaceshipInterior/drawingTest.png")
+		#"sketch": preload("res://sprites/spaceship_interior/drawingTest.png")
 	#},
 #
 	#3: {
 		#"head": "[b]Eu amo comer insetos...",
 		#"main": "Aprendi a preparar uma sopa deliciosa com esses pestinhas. Vou anotar a receita aqui por precaução:",
-		#"sketch": preload("res://Sprites/SpaceshipInterior/DesenhoDiario.png")
+		#"sketch": preload("res://sprites/spaceship_interior/DesenhoDiario.png")
 	#}
 #}
 #

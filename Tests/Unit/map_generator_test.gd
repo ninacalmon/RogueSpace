@@ -1,6 +1,6 @@
 extends GdUnitTestSuite
 
-const MapGeneratorScript := preload("res://Scenes/Modulars/map_generator.gd")
+const MapGeneratorScript := preload("res://scenes/modulars/map_generator.gd")
 
 
 func test_extends_node2d() -> void:

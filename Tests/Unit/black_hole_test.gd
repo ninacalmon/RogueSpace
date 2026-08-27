@@ -1,12 +1,12 @@
 extends GdUnitTestSuite
 
-# Tests for res://Scenes/BlackHoles/black_hole.gd
+# Tests for res://scenes/black_hole/black_hole.gd
 # All real physics-driven behavior (gravitational field body entered/exited,
 # SFXManager.play_sound in _process) is left untested; it relies on the full
 # scene tree, signals from physics simulation, and the SFXManager autoload.
 
-const BLACK_HOLE_SCRIPT := "res://Scenes/BlackHoles/black_hole.gd"
-const BLACK_HOLE_SCENE := "res://Scenes/BlackHoles/black_hole.tscn"
+const BLACK_HOLE_SCRIPT := "res://scenes/black_hole/black_hole.gd"
+const BLACK_HOLE_SCENE := "res://scenes/black_hole/black_hole.tscn"
 
 
 func _make() -> BlackHole:

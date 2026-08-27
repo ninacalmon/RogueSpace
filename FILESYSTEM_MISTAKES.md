@@ -66,7 +66,7 @@ INSTRUCTION: do whats detailed in Recommendation and re-point its references.
 INSTRUCTION: move file and re-point its references.
 
 ### 1.7 `Scenes/Player/mothership.tscn` — the mothership is a level object, not a player asset
-- `res://Scenes/Player/mothership.tscn` (+ `mothership_control.gd`, `mothership_enter_area.gd`). Note: there is **no `mothership.gd`** — only `mothership_control.gd` / `mothership_enter_area.gd`.
+- `res://scenes/player/mothership.tscn` (+ `mothership_control.gd`, `mothership_enter_area.gd`). Note: there is **no `mothership.gd`** — only `mothership_control.gd` / `mothership_enter_area.gd`.
 - **Referenced by:** `Level_Day1.tscn:11`, `Level_Day2.tscn:10`, `Level_Day3.tscn:11`, `Tutorial.tscn:11`; driven by `Scenes/Levels/input_guide_admin.gd:15‑48`.
 - **Use:** the mothership objective structure + entrance area in each level.
 - **Recommendation:** move to `Scenes/Spaceship/` or `Scenes/Levels/mothership/`.
@@ -101,7 +101,7 @@ One folder holds multiple distinct responsibilities: level scenes (`Level_Day1/2
 INSTRUCTION: ignore.
 
 ### 2.4 `Scenes/Enemies/` — contains an unrelated `hook.gd`
-- `res://Scenes/Enemies/hook.gd` (2.0 KB) has no enemy association — appears to be a misplaced mechanic/utility script.
+- `res://scenes/enemies/hook.gd` (2.0 KB) has no enemy association — appears to be a misplaced mechanic/utility script.
 - Also present: a stray backup `enemy_vermin.tscn9100188928.tmp` (garbage — see §4.1).
 - **Referenced by:** none found (orphan).
 - **Recommendation:** relocate or remove `hook.gd`; purge the `.tmp`.
@@ -124,7 +124,7 @@ INSTRUCTION: delete all the listed files. (PS: DO NOT delete start_limbo)
 ## 3. Redundant / erroneous / non‑descriptive filenames
 
 ### 3.1 ~~`BackHoles` typo~~ — **RESOLVED on disk** (doc staleness remains)
-- On disk there is **only `Scenes/BlackHoles/`** and every reference already matches: `Level_Day1.tscn:25,27`, `Level_Day2.tscn:24,25`, `Level_Day3.tscn:25,26`, `Tutorial.tscn:21`, and `Tests/Unit/black_hole_test.gd:8‑9` (→ `res://Scenes/BlackHoles/black_hole.{gd,tscn}`). The rename landed (via merge of `main`).
+- On disk there is **only `Scenes/BlackHoles/`** and every reference already matches: `Level_Day1.tscn:25,27`, `Level_Day2.tscn:24,25`, `Level_Day3.tscn:25,26`, `Tutorial.tscn:21`, and `Tests/Unit/black_hole_test.gd:8‑9` (→ `res://scenes/black_hole/black_hole.{gd,tscn}`). The rename landed (via merge of `main`).
 - **The docs are stale:** `AGENTS.md` and `UNUSED_CODE.md` still describe `BackHoles/` as on‑disk / describe the test as failing. Update those two docs to the current truth.
 INSTRUCTION: update docs.
 

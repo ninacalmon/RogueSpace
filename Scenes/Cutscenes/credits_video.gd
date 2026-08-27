@@ -2,7 +2,7 @@ extends VideoStreamPlayer
 
 
 func _ready() -> void:
-	Globals.next_scene_path = "res://Scenes/Levels/menu.tscn"
+	Globals.next_scene_path = "res://scenes/levels/menu.tscn"
 	modulate = Color.TRANSPARENT
 	await get_tree().create_timer(2).timeout
 	var tween = create_tween()

@@ -14,38 +14,38 @@ var default_pitch: float = 1.0
 var fade_tween: Tween = null 
 
 var music_map: Dictionary = {
-	"res://Scenes/Levels/menu.tscn": {
-		"stream": preload("res://Music/menu__vox_vacui.mp3"),
+	"res://scenes/levels/menu.tscn": {
+		"stream": preload("res://music/msc_menu.mp3"),
 		"volume": 0.0,
 		"pitch": 1.0
 	},
-	"res://Scenes/Levels/Tutorial.tscn": {
-		"stream": preload("res://Music/MainTheme.mp3"),
+	"res://scenes/levels/Tutorial.tscn": {
+		"stream": preload("res://music/msc_main_theme.mp3"),
 		"volume": -24.0,
 		"pitch": 0.6 
 	},
-	"res://Scenes/Levels/Level_Day1.tscn": {
-		"stream": preload("res://Music/MainTheme.mp3"),
+	"res://scenes/levels/Level_Day1.tscn": {
+		"stream": preload("res://music/msc_main_theme.mp3"),
 		"volume": -20.0,
 		"pitch": 1.0
 	},
-	"res://Scenes/Levels/Level_Day2.tscn": {
-		"stream": preload("res://Music/MainTheme.mp3"),
+	"res://scenes/levels/Level_Day2.tscn": {
+		"stream": preload("res://music/msc_main_theme.mp3"),
 		"volume": -20.0,
 		"pitch": 1.0
 	},
-	"res://Scenes/Levels/Level_Day3.tscn": {
-		"stream": preload("res://Music/BossTheme.mp3"),
+	"res://scenes/levels/Level_Day3.tscn": {
+		"stream": preload("res://music/msc_boss_matriarch.mp3"),
 		"volume": -12.0,
 		"pitch": 1.0
 	},
-	"res://Scenes/Cutscenes/cutscene_final2.tscn": {
-		"stream": preload("res://Music/final_music.mp3"),
+	"res://scenes/cutscenes/cutscene_final2.tscn": {
+		"stream": preload("res://music/cutscene_music/msc_final_scene.mp3"),
 		"volume": -12.0,
 		"pitch": 0.7
 	},
-	"res://Scenes/Cutscenes/cutscene_credits.tscn": {
-		"stream": preload("res://Music/MainTheme.mp3"),
+	"res://scenes/cutscenes/cutscene_credits.tscn": {
+		"stream": preload("res://music/msc_main_theme.mp3"),
 		"volume": -17.0,
 		"pitch": 0.6
 	}

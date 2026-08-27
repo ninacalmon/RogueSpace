@@ -11,15 +11,15 @@
 
 | res:// path | Size | Note |
 |---|---|---|
-| `res://Scenes/Enemies/enemy_larvae.gdshader` | 349 B | no reference found |
-| `res://Scenes/Spaceship/pixel_sprite.gdshader` | 346 B | no reference found — a *different* `Shaders/pixel_sprite.gdshader` IS used |
+| `res://scenes/enemies/enemy_larvae.gdshader` | 349 B | no reference found |
+| `res://scenes/spaceship/pixel_sprite.gdshader` | 346 B | no reference found — a *different* `Shaders/pixel_sprite.gdshader` IS used |
 
 ## 2. Videos (2)
 
 | res:// path | Note |
 |---|---|
-| `res://Sprites(main)/Cutscenes/InOutSpaceship.mp4` | only the `.ogv` sibling is used |
-| `res://Sprites(main)/Cutscenes/InOutSpaceship.ogv` | no reference found (other cutscene `.ogv` files are used) |
+| `res://sprites(main)/Cutscenes/InOutSpaceship.mp4` | only the `.ogv` sibling is used |
+| `res://sprites(main)/Cutscenes/InOutSpaceship.ogv` | no reference found (other cutscene `.ogv` files are used) |
 
 ## 3. Audio (18)
 

@@ -1,7 +1,6 @@
 extends Sprite2D
 class_name PlayerSprite2D
 
-@onready var motor_gpu_particles: GPUParticles2D = $MotorGPUParticles
 @onready var backpack_sprite_2d: Sprite2D = $BackpackSprite2D
 
 @export var seconds_per_frame: float = 0.3

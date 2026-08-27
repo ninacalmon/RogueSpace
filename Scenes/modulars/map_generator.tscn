@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bomsxltvgpfir"]
 
-[ext_resource type="Script" uid="uid://b5elhq16agwhq" path="res://Scenes/Modulars/map_generator.gd" id="1_ji8fa"]
+[ext_resource type="Script" uid="uid://b5elhq16agwhq" path="res://scenes/modulars/map_generator.gd" id="1_ji8fa"]
 
 [sub_resource type="Gradient" id="Gradient_ji8fa"]
 offsets = PackedFloat32Array(0, 0.14177215, 0.42531645)

@@ -12,7 +12,7 @@ extends Control
 var current_day: int = 3
 
 func _ready() -> void:
-	Globals.next_scene_path = "res://Scenes/Cutscenes/cutscene_credits.tscn"
+	Globals.next_scene_path = "res://scenes/cutscenes/cutscene_credits.tscn"
 	hide()
 	modulate = Color.TRANSPARENT
 	animation_book_open.animation_finished.connect(open_diary)

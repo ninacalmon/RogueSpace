@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://b60wc4xruimxc"]
 
-[ext_resource type="Texture2D" uid="uid://cemdt5xxynwgc" path="res://Sprites/Nave_final.png" id="1_2mxmk"]
-[ext_resource type="Script" uid="uid://cpkq2vhfiv77u" path="res://Scenes/Spaceship/mothership_enter_area.gd" id="2_ffvao"]
-[ext_resource type="AudioStream" uid="uid://bjpdfvmmyk2k1" path="res://Sound Effects/Spaceship/SFX_dooropen.wav" id="3_2mxmk"]
+[ext_resource type="Texture2D" uid="uid://cemdt5xxynwgc" path="res://sprites/Nave_final.png" id="1_2mxmk"]
+[ext_resource type="Script" uid="uid://cpkq2vhfiv77u" path="res://scenes/spaceship/mothership_enter_area.gd" id="2_ffvao"]
+[ext_resource type="AudioStream" uid="uid://bjpdfvmmyk2k1" path="res://sound_effects/spaceship/SFX_dooropen.wav" id="3_2mxmk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q0gh8"]
 size = Vector2(410, 312)

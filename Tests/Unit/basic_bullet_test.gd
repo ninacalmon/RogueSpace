@@ -1,6 +1,6 @@
 extends GdUnitTestSuite
 
-const BASIC_BULLET_SCRIPT := "res://Scenes/Bullets/player_bullet.gd"
+const BASIC_BULLET_SCRIPT := "res://scenes/bullets/player_bullet.gd"
 
 
 func _make_bullet() -> Bullet:
@@ -29,7 +29,7 @@ func test_direction_defaults_to_zero() -> void:
 
 
 func test_body_entered_signal_is_connected() -> void:
-	var scene := load("res://Scenes/Bullets/basic_bullet.tscn") as PackedScene
+	var scene := load("res://scenes/bullets/basic_bullet.tscn") as PackedScene
 	var b: Bullet = scene.instantiate()
 	add_child(b)
 	await get_tree().process_frame

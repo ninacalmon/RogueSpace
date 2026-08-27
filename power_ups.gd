@@ -68,7 +68,7 @@ func apply_power_up(power_up: String):
 			StatsManager.player_break_speed *= 2
 
 		"Bullet":
-			StatsManager.player_current_bullet = "res://Scenes/Bullets/super_bullet.tscn"
+			StatsManager.player_current_bullet = "res://scenes/bullets/super_bullet.tscn"
 
 		"Perfurator":
 			StatsManager.player_have_perfurator = true

@@ -10,7 +10,7 @@ const INIT_PLAYER_HAS_CADAVER: bool = false
 const INIT_CURRENT_DAY: int = 0
 const INIT_DEATH_COUNT: int = 0
 
-const INIT_PLAYER_CURRENT_BULLET: String = "res://Scenes/Bullets/basic_bullet.tscn"
+const INIT_PLAYER_CURRENT_BULLET: String = "res://scenes/bullets/basic_bullet.tscn"
 #endregion
 
 var day: int = 0
@@ -45,7 +45,7 @@ var PowerUpsLevels: Dictionary = {
 
 #### PLAYER CONST BASE STATS ####
 
-var player_current_bullet: String = "res://Scenes/Bullets/basic_bullet.tscn"
+var player_current_bullet: String = "res://scenes/bullets/basic_bullet.tscn"
 var player_have_perfurator: bool = true
 
 #region CONST BaseLifeStats

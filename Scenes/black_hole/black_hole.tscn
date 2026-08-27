@@ -1,0 +1,115 @@
+[gd_scene load_steps=20 format=3 uid="uid://3vg8bv7t077f"]
+
+[ext_resource type="Shader" uid="uid://s03egy3ha6nk" path="res://shaders/BlackHoleShader.gdshader" id="1_cv587"]
+[ext_resource type="Script" uid="uid://ctkk6v6iuor2q" path="res://scenes/black_hole/black_hole.gd" id="1_ratl1"]
+[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://scenes/modulars/gravitational_field.tscn" id="2_0htpi"]
+[ext_resource type="Texture2D" uid="uid://bdfhcr1kchi0a" path="res://sprites/Baren.png" id="3_ratl1"]
+[ext_resource type="Script" uid="uid://bh0d8bq6rk6f" path="res://scenes/black_hole/black_hole_shader.gd" id="4_ratl1"]
+[ext_resource type="AudioStream" uid="uid://cyu78nkci5acj" path="res://sound_effects/space_bodies/gulp.mp3" id="5_wn18u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0htpi"]
+radius = 29.017237
+
+[sub_resource type="Gradient" id="Gradient_0htpi"]
+offsets = PackedFloat32Array(0, 0.63010204)
+colors = PackedColorArray(0.37, 0.37, 0.37, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ratl1"]
+gradient = SubResource("Gradient_0htpi")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_wn18u"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.10958904, -0.21092081), 0.0, 0.0, 0, 0, Vector2(0.25479454, 0.2066381), 0.0, 0.0, 0, 0, Vector2(0.30684933, -0.0021413565), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_rkt65"]
+width = 2048
+curve = SubResource("Curve_wn18u")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ratl1"]
+shader = ExtResource("1_cv587")
+shader_parameter/curve = SubResource("CurveTexture_rkt65")
+shader_parameter/strenght = -0.29999996674999996
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8ovth"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_lfh63"]
+offsets = PackedFloat32Array(0.13043478, 0.24347825, 0.7)
+colors = PackedColorArray(0, 0, 0, 1, 0.16862746, 0.16862746, 0.16862746, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hx7ua"]
+gradient = SubResource("Gradient_lfh63")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lasnm"]
+blend_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_v4hwt"]
+offsets = PackedFloat32Array(0.16521738, 0.43913043)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tjypq"]
+gradient = SubResource("Gradient_v4hwt")
+width = 640
+height = 640
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ratl1"]
+random_pitch = 2.0
+random_volume_offset_db = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("5_wn18u")
+
+[node name="BlackHole" type="RigidBody2D" node_paths=PackedStringArray("collision", "gravitational_field")]
+collision_layer = 0
+collision_mask = 0
+mass = 1000.0
+freeze = true
+script = ExtResource("1_ratl1")
+collision = NodePath("CollisionShape2D")
+gravitational_field = NodePath("GravitationalField")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0htpi")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 6.0
+texture = SubResource("GradientTexture2D_ratl1")
+texture_scale = 1.5
+
+[node name="Shader" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ratl1")
+scale = Vector2(3, 3)
+texture = ExtResource("3_ratl1")
+script = ExtResource("4_ratl1")
+
+[node name="Glow" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_8ovth")
+scale = Vector2(0.65, 0.65)
+texture = SubResource("GradientTexture2D_hx7ua")
+
+[node name="Center" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_lasnm")
+scale = Vector2(0.05, 0.05)
+texture = SubResource("GradientTexture2D_tjypq")
+
+[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("2_0htpi")]
+collision_layer = 129
+collision_mask = 129
+owner_body = NodePath("..")
+owner_collision_shape = NodePath("../CollisionShape2D")
+mass_to_radius_multiply = 0.2
+attraction_received_multiply = 0.01
+increase_with_proximity = 0.8500000000000001
+
+[node name="GulpSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_ratl1")
+volume_db = -14.0
+bus = &"Sound Effects"
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]

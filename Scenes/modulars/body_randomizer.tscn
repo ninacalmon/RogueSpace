@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b7rex1sowfwcb"]
 
-[ext_resource type="Script" uid="uid://dakt7r353r7ae" path="res://Scenes/SpaceBodies/body_randomizer.gd" id="1_cq0w7"]
+[ext_resource type="Script" uid="uid://dakt7r353r7ae" path="res://scenes/space_bodies/body_randomizer.gd" id="1_cq0w7"]
 
 [node name="BodyRandomizer" type="Node2D"]
 script = ExtResource("1_cq0w7")

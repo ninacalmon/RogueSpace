@@ -1,6 +1,6 @@
 extends GdUnitTestSuite
 
-const HurtModuleScript := preload("res://Scenes/Modulars/hurt_module.gd")
+const HurtModuleScript := preload("res://scenes/modulars/hurt_module.gd")
 
 
 func test_extends_node2d() -> void:

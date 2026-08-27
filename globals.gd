@@ -6,7 +6,7 @@ const INIT_IS_CUTSCENE: bool = false
 const INIT_CHANGING_SCENE: bool = false
 const INIT_FAKE_MOUSE_INPUT: bool = false
 const INIT_IS_SHOWING_CONFIRMATION: bool = false
-const INIT_NEXT_SCENE_PATH: String = "res://Scenes/Levels/menu.tscn"
+const INIT_NEXT_SCENE_PATH: String = "res://scenes/levels/menu.tscn"
 const INIT_HAS_ENERGY_IN_SPACESHIP: bool = false
 #endregion
 
@@ -24,7 +24,7 @@ var fake_mouse_input: bool
 
 var is_showing_confirmation: bool
 
-var next_scene_path: String = "res://Scenes/Levels/menu.tscn"
+var next_scene_path: String = "res://scenes/levels/menu.tscn"
 
 var last_level_path: String
 
@@ -54,7 +54,7 @@ func reload_current_scene():
 
 func player_died():
 	last_level_path = get_tree().current_scene.scene_file_path
-	LevelTransition.change_scene_to("res://Scenes/Levels/game_over.tscn")
+	LevelTransition.change_scene_to("res://scenes/levels/game_over.tscn")
 	StatsManager.current_resources = 0
 
 func update_resources_goal():

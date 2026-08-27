@@ -10,7 +10,7 @@ var original_energy: float
 
 var timer: Timer
 var audio_stream_player: AudioStreamPlayer
-var electric_sound: AudioStream  = preload("res://Sound Effects/Spaceship/buzz.ogg")
+var electric_sound: AudioStream  = preload("res://sound_effects/spaceship/buzz.ogg")
 
 func initialize() -> void:
 	timer = Timer.new()

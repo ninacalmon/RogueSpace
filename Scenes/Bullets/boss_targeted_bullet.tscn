@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dtm7xjsnvddsm"]
 
-[ext_resource type="Script" uid="uid://cr4ttk7mjg166" path="res://Scenes/Bullets/boss_targeted_bullet.gd" id="1_14rbs"]
-[ext_resource type="Texture2D" uid="uid://bu1yx2viodbgk" path="res://Sprites/Enemies/FollowShot.png" id="2_14rbs"]
+[ext_resource type="Script" uid="uid://cr4ttk7mjg166" path="res://scenes/bullets/boss_targeted_bullet.gd" id="1_14rbs"]
+[ext_resource type="Texture2D" uid="uid://bu1yx2viodbgk" path="res://sprites/enemies/FollowShot.png" id="2_14rbs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cj77m"]
 radius = 12.0

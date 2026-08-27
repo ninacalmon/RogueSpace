@@ -43,14 +43,14 @@ func _ready() -> void:
 func _on_continue_pressed():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Globals.add_frag_sum()
-	LevelTransition.change_scene_to("res://Scenes/Levels/spaceship_interior.tscn")
+	LevelTransition.change_scene_to("res://scenes/levels/spaceship_interior.tscn")
 
 func _on_start_button_pressed():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Globals.reset_game_state()
 	StatsManager.reset_game_state()
 	PowerUps.reset_game_state()
-	LevelTransition.change_scene_to("res://Scenes/Levels/Tutorial.tscn")
+	LevelTransition.change_scene_to("res://scenes/levels/Tutorial.tscn")
 
 func _on_controls_button_pressed():
 	controlers_overlay.show()

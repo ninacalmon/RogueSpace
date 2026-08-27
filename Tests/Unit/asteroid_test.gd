@@ -1,11 +1,11 @@
 extends GdUnitTestSuite
 
 # The asteroid_small / asteroid_medium / asteroid_big .tscn scenes all share the
-# same underlying script (res://Scenes/modulars/asteroid.gd) but set different
+# same underlying script (res://scenes/modulars/asteroid.gd) but set different
 # exported values on the root node. We test that script's exported defaults and
 # the `calculate_damage_and_pieces` helper, which is fully deterministic.
 
-const ASTEROID_SCRIPT := "res://Scenes/Asteroids/asteroid.gd"
+const ASTEROID_SCRIPT := "res://scenes/asteroids/asteroid_body/asteroid.gd"
 
 
 func _make() -> Asteroid:
@@ -76,7 +76,7 @@ func test_calculate_damage_and_pieces_handles_zero_damage() -> void:
 
 
 func test_asteroid_small_scene_has_small_size() -> void:
-	var scene := load("res://Scenes/Asteroids/asteroid_small.tscn") as PackedScene
+	var scene := load("res://scenes/asteroids/asteroid_body/asteroid_small.tscn") as PackedScene
 	var a: Asteroid = scene.instantiate()
 	add_child(a)
 	await get_tree().process_frame
@@ -89,7 +89,7 @@ func test_asteroid_small_scene_has_small_size() -> void:
 
 
 func test_asteroid_medium_scene_has_medium_size() -> void:
-	var scene := load("res://Scenes/Asteroids/asteroid_medium.tscn") as PackedScene
+	var scene := load("res://scenes/asteroids/asteroid_body/asteroid_medium.tscn") as PackedScene
 	var a: Asteroid = scene.instantiate()
 	add_child(a)
 	await get_tree().process_frame
@@ -99,7 +99,7 @@ func test_asteroid_medium_scene_has_medium_size() -> void:
 
 
 func test_asteroid_big_scene_has_big_size() -> void:
-	var scene := load("res://Scenes/Asteroids/asteroid_big.tscn") as PackedScene
+	var scene := load("res://scenes/asteroids/asteroid_body/asteroid_big.tscn") as PackedScene
 	var a: Asteroid = scene.instantiate()
 	add_child(a)
 	await get_tree().process_frame

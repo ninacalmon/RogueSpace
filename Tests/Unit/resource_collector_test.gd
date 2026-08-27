@@ -1,6 +1,6 @@
 extends GdUnitTestSuite
 
-const ResourceCollectorScript := preload("res://Scenes/Modulars/resource_collector.gd")
+const ResourceCollectorScript := preload("res://scenes/modulars/resource_collector.gd")
 
 
 func test_extends_area2d() -> void:

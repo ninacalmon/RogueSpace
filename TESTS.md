@@ -14,10 +14,10 @@ The project uses [gdUnit4](https://github.com/godot-gdunit-labs/gdUnit4) for uni
 
 ## Test Folder Organization
 
-Tests live under `res://Tests/`, organized by feature/subsystem, with a `Unit` subfolder for unit tests:
+Tests live under `res://tests/`, organized by feature/subsystem, with a `Unit` subfolder for unit tests:
 
 ```
-res://Tests/
+res://tests/
 └── Menu/
     └── Unit/
         └── menu_test.gd        # gdUnit4 test suite for the Menu scene
@@ -25,10 +25,10 @@ res://Tests/
 
 ### Rules
 
-- The **scan root** is `res://Tests/` (configurable via `[gdunit4] settings/test/test_lookup_folder="Tests"` in `project.godot`).
+- The **scan root** is `res://tests/` (configurable via `[gdunit4] settings/test/test_lookup_folder="Tests"` in `project.godot`).
 - The scanner walks that root recursively and picks up any `.gd` file whose class **extends `GdUnitTestSuite`**.
 - Each test method must be named with the **`test_` prefix** (e.g. `test_buttons_exist`).
-- Follow the pattern: one test suite per scene / unit, placed under `Tests/<Feature>/Unit/`.
+- Follow the pattern: one test suite per scene / unit, placed under `tests/<feature>/unit/`.
 
 ---
 
@@ -67,7 +67,7 @@ func test_something():
 var menu_control: Control
 
 func before() -> void:
-	var scene := load("res://Scenes/Levels/menu.tscn") as PackedScene
+	var scene := load("res://scenes/levels/menu.tscn") as PackedScene
 	menu_control = scene.instantiate()
 	add_child(menu_control)
 	# Let _ready() and deferred logic run before asserting state:
@@ -104,12 +104,12 @@ From the project root:
 
 ```bash
 export GODOT_BIN=/usr/local/bin/godot
-./addons/gdUnit4/runtest.sh -a res://Tests --ignoreHeadlessMode
+./addons/gdUnit4/runtest.sh -a res://tests --ignoreHeadlessMode
 ```
 
-- `-a res://Tests` tells gdUnit4 to scan the `res://Tests/` folder for suites.
+- `-a res://tests` tells gdUnit4 to scan the `res://tests/` folder for suites.
 - `--ignoreHeadlessMode` is required when running with `--headless` (see [Quirks](#quirks--workarounds)).
-- To run a **single suite**, pass its path: `-a res://Tests/Menu/Unit/menu_test.gd`.
+- To run a **single suite**, pass its path: `-a res://tests/menu/unit/menu_test.gd`.
 
 The script prints a per-test result (PASSED / FAILED), an overall summary, and writes reports to `reports/report_<N>/` (XML + HTML).
 
@@ -128,7 +128,7 @@ The **GdUnit Inspector** panel (docked in the editor) provides:
 - **Test Run Overview Tree** — run a test / suite from a hierarchical view.
 - **Run Overall** — run all discovered tests.
 
-You can also right-click a `.gd` test file or a `Tests/` folder in the **FileSystem dock** and choose the gdUnit run/debug option from the context menu.
+You can also right-click a `.gd` test file or a `tests/` folder in the **FileSystem dock** and choose the gdUnit run/debug option from the context menu.
 
 ---
 
@@ -153,7 +153,7 @@ When running with `--headless`, gdUnit4 refuses to start unless told otherwise.
 **Workaround:** add `--ignoreHeadlessMode`:
 
 ```bash
-./addons/gdUnit4/runtest.sh -a res://Tests --ignoreHeadlessMode
+./addons/gdUnit4/runtest.sh -a res://tests --ignoreHeadlessMode
 ```
 
 Caveat: with this flag, tests relying on **real UI input events** (`InputEventMouse`, key presses) will **not** behave correctly in headless mode, because the engine does not transport input events headlessly. Prefer programmatic assertions (visibility, properties, signal connections) for headless tests.
@@ -189,7 +189,7 @@ You may see warnings like `1 RID allocations ... leaked` or `Parameter "Renderin
 
 ## Project-Specific Example: the Menu Suite
 
-`Tests/Menu/Unit/menu_test.gd` covers the Menu scene (`res://Scenes/Levels/menu.tscn`):
+`tests/menu/unit/menu_test.gd` covers the Menu scene (`res://scenes/levels/menu.tscn`):
 
 | Test | Verifies |
 |------|----------|

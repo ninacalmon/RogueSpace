@@ -1,0 +1,127 @@
+[gd_scene load_steps=20 format=3 uid="uid://cf2kk6i0kbsyk"]
+
+[ext_resource type="Script" uid="uid://8b3tv0wxnwkl" path="res://scenes/space_bodies/boss_planet_day_3.gd" id="1_qimuy"]
+[ext_resource type="Texture2D" uid="uid://bv75432b5i0ny" path="res://sprites/planetas/PlanetaMaior.png" id="2_drp2x"]
+[ext_resource type="Shader" uid="uid://wsx2nuynme5m" path="res://scenes/space_bodies/dissolve.gdshader" id="2_ueswk"]
+[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://scenes/modulars/gravitational_field.tscn" id="3_ueswk"]
+[ext_resource type="Script" uid="uid://b2jggterxnagp" path="res://scenes/modulars/smooth_shake_module.gd" id="6_858ty"]
+[ext_resource type="AudioStream" uid="uid://buldyr2apasl4" path="res://sound_effects/ambience/Impacto4.mp3" id="6_drp2x"]
+[ext_resource type="AudioStream" uid="uid://b7snqnvr1tlj" path="res://sound_effects/asteroids/break/break.wav" id="7_ueswk"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m0iey"]
+friction = 0.0
+bounce = 0.1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vpe2g"]
+radius = 250.018
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7iwph"]
+frequency = 0.0146
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kb7e1"]
+noise = SubResource("FastNoiseLite_7iwph")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_858ty"]
+shader = ExtResource("2_ueswk")
+shader_parameter/hit_flash_enabled = false
+shader_parameter/hit_flash_color = Color(1, 1, 1, 1)
+shader_parameter/dissolve_noise = SubResource("NoiseTexture2D_kb7e1")
+shader_parameter/dissolve_value = 1.0
+shader_parameter/dissolve_outline_color = Color(0.8235294, 0, 0.2901961, 1)
+
+[sub_resource type="Curve" id="Curve_drp2x"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.75939846, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ueswk"]
+curve = SubResource("Curve_drp2x")
+
+[sub_resource type="Curve" id="Curve_7iwph"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.66326535), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_kb7e1"]
+curve = SubResource("Curve_7iwph")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_858ty"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1.965, 1.98, 1)
+emission_shape = 2
+emission_sphere_radius = 128.0
+angle_min = -720.0
+angle_max = 720.0
+spread = 180.0
+initial_velocity_min = 39.469997
+initial_velocity_max = 151.31999
+gravity = Vector3(0, 0, 0)
+scale_min = 6.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_kb7e1")
+color = Color(1.8022759, 0, 0.6709294, 1)
+alpha_curve = SubResource("CurveTexture_ueswk")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7iwph"]
+random_volume_offset_db = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("6_drp2x")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ueswk"]
+random_pitch = 1.2
+random_volume_offset_db = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("7_ueswk")
+
+[node name="PlanetBoss" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "gravitational_field")]
+z_index = 1
+collision_layer = 2
+collision_mask = 2
+mass = 1500.0
+physics_material_override = SubResource("PhysicsMaterial_m0iey")
+contact_monitor = true
+max_contacts_reported = 3
+linear_damp_mode = 1
+script = ExtResource("1_qimuy")
+collision = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
+gravitational_field = NodePath("GravitationalField")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_vpe2g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_858ty")
+texture = ExtResource("2_drp2x")
+
+[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("3_ueswk")]
+visible = false
+linear_damp = 0.0
+owner_body = NodePath("..")
+owner_collision_shape = NodePath("../CollisionShape2D")
+mass_to_radius_multiply = 0.25
+attraction_received_multiply = 0.01
+increase_with_proximity = 0.8999999999999999
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="BreakingParticles" type="GPUParticles2D" parent="."]
+amount = 1024
+amount_ratio = 0.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_858ty")
+
+[node name="SmoothShake" type="Node" parent="."]
+script = ExtResource("6_858ty")
+metadata/_custom_type_script = "uid://b2jggterxnagp"
+
+[node name="BreakSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_7iwph")
+volume_db = -16.0
+pitch_scale = 0.22
+bus = &"Sound Effects"
+
+[node name="BreakSmallSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_ueswk")
+volume_db = -16.0
+pitch_scale = 0.24
+bus = &"Sound Effects"

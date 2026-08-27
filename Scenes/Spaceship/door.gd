@@ -80,16 +80,16 @@ func go_out():
 	StatsManager.day += 1
 	Globals.update_resources_goal()
 	Globals.next_scene_path = get_next_level()
-	LevelTransition.change_scene_to("res://Scenes/Cutscenes/cutscene_out_spaceship.tscn", 2)
+	LevelTransition.change_scene_to("res://scenes/cutscenes/cutscene_out_spaceship.tscn", 2)
 
 func get_next_level() -> String:
-	var scene_path: String = "res://Scenes/Levels/Level_Day1.tscn"
+	var scene_path: String = "res://scenes/levels/Level_Day1.tscn"
 	print(StatsManager.day)
 	match StatsManager.day:
-		#0: "res://Scenes/Levels/LevelFinal2.tscn"
-		1: scene_path = "res://Scenes/Levels/Level_Day1.tscn"
-		2: scene_path = "res://Scenes/Levels/Level_Day2.tscn"
-		3: scene_path = "res://Scenes/Levels/Level_Day3.tscn"
+		#0: "res://scenes/levels/LevelFinal2.tscn"
+		1: scene_path = "res://scenes/levels/Level_Day1.tscn"
+		2: scene_path = "res://scenes/levels/Level_Day2.tscn"
+		3: scene_path = "res://scenes/levels/Level_Day3.tscn"
 	
 	return scene_path
 

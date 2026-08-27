@@ -8,7 +8,7 @@ var is_playing_animation: bool = false
 
 
 func _ready() -> void:
-	Globals.next_scene_path = "res://Scenes/Levels/menu.tscn"
+	Globals.next_scene_path = "res://scenes/levels/menu.tscn"
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	#music.play()
 	play("context1")
@@ -22,11 +22,11 @@ func _on_animation_finished(_anim_name: StringName) -> void:
 
 func _on_animation_started(anim: String):
 	match anim:
-		"context1": music.stream = preload("res://Music/musicsCutscene/cena1cutscene.wav")
-		"context2" : music.stream = preload("res://Music/musicsCutscene/cena2cutscene.wav")
-		"context3" : music.stream = preload("res://Music/musicsCutscene/cena3cutscene.wav")
-		"context4" : music.stream = preload("res://Music/musicsCutscene/cena4cutscene.mp3")
-		"context5" : music.stream = preload("res://Music/musicsCutscene/cena5cutscene.mp3")
+		"context1": music.stream = preload("res://music/cutscene_music/msc_cutscene_scene1.wav")
+		"context2" : music.stream = preload("res://music/cutscene_music/msc_cutscene_scene2.wav")
+		"context3" : music.stream = preload("res://music/cutscene_music/msc_cutscene_scene3.wav")
+		"context4" : music.stream = preload("res://music/cutscene_music/msc_cutscene_scene4.mp3")
+		"context5" : music.stream = preload("res://music/cutscene_music/msc_cutscene_scene5.mp3")
 	music.stop()
 	music.play()
 

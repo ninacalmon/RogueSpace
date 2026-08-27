@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://crlc3o3qc1tqn"]
 
-[ext_resource type="Script" uid="uid://jtbq6dor8pk0" path="res://Scenes/Modulars/clickable_highlight.gd" id="1_gpqw6"]
+[ext_resource type="Script" uid="uid://jtbq6dor8pk0" path="res://scenes/modulars/clickable_highlight.gd" id="1_gpqw6"]
 
 [node name="ClickableHighlight" type="Node2D"]
 script = ExtResource("1_gpqw6")

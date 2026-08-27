@@ -6,7 +6,7 @@ func test_default_values() -> void:
 	var g = load(GLOBALS_SCRIPT).new()
 	assert_that(g.can_teleport).is_false()
 	assert_that(g.changing_scene).is_false()
-	assert_that(g.next_scene_path).is_equal("res://Scenes/Levels/menu.tscn")
+	assert_that(g.next_scene_path).is_equal("res://scenes/levels/menu.tscn")
 	assert_that(g.has_energy_in_spaceship).is_false()
 
 func test_reset_game_state_restores_defaults() -> void:
@@ -23,7 +23,7 @@ func test_reset_game_state_restores_defaults() -> void:
 	assert_that(g.changing_scene).is_false()
 	assert_that(g.fake_mouse_input).is_false()
 	assert_that(g.is_showing_confirmation).is_false()
-	assert_that(g.next_scene_path).is_equal("res://Scenes/Levels/menu.tscn")
+	assert_that(g.next_scene_path).is_equal("res://scenes/levels/menu.tscn")
 
 func test_update_resources_goal_mapping() -> void:
 	var g = load(GLOBALS_SCRIPT).new()

@@ -8,7 +8,7 @@ func test_default_values_on_new_instance() -> void:
 	assert_that(sm.resources_needed).is_equal(50)
 	assert_that(sm.current_resources).is_equal(0)
 	assert_that(sm.player_has_cadaver).is_false()
-	assert_that(sm.player_current_bullet).is_equal("res://Scenes/Bullets/basic_bullet.tscn")
+	assert_that(sm.player_current_bullet).is_equal("res://scenes/bullets/basic_bullet.tscn")
 	assert_that(sm.player_have_perfurator).is_true()
 
 func test_base_life_stats_constants() -> void:
@@ -62,7 +62,7 @@ func test_reset_game_state_restores_defaults() -> void:
 	assert_that(sm.resources_needed).is_equal(50)
 	assert_that(sm.current_resources).is_equal(0)
 	assert_that(sm.player_has_cadaver).is_false()
-	assert_that(sm.player_current_bullet).is_equal("res://Scenes/Bullets/basic_bullet.tscn")
+	assert_that(sm.player_current_bullet).is_equal("res://scenes/bullets/basic_bullet.tscn")
 	assert_that(sm.player_max_health).is_equal(100.0)
 	assert_that(sm.player_max_fuel).is_equal(550.0)
 	assert_that(sm.player_speed).is_equal(700.0)

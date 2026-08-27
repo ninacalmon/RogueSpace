@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnjex5t4bsfgk"]
+
+[ext_resource type="Script" uid="uid://clcm8jx1m8eel" path="res://scenes/space_bodies/moons/static_rotation.gd" id="1_xpvka"]
+[ext_resource type="Texture2D" uid="uid://c2afuss2ehhor" path="res://sprites/planetas/moon_4.png" id="2_xpvka"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8abtl"]
+radius = 30.016663
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_xpvka")
+rotation_speed = 0.4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8abtl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xpvka")

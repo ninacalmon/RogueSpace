@@ -1,6 +1,6 @@
 extends GdUnitTestSuite
 
-const GravityModuleScript := preload("res://Scenes/Modulars/gravity_module.gd")
+const GravityModuleScript := preload("res://scenes/modulars/gravity_module.gd")
 
 
 func test_extends_node() -> void:

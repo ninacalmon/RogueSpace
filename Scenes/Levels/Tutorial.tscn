@@ -1,34 +1,34 @@
-[gd_scene load_steps=43 format=4 uid="uid://cvkswh6huo7av"]
+[gd_scene load_steps=42 format=4 uid="uid://cvkswh6huo7av"]
 
-[ext_resource type="Texture2D" uid="uid://b4go5brbh3ndq" path="res://Sprites/Starfields/Starfield 1 - 1024x1024.png" id="1_1wrtt"]
-[ext_resource type="Script" uid="uid://yfnxaboej4ja" path="res://Scenes/Levels/tutorial.gd" id="1_55wm2"]
-[ext_resource type="Texture2D" uid="uid://xuvojlr8s030" path="res://Sprites/TemporaryPlanets/temporary_planet_tutorial.png" id="2_1llwk"]
-[ext_resource type="Texture2D" uid="uid://dxfs6gmq8441e" path="res://Sprites/TemporaryPlanets/temporary_planet_02.png" id="3_u4w04"]
-[ext_resource type="Texture2D" uid="uid://dhtobhw3p6586" path="res://Sprites/TemporaryPlanets/temporary_planet_03.png" id="4_8617h"]
-[ext_resource type="Texture2D" uid="uid://c44gjd053ibld" path="res://Sprites/TemporaryPlanets/temporary_planet_04.png" id="5_nwkth"]
-[ext_resource type="PackedScene" uid="uid://b512vj2a4a3y" path="res://Scenes/Player/player.tscn" id="6_ada67"]
-[ext_resource type="Script" uid="uid://dw2m8ymjsljfq" path="res://Scenes/UI/camera.gd" id="7_ev6ts"]
-[ext_resource type="PackedScene" uid="uid://b60wc4xruimxc" path="res://Scenes/Spaceship/mothership.tscn" id="8_2s7u0"]
-[ext_resource type="Script" uid="uid://ctwsp81gxl65g" path="res://Scenes/Modulars/camera_vibration.gd" id="8_jtkh7"]
-[ext_resource type="Texture2D" uid="uid://curwcau163khw" path="res://Sprites/tileset.png" id="9_55wm2"]
-[ext_resource type="Script" uid="uid://bm2kpm32ooqhk" path="res://Scenes/Modulars/tile_map_generator.gd" id="10_7pjfj"]
-[ext_resource type="PackedScene" uid="uid://dxg5doh1x8ch2" path="res://Scenes/Asteroids/asteroid_small.tscn" id="11_jtkh7"]
-[ext_resource type="PackedScene" uid="uid://dsw810ysjgsn2" path="res://Scenes/Asteroids/asteroid_medium.tscn" id="12_ht16h"]
-[ext_resource type="PackedScene" uid="uid://bcffh04lffmyi" path="res://Scenes/Asteroids/asteroid_big.tscn" id="13_shmn6"]
-[ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://Scenes/Asteroids/asteroid_pieces.tscn" id="14_axxwk"]
-[ext_resource type="PackedScene" uid="uid://br070cnq6sve" path="res://Scenes/Enemies/enemy_basic.tscn" id="14_ev6ts"]
-[ext_resource type="Script" uid="uid://bhrrg6hud6dxq" path="res://Scenes/UI/tutorial_control.gd" id="15_fxugg"]
-[ext_resource type="PackedScene" uid="uid://3vg8bv7t077f" path="res://Scenes/BlackHoles/black_hole.tscn" id="16_sw71j"]
-[ext_resource type="Script" uid="uid://clhd57u8quoxj" path="res://Scenes/Levels/tutorial_area.gd" id="17_1llwk"]
-[ext_resource type="Script" uid="uid://cvnhqvpx04eey" path="res://Scenes/Levels/tutorial_area2.gd" id="17_u4w04"]
-[ext_resource type="PackedScene" uid="uid://bskx6fe236s8a" path="res://Scenes/UI/ui.tscn" id="18_8x3qo"]
-[ext_resource type="Script" uid="uid://2w0r730otrrh" path="res://Scenes/Levels/tutorial_area4.gd" id="19_8617h"]
-[ext_resource type="Script" uid="uid://cnm403taw8wcx" path="res://Scenes/Levels/tutorial_area6.gd" id="20_ada67"]
-[ext_resource type="Script" uid="uid://bghsvebqm65vs" path="res://Scenes/Levels/tutorial_area5.gd" id="20_nwkth"]
-[ext_resource type="Script" uid="uid://c3r4b8e2ndjwq" path="res://Scenes/Levels/tutorial_area8.gd" id="22_2s7u0"]
-[ext_resource type="Script" uid="uid://b2bjxptkx43d1" path="res://Scenes/Levels/tutorial_area7.gd" id="22_55wm2"]
-[ext_resource type="AudioStream" uid="uid://7lu32wsorlh5" path="res://Sound Effects/Enemies/sfx_inimigosBasic.wav" id="24_7pjfj"]
-[ext_resource type="Script" uid="uid://cf16x4l41vkpo" path="res://Scenes/Levels/input_guide_admin.gd" id="28_7pjfj"]
+[ext_resource type="Texture2D" uid="uid://b4go5brbh3ndq" path="res://sprites/starfields/Starfield 1 - 1024x1024.png" id="1_1wrtt"]
+[ext_resource type="Script" uid="uid://yfnxaboej4ja" path="res://scenes/levels/tutorial.gd" id="1_55wm2"]
+[ext_resource type="Texture2D" uid="uid://xuvojlr8s030" path="res://sprites/temporary_planets/temporary_planet_tutorial.png" id="2_1llwk"]
+[ext_resource type="Texture2D" uid="uid://dxfs6gmq8441e" path="res://sprites/temporary_planets/temporary_planet_02.png" id="3_u4w04"]
+[ext_resource type="Texture2D" uid="uid://dhtobhw3p6586" path="res://sprites/temporary_planets/temporary_planet_03.png" id="4_8617h"]
+[ext_resource type="Texture2D" uid="uid://c44gjd053ibld" path="res://sprites/temporary_planets/temporary_planet_04.png" id="5_nwkth"]
+[ext_resource type="PackedScene" uid="uid://b512vj2a4a3y" path="res://scenes/player/player.tscn" id="6_ada67"]
+[ext_resource type="Script" uid="uid://dw2m8ymjsljfq" path="res://scenes/ui/camera.gd" id="7_ev6ts"]
+[ext_resource type="PackedScene" uid="uid://b60wc4xruimxc" path="res://scenes/spaceship/mothership.tscn" id="8_2s7u0"]
+[ext_resource type="Script" uid="uid://ctwsp81gxl65g" path="res://scenes/modulars/camera_vibration.gd" id="8_jtkh7"]
+[ext_resource type="Texture2D" uid="uid://curwcau163khw" path="res://sprites/tileset.png" id="9_55wm2"]
+[ext_resource type="Script" uid="uid://bm2kpm32ooqhk" path="res://scenes/modulars/tile_map_generator.gd" id="10_7pjfj"]
+[ext_resource type="PackedScene" uid="uid://dxg5doh1x8ch2" path="res://scenes/asteroids/asteroid_body/asteroid_small.tscn" id="11_jtkh7"]
+[ext_resource type="PackedScene" uid="uid://dsw810ysjgsn2" path="res://scenes/asteroids/asteroid_body/asteroid_medium.tscn" id="12_ht16h"]
+[ext_resource type="PackedScene" uid="uid://bcffh04lffmyi" path="res://scenes/asteroids/asteroid_body/asteroid_big.tscn" id="13_shmn6"]
+[ext_resource type="PackedScene" uid="uid://sfrd0aftb340" path="res://scenes/asteroids/asteroid_fragment/asteroid_fragments.tscn" id="14_axxwk"]
+[ext_resource type="PackedScene" uid="uid://br070cnq6sve" path="res://scenes/enemies/enemy_basic.tscn" id="14_ev6ts"]
+[ext_resource type="Script" uid="uid://bhrrg6hud6dxq" path="res://scenes/ui/tutorial_control.gd" id="15_fxugg"]
+[ext_resource type="PackedScene" uid="uid://3vg8bv7t077f" path="res://scenes/black_hole/black_hole.tscn" id="16_sw71j"]
+[ext_resource type="Script" uid="uid://clhd57u8quoxj" path="res://scenes/levels/tutorial_area.gd" id="17_1llwk"]
+[ext_resource type="Script" uid="uid://cvnhqvpx04eey" path="res://scenes/levels/tutorial_area2.gd" id="17_u4w04"]
+[ext_resource type="PackedScene" uid="uid://bskx6fe236s8a" path="res://scenes/ui/ui.tscn" id="18_8x3qo"]
+[ext_resource type="Script" uid="uid://2w0r730otrrh" path="res://scenes/levels/tutorial_area4.gd" id="19_8617h"]
+[ext_resource type="Script" uid="uid://cnm403taw8wcx" path="res://scenes/levels/tutorial_area6.gd" id="20_ada67"]
+[ext_resource type="Script" uid="uid://bghsvebqm65vs" path="res://scenes/levels/tutorial_area5.gd" id="20_nwkth"]
+[ext_resource type="Script" uid="uid://c3r4b8e2ndjwq" path="res://scenes/levels/tutorial_area8.gd" id="22_2s7u0"]
+[ext_resource type="Script" uid="uid://b2bjxptkx43d1" path="res://scenes/levels/tutorial_area7.gd" id="22_55wm2"]
+[ext_resource type="AudioStream" uid="uid://7lu32wsorlh5" path="res://sound_effects/enemies/sfx_inimigosBasic.wav" id="24_7pjfj"]
+[ext_resource type="Script" uid="uid://cf16x4l41vkpo" path="res://scenes/levels/input_guide_admin.gd" id="28_7pjfj"]
 
 [sub_resource type="Environment" id="Environment_n7yfy"]
 background_mode = 3
@@ -36,9 +36,6 @@ tonemap_mode = 2
 glow_enabled = true
 glow_bloom = 0.1
 glow_blend_mode = 1
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1odfw"]
-load_path = "res://.godot/imported/Starfield 1 - 1024x1024.png-48d0404e1a69873ea48e7520f9947fca.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kpfdn"]
 texture = ExtResource("9_55wm2")
@@ -95,7 +92,7 @@ repeat_times = 6
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayers/Main"]
-texture = SubResource("CompressedTexture2D_1odfw")
+texture = ExtResource("1_1wrtt")
 metadata/_edit_lock_ = true
 
 [node name="BackgroundLayer" type="Parallax2D" parent="ParallaxLayers"]

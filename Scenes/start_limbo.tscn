@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://m2oqym1qilyn"]
 
-[ext_resource type="Script" uid="uid://b66ahhbcifqbr" path="res://Scenes/start_limbo.gd" id="1_myfrd"]
+[ext_resource type="Script" uid="uid://b66ahhbcifqbr" path="res://scenes/start_limbo.gd" id="1_myfrd"]
 
 [node name="StartLimbo" type="Control"]
 layout_mode = 3

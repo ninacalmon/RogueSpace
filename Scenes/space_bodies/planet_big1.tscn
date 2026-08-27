@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjqibpfesudnp"]
+
+[ext_resource type="Script" uid="uid://b6ch1ii8ge4tt" path="res://scenes/space_bodies/planet.gd" id="1_s7w56"]
+[ext_resource type="Texture2D" uid="uid://bv75432b5i0ny" path="res://sprites/planetas/PlanetaMaior.png" id="2_g3wn1"]
+[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://scenes/modulars/gravitational_field.tscn" id="5_q0eps"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m0iey"]
+friction = 0.0
+bounce = 0.1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vpe2g"]
+radius = 250.018
+
+[node name="PlanetBoss" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "gravitational_field")]
+mass = 1500.0
+physics_material_override = SubResource("PhysicsMaterial_m0iey")
+contact_monitor = true
+max_contacts_reported = 3
+linear_damp_mode = 1
+script = ExtResource("1_s7w56")
+collision = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
+gravitational_field = NodePath("GravitationalField")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vpe2g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_g3wn1")
+
+[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("5_q0eps")]
+linear_damp = 0.0
+owner_body = NodePath("..")
+owner_collision_shape = NodePath("../CollisionShape2D")
+mass_to_radius_multiply = 0.25
+attraction_received_multiply = 0.01
+increase_with_proximity = 0.8999999999999999
+
+[node name="Camera2D" type="Camera2D" parent="."]

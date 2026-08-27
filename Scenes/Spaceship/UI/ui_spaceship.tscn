@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://coahuft63xqca"]
 
-[ext_resource type="Script" uid="uid://bptehg4lojwkg" path="res://Scenes/Spaceship/UI/resources_label.gd" id="1_6hd2b"]
-[ext_resource type="Texture2D" uid="uid://66jhwcha15q8" path="res://Sprites/UI/Kenney Input/tile_calendar.png" id="1_xmkce"]
-[ext_resource type="Script" uid="uid://cupbln1kclekx" path="res://Scenes/UI/day_control.gd" id="2_isle0"]
-[ext_resource type="Script" uid="uid://bnroivcak8mw" path="res://Scenes/Spaceship/UI/focus_exit_button.gd" id="2_okbct"]
+[ext_resource type="Script" uid="uid://bptehg4lojwkg" path="res://scenes/spaceship/ui/resources_label.gd" id="1_6hd2b"]
+[ext_resource type="Texture2D" uid="uid://66jhwcha15q8" path="res://sprites/ui/kenney_input/tile_calendar.png" id="1_xmkce"]
+[ext_resource type="Script" uid="uid://cupbln1kclekx" path="res://scenes/ui/day_control.gd" id="2_isle0"]
+[ext_resource type="Script" uid="uid://bnroivcak8mw" path="res://scenes/spaceship/ui/focus_exit_button.gd" id="2_okbct"]
 
 [node name="UISpaceship" type="Control"]
 layout_mode = 3
