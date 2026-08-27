@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://cwut5ptwefh1" path="res://Fonts/PearSoda.ttf" id="1_6r7jf"]
 [ext_resource type="Script" uid="uid://beckbjuxehb28" path="res://Scenes/Spaceship/diary_page.gd" id="1_u5lp5"]
-[ext_resource type="Texture2D" uid="uid://b1idceig4yflc" path="res://Sprites(main)/SpaceshipInterior/drawingTest.png" id="2_u5lp5"]
+[ext_resource type="Texture2D" uid="uid://b1idceig4yflc" path="res://Sprites_main/SpaceshipInterior/drawingTest.png" id="2_u5lp5"]
 
 [node name="Page" type="VBoxContainer"]
 size_flags_horizontal = 3

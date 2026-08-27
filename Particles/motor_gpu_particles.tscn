@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dp3f278n4cqbm"]
 
-[ext_resource type="Texture2D" uid="uid://cbcuca4hv1ck1" path="res://Sprites/Explosion_Sheet.png" id="1_qsfuh"]
+[ext_resource type="Texture2D" uid="uid://cbcuca4hv1ck1" path="res://Sprites_main/Explosion_Sheet.png" id="1_qsfuh"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gs4q6"]
 particles_animation = true

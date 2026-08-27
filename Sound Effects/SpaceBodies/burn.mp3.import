@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://w2mwru3kmv6g"
+path="res://.godot/imported/burn.mp3-d16fb1181b3e3bc345434703f68fcac8.mp3str"
+
+[deps]
+
+source_file="res://Sound Effects/SpaceBodies/burn.mp3"
+dest_files=["res://.godot/imported/burn.mp3-d16fb1181b3e3bc345434703f68fcac8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

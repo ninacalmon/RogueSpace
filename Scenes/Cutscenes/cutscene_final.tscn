@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://ctv08vyk56jg6"]
 
 [ext_resource type="Script" uid="uid://c85wpyx8ihx1i" path="res://Scenes/Cutscenes/cutscene.gd" id="1_fgmwn"]
-[ext_resource type="VideoStream" uid="uid://h5kp8wbj7mos" path="res://Sprites(main)/Cutscenes/Ending.ogv" id="2_fgmwn"]
+[ext_resource type="VideoStream" uid="uid://h5kp8wbj7mos" path="res://Sprites_main/Cutscenes/Ending.ogv" id="2_fgmwn"]
 [ext_resource type="Shader" uid="uid://bpeqc2oh4cgdj" path="res://Shaders/pixelated.gdshader" id="3_4430o"]
-[ext_resource type="Texture2D" uid="uid://beinhniahsmx2" path="res://Sprites(main)/UI/circle3-export.png" id="4_gavya"]
+[ext_resource type="Texture2D" uid="uid://beinhniahsmx2" path="res://Sprites_main/UI/circle3-export.png" id="4_gavya"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_di4wq"]
 shader = ExtResource("3_4430o")

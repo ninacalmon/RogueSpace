@@ -1,51 +1,33 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckxo0qbnyh7ea"]
+[gd_scene load_steps=6 format=3 uid="uid://bs6twtddsrxb"]
 
-[ext_resource type="Script" uid="uid://b6ch1ii8ge4tt" path="res://Scenes/SpaceBodies/planet.gd" id="1_sgehv"]
-[ext_resource type="Script" uid="uid://dakt7r353r7ae" path="res://Scenes/SpaceBodies/body_randomizer.gd" id="2_wl0ge"]
-[ext_resource type="Texture2D" uid="uid://cl3jius2igthn" path="res://Sprites(main)/TemporaryPlanets/NewMap/medium2.png" id="3_sgehv"]
-[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="4_26cmf"]
+[ext_resource type="Script" uid="uid://b6ch1ii8ge4tt" path="res://Scenes/SpaceBodies/planet.gd" id="1_aiw0w"]
+[ext_resource type="Texture2D" uid="uid://soo6c1lbw424" path="res://Sprites_main/Planetas/planet_medium_3.png" id="2_44fhj"]
+[ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="3_n4h0n"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m0iey"]
 friction = 0.0
 bounce = 0.1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpe2g"]
-radius = 212.02122
+radius = 126.00397
 
-[node name="PlanetMedium" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "gravitational_field", "body_randomizer")]
-mass = 1000.0
+[node name="Planet" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "gravitational_field")]
+mass = 800.0
 physics_material_override = SubResource("PhysicsMaterial_m0iey")
-contact_monitor = true
-max_contacts_reported = 3
-linear_damp_mode = 1
-script = ExtResource("1_sgehv")
+script = ExtResource("1_aiw0w")
 collision = NodePath("CollisionShape2D")
 sprite = NodePath("Sprite2D")
 gravitational_field = NodePath("GravitationalField")
-body_randomizer = NodePath("BodyRandomizer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vpe2g")
 
-[node name="BodyRandomizer" type="Node2D" parent="." node_paths=PackedStringArray("owner_body")]
-script = ExtResource("2_wl0ge")
-owner_body = NodePath("..")
-rand_scale = false
-rand_rotation = false
-rand_linear_velocity = false
-ang_vel_min = -0.05
-ang_vel_max = 0.05
-metadata/_custom_type_script = "uid://dakt7r353r7ae"
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("3_sgehv")
+texture = ExtResource("2_44fhj")
 
-[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("4_26cmf")]
-linear_damp = 0.0
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="GravitationalField" parent="." node_paths=PackedStringArray("owner_body", "owner_collision_shape") instance=ExtResource("3_n4h0n")]
 owner_body = NodePath("..")
 owner_collision_shape = NodePath("../CollisionShape2D")
-mass_to_radius_multiply = 0.35
-attraction_received_multiply = 0.01
-attraction_executed_multiply = 3.2
-increase_with_proximity = 0.8999999999999999
+mass_to_radius_multiply = 0.25

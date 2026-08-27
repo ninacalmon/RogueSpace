@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://1isapsfrfp8f"]
 
-[ext_resource type="Script" uid="uid://dfp1pmppxsvtd" path="res://basic_bullet.gd" id="1_14p7i"]
-[ext_resource type="Texture2D" uid="uid://bv1eyiav8yu2g" path="res://Sprites(main)/Deimos/LaserShot.png" id="2_14p7i"]
+[ext_resource type="Script" uid="uid://dfp1pmppxsvtd" path="res://Scenes/Bullets/player_bullet.gd" id="1_14p7i"]
+[ext_resource type="Texture2D" uid="uid://bv1eyiav8yu2g" path="res://Sprites_main/Deimos/LaserShot.png" id="2_14p7i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j7e2q"]
 radius = 3.0

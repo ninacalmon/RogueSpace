@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://cf2kk6i0kbsyk"]
 
 [ext_resource type="Script" uid="uid://8b3tv0wxnwkl" path="res://Scenes/SpaceBodies/boss_planet_day_3.gd" id="1_qimuy"]
-[ext_resource type="Texture2D" uid="uid://bv75432b5i0ny" path="res://Sprites(main)/Planetas/PlanetaMaior.png" id="2_drp2x"]
+[ext_resource type="Texture2D" uid="uid://bv75432b5i0ny" path="res://Sprites_main/Planetas/PlanetaMaior.png" id="2_drp2x"]
 [ext_resource type="Shader" uid="uid://wsx2nuynme5m" path="res://Scenes/SpaceBodies/dissolve.gdshader" id="2_ueswk"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="3_ueswk"]
 [ext_resource type="Script" uid="uid://b2jggterxnagp" path="res://Scenes/Modulars/smooth_shake_module.gd" id="6_858ty"]

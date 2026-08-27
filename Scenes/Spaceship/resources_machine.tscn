@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://cvgon225rqb0a" path="res://resources_machine.gd" id="1_15nl0"]
 [ext_resource type="Shader" uid="uid://cccnue3fm2pyc" path="res://Shaders/outline.gdshader" id="2_drgh0"]
-[ext_resource type="Texture2D" uid="uid://db2ksdva63mnk" path="res://Sprites(main)/SpaceshipInterior/Machine/SpaceshipMachine.png" id="3_x7ic0"]
+[ext_resource type="Texture2D" uid="uid://db2ksdva63mnk" path="res://Sprites_main/SpaceshipInterior/Machine/SpaceshipMachine.png" id="3_x7ic0"]
 [ext_resource type="Script" uid="uid://jtbq6dor8pk0" path="res://Scenes/Modulars/clickable_highlight.gd" id="4_8efwl"]
 [ext_resource type="Script" uid="uid://btutin3dslh6c" path="res://Scenes/Spaceship/resource_counter.gd" id="5_ewulj"]
 [ext_resource type="Script" uid="uid://027n44axvh63" path="res://Scenes/Spaceship/resources_deposit.gd" id="5_n2veb"]
-[ext_resource type="AudioStream" uid="uid://3ywm8o38t0d4" path="res://Sound Effects/value_up3.wav" id="6_8efwl"]
-[ext_resource type="Texture2D" uid="uid://bkgumtoiaufnr" path="res://Sprites(main)/SpaceshipInterior/Machine/SpaceshipMachineON.png" id="6_wbabi"]
-[ext_resource type="Texture2D" uid="uid://cmk6eejwryikt" path="res://Sprites(main)/SpaceshipInterior/Machine/SpaceshipMachineRecursos.png" id="7_wbabi"]
+[ext_resource type="AudioStream" uid="uid://3ywm8o38t0d4" path="res://Sound Effects/UI/value_up3.wav" id="6_8efwl"]
+[ext_resource type="Texture2D" uid="uid://bkgumtoiaufnr" path="res://Sprites_main/SpaceshipInterior/Machine/SpaceshipMachineON.png" id="6_wbabi"]
+[ext_resource type="Texture2D" uid="uid://cmk6eejwryikt" path="res://Sprites_main/SpaceshipInterior/Machine/SpaceshipMachineRecursos.png" id="7_wbabi"]
 [ext_resource type="Script" uid="uid://cx8xpcwfpxaru" path="res://Scenes/Spaceship/falling_parallax_control.gd" id="9_c7f82"]
 [ext_resource type="Script" uid="uid://c4rjuhxn0t5h3" path="res://Scenes/Spaceship/shake_module.gd" id="9_x7ic0"]
 

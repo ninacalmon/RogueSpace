@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c85wpyx8ihx1i" path="res://Scenes/Cutscenes/cutscene.gd" id="1_kkqed"]
 [ext_resource type="Shader" uid="uid://bpeqc2oh4cgdj" path="res://Shaders/pixelated.gdshader" id="3_f3fvv"]
-[ext_resource type="VideoStream" uid="uid://dq0erdaasuntc" path="res://Sprites(main)/Cutscenes/CreditsBGVideo (1).ogv" id="3_rmj1v"]
-[ext_resource type="Texture2D" uid="uid://beinhniahsmx2" path="res://Sprites(main)/UI/circle3-export.png" id="4_5h6vg"]
+[ext_resource type="VideoStream" uid="uid://dq0erdaasuntc" path="res://Sprites_main/Cutscenes/CreditsBGVideo (1).ogv" id="3_rmj1v"]
+[ext_resource type="Texture2D" uid="uid://beinhniahsmx2" path="res://Sprites_main/UI/circle3-export.png" id="4_5h6vg"]
 [ext_resource type="Script" uid="uid://d0jyqcyajqo6q" path="res://Scenes/Cutscenes/credits_video.gd" id="4_b08x0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j84hh"]

@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://gcaxr5wvuwar"]
 
-[ext_resource type="Texture2D" uid="uid://wye3e38tj8hc" path="res://Sprites(main)/TemporaryPlanets/NewMap/sun.png" id="1_gwkba"]
+[ext_resource type="Texture2D" uid="uid://wye3e38tj8hc" path="res://Sprites_main/TemporaryPlanets/NewMap/sun.png" id="1_gwkba"]
 [ext_resource type="Script" uid="uid://x8dn2ub84fyj" path="res://Scenes/SpaceBodies/sun.gd" id="1_nxpjy"]
 [ext_resource type="PackedScene" uid="uid://bxmw37lsf71x1" path="res://Scenes/Modulars/gravitational_field.tscn" id="2_eixih"]
 [ext_resource type="Script" uid="uid://b8uwpl8kmnf0e" path="res://Scenes/SpaceBodies/body_setup.gd" id="2_gwkba"]
-[ext_resource type="AudioStream" uid="uid://w2mwru3kmv6g" path="res://Sound Effects/burn.mp3" id="5_upyw3"]
+[ext_resource type="AudioStream" uid="uid://w2mwru3kmv6g" path="res://Sound Effects/SpaceBodies/burn.mp3" id="5_upyw3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gwkba"]
 radius = 360.05

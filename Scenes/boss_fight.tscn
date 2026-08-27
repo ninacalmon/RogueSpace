@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvmhop17frfjx"]
+[gd_scene load_steps=8 format=3 uid="uid://81rh3xy6rg8k"]
 
-[ext_resource type="Texture2D" uid="uid://b4go5brbh3ndq" path="res://Sprites/Starfields/Starfield 1 - 1024x1024.png" id="1_pdkig"]
+[ext_resource type="Texture2D" path="res://Sprites/Starfields/Starfield 1 - 1024x1024.png" id="1_pdkig"]
 [ext_resource type="PackedScene" uid="uid://b512vj2a4a3y" path="res://Scenes/Player/player.tscn" id="2_rc8yv"]
-[ext_resource type="Script" uid="uid://d4cye4xtr5qhy" path="res://Scenes/test_gravity_changes.gd" id="3_41hqx"]
+[ext_resource type="Script" path="res://Scenes/test_gravity_changes.gd" id="3_41hqx"]
 [ext_resource type="Script" uid="uid://e5chkuqimfoi" path="res://Scenes/Modulars/gravity_module.gd" id="3_wha5u"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rc8yv"]
