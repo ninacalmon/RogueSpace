@@ -51,4 +51,4 @@ func _on_continue_button_pressed():
 func _on_exit_button_pressed():
 	get_viewport().set_input_as_handled()
 	unpause()
-	LevelTransition.change_scene_to("res://scenes/levels/menu.tscn")
+	LevelTransition.change_scene_to("res://scenes/levels/menus/menu.tscn")

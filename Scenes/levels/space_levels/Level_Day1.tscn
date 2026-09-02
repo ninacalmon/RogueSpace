@@ -26,8 +26,8 @@
 [ext_resource type="PackedScene" uid="uid://c2v243rukexl6" path="res://scenes/modulars/map_control.tscn" id="21_7kma5"]
 [ext_resource type="PackedScene" uid="uid://c7nj6rbljyvk3" path="res://scenes/black_hole/supermassive_black_holes/supermassive_black_hole.tscn" id="21_clwmq"]
 [ext_resource type="AudioStream" uid="uid://cwxkne077kuw6" path="res://sound_effects/ambience/spacewinds.mp3" id="22_p07k5"]
-[ext_resource type="Script" uid="uid://da05f5oj8b66c" path="res://scenes/levels/space_winds_sfx.gd" id="23_6lnh2"]
-[ext_resource type="Script" uid="uid://cf16x4l41vkpo" path="res://scenes/levels/input_guide_admin.gd" id="24_1syvi"]
+[ext_resource type="Script" uid="uid://da05f5oj8b66c" path="res://scenes/levels/space_levels/space_winds_sfx.gd" id="23_6lnh2"]
+[ext_resource type="Script" uid="uid://cf16x4l41vkpo" path="res://scenes/levels/space_levels/input_guide_admin.gd" id="24_1syvi"]
 [ext_resource type="Shader" uid="uid://1bxsadijf628" path="res://shaders/hot_deform.gdshader" id="25_lftmr"]
 [ext_resource type="Texture2D" uid="uid://wye3e38tj8hc" path="res://sprites/temporary_planets/new_map/sun.png" id="26_adkbm"]
 

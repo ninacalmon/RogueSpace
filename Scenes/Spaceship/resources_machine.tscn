@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://ck6swxjky54l3"]
 
-[ext_resource type="Script" uid="uid://cvgon225rqb0a" path="res://resources_machine.gd" id="1_15nl0"]
+[ext_resource type="Script" uid="uid://cvgon225rqb0a" path="res://scenes/spaceship/resources_machine.gd" id="1_15nl0"]
 [ext_resource type="Shader" uid="uid://cccnue3fm2pyc" path="res://shaders/outline.gdshader" id="2_drgh0"]
 [ext_resource type="Texture2D" uid="uid://db2ksdva63mnk" path="res://sprites/spaceship_interior/machine/SpaceshipMachine.png" id="3_x7ic0"]
 [ext_resource type="Script" uid="uid://jtbq6dor8pk0" path="res://scenes/modulars/clickable_highlight.gd" id="4_8efwl"]

@@ -38,7 +38,7 @@ These came up as "possibly unused" but are **genuinely referenced** by live scen
 
 | File | Confirmed use |
 |---|---|
-| `res://ui_sounds.tscn` (script `res://ui_sounds.gd`) | Audio SFX nodes for UI. Referenced by `res://scenes/levels/menu.tscn:3` (root ext_resource) and `res://scenes/spaceship/Monitor.tscn:17`. |
+| `res://scenes/modulars/ui_sounds.tscn` (script `res://scenes/modulars/ui_sounds.gd`) | Audio SFX nodes for UI. Referenced by `res://scenes/levels/menus/menu.tscn:3` (root ext_resource) and `res://scenes/spaceship/Monitor.tscn:17`. |
 | `res://scenes/levels/rich_text_label.gd` | Flicker/timed text behavior on the menu. Attached in `menu.tscn:9`. |
 | `res://scenes/levels/rich_text_label_2.gd` | Same — `menu.tscn:10`. |
 | `res://scenes/levels/rich_text_label_4.gd` | Same — `menu.tscn:8`. |

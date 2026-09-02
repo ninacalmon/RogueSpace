@@ -1,6 +1,6 @@
 [gd_scene load_steps=50 format=3 uid="uid://c0lfvcrle3frk"]
 
-[ext_resource type="Script" uid="uid://dh0io287hog2e" path="res://scenes/levels/spaceship_interior.gd" id="1_4wenu"]
+[ext_resource type="Script" uid="uid://dh0io287hog2e" path="res://scenes/levels/spaceship_interior/spaceship_interior.gd" id="1_4wenu"]
 [ext_resource type="PackedScene" uid="uid://cgfq6udrxu5hm" path="res://scenes/ui/mouse.tscn" id="1_ntswj"]
 [ext_resource type="Texture2D" uid="uid://de57pwcmxnpsx" path="res://sprites/spaceship_interior/SpaceshipBackgroundSemiFinalVer.png" id="2_vhqlx"]
 [ext_resource type="Texture2D" uid="uid://crf37jptk3dbk" path="res://sprites/spaceship_interior/SpaceshipTUBOS.png" id="3_76ouu"]
@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://6ivw36hwbai8" path="res://sprites/spaceship_interior/machine/SpaceshipCable.png" id="8_3unc4"]
 [ext_resource type="PackedScene" uid="uid://brt0pxwj3kby8" path="res://scenes/spaceship/papers.tscn" id="9_cd6pq"]
 [ext_resource type="Texture2D" uid="uid://cjik0xqbk6bek" path="res://sprites/spaceship_interior/SpaceshipDesk.png" id="9_woif5"]
-[ext_resource type="Script" uid="uid://cbpgnuq5d011c" path="res://scenes/levels/spaceship_cable.gd" id="9_xv1p6"]
+[ext_resource type="Script" uid="uid://cbpgnuq5d011c" path="res://scenes/levels/spaceship_interior/spaceship_cable.gd" id="9_xv1p6"]
 [ext_resource type="PackedScene" uid="uid://ck6swxjky54l3" path="res://scenes/spaceship/resources_machine.tscn" id="10_cfm2w"]
 [ext_resource type="Script" uid="uid://c4rjuhxn0t5h3" path="res://scenes/spaceship/shake_module.gd" id="10_vo7cp"]
 [ext_resource type="Script" uid="uid://csvtg0a2joywc" path="res://scenes/spaceship/spaceship_lights.gd" id="12_4wenu"]

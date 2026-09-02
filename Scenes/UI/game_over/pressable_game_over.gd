@@ -22,4 +22,4 @@ func _on_menu_pressed():
 	if have_pressed:
 		return
 	have_pressed = true
-	LevelTransition.change_scene_to("res://scenes/levels/menu.tscn")
+	LevelTransition.change_scene_to("res://scenes/levels/menus/menu.tscn")

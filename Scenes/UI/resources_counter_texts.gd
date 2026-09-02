@@ -63,10 +63,10 @@ func _on_button_pressed():
 	if can_progress:
 		Globals.level += 1
 		EventBus.level_pass.emit()
-		LevelTransition.change_scene_to("res://scenes/levels/Level%d.tscn" %Globals.level)
+		LevelTransition.change_scene_to("res://scenes/levels/space_levels/Level%d.tscn" %Globals.level)
 		
 	else:
-		LevelTransition.change_scene_to("res://scenes/levels/Level%d.tscn" %Globals.level)
+		LevelTransition.change_scene_to("res://scenes/levels/space_levels/Level%d.tscn" %Globals.level)
 
 func flash(what: Control):
 	var tween = get_tree().create_tween()

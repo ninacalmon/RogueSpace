@@ -26,8 +26,8 @@
 [ext_resource type="PackedScene" uid="uid://bskx6fe236s8a" path="res://scenes/ui/ui.tscn" id="24_jk6jk"]
 [ext_resource type="PackedScene" uid="uid://c2v243rukexl6" path="res://scenes/modulars/map_control.tscn" id="25_ym7v8"]
 [ext_resource type="AudioStream" uid="uid://cwxkne077kuw6" path="res://sound_effects/ambience/spacewinds.mp3" id="26_djwbk"]
-[ext_resource type="Script" uid="uid://da05f5oj8b66c" path="res://scenes/levels/space_winds_sfx.gd" id="27_v7ni1"]
-[ext_resource type="Script" uid="uid://cf16x4l41vkpo" path="res://scenes/levels/input_guide_admin.gd" id="28_npwx6"]
+[ext_resource type="Script" uid="uid://da05f5oj8b66c" path="res://scenes/levels/space_levels/space_winds_sfx.gd" id="27_v7ni1"]
+[ext_resource type="Script" uid="uid://cf16x4l41vkpo" path="res://scenes/levels/space_levels/input_guide_admin.gd" id="28_npwx6"]
 [ext_resource type="Shader" uid="uid://1bxsadijf628" path="res://shaders/hot_deform.gdshader" id="29_er35h"]
 [ext_resource type="Texture2D" uid="uid://wye3e38tj8hc" path="res://sprites/temporary_planets/new_map/sun.png" id="30_snqju"]
 

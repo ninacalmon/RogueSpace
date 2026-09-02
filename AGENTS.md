@@ -35,8 +35,10 @@ res://
 │                        #   sfx_manager, diary_database, hands_event_bus, controller_vibration
 │                        #   + level_transition/input_guide/custom_tooltip/music_manager scenes
 ├── scenes/              # all game folders are snake_case (Godot style guide)
-│   ├── levels/          # menu, Tutorial, Level_Day1/2/3, game_over,
-│   │                    #   spaceship_interior, resources_counting (+ input_guide_admin.gd, tutorial_area*.gd)
+│   ├── levels/          # menus/ (menu, game_over, menu_buttons_control),
+│   │                    #   space_levels/ (Level_Day1/2/3, input_guide_admin, space_winds_sfx, DAY3_camera_2d),
+│   │                    #   spaceship_interior/ (spaceship_interior + resources_counting + spaceship_cable),
+│   │                    #   tutorial/ (Tutorial, tutorial.gd, tutorial_area*.gd)
 │   ├── player/          # player.gd (BodySetup), player.tscn, prtc_player_death.tscn
 │   ├── asteroids/       # asteroid_body/ (asteroid_small/medium/big, asteroid.gd),
 │   │                    #   asteroid_fragment/ (asteroid_fragments.tscn, asteroid_fragments.gd, fragments_sprite.gd)

@@ -67,7 +67,7 @@ func test_something():
 var menu_control: Control
 
 func before() -> void:
-	var scene := load("res://scenes/levels/menu.tscn") as PackedScene
+	var scene := load("res://scenes/levels/menus/menu.tscn") as PackedScene
 	menu_control = scene.instantiate()
 	add_child(menu_control)
 	# Let _ready() and deferred logic run before asserting state:
@@ -189,7 +189,7 @@ You may see warnings like `1 RID allocations ... leaked` or `Parameter "Renderin
 
 ## Project-Specific Example: the Menu Suite
 
-`tests/menu/unit/menu_test.gd` covers the Menu scene (`res://scenes/levels/menu.tscn`):
+`tests/menu/unit/menu_test.gd` covers the Menu scene (`res://scenes/levels/menus/menu.tscn`):
 
 | Test | Verifies |
 |------|----------|

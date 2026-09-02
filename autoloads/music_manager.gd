@@ -14,27 +14,27 @@ var default_pitch: float = 1.0
 var fade_tween: Tween = null 
 
 var music_map: Dictionary = {
-	"res://scenes/levels/menu.tscn": {
+	"res://scenes/levels/menus/menu.tscn": {
 		"stream": preload("res://music/msc_menu.mp3"),
 		"volume": 0.0,
 		"pitch": 1.0
 	},
-	"res://scenes/levels/Tutorial.tscn": {
+	"res://scenes/levels/tutorial/Tutorial.tscn": {
 		"stream": preload("res://music/msc_main_theme.mp3"),
 		"volume": -24.0,
 		"pitch": 0.6 
 	},
-	"res://scenes/levels/Level_Day1.tscn": {
+	"res://scenes/levels/space_levels/Level_Day1.tscn": {
 		"stream": preload("res://music/msc_main_theme.mp3"),
 		"volume": -20.0,
 		"pitch": 1.0
 	},
-	"res://scenes/levels/Level_Day2.tscn": {
+	"res://scenes/levels/space_levels/Level_Day2.tscn": {
 		"stream": preload("res://music/msc_main_theme.mp3"),
 		"volume": -20.0,
 		"pitch": 1.0
 	},
-	"res://scenes/levels/Level_Day3.tscn": {
+	"res://scenes/levels/space_levels/Level_Day3.tscn": {
 		"stream": preload("res://music/msc_boss_matriarch.mp3"),
 		"volume": -12.0,
 		"pitch": 1.0

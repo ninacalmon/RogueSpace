@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bgc2a51wevbrs" path="res://sprites/spaceship_interior/SpaceshipMonitorButton.png" id="7_acnb0"]
 [ext_resource type="PackedScene" uid="uid://fjxp66w0rpvl" path="res://scenes/ui/PowerUpSetup.tscn" id="7_t6xb0"]
 [ext_resource type="AudioStream" uid="uid://cuyalodvbr04t" path="res://sound_effects/ui/SFX_buttonswitch.wav" id="10_3okkr"]
-[ext_resource type="PackedScene" uid="uid://buqlpqb51bwy" path="res://ui_sounds.tscn" id="11_5toxe"]
+[ext_resource type="PackedScene" uid="uid://buqlpqb51bwy" path="res://scenes/modulars/ui_sounds.tscn" id="11_5toxe"]
 [ext_resource type="Texture2D" uid="uid://b53cjoy7gkhh2" path="res://sprites/ui/pu_icons/powerup_fuel.png" id="15_bps4f"]
 [ext_resource type="Texture2D" uid="uid://ba2gm6am5k48t" path="res://sprites/ui/pu_icons/powerup_health1.png" id="16_qt7dx"]
 [ext_resource type="Texture2D" uid="uid://fdcpjgd8gif6" path="res://sprites/ui/pu_icons/powerup_teleport2.png" id="17_ipc6a"]

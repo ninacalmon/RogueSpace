@@ -24,12 +24,12 @@ INSTRUCTION: move file and re-point its references.
 - **Recommendation:** consolidate admin variants; move unit/admin/control into a single dedicated folder (e.g. `Scenes/UI/InputGuide/`).
 INSTRUCTION: ignore.
 
-### 1.3 `res://ui_sounds.gd` + `res://ui_sounds.tscn` — UI audio system at root
-- Script + scene for UI click/hover sounds are at `res://` root, outside every audio/UI folder.
+### 1.3 ~~`res://ui_sounds.gd` + `res://ui_sounds.tscn` — UI audio system at root~~ — **RESOLVED on disk**
+- Script + scene for UI click/hover sounds were at `res://` root, outside every audio/UI folder.
 - **Referenced by:** `Scenes/Levels/menu.tscn` (ext_resource) and `Scenes/Spaceship/Monitor.tscn:17`.
 - **Use:** hover/click SFX on UI elements.
-- **Recommendation:** move to `Scenes/UI/` (or under `Sound Effects/`) and re-point references.
-INSTRUCTION: ignore.
+- **Recommendation (done):** moved to `res://scenes/modulars/ui_sounds.gd` + `res://scenes/modulars/ui_sounds.tscn`; references re-pointed.
+INSTRUCTION: done — verify nothing else points at the old `res://`-root paths.
 
 ### 1.4 `scenes/start_limbo.gd` + `scenes/start_limbo.tscn` — the MAIN scene buried at `Scenes/` depth
 - The boot/loading scene sits directly under `Scenes/`, while every other "level‑like" scene lives in `Scenes/Levels/`.
@@ -38,25 +38,19 @@ INSTRUCTION: ignore.
 - **Recommendation:** move to `Scenes/Levels/` (does not need a path change since main scene references it by UID, but keep the `.uid` intact).
 INSTRUCTION: ignore.
 
-### 1.5 `Scenes/Levels/` — non‑level files mixed with the levels
-Multiple scripts whose domain is UI/control/HUD are filed together with the actual level scenes:
+### 1.5 ~~`Scenes/Levels/` — non‑level files mixed with the levels~~ — **RESOLVED on disk**
+Multiple scripts whose domain is UI/control/HUD were filed together with the actual level scenes. The grab‑bag has been split into subfolders under `res://scenes/levels/`:
 
-| File | Attached by | Use |
-|---|---|---|
-| `rich_text_label.gd` | `menu.tscn:9` | RichTextLabel flicker/anim script |
-| `rich_text_label_2.gd` | `menu.tscn:10` | variant |
-| `rich_text_label_4.gd` | `menu.tscn:8` | variant |
-| `rich_text_label_10.gd` | `menu.tscn:13` | variant |
-| `game_over_control.gd` | `game_over.tscn:4` | game‑over screen logic |
-| `button.gd` | `resources_counting.tscn:8` | generic Button helper |
-| `main_light.gd` | `spaceship_interior.tscn:31` | interior lighting |
-| `tutorial_area.gd` … `tutorial_area8.gd` | `Tutorial.tscn:22,23,25–29` (7 of 8 wired) | tutorial trigger zones |
-| `input_guide_admin.gd` | `Level_Day1/2/3.tscn`, `Tutorial.tscn` | InputGuide controller (see 1.2) |
+| New folder | Contents |
+|---|---|
+| `res://scenes/levels/menus/` | `menu.tscn`, `game_over.tscn`, `menu_buttons_control.gd` |
+| `res://scenes/levels/space_levels/` | `Level_Day1/2/3.tscn`, `input_guide_admin.gd`, `space_winds_sfx.gd`, `DAY3_camera_2d.gd` |
+| `res://scenes/levels/spaceship_interior/` | `spaceship_interior.tscn` + `.gd`, `spaceship_cable.gd`, `resources_counting.tscn` |
+| `res://scenes/levels/tutorial/` | `Tutorial.tscn`, `tutorial.gd`, `tutorial_area*.gd` |
 
 - **Dead sibling on disk:** `tutorial_area3.gd` is **never attached** to any scene (`Tutorial.tscn` wires 1,2,4,5,6,7,8 only) — an orphan script in the wrong folder.
-- Misc level‑adjacent orphans also here: `tutorial.gd` (15 B), `space_winds_sfx.gd`, `spaceship_cable.gd`, `spaceship_interior.gd`.
-- **Recommendation:** move UI/control scripts to `Scenes/UI/` kept per‑scene; delete `tutorial_area3.gd` or wire it.
-INSTRUCTION: do whats detailed in Recommendation and re-point its references.
+- **References re-pointed:** autoload `strings` in `globals.gd`, `music_manager.gd`, cutscenes, `menu_buttons_control.gd`, `door.gd`, `mothership_enter_area.gd`, UI scripts, and tests all updated to the new paths (Godot repointed scene ext_resources).
+INSTRUCTION: done — delete the orphan `tutorial_area3.gd` or wire it; nothing should still point at the old flat `res://scenes/levels/*` locations.
 
 ### 1.6 `Scenes/Modulars/asteroid.gd` — a full space body filed as a "module"
 - `asteroid.gd` `extends BodySetup` (a full `RigidBody2D` space body with `calculate_damage_and_pieces`), but it lives among the pure composition components (`hurt_module`, `gravity_module`, …).

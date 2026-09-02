@@ -13,7 +13,7 @@ var title_label: TextureRect
 var canvas_layer: CanvasLayer
 
 func before() -> void:
-	var menu_scene := load("res://scenes/levels/menu.tscn") as PackedScene
+	var menu_scene := load("res://scenes/levels/menus/menu.tscn") as PackedScene
 	menu_control = menu_scene.instantiate()
 	add_child(menu_control)
 
