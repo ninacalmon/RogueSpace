@@ -1,12 +1,12 @@
 extends Node
 
 @export var player: Player
+
 @export var fuel_progress: ProgressBar
 
 func _ready() -> void:
 
 	for p in PowerUps.queued_power_ups_array:
-		print(p)
 		apply_power_up(p)
 
 func apply_power_up(power_up: String):

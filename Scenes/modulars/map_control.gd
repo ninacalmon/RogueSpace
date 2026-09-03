@@ -1,16 +1,22 @@
-extends Node2D
 class_name MapControl
+extends Node2D
 
 @export var player: Player
+
 @export var camera: Camera2D
+
 @export var safe_area_radius_multiply: float = 5
+
 var map_size: Vector2
+
 var rect: Rect2
 
 @onready var safe_area: Area2D = $SafeArea
+
 @onready var safe_area_shape: CollisionShape2D = $SafeArea/SafeAreaShape
 
 @onready var almost_out_area: Area2D = $AlmostOutArea
+
 @onready var almost_out_area_shape: CollisionShape2D = $AlmostOutArea/AlmostOutAreaShape
 
 func _ready() -> void:
@@ -27,9 +33,8 @@ func _ready() -> void:
 	almost_out_area.body_entered.connect(_on_almost_out_area_body_entered)
 
 func _on_safe_area_exited(body: RigidBody2D):
-	if body is Player and !Globals.changing_scene:
+	if body is Player and not Globals.changing_scene:
 		EventBus.player_out_of_bounds.emit()
-		print(body.global_position)
 
 func _on_almost_out_area_body_exited(body: RigidBody2D):
 	if body is Player:

@@ -1,18 +1,15 @@
-extends VBoxContainer
 class_name PowerUpList
+extends VBoxContainer
 
-#@export var texts: TextsControl
-
-@export var power_up_options_array: Array[PowerUpSetup] 
-@onready var power_up_pop_up_sfx: AudioStreamPlayer = $PowerUpPopUpSFX
-
+@export var power_up_options_array: Array[PowerUpSetup]
 
 var is_on: bool
 
+@onready var power_up_pop_up_sfx: AudioStreamPlayer = $PowerUpPopUpSFX
+
 func initialize() -> void:
-	if is_on: return
-	#texts.count_finished.connect(_on_count_finished)
-	#power_up_options_array = get_children()
+	if is_on:
+		return
 	await get_tree().create_timer(1).timeout
 	show_power_ups()
 

@@ -1,7 +1,9 @@
 extends Sprite2D
 
 @export var fragment: CollectableResource
+
 @export var palette_options: Array[Texture]
+
 var new_palette: Texture
 
 func _ready() -> void:

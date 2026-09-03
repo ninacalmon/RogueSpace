@@ -1,8 +1,8 @@
 extends Control
 
-@onready var day_label: RichTextLabel = $DayLabel
-
 var original_text: String
+
+@onready var day_label: RichTextLabel = $DayLabel
 
 func _ready() -> void:
 	original_text = day_label.text

@@ -1,5 +1,5 @@
-extends BossBullet
 class_name BossTargetedBullet
+extends BossBullet
 
 @export var turn_speed: float = 0.5
 
@@ -31,10 +31,6 @@ func _process(delta: float) -> void:
 	lifespan -= delta
 	if lifespan <= 0:
 		decay_and_delete()
-
-#func _on_area_entered(area: Area2D):
-	#if area is Bullet:
-		#decay_and_delete()
 
 func decay_and_delete():
 	var tween = create_tween()

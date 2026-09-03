@@ -11,7 +11,6 @@ func _on_resource_count_finished():
 	var tween = create_tween()
 	tween.tween_property(self, "volume_db", original_volume, 2)
 
-
 func _on_player_going_out():
 	var tween = create_tween()
 	tween.tween_property(self, "volume_db", -80, 0.8)

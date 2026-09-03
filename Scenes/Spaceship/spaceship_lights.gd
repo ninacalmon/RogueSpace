@@ -1,10 +1,12 @@
 extends CanvasModulate
 
-@onready var main_light: FlickeringLight = $MainLight
 @export var deactivate: bool
 
+@onready var main_light: FlickeringLight = $MainLight
+
 func _ready() -> void:
-	if !deactivate:show()
+	if not deactivate:
+		show()
 	SpaceshipEventBus.resource_count_finished.connect(_on_resource_count_finished)
 
 func _on_resource_count_finished():

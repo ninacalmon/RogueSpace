@@ -9,7 +9,7 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		tutorial_warning.label.text = "Ás vezes, você encontrará mais do que simples asteroides.
-		
+
 Graças a seu traje, alguns buracos negros não lhe afetarão.
 
 Porém, tenha cuidado, pois nem todos serão seguros."

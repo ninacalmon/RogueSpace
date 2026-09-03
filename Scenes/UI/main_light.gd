@@ -1,15 +1,20 @@
-extends PointLight2D
 class_name FlickeringLight
+extends PointLight2D
 
 @export var first_flicker_interval_min: int = 2
+
 @export var first_flicker_interval_max: int = 4
+
 @export var flicker_interval_min: int = 10
+
 @export var flicker_interval_max: int = 40
 
 var original_energy: float
 
 var timer: Timer
+
 var audio_stream_player: AudioStreamPlayer
+
 var electric_sound: AudioStream  = preload("res://sound_effects/spaceship/buzz.ogg")
 
 func initialize() -> void:

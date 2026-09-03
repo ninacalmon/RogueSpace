@@ -1,13 +1,13 @@
-extends Sprite2D
 class_name PlayerSprite2D
-
-@onready var backpack_sprite_2d: Sprite2D = $BackpackSprite2D
+extends Sprite2D
 
 @export var seconds_per_frame: float = 0.3
 
 var is_propelling: bool = false
 
 var current_direction: String = ""
+
+@onready var backpack_sprite_2d: Sprite2D = $BackpackSprite2D
 
 func update_sprite(facing_direction: String):
 	if facing_direction != current_direction:
@@ -33,7 +33,7 @@ func restart_animation():
 func start_animation():
 	if is_propelling:
 		return
-		
+
 	is_propelling = true
 	animate_propelling()
 

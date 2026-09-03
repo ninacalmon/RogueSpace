@@ -1,6 +1,5 @@
 extends VideoStreamPlayer
 
-
 func _ready() -> void:
 	Globals.next_scene_path = "res://scenes/levels/menus/menu.tscn"
 	modulate = Color.TRANSPARENT

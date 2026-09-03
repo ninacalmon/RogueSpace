@@ -1,5 +1,5 @@
-extends TextureProgressBar
 class_name FuelProgressBar
+extends TextureProgressBar
 
 var emitted: bool = false
 

@@ -1,7 +1,8 @@
-extends GravitationalField
 class_name BlackHoleGravitationalField
+extends GravitationalField
 
 @onready var event_horizon: Area2D = $EventHorizon
+
 @onready var eh_range: CollisionShape2D = $EventHorizon/EHRange
 
 func _ready() -> void:
@@ -18,19 +19,6 @@ func _ready() -> void:
 	area_exited.connect(_on_grav_field_exited_by_area)
 	event_horizon.area_entered.connect(_on_event_horizon_entered)
 
-#func _on_grav_field_entered_by_area(area: GravitationalField):
-	#var body = area.owner_body
-	#grav_field_entered.emit(body)
-	#body_near.append(body)
-
-func _on_event_horizon_entered(area: GravitationalField):
-	var body = area.owner_body
-	if body == owner_body:
-		return
-	
-	if is_instance_valid(body):
-		return
-
 func _physics_process(_delta: float) -> void:
 	for b in body_near:
 		apply_gravity(b)
@@ -38,7 +26,7 @@ func _physics_process(_delta: float) -> void:
 func apply_gravity(near_body: PhysicsBody2D): #AI vvvvvvv
 	if near_body == owner_body:
 		return
-	
+
 	if not is_instance_valid(near_body):
 		return
 
@@ -46,9 +34,9 @@ func apply_gravity(near_body: PhysicsBody2D): #AI vvvvvvv
 	var distance = max(direction.length(), 10.0)
 
 	var dir_normalized = direction.normalized()
-	
+
 	var G = 1000.0
-	
+
 	# your original inverse-square
 	var base_force = G * (owner_body.mass * near_body.mass) / (distance * distance)
 
@@ -70,3 +58,11 @@ func apply_gravity(near_body: PhysicsBody2D): #AI vvvvvvv
 
 	near_body.apply_central_force(force_on_other)
 	owner_body.apply_central_force(force_on_self)
+
+func _on_event_horizon_entered(area: GravitationalField):
+	var body = area.owner_body
+	if body == owner_body:
+		return
+
+	if is_instance_valid(body):
+		return

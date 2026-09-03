@@ -2,20 +2,22 @@ extends Node
 
 #region Consts
 const INIT_CAN_TELEPORT: bool = false
-const INIT_IS_CUTSCENE: bool = false
-const INIT_CHANGING_SCENE: bool = false
-const INIT_FAKE_MOUSE_INPUT: bool = false
-const INIT_IS_SHOWING_CONFIRMATION: bool = false
-const INIT_NEXT_SCENE_PATH: String = "res://scenes/levels/menus/menu.tscn"
-const INIT_HAS_ENERGY_IN_SPACESHIP: bool = false
-#endregion
 
-##Gets changed by power ups:
-#var player_burst_speed: float = 1000
-#var max_fuel: float = 100
+const INIT_IS_CUTSCENE: bool = false
+
+const INIT_CHANGING_SCENE: bool = false
+
+const INIT_FAKE_MOUSE_INPUT: bool = false
+
+const INIT_IS_SHOWING_CONFIRMATION: bool = false
+
+const INIT_NEXT_SCENE_PATH: String = "res://scenes/levels/menus/menu.tscn"
+
+const INIT_HAS_ENERGY_IN_SPACESHIP: bool = false
+
+#endregion
 var can_teleport: bool = false
 
-#var player_linear_velocity: Vector2
 var is_cutscene: bool
 
 var changing_scene: bool = false
@@ -33,21 +35,15 @@ var has_energy_in_spaceship: bool = false:
 		if value == true:
 			fragments_value_to_sum = StatsManager.resources_needed
 			has_energy_in_spaceship = false
+
 var fragments_value_to_sum: int = 0
-
-func add_frag_sum():
-	StatsManager.current_resources += fragments_value_to_sum
-
-
-#var level: int = 1
-#
-#var resources_gathered: int = 110
-#var resources_needed: int = 100
 
 func _ready() -> void:
 	EventBus.cutscene_on.connect(func(): is_cutscene = true)
 	EventBus.cutscene_off.connect(func(): is_cutscene = false)
-	#EventBus.level_pass.connect(func(): resources_needed *= level)
+
+func add_frag_sum():
+	StatsManager.current_resources += fragments_value_to_sum
 
 func reload_current_scene():
 	get_tree().reload_current_scene()

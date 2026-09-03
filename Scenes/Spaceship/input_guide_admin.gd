@@ -5,6 +5,10 @@ func _ready() -> void:
 	InputGuide.clear_guides()
 	show_default()
 
+func show_default():
+	InputGuide.show_guide(InputGuide.ActionType.CLICK)
+	InputGuide.show_guide(InputGuide.ActionType.POINT)
+
 func _on_focus_changed(focus: bool, subject: Node2D):
 	if focus:
 		if subject is ResourcesMachine:
@@ -28,7 +32,3 @@ func _on_focus_changed(focus: bool, subject: Node2D):
 	else:
 		InputGuide.clear_guides()
 		show_default()
-
-func show_default():
-	InputGuide.show_guide(InputGuide.ActionType.CLICK)
-	InputGuide.show_guide(InputGuide.ActionType.POINT)

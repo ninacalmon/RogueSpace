@@ -1,13 +1,16 @@
 extends CanvasLayer
 
+signal text_vanished
+
 @export var original_bottom_text: RichTextLabel
+
 @export var v_box_bottom: VBoxContainer
+
 @export var flash_color: Color
+
 @export var texts_limit: int = 1
 
 var texts_count: int = 0
-
-signal text_vanished
 
 func _ready() -> void:
 	original_bottom_text.hide()
@@ -34,7 +37,7 @@ func flash(subject: CanvasItem, invisible: bool):
 	await get_tree().create_timer(0.1).timeout
 	var tween = create_tween()
 	var final_color: Color
-	if invisible: 
+	if invisible:
 		final_color = Color(0, 0, 0, 0)
 	else:
 		final_color = original_modulate

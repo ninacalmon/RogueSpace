@@ -1,16 +1,15 @@
-extends Control
 class_name TutorialControl
+extends Control
 
 @onready var label: RichTextLabel = $RichTextLabel
-
 
 func _ready() -> void:
 	label.self_modulate = Color(1, 1, 1, 0)
 	label.hide()
-	
+
 	await get_tree().create_timer(4).timeout
 	start_tutorial()
-	
+
 	#EventBus.player_almost_out_of_bounds.connect(_on_player_almost_out_of_bounds)
 	#EventBus.player_back_in_bounds.connect(_on_player_back_in_bounds)
 	#EventBus.almost_out_of_fuel.connect(_on_almost_out_of_fuel)
@@ -25,7 +24,6 @@ Preste atenção às guias do lado inferior esquerdo para conferir os controles.
 	show_warning()
 	await get_tree().create_timer(5).timeout
 	hide_warning()
-
 
 func show_warning():
 	label.self_modulate = Color(1, 1, 1, 0)

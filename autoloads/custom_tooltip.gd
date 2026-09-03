@@ -1,10 +1,10 @@
 extends CanvasLayer
 
 @onready var custom_tooltip_control: Control = $CustomTooltipControl
+
 @onready var color_rect: ColorRect = $CustomTooltipControl/ColorRect
+
 @onready var rich_text_label: RichTextLabel = $CustomTooltipControl/ColorRect/RichTextLabel
-
-
 
 func show_tooltip(text: String, global_pos: Vector2 = Vector2.ZERO):
 	if global_pos == Vector2.ZERO:

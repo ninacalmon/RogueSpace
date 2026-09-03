@@ -1,20 +1,21 @@
-extends Control
 class_name DiaryPageController
+extends Control
 
 @export var animation_delay: float = 1
 
+var current_day: int = 0
+
 @onready var page_left: DiaryPage = $PagesContainer/PageL
+
 @onready var page_right: DiaryPage = $PagesContainer/PageR
 
 @onready var button_left: Button = $ButtonsContainer/ButtonL
-@onready var button_right: Button = $ButtonsContainer/ButtonR
 
-var current_day: int = 0
+@onready var button_right: Button = $ButtonsContainer/ButtonR
 
 func _ready():
 	button_left.pressed.connect(_on_prev_pressed)
 	button_right.pressed.connect(_on_next_pressed)
-
 
 func open_diary():
 	current_day = StatsManager.day
@@ -38,34 +39,10 @@ func show_day():
 
 	_update_buttons()
 
-# ========================
-# Navigation
-# ========================
-
-func _on_next_pressed():
-	if current_day < StatsManager.day:
-		current_day += 1
-		HandsEventBus.page_next.emit()
-		await get_tree().create_timer(1).timeout
-		show_day()
-
-
-func _on_prev_pressed():
-	if current_day > 0:
-		current_day -= 1
-		HandsEventBus.page_prev.emit()
-		await get_tree().create_timer(1).timeout
-		show_day()
-
-
-# ========================
 # Helpers
-# ========================
-
 func _get_max_spread() -> int:
 	var max_day = StatsManager.day
 	return int(floor(max_day / 2.0))
-
 
 func _update_buttons():
 	var max_day = StatsManager.day
@@ -78,3 +55,18 @@ func _update_buttons():
 
 	button_left.modulate.a = 0.0 if is_left_disabled else 1.0
 	button_right.modulate.a = 0.0 if is_right_disabled else 1.0
+
+# Navigation
+func _on_next_pressed():
+	if current_day < StatsManager.day:
+		current_day += 1
+		HandsEventBus.page_next.emit()
+		await get_tree().create_timer(1).timeout
+		show_day()
+
+func _on_prev_pressed():
+	if current_day > 0:
+		current_day -= 1
+		HandsEventBus.page_prev.emit()
+		await get_tree().create_timer(1).timeout
+		show_day()

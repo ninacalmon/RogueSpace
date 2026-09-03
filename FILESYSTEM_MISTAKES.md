@@ -9,12 +9,8 @@
 
 ## 1. Misplaced files (in the wrong folder)
 
-### 1.1 `res://basic_bullet.gd` — lives at the project root, belongs in `Scenes/Bullets/`
-- A bullet projectile script (spawns at `StatsManager.player_current_bullet`), yet it sits at `res://` root alongside the autoload scripts.
-- **Referenced by:** `Scenes/Bullets/basic_bullet.tscn:3`, `Scenes/Bullets/super_bullet.tscn:3` (both attach `path="res://basic_bullet.gd"`), `Tests/Unit/basic_bullet_test.gd:3`.
-- **Use:** player bullet movement/collision (`_process`, `_on_body_entered`). Both bullet scenes resolve to this one root script.
-- **Recommendation:** move to `Scenes/Bullets/` and re-point the two `path=` lines (+ test const + `.uid`).
-INSTRUCTION: move file and re-point its references.
+### 1.1 ~~`res://basic_bullet.gd` — lives at the project root, belongs in `Scenes/Bullets/`~~ — **RESOLVED**
+- The root copy no longer exists; the script moved to `res://scenes/bullets/player_bullet.gd`, shared by `basic_bullet.tscn` and `super_bullet.tscn` (both `path=` re-pointed, test const updated).
 
 ### 1.2 `input_guide.gd` / `input_guide.tscn` / `input_guide_unit.gd` / `input_guide_unit.tscn` — key-hint UI at root
 - The InputGuide autoload scene chain lives at `res://` root, while its controller logic is **duplicated in two other folders**.
@@ -83,7 +79,7 @@ INSTRUCTION: do as recommended and re-point its references.
 ### 2.2 `Sound Effects/` — loose stragglers at root + many subfolders
 Root of the folder mixes direct files with organized subfolders (`Ambience/`, `Asteroids/`, `Collecting/`, `Enemies/`, `Player/`, `Shoot/`, `Spaceship/`, `UI/`). Root‑level files still **in use** (survivors of the asset purge):
 - `burn.mp3` → `sun.tscn:7`;
-- `gulp.mp3` → `Scenes/BlackHoles/black_hole.tscn:8`, `supermassive_black_hole.tscn:8`;
+- `gulp.mp3` → `scenes/black_hole/black_hole.tscn:8`, `scenes/black_hole/supermassive_black_holes/supermassive_black_hole.tscn:8`;
 - `sfx_morte1.wav` → `Scenes/Player/player.tscn:24`;
 - `tech1.mp3` → `player.tscn:11`; `tech2.mp3` → `player.tscn:13`;
 - `value_up3.wav` → `resources_counting.tscn:7`, `Scenes/Spaceship/resources_machine.tscn:9`.
@@ -117,10 +113,9 @@ INSTRUCTION: delete all the listed files. (PS: DO NOT delete start_limbo)
 
 ## 3. Redundant / erroneous / non‑descriptive filenames
 
-### 3.1 ~~`BackHoles` typo~~ — **RESOLVED on disk** (doc staleness remains)
-- On disk there is **only `Scenes/BlackHoles/`** and every reference already matches: `Level_Day1.tscn:25,27`, `Level_Day2.tscn:24,25`, `Level_Day3.tscn:25,26`, `Tutorial.tscn:21`, and `Tests/Unit/black_hole_test.gd:8‑9` (→ `res://scenes/black_hole/black_hole.{gd,tscn}`). The rename landed (via merge of `main`).
-- **The docs are stale:** `AGENTS.md` and `UNUSED_CODE.md` still describe `BackHoles/` as on‑disk / describe the test as failing. Update those two docs to the current truth.
-INSTRUCTION: update docs.
+### 3.1 ~~`BackHoles` typo~~ — **RESOLVED on disk and in docs**
+- On disk there is only `res://scenes/black_hole/` (lowercase singular, with `supermassive_black_holes/` beneath it) and every reference already matches: `Level_Day1.tscn:25,27`, `Level_Day2.tscn:24,25`, `Level_Day3.tscn:25,26`, `Tutorial.tscn:21`, and `Tests/Unit/black_hole_test.gd:8‑9` (→ `res://scenes/black_hole/black_hole.{gd,tscn}`). The rename landed (via merge of `main`).
+- **Docs synced:** `AGENTS.md` and `UNUSED_CODE.md` now describe `scenes/black_hole/` as on‑disk.
 
 ### 3.2 `Sprites(main)/` — parentheses in a folder name
 - Folders with `(`/`)` must be path‑quoted in every `path=`/`load()`/`preload()` → referenced in **~44 files** (e.g. all `Asteroids/*.tscn`, all `Bullets/*.tscn`, all `Cutscenes/*.tscn`, `menu.tscn`, `player.tscn`, `diary_database.gd`, `input_guide.gd`, `input_guide_unit.tscn`).
@@ -157,10 +152,8 @@ INSTRUCTION: translate all names to english.
 - **Recommendation:** rename to `*_palette.*` and re‑point references (keep UIDs).
 INSTRUCTION: do as recommended.
 
-### 3.7 `basic_bullet.gd` name doesn't describe its dual role
-- The generic name "basic" also powers **`super_bullet.tscn`** (both scenes attach the one root script). The filename understates behavior.
-- **Recommendation:** rename to `player_bullet.gd` (shared) and update both `path=` + test constant.
-INSTRUCTION: do as recommended. re-point all references.
+### 3.7 ~~`basic_bullet.gd` name doesn't describe its dual role~~ — **RESOLVED**
+- The generic name "basic" also powered **`super_bullet.tscn`** (both scenes attached the one root script). Renamed to `res://scenes/bullets/player_bullet.gd`; both `path=` lines and the test constant re-pointed.
 
 ---
 
@@ -188,7 +181,7 @@ INSTRUCTION: fix but keep everything functional.
 
 | Item | Status |
 |---|---|
-| `Scenes/BackHoles/*` → `Scenes/BlackHoles/` | Rename landed (references all updated); only docs stale (§3.1) |
+| `Scenes/BackHoles/*` → `scenes/black_hole/` (lowercase, singular) | Rename landed; docs synced (§3.1) |
 | `Scenes/Modulars/asteroid-old.gd` | Deleted |
 | `paths_hub.gd` (empty autoload stub) | Deleted; autoload entry removed from `project.godot` |
 | `planet.tscn`, `planet_giant.tscn`, `planet_medium1.tscn` | Deleted |

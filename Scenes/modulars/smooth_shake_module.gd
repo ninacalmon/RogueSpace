@@ -1,37 +1,8 @@
-extends Node #AI vvvvvvv
 class_name SmoothShake
+extends Node #AI vvvvvvv
 
 # Stores per-target shake data
 var targets := {}
-
-func shake(target: Node2D, duration: float = 0.4, strength: float = 10.0):
-	if not is_instance_valid(target):
-		return
-
-	targets[target] = {
-		"time_left": duration,
-		"duration": duration,
-		"strength": strength,
-		"original_position": target.position,
-		"current_offset": Vector2.ZERO,
-		"target_offset": Vector2.ZERO,
-	}
-
-# ✨ NEW: peak shake with shift control
-func shake_peak(target: Node2D, duration: float = 0.6, strength: float = 12.0, peak_shift: float = 0.7):
-	if not is_instance_valid(target):
-		return
-
-	targets[target] = {
-		"time_left": duration,
-		"duration": duration,
-		"strength": strength,
-		"original_position": target.position,
-		"current_offset": Vector2.ZERO,
-		"target_offset": Vector2.ZERO,
-		"mode": "peak",
-		"peak_shift": peak_shift
-	}
 
 func _process(delta: float) -> void:
 	for target in targets.keys():
@@ -86,3 +57,34 @@ func _process(delta: float) -> void:
 		)
 
 		target.position = data["original_position"] + data["current_offset"]
+
+func shake(target: Node2D, duration: float = 0.4, strength: float = 10.0):
+	if not is_instance_valid(target):
+		return
+
+	targets[target] = {
+		"time_left": duration,
+		"duration": duration,
+		"strength": strength,
+		"original_position": target.position,
+		"current_offset": Vector2.ZERO,
+		"target_offset": Vector2.ZERO,
+	}
+
+# ✨ NEW: peak shake with shift control
+func shake_peak(
+	target: Node2D, duration: float = 0.6, strength: float = 12.0, peak_shift: float = 0.7
+):
+	if not is_instance_valid(target):
+		return
+
+	targets[target] = {
+		"time_left": duration,
+		"duration": duration,
+		"strength": strength,
+		"original_position": target.position,
+		"current_offset": Vector2.ZERO,
+		"target_offset": Vector2.ZERO,
+		"mode": "peak",
+		"peak_shift": peak_shift
+	}

@@ -1,16 +1,21 @@
-extends VBoxContainer
 class_name DiaryPage
+extends VBoxContainer
 
 @export var head_text: String
+
 @export var main_text: String
+
 @export var sketch_texture: CompressedTexture2D
 
-@onready var day_label: RichTextLabel = $DayLabel
-@onready var head_label: RichTextLabel = $HeadLabel
-@onready var main_label: RichTextLabel = $MainLabel
-@onready var sketch: TextureRect = $SketchTexture
-
 var base_day_text: String
+
+@onready var day_label: RichTextLabel = $DayLabel
+
+@onready var head_label: RichTextLabel = $HeadLabel
+
+@onready var main_label: RichTextLabel = $MainLabel
+
+@onready var sketch: TextureRect = $SketchTexture
 
 func _ready():
 	base_day_text = day_label.text
@@ -30,7 +35,6 @@ func setup_left(day: int, data: Dictionary):
 	if tex:
 		sketch.texture = tex
 		sketch.show()
-
 
 func setup_right(data: Dictionary):
 	# NO DAY, NO HEAD

@@ -1,7 +1,7 @@
 extends Node
 
 ##
-##strength_index guide:
+## strength_index guide:
 ## 0: low
 ## 1: medium
 ## 2: high
@@ -22,5 +22,5 @@ func vibrate_controller(strength_index: int = 0, duration: float = 0.1, controll
 		3:
 			weak_mag = 0.0
 			strong_mag = 1.0
-			
+
 	Input.start_joy_vibration(controller_index, weak_mag, strong_mag, duration)

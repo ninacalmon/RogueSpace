@@ -9,7 +9,7 @@ extends Node
 
 func _ready() -> void:
 	assert(root_path != null, "Empty root_path for UISounds!")
-	
+
 	install_sounds(get_node(root_path))
 
 func install_sounds(node: Node):
@@ -18,7 +18,7 @@ func install_sounds(node: Node):
 			i.focus_entered.connect(func(): ui_sfx_play(&"UI_Hover"))
 			i.mouse_entered.connect(func(): ui_sfx_play(&"UI_Hover"))
 			i.pressed.connect(func(): ui_sfx_play(&"UI_Click"))
-		
+
 		install_sounds(i)
 
 func ui_sfx_play(sound: StringName):

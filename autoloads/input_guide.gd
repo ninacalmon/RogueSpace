@@ -1,10 +1,10 @@
 extends CanvasLayer
 
-@export var hidden_guide_array: Array[InputGuideUnit]
-var active_guide_array: Array[InputGuideUnit]
-
 # ENUMS
-enum InputDevice { KEYBOARD, CONTROLLER }
+enum InputDevice {
+	KEYBOARD,
+	CONTROLLER,
+}
 
 enum ActionType {
 CONFIRM, RETURN, TELEPORT,
@@ -14,35 +14,49 @@ POINT, CLICK, UI_MOVEMENT,
 SKIP, NEXT
 }
 
-var current_input_device: InputDevice = InputDevice.KEYBOARD
-
 # ICONS CONTROLER
 const A_BUTTON: CompressedTexture2D = preload("res://sprites/ui/kenney_input/tile_0004.png")
+
 const B_BUTTON: CompressedTexture2D = preload("res://sprites/ui/kenney_input/tile_0005.png")
+
 const Y_BUTTON: CompressedTexture2D = preload("res://sprites/ui/kenney_input/tile_0007.png")
+
 const X_BUTTON: CompressedTexture2D = preload("res://sprites/ui/kenney_input/tile_0006.png")
+
 const L_TRIGGER: CompressedTexture2D = preload("res://sprites/ui/kenney_input/tile_0621.png")
+
 const R_TRIGGER: CompressedTexture2D = preload("res://sprites/ui/kenney_input/tile_0622.png")
+
 const L_SHOULDER: CompressedTexture2D = preload("res://sprites/ui/kenney_input/tile_0623.png")
+
 const R_SHOULDER: CompressedTexture2D = preload("res://sprites/ui/kenney_input/tile_0624.png")
+
 const L_ANALOG: CompressedTexture2D = preload("res://sprites/ui/kenney_input/tile_0423.png")
+
 const R_ANALOG: CompressedTexture2D = preload("res://sprites/ui/kenney_input/tile_0491.png")
+
 const D_PAD: CompressedTexture2D = preload("res://sprites/ui/kenney_input/tile_0034.png")
 
 # ICONS KEYBOARD
 const SPACE_KEY: CompressedTexture2D = preload("res://sprites/ui/kenney_input/tile_0801.png")
+
 const X_KEY: CompressedTexture2D = preload("res://sprites/ui/kenney_input/tile_0156.png")
+
 const T_KEY: CompressedTexture2D = preload("res://sprites/ui/kenney_input/tile_0089.png")
+
 const WASD_KEY: CompressedTexture2D = preload("res://sprites/ui/kenney_input/tile_0816.png")
+
 const SHIFT_KEY: CompressedTexture2D = preload("res://sprites/ui/kenney_input/tile_0819.png")
+
 const CTRL_KEY: CompressedTexture2D = preload("res://sprites/ui/kenney_input/tile_0820.png")
+
 const MOUSE: CompressedTexture2D = preload("res://sprites/ui/kenney_input/tile_0076.png")
+
 const CURSOR: CompressedTexture2D = preload("res://sprites/ui/kenney_input/tile_0822.png")
+
 const L_CLICK: CompressedTexture2D = preload("res://sprites/ui/kenney_input/tile_0077.png")
+
 const R_CLICK: CompressedTexture2D = preload("res://sprites/ui/kenney_input/tile_0078.png")
-#const NAME: CompressedTexture2D = preload()
-
-
 
 const INPUT_ICONS: Dictionary = {
 	ActionType.CONFIRM: {
@@ -116,8 +130,13 @@ const COMMON_ACTIONS: Dictionary = {
 	ActionType.NEXT: "Avançar"
 }
 
-var final_unit_alpha: float = 1
+@export var hidden_guide_array: Array[InputGuideUnit]
 
+var active_guide_array: Array[InputGuideUnit]
+
+var current_input_device: InputDevice = InputDevice.KEYBOARD
+
+var final_unit_alpha: float = 1
 
 func _ready() -> void:
 	for i in hidden_guide_array:
@@ -133,14 +152,12 @@ func _input(event):
 	elif event is InputEventJoypadButton or event is InputEventJoypadMotion:
 		set_input_device(InputDevice.CONTROLLER)
 
-
-
 func set_input_device(device: InputDevice):
 	if current_input_device == device:
 		return
-	
+
 	current_input_device = device
-	
+
 	for guide in active_guide_array:
 		var action: ActionType = guide.action as ActionType
 		var new_icon = INPUT_ICONS[action][current_input_device]
@@ -174,7 +191,7 @@ func hide_guide(guide_unit: InputGuideUnit, duration: float = 0):
 
 	if active_guide_array.is_empty():
 		return
-	
+
 	if not active_guide_array.has(guide_unit):
 		return
 
@@ -188,7 +205,7 @@ func clear_guides():
 		guide.hide()
 		guide.modulate.a = 0
 		hidden_guide_array.append(guide)
-	
+
 	active_guide_array.clear()
 
 # ANIMATIONS
@@ -204,110 +221,3 @@ func vanish(subject: Control):
 	tween.tween_property(subject, "modulate:a", 1, 0.02)
 	tween.tween_property(subject, "modulate:a", 0, 0.1)
 	await tween.finished
-
-
-#extends CanvasLayer
-#
-#@export var hidden_guide_array: Array[InputGuideUnit]
-#var active_guide_array: Array[InputGuideUnit]
-#
-#enum InputType {
-	#A_BUTTON, B_BUTTON, X_BUTTON,
-	#Y_BUTTON, L_ANALOG, R_ANALOG,
-	#R_SHOULDER, L_TRIGGER, R_TRIGGER
-	#}
-#
-#enum ActionType { CONFIRM, RETURN, TELEPORT }
-#
-#const CONTROLLER_INPUT_TYPE: Dictionary [String, CompressedTexture2D] = {
-	#"A_BUTTON" : preload("res://sprites/ui/kenney_input/tile_0004.png"),
-	#"B_BUTTON" : preload("res://sprites/ui/kenney_input/tile_0005.png"),
-	#"Y_BUTTON" : preload("res://sprites/ui/kenney_input/tile_0007.png"),
-	#"L_ANALOG" : preload("res://sprites/ui/kenney_input/tile_0007.png"),
-	#"R_ANALOG" : preload("res://sprites/ui/kenney_input/tile_0007.png"),
-	#"R_SHOULDER" : preload("res://sprites/ui/kenney_input/tile_0007.png"),
-	#"L_TRIGGER" : preload("res://sprites/ui/kenney_input/tile_0007.png"),
-	#"R_TRIGGER" : preload("res://sprites/ui/kenney_input/tile_0007.png")
-#}
-#
-#const KEYBOARD_INPUT_TYPE: Dictionary [String, CompressedTexture2D] = {
-	#"SPACE_KEY" : preload("res://sprites/ui/kenney_input/tile_0004.png"),
-	#"C_KEY" : preload("res://sprites/ui/kenney_input/tile_0005.png"),
-	#"T_KEY" : preload("res://sprites/ui/kenney_input/tile_0007.png"),
-	#"WASD_KEY" : preload("res://sprites/ui/kenney_input/tile_0007.png"),
-	#"MOUSE_CURSOR" : preload("res://sprites/ui/kenney_input/tile_0007.png"),
-	#"L_CLICK" : preload("res://sprites/ui/kenney_input/tile_0007.png"),
-	#"CTRL_KEY" : preload("res://sprites/ui/kenney_input/tile_0007.png"),
-	#"SHIFT_KEY" : preload("res://sprites/ui/kenney_input/tile_0007.png")
-#}
-#
-#const COMMON_ACTIONS: Dictionary [String, String] = {
-	#"CONFIRM" : "Confirmar",
-	#"RETURN" : "Retornar",
-	#"TELEPORT" : "Teleportar"
-#}
-#
-#var final_unit_alpha = 0.5
-#
-#func _ready() -> void:
-	#for i in hidden_guide_array:
-		#i.hide()
-		#i.modulate.a = 0
-#
-#
-#func show_guide(input_type: InputType, action: ActionType, duration: float = 0) -> InputGuideUnit:
-	#var key_input = InputType.keys()[input_type]
-	#var key_action = ActionType.keys()[action]
-#
-	#if hidden_guide_array.is_empty():
-		#if active_guide_array.is_empty():
-			#return null
-		#hidden_guide_array.append(active_guide_array.pop_back())
-#
-	#var guide_unit: InputGuideUnit = hidden_guide_array.pop_back()
-#
-	#guide_unit.setup(
-		#CONTROLLER_INPUT_TYPE[key_input],
-		#COMMON_ACTIONS[key_action]
-	#)
-#
-	#guide_unit.show()
-	#flash(guide_unit)
-	#active_guide_array.append(guide_unit)
-#
-	#if duration != 0: hide_guide(guide_unit, duration)
-	#return guide_unit
-#
-#
-#func hide_guide(guide_unit: InputGuideUnit, duration):
-	#await get_tree().create_timer(duration).timeout
-#
-	#if active_guide_array.is_empty():
-		#return
-	#
-	#if not active_guide_array.has(guide_unit):
-		#return
-#
-	#active_guide_array.erase(guide_unit)
-	#hidden_guide_array.append(guide_unit)
-	#await vanish(guide_unit)
-	#guide_unit.hide()
-#
-#func flash(subject: Control):
-	#var tween = get_tree().create_tween()
-	#tween.set_ease(Tween.EASE_IN_OUT)
-	#tween.tween_property(subject, "modulate:a", 1, 0.02)
-	#tween.tween_property(subject, "modulate:a", final_unit_alpha, 0.1)
-#
-#func vanish(subject: Control):
-	#var tween = get_tree().create_tween()
-	#tween.set_ease(Tween.EASE_IN_OUT)
-	#tween.tween_property(subject, "modulate:a", 1, 0.02)
-	#tween.tween_property(subject, "modulate:a", 0, 0.1)
-	#await tween.finished
-#
-#func _process(_delta: float) -> void:
-	#if InputEventKey or InputEventMouse:
-		#pass
-	#if InputEventJoypadMotion or InputEventJoypadButton:
-		#pass

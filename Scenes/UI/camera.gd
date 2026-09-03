@@ -1,54 +1,43 @@
 extends Camera2D
 
+const default_zoom: Vector2 = Vector2(1, 1)
+
 @export var zoom_speed: float = 0.2
+
 @export var zoom_smoothness: float = 3.0
 
 @export_subgroup("Start Cutscene")
 @export var full_view_zoom: Vector2 = Vector2(0.45, 0.45)
+
 @export var full_view_pos: Vector2 = Vector2(0.0, -500)
+
 @export var full_view_duration: float = 1.0
+
 @export var zoom_in_speed: float = 4.0
-
-@onready var zoom_in_cutscene_sfx: AudioStreamPlayer = $"../SFX/ZoomInCutsceneSFX"
-
-const default_zoom: Vector2 = Vector2(1, 1)
-
-var min_zoom = 0.1 #0.6 
-var max_zoom = 4.5
-var target_zoom: Vector2 = default_zoom
 
 @export var deactivate_cutscene: bool = false
 
+var min_zoom = 0.1
+
+var max_zoom = 4.5
+
+var target_zoom: Vector2 = default_zoom
+
+@onready var zoom_in_cutscene_sfx: AudioStreamPlayer = $"../SFX/ZoomInCutsceneSFX"
+
 func _ready():
 	target_zoom = Vector2(1, 1)
-	if !deactivate_cutscene:
+	if not deactivate_cutscene:
 		start_cutscene()
-	else: Globals.is_cutscene = false
-
-#func _input(event: InputEvent) -> void:
-	#if Globals.is_cutscene:
-		#return
-	#
-	#if event.is_action_pressed("scroll_up"):
-		#target_zoom += Vector2.ONE * zoom_speed
-#
-	#if event.is_action_pressed("scroll_down"):
-		#target_zoom -= Vector2.ONE * zoom_speed
-#
-	#if event.is_action_pressed("middle_mouse"):
-		#target_zoom = default_zoom
-#
-	#target_zoom = target_zoom.clamp(
-		#Vector2(min_zoom, min_zoom),
-		#Vector2(max_zoom, max_zoom)
-	#)
+	else:
+		Globals.is_cutscene = false
 
 func _process(delta):
 	if Globals.is_cutscene:
 		return
 
 	zoom = zoom.lerp(target_zoom, zoom_smoothness * delta)
-	
+
 	## Controller logic vvvvvv
 	if Input.is_action_pressed("shoulderL"):
 		simulate_zoom_out_input()

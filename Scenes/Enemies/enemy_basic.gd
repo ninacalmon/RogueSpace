@@ -1,10 +1,18 @@
 extends Enemy
 
-enum State { WANDER, CHASE, ATTACK, RETREAT }
+enum State {
+	WANDER,
+	CHASE,
+	ATTACK,
+	RETREAT,
+}
 
 var state: State = State.WANDER
+
 var wander_direction: Vector2 = Vector2.ZERO
+
 var wander_timer: float = 0
+
 var retreat_timer: float = 0
 
 @onready var mat: ShaderMaterial = sprite_2d.material
@@ -56,7 +64,8 @@ func _integrate_forces(state_physics: PhysicsDirectBodyState2D) -> void:
 		State.ATTACK:
 			var dir = global_position.direction_to(player.global_position)
 			state_physics.apply_central_impulse(dir * attack_force)
-			if randi_range(1, 5) == 1: SFXManager.play_sound(attack_sfx)
+			if randi_range(1, 5) == 1:
+				SFXManager.play_sound(attack_sfx)
 			state = State.RETREAT
 			retreat_timer = retreat_time
 
@@ -68,10 +77,9 @@ func _integrate_forces(state_physics: PhysicsDirectBodyState2D) -> void:
 	if state_physics.linear_velocity.length() > 5:
 		rotation = state_physics.linear_velocity.angle()
 ########
-		
+
 	if state_physics.linear_velocity.length() > max_velocity:
 		state_physics.linear_velocity = state_physics.linear_velocity.normalized() * max_velocity
-
 
 func apply_movement(state_physics: PhysicsDirectBodyState2D, direction: Vector2, move_speed: float):
 	if direction == Vector2.ZERO:
@@ -79,7 +87,6 @@ func apply_movement(state_physics: PhysicsDirectBodyState2D, direction: Vector2,
 
 	state_physics.apply_central_force(direction * move_speed)
 	steer_enemy_velocity(state_physics, direction)
-
 
 func steer_enemy_velocity(_state: PhysicsDirectBodyState2D, target_dir: Vector2):
 	var vel = _state.linear_velocity
@@ -96,16 +103,20 @@ func steer_enemy_velocity(_state: PhysicsDirectBodyState2D, target_dir: Vector2)
 
 	_state.linear_velocity = vel.rotated(angle)
 
-
 func randomize_wander():
 	wander_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 	wander_timer = randf_range(1.0, 3.0)
 
+func flash():
+	if not mat:
+		return
+	mat.set_shader_parameter("tint_strength", 1.0)
+	await get_tree().create_timer(0.1).timeout
+	mat.set_shader_parameter("tint_strength", 0)
 
 func _on_aggro_entered(body):
 	if body == player:
 		state = State.CHASE
-
 
 func _on_aggro_exited(body):
 	if body == player:
@@ -116,11 +127,3 @@ func _on_damage_taken(amount: float, _causer: Node2D):
 	flash()
 	if life <= 0:
 		queue_free()
-
-
-func flash():
-	if !mat:
-		return
-	mat.set_shader_parameter("tint_strength", 1.0)
-	await get_tree().create_timer(0.1).timeout
-	mat.set_shader_parameter("tint_strength", 0)

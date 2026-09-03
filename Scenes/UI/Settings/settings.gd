@@ -1,7 +1,8 @@
-extends Button
 class_name SettingsButton
+extends Button
 
 @export var inverse_visibility_nodes: Array[Node]
+
 @onready var settings_container: Settings = %SettingsContainer
 
 func _ready():

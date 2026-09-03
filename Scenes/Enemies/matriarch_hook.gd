@@ -1,43 +1,28 @@
-extends Node2D
 class_name Hook
+extends Node2D
 
 @export var stiffness: float = 20.0
+
 @export var damping: float = 4.0
+
 @export var max_distance: float = 200.0
 
-var player: RigidBody2D
 @export var body: RigidBody2D
 
-@onready var line: Line2D = $Line2D
-
-@onready var area_2d: Area2D = $Area2D
-@onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
+var player: RigidBody2D
 
 var check_input: bool = false
 
 var connected: bool = false
 
-func is_player_inside() -> bool:
-	return area_2d.get_overlapping_bodies().has(player)
-	
-#func _on_body_entered(_body: Node2D):
-	#print("entered")
-	#if _body is Player:
-		#check_input = true
-		#PopUpSystem.show_text("Confirme para amarrar sua corda n'A Matriarca.", 5.0)
-		#EventBus.boss_to_capture.emit(true)
-#
-#func _on_body_exited(_body: Node2D):
-	#print("exited")
-	#if _body is Player:
-		#check_input = false
-		#EventBus.boss_to_capture.emit(false)
+@onready var line: Line2D = $Line2D
 
-func initialize(p: RigidBody2D):
-	player = p
+@onready var area_2d: Area2D = $Area2D
+
+@onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 
 func _physics_process(delta):
-	if player == null or !connected:
+	if player == null or not connected:
 		return
 
 	var hook_pos = body.global_position
@@ -74,15 +59,21 @@ func _physics_process(delta):
 var emitted: bool = false
 
 func _input(event: InputEvent) -> void:
-	if !player:
+	if not player:
 		return
 
-	if is_player_inside() and !connected:
+	if is_player_inside() and not connected:
 		if event.is_action_pressed("confirm"):
 			connected = true
 		StatsManager.player_has_cadaver = true
 		PopUpSystem.show_text("Confirme para amarrar sua corda n'A Matriarca.", 3.0)
 		EventBus.boss_in_capture_area.emit(true)
-	elif !emitted:
+	elif not emitted:
 		emitted = true
 		EventBus.boss_in_capture_area.emit(false)
+
+func is_player_inside() -> bool:
+	return area_2d.get_overlapping_bodies().has(player)
+
+func initialize(p: RigidBody2D):
+	player = p

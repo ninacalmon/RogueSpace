@@ -87,7 +87,23 @@ func test_button_click_signals_connected():
 	var controls_node = menu_control.get_node_or_null("CanvasLayer/Control")
 	assert_that(controls_node).is_not_null()
 
-	assert_that(continue_button.pressed.is_connected(Callable(controls_node, "_on_continue_pressed"))).is_true()
-	assert_that(start_button.pressed.is_connected(Callable(controls_node, "_on_start_button_pressed"))).is_true()
-	assert_that(controls_button.pressed.is_connected(Callable(controls_node, "_on_controls_button_pressed"))).is_true()
-	assert_that(exit_button.pressed.is_connected(Callable(controls_node, "_on_exit_button_pressed"))).is_true()
+	assert_that(
+		continue_button.pressed.is_connected(
+			Callable(controls_node, "_on_continue_pressed")
+		)
+	).is_true()
+	assert_that(
+		start_button.pressed.is_connected(
+			Callable(controls_node, "_on_start_button_pressed")
+		)
+	).is_true()
+	assert_that(
+		controls_button.pressed.is_connected(
+			Callable(controls_node, "_on_controls_button_pressed")
+		)
+	).is_true()
+	assert_that(
+		exit_button.pressed.is_connected(
+			Callable(controls_node, "_on_exit_button_pressed")
+		)
+	).is_true()

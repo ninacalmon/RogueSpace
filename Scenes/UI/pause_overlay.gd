@@ -1,9 +1,10 @@
 extends Control
 
 @export var pause_color_rect: ColorRect
-@export var continue_button: Button
-@export var exit_button: Button
 
+@export var continue_button: Button
+
+@export var exit_button: Button
 
 var is_paused: bool = false
 
@@ -16,9 +17,9 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		if Globals.is_showing_confirmation or Globals.is_cutscene:
 			return
-		
+
 		get_viewport().set_input_as_handled()
-		
+
 		if is_paused:
 			unpause()
 		else:
